@@ -66,3 +66,18 @@ app.get('/api/special/:id', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.put('/api/special/:id', async(req,res)=>{
+    try{
+        await Special.findByIdAndUpdate({_id:req.params.id},{
+            section: req.body.section,
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`Update to Database: ${req.body.name}`)
+        res.json(`Updated to Database: ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
