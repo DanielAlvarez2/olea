@@ -47,3 +47,22 @@ app.delete('/api/special/:id', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.get('/api/special', async(req,res)=>{
+    try{
+        const allSpecials = await Special.find().sort({sequence:1})
+        res.json(allSpecials)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/special/:id', async(req,res)=>{
+    try{
+        const special = await Special.findById(req.params.id)
+        console.log(special)
+        res.json(special) 
+    }catch(err){
+        console.log(err)
+    }
+})
