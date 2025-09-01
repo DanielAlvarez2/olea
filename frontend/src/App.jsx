@@ -2,7 +2,7 @@ import { useState,useEffect } from 'react'
 
 export default function App() {
   const BASE_URL = (process.env.NODE_ENV == 'production') ? 
-                    'https://olea-iwpz.onrender.com/' :
+                    'https://olea-iwpz.onrender.com' :
                     'http://localhost:1436'
 
   const [specials, setSpecials] = useState([])
