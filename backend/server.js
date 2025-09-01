@@ -37,3 +37,13 @@ app.post('/api/special', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.delete('/api/special/:id', async(req,res)=>{
+    try{
+        await Special.findByIdAndDelete(req.params.id)
+        console.log('Item Deleted from Database')
+        res.json('Item Deleted from Database')
+    }catch(err){
+        console.log(err)
+    }
+})
