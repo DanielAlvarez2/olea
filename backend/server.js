@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const Special = require('./models/Special.js')
 
 const app = express()
 app.use(express.json())
@@ -19,3 +20,20 @@ console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
 
 const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
+
+app.post('/api/special', async(req,res)=>{
+    try{
+        const maxSequence = await Special.findOne({section:req.body.section}).sort({sequence:-1})
+        await Special.create({
+            section: req.body.section,
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            sequence: maxSequence ? maxSequence.sequence + 1 : 1
+        })
+        console.log(`Added to Database: ${req.body.name}`)
+        res.json(`Added to Database: ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
