@@ -13,12 +13,12 @@
   min-height:100svh;
 }
 .webpage{
-  background:black;
+  background:#262626;
   color:white;
 }
 .webpage-wrapper{
   max-width: 1060px;
-  border:1px solid white;
+  /* border:1px solid white; */
   margin:0 auto;
 }
 .navbar{
@@ -33,6 +33,14 @@
   font-family: FuturaLight;
   font-size:68px;
   font-weight:100;
+  color:#FBFBFB;
+  padding-right:60px;
+}
+.logo a{
+  color:#fbfbfb;
+}
+.logo a:hover{
+  cursor:default;
 }
 .navbar-menu ul{
   font-family: FuturaLight;
@@ -43,11 +51,30 @@
   font-size:16px;
   letter-spacing:1px;
 }
+.navbar-menu a{
+  color:white;
+}
+.navbar-menu li:hover,
+.navbar-menu a:hover{
+  color:#b3b3b3 !important;
+  cursor:pointer;
+}
 .navbar-socials{
   margin-left:auto;
   font-size:22px;
   padding:10px;
+  color:#BFBFBF;
 }
-.webpage a{
+.navbar-socials a{
+  color:#afafaf;
+}
+.webpage a:hover{
   color:white;
+}
+.webpage hr{
+  border:none;
+  border-top:1px solid #5c5c5c;
+}
+a{
+  text-decoration:none;
 }
