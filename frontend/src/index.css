@@ -1,0 +1,53 @@
+@font-face{
+  font-family: 'FuturaLight';
+  src: url(./assets/fonts/FuturaLight.otf)
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.page-wrapper{
+  width:100%;
+  min-height:100vh;
+  min-height:100svh;
+}
+.webpage{
+  background:black;
+  color:white;
+}
+.webpage-wrapper{
+  max-width: 1060px;
+  border:1px solid white;
+  margin:0 auto;
+}
+.navbar{
+  padding-top:22px;
+  padding-left:60px;
+  padding-right:60px;
+  display:flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.logo{
+  font-family: FuturaLight;
+  font-size:68px;
+  font-weight:100;
+}
+.navbar-menu ul{
+  font-family: FuturaLight;
+  width:500px;
+  display:flex;
+  justify-content: space-between;
+  list-style-type: none;
+  font-size:16px;
+  letter-spacing:1px;
+}
+.navbar-socials{
+  margin-left:auto;
+  font-size:22px;
+  padding:10px;
+}
+.webpage a{
+  color:white;
+}
