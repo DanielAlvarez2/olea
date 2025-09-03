@@ -3,24 +3,59 @@ import { AiOutlineInstagram } from "react-icons/ai"
 import {Link} from 'react-router'
 
 export default function Navbar(){
+
+    function showInfoDropdown(){
+        document.querySelector('.info-ul').style.display = 'flex'
+    }
+    function hideInfoDropdown(){
+        document.querySelector('.info-ul').style.display = 'none'
+    }
     return(
         <>
+        {console.log('render')}
             <div className='navbar'>
                 
                 <span className='logo'>
                     <Link to='/'>olea</Link>
                 </span>{/* .logo */}
 
-                <div className='navbar-menu'>
+                <div className='navbar-menu' style={{position:'relative',width:'600px'}}>
+
                     <ul>
+                        <li>home</li>
+                        <li className='nav-info' style={{position:'relative'}}>
+                            
+                            <ul className='info-ul nav-info'
+                                onMouseOver={showInfoDropdown}
+                                onMouseLeave={hideInfoDropdown} 
+                                style={{display:'none',                    
+                                        border:'1px solid black',
+                                        background:'#262626',
+                                        flexDirection:'column',
+                                        position:'absolute',
+                                        width:'150px',
+                                        left:'-15px',
+                                        top:'20px'}}>
+                            <li>info</li>
+                            <li>free parking</li>
+                            <li>chef bio</li>
+                            <li>private parties</li>
+                            </ul>
+                            
+                        </li>
+                    </ul>
+
+                    <ul style={{position:'absolute',top:'0',left:'0',color:'red'}}>
                         <li><Link to='/'>home</Link></li>
-                        <li>info</li>
+                        <li onMouseOver={showInfoDropdown}
+                            onMouseLeave={hideInfoDropdown}>info</li>
                         <li>menus</li>
                         <li><Link to='/press'>press</Link></li>
                         <li><Link to='/giftcards'>gift cards</Link></li>
                         <li><Link to='/newsletter'>newsletter</Link></li>
                         <li><a href='https://www.opentable.com/booking/restref/availability?rid=151186&correlationId=0c416533-c338-499b-a076-64c7c704137f&restRef=151186' target='_blank'>reservations</a></li>
                     </ul>
+                    
                 </div>{/* .navbar-menu */}
 
                 <div className='navbar-socials'>
