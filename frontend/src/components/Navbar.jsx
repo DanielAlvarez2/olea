@@ -1,3 +1,4 @@
+import { GiHamburgerMenu } from "react-icons/gi"
 import { BiLogoFacebook } from "react-icons/bi"
 import { AiOutlineInstagram } from "react-icons/ai"
 import {Link} from 'react-router'
@@ -20,9 +21,8 @@ export default function Navbar(){
     }
     return(
         <>
-        {console.log('render')}
             <div className='navbar'>
-                
+                <GiHamburgerMenu className='hamburger-menu-icon' style={{display:'none'}} />
                 <span className='logo'>
                     <Link to='/'>olea</Link>
                 </span>{/* .logo */}

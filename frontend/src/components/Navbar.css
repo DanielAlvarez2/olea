@@ -15,7 +15,12 @@
 .tablet-socials a{
   color:#afafaf;
 }
-
+.hamburger-menu-icon{
+    position:absolute;
+    top:10px;
+    left:10px;
+    cursor:pointer;
+}
 @media (max-width:900px){
     .navbar-socials{
         display:none;
@@ -25,7 +30,6 @@
     }
     .navbar-menu{
         margin:0 auto;
-        
     }
     .navbar{
         display:flex;
@@ -36,7 +40,20 @@
     }
     .nav-ul{
         margin-bottom:20px;
-                
-
+    }
+}
+@media (max-width:630px){
+    .tablet-socials{
+        display:none;
+    }
+    .navbar-menu{
+        display:none;
+    }
+    .tablet-logo{
+        padding-right:0;
+        margin:0 auto;
+    }
+    .hamburger-menu-icon{
+        display:block !important;
     }
 }
