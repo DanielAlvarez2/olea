@@ -6,7 +6,7 @@ export default function Home(){
         <div className='page-wrapper webpage'>
             <div className='webpage-wrapper'>
                 <Navbar />
-                <h1>Press</h1>
+                <h1>Chef Bio</h1>
                 
             </div>{/* .webpage-wrapper */}
         </div>/* .page-wrapper */

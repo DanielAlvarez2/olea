@@ -19,33 +19,30 @@ export default function Navbar(){
                     <Link to='/'>olea</Link>
                 </span>{/* .logo */}
 
-                <div className='navbar-menu' style={{position:'relative',width:'600px'}}>
+                <div className='navbar-menu' style={{position:'relative',width:'540px'}}>
 
-                    <ul>
-                        <li>home</li>
-                        <li className='nav-info' style={{position:'relative'}}>
-                            
+                   
                             <ul className='info-ul nav-info'
                                 onMouseOver={showInfoDropdown}
                                 onMouseLeave={hideInfoDropdown} 
                                 style={{display:'none',                    
                                         border:'1px solid black',
+                                        
+                                        padding:'10px 10px',
                                         background:'#262626',
                                         flexDirection:'column',
                                         position:'absolute',
-                                        width:'150px',
-                                        left:'-15px',
+                                        
+                                        left:'40px',
                                         top:'20px'}}>
-                            <li>info</li>
-                            <li>free parking</li>
-                            <li>chef bio</li>
-                            <li>private parties</li>
+                                <li><Link to='/info'>info</Link></li>
+                                <li><Link to='/free-parking'>free parking</Link></li>
+                                <li><Link to='/chef-bio'>chef bio</Link></li>
+                                <li><Link to='/private-parties'>private parties</Link></li>
                             </ul>
-                            
-                        </li>
-                    </ul>
+                    
 
-                    <ul style={{position:'absolute',top:'0',left:'0',color:'red'}}>
+                    <ul className='nav-ul' style={{position:'absolute',top:'0',left:'0'}}>
                         <li><Link to='/'>home</Link></li>
                         <li onMouseOver={showInfoDropdown}
                             onMouseLeave={hideInfoDropdown}>info</li>

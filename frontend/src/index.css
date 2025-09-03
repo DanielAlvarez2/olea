@@ -48,9 +48,12 @@
 ul{
   list-style-type: none;
 }
-.navbar-menu>ul{
+.nav-ul{
   display:flex;
   gap:19px;
+}
+.nav-info>li{
+  padding:5px 10px;
 }
 .navbar-menu a{
   color:white;
@@ -80,7 +83,6 @@ a{
   text-decoration:none;
 }
 .webpage main{
-  /* border:1px solid red; */
   max-width:940px;
   margin:0 auto;
   margin-top:43px;
@@ -88,6 +90,4 @@ a{
 .webpage footer{
   font-family: FuturaLight;
 }
-.info-ul>li{
-  padding:7px 15px;
-}
+
