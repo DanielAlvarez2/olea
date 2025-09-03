@@ -1,4 +1,5 @@
 import { GiHamburgerMenu } from "react-icons/gi"
+import { IoCloseSharp } from "react-icons/io5"
 import { BiLogoFacebook } from "react-icons/bi"
 import { AiOutlineInstagram } from "react-icons/ai"
 import {Link} from 'react-router'
@@ -19,10 +20,25 @@ export default function Navbar(){
     function hideInfoDropdown(){
         document.querySelector('.info-ul').style.display = 'none'
     }
+
+    function showMobileMenu(){
+        document.querySelector('.close-mobile-menu').style.display = 'block'
+        document.querySelector('.hamburger-menu-icon').style.display = 'none'
+    }
+    function hideMobileMenu(){
+        document.querySelector('.close-mobile-menu').style.display = 'none'
+        document.querySelector('.hamburger-menu-icon').style.display = 'block'
+    }
+
     return(
         <>
             <div className='navbar'>
-                <GiHamburgerMenu className='hamburger-menu-icon' style={{display:'none'}} />
+                <IoCloseSharp   className='close-mobile-menu'
+                                onClick={hideMobileMenu} 
+                                style={{display:'none'}} />
+                <GiHamburgerMenu    className='hamburger-menu-icon'
+                                    onClick={showMobileMenu} 
+                                     />
                 <span className='logo'>
                     <Link to='/'>olea</Link>
                 </span>{/* .logo */}

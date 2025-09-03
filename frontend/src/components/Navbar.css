@@ -11,6 +11,19 @@
 .logo a:hover,.tablet-logo a:hover{
   cursor:default;
 }
+.navbar{
+  padding-top:22px;
+  padding-left:60px;
+  padding-right:60px;
+  display:flex;
+  align-items: center;
+}
+
+.navbar-menu{
+  font-family: FuturaLight;
+  font-size:16px;
+  letter-spacing:1px;
+}
 .navbar-socials a,
 .tablet-socials a{
   color:#afafaf;
@@ -19,6 +32,15 @@
     position:absolute;
     top:10px;
     left:10px;
+    cursor:pointer;
+    font-size:25px;
+    display:none;
+}
+.close-mobile-menu{
+    position:absolute;
+    top:10px;
+    left:10px;
+    font-size:25px;
     cursor:pointer;
 }
 @media (max-width:900px){
@@ -54,6 +76,6 @@
         margin:0 auto;
     }
     .hamburger-menu-icon{
-        display:block !important;
+        display:block;
     }
 }
