@@ -27,19 +27,7 @@
   display:flex;
   align-items: center;
 }
-.logo{
-  font-family: FuturaLight;
-  font-size:68px;
-  font-weight:100;
-  color:#FBFBFB;
-  padding-right:60px;
-}
-.logo a{
-  color:#fbfbfb;
-}
-.logo a:hover{
-  cursor:default;
-}
+
 .navbar-menu{
   font-family: FuturaLight;
   font-size:16px;
@@ -64,14 +52,13 @@ ul{
   cursor:pointer;
 }
 .navbar-socials,
+.tablet-socials,
 .footer-socials{
   margin-left:auto;
   font-size:22px;
   color:#BFBFBF;
 }
-.navbar-socials a{
-  color:#afafaf;
-}
+
 .webpage a:hover{
   color:white;
 }

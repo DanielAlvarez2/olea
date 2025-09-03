@@ -1,6 +1,7 @@
 import { BiLogoFacebook } from "react-icons/bi"
 import { AiOutlineInstagram } from "react-icons/ai"
 import {Link} from 'react-router'
+import './Navbar.css'
 
 export default function Navbar(){
 
@@ -26,7 +27,23 @@ export default function Navbar(){
                     <Link to='/'>olea</Link>
                 </span>{/* .logo */}
 
-                <div className='navbar-menu' style={{position:'relative',width:'540px'}}>
+                <div className='navbar-tablet' style={{display:'none',width:'500px',alignItems:'center',justifyContent:'space-between'}}>
+
+                    <span className='tablet-logo'>
+                        <Link to='/'>olea</Link>
+                    </span>
+                    
+                    <span className='tablet-socials'>
+                        <a href='https://www.facebook.com/oleanewhaven/' target='_blank'>
+                            <BiLogoFacebook />
+                        </a>&nbsp;
+                        <a href='https://www.instagram.com/oleanewhaven/' target='_blank'>
+                            <AiOutlineInstagram />
+                        </a>
+                    </span>
+                </div>{/* .navbar-tablet */}
+                
+                <div className='navbar-menu' style={{position:'relative'}}>
                             <ul className='menus-dropdown' 
                                 onMouseOver={showMenusDropdown}
                                 onMouseLeave={hideMenusDropdown} 
@@ -61,7 +78,7 @@ export default function Navbar(){
                             </ul>
                     
 
-                    <ul className='nav-ul' style={{position:'absolute',top:'0',left:'0'}}>
+                    <ul className='nav-ul' style={{position:'relative',top:'0',left:'0'}}>
                         <li><Link to='/'>home</Link></li>
                         <li onMouseOver={showInfoDropdown}
                             onMouseLeave={hideInfoDropdown}>info</li>
