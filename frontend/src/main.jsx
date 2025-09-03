@@ -9,6 +9,9 @@ import Info from './Info.jsx'
 import FreeParking from './FreeParking.jsx'
 import ChefBio from './ChefBio.jsx'
 import PrivateParties from './PrivateParties.jsx'
+import Dinner from './Dinner.jsx'
+import Specials from './Specials.jsx'
+import Dessert from './Dessert.jsx'
 import Press from './Press.jsx'
 import Test from './Test.jsx'
 
@@ -21,6 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='free-parking' element={<FreeParking />} />
         <Route path='chef-bio' element={<ChefBio />} />
         <Route path='private-parties' element={<PrivateParties />} />
+        <Route path='dinner' element={<Dinner />} />
+        <Route path='specials' element={<Specials />} />
+        <Route path='dessert' element={<Dessert />} />
         <Route path='newsletter' element={<Newsletter />} />
         <Route path='giftcards' element={<Giftcards />} />
         <Route path='press' element={<Press />} />

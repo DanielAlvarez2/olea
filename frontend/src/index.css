@@ -52,7 +52,7 @@ ul{
   display:flex;
   gap:19px;
 }
-.nav-info>li{
+.nav-info>li,.menus-dropdown>li{
   padding:5px 10px;
 }
 .navbar-menu a{

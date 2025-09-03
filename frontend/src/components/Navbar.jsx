@@ -4,6 +4,13 @@ import {Link} from 'react-router'
 
 export default function Navbar(){
 
+    function showMenusDropdown(){
+        document.querySelector('.menus-dropdown').style.display = 'flex'
+    }
+    function hideMenusDropdown(){
+        document.querySelector('.menus-dropdown').style.display = 'none'
+    }
+
     function showInfoDropdown(){
         document.querySelector('.info-ul').style.display = 'flex'
     }
@@ -20,19 +27,31 @@ export default function Navbar(){
                 </span>{/* .logo */}
 
                 <div className='navbar-menu' style={{position:'relative',width:'540px'}}>
-
+                            <ul className='menus-dropdown' 
+                                onMouseOver={showMenusDropdown}
+                                onMouseLeave={hideMenusDropdown} 
+                                style={{display:'none',
+                                        position:'absolute',
+                                        top:'20px',
+                                        border:'1px solid black',
+                                        padding:'10px',
+                                        background:'#262626',
+                                        flexDirection:'column',
+                                        left:'87px'}}>
+                                <li><Link to='/dinner'>dinner</Link></li>
+                                <li><Link to='/specials'>specials</Link></li>
+                                <li><Link to='/dessert'>dessert</Link></li>
+                            </ul>
                    
                             <ul className='info-ul nav-info'
                                 onMouseOver={showInfoDropdown}
                                 onMouseLeave={hideInfoDropdown} 
                                 style={{display:'none',                    
                                         border:'1px solid black',
-                                        
                                         padding:'10px 10px',
                                         background:'#262626',
                                         flexDirection:'column',
                                         position:'absolute',
-                                        
                                         left:'40px',
                                         top:'20px'}}>
                                 <li><Link to='/info'>info</Link></li>
@@ -46,7 +65,8 @@ export default function Navbar(){
                         <li><Link to='/'>home</Link></li>
                         <li onMouseOver={showInfoDropdown}
                             onMouseLeave={hideInfoDropdown}>info</li>
-                        <li>menus</li>
+                        <li onMouseOver={showMenusDropdown}
+                            onMouseLeave={hideMenusDropdown}>menus</li>
                         <li><Link to='/press'>press</Link></li>
                         <li><Link to='/giftcards'>gift cards</Link></li>
                         <li><Link to='/newsletter'>newsletter</Link></li>
