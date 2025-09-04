@@ -16,7 +16,7 @@ export default function Footer(){
                         In the heart of downtown New Haven, Olea offers an innovative interpretation of Spanish and Mediterranean cuisine. Chef Manuel Romero and his team explore these flavors in their food, wine, and cocktails, locally sourcing many products and importing specialty items from the Mediterranean region.<br/>
                         <br/>
 
-                        copyright 2014–2024  by olea. graphic design by Rebecca Martz
+                        copyright 2014–{new Date().getFullYear()}  by olea. graphic design by Rebecca Martz
                     </footer>
         
         </>
