@@ -60,46 +60,50 @@ export default function Navbar(){
                 </div>{/* .navbar-tablet */}
                 
                 <div className='navbar-menu' style={{position:'relative'}}>
-                            <ul className='menus-dropdown' 
-                                onMouseOver={showMenusDropdown}
-                                onMouseLeave={hideMenusDropdown} 
-                                style={{display:'none',
-                                        position:'absolute',
-                                        top:'20px',
-                                        border:'1px solid black',
-                                        padding:'10px',
-                                        background:'#262626',
-                                        flexDirection:'column',
-                                        left:'87px'}}>
-                                <li><Link to='/dinner'>dinner</Link></li>
-                                <li><Link to='/specials'>specials</Link></li>
-                                <li><Link to='/dessert'>dessert</Link></li>
-                            </ul>
-                   
-                            <ul className='info-ul nav-info'
-                                onMouseOver={showInfoDropdown}
-                                onMouseLeave={hideInfoDropdown} 
-                                style={{display:'none',                    
-                                        border:'1px solid black',
-                                        padding:'10px 10px',
-                                        background:'#262626',
-                                        flexDirection:'column',
-                                        position:'absolute',
-                                        left:'40px',
-                                        top:'20px'}}>
-                                <li><Link to='/info'>info</Link></li>
-                                <li><Link to='/free-parking'>free parking</Link></li>
-                                <li><Link to='/chef-bio'>chef bio</Link></li>
-                                <li><Link to='/private-parties'>private parties</Link></li>
-                            </ul>
-                    
-
+                            
                     <ul className='nav-ul' style={{position:'relative',top:'0',left:'0'}}>
                         <li><Link to='/'>home</Link></li>
-                        <li onMouseOver={showInfoDropdown}
-                            onMouseLeave={hideInfoDropdown}>info</li>
-                        <li onMouseOver={showMenusDropdown}
-                            onMouseLeave={hideMenusDropdown}>menus</li>
+                        <li style={{position:'relative'}} 
+                            onMouseOver={showInfoDropdown}
+                            onMouseLeave={hideInfoDropdown}>info
+                                <ul className='info-ul nav-info'
+                                    onMouseOver={showInfoDropdown}
+                                    onMouseLeave={hideInfoDropdown} 
+                                    style={{display:'none',                    
+                                            border:'1px solid black',
+                                            padding:'10px 10px',
+                                            background:'#262626',
+                                            width:'160px',
+                                            flexDirection:'column',
+                                            position:'absolute',
+                                            left:'-20px',
+                                            top:'100%'}}>
+                                    <li><Link to='/info'>info</Link></li>
+                                    <li><Link to='/free-parking'>free parking</Link></li>
+                                    <li><Link to='/chef-bio'>chef bio</Link></li>
+                                    <li><Link to='/private-parties'>private parties</Link></li>
+                                </ul>
+                        </li>
+                        <li style={{position:'relative'}} 
+                            onMouseOver={showMenusDropdown}
+                            onMouseLeave={hideMenusDropdown}>
+                                menus
+                                <ul className='menus-dropdown' 
+                                    onMouseOver={showMenusDropdown}
+                                    onMouseLeave={hideMenusDropdown} 
+                                    style={{display:'none',
+                                            position:'absolute',
+                                            top:'100%',
+                                            border:'1px solid black',
+                                            padding:'10px',
+                                            background:'#262626',
+                                            flexDirection:'column',
+                                            left:'-20px'}}>
+                                    <li><Link to='/dinner'>dinner</Link></li>
+                                    <li><Link to='/specials'>specials</Link></li>
+                                    <li><Link to='/dessert'>dessert</Link></li>
+                                </ul>
+                        </li>
                         <li><Link to='/press'>press</Link></li>
                         <li><Link to='/giftcards'>gift cards</Link></li>
                         <li><Link to='/newsletter'>newsletter</Link></li>

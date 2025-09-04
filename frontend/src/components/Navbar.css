@@ -52,6 +52,7 @@
     }
     .navbar-menu{
         margin:0 auto;
+        width:100%;
     }
     .navbar{
         display:flex;
@@ -59,9 +60,12 @@
     }
     .navbar-tablet{
         display:flex !important;
+        width:100% !important;
     }
     .nav-ul{
         margin-bottom:20px;
+        width:100%;
+        justify-content: space-between;
     }
 }
 @media (max-width:630px){
