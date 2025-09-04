@@ -136,7 +136,7 @@ export default function Navbar(){
                     <li>dessert</li>
                     <li>press</li>
                     <li>gift cards</li>
-                    <li>nesletter</li>
+                    <li>newsletter</li>
                     <li>reservations</li>
                 </ul>
             </div>{/* .navbar-mobile */}
