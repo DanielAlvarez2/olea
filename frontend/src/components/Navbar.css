@@ -72,6 +72,9 @@
     .tablet-socials{
         display:none;
     }
+    .navbar{
+        padding-top:5px;
+    }
     .navbar-menu{
         display:none;
     }
