@@ -121,6 +121,25 @@ export default function Navbar(){
                     </a>
                 </div>{/* .navbar-socials */}
             </div>{/* .navbar */}
+
+            <div className='navbar-mobile'>
+                <ul>
+                    <li>home</li>
+                    <li>info</li>
+                    <li>info</li>
+                    <li>free parking</li>
+                    <li>chef bio</li>
+                    <li>private parties</li>
+                    <li>menus</li>
+                    <li>dinner</li>
+                    <li>specials</li>
+                    <li>dessert</li>
+                    <li>press</li>
+                    <li>gift cards</li>
+                    <li>nesletter</li>
+                    <li>reservations</li>
+                </ul>
+            </div>{/* .navbar-mobile */}
             <hr/>
         </>
     )

@@ -43,6 +43,21 @@
     font-size:25px;
     cursor:pointer;
 }
+.navbar-mobile li{
+    width:100%;
+    text-align: center;
+    font-family: FuturaLight;
+    height:40px;
+    display:none;
+}
+
+
+
+
+
+
+
+
 @media (max-width:900px){
     .navbar-socials{
         display:none;
@@ -68,6 +83,7 @@
         justify-content: space-between;
     }
 }
+
 @media (max-width:630px){
     .tablet-socials{
         display:none;
@@ -83,6 +99,9 @@
         margin:0 auto;
     }
     .hamburger-menu-icon{
+        display:block;
+    }
+    .navbar-mobile li{
         display:block;
     }
 }
