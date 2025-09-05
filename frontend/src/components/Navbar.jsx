@@ -73,7 +73,7 @@ export default function Navbar(){
                                             border:'1px solid black',
                                             padding:'10px 10px',
                                             background:'#262626',
-                                            width:'160px',
+                                            width:'max-content',
                                             flexDirection:'column',
                                             position:'absolute',
                                             left:'-20px',
@@ -96,6 +96,7 @@ export default function Navbar(){
                                             top:'100%',
                                             border:'1px solid black',
                                             padding:'10px',
+                                            width:'max-content',
                                             background:'#262626',
                                             flexDirection:'column',
                                             left:'-20px'}}>
