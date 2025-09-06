@@ -4,7 +4,7 @@ import Footer from './components/Footer.jsx'
 
 export default function Home(){
     return (
-        <div className='page-wrapper webpage'>
+        <div className='page-wrapper webpage' >
             <div className='webpage-wrapper'>
                 <Navbar />
                 <main>
