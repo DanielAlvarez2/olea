@@ -47,10 +47,17 @@
     width:100%;
     text-align: center;
     font-family: FuturaLight;
-    height:40px;
+    height:27px;
+    font-size:10px;
+    display:grid;
+    place-content: center;
+    border-bottom:1px solid #5c5c5c44;
     display:none;
 }
-
+.mobile-menu-dropdown{
+    background:black;
+    border-bottom:1px solid #444 !important;
+}
 
 
 
