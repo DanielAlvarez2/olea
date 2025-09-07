@@ -24,10 +24,14 @@ export default function Navbar(){
     function showMobileMenu(){
         document.querySelector('.close-mobile-menu').style.display = 'block'
         document.querySelector('.hamburger-menu-icon').style.display = 'none'
+        document.querySelectorAll('.navbar-mobile ul').forEach(ul=>ul.style.height = 'auto')
+        document.querySelectorAll('.navbar-mobile li').forEach(li=>li.style.height = '50px')
     }
     function hideMobileMenu(){
         document.querySelector('.close-mobile-menu').style.display = 'none'
         document.querySelector('.hamburger-menu-icon').style.display = 'block'
+        document.querySelectorAll('.navbar-mobile ul').forEach(ul=>ul.style.height = 0)
+        document.querySelectorAll('.navbar-mobile li').forEach(li=>li.style.height = 0)
     }
 
     return(
