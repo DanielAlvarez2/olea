@@ -35,6 +35,8 @@ export default function Navbar(){
         document.querySelector('.hamburger-menu-icon').style.display = 'block'
         document.querySelector('.mobile-menu-ul').style.height = 0
         document.querySelectorAll('.navbar-mobile li').forEach(li=>li.style.height = 0)
+        setMobileInfoDropdown(false)
+        setMobileMenusDropdwon(false)
     }
 
     return(
