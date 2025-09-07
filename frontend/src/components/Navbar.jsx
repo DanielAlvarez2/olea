@@ -140,16 +140,16 @@ export default function Navbar(){
 
             <div className='navbar-mobile'>
                 <ul className='mobile-menu-ul'>
-                    <li><span>home</span></li>
+                    <Link to='/'><li><span>home</span></li></Link>
                     <li onClick={()=>setMobileInfoDropdown(prev=>!prev)}>
                         <span>{mobileInfoDropdownOpen ? '-' : '+'} info</span>
                     </li>
                     {mobileInfoDropdownOpen && 
                         <ul className='mobile-dropdown-info'>
-                            <li className='mobile-menu-dropdown'><span>info</span></li>
-                            <li className='mobile-menu-dropdown'><span>free parking</span></li>
-                            <li className='mobile-menu-dropdown'><span>chef bio</span></li>
-                            <li className='mobile-menu-dropdown'><span>private parties</span></li>
+                            <Link to='/info'><li className='mobile-menu-dropdown'><span>info</span></li></Link>
+                            <Link to='/free-parking'><li className='mobile-menu-dropdown'><span>free parking</span></li></Link>
+                            <Link to='/chef-bio'><li className='mobile-menu-dropdown'><span>chef bio</span></li></Link>
+                            <Link to='/private-parties'><li className='mobile-menu-dropdown'><span>private parties</span></li></Link>
                         </ul>
                     }
                     
@@ -158,15 +158,15 @@ export default function Navbar(){
                     </li>
                     {mobileMenusDropdwon &&                    
                         <ul className='mobile-dropdown-menus'>
-                            <li className='mobile-menu-dropdown'><span>dinner</span></li>
-                            <li className='mobile-menu-dropdown'><span>specials</span></li>
-                            <li className='mobile-menu-dropdown'><span>dessert</span></li>
+                            <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
+                            <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>
+                            <Link to='/dessert'><li className='mobile-menu-dropdown'><span>dessert</span></li></Link>
                         </ul>
                     }
-                    <li><span>press</span></li>
-                    <li><span>gift cards</span></li>
-                    <li><span>newsletter</span></li>
-                    <li><span>reservations</span></li>
+                    <Link to='/press'><li><span>press</span></li></Link>
+                    <Link to='/giftcards'><li><span>gift cards</span></li></Link>
+                    <Link to='/newsletter'><li><span>newsletter</span></li></Link>
+                    <a href='https://www.opentable.com/booking/restref/availability?rid=151186&correlationId=0c416533-c338-499b-a076-64c7c704137f&restRef=151186' target='_blank'><li><span>reservations</span></li></a>
                 </ul>
             </div>{/* .navbar-mobile */}
             
