@@ -65,6 +65,12 @@
     background:black;
     border-bottom:1px solid #444 !important;
 }
+.mobile-menu-ul{
+    height:0;
+}
+.navbar-mobile span{
+    cursor:pointer;
+}
 
 
 

@@ -4,8 +4,11 @@ import { BiLogoFacebook } from "react-icons/bi"
 import { AiOutlineInstagram } from "react-icons/ai"
 import {Link} from 'react-router'
 import './Navbar.css'
+import {useState} from 'react'
 
 export default function Navbar(){
+    const [mobileInfoDropdownOpen, setMobileInfoDropdown] = useState(false)
+    const [mobileMenusDropdwon, setMobileMenusDropdwon] = useState(false)
 
     function showMenusDropdown(){
         document.querySelector('.menus-dropdown').style.display = 'flex'
@@ -24,13 +27,13 @@ export default function Navbar(){
     function showMobileMenu(){
         document.querySelector('.close-mobile-menu').style.display = 'block'
         document.querySelector('.hamburger-menu-icon').style.display = 'none'
-        document.querySelectorAll('.navbar-mobile ul').forEach(ul=>ul.style.height = 'auto')
+        document.querySelector('.mobile-menu-ul').style.height = 'auto'
         document.querySelectorAll('.navbar-mobile li').forEach(li=>li.style.height = '50px')
     }
     function hideMobileMenu(){
         document.querySelector('.close-mobile-menu').style.display = 'none'
         document.querySelector('.hamburger-menu-icon').style.display = 'block'
-        document.querySelectorAll('.navbar-mobile ul').forEach(ul=>ul.style.height = 0)
+        document.querySelector('.mobile-menu-ul').style.height = 0
         document.querySelectorAll('.navbar-mobile li').forEach(li=>li.style.height = 0)
     }
 
@@ -134,21 +137,34 @@ export default function Navbar(){
 
 
             <div className='navbar-mobile'>
-                <ul>
-                    <li>home</li>
-                    <li>+/- info</li>
-                    <li className='mobile-menu-dropdown'>info</li>
-                    <li className='mobile-menu-dropdown'>free parking</li>
-                    <li className='mobile-menu-dropdown'>chef bio</li>
-                    <li className='mobile-menu-dropdown'>private parties</li>
-                    <li>+/- menus</li>
-                    <li className='mobile-menu-dropdown'>dinner</li>
-                    <li className='mobile-menu-dropdown'>specials</li>
-                    <li className='mobile-menu-dropdown'>dessert</li>
-                    <li>press</li>
-                    <li>gift cards</li>
-                    <li>newsletter</li>
-                    <li>reservations</li>
+                <ul className='mobile-menu-ul'>
+                    <li><span>home</span></li>
+                    <li onClick={()=>setMobileInfoDropdown(prev=>!prev)}>
+                        <span>{mobileInfoDropdownOpen ? '-' : '+'} info</span>
+                    </li>
+                    {mobileInfoDropdownOpen && 
+                        <ul className='mobile-dropdown-info'>
+                            <li className='mobile-menu-dropdown'><span>info</span></li>
+                            <li className='mobile-menu-dropdown'><span>free parking</span></li>
+                            <li className='mobile-menu-dropdown'><span>chef bio</span></li>
+                            <li className='mobile-menu-dropdown'><span>private parties</span></li>
+                        </ul>
+                    }
+                    
+                    <li onClick={()=>setMobileMenusDropdwon(prev=>!prev)}>
+                        <span>{mobileMenusDropdwon ? '-' : '+'} menus</span>
+                    </li>
+                    {mobileMenusDropdwon &&                    
+                        <ul className='mobile-dropdown-menus'>
+                            <li className='mobile-menu-dropdown'><span>dinner</span></li>
+                            <li className='mobile-menu-dropdown'><span>specials</span></li>
+                            <li className='mobile-menu-dropdown'><span>dessert</span></li>
+                        </ul>
+                    }
+                    <li><span>press</span></li>
+                    <li><span>gift cards</span></li>
+                    <li><span>newsletter</span></li>
+                    <li><span>reservations</span></li>
                 </ul>
             </div>{/* .navbar-mobile */}
             
