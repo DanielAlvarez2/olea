@@ -1,3 +1,6 @@
+*{
+    transition: height 0.2s;
+}
 .logo,.tablet-logo{
   font-family: FuturaLight;
   font-size:68px;
