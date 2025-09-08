@@ -8,7 +8,7 @@ import {useState} from 'react'
 
 export default function Navbar(){
     const [mobileInfoDropdownOpen, setMobileInfoDropdown] = useState(false)
-    const [mobileMenusDropdwon, setMobileMenusDropdwon] = useState(false)
+    const [mobileMenusDropdown, setMobileMenusDropdown] = useState(false)
 
     function showMenusDropdown(){
         document.querySelector('.menus-dropdown').style.display = 'flex'
@@ -33,10 +33,10 @@ export default function Navbar(){
     function hideMobileMenu(){
         document.querySelector('.close-mobile-menu').style.display = 'none'
         document.querySelector('.hamburger-menu-icon').style.display = 'block'
-        document.querySelector('.mobile-menu-ul').style.height = 0
         document.querySelectorAll('.navbar-mobile li').forEach(li=>li.style.height = 0)
+        document.querySelector('.mobile-menu-ul').style.height = 0
         setMobileInfoDropdown(false)
-        setMobileMenusDropdwon(false)
+        setMobileMenusDropdown(false)
     }
 
     return(
@@ -153,10 +153,10 @@ export default function Navbar(){
                         </ul>
                     }
                     
-                    <li onClick={()=>setMobileMenusDropdwon(prev=>!prev)}>
-                        <span>{mobileMenusDropdwon ? '-' : '+'} menus</span>
+                    <li onClick={()=>setMobileMenusDropdown(prev=>!prev)}>
+                        <span>{mobileMenusDropdown ? '-' : '+'} menus</span>
                     </li>
-                    {mobileMenusDropdwon &&                    
+                    {mobileMenusDropdown &&                    
                         <ul className='mobile-dropdown-menus'>
                             <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
                             <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>
