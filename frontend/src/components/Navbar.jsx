@@ -42,12 +42,14 @@ export default function Navbar(){
     return(
         <>
             <div className='navbar'>
-                <IoCloseSharp   className='close-mobile-menu'
-                                onClick={hideMobileMenu} 
-                                style={{display:'none'}} />
-                <GiHamburgerMenu    className='hamburger-menu-icon'
-                                    onClick={showMobileMenu} 
-                                     />
+                <div className='navbar-mobile-icons'>
+                    <IoCloseSharp   className='close-mobile-menu'
+                                    onClick={hideMobileMenu} 
+                                    style={{display:'none'}} />
+                    <GiHamburgerMenu    className='hamburger-menu-icon'
+                                        onClick={showMobileMenu} 
+                                        />
+                </div>{/* .navbar-mobile-icons */}
                 <span className='logo'>
                     <Link to='/'>olea</Link>
                 </span>{/* .logo */}
