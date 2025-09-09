@@ -9,16 +9,18 @@
 }
 .page-wrapper{
   width:100%;
-  min-height:100vh;
-  min-height:100svh;
 }
 .webpage{
   background:#262626;
   color:white;
 }
 .webpage-wrapper{
+  min-height:100vh;
+  min-height:100svh;
   max-width: 1060px;
   margin:0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 ul{

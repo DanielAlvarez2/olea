@@ -1,5 +1,6 @@
 import './index.css'
 import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
 
 export default function Home(){
     return (
@@ -8,6 +9,7 @@ export default function Home(){
                 <Navbar />
                 <h1>Newsletter</h1>
 
+                <Footer />
             </div>{/* .webpage-wrapper */}
         </div>/* .page-wrapper */
     )

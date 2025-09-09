@@ -1,9 +1,10 @@
 import { BiLogoFacebook } from "react-icons/bi"
 import { AiOutlineInstagram } from "react-icons/ai"
+import './Footer.css'
 
 export default function Footer(){
     return(
-        <>
+        <div className='footer-flexbox-bottom'>
                     <hr style={{marginTop:'100px',marginBottom:'25px'}}/>
                     <footer style={{maxWidth:'450px',lineHeight:'28px'}}>
                         <div className='footer-socials' style={{padding:'0',marginBottom:'20px'}}>
@@ -19,6 +20,6 @@ export default function Footer(){
                         copyright 2014–{new Date().getFullYear()}  by olea. graphic design by Rebecca Martz
                     </footer>
         
-        </>
+        </div>/* .footer-flexbox-bottom */
     )
 }
