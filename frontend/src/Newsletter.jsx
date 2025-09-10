@@ -7,7 +7,10 @@ export default function Home(){
         <div className='page-wrapper webpage'>
             <div className='webpage-wrapper'>
                 <Navbar />
-                <h1>Newsletter</h1>
+
+                <main>
+                    <h1>Newsletter</h1>
+                </main>
 
                 <Footer />
             </div>{/* .webpage-wrapper */}

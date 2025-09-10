@@ -51,13 +51,13 @@ export default function Navbar(){
                                         />
                 </div>{/* .navbar-mobile-icons */}
                 <span className='logo'>
-                    <Link to='/'>olea</Link>
+                    <Link to='/'><span style={{cursor:'pointer'}}>olea</span></Link>
                 </span>{/* .logo */}
 
                 <div className='navbar-tablet' style={{display:'none',width:'500px',alignItems:'center',justifyContent:'space-between'}}>
 
                     <span className='tablet-logo'>
-                        <Link to='/'>olea</Link>
+                        <Link to='/'><span style={{cursor:'pointer'}}>olea</span></Link>
                     </span>
                     
                     <span className='tablet-socials'>

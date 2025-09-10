@@ -119,6 +119,7 @@
     .tablet-logo{
         padding-right:0;
         margin:0 auto;
+        cursor:pointer;
     }
     .hamburger-menu-icon,
     .navbar-mobile-icons{
