@@ -19,3 +19,11 @@
         flex-direction: column;
     }
 }
+@media (max-width:640px){
+    footer{
+        text-align: center;
+    }
+    .flexbox-address-phone{
+        justify-content: center;
+    }
+}
