@@ -7,9 +7,14 @@ export default function Footer(){
         <div className='footer-flexbox-bottom'>
                     <hr style={{marginTop:'100px',marginBottom:'25px'}}/>
                     <footer style={{maxWidth:'450px',lineHeight:'28px'}}>
+
                         <div className='footer-socials' style={{padding:'0',marginBottom:'20px'}}>
-                            <BiLogoFacebook/>&nbsp;
-                            <AiOutlineInstagram/>
+                            <a href='https://www.facebook.com/oleanewhaven/' target='_blank'>
+                                <BiLogoFacebook />
+                            </a>&nbsp;
+                            <a href='https://www.instagram.com/oleanewhaven/' target='_blank'>
+                                <AiOutlineInstagram />
+                            </a>
                         </div>{/* .footer-socials */}
 
                         39 high street, new haven, connecticut | 203.780.8925 <br/><br/>
