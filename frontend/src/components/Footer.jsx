@@ -20,10 +20,13 @@ export default function Footer(){
                             <span>39 high street, new haven, connecticut</span>
                             <span className='footer-pipe'> &nbsp;|&nbsp; </span>
                             <span>203.780.8925</span>
-                            <br/><br/>
                         </div>{/* .flexbox-address-phone */}
+                            
+                        <br/>
+                        
                         Tuesday—Saturday, 5—10 pm (last seating at 8:30) <br/><br/>
                         In the heart of downtown New Haven, Olea offers an innovative interpretation of Spanish and Mediterranean cuisine. Chef Manuel Romero and his team explore these flavors in their food, wine, and cocktails, locally sourcing many products and importing specialty items from the Mediterranean region.<br/>
+                        
                         <br/>
 
                         copyright 2014–{new Date().getFullYear()}  by olea. graphic design by Rebecca Martz
