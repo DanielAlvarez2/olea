@@ -35,7 +35,11 @@ export default function Footer(){
                         
                         <br/>
 
-                        copyright 2014–{new Date().getFullYear()}  by olea. graphic design by Rebecca Martz
+                        <div className='flexbox-footer-copyright'>
+                            <span>copyright 2014–{new Date().getFullYear()}  by olea</span>
+                            <span className='footer-copyright-space'>.&nbsp;</span>
+                            <span>graphic design by Rebecca Martz</span>
+                        </div>{/* .flexbox-footer-copyright */}
                     </footer>
         
         </div>/* .footer-flexbox-bottom */
