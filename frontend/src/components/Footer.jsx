@@ -24,7 +24,13 @@ export default function Footer(){
                             
                         <br/>
                         
-                        Tuesday—Saturday, 5—10 pm (last seating at 8:30) <br/><br/>
+                        <div className='flexbox-footer-hours'>
+                            <span>Tuesday—Saturday, 5—10 pm</span>
+                            <span className='footer-hours-space'>&nbsp;</span>
+                            <span>(last seating at 8:30)</span>
+                        </div>{/* .flexbox-footer-hours */}
+                        
+                        <br/>
                         In the heart of downtown New Haven, Olea offers an innovative interpretation of Spanish and Mediterranean cuisine. Chef Manuel Romero and his team explore these flavors in their food, wine, and cocktails, locally sourcing many products and importing specialty items from the Mediterranean region.<br/>
                         
                         <br/>
