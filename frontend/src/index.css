@@ -69,3 +69,8 @@ a{
   font-family: FuturaLight;
 }
 
+@media (max-width: 640px){
+  .webpage main{
+    padding: 0 24px;
+  }
+}

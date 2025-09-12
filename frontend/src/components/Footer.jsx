@@ -40,6 +40,7 @@ export default function Footer(){
                             <span className='footer-copyright-space'>.&nbsp;</span>
                             <span>graphic design by Rebecca Martz</span>
                         </div>{/* .flexbox-footer-copyright */}
+                        <br/><br/><br/>
                     </footer>
         
         </div>/* .footer-flexbox-bottom */

@@ -27,15 +27,22 @@
 @media (max-width:640px){
     footer{
         text-align: center;
+        margin:0 auto;
     }
     .flexbox-address-phone,
     .flexbox-footer-hours,
     .flexbox-footer-copyright{
         justify-content: center;
     }
+    .footer-flexbox-bottom{
+        padding: 0 24px;
+    }
 }
 @media (max-width:575px){
     .flexbox-footer-copyright{
         flex-direction: column;
+    }
+    .footer-copyright-space{
+        display:none;
     }
 }
