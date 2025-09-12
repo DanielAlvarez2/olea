@@ -1,4 +1,5 @@
 import './index.css'
+import './Home.css'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -10,16 +11,15 @@ export default function Home(){
 
                 <main style={{display:'grid',placeContent:'center'}}>
                     <div>
-                        <div id='homepage-slideshow' style={{   height:'610px',
-                                                                width:'705px',
-                                                                border:'1px solid red',
-                                                                }}>
+                        <div id='homepage-slideshow'>
                             <h1>Slideshow</h1>
                         </div>{/* #homepage-slideshow */}
 
                         <div id='slideshow-mini' style={{   width:'100%',
                                                             marginTop:'20px',
                                                             border:'1px solid red',
+                                                            display:'grid',
+                                                            placeContent:'center',
                                                             height:'80px'}}>
                             <h1>Slideshow Mini</h1>
                         </div>{/* #slideshow-mini */}

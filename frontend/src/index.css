@@ -2,6 +2,10 @@
   font-family: 'FuturaLight';
   src: url(./assets/fonts/FuturaLight.otf)
 }
+@font-face{
+  font-family: 'FuturaMedium';
+  src: url(./assets/fonts/FuturaMedium.otf)
+}
 *{
   margin:0;
   padding:0;
@@ -13,6 +17,7 @@
 .webpage{
   background:#262626;
   color:white;
+  font-family: FuturaLight;
 }
 .webpage-wrapper{
   min-height:100vh;
@@ -22,7 +27,18 @@
   display: flex;
   flex-direction: column;
 }
-
+.webpage h1{
+  text-transform: lowercase;
+  font-size: 25px;
+  font-weight: 100;
+  color:#bfbfbf;
+  letter-spacing: 1.5px;
+  margin-bottom:20px;
+}
+.webpage h2{
+  font-family: FuturaMedium;
+  font-size: 20px;
+}
 ul{
   list-style-type: none;
 }
@@ -60,13 +76,15 @@ a{
   text-decoration:none;
 }
 .webpage main{
-  max-width:940px;
+  /* max-width:940px; */
   /* margin:0 auto; */
   margin-top:43px;
   padding: 0 60px;
+  line-height: 29px;
 }
 .webpage footer{
   font-family: FuturaLight;
+  color:#bfbfbf;
 }
 
 @media (max-width: 640px){

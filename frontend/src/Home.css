@@ -1,0 +1,8 @@
+#homepage-slideshow{
+    height:610px;
+    width:705px;
+    max-width:80vw;
+    border:1px solid red;
+    display:grid;
+    place-content: center;
+}
