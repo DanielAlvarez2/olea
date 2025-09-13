@@ -23,4 +23,8 @@
     font-size: 12px;
     font-family: serif;
     letter-spacing: 2px;
+    cursor:pointer;
+}
+.opentable a{
+    color:white !important;
 }

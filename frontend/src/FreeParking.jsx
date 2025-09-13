@@ -7,7 +7,8 @@ import OpenTable from './components/OpenTable.jsx'
 export default function Home(){
     return (
         <div className='page-wrapper webpage' 
-             style={{backgroundImage:'url("./olea-free-parking.jpg")',backgroundSize:'90%'}}>
+            //  style={{backgroundImage:'url("./olea-free-parking.jpg")',backgroundSize:'90%'}}
+             >
             <div className='webpage-wrapper'>
                 <Navbar />
 
