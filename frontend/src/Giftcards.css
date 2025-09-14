@@ -5,3 +5,8 @@
 .giftcards-flexbox img{
     max-width: 100%;
 }
+@media(max-width:780px){
+    .giftcards-flexbox{
+        flex-direction: column;
+    }
+}
