@@ -1,0 +1,15 @@
+.private-parties-flexbox{
+    display: flex;
+    gap:60px;
+}
+.private-parties-flexbox img{
+    max-width: 100%;
+}
+@media(max-width:850px){
+    .private-parties-flexbox{
+        flex-direction: column;
+    }
+    .opentable{
+        margin:0 auto;
+    }
+}
