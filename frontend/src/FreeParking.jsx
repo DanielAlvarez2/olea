@@ -18,8 +18,18 @@ export default function Home(){
                         <div className='free-parking-left'>
                             <h1>Free Parking</h1>
                             <h2>Temple or Crown Street Garage</h2>
-                            Park your car in Temple or Crown Street Garage, enjoy a meal (with a check of $50 or more), 
-                            and park for FREE until 3am. For more information, visit the <a>Park New Haven website</a>. 
+                            Park your car in the&nbsp; 
+                            <a  href='https://parknewhaven.com/parking/temple-street-garage-office/' 
+                                target='_blank'>
+                                Temple Street Garage
+                            </a>
+                            &nbsp;or the&nbsp; 
+                            <a  href='https://parknewhaven.com/parking/crown-street-garage/' 
+                                target='_blank'>
+                                Crown Street Garage
+                            </a>
+                            , enjoy a meal (with a check of $50 or more), 
+                            and park for FREE until 3am.  
                             Ask your host about validation when arriving at Olea. There is no validation for private events.
 
                             <br/><br/>
