@@ -1,0 +1,7 @@
+.giftcards-flexbox{
+    display:flex;
+    gap:60px;
+}
+.giftcards-flexbox img{
+    max-width: 100%;
+}
