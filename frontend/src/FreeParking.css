@@ -1,7 +1,16 @@
 .free-parking-flexbox{
     display:flex;
     width:100%;
-    gap:50px;
+    gap:60px;
     /* background:red; */
     justify-content: space-between;
+}
+@media(max-width:780px){
+    .free-parking-flexbox{
+        flex-direction: column;
+    }
+    .opentable{
+        margin:0 auto;
+    }
+
 }

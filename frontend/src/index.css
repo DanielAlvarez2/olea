@@ -16,7 +16,7 @@
 }
 .webpage{
   background:#262626;
-  color:white;
+  color:#bfbfbf;;
   font-family: FuturaLight;
 }
 .webpage-wrapper{
@@ -37,7 +37,9 @@
 }
 .webpage h2{
   font-family: FuturaMedium;
-  font-size: 20px;
+  color:#c1bebe;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 ul{
   list-style-type: none;
@@ -49,7 +51,8 @@ ul{
 .nav-info>li,.menus-dropdown>li{
   padding:5px 10px;
 }
-.navbar-menu a{
+.navbar-menu a,
+.navbar-menu{
   color:white;
 }
 .navbar-menu li:hover,
@@ -81,6 +84,10 @@ a{
   margin-top:43px;
   padding: 0 60px;
   line-height: 29px;
+}
+.webpage main a{
+  color:white;
+  cursor:pointer;
 }
 .webpage footer{
   font-family: FuturaLight;

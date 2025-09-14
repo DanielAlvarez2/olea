@@ -24,7 +24,8 @@ export default function Home(){
 
                             <br/><br/>
 
-                            <span>exceptions: </span>no validation for restaurant week or Yale commencement days
+                            <span style={{fontFamily:'FuturaMedium',fontSize:'18px',color:'#c1bebe'}}>exceptions: </span>
+                            no validation for restaurant week or Yale commencement days
                         </div>{/* .free-parking-left */}
                         
                         <div className='free-parking-right'>
