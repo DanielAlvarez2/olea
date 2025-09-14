@@ -1,0 +1,19 @@
+.chef-bio-flexbox{
+    display:flex;
+    gap:60px;
+}
+.chef-bio-left img{
+    max-width: 100%;
+}
+.opentable{
+    position:sticky;
+    top:0;
+}
+@media(max-width:800px){
+    .chef-bio-flexbox{
+        flex-direction: column;
+    }
+    .opentable{
+        margin:0 auto;
+    }
+}
