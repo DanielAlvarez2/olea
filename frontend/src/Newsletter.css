@@ -1,0 +1,16 @@
+.newsletter-flexbox{
+    display:flex;
+    width:100%;
+    gap:60px;
+}
+.newsletter-left{
+    flex-grow:1;
+}
+.newsletter-left form{
+    height:500px;
+    background:white;
+    padding:20px;
+}
+.newsletter-left input{
+    height:50px;
+}

@@ -13,10 +13,11 @@ export default function Home(){
                 <Navbar />
 
                 <main>
+                    <h1>Free Parking</h1>
+                    
                     <div className='free-parking-flexbox'>
                         
                         <div className='free-parking-left'>
-                            <h1>Free Parking</h1>
                             <h2>Temple or Crown Street Garage</h2>
                             Park your car in the&nbsp; 
                             <a  href='https://parknewhaven.com/parking/temple-street-garage-office/' 
