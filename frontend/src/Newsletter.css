@@ -1,3 +1,7 @@
+@font-face{
+  font-family: 'FuturaMedium';
+  src: url(./assets/fonts/FuturaMedium.otf)
+}
 .newsletter-flexbox{
     display:flex;
     width:100%;
@@ -13,4 +17,15 @@
 }
 .newsletter-left input{
     height:50px;
+    margin-bottom:16px;
+}
+.newsletter-left button{
+    background:#999;
+    color:white;
+    font-family: FuturaMedium;
+    font-weight: 900;
+    font-size: 17px;
+    padding:10px 20px;
+    border:none;
+    border-radius: 10px;
 }

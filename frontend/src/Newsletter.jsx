@@ -36,7 +36,8 @@ export default function Home(){
                                 Phone Number<br/>
                                 (<input type='text' style={{width:'40px'}} />)        
                                 <input type='text' style={{width:'40px'}} />-        
-                                <input type='text' style={{width:'60px'}} /><br/>
+                                <input type='text' style={{width:'60px'}} />
+                                <br/>
 
                                 <button>
                                     Subscribe
