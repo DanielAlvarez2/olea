@@ -25,13 +25,25 @@ export default function Home(){
                             <br/><br/>
                             amount
 
+                            <select>
+                                <option>$50</option>
+                                <option>$75</option>
+                                <option>$100</option>
+                                <option>$125</option>
+                                <option>$150</option>
+                                <option>$175</option>
+                                <option>$200</option>
+                                <option>$225</option>
+                                <option>$250</option>
+                                <option>$300</option>
+                            </select>
                             $50
                             phone number *REQUIRED*
                             Please make sure to provide a phone number. We will only contact you if there is an issue with the processing of your gift card.
                             provide to and from info
                             PayPal - The safer, easier way to pay online! 
                             <br/><br/>
-                            
+
                             <img src='./giftcard.jpg' />
 
                         </div>{/* .giftcards-left */}
