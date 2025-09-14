@@ -29,3 +29,8 @@
     border:none;
     border-radius: 10px;
 }
+@media(max-width:750px){
+    .newsletter-flexbox{
+        flex-direction: column;
+    }
+}
