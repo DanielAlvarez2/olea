@@ -2,3 +2,8 @@
     display:flex;
     gap:60px;
 }
+.dinner-left .bold{
+    font-family: FuturaMedium;
+    color:white;
+    font-size: 17px;
+}

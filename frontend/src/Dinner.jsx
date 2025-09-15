@@ -14,28 +14,29 @@ export default function Dinner(){
                             <div className='dinner-flexbox'>
                                 
                                 <div className='dinner-left'>
-                                    dinner hours
-                                    Tuesday — Saturday, 5 — 10 pm
-                                    last reservation is at 8:30 pm
-                                    closed Sunday and Monday
+                                    <span className='bold'>dinner hours</span><br/>
+                                    Tuesday — Saturday, 5 — 10 pm<br/>
+                                    last reservation is at 8:30 pm<br/>
+                                    closed Sunday and Monday<br/><br/>
 
-                                    takeout and curbside pickup
+                                    <span className='bold'>takeout and curbside pickup</span><br/>
                                     Our dinner menu below is available for takeout and curbside pickup.  Please preorder if possible by phone (203.780.8925). During special days we can only take a limited amount of takeout orders due to volume.
+                                    <br/><br/>
 
-                                    CHEF’S TASTING MENU $105 / person 
-                                    no substitutions or modifications
-                                    A minimum of two days notice is required
-                                    six courses / reservations and full table participation required
-                                    optional wine pairing available $52 / person
-                                    available Tuesday through Thursday
-                                    Please let us know in advance about any food restrictions or allergies.
-                                    Tax and gratuity not included.
+                                    <span className='bold'>CHEF’S TASTING MENU</span> $105 / person <br/>
+                                    <span className='bold'>no substitutions or modifications<br/>
+                                    A minimum of two days notice is required</span><br/>
+                                    six courses / reservations and full table participation required<br/>
+                                    optional wine pairing available $52 / person<br/>
+                                    available Tuesday through Thursday<br/>
+                                    Please let us know in advance about any food restrictions or allergies.<br/>
+                                    Tax and gratuity not included.<br/><br/>
 
-                                    DINNER MENU
-                                    appetizers
-                                    $19
-                                    jamón Ibérico
-                                    1 oz.                                    
+                                    DINNER MENU<br/>
+                                    appetizers<br/><br/>
+                                
+                                    jamón Ibérico<br/>
+                                    1 oz. $19                                    
                                 </div>{/* .dinner-left */}
                                 
                                 <div className='dinner-right'>
