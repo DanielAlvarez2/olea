@@ -4,7 +4,7 @@ import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
 
-export default function Home(){
+export default function Newsletter(){
     return (
         <div className='page-wrapper webpage'>
             <div className='webpage-wrapper'>
@@ -29,7 +29,7 @@ export default function Home(){
                                         <span className='input-required'>*</span>
                                         <input  type='email'
                                                 required
-                                                maxlength='100' 
+                                                maxLength='100' 
                                                 style={{width:'100%'}} />
                                     </div>
                                 </label>
@@ -40,7 +40,7 @@ export default function Home(){
                                         <span className='input-required'>*</span>
                                         <input  type='text'
                                                 required
-                                                maxlength='50' 
+                                                maxLength='50' 
                                                 style={{width:'100%'}} />
                                     </div>
                                 </label>
@@ -51,7 +51,7 @@ export default function Home(){
                                         <span className='input-required'>*</span>
                                         <input  type='text'
                                                 required
-                                                maxlength='50' 
+                                                maxLength='50' 
                                                 style={{width:'100%'}} />
                                     </div>
                                 </label>
@@ -59,14 +59,14 @@ export default function Home(){
                                 Phone Number<br/>
                                 (&nbsp; 
                                 <input  type='text'
-                                        maxlength='3' 
+                                        maxLength='3' 
                                         style={{width:'45px',textAlign:'center'}} /> )&nbsp;&nbsp;        
                                 <input  type='text' 
-                                        maxlength='3'
+                                        maxLength='3'
                                         style={{width:'45px',textAlign:'center'}} /> 
                                         &nbsp;&mdash;&nbsp;         
                                 <input  type='text' 
-                                        maxlength='4'
+                                        maxLength='4'
                                         style={{width:'60px',textAlign:'center'}} />
                                 <br/>
                                 (###) ### &mdash; ####

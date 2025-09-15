@@ -4,7 +4,7 @@ import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
 
-export default function Home(){
+export default function Giftcards(){
     return (
         <div className='page-wrapper webpage'>
             <div className='webpage-wrapper'>

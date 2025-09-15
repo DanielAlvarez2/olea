@@ -4,7 +4,7 @@ import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import OpenTable from './components/OpenTable.jsx'
 
-export default function Home(){
+export default function FreeParking(){
     return (
         <div className='page-wrapper webpage' 
             //  style={{backgroundImage:'url("./olea-free-parking.jpg")',backgroundSize:'90%'}}
