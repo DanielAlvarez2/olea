@@ -11,13 +11,16 @@
     flex-grow:1;
 }
 .newsletter-left form{
-    height:500px;
+    /* height:500px; */
     background:white;
     padding:20px;
 }
 .newsletter-left input{
-    height:50px;
-    margin-bottom:16px;
+    height:40px;
+    border:1px solid lightgrey;
+    font-size: 16px;
+    font-family: FuturaLight;
+    padding:5px;
 }
 .newsletter-left button{
     background:#999;
@@ -28,8 +31,19 @@
     padding:10px 20px;
     border:none;
     border-radius: 10px;
+    cursor:pointer;
 }
-@media(max-width:750px){
+.newsletter-left .input-wrapper{
+    position:relative;
+    margin-bottom:13px;
+}
+.newsletter-left .input-required{
+    position:absolute;
+    top:0;
+    right:5px;
+    color:red;
+}
+@media(max-width:775px){
     .newsletter-flexbox{
         flex-direction: column;
     }

@@ -18,26 +18,59 @@ export default function Home(){
                             <form>
                                 <h2>subscribe to our mailing list</h2>
 
+                                <div style={{width:'100%',textAlign:'right'}}>
+                                    <span style={{color:'red'}}>*</span>
+                                    indicates required
+                                </div>
+
                                 <label>
                                     Email Address<br/>
-                                    <input type='email' style={{width:'100%'}} />
-                                </label><br/>
+                                    <div className='input-wrapper'>
+                                        <span className='input-required'>*</span>
+                                        <input  type='email'
+                                                required
+                                                maxlength='100' 
+                                                style={{width:'100%'}} />
+                                    </div>
+                                </label>
 
                                 <label>
                                     First Name<br/>
-                                    <input type='text' style={{width:'100%'}} />
-                                </label><br/>
+                                    <div className='input-wrapper'>
+                                        <span className='input-required'>*</span>
+                                        <input  type='text'
+                                                required
+                                                maxlength='50' 
+                                                style={{width:'100%'}} />
+                                    </div>
+                                </label>
 
                                 <label>
-                                    Last Name:<br/>
-                                    <input type='text' style={{width:'100%'}} />
-                                </label><br/>
+                                    Last Name<br/>
+                                    <div className='input-wrapper'>
+                                        <span className='input-required'>*</span>
+                                        <input  type='text'
+                                                required
+                                                maxlength='50' 
+                                                style={{width:'100%'}} />
+                                    </div>
+                                </label>
 
                                 Phone Number<br/>
-                                (<input type='text' style={{width:'40px'}} />)        
-                                <input type='text' style={{width:'40px'}} />-        
-                                <input type='text' style={{width:'60px'}} />
+                                (&nbsp; 
+                                <input  type='text'
+                                        maxlength='3' 
+                                        style={{width:'45px',textAlign:'center'}} /> )&nbsp;&nbsp;        
+                                <input  type='text' 
+                                        maxlength='3'
+                                        style={{width:'45px',textAlign:'center'}} /> 
+                                        &nbsp;&mdash;&nbsp;         
+                                <input  type='text' 
+                                        maxlength='4'
+                                        style={{width:'60px',textAlign:'center'}} />
                                 <br/>
+                                (###) ### &mdash; ####
+                                <br/><br/>
 
                                 <button>
                                     Subscribe
