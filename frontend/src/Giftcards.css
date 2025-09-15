@@ -2,8 +2,26 @@
     display:flex;
     gap:60px;
 }
+.giftcards-left .bold{
+    font-family: FuturaMedium;
+    color:white;
+    font-size:17px;
+}
 .giftcards-flexbox img{
     max-width: 100%;
+}
+.giftcards-left input{
+    height:35px;
+    width:200px;
+}
+.giftcards-left button{
+    padding:5px 15px;
+    font-size: 25px;
+    color:#555;
+    cursor:pointer;
+    border-radius: 5px;
+    font-family: FuturaMedium;
+    border:none;
 }
 @media(max-width:780px){
     .giftcards-flexbox{

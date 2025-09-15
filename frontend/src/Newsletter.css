@@ -28,9 +28,9 @@
     font-family: FuturaMedium;
     font-weight: 900;
     font-size: 17px;
-    padding:10px 20px;
+    padding:5px 20px;
     border:none;
-    border-radius: 10px;
+    border-radius: 7px;
     cursor:pointer;
 }
 .newsletter-left .input-wrapper{

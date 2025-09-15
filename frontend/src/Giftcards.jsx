@@ -17,14 +17,14 @@ export default function Home(){
                         
                         <div className='giftcards-left'>
 
-                            Gift cards are available now! Please fill in the information and click the button below to purchase one through PayPal (an account is not required). If you would like an amount not listed below, or if you would prefer to order a gift card by phone, please give us a call at 203.780.8925. 
+                            <span className='bold'>Gift cards are available now!</span> Please fill in the information and click the button below to purchase one through PayPal (an account is not required). If you would like an amount not listed below, or if you would prefer to order a gift card by phone, please give us a call at 203.780.8925. 
                             <br/><br/>
-                            Gift cards will be mailed via standard mail within 48 hours, except for orders received on Sunday which will be processed on Tuesday. 
+                            <span className='bold'>Gift cards will be mailed via standard mail within 48 hours, except for orders received on Sunday which will be processed on Tuesday. 
                             <br/><br/>
-                            At this time, we do not offer printable or electronic gift cards. Please provide your telephone number so we have a way to contact you in case of any issues. Thank you!
+                            At this time, we do not offer printable or electronic gift cards.</span> Please provide your telephone number so we have a way to contact you in case of any issues. Thank you!
                             <br/><br/>
-                            amount
 
+                            amount<br/>
                             <select>
                                 <option>$50</option>
                                 <option>$75</option>
@@ -37,11 +37,19 @@ export default function Home(){
                                 <option>$250</option>
                                 <option>$300</option>
                             </select>
-                            $50
-                            phone number *REQUIRED*
+                            <br/><br/>
+                            
                             Please make sure to provide a phone number. We will only contact you if there is an issue with the processing of your gift card.
-                            provide to and from info
-                            PayPal - The safer, easier way to pay online! 
+                            <br/>
+                            phone number *REQUIRED*<br/>
+                            <input type='text' /><br/><br/>
+                            provide "TO" and "FROM" info<br/>
+                            <input type='text' />
+                            
+                            <br/><br/>
+
+                            <button>buy now</button>
+
                             <br/><br/>
 
                             <img src='./giftcard.jpg' />
