@@ -15,9 +15,10 @@
     width:200px;
 }
 .giftcards-left button{
-    padding:5px 15px;
+    padding:10px 20px;
     font-size: 25px;
     color:#555;
+    background:#bbb;
     cursor:pointer;
     border-radius: 5px;
     font-family: FuturaMedium;

@@ -42,7 +42,7 @@ export default function Home(){
                             Please make sure to provide a phone number. We will only contact you if there is an issue with the processing of your gift card.
                             <br/>
                             phone number *REQUIRED*<br/>
-                            <input type='text' /><br/><br/>
+                            <input type='text' required /><br/><br/>
                             provide "TO" and "FROM" info<br/>
                             <input type='text' />
                             
@@ -50,7 +50,7 @@ export default function Home(){
 
                             <button>buy now</button>
 
-                            <br/><br/>
+                            <br/><br/><br/>
 
                             <img src='./giftcard.jpg' />
 
