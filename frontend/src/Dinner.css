@@ -2,8 +2,17 @@
     display:flex;
     gap:60px;
 }
+.jamon{
+    display:flex;
+    justify-content: space-between;
+}
 .dinner-left .bold{
     font-family: FuturaMedium;
     color:white;
     font-size: 17px;
+}
+@media(max-width:750px){
+    .dinner-flexbox{
+        flex-direction: column;
+    }
 }

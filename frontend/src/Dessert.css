@@ -1,0 +1,13 @@
+.dessert-flexbox{
+    display:flex;
+    gap:60px;
+}
+.cheese{
+    display:flex;
+    justify-content: space-between;
+}
+@media(max-width:775px){
+    .dessert-flexbox{
+        flex-direction: column;
+    }
+}

@@ -32,11 +32,18 @@ export default function Dinner(){
                                     Please let us know in advance about any food restrictions or allergies.<br/>
                                     Tax and gratuity not included.<br/><br/>
 
-                                    DINNER MENU<br/>
+                                    <h2>DINNER MENU</h2>
                                     appetizers<br/><br/>
                                 
-                                    jamón Ibérico<br/>
-                                    1 oz. $19                                    
+                                    <span className='jamon'>
+                                        <span>jamón Ibérico</span>
+                                        <span>1 oz. $19 / 2 oz. $38</span>
+                                    </span>
+                                                  
+
+                                    <br/><br/><br/><br/>
+                                    we do our best to keep this information accurate and up to date, but because we make frequent adjustments, based on season and availability, our menus are subject to change
+                      
                                 </div>{/* .dinner-left */}
                                 
                                 <div className='dinner-right'>

@@ -1,0 +1,13 @@
+.specials-flexbox{
+    display:flex;
+    gap:60px;
+}
+.oysters{
+    display:flex;
+    justify-content: space-between;
+}
+@media(max-width:850px){
+    .specials-flexbox{
+        flex-direction: column;
+    }
+}
