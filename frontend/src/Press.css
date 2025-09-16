@@ -1,0 +1,7 @@
+.press-flexbox{
+    display:flex;
+    justify-content: space-between;
+}
+.press-flexbox img{
+    max-width: 200px;
+}

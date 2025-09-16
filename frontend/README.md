@@ -7,7 +7,8 @@ free parking link 404
   
 SALES PITCH ***********************************  
 Vicente Caride photos  
-
+show on mobile: press page some images left-aligned,  
+random "Book now" link???  
   
 MISC ******************************************
 embedmap.org  
