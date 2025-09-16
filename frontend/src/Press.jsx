@@ -95,6 +95,16 @@ export default function Press(){
 
                             <br/><br/>
 
+                            Olea named #1 Diners' Choice Best Spanish Restaurant in the New York / Tri-State Area<br/>    
+                            OpenTable, June 2021
+
+                            <br/><br/>
+
+                            Olea named Best Spanish Restaurant statewide 
+                            in <span style={{fontStyle:'italic'}}>Connecticut Magazine's</span> Best Restaurants 2020: Readers' Choice poll<br/>
+                            30 December 2019
+
+                            <br/><br/>
 
 
                         </div>{/* .press-left */}    
@@ -102,7 +112,21 @@ export default function Press(){
                         <div className='press-right'>
                             
                             <img src='./2024_DC2-SQUARE-US.webp' />
+
+                            <img src='./dc-2022.webp' />
                             
+                            <img src='./open-table-2019.webp' />
+
+                            <div style={{position:'relative'}}>
+                                <a  target='_blank'
+                                    href='https://www.tripadvisor.com/Restaurant_Review-g33851-d7045150-Reviews-Olea-New_Haven_Connecticut.html'>
+                                    <span style={{position:'absolute',top:'0',color:'black'}}>
+                                        Certificate of Excellence 2018
+                                        <img src='./coe-14348-2.png' />
+                                    </span></a>
+                            </div>
+
+
                         </div>{/* .press-right */}    
                     </div>{/* .press-flexbox */}
                 </main>
