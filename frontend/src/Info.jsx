@@ -1,5 +1,6 @@
 import './index.css'
 import './Info.css'
+import {Link} from 'react-router'
 import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
@@ -19,7 +20,7 @@ export default function Home(){
                             In the heart of downtown New Haven, Olea offers an innovative interpretation of Spanish and Mediterranean cuisine. Chef Manuel Romero and his team explore these flavors in their food, wine, and cocktails, locally sourcing many products and importing specialty items from the Mediterranean region. The restaurant takes its name from a genus of about forty species, including the olive, in the family Oleaceae, native to temperate and tropical regions of Europe, Africa, Asia, and Australasia.
                             <br/><br/> 
 
-                            More information on Chef Manuel Romero
+                            <Link to='/chef-bio'>More information on Chef Manuel Romero</Link>
                             <br/><br/>
                             
                             <h1>contact us</h1>
@@ -29,7 +30,7 @@ export default function Home(){
 
                             <h1>gift cards</h1>
 
-                            Gift cards are available. Purchase one online here or give us a call at 203.780.8925.
+                            Gift cards are available. Purchase one <Link to='/giftcards'>online here</Link> or give us a call at 203.780.8925.
                             <br/><br/>
 
                             <h1>hours</h1>
@@ -43,7 +44,7 @@ export default function Home(){
                             <br/><br/>
                             Call Olea at 203.780.8925, or email info@oleanewhaven.com, to begin the process of creating a unique event. 
                             <br/><br/>
-                            more information is available here
+                            <Link to='/private-parties'>more information is available here</Link>
                             <br/><br/>
                             <h1>attire</h1>
 
@@ -53,7 +54,7 @@ export default function Home(){
 
                             If you are seeking employment at olea, please send your resume to info@oleanewhaven.com. Download an application for employment here.
                             <br/><br/>
-                            <h1>free parking info here</h1>                            
+                            <h1><Link to='/free-parking'>free parking info here</Link></h1>                            
 
                         </div>{/* .info-left */}
                         
