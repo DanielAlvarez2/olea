@@ -3,8 +3,10 @@ import './PrivateParties.css'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import OpenTable from './components/OpenTable.jsx'
+import { useEffect } from 'react'
 
 export default function PrivateParties(){
+    useEffect(()=>window.scrollTo(0,0),[])
     return (
         <div className='page-wrapper webpage'>
             <div className='webpage-wrapper'>
