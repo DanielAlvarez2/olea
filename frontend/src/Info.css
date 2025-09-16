@@ -1,0 +1,8 @@
+.info-flexbox{
+    display:flex;
+    gap:60px;
+}
+.info-right iframe{
+    margin-bottom: 60px;
+    filter: grayscale(100%);
+}
