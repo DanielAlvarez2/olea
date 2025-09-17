@@ -121,16 +121,12 @@ export default function Press(){
 
                             <img src='./dc-2022.webp' />
                             
-                            <img src='./open-table-2019.webp' />
+                            <img src='./open-table-2019.webp' /><br/>
 
-                            <div style={{position:'relative'}}>
-                                <a  target='_blank'
-                                    href='https://www.tripadvisor.com/Restaurant_Review-g33851-d7045150-Reviews-Olea-New_Haven_Connecticut.html'>
-                                    <span style={{position:'absolute',top:'0',color:'black'}}>
-                                        Certificate of Excellence 2018
-                                        <img src='./coe-14348-2.png' />
-                                    </span></a>
-                            </div>
+                                        <span style={{position:'relative',color:'black',zIndex:'100'}}>x
+                                        <img    src='./coe-14348-2.png' 
+                                                style={{position:'absolute',top:'0',left:'0',zIndex:'-1'}} />
+                                        </span>
 
 
                         </div>{/* .press-right */}    
