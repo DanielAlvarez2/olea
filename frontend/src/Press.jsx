@@ -106,6 +106,12 @@ export default function Press(){
 
                             <br/><br/>
 
+                            Olea honored for Best Tapas, Best Desserts, and as a Best Latin American/Spanish Restaurant 
+                            in <span style={{fontStyle:'italic'}}>Connecticut Magazine's</span> Best Restaurants 2020: Experts' Picks<br/>
+                            30 December 2019
+
+                            <br/><br/>
+
 
                         </div>{/* .press-left */}    
                         
