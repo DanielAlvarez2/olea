@@ -112,6 +112,73 @@ export default function Press(){
 
                             <br/><br/>
 
+                            Olea named New Haven County’s Best Spanish restaurant in Connecticut Magazine’s 2019 Readers’ Choice poll
+                            <br/>
+                            26 December 2018
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://www.ctbites.com/blog/2018/12/22/rttqfsxon5ke87blhqq9jprtcuuztq?fbclid=IwAR04sBu2La8ZN582GPM-t4opofqbdcY_p1ZfXJBIMG1PRs0Zw6PU3qRwfZI'>
+                            Olea named to list of Top 100 Restaurants in Connecticut for 2018 published by CTbites and Hearst Connecticut Media Group
+                            </a><br/>
+                            23 December 2018
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://www.nbcconnecticut.com/video/entertainment/ct-live/ct-live-mushroom-velout__hartford/160199/'>
+                            Chef Manuel Romero of Olea and Kala Bistro in North Haven made a special guest appearance on CT LIVE!, the lifestyle show of NBC Connecticut.
+                            <br/></a>
+                            12 December 2018
+
+                            <br/><br/>
+
+                            Chef Manuel Romero Creates a Captivating Culinary Experience<br/>
+                            Dana Buckmir, Danalicious Reviews, 5 November 2018
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://www.thebeveragejournal.com/cra-names-2018-awards-winners-nominees/'>
+                            The CRAzies 2018
+                            </a><br/>
+                            Connecticut Restaurant Association Awards Gala. Chef of the Year finalist 2018: Manuel Romero 
+
+                            <br/><br/>
+
+                            Top 50: New Haven a food destination with something for everyone
+                            Mary E. O'Leary, New Haven Register,  28 June 2018
+
+                            <br/><br/>
+                            
+                            <a target="_blank" href='https://ediblenutmeg.ediblecommunities.com/eat/eat-intimate-cove-intercontinental-fare-olea-kala-bistro/'>
+                            An Intimate Cove; An Intercontinental Fare: Olea & Kala Bistro
+                            <br/></a>
+                            Douglass Steele De Pecol, Edible Nutmeg, 27 March 2018
+                            
+                            <br/><br/>
+
+                            <a target='_blank' href='https://dailynutmeg.com/blogs/blog/olea-dinner-served'>
+                            Dinner Is Served
+                            <br/></a>
+                            Daily Nutmeg, Sorrel Westbrook, 31 January 2018
+
+                            <br/><br/>
+
+                            Connecticut Magazine Dining Experts Honor Olea as a Best Latin American/Spanish restaurant and for Best Tapas/Small Bites<br/>
+                            Best Restaurants 2018: Experts’ Picks, Connecticut Magazine, 27 December 2017
+
+                            <br/><br/>
+
+                            Connecticut Magazine Readers Honor Olea as a Best Spanish Restaurant<br/>
+                            Best Restaurants 2018: Readers’ Choice, Connecticut Magazine, 27 December 2017
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://foodschmooze.org/podcast/party-us-elm-city-party-bike/'>
+                            Faith Middleton Food Schmooze: Party with Us on The Elm City Party Bike!
+                            <br/></a>
+                            19 October 2017
+
+                            <br/><br/>
 
                         </div>{/* .press-left */}    
                         
@@ -123,7 +190,12 @@ export default function Press(){
                             
                             <img src='./open-table-2019.webp' /><br/>
 
-                                        <span style={{position:'relative',color:'black',zIndex:'100'}}>x
+                                        <span style={{  position:'relative',
+                                                        color:'black',
+                                                        zIndex:'1',
+                                                        fontFamily:'sans-serif',
+                                                        fontSize:'11px'}}>
+                                            Certificate of Excellence 2018
                                         <img    src='./coe-14348-2.png' 
                                                 style={{position:'absolute',top:'0',left:'0',zIndex:'-1'}} />
                                         </span>
