@@ -191,6 +191,175 @@ export default function Press(){
                             
                             <br/><br/>
 
+                            <a target='_blank' href='https://www.ctbites.com/blog/2017/4/20/10-questions-w-chef-xxxxx-of-olea-in-new-haven'>
+                            10 Questions w/ Chef Manuel Romero of Olea in New Haven
+                            <br/></a>
+                            — Amy Kundrat, CTbites, 7 June 2017
+
+                            <br/><br/>
+
+                            We were honored in four categories in the<br/> 
+                            2017 CTNOW Best of New Haven Readers‘ Poll:<br/>
+                             - Best Mediterranean Restaurant<br/>
+                             - Best Spanish Restaurant<br/>
+                             - Best Restaurant for Desserts<br/>
+                             - Best Waitperson/Waitservice<br/>
+
+                            <br/><br/>
+
+                            Recent OpenTable awards:<br/>
+                             - Best Overall Restaurants in CT<br/>
+                             - Best Spanish, New York / Tri-State Area<br/>
+                             - Top 10: Best Restaurants That Are Fit for Foodies, New York / Tri-State Area<br/>
+                             - Top 10: Best Restaurants for Overall Cuisine in CT<br/>
+                             - Top 10: Restaurants with the Best Service in CT<br/>
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://www.ctinsider.com/connecticutmagazine/food-drink/article/2017-Best-Restaurants-Experts-Picks-17042444.php'>
+                            Olea is honored as one of Connecticut‘s Best Latin American/Spanish restaurants and for Best Tapas by Connecticut Magazine
+                            <br/></a>
+                            — 2017 Best Restaurants: Experts‘ Picks, Connecticut Magazine<br/>
+                            5 January 2017
+
+                            <br/><br/>
+
+                            “Chef Romero has an incredible knack of taking familiar Spanish / Mediterranean ingredients and flavors, and translating them into stunning and sophisticated dishes that delight all your senses.“<br/>
+                            It’s All In The Details!<br/>
+                            — Fairfield County Foodie, 15 December 2016
+
+                            <br/><br/>
+
+                            Chef Romero appears on “Better Connecticut”<br/>
+                            — hosted by Scot Haney and Kara Sundlun, “Better Connecticut,” 23 November 2016
+
+                            <br/><br/>
+
+                            Recipe for Olea’s Tomato Gazpacho<br/>
+                            — Stephen Fries, New Haven Register, 17 August 2016
+
+                            <br/><br/>
+
+                            Olea named #1 Diners' Choice Best Spanish Restaurant in the New York / Tri-State Area<br/>
+                            — OpenTable, June 2016
+
+                            <br/><br/>
+
+                            Olea: Experience authentic Spanish cuisine with an innovative twist<br/>
+                            — Dana Buckmir, Danalicious Reviews (formerly posted on examiner.com), 10 May 2016
+
+                            <br/><br/>
+
+                            Recent OpenTable awards:<br/>
+                             - Top Ten Best Spanish Restaurants, Diners' Choice, New York / Tri-State Area<br/>
+                             - Top Ten Best Overall Restaurants, Diners' Choice, Connecticut<br/>
+                             - Top Ten Restaurants with the Best Service, Diners' Choice, Connecticut<br/>
+
+                            <br/><br/>
+                            
+                            Olea named #1 Diners' Choice Best Spanish Restaurant in the New York / Tri-State Area<br/>
+                            — OpenTable, November 2015
+                            
+                            <br/><br/>
+
+                            25 Best Things to Do in New Haven, Connecticut<br/>
+                            — VacationIdea.com, October 2015
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://www.opentable.com/m/best-restaurants-for-foodies-in-america/'>
+                            Olea named one of the 100 Best Restaurants for Foodies in America<br/>
+                            </a>
+                            — OpenTable, September 2015
+
+                            <br/><br/>
+
+                            "Olea, New Haven"<br/>
+                            — Spencer Caldwell, New Haven Living, Hartford Courant, 24 April 2015
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://yaledailynews.com/blog/2015/03/27/ole-ole-olea/'>
+                            "Olé Olé Olea!"<br/>
+                            </a>
+                            — Grace Castillo, Yale Daily News, 27 March 2015
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://www.nytimes.com/2015/03/22/nyregion/curtain-rises-on-a-spanish-second-act.html?_r=0'>
+                            "Curtain Rises on a Spanish Second Act"<br/>
+                            </a>
+                            — Sarah Gold, The New York Times, 21 March 2015
+
+                            <br/><br/>
+                            
+                            <a target='_blank' href='https://www.newhavenindependent.org/index.php/article/at_olea_its_all_about_that_bass'>
+                            "At Olea, It’s All About That Bass"<br/>
+                            </a>
+                            — Lucy Gellman, New Haven Independent, 5 February 2015
+
+                            <br/><br/>
+
+                            "Olea in New Haven Delivers Extraordinary Spanish Dining"<br/>
+                            — Elise Maclay, Connecticut Magazine, 27 January 2015
+
+                            <br/><br/>
+
+                            A review from the-e-list<br/>
+                            — the-e-list, 20 January 2015
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://foodschmooze.org/dont-miss-new-havens-olea-restaurant/'>
+                            "Don’t Miss New Haven’s Olea Restaurant"<br/>
+                            </a>
+                            — Faith Middleton's Food Schmooze on WNPR, 10 December 2014
+
+                            <br/><br/>
+
+                            "Try This New Haven Restaurant Week Recipe"<br/>
+                            — FoxCT.com, 29 October 2014
+
+                            <br/><br/>
+
+                            "Former Ibiza Chef Opens Sleek Olea in New Haven"<br/>
+                            — Linda Giuca, Hartford Courant, 7 October 2014
+
+                            <br/><br/>
+
+                            "New Eats: Olea"<br/>
+                            — Liese Klein, New Haven Magazine, pages 58–59, October 2014
+
+                            <br/><br/>
+
+                            "Pictures: Olea in New Haven"<br/>
+                            — Patrick Raycraft, ctnow.com, 26 September 2014
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://chewhaven.wordpress.com/2014/09/04/welcome-back-2014/'>
+                            "Welcome Back 2014"<br/>
+                            </a>
+                            — Chew Haven, 4 September 2014
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://www.newhavenindependent.org/index.php/article/olea._good_news_for_ibiza_fans'>
+                            "Ibiza Becomes 'Olea': Same Chef, New Owner"<br/>
+                            </a>
+                            — David Sepulveda, New Haven Independent, 3 September 2014
+
+                            <br/><br/>
+
+                            <a target='_blank' href='https://yaledailynews.com/blog/2014/08/28/olea-to-offer-fusion-food-to-students/'>
+                            "Olea to Offer Fusion Food to Students"<br/>
+                            </a>
+                            — J.R. Reed, Yale Daily News, 28 August 2014
+
+                            <br/><br/>
+
+
+
                         </div>{/* .press-left */}    
                         
                         <div className='press-right'>
