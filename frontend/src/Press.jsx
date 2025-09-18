@@ -180,6 +180,17 @@ export default function Press(){
 
                             <br/><br/>
 
+                            Olea Named #1 Best Overall Connecticut Restaurant among Open Table‘s Diners’ Choice Winners
+
+                            <br/><br/>
+                            
+                            <a target='_blank' href='https://elizabethkeyser.com/2017/07/30/chefs-tasting-menu-at-olea/'>
+                            Chef’s Tasting Menu at Olea
+                            <br/></a>
+                            — Elizabeth Keyser, 30 July 2017
+                            
+                            <br/><br/>
+
                         </div>{/* .press-left */}    
                         
                         <div className='press-right'>

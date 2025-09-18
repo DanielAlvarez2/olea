@@ -12,3 +12,11 @@ random "Book now" link???
   
 MISC ******************************************
 embedmap.org  
+  
+TRADE DEAL ************************************  
+$NDA  
+ToggleSoftware.com logo/link  
+1 referral  
+
+
+
