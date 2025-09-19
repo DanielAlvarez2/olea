@@ -1,7 +1,21 @@
 .press-flexbox{
     display:flex;
     justify-content: space-between;
+    gap:40px;
 }
 .press-flexbox img{
     max-width: 200px;
+}
+.press-right{
+    display:flex;
+    flex-direction: column;
+    gap:40px;
+}
+@media(max-width:560px){
+    .press-flexbox{
+        flex-direction: column;
+    }
+    .press-right{
+        align-items: center;
+    }
 }

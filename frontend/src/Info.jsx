@@ -59,18 +59,21 @@ export default function Home(){
                         </div>{/* .info-left */}
                         
                         <div className='info-right'>
-                            <iframe width="300" 
-                                    height="300" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    marginheight="0" 
-                                    marginwidth="0" 
-                                    id="gmap_canvas" 
-                                    src="https://maps.google.com/maps?width=300&amp;height=300&amp;hl=en&amp;q=39%20high%20st%20New%20Haven+(Olea)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-                            </iframe> 
-                            <script type='text/javascript' 
-                                    src='https://embedmaps.com/google-maps-authorization/script.js?id=6b774c603aab23d1f3ff7332f89fc9fcfab9dc49'>                                        
-                            </script>
+                            <div className='map-wrapper'>
+                                <iframe width="300" 
+                                        height="300" 
+                                        frameborder="0" 
+                                        scrolling="no" 
+                                        marginheight="0" 
+                                        marginwidth="0" 
+                                        id="gmap_canvas" 
+                                        src="https://maps.google.com/maps?width=300&amp;height=300&amp;hl=en&amp;q=39%20high%20st%20New%20Haven+(Olea)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                                </iframe> 
+                                <script type='text/javascript' 
+                                        src='https://embedmaps.com/google-maps-authorization/script.js?id=6b774c603aab23d1f3ff7332f89fc9fcfab9dc49'>                                        
+                                </script>
+                            </div>{/* .map-wrapper */}
+
                             <OpenTable />
                         </div>{/* .info-right */}
                     </div>{/* .info-flexbox */}

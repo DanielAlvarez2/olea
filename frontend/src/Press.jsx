@@ -361,6 +361,19 @@ export default function Press(){
 
 
                         </div>{/* .press-left */}    
+
+
+
+
+
+
+
+
+
+
+
+
+
                         
                         <div className='press-right'>
                             
@@ -368,18 +381,33 @@ export default function Press(){
 
                             <img src='./dc-2022.webp' />
                             
-                            <img src='./open-table-2019.webp' /><br/>
+                            <img src='./open-table-2019.webp' />
 
-                                        <span style={{  position:'relative',
-                                                        color:'black',
-                                                        zIndex:'1',
-                                                        fontFamily:'sans-serif',
-                                                        fontSize:'11px'}}>
-                                            Certificate of Excellence 2018
-                                        <img    src='./coe-14348-2.png' 
-                                                style={{position:'absolute',top:'0',left:'0',zIndex:'-1'}} />
-                                        </span>
+                            <a target='_blank' href='https://www.tripadvisor.com/Restaurant_Review-g33851-d7045150-Reviews-Olea-New_Haven_Connecticut.html'>
+                                <img    style={{width:'100%'}}
+                                        src='./coe-14348-2.png' />
+                            </a>
 
+                            <img src='./2018-diners-choice-badge.webp' />
+
+                            <img src='./ctnow-2017.webp' />
+
+                            <img src='./DC_Widget_US_2017_hor.webp' />
+
+                            <a target='_blank' href='https://www.tripadvisor.com/Restaurant_Review-g33851-d7045150-Reviews-Olea-New_Haven_Connecticut.html'>
+                                <img    style={{width:'100%'}}
+                                        src='./coe-14348-2.png' />
+                            </a>
+
+                            <img src='./opentable2016.webp' />
+
+                            <img src='./best-of-new-haven.webp' />
+
+                            <img src='./bca.webp' />
+
+                            <a target='_blank' href='https://www.tripadvisor.com/Restaurant_Review-g33851-d7045150-Reviews-Olea-New_Haven_Connecticut.html'>
+                                <img src='./tripadvisor.png' />
+                            </a>
 
                         </div>{/* .press-right */}    
                     </div>{/* .press-flexbox */}
