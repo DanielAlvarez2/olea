@@ -3,8 +3,10 @@ import './Dinner.css'
 import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
+import { useEffect } from 'react'
 
 export default function Dinner(){
+    useEffect(()=>window.scrollTo(0,0),[])    
     return(
                 <div className='page-wrapper webpage'>
                     <div className='webpage-wrapper'>
@@ -20,7 +22,7 @@ export default function Dinner(){
                                     closed Sunday and Monday<br/><br/>
 
                                     <span className='bold'>takeout and curbside pickup</span><br/>
-                                    Our dinner menu below is available for takeout and curbside pickup.  Please preorder if possible by phone (203.780.8925). During special days we can only take a limited amount of takeout orders due to volume.
+                                    Our dinner menu below is available for takeout and curbside pickup. Please preorder if possible by phone (203.780.8925). During special days we can only take a limited amount of takeout orders due to volume.
                                     <br/><br/>
 
                                     <span className='bold'>CHEF’S TASTING MENU</span> $105 / person <br/>

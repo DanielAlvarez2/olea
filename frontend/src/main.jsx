@@ -13,6 +13,7 @@ import Dinner from './Dinner.jsx'
 import Specials from './Specials.jsx'
 import Dessert from './Dessert.jsx'
 import Press from './Press.jsx'
+import Jobs from './Jobs.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -29,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='newsletter' element={<Newsletter />} />
         <Route path='giftcards' element={<Giftcards />} />
         <Route path='press' element={<Press />} />
+        <Route path='jobs' element={<Jobs />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

@@ -4,8 +4,10 @@ import {Link} from 'react-router'
 import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
+import { useEffect } from 'react'
 
 export default function Home(){
+    useEffect(()=>window.scrollTo(0,0),[])    
     return (
         <div className='page-wrapper webpage'>
             <div className='webpage-wrapper'>
@@ -52,7 +54,10 @@ export default function Home(){
                             <br/><br/>
                             <h1>employment</h1>
 
-                            If you are seeking employment at olea, please send your resume to info@oleanewhaven.com. Download an application for employment here.
+                            If you are seeking employment at Olea:<br/>
+                            Email your resume to info@oleanewhaven.com<br/>
+                             ~ OR ~ <br/>
+                            Fill out an online application at oleanewhaven.com/jobs
                             <br/><br/>
                             <h1><Link to='/free-parking'>free parking info here</Link></h1>                            
 
