@@ -38,7 +38,26 @@ export default function Jobs(){
                                         Last Name:<br/>
                                         <input type='text' />
                                     </label>
-                                </div>{}
+                                </div>{/* .name-flexbox */}
+                                
+                                <br/>
+                                <label>
+                                    Street Address:<br/>
+                                    <input type='text' />
+                                </label><br/>
+                                <label>
+                                    City:<br/>
+                                    <input type='text' />
+                                </label><br/>
+                                <label>
+                                    State:<br/>
+                                    <input type='text' />
+                                </label><br/>
+                                <label>
+                                    Zip Code:<br/>
+                                    <input type='text' />
+                                </label>
+
                                 
                             </form>
                             
