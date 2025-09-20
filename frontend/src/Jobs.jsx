@@ -161,7 +161,11 @@ export default function Jobs(){
                                 <br/><br/><br/><br/>
 
                                 <label>
-                                    COLLEGE and/or VOCATIONAL SCHOOL
+                                    <span style={{lineHeight:'0px'}}>
+                                    COLLEGE<br/>
+                                    and/or<br/>
+                                    VOCATIONAL SCHOOL
+                                    </span>
                                     <div className='college'>
                                         <div className='years'>
                                             <div>1</div>
@@ -192,6 +196,12 @@ export default function Jobs(){
                                     <input type='text' />
                                 </label><br/><br/>
 
+                                <hr/>
+                                <br/>
+
+                                RECORD OF CONVICTION<br/>
+
+                                During the last 10 years, have you ever been convicted of a crime other than a minor tarffic offense?
                                 
                             </form>
                             

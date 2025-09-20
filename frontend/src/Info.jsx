@@ -57,7 +57,7 @@ export default function Home(){
                             If you are seeking employment at Olea:<br/>
                             Email your resume to info@oleanewhaven.com<br/>
                              ~ OR ~ <br/>
-                            Fill out an online application at oleanewhaven.com/jobs
+                            Fill out an online application at <Link to='/jobs'>oleanewhaven.com/jobs</Link>
                             <br/><br/>
                             <h1><Link to='/free-parking'>free parking info here</Link></h1>                            
 
