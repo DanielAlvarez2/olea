@@ -4,6 +4,7 @@ print take-out menu
 custom component: LegalDisclaimer  
 make sure all img tags have an alt attribute  
 free parking link 404  
+/covers DailyPicOfCovers/ResosOverview  
   
 SALES PITCH ***********************************  
 Vicente Caride photos  
@@ -17,6 +18,6 @@ TRADE DEAL ************************************
 $NDA  
 ToggleSoftware.com logo/link  
 1 referral  
-
+4 independent! estimates of cost/sales price of software  
 
 
