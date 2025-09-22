@@ -21,7 +21,7 @@ export default function Jobs(){
                     <div className='webpage-wrapper'>
                         <Navbar />
         
-                        <main>
+                        <main className='jobs-main'>
                             <div>APPLICATION FOR EMPLOYMENT</div>
                             <div>OLEA RESTAURANT</div>
                             <div>39 High Street</div>
@@ -253,8 +253,12 @@ export default function Jobs(){
                                     <input type='text' />
                                 </label><br/>
                                 <label>
-                                    Address:<br/>
-                                    <textarea></textarea>
+                                    Street Address:<br/>
+                                    <input type='text' />
+                                </label><br/>
+                                <label>
+                                    City/State:<br/>
+                                    <input type='text' />
                                 </label><br/>
                                 <label>
                                     Phone Number:<br/>
@@ -273,6 +277,16 @@ export default function Jobs(){
                                     To:<br/>
                                     <input type='text' placeholder='Month/Year' />
                                 </label><br/>
+
+                                <br/><br/>
+                                <label>
+                                    Additional Comments (optional)<br/>
+                                    <textarea></textarea>
+                                </label><br/>
+
+                                <br/>
+
+                                <input type='submit' id='submit-application' />
                             </form>
                             
                         </main>

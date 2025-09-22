@@ -7,3 +7,15 @@
     display:flex;
     gap:5px;
 }
+#submit-application{
+    color:black;
+    font-size:25px;
+    padding:10px 15px;
+    border-radius: 10px;
+    border:none;
+    cursor:pointer;
+}
+#submit-application:hover{
+    background:darkgrey;
+    color:white;
+}
