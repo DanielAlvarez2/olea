@@ -230,7 +230,7 @@ export default function Jobs(){
                                     <>
                                         <label>
                                             Explain:<br/>
-                                            <textarea></textarea>
+                                            <textarea required></textarea>
                                         </label>
                                     </>
                                 }
