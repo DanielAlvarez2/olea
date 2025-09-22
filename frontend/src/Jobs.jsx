@@ -234,6 +234,45 @@ export default function Jobs(){
                                         </label>
                                     </>
                                 }
+                                <br/>
+                                (A conviction will not necessarily automatically disqualify you for employment. Rather, such factors as age and date of conviction, seriousness and nature of the crime, and rehabilitation will be considered.)
+                                <br/><br/>
+                                <hr/>
+                                <br/>
+                                EMPLOYMENT<br/>
+                                List most recent employer first, including U.S. Military Service.<br/><br/>
+
+                                May we contact your present employer?<br/>
+                                <label>
+                                    <input type='radio' name='contact-employer' /> Yes<br/>
+                                    <input type='radio' name='contact-employer' /> No<br/>
+                                </label><br/>
+
+                                <label>
+                                    Employer:<br/>
+                                    <input type='text' />
+                                </label><br/>
+                                <label>
+                                    Address:<br/>
+                                    <textarea></textarea>
+                                </label><br/>
+                                <label>
+                                    Phone Number:<br/>
+                                    <input type='text' />
+                                </label><br/>
+                                <label>
+                                    Position:<br/>
+                                    <input type='text' />
+                                </label><br/>
+                                Dates of Employment<br/>
+                                <label>
+                                    From:<br/>
+                                    <input type='text' placeholder='Month/Year' />
+                                </label><br/>
+                                <label>
+                                    To:<br/>
+                                    <input type='text' placeholder='Month/Year' />
+                                </label><br/>
                             </form>
                             
                         </main>
