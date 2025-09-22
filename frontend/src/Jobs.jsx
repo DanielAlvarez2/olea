@@ -3,10 +3,18 @@ import './Jobs.css'
 import {Link} from 'react-router'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 
 export default function Jobs(){
     useEffect(()=>window.scrollTo(0,0),[])
+    const [conviction, setConviction] = useState(false)
+
+    function convictionNo(){
+        setConviction(false)
+    }
+    function convictionYes(){
+        setConviction(true)
+    }
     return(
         <>
         <div className='page-wrapper webpage'>
@@ -201,8 +209,31 @@ export default function Jobs(){
 
                                 RECORD OF CONVICTION<br/>
 
-                                During the last 10 years, have you ever been convicted of a crime other than a minor tarffic offense?
-                                
+                                <label>
+                                During the last 10 years, 
+                                have you ever been convicted of a crime 
+                                other than a minor tarffic offense?<br/>
+                                <input  type='radio'
+                                        id='conviction-no' 
+                                        name='conviction' 
+                                        value='no'
+                                        required 
+                                        onChange={convictionNo} /> No<br/>
+                                <input  type='radio' 
+                                        id='conviction-yes'
+                                        name='conviction' 
+                                        value='yes' 
+                                        onChange={convictionYes} /> Yes<br/>
+                                </label>
+                                {
+                                    conviction == true && 
+                                    <>
+                                        <label>
+                                            Explain:<br/>
+                                            <textarea></textarea>
+                                        </label>
+                                    </>
+                                }
                             </form>
                             
                         </main>
