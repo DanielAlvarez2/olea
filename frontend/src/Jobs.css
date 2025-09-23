@@ -32,6 +32,12 @@
 .jobs-main br{
     line-height:0px;
 }
+.jobs-main p{
+    max-width:500px;
+}
+.jobs-main textarea{
+    width:min(300px, 80vw)
+}
 @media (max-width:350px){
     .job-flexbox,
     .address-flexbox,

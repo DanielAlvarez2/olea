@@ -22,6 +22,9 @@ export default function Jobs(){
                         <Navbar />
         
                         <main className='jobs-main'>
+                            <p>
+
+                            
                             <div>APPLICATION FOR EMPLOYMENT</div>
                             <div>OLEA RESTAURANT</div>
                             <div>39 High Street</div>
@@ -32,6 +35,7 @@ export default function Jobs(){
                                 veteran status. 
                             </div>
                             <br/>
+                            </p>
                             <hr/>
                             <form>
                                 <br/>
@@ -135,7 +139,9 @@ export default function Jobs(){
                                 <hr/>
                                 <br/>
                                 EDUCATION<br/><br/>
+                                <p>
                                 Please indicate education or training which you believe qualifies you for the position you are seeking.<br/>
+                                </p>
                                 <br/>
                                 <label>
                                 HIGH SCHOOL<br/>
@@ -226,12 +232,17 @@ export default function Jobs(){
                                 </div>{/* .job-flexbox */}
 
 
+
+
+
+
+
                                 <br/>
                                 <hr/>
                                 <br/>
 
                                 RECORD OF CONVICTION<br/><br/>
-
+                                <p>
                                 <label>
                                 During the last 10 years, 
                                 have you ever been convicted of a crime 
@@ -260,6 +271,7 @@ export default function Jobs(){
                                 <br/>
                                 (A conviction will not necessarily automatically disqualify you for employment. Rather, such factors as age and date of conviction, seriousness and nature of the crime, and rehabilitation will be considered.)
                                 <br/><br/>
+                                </p>
                                 <hr/>
                                 <br/>
                                 EMPLOYMENT<br/><br/>
@@ -271,6 +283,11 @@ export default function Jobs(){
                                     <input type='radio' name='contact-employer' /> No<br/>
                                 </label><br/>
 
+
+{/***********************************************/}
+
+
+
                                 <label>
                                     Employer:<br/>
                                     <input type='text' />
@@ -280,46 +297,189 @@ export default function Jobs(){
                                         Street Address:<br/>
                                         <input type='text' />
                                     </label>
-
                                     <label>
                                         City/State:<br/>
                                         <input type='text' />
                                     </label>
                                 </div>{/* .job-flexbox */}
-
                                 <br/>
-
                                 <div className='job-flexbox'>
                                     <label>
                                         Phone Number:<br/>
                                         <input type='text' />
                                     </label>
-
                                     <label>
                                         Position:<br/>
                                         <input type='text' />
                                     </label>
                                 </div>{/* .job-flexbox */}
-
                                 <br/>
-
                                 Dates of Employment<br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        From:<br/>
+                                        <input type='text' placeholder='Month/Year' />
+                                    </label>
+                                    <label>
+                                        To:<br/>
+                                        <input type='text' placeholder='Month/Year' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+
+
+
+
+
+
+
+
+                                <br/><br/><br/>
                                 <label>
-                                    From:<br/>
-                                    <input type='text' placeholder='Month/Year' />
-                                </label><br/>
+                                    Employer:<br/>
+                                    <input type='text' />
+                                </label><br/><br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Street Address:<br/>
+                                        <input type='text' />
+                                    </label>
+                                    <label>
+                                        City/State:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+                                <br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Phone Number:<br/>
+                                        <input type='text' />
+                                    </label>
+                                    <label>
+                                        Position:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+                                <br/>
+                                Dates of Employment<br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        From:<br/>
+                                        <input type='text' placeholder='Month/Year' />
+                                    </label>
+                                    <label>
+                                        To:<br/>
+                                        <input type='text' placeholder='Month/Year' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+
+
+
+
+
+
+
+
+                                <br/><br/><br/>
                                 <label>
-                                    To:<br/>
-                                    <input type='text' placeholder='Month/Year' />
+                                    Employer:<br/>
+                                    <input type='text' />
+                                </label><br/><br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Street Address:<br/>
+                                        <input type='text' />
+                                    </label>
+                                    <label>
+                                        City/State:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+                                <br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Phone Number:<br/>
+                                        <input type='text' />
+                                    </label>
+                                    <label>
+                                        Position:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+                                <br/>
+                                Dates of Employment<br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        From:<br/>
+                                        <input type='text' placeholder='Month/Year' />
+                                    </label>
+                                    <label>
+                                        To:<br/>
+                                        <input type='text' placeholder='Month/Year' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+
+
+
+
+
+
+
+
+                                <br/><br/><br/>
+                                <label>
+                                    Employer:<br/>
+                                    <input type='text' />
+                                </label><br/><br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Street Address:<br/>
+                                        <input type='text' />
+                                    </label>
+                                    <label>
+                                        City/State:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+                                <br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Phone Number:<br/>
+                                        <input type='text' />
+                                    </label>
+                                    <label>
+                                        Position:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+                                <br/>
+                                Dates of Employment<br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        From:<br/>
+                                        <input type='text' placeholder='Month/Year' />
+                                    </label>
+                                    <label>
+                                        To:<br/>
+                                        <input type='text' placeholder='Month/Year' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+
+
+
+
+{/***********************************************/}
+
+
+
+
+                                <br/><br/>
+
+                                <label>
+                                    Additional Comments (optional)<br/>
+                                    <textarea rows='5'></textarea>
                                 </label><br/>
 
                                 <br/><br/>
-                                <label>
-                                    Additional Comments (optional)<br/>
-                                    <textarea></textarea>
-                                </label><br/>
-
-                                <br/>
 
                                 <input type='submit' id='submit-application' />
                             </form>
