@@ -23,21 +23,29 @@ export default function Home(){
                             <br/><br/> 
 
                             <Link to='/chef-bio'>More information on Chef Manuel Romero</Link>
-                            <br/><br/>
+                            
+                            <br/><br/><br/>
                             
                             <h1>contact us</h1>
 
                             39 High Street, New Haven, Connecticut, 06510<br/>
-                            203.780.8925 •  info@oleanewhaven.com<br/><br/>
+                            203.780.8925 •  info@oleanewhaven.com
+                            
+                            <br/><br/><br/>
 
                             <h1>gift cards</h1>
 
                             Gift cards are available. Purchase one <Link to='/giftcards'>online here</Link> or give us a call at 203.780.8925.
-                            <br/><br/>
+                            
+                            <br/><br/><br/>
 
                             <h1>hours</h1>
 
-                            Tuesday — Saturday, 5 — 10 pm (last seating at 8:30)
+                            <div className='info-hours-flexbox'>
+                                <span>Tuesday — Saturday, 5 — 10 pm&nbsp; </span>
+                                <span>(last seating at 8:30)</span>
+                            </div>{/* .info-hours-flexbox */}
+
                             <br/><br/>
 
                             <h1>private parties</h1>
@@ -47,18 +55,24 @@ export default function Home(){
                             Call Olea at 203.780.8925, or email info@oleanewhaven.com, to begin the process of creating a unique event. 
                             <br/><br/>
                             <Link to='/private-parties'>more information is available here</Link>
-                            <br/><br/>
+                            
+                            <br/><br/><br/>
+                            
                             <h1>attire</h1>
 
                             Business casual attire is recommended. No tank tops for men, please.
-                            <br/><br/>
+                            
+                            <br/><br/><br/>
+                            
                             <h1>employment</h1>
 
                             If you are seeking employment at Olea:<br/>
                             Email your resume to info@oleanewhaven.com<br/>
                              ~ OR ~ <br/>
                             Fill out an online application at <Link to='/jobs'>oleanewhaven.com/jobs</Link>
-                            <br/><br/>
+                            
+                            <br/><br/><br/>
+                            
                             <h1><Link to='/free-parking'>free parking info here</Link></h1>                            
 
                         </div>{/* .info-left */}

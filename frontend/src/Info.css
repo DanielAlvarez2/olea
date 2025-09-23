@@ -6,6 +6,9 @@
     margin-bottom: 60px;
     filter: grayscale(100%);
 }
+.info-hours-flexbox{
+    display:flex;
+}
 @media(max-width:780px){
     .info-flexbox{
         flex-direction: column;
@@ -13,5 +16,10 @@
     .map-wrapper{
         width:100%;
         text-align: center;
+    }
+}
+@media(max-width:855px){
+    .info-hours-flexbox{
+        flex-direction: column;
     }
 }

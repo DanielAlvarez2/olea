@@ -244,7 +244,7 @@ export default function Jobs(){
                                     <label>
                                     During the last 10 years, 
                                     have you ever been convicted of a crime 
-                                    other than a minor tarffic offense?<br/>
+                                    other than a minor traffic offense?<br/>
                                     <input  type='radio'
                                             id='conviction-no' 
                                             name='conviction' 
