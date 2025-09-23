@@ -16,7 +16,7 @@ export default function Jobs(){
         setConviction(true)
     }
     return(
-        <>
+        
         <div className='page-wrapper webpage'>
                     <div className='webpage-wrapper'>
                         <Navbar />
@@ -302,7 +302,7 @@ export default function Jobs(){
                                 </div>{/* .job-flexbox */}
 
                                 <br/>
-                                
+
                                 Dates of Employment<br/>
                                 <label>
                                     From:<br/>
@@ -333,6 +333,5 @@ export default function Jobs(){
 
         
 
-        </>
     )
 }
