@@ -13,6 +13,7 @@
 .newsletter-left form{
     /* height:500px; */
     background:white;
+    color:#888;
     padding:20px;
 }
 .newsletter-left input{
@@ -23,7 +24,7 @@
     padding:5px;
 }
 .newsletter-left button{
-    background:#999;
+    background:#666;
     color:white;
     font-family: FuturaMedium;
     font-weight: 900;
