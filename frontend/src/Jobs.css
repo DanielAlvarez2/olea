@@ -32,7 +32,7 @@
 .jobs-main br{
     line-height:0px;
 }
-.jobs-main p{
+.jobs-main .maxwidth{
     max-width:500px;
 }
 .jobs-main textarea{

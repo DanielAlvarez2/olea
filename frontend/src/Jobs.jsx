@@ -22,20 +22,18 @@ export default function Jobs(){
                         <Navbar />
         
                         <main className='jobs-main'>
-                            <p>
-
-                            
-                            <div>APPLICATION FOR EMPLOYMENT</div>
-                            <div>OLEA RESTAURANT</div>
-                            <div>39 High Street</div>
-                            <div>New Haven, CT 06510</div><br/>
-                            <div style={{border:'1px solid white',padding:'3px'}}>Olea is an equal opportunity employer and does not discriminate against
-                                otherwise qualified applicants on the basis of race, color, creed, religion,
-                                ancestry, age, sex, marital status, national origin, disability or handicap, or
-                                veteran status. 
-                            </div>
-                            <br/>
-                            </p>
+                            <div className='maxwidth'>
+                                <div>APPLICATION FOR EMPLOYMENT</div>
+                                <div>OLEA RESTAURANT</div>
+                                <div>39 High Street</div>
+                                <div>New Haven, CT 06510</div><br/>
+                                <div style={{border:'1px solid white',padding:'3px'}}>Olea is an equal opportunity employer and does not discriminate against
+                                    otherwise qualified applicants on the basis of race, color, creed, religion,
+                                    ancestry, age, sex, marital status, national origin, disability or handicap, or
+                                    veteran status. 
+                                </div>
+                                <br/>
+                            </div>{/* .maxwidth */}
                             <hr/>
                             <form>
                                 <br/>
@@ -139,9 +137,9 @@ export default function Jobs(){
                                 <hr/>
                                 <br/>
                                 EDUCATION<br/><br/>
-                                <p>
-                                Please indicate education or training which you believe qualifies you for the position you are seeking.<br/>
-                                </p>
+                                <div className='maxwidth'>
+                                    Please indicate education or training which you believe qualifies you for the position you are seeking.<br/>
+                                </div>{/* .maxwidth */}
                                 <br/>
                                 <label>
                                 HIGH SCHOOL<br/>
@@ -242,36 +240,36 @@ export default function Jobs(){
                                 <br/>
 
                                 RECORD OF CONVICTION<br/><br/>
-                                <p>
-                                <label>
-                                During the last 10 years, 
-                                have you ever been convicted of a crime 
-                                other than a minor tarffic offense?<br/>
-                                <input  type='radio'
-                                        id='conviction-no' 
-                                        name='conviction' 
-                                        value='no'
-                                        required 
-                                        onChange={convictionNo} /> No<br/>
-                                <input  type='radio' 
-                                        id='conviction-yes'
-                                        name='conviction' 
-                                        value='yes' 
-                                        onChange={convictionYes} /> Yes<br/>
-                                </label>
-                                {
-                                    conviction == true && 
-                                    <>
-                                        <label>
-                                            Explain:<br/>
-                                            <textarea required></textarea>
-                                        </label>
-                                    </>
-                                }
-                                <br/>
-                                (A conviction will not necessarily automatically disqualify you for employment. Rather, such factors as age and date of conviction, seriousness and nature of the crime, and rehabilitation will be considered.)
-                                <br/><br/>
-                                </p>
+                                <div className='maxwidth'>
+                                    <label>
+                                    During the last 10 years, 
+                                    have you ever been convicted of a crime 
+                                    other than a minor tarffic offense?<br/>
+                                    <input  type='radio'
+                                            id='conviction-no' 
+                                            name='conviction' 
+                                            value='no'
+                                            required 
+                                            onChange={convictionNo} /> No<br/>
+                                    <input  type='radio' 
+                                            id='conviction-yes'
+                                            name='conviction' 
+                                            value='yes' 
+                                            onChange={convictionYes} /> Yes<br/>
+                                    </label>
+                                    {
+                                        conviction == true && 
+                                        <>
+                                            <label>
+                                                Explain:<br/>
+                                                <textarea rows='5' required></textarea>
+                                            </label>
+                                        </>
+                                    }
+                                    <br/>
+                                    (A conviction will not necessarily automatically disqualify you for employment. Rather, such factors as age and date of conviction, seriousness and nature of the crime, and rehabilitation will be considered.)
+                                    <br/><br/>
+                                </div>{/* .maxwidth */}
                                 <hr/>
                                 <br/>
                                 EMPLOYMENT<br/><br/>
