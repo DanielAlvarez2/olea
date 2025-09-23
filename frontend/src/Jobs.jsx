@@ -35,8 +35,8 @@ export default function Jobs(){
                             <hr/>
                             <form>
                                 <br/>
-                                PERSONAL INFO<br/>
-                                <div className='name-flexbox'>
+                                PERSONAL INFO<br/><br/>
+                                <div className='job-flexbox'>
                                     <label>
                                         First Name:<br/>
                                         <input type='text' />
@@ -46,63 +46,78 @@ export default function Jobs(){
                                         Last Name:<br/>
                                         <input type='text' />
                                     </label>
-                                </div>{/* .name-flexbox */}
+                                </div>{/* .job-flexbox */}
                                 
                                 <br/>
                                 
-                                <label>
-                                    Street Address:<br/>
-                                    <input type='text' />
-                                </label><br/>
-                                
-                                <label>
-                                    City:<br/>
-                                    <input type='text' />
-                                </label><br/>
-                                
-                                <label>
-                                    State:<br/>
-                                    <input type='text' />
-                                </label><br/>
-                                
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Street Address:<br/>
+                                        <input type='text' />
+                                    </label>
+                                    
+                                    <label>
+                                        City/State:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+
+                                <br/>                        
                                 <label>
                                     Zip Code:<br/>
-                                    <input type='text' />
-                                </label><br/>
+                                    <input  type='text'
+                                            size='5'
+                                            maxLength='5' />
+                                </label>
                                 
-                                <label>
-                                    Position Sought:<br/>
-                                    <input type='text' />
-                                </label><br/>
+                                <br/><br/>
+
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Phone Number:<br/>
+                                        <input type='text' placeholder='(###) ### - ####' />
+                                    </label>
+
+                                    <label>
+                                        Email Address:<br/>
+                                        <input type='email' placeholder='name@website.com' />
+                                    </label>
+
+                                </div>{/* .job-flexbox */}
                                 
-                                <label>
-                                    Availability:<br/>
-                                    <select>
-                                        <option>Select One...</option>
-                                        <option>Part-Time</option>
-                                        <option>Full-Time</option>
-                                    </select>
-                                </label><br/><br/>
+                                <br/>
 
-                                <label>
-                                    Date Available:<br/>
-                                    <input type='text' />
-                                </label><br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Position Sought:<br/>
+                                        <input type='text' />
+                                    </label>
+                                    
+                                    <label>
+                                        Availability:<br/>
+                                        <select required defaultValue=''>
+                                            <option disabled value=''>Select One...&nbsp;&nbsp;&nbsp;</option>
+                                            <option>Part-Time</option>
+                                            <option>Full-Time</option>
+                                        </select>
+                                    </label>
+                                </div>{/* .job-flexbox */}
 
-                                <label>
-                                    Salary Desired:<br/>
-                                    <input type='text' />
-                                </label><br/>
+                                <br/>
 
-                                <label>
-                                    Phone Number:<br/>
-                                    <input type='text' />
-                                </label><br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Date Available:<br/>
+                                        <input type='text' />
+                                    </label>
 
-                                <label>
-                                    Email Address:<br/>
-                                    <input type='email' />
-                                </label><br/><br/>
+                                    <label>
+                                        Salary Desired:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+
+                                <br/>
 
                                 <label>
                                     Are you over 18 years old?<br/>
@@ -119,7 +134,7 @@ export default function Jobs(){
                                 <br/><br/>
                                 <hr/>
                                 <br/>
-                                EDUCATION:<br/>
+                                EDUCATION<br/><br/>
                                 Please indicate education or training which you believe qualifies you for the position you are seeking.<br/>
                                 <br/>
                                 <label>
@@ -144,6 +159,7 @@ export default function Jobs(){
                                 </div>
                                 </label>
                                 Number of years completed<br/><br/>
+
                                 <label>
                                     High School Diploma?<br/>
                                     <input type='radio' name='hs-diploma' /> Yes<br/>
@@ -156,15 +172,17 @@ export default function Jobs(){
                                     <input type='radio' name='GED' /> No
                                 </label><br/><br/>
 
-                                <label>
-                                    Name of School:<br/>
-                                    <input type='text' />
-                                </label><br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Name of School:<br/>
+                                        <input type='text' />
+                                    </label>
 
-                                <label>
-                                    City/State:<br/>
-                                    <input type='text' />
-                                </label>
+                                    <label>
+                                        City/State:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
                                 
                                 <br/><br/><br/><br/>
 
@@ -194,20 +212,25 @@ export default function Jobs(){
                                     </div>
                                 </label>
                                 Number of years completed<br/><br/>
-                                <label>
-                                    Name of School:<br/>
-                                    <input type='text' />
-                                </label><br/>
 
-                                <label>
-                                    City/State:<br/>
-                                    <input type='text' />
-                                </label><br/><br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Name of School:<br/>
+                                        <input type='text' />
+                                    </label>
 
+                                    <label>
+                                        City/State:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+
+
+                                <br/>
                                 <hr/>
                                 <br/>
 
-                                RECORD OF CONVICTION<br/>
+                                RECORD OF CONVICTION<br/><br/>
 
                                 <label>
                                 During the last 10 years, 
@@ -239,7 +262,7 @@ export default function Jobs(){
                                 <br/><br/>
                                 <hr/>
                                 <br/>
-                                EMPLOYMENT<br/>
+                                EMPLOYMENT<br/><br/>
                                 List most recent employer first, including U.S. Military Service.<br/><br/>
 
                                 May we contact your present employer?<br/>
@@ -251,23 +274,35 @@ export default function Jobs(){
                                 <label>
                                     Employer:<br/>
                                     <input type='text' />
-                                </label><br/>
-                                <label>
-                                    Street Address:<br/>
-                                    <input type='text' />
-                                </label><br/>
-                                <label>
-                                    City/State:<br/>
-                                    <input type='text' />
-                                </label><br/>
-                                <label>
-                                    Phone Number:<br/>
-                                    <input type='text' />
-                                </label><br/>
-                                <label>
-                                    Position:<br/>
-                                    <input type='text' />
-                                </label><br/>
+                                </label><br/><br/>
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Street Address:<br/>
+                                        <input type='text' />
+                                    </label>
+
+                                    <label>
+                                        City/State:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+
+                                <br/>
+
+                                <div className='job-flexbox'>
+                                    <label>
+                                        Phone Number:<br/>
+                                        <input type='text' />
+                                    </label>
+
+                                    <label>
+                                        Position:<br/>
+                                        <input type='text' />
+                                    </label>
+                                </div>{/* .job-flexbox */}
+
+                                <br/>
+                                
                                 Dates of Employment<br/>
                                 <label>
                                     From:<br/>

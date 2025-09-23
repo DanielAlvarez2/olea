@@ -1,4 +1,11 @@
-.name-flexbox{
+.job-flexbox,
+.name-flexbox,
+.address-flexbox,
+.phone-email-flexbox,
+.position-availability-flexbox,
+.start-date-salary-flexbox,
+.high-school-city-flexbox,
+.college-city-flexbox{
     display:flex;
     gap:20px;
 }
@@ -18,4 +25,21 @@
 #submit-application:hover{
     background:darkgrey;
     color:white;
+}
+.jobs-main {
+    line-height: 20px !important;
+}
+.jobs-main br{
+    line-height:0px;
+}
+@media (max-width:350px){
+    .job-flexbox,
+    .address-flexbox,
+    .phone-email-flexbox,
+    .position-availability-flexbox,
+    .start-date-salary-flexbox,
+    .high-school-city-flexbox{
+        flex-direction: column;
+        gap:10px;
+    }
 }
