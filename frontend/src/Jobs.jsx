@@ -15,6 +15,9 @@ export default function Jobs(){
     function convictionYes(){
         setConviction(true)
     }
+    function submitJobApplication(){
+        alert('Your job application has been received. We will notify you if we have any job openings.')
+    }
     return(
         
         <div className='page-wrapper webpage'>
@@ -35,7 +38,7 @@ export default function Jobs(){
                                 <br/>
                             </div>{/* .maxwidth */}
                             <hr/>
-                            <form>
+                            <form action={submitJobApplication}>
                                 <br/>
                                 PERSONAL INFO<br/><br/>
                                 <div className='job-flexbox'>
