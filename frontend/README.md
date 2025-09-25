@@ -10,6 +10,7 @@ SALES PITCH ***********************************
 Vicente Caride photos  
 show on mobile: press page some images left-aligned,  
 random "Book now" link???  
+get control over special event menus (NYE, Mothers Day, Yale Grad/Parents Day, Restaurant Week, etc...)  
   
 MISC ******************************************
 embedmap.org  
