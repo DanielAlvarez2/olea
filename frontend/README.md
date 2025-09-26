@@ -17,6 +17,7 @@ get control over special event menus (NYE, Mothers Day, Yale Grad/Parents Day, R
 MISC ******************************************
 embedmap.org  
 PayPal payment widget embed in gift card page  
+httpS vs http  
   
   
 TRADE DEAL ************************************  
