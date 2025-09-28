@@ -38,6 +38,10 @@
 .jobs-main textarea{
     width:min(300px, 80vw)
 }
+.jobs-box{
+    border:1px solid white;
+    padding:3px;
+}
 @media (max-width:350px){
     .job-flexbox,
     .address-flexbox,

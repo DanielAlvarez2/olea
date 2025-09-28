@@ -30,11 +30,13 @@ export default function Jobs(){
                                 <div>OLEA RESTAURANT</div>
                                 <div>39 High Street</div>
                                 <div>New Haven, CT 06510</div><br/>
-                                <div style={{border:'1px solid white',padding:'3px'}}>Olea is an equal opportunity employer and does not discriminate against
+
+                                <div className='jobs-box'>Olea is an equal opportunity employer and does not discriminate against
                                     otherwise qualified applicants on the basis of race, color, creed, religion,
                                     ancestry, age, sex, marital status, national origin, disability or handicap, or
                                     veteran status. 
                                 </div>
+
                                 <br/>
                             </div>{/* .maxwidth */}
                             <hr/>
@@ -481,6 +483,50 @@ export default function Jobs(){
                                 </label><br/>
 
                                 <br/><br/>
+
+                                <div className='maxwidth'>
+                                    <div className='jobs-box'>
+                                        This application for employment is good for 30 days only.<br/>
+                                        Consideration for employment after 30 days requires a new application.
+                                    </div>
+                                </div>
+
+                                <br/><br/>
+
+                                <div className='maxwidth'>
+                                    APPLICANT'S CERTIFICATION AND AGREEMENT<br/>
+
+                                    I hereby certify that the facts set forth in the above 
+                                    employment application are true and complete to the best 
+                                    of my knowledge and authorize olea to verify their accuracy 
+                                    and to obtain reference information on my work performance. 
+                                    I hereby release olea from any/all liability of whatever kind 
+                                    and nature which, at any time, could result from obtaining 
+                                    and having an employment decision based on such information.<br/><br/>
+                                    I understand that, if employed, falsified statements of any 
+                                    kind or omissions of facts called for on this application shall 
+                                    be considered sufficient basis for dismissal.<br/><br/>
+                                    I understand that should an employment offer be extended to 
+                                    me and accepted that I will fully adhere to the policies, rules 
+                                    and regulations of employment of the Employer. However, I further 
+                                    understand that neither the policies, rules, regulations of 
+                                    employment or anything said during the interview process shall be 
+                                    deemed to constitute the terms of an implied employment contract. 
+                                    I understand that any employment offered is for an indefinite 
+                                    duration and at will and that either I or the Employer may terminate 
+                                    my employment at any time with or without notice or cause.<br/>
+                                    <br/><br/>
+
+                                    <label>
+                                        <input required type='checkbox' />
+                                        <span>
+                                            &nbsp;&nbsp;I have read and agree to the above terms and conditions
+                                        </span>
+                                    </label>
+
+                                    <br/><br/>
+
+                                </div>
 
                                 <input type='submit' id='submit-application' />
                             </form>
