@@ -16,6 +16,9 @@ import Press from './Press.jsx'
 import Jobs from './Jobs.jsx'
 import Manager from './components/Manager/Manager.jsx'
 import DinnerMenu from './components/Manager/DinnerMenu.jsx'
+import TakeOutMenu from './components/Manager/TakeOutMenu.jsx'
+import DessertMenu from './components/Manager/DessertMenu.jsx'
+import SpecialsMenu from './components/Manager/SpecialsMenu.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -36,6 +39,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
         <Route path='manager' element={<Manager />} />
         <Route path='dinner-menu' element={<DinnerMenu />} />
+        <Route path='takeout' element={<TakeOutMenu />} />
+        <Route path='dessert-menu' element={<DessertMenu />} />
+        <Route path='specials-menu' element={<SpecialsMenu />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

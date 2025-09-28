@@ -7,10 +7,10 @@ export default function Manager(){
 
             <ul>
                 <li><Link to='/dinner-menu'>Dinner Menu</Link></li>
-                <li>Specials</li>
-                <li>Dessert Menu</li>
+                <li><Link to='/specials-menu'>Specials</Link></li>
+                <li><Link to='/dessert-menu'>Dessert Menu</Link></li>
                 <li>Wine List</li>
-                <li>Take-Out Menu</li>
+                <li><Link to='/takeout'>Take-Out Menu</Link></li>
                 <li>New Year's Eve</li>
                 <li>Mothers Day</li>
                 <li>Valentine's Day</li>
