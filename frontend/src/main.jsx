@@ -14,11 +14,11 @@ import Specials from './Specials.jsx'
 import Dessert from './Dessert.jsx'
 import Press from './Press.jsx'
 import Jobs from './Jobs.jsx'
-import Manager from './components/Manager/Manager.jsx'
-import DinnerMenu from './components/Manager/DinnerMenu.jsx'
-import TakeOutMenu from './components/Manager/TakeOutMenu.jsx'
-import DessertMenu from './components/Manager/DessertMenu.jsx'
-import SpecialsMenu from './components/Manager/SpecialsMenu.jsx'
+import Manager from './Manager/Manager.jsx'
+import DinnerMenu from './Manager/DinnerMenu.jsx'
+import TakeOutMenu from './Manager/TakeOutMenu.jsx'
+import DessertMenu from './Manager/DessertMenu.jsx'
+import SpecialsMenu from './Manager/SpecialsMenu.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>

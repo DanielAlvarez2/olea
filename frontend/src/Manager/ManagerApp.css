@@ -1,0 +1,16 @@
+@font-face {
+    font-family: FuturaLight;
+    src: url(./assets/fonts/FuturaLight.otf);
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.manager-page-wrapper .logo{
+  font-family: FuturaLight;
+  font-size:68px;
+  font-weight:100;
+  color:black;
+  cursor:pointer;
+}
