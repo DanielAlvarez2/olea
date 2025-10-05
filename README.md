@@ -12,6 +12,7 @@ Vicente Caride photos
 show on mobile: press page some images left-aligned,  
 random "Book now" link??? in graphics column of press page    
 get control over special event menus (NYE, Mothers Day, Yale Grad/Parents Day, Restaurant Week, etc...)  
+"I'm trying to decide between this dish and that dish...?" --> show pics!!!  
   
    
 MISC ******************************************
