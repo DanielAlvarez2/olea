@@ -6,6 +6,7 @@ make sure all img tags have an alt attribute
 free parking link 404  
 /covers DailyPicOfCovers/ResosOverview  
 /today needs to automatically switch between menu for special events and normal menu  
+/compliments-to-the-chef with QR code: customers can fill out form in the restaurant and chef receives an email to his phone immediately  
   
 
 SALES PITCH ***********************************  
