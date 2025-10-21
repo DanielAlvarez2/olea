@@ -16,9 +16,11 @@ import Press from './Press.jsx'
 import Jobs from './Jobs.jsx'
 import Manager from './Manager/Manager.jsx'
 import DinnerMenu from './Manager/DinnerMenu.jsx'
-import TakeOutMenu from './Manager/TakeOutMenu.jsx'
+import TakeoutMenu from './Manager/TakeoutMenu.jsx'
 import DessertMenu from './Manager/DessertMenu.jsx'
 import SpecialsMenu from './Manager/SpecialsMenu.jsx'
+import WineList from './Manager/WineList.jsx'
+import Events from './Manager/Events.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -39,9 +41,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
         <Route path='manager' element={<Manager />} />
         <Route path='dinner-menu' element={<DinnerMenu />} />
-        <Route path='takeout' element={<TakeOutMenu />} />
+        <Route path='takeout' element={<TakeoutMenu />} />
+        <Route path='wine-list' element={<WineList />} />
         <Route path='dessert-menu' element={<DessertMenu />} />
         <Route path='specials-menu' element={<SpecialsMenu />} />
+        <Route path='events' element={<Events />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

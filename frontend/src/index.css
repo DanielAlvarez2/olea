@@ -93,6 +93,15 @@ a{
   font-family: FuturaLight;
   color:#bfbfbf;
 }
+.manager-navbar{
+  font-family: FuturaLight;
+}
+.manager-page-wrapper{
+  padding:0 10px;
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
+}
 
 @media (max-width: 640px){
   .webpage main{

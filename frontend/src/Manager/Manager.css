@@ -1,0 +1,39 @@
+@font-face {
+    font-family: FuturaLight;
+    src: url(./assets/fonts/FuturaLight.otf);
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.manager-page-wrapper .logo{
+  font-size:68px;
+  font-weight:100;
+  color:black;
+  cursor:pointer;
+}
+.manager-page-wrapper{
+  font-family: FuturaLight;
+}
+
+#main-menu li{
+  background:lightgrey;
+  width:100px;
+  margin:auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 50px;  
+  margin:auto 0;
+  border-radius: 10px;
+  align-self: center;
+}
+li a{
+  color:black;
+  padding:auto 0;
+}
+.current-page{
+  border-bottom:4px solid grey !important;
+}

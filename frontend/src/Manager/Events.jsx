@@ -2,13 +2,13 @@ import {Link} from 'react-router'
 import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
-export default function Manager(){
+export default function Events(){
     return(
         <>
             <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
-                <ManagerNavbar />
+                <ManagerNavbar page='events' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>main menu</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>events</div>
                     <ul id='main-menu' 
                         style={{display:'flex',
                                 flex:'1',
@@ -20,10 +20,10 @@ export default function Manager(){
                                 border:'1px solid green'
                                 }}>
                         <li style={{flexGrow:'1'}}><Link to='/dinner-menu'>dinner</Link></li>
-                        <li style={{flexGrow:'1'}}><Link to='/specials'>specials</Link></li>
-                        <li style={{flexGrow:'1'}}><Link to='/dessert'>dessert</Link></li>
+                        <li style={{flexGrow:'1'}}><Link to='/specials-menu'>specials</Link></li>
+                        <li style={{flexGrow:'1'}}><Link to='/dessert-menu'>dessert</Link></li>
                         <li style={{flexGrow:'1'}}><Link to='/wine-list'>wine list</Link></li>
-                        <li style={{flexGrow:'1'}}><Link to='/takeout'>takeout</Link></li>
+                        <li style={{flexGrow:'1'}}><Link to='/takeout'>take-out</Link></li>
                         <li style={{flexGrow:'1'}}><Link to='/events'>events</Link></li>
                     </ul>
 

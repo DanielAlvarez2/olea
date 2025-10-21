@@ -32,3 +32,14 @@ ToggleSoftware.com logo/link
 
 PROJECT DURATION********************************
 Started Sep 1 2025 -->
+
+
+
+ANNUAL EVENTS***********************************
+FEB Valentine's Day
+APR Restaurant Week
+MAY 10 Mothers Day
+MAY 18 Graduation
+OCT Parents Weekend
+NOV Restaurant Week
+DEC New Year's Eve
