@@ -19,12 +19,12 @@ export default function TakeoutMenu(){
                                 height:'100%',
                                 border:'1px solid green'
                                 }}>
-                        <li style={{flexGrow:'1'}}><Link to='/dinner-menu'>dinner</Link></li>
-                        <li style={{flexGrow:'1'}}><Link to='/specials-menu'>specials</Link></li>
-                        <li style={{flexGrow:'1'}}><Link to='/dessert-menu'>dessert</Link></li>
-                        <li style={{flexGrow:'1'}}><Link to='/wine-list'>wine list</Link></li>
-                        <li style={{flexGrow:'1'}}><Link to='/takeout'>takeout</Link></li>
-                        <li style={{flexGrow:'1'}}><Link to='/events'>events</Link></li>
+                        <Link to='/dinner-menu'><li style={{flexGrow:'1'}}>dinner</li></Link>
+                        <Link to='/specials'><li style={{flexGrow:'1'}}>specials</li></Link>
+                        <Link to='/dessert'><li style={{flexGrow:'1'}}>dessert</li></Link>
+                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>wine list</li></Link>
+                        <Link to='/takeout'><li style={{flexGrow:'1'}}>takeout</li></Link>
+                        <Link to='/events'><li style={{flexGrow:'1'}}>events</li></Link>
                     </ul>
 
             

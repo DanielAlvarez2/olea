@@ -1,3 +1,6 @@
 .manager-navbar li{
     border-bottom: 5px solid transparent;
 }
+.manager-navbar a{
+    color:black;
+}

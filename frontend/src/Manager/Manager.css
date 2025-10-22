@@ -20,19 +20,19 @@
 #main-menu li{
   background:lightgrey;
   width:100px;
-  margin:auto;
+  /* margin:auto; */
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-height: 50px;  
-  margin:auto 0;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* max-height: 50px;   */
+  /* margin:auto 0; */
   border-radius: 10px;
-  align-self: center;
+  padding:5px 0px;
 }
-li a{
+#main-menu a{
   color:black;
-  padding:auto 0;
+  /* padding:auto 0; */
 }
 .current-page{
   border-bottom:4px solid grey !important;
