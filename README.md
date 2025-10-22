@@ -7,6 +7,7 @@ free parking link 404
 /covers DailyPicOfCovers/ResosOverview  
 /today needs to automatically switch between menu for special events and normal menu  
 /compliments-to-the-chef with QR code: customers can fill out form in the restaurant and chef receives an email to his phone immediately  
+oleademo.com  
   
 
 SALES PITCH ***********************************  
