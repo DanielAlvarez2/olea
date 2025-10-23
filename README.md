@@ -9,6 +9,7 @@ free parking link 404
 /compliments-to-the-chef with QR code: customers can fill out form in the restaurant and chef receives an email to his phone immediately  
 oleademo.com  
 set up email    
+check output when each db is completely EMPTY  
   
 
 SALES PITCH ***********************************  
@@ -17,12 +18,14 @@ show on mobile: press page some images left-aligned,
 random "Book now" link??? in graphics column of press page    
 get control over special event menus (NYE, Mothers Day, Yale Grad/Parents Day, Restaurant Week, etc...)  
 "I'm trying to decide between this dish and that dish...?" --> show pics!!!  
+broken links are bad for SEO ranking  
   
    
 MISC ******************************************
 embedmap.org  
 PayPal payment widget embed in gift card page  
 httpS vs http  
+do not print from safari! only print from chrome browser!  
   
   
 TRADE DEAL ************************************  
