@@ -10,6 +10,7 @@ free parking link 404
 oleademo.com  
 set up email    
 check output when each db is completely EMPTY  
+randomize photo in chef bio page  
   
 
 SALES PITCH ***********************************  
