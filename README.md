@@ -11,8 +11,13 @@ oleademo.com
 set up email    
 check output when each db is completely EMPTY  
 randomize photo in chef bio page  
+    
+    +  
+  white  
+-       +  
+  space  
+    -  
   
-
 SALES PITCH ***********************************  
 Vicente Caride photos  
 show on mobile: press page some images left-aligned,  
