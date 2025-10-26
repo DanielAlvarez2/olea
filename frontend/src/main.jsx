@@ -19,6 +19,7 @@ import DinnerMenu from './Manager/DinnerMenu.jsx'
 import TakeoutMenu from './Manager/TakeoutMenu.jsx'
 import DessertMenu from './Manager/DessertMenu.jsx'
 import SpecialsMenu from './Manager/SpecialsMenu.jsx'
+import SpecialsMenuUpdate from './Manager/SpecialsMenuUpdate.jsx'
 import WineList from './Manager/WineList.jsx'
 import Events from './Manager/Events.jsx'
 
@@ -46,6 +47,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='dessert-menu' element={<DessertMenu />} />
         <Route path='specials-menu' element={<SpecialsMenu />} />
         <Route path='events' element={<Events />} />
+        
+        <Route path='specials-menu-update' element={<SpecialsMenuUpdate />} />
+
+
       </Routes>
     </BrowserRouter>
   </StrictMode>

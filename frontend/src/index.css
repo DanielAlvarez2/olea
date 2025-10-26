@@ -108,3 +108,9 @@ a{
     padding: 0 24px;
   }
 }
+
+.specials-h1{
+  font-size: 30px;
+  font-family: FuturaMedium;
+  font-weight: 900;
+}
