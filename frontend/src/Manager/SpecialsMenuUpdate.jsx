@@ -47,7 +47,10 @@ export default function SpecialsMenuUpdate(){
                     </div>         
 
 
-                    <form style={{background:'lightgrey'}}>
+                    <form style={{  background:'lightgrey',
+                                    margin:'0 auto',
+                                    paddingLeft:'10px',
+                                    width:'200px'}}>
                         <label>
                             Section<br/>
                             <select>
@@ -86,6 +89,7 @@ export default function SpecialsMenuUpdate(){
                             Sequence<br/>
                             <input type='text' />
                         </label>
+                        <br/><br/>
 
                     </form>   
 
