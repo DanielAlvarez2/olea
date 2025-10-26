@@ -10,7 +10,6 @@ export default function ManagerNavbar(props){
                     olea
                 </div></Link>
                 <div style={{width:'100%'}}>
-                    <div style={{   width:'100%',fontSize:'30px',textAlign:'center'}}>menu manager</div>
                     <ul style={{display:'flex',width:'100%',justifyContent:'space-around'}}>
                         <li className={props.page=='dinner' ? 'current-page' : ''}><Link to='/dinner-menu'>dinner</Link></li>
                         <li className={props.page=='specials' ? 'current-page' : ''}><Link to='/specials-menu'>specials</Link></li>
