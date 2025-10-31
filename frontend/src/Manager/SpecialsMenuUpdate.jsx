@@ -8,7 +8,7 @@ export default function SpecialsMenuUpdate(){
             <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
                 <ManagerNavbar page='specials' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>specials > update</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; update</div>
 
 
                     <div id='main-menu' 
