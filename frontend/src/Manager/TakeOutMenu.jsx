@@ -23,7 +23,7 @@ export default function TakeoutMenu(){
                         <Link to='/specials'><li style={{flexGrow:'1'}}>specials</li></Link>
                         <Link to='/dessert'><li style={{flexGrow:'1'}}>dessert</li></Link>
                         <Link to='/wine-list'><li style={{flexGrow:'1'}}>wine list</li></Link>
-                        <Link to='/takeout'><li style={{flexGrow:'1'}}>takeout</li></Link>
+                        <Link to='/takeout'><li style={{flexGrow:'1'}}>takeout </li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>events</li></Link>
                     </ul>
 
