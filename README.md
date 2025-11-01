@@ -26,6 +26,8 @@ random "Book now" link??? in graphics column of press page
 get control over special event menus (NYE, Mothers Day, Yale Grad/Parents Day, Restaurant Week, etc...)  
 "I'm trying to decide between this dish and that dish...?" --> show pics!!!  
 broken links are bad for SEO ranking  
+often see people look back and forth between paper menu and their phone, they are looking at pics 
+from google, yelp, etc and trying to match those pics to a menu description  
   
    
 MISC ******************************************  
