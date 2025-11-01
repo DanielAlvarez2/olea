@@ -1,4 +1,4 @@
-OPTIMIZATIONS *********************************
+OPTIMIZATIONS *********************************  
 create a 404 page  
 print take-out menu  
 custom component: LegalDisclaimer  
@@ -27,7 +27,7 @@ get control over special event menus (NYE, Mothers Day, Yale Grad/Parents Day, R
 broken links are bad for SEO ranking  
   
    
-MISC ******************************************
+MISC ******************************************  
 embedmap.org  
 PayPal payment widget embed in gift card page  
 httpS vs http  
@@ -39,18 +39,28 @@ $NDA
 ToggleSoftware.com logo/link  
 1 referral  
 4 independent! estimates of cost/sales price of software  
+  
+  
+PROJECT DURATION********************************  
+Started Sep 1 2025 -->  
+  
+  
+  
+ANNUAL EVENTS***********************************  
+FEB Valentine's Day  
+APR Restaurant Week  
+MAY 10 Mothers Day  
+MAY 18 Graduation  
+OCT Parents Weekend  
+NOV Restaurant WeekS  
+DEC New Year's Eve  
+  
+  
+  
+when setting up new project: must create a .gitignore in /backend  
+also keep the one in frontend, but only keep:  
+/node_models  
+dist  
 
 
-PROJECT DURATION********************************
-Started Sep 1 2025 -->
 
-
-
-ANNUAL EVENTS***********************************
-FEB Valentine's Day
-APR Restaurant Week
-MAY 10 Mothers Day
-MAY 18 Graduation
-OCT Parents Weekend
-NOV Restaurant Week
-DEC New Year's Eve
