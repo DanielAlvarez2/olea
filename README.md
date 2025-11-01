@@ -11,6 +11,7 @@ oleademo.com
 set up email    
 check output when each db is completely EMPTY  
 randomize photo in chef bio page  
+maria can print specials from her phone  
     
     +  
   white  
