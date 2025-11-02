@@ -52,41 +52,41 @@ export default function SpecialsMenuUpdate(){
                                     paddingLeft:'10px',
                                     width:'200px'}}>
                         <label>
-                            Section<br/>
+                            section<br/>
                             <select>
-                                <option>Appetizer</option>
-                                <option>Entrée</option>
-                                <option>Dessert</option>
+                                <option>appetizer</option>
+                                <option>entrée</option>
+                                <option>dessert</option>
                             </select>
                         </label>
                         <br/><br/>
                         <label>
-                            Name<br/>
+                            name<br/>
                             <input type='text' />
                         </label>
                         <br/><br/>
                         <label>
-                            Allergies - abbreviated<br/>
+                            allergies - abbreviated<br/>
                             <input type='text' />
                         </label>
                         <br/><br/>
                         <label>
-                            Allergies - complete<br/>
+                            allergies - complete<br/>
                             <input type='text' />
                         </label>
                         <br/><br/>
                         <label>
-                            Description<br/>
+                            description<br/>
                             <textarea></textarea>
                         </label>
                         <br/><br/>
                         <label>
-                            Price<br/>
+                            price<br/>
                             <input type='text' />
                         </label>
                         <br/><br/>
                         <label>
-                            Sequence<br/>
+                            sequence<br/>
                             <input type='text' />
                         </label>
                         <br/><br/>
