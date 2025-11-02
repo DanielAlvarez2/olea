@@ -81,7 +81,10 @@ export default function SpecialsMenuUpdate(){
                         <br/><br/>
                         <label>
                             name<br/>
-                            <input type='text' name='name' style={{width:'100%'}} />
+                            <input  type='text' 
+                                    name='name' 
+                                    required
+                                    style={{width:'100%'}} />
                         </label>
                         <br/><br/>
                         <label>
@@ -107,12 +110,15 @@ export default function SpecialsMenuUpdate(){
                         <br/><br/>
                         <label>
                             price<br/>
-                            <input type='text' name='price' />
+                            <input  type='text'
+                                    required 
+                                    name='price' />
                         </label>
                         <br/><br/>
                         <label>
                             sequence<br/>
                             <input  type='text'
+                                    required
                                     name='sequence' 
                                     style={{width:'5ch'}} />
                         </label>
