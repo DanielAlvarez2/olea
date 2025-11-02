@@ -3,7 +3,14 @@ import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
 function createNewSpecial(formData){
-    console.log(formData)
+    console.log(formData.get('menu'))
+    console.log(formData.get('section'))
+    console.log(formData.get('name'))
+    console.log(formData.get('allergies-abbreviated'))
+    console.log(formData.get('allergies-complete'))
+    console.log(formData.get('description'))
+    console.log(formData.get('price'))
+    console.log(formData.get('sequence'))
 }
 
 export default function SpecialsMenuUpdate(){
@@ -59,6 +66,9 @@ export default function SpecialsMenuUpdate(){
                                     width:'320px'}}>
                         <h2 style={{textAlign:'center'}}>create new special</h2>
                         <br/>
+                        <input  type='hidden'
+                                name='menu' 
+                                value='specials' />
                         <label>
                             section&nbsp; 
                             <select name='section' required defaultValue=''>
