@@ -12,7 +12,7 @@ export default function SpecialsMenu(){
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials</div>
 
 
-                    <ul id='main-menu' 
+                    <ul className='main-menu' 
                         style={{display:'flex',
                                 flex:'1',
                                 flexDirection:'column',

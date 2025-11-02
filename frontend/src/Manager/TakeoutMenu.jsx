@@ -9,7 +9,7 @@ export default function TakeoutMenu(){
                 <ManagerNavbar page='takeout' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>takeout</div>
-                    <ul id='main-menu' 
+                    <ul className='main-menu' 
                         style={{display:'flex',
                                 flex:'1',
                                 flexDirection:'column',

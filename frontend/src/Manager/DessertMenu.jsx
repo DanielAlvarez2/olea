@@ -9,7 +9,7 @@ export default function DessertMenu(){
                 <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert</div>
-                    <ul id='main-menu' 
+                    <ul className='main-menu' 
                         style={{display:'flex',
                                 flex:'1',
                                 flexDirection:'column',

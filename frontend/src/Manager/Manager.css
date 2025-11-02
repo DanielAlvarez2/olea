@@ -17,9 +17,9 @@
   font-family: FuturaLight;
 }
 
-#main-menu li{
+.main-menu li{
   background:lightgrey;
-  width:100px;
+  width:150px;
   /* margin:auto; */
   text-align: center;
   /* display: flex; */

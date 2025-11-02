@@ -9,7 +9,7 @@ export default function WineList(){
                 <ManagerNavbar page='wine-list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>wine list</div>
-                    <ul id='main-menu' 
+                    <ul className='main-menu' 
                         style={{display:'flex',
                                 flex:'1',
                                 flexDirection:'column',

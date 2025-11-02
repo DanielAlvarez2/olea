@@ -9,7 +9,7 @@ export default function Manager(){
                 <ManagerNavbar />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>main menu</div>
-                    <ul id='main-menu' 
+                    <ul className='main-menu' 
                         style={{display:'flex',
                                 flex:'1',
                                 flexDirection:'column',
