@@ -19,13 +19,13 @@ export default function Events(){
                                 height:'100%',
                                 border:'1px solid green'
                                 }}>
-                        <Link to='/'><li style={{flexGrow:'1'}}>Valentine's Day</li></Link>
-                        <Link to='/'><li style={{flexGrow:'1'}}>Restaurant Week</li></Link>
-                        <Link to='/'><li style={{flexGrow:'1'}}>Mother's Day</li></Link>
-                        <Link to='/'><li style={{flexGrow:'1'}}>Graduation</li></Link>
-                        <Link to='/'><li style={{flexGrow:'1'}}>Parents Weekend</li></Link>
-                        <Link to='/'><li style={{flexGrow:'1'}}>Restaurant WeekS</li></Link>
-                        <Link to='/'><li style={{flexGrow:'1'}}>New Year's Eve</li></Link>
+                        <Link to='/'><li style={{flexGrow:'1'}}>valentine's day</li></Link>
+                        <Link to='/'><li style={{flexGrow:'1'}}>restaurant week</li></Link>
+                        <Link to='/'><li style={{flexGrow:'1'}}>mother's day</li></Link>
+                        <Link to='/'><li style={{flexGrow:'1'}}>graduation</li></Link>
+                        <Link to='/'><li style={{flexGrow:'1'}}>parents weekend</li></Link>
+                        <Link to='/'><li style={{flexGrow:'1'}}>restaurant weeks</li></Link>
+                        <Link to='/'><li style={{flexGrow:'1'}}>new year's eve</li></Link>
                     </ul>
 
             
