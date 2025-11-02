@@ -49,9 +49,9 @@ export default function SpecialsMenuUpdate(){
 
                     <form style={{  background:'lightgreen',
                                     margin:'0 auto',
-                                    paddingLeft:'10px',
+                                    padding:'0 10px',
                                     width:'320px'}}>
-                        <h2>create new special</h2>
+                        <h2 style={{textAlign:'center'}}>create new special</h2>
                         <br/>
                         <label>
                             section&nbsp; 
@@ -65,7 +65,7 @@ export default function SpecialsMenuUpdate(){
                         <br/><br/>
                         <label>
                             name<br/>
-                            <input type='text' />
+                            <input type='text' style={{width:'100%'}} />
                         </label>
                         <br/><br/>
                         <label>
