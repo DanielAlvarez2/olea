@@ -2,6 +2,10 @@ import {Link} from 'react-router'
 import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
+function createNewSpecial(formData){
+    console.log(formData)
+}
+
 export default function SpecialsMenuUpdate(){
     return(
         <>
@@ -47,15 +51,17 @@ export default function SpecialsMenuUpdate(){
                     </div>         
 
 
-                    <form style={{  background:'lightgreen',
-                                    margin:'0 auto',
-                                    padding:'0 10px',
+                    <form   action={createNewSpecial} 
+                            style={{background:'lightgreen',
+                                    margin:'20px auto',
+                                    padding:'20px 10px',
+                                    borderRadius:'10px',
                                     width:'320px'}}>
                         <h2 style={{textAlign:'center'}}>create new special</h2>
                         <br/>
                         <label>
                             section&nbsp; 
-                            <select required defaultValue=''>
+                            <select name='section' required defaultValue=''>
                                 <option disabled value=''>select...</option>
                                 <option>appetizer</option>
                                 <option>entrée</option>
@@ -65,34 +71,51 @@ export default function SpecialsMenuUpdate(){
                         <br/><br/>
                         <label>
                             name<br/>
-                            <input type='text' style={{width:'100%'}} />
+                            <input type='text' name='name' style={{width:'100%'}} />
                         </label>
                         <br/><br/>
                         <label>
                             allergies - abbreviated<br/>
-                            <input type='text' />
+                            <input  type='text' 
+                                    name='allergies-abbreviated' 
+                                    style={{width:'100%'}} />
                         </label>
                         <br/><br/>
                         <label>
                             allergies - complete<br/>
-                            <input type='text' />
+                            <input  type='text'
+                                    name='allergies-complete' 
+                                    style={{width:'100%'}} />
                         </label>
                         <br/><br/>
                         <label>
                             description<br/>
-                            <textarea></textarea>
+                            <textarea   rows='5'
+                                        name='description' 
+                                        style={{width:'100%'}}></textarea>
                         </label>
                         <br/><br/>
                         <label>
                             price<br/>
-                            <input type='text' />
+                            <input type='text' name='price' />
                         </label>
                         <br/><br/>
                         <label>
                             sequence<br/>
-                            <input type='text' />
+                            <input  type='text'
+                                    name='sequence' 
+                                    style={{width:'5ch'}} />
                         </label>
                         <br/><br/>
+
+                        <input  type='submit' 
+                                style={{padding:'10px 10px',
+                                        cursor:'pointer',
+                                        borderRadius:'10px',
+                                        display:'block',
+                                        margin:'0 auto',
+                                        fontSize:'20px'}}
+                                value='create new special' />
 
                     </form>   
 
