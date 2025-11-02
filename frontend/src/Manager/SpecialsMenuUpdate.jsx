@@ -47,13 +47,16 @@ export default function SpecialsMenuUpdate(){
                     </div>         
 
 
-                    <form style={{  background:'lightgrey',
+                    <form style={{  background:'lightgreen',
                                     margin:'0 auto',
                                     paddingLeft:'10px',
-                                    width:'200px'}}>
+                                    width:'320px'}}>
+                        <h2>create new special</h2>
+                        <br/>
                         <label>
-                            section<br/>
-                            <select>
+                            section&nbsp; 
+                            <select required defaultValue=''>
+                                <option disabled value=''>select...</option>
                                 <option>appetizer</option>
                                 <option>entrée</option>
                                 <option>dessert</option>
