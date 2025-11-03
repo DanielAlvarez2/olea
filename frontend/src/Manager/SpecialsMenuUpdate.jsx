@@ -20,7 +20,7 @@ export default function SpecialsMenuUpdate(){
         console.log(formData.get('sequence'))
 
         await fetch(`${BASE_URL}/api/special`,{ method:'POST',
-                                                headers:{'Content-Type':'applicatoion/json'},
+                                                headers:{'Content-Type':'application/json'},
                                                 body: JSON.stringify({
                                                     menu: formData.get('menu'),
                                                     section: formData.get('section'),
@@ -92,9 +92,9 @@ export default function SpecialsMenuUpdate(){
                             section&nbsp; 
                             <select name='section' required defaultValue=''>
                                 <option disabled value=''>select...</option>
-                                <option>appetizer</option>
-                                <option>entrée</option>
-                                <option>dessert</option>
+                                <option>appetizers</option>
+                                <option>entrées</option>
+                                <option>desserts</option>
                             </select>
                         </label>
                         <br/><br/>
