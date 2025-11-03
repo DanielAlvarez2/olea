@@ -17,7 +17,6 @@ export default function SpecialsMenuUpdate(){
         console.log(formData.get('allergies-complete'))
         console.log(formData.get('description'))
         console.log(formData.get('price'))
-        console.log(formData.get('sequence'))
 
         await fetch(`${BASE_URL}/api/special`,{ method:'POST',
                                                 headers:{'Content-Type':'application/json'},
@@ -31,6 +30,9 @@ export default function SpecialsMenuUpdate(){
                                                     price: formData.get('price')
                                                 })
         })
+        .then(alert(`New Special Created:
+            ${formData.get('name')}`))
+        .catch(err=>console.log(err))
     }
 
     return(
@@ -132,14 +134,6 @@ export default function SpecialsMenuUpdate(){
                             <input  type='text'
                                     required 
                                     name='price' />
-                        </label>
-                        <br/><br/>
-                        <label>
-                            sequence<br/>
-                            <input  type='text'
-                                    required
-                                    name='sequence' 
-                                    style={{width:'5ch'}} />
                         </label>
                         <br/><br/>
 
