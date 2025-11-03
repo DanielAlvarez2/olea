@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const SpecialSchema = new mongoose.Schema({
+    menu:{type:String},
     section:{type:String},
     name:{type:String},
     allergiesAbbreviated:{type:String},

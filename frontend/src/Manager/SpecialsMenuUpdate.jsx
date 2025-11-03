@@ -2,18 +2,37 @@ import {Link} from 'react-router'
 import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
-function createNewSpecial(formData){
-    console.log(formData.get('menu'))
-    console.log(formData.get('section'))
-    console.log(formData.get('name'))
-    console.log(formData.get('allergies-abbreviated'))
-    console.log(formData.get('allergies-complete'))
-    console.log(formData.get('description'))
-    console.log(formData.get('price'))
-    console.log(formData.get('sequence'))
-}
 
 export default function SpecialsMenuUpdate(){
+
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'
+
+    async function createNewSpecial(formData){
+        console.log(formData.get('menu'))
+        console.log(formData.get('section'))
+        console.log(formData.get('name'))
+        console.log(formData.get('allergies-abbreviated'))
+        console.log(formData.get('allergies-complete'))
+        console.log(formData.get('description'))
+        console.log(formData.get('price'))
+        console.log(formData.get('sequence'))
+
+        await fetch(`${BASE_URL}/api/special`,{ method:'POST',
+                                                headers:{'Content-Type':'applicatoion/json'},
+                                                body: JSON.stringify({
+                                                    menu: formData.get('menu'),
+                                                    section: formData.get('section'),
+                                                    name: formData.get('name'),
+                                                    allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                    allergiesComplete: formData.get('allergies-complete'),
+                                                    description: formData.get('description'),
+                                                    price: formData.get('price')
+                                                })
+        })
+    }
+
     return(
         <>
             <div className='manager-page-wrapper' style={{border:'1px solid red'}}>

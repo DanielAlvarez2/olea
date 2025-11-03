@@ -25,6 +25,7 @@ app.post('/api/special', async(req,res)=>{
     try{
         const maxSequence = await Special.findOne({section:req.body.section}).sort({sequence:-1})
         await Special.create({
+            menu: req.body.menu,
             section: req.body.section,
             name: req.body.name,
             description: req.body.description,
@@ -48,7 +49,7 @@ app.delete('/api/special/:id', async(req,res)=>{
     }
 })
 
-app.get('/api/special', async(req,res)=>{
+app.get('/api/specials', async(req,res)=>{
     try{
         const allSpecials = await Special.find().sort({sequence:1})
         res.json(allSpecials)
