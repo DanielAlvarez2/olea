@@ -30,6 +30,8 @@ app.post('/api/special', async(req,res)=>{
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
+            allergiesAbbreviated: req.body.allergiesAbbreviated,
+            allergiesComplete: req.body.allergiesComplete,
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
         console.log(`Added to Database: ${req.body.name}`)

@@ -1,23 +1,18 @@
 import {Link} from 'react-router'
+import {useState, useEffect} from 'react'
 import './Manager.css'
+import './Specials.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
 
 export default function SpecialsMenuUpdate(){
-
+    const [allSpecials, setAllSpecials] = useState([])
+    useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
     async function createNewSpecial(formData){
-        console.log(formData.get('menu'))
-        console.log(formData.get('section'))
-        console.log(formData.get('name'))
-        console.log(formData.get('allergies-abbreviated'))
-        console.log(formData.get('allergies-complete'))
-        console.log(formData.get('description'))
-        console.log(formData.get('price'))
-
         await fetch(`${BASE_URL}/api/special`,{ method:'POST',
                                                 headers:{'Content-Type':'application/json'},
                                                 body: JSON.stringify({
@@ -30,9 +25,21 @@ export default function SpecialsMenuUpdate(){
                                                     price: formData.get('price')
                                                 })
         })
-        .then(alert(`New Special Created:
+        .then(alert(`
+            New Special Created:
             ${formData.get('name')}`))
         .catch(err=>console.log(err))
+    }
+
+    function getSpecials(){
+        try{
+            fetch(`${BASE_URL}/api/specials`)
+                .then(res=>res.json())
+                .then(json=>setAllSpecials(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
     }
 
     return(
@@ -66,7 +73,21 @@ export default function SpecialsMenuUpdate(){
                             <div>
                                 <div className='specials-h1'>today's specials</div>
                             </div>
+
+                            {allSpecials.filter(item=>item.section == 'appetizers').length == 1 && <h2>appetizer</h2>}
+                            {allSpecials.filter(item=>item.section == 'appetizers').length > 1 && <h2>appetizers</h2>}
+
+                            {allSpecials.filter(item=>item.section == 'appetizers').map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>
+                                        <span className='special-name'>{data.name}</span>
+                                        <span>{data.allergiesAbbreviated}</span>
+                                    </div>
+                                )
+                            })}
+
                             <footer style={{marginTop:'auto',
+                                            textAlign:'left',
                                             fontSize:'11px',
                                             fontFamily:'serif'}}>
                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
