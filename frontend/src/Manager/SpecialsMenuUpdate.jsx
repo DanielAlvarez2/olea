@@ -28,6 +28,7 @@ export default function SpecialsMenuUpdate(){
         .then(alert(`
             New Special Created:
             ${formData.get('name')}`))
+        .then(getSpecials())
         .catch(err=>console.log(err))
     }
 
@@ -41,6 +42,7 @@ export default function SpecialsMenuUpdate(){
             console.log(err)
         }
     }
+
 
     return(
         <>
@@ -81,7 +83,9 @@ export default function SpecialsMenuUpdate(){
                                 return(
                                     <div key={data._id} className='special'>
                                         <span className='special-name'>{data.name}</span>
-                                        <span>{data.allergiesAbbreviated}</span>
+                                        {data.allergiesAbbreviated && <span> ({data.allergiesAbbreviated})</span>}
+                                        <span> {data.description}</span>
+                                        {data.price.length < 3 ? <span> {data.price}</span> : <div>{data.price}</div> }
                                     </div>
                                 )
                             })}
