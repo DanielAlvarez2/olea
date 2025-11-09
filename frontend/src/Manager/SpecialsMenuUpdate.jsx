@@ -82,10 +82,13 @@ export default function SpecialsMenuUpdate(){
                             {allSpecials.filter(item=>item.section == 'appetizers').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
-                                        <span className='special-name'>{data.name}</span>
-                                        {data.allergiesAbbreviated && <span> ({data.allergiesAbbreviated})</span>}
+                                        {/* <span className='name'>{data.name}</span>
+                                        {data.allergiesAbbreviated && 
+                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                         <span> {data.description}</span>
-                                        {data.price.length < 3 ? <span> {data.price}</span> : <div>{data.price}</div> }
+                                        {data.price.length < 3 ? 
+                                            <span className='price'> &nbsp;{data.price}</span> : 
+                                            <div className='price'>{data.price}</div> } */}
                                     </div>
                                 )
                             })}

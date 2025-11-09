@@ -37,3 +37,21 @@
 .current-page{
   border-bottom:4px solid grey !important;
 }
+.special{
+  font-family: serif;
+  border:1px solid black;
+  font-size: 15px;
+}
+.name{
+    color:blue;
+    font-family: FuturaLight;
+    font-weight: 900;
+    font-size: 14px;
+}
+.allergies-abbreviated{
+  font-style: italic;
+  font-size: 14px;
+}
+.price{
+  font-weight: 900;
+}
