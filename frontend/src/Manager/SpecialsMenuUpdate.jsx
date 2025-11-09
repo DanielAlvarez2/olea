@@ -76,19 +76,21 @@ export default function SpecialsMenuUpdate(){
                                 <div className='specials-h1'>today's specials</div>
                             </div>
 
-                            {allSpecials.filter(item=>item.section == 'appetizers').length == 1 && <h2>appetizer</h2>}
-                            {allSpecials.filter(item=>item.section == 'appetizers').length > 1 && <h2>appetizers</h2>}
+                            {allSpecials.filter(item=>item.section == 'appetizers').length == 1 && 
+                                <div className='specials-h2'>appetizer</div>}
+                            {allSpecials.filter(item=>item.section == 'appetizers').length > 1 && 
+                                <div className='specials-h2'>appetizers</div>}
 
                             {allSpecials.filter(item=>item.section == 'appetizers').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
-                                        {/* <span className='name'>{data.name}</span>
+                                        <span className='name'>{data.name}</span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                         <span> {data.description}</span>
                                         {data.price.length < 3 ? 
                                             <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> } */}
+                                            <div className='price'>{data.price}</div> }
                                     </div>
                                 )
                             })}

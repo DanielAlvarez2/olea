@@ -55,3 +55,13 @@
 .price{
   font-weight: 900;
 }
+.specials-h1{
+  font-size: 21px;
+  font-family: FuturaExtraBold;
+  font-weight: 900;
+}
+.specials-h2{
+  font-size: 15px;
+  font-family: FuturaExtraBold;
+  font-weight: 900;
+}

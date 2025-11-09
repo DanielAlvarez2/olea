@@ -6,6 +6,10 @@
   font-family: 'FuturaMedium';
   src: url(./assets/fonts/FuturaMedium.otf)
 }
+@font-face{
+  font-family: 'FuturaExtraBold';
+  src: url(./assets/fonts/FuturaExtraBold.otf)
+}
 *{
   margin:0;
   padding:0;
@@ -109,8 +113,3 @@ a{
   }
 }
 
-.specials-h1{
-  font-size: 28px;
-  font-family: FuturaMedium;
-  font-weight: 900;
-}
