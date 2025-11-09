@@ -65,12 +65,12 @@ export default function SpecialsMenuUpdate(){
                                 }}>
                         <div style={{   width:'4.25in',
                                         minHeight:'5.5in',
-                                        padding:'15px 55px',
+                                        padding:'24px 55px 10px',
                                         display:'flex',
-                                        color:'red',
+                                        // color:'red',
                                         flexDirection:'column',
-                                        backgroundImage:'url(./SpecialsFront.jpg)',
-                                        backgroundSize:'4.25in 5.5in',
+                                        // backgroundImage:'url(./SpecialsFront.jpg)',
+                                        // backgroundSize:'4.25in 5.5in',
                                         border:'1px solid black'}}>
                             <div>
                                 <div className='specials-h1'>today's specials</div>
@@ -84,7 +84,27 @@ export default function SpecialsMenuUpdate(){
                             {allSpecials.filter(item=>item.section == 'appetizers').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
-                                        <span className='name'>{data.name}</span>
+                                        <span className='name'>{data.name} </span>
+                                        {data.allergiesAbbreviated && 
+                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                        <span> {data.description}</span>
+                                        {data.price.length < 3 ? 
+                                            <span className='price'> &nbsp;{data.price}</span> : 
+                                            <div className='price'>{data.price}</div> }
+                                    </div>
+                                )
+                            })}
+
+
+                            {allSpecials.filter(item=>item.section == 'entrées').length == 1 && 
+                                <div className='specials-h2'>entrée</div>}
+                            {allSpecials.filter(item=>item.section == 'entrées').length > 1 && 
+                                <div className='specials-h2'>entrées</div>}
+
+                            {allSpecials.filter(item=>item.section == 'entrées').map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>
+                                        <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                         <span> {data.description}</span>
