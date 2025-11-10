@@ -134,7 +134,10 @@ export default function SpecialsMenuUpdate(){
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
-                                        
+                                        <div style={{marginTop:'5px'}}>
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                        </div>                                        
                                     </div>
                                 )
                             })}
@@ -159,6 +162,10 @@ export default function SpecialsMenuUpdate(){
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                        <div style={{marginTop:'5px'}}>
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                        </div>
                                     </div>
                                 )
                             })}
