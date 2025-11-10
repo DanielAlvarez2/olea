@@ -108,6 +108,7 @@ export default function SpecialsMenuUpdate(){
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn delete-btn'
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                            <span className='btn archive-btn'>ARCHIVE</span>
                                         </div>
                                     </div>
                                 )
