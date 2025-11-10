@@ -84,3 +84,11 @@ app.put('/api/special/:id', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.put('/api/archiveItem/:id', async(req,res)=>{
+    try{
+        
+    }catch(err){
+        console.log(err)
+    }
+})
