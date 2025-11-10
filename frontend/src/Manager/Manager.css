@@ -41,7 +41,7 @@
   font-family: serif;
   /* border:1px solid black; */
   font-size: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 .name{
     /* color:blue; */
@@ -52,6 +52,10 @@
 .allergies-abbreviated{
   font-style: italic;
   font-size: 14px;
+}
+.allergies-complete{
+  color:red;
+  font-size:14px;
 }
 .price{
   font-weight: 900;

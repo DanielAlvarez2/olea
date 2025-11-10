@@ -76,6 +76,9 @@ export default function SpecialsMenuUpdate(){
                                 <div className='specials-h1'>today's specials</div>
                             </div>
 
+
+
+
                             {allSpecials.filter(item=>item.section == 'appetizers').length == 1 && 
                                 <div className='specials-h2'>appetizer</div>}
                             {allSpecials.filter(item=>item.section == 'appetizers').length > 1 && 
@@ -91,9 +94,14 @@ export default function SpecialsMenuUpdate(){
                                         {data.price.length < 3 ? 
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
+                                        <div className='allergies-complete'>{data.allergiesComplete}</div>
                                     </div>
                                 )
                             })}
+
+
+
+
 
 
                             {allSpecials.filter(item=>item.section == 'entrées').length == 1 && 
@@ -111,9 +119,40 @@ export default function SpecialsMenuUpdate(){
                                         {data.price.length < 3 ? 
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
                                     </div>
                                 )
                             })}
+
+
+
+
+
+                            {allSpecials.filter(item=>item.section == 'desserts').length == 1 && 
+                                <div className='specials-h2'>dessert</div>}
+                            {allSpecials.filter(item=>item.section == 'desserts').length > 1 && 
+                                <div className='specials-h2'>desserts</div>}
+
+                            {allSpecials.filter(item=>item.section == 'desserts').map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>
+                                        <span className='name'>{data.name} </span>
+                                        {data.allergiesAbbreviated && 
+                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                        <span> {data.description}</span>
+                                        {data.price.length < 3 ? 
+                                            <span className='price'> &nbsp;{data.price}</span> : 
+                                            <div className='price'>{data.price}</div> }
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                    </div>
+                                )
+                            })}
+
+
+
+
+
+
 
                             <footer style={{marginTop:'auto',
                                             textAlign:'left',
