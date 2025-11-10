@@ -43,6 +43,16 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
+    function deleteSpecial(id){
+        try{
+            fetch(`${BASE_URL}/api/special/${id}`,{method:'DELETE'})
+                .then(()=>getSpecials())
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
 
     return(
         <>
@@ -95,6 +105,10 @@ export default function SpecialsMenuUpdate(){
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                        <div style={{marginTop:'5px'}}>
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                        </div>
                                     </div>
                                 )
                             })}
@@ -119,7 +133,8 @@ export default function SpecialsMenuUpdate(){
                                         {data.price.length < 3 ? 
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
-                                            <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                        <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                        
                                     </div>
                                 )
                             })}
@@ -143,7 +158,7 @@ export default function SpecialsMenuUpdate(){
                                         {data.price.length < 3 ? 
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
-                                            <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                        <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
                                     </div>
                                 )
                             })}

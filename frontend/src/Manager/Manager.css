@@ -72,3 +72,15 @@
   font-family: FuturaExtraBold;
   font-weight: 900;
 }
+.btn{
+  border-radius: 10px;
+  font-family: sans-serif;
+  cursor:pointer;
+  font-size: 10px;
+  padding:5px 10px;
+  margin: 0px 0px;
+}
+.delete-btn{
+  background:red;
+  color:white;
+}
