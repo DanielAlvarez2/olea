@@ -43,9 +43,23 @@ app.post('/api/special', async(req,res)=>{
 
 app.delete('/api/special/:id', async(req,res)=>{
     try{
+        const target = await Special.findById(req.params.id)
+        const maxSequence = await Special.findOne({section: target.section}).sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await Special.findOneAndUpdate({
+                $and:[
+                    {section: target.section},
+                    {sequence: i}
+                ]
+            },{sequence: i-1})
+        }
         await Special.findByIdAndDelete(req.params.id)
-        console.log('Item Deleted from Database')
-        res.json('Item Deleted from Database')
+        console.log(`
+            Deleted from Database:
+            ${target.name}`)
+        res.json(`
+            Deleted from Database:
+            ${target.name}`)
     }catch(err){
         console.log(err)
     }
@@ -85,10 +99,10 @@ app.put('/api/special/:id', async(req,res)=>{
     }
 })
 
-app.put('/api/archiveItem/:id', async(req,res)=>{
-    try{
-        
-    }catch(err){
-        console.log(err)
-    }
-})
+// app.put('/api/archiveItem/:id', async(req,res)=>{
+//     try{
+//         console.log(`/api/archiveItem/${req.params.id}`)
+//     }catch(err){
+//         console.log(err)
+//     }
+// })

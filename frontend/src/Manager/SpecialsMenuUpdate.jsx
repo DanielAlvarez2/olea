@@ -46,6 +46,8 @@ export default function SpecialsMenuUpdate(){
     function deleteSpecial(id){
         try{
             fetch(`${BASE_URL}/api/special/${id}`,{method:'DELETE'})
+                .then(res=>res.json())
+                .then(data=>alert(data))
                 .then(()=>getSpecials())
                 .catch(err=>console.log(err))
         }catch(err){
@@ -97,6 +99,7 @@ export default function SpecialsMenuUpdate(){
                             {allSpecials.filter(item=>item.section == 'appetizers').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
+                                        <div>#{data.sequence}</div>
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -108,8 +111,8 @@ export default function SpecialsMenuUpdate(){
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn delete-btn'
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                            {/* <span   className='btn archive-btn'
+                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span> */}
                                         </div>
                                     </div>
                                 )
@@ -128,6 +131,7 @@ export default function SpecialsMenuUpdate(){
                             {allSpecials.filter(item=>item.section == 'entrées').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
+                                        <div>#{data.sequence}</div>                                        
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -156,6 +160,7 @@ export default function SpecialsMenuUpdate(){
                             {allSpecials.filter(item=>item.section == 'desserts').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
+                                        <div>#{data.sequence}</div>                                        
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
