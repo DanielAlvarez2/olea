@@ -22,6 +22,7 @@ import SpecialsMenu from './Manager/SpecialsMenu.jsx'
 import SpecialsMenuUpdate from './Manager/SpecialsMenuUpdate.jsx'
 import WineList from './Manager/WineList.jsx'
 import Events from './Manager/Events.jsx'
+import RestaurantWeeks from './Manager/RestaurantWeeks.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -49,6 +50,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='events' element={<Events />} />
         
         <Route path='specials-menu-update' element={<SpecialsMenuUpdate />} />
+        <Route path='restaurant-weeks' element={<RestaurantWeeks />} />
 
 
       </Routes>

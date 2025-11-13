@@ -24,7 +24,7 @@ export default function Events(){
                         <Link to='/'><li style={{flexGrow:'1'}}>mother's day</li></Link>
                         <Link to='/'><li style={{flexGrow:'1'}}>graduation</li></Link>
                         <Link to='/'><li style={{flexGrow:'1'}}>parents weekend</li></Link>
-                        <Link to='/'><li style={{flexGrow:'1'}}>restaurant weeks</li></Link>
+                        <Link to='/restaurant-weeks'><li style={{flexGrow:'1'}}>restaurant weeks</li></Link>
                         <Link to='/'><li style={{flexGrow:'1'}}>new year's eve</li></Link>
                     </ul>
 
