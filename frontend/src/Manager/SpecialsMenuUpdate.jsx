@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import './Manager.css'
 import './Specials.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
+import { FaCaretUp } from "react-icons/fa";
 
 
 export default function SpecialsMenuUpdate(){
@@ -67,6 +68,16 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
+    function moveUp(id){
+        try{
+            fetch(`${BASE_URL}/api/specials/move-up/${id}`,{method:'PUT'})
+                .then(()=>getSpecials())
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
     return(
         <>
             <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
@@ -102,6 +113,9 @@ export default function SpecialsMenuUpdate(){
 
 
 
+
+
+
                             {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
                                 <div className='specials-h2'>appetizer</div>}
                             {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
@@ -110,6 +124,18 @@ export default function SpecialsMenuUpdate(){
                             {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
+                                        {data.sequence != '1' && 
+                                            <div style={{   width:'100%',
+                                                            color:'grey',
+                                                            textAlign:'center',
+                                                            fontSize:'40px'}}>
+                                                                <span   onClick={()=>moveUp(data._id)} 
+                                                                        style={{cursor:'pointer'}}>
+                                                                    <FaCaretUp />
+                                                                </span>
+                                            </div>}
+                                        
+                                        
                                         <div>#{data.sequence}</div>
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
@@ -142,6 +168,17 @@ export default function SpecialsMenuUpdate(){
                             {allSpecials.filter(item=>item.section == 'entrées').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
+                                        {data.sequence != '1' && 
+                                            <div style={{   width:'100%',
+                                                            color:'grey',
+                                                            textAlign:'center',
+                                                            fontSize:'40px'}}>
+                                                                <span   onClick={()=>moveUp(data._id)} 
+                                                                        style={{cursor:'pointer'}}>
+                                                                    <FaCaretUp />
+                                                                </span>
+                                            </div>}
+
                                         <div>#{data.sequence}</div>                                        
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
@@ -173,6 +210,17 @@ export default function SpecialsMenuUpdate(){
                             {allSpecials.filter(item=>item.section == 'desserts').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
+                                        {data.sequence != '1' && 
+                                            <div style={{   width:'100%',
+                                                            color:'grey',
+                                                            textAlign:'center',
+                                                            fontSize:'40px'}}>
+                                                                <span   onClick={()=>moveUp(data._id)} 
+                                                                        style={{cursor:'pointer'}}>
+                                                                    <FaCaretUp />
+                                                                </span>
+                                            </div>}
+
                                         <div>#{data.sequence}</div>                                        
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
