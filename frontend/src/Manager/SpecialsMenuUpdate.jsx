@@ -8,6 +8,7 @@ import { FaCaretUp } from "react-icons/fa";
 
 export default function SpecialsMenuUpdate(){
     const [allSpecials, setAllSpecials] = useState([])
+    const [currentAppetizers, setCurrentAppetizers] = useState([])
     useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -71,6 +72,16 @@ export default function SpecialsMenuUpdate(){
     function moveUp(id){
         try{
             fetch(`${BASE_URL}/api/specials/move-up/${id}`,{method:'PUT'})
+                .then(()=>getSpecials())
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function moveDown(id){
+        try{
+            fetch(`${BASE_URL}/api/specials/move-down/${id}`,{method:'PUT'})
                 .then(()=>getSpecials())
                 .catch(err=>console.log(err))
         }catch(err){
@@ -151,6 +162,16 @@ export default function SpecialsMenuUpdate(){
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                         </div>
+
+                                        {data.sequence != allSpecials.filter(item=>item.section == 'appetizers' && item.sequence).length && 
+                                            <div style={{width:'100%', color:'grey',textAlign:'center',fontSize:'40px'}}>
+                                                <span   style={{cursor:'pointer'}} 
+                                                        onClick={()=>moveDown(data._id)}>
+                                                    <FaCaretUp style={{transform:'rotate(180deg)'}} />
+                                                </span>
+                                            </div>
+                                        }
+
                                     </div>
                                 )
                             })}
@@ -193,7 +214,17 @@ export default function SpecialsMenuUpdate(){
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
-                                        </div>                                        
+                                        </div>     
+
+                                        {data.sequence != allSpecials.filter(item=>item.section == 'entrées' && item.sequence).length && 
+                                            <div style={{width:'100%', color:'grey',textAlign:'center',fontSize:'40px'}}>
+                                                <span   style={{cursor:'pointer'}} 
+                                                        onClick={()=>moveDown(data._id)}>
+                                                    <FaCaretUp style={{transform:'rotate(180deg)'}} />
+                                                </span>
+                                            </div>
+                                        }
+
                                     </div>
                                 )
                             })}
@@ -236,6 +267,16 @@ export default function SpecialsMenuUpdate(){
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                         </div>
+
+                                        {data.sequence != allSpecials.filter(item=>item.section == 'desserts' && item.sequence).length && 
+                                            <div style={{width:'100%', color:'grey',textAlign:'center',fontSize:'40px'}}>
+                                                <span   style={{cursor:'pointer'}} 
+                                                        onClick={()=>moveDown(data._id)}>
+                                                    <FaCaretUp style={{transform:'rotate(180deg)'}} />
+                                                </span>
+                                            </div>
+                                        }
+
                                     </div>
                                 )
                             })}
@@ -362,7 +403,8 @@ export default function SpecialsMenuUpdate(){
                             {allSpecials.filter(item=>item.sequence == 0).map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
-                                        <div>#{data.sequence}</div>                                        
+                                        <div>#{data.sequence}</div>    
+                                        <div>section: {data.section}</div>                                    
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}

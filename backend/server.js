@@ -112,6 +112,27 @@ app.put('/api/specials/move-up/:id', async(req,res)=>{
         console.log(err)
     }
 })
+app.put('/api/specials/move-down/:id', async(req,res)=>{
+    try{
+        const target= await Special.findById(req.params.id)
+        await Special.findOneAndUpdate({
+            $and:[
+                {section: target.section},
+                {sequence: target.sequence + 1}
+            ]
+        },{sequence: target.sequence})
+        await Special.findByIdAndUpdate(req.params.id,{sequence: target.sequence + 1})
+        console.log(`
+            Moved Down:
+            ${target.name}`)
+        res.json(`
+            Moved Down:
+            ${target.name}`)
+       
+    }catch(err){
+        console.log(err)
+    }
+})
 
 app.get('/api/specials', async(req,res)=>{
     try{
