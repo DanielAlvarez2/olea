@@ -69,6 +69,18 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
+    function unarchiveSpecial(id){
+        try{
+            fetch(`${BASE_URL}/api/specials/unarchive/${id}`,{method:'PUT'})
+                .then(res=>res.json())
+                .then(data=>alert(data))
+                .then(()=>getSpecials())
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
     function moveUp(id){
         try{
             fetch(`${BASE_URL}/api/specials/move-up/${id}`,{method:'PUT'})
@@ -120,6 +132,14 @@ export default function SpecialsMenuUpdate(){
                             <div>
                                 <div className='specials-h1'>today's specials</div>
                             </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -181,6 +201,19 @@ export default function SpecialsMenuUpdate(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
                             {allSpecials.filter(item=>item.section == 'entrées').length == 1 && 
                                 <div className='specials-h2'>entrée</div>}
                             {allSpecials.filter(item=>item.section == 'entrées').length > 1 && 
@@ -228,6 +261,19 @@ export default function SpecialsMenuUpdate(){
                                     </div>
                                 )
                             })}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -384,6 +430,20 @@ export default function SpecialsMenuUpdate(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <div style={{   width:'4.25in',
                                         minHeight:'5.5in',
                                         padding:'24px 55px 10px',
@@ -416,6 +476,9 @@ export default function SpecialsMenuUpdate(){
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn delete-btn'
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                            <span   className='btn unarchive-btn'
+                                                    onClick={()=>unarchiveSpecial(data._id)}>
+                                                UNarchive</span>
                                         </div>
                                     </div>
                                 )

@@ -92,6 +92,23 @@ app.put('/api/specials/archive/:id', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.put('/api/specials/unarchive/:id', async(req,res)=>{
+    try{
+        const target = await Special.findById(req.params.id)
+        const maxSequence = await Special.findOne({section:target.section}).sort({sequence:-1})
+        await Special.findByIdAndUpdate(req.params.id, {sequence: maxSequence.sequence + 1})
+        console.log(`
+            UNarchived:
+             - ${target.name}`)
+        res.json(`
+            UNarchived:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/specials/move-up/:id', async(req,res)=>{
     try{
         const target= await Special.findById(req.params.id)

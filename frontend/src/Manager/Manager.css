@@ -85,6 +85,7 @@
   background:red;
   color:white;
 }
-.archive-btn{
+.archive-btn, 
+.unarchive-btn{
   background:yellow;
 }
