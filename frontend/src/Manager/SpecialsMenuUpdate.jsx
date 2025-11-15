@@ -8,7 +8,6 @@ import { FaCaretUp } from "react-icons/fa";
 
 export default function SpecialsMenuUpdate(){
     const [allSpecials, setAllSpecials] = useState([])
-    const [currentAppetizers, setCurrentAppetizers] = useState([])
     useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 

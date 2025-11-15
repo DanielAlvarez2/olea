@@ -3,10 +3,22 @@ import './Specials.css'
 import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home(){
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'
+
+    const [allSpecials, setAllSpecials] = useState([])
+    useEffect(()=>getSpecials())
     useEffect(()=>window.scrollTo(0,0),[])
+    function getSpecials(){
+        fetch(`${BASE_URL}/api/specials`)
+            .then(res=>res.json())
+            .then(data=>setAllSpecials(data))
+            .catch(err=>console.log(err))
+    }
     return (
         <div className='page-wrapper webpage'>
             <div className='webpage-wrapper'>
@@ -18,13 +30,17 @@ export default function Home(){
                         <div className='specials-left'>
                                                                     
                             <h2>DAILY SPECIALS</h2>
-                                <span className='oysters'>
-                                    <span>fresh Chebooktook oysters</span>
-                                    <span>6 units 21 / 12 units 42</span>
-                                </span> 
-                                (Bouctouche Bay, New Brunswick, Canada), Thai basil-black pepper mignonette sauce and tomatillo granita<br/>                                
 
-                    
+                                {allSpecials
+                                    .filter(item=>item.section == 'appetizers' && item.sequence)
+                                    .map(data=>{
+                                        return(
+                                            <>{data.name}<br/></>
+                                        )
+                                    })}
+
+
+
                                 <br/><br/><br/><br/>
                                 we do our best to keep this information accurate and up to date, but because we make frequent adjustments, based on season and availability, our menus are subject to change
                         </div>{/* .specials-left */}
