@@ -31,14 +31,83 @@ export default function Home(){
                                                                     
                             <h2>DAILY SPECIALS</h2>
 
+                            {allSpecials
+                                .filter(item=>item.section == 'appetizers' && item.sequence)
+                                .length == 1 && 
+                                    <div className='website-menu-section'>appetizer</div>}
+                            
+                            {allSpecials
+                                .filter(item=>item.section == 'appetizers' && item.sequence)
+                                .length > 1 && 
+                                    <div className='website-menu-section'>appetizers</div>}
+
                                 {allSpecials
                                     .filter(item=>item.section == 'appetizers' && item.sequence)
                                     .map(data=>{
                                         return(
-                                            <>{data.name}<br/></>
+                                            <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                    <span>
+                                                        <span className='website-name'>{data.name}</span><br/>
+                                                        {data.description}
+                                                    </span>
+                                                    <span>{data.price}</span>
+                                                </div>
+                                                <br/>
+                                            </>
                                         )
                                     })}
 
+                            {allSpecials
+                                .filter(item=>item.section == 'entrées' && item.sequence)
+                                .length == 1 && 
+                                    <div className='website-menu-section'>entrée</div>}
+                            
+                            {allSpecials
+                                .filter(item=>item.section == 'entrées' && item.sequence)
+                                .length > 1 && 
+                                    <div className='website-menu-section'>entrées</div>}
+
+                                {allSpecials
+                                    .filter(item=>item.section == 'entrées' && item.sequence)
+                                    .map(data=>{
+                                        return(
+                                            <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                    <span>
+                                                        <span className='website-name'>{data.name}</span><br/>
+                                                        {data.description}
+                                                    </span>
+                                                    <span>{data.price}</span>
+                                                </div>
+                                                <br/>
+                                            </>
+                                        )
+                                    })}
+
+                            {allSpecials
+                                .filter(item=>item.section == 'desserts' && item.sequence)
+                                .length == 1 && 
+                                    <div className='website-menu-section'>dessert</div>}
+                            
+                            {allSpecials
+                                .filter(item=>item.section == 'desserts' && item.sequence)
+                                .length > 1 && 
+                                    <div className='website-menu-section'>desserts</div>}
+
+                                {allSpecials
+                                    .filter(item=>item.section == 'desserts' && item.sequence)
+                                    .map(data=>{
+                                        return(
+                                            <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                    <span>
+                                                        <span className='website-name'>{data.name}</span><br/>
+                                                        {data.description}
+                                                    </span>
+                                                    <span>{data.price}</span>
+                                                </div>
+                                                <br/>
+                                            </>
+                                        )
+                                    })}
 
 
                                 <br/><br/><br/><br/>

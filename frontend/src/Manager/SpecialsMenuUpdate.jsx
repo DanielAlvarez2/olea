@@ -155,15 +155,15 @@ export default function SpecialsMenuUpdate(){
                                 return(
                                     <div key={data._id} className='special'>
                                         {data.sequence != '1' && 
-                                            <div style={{   width:'100%',
-                                                            color:'grey',
-                                                            textAlign:'center',
-                                                            fontSize:'40px'}}>
-                                                                <span   onClick={()=>moveUp(data._id)} 
-                                                                        style={{cursor:'pointer'}}>
-                                                                    <FaCaretUp />
-                                                                </span>
-                                            </div>}
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'10px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveUp(data._id))} />
+                                        }
                                         
                                         
                                         <div>#{data.sequence}</div>
@@ -183,12 +183,15 @@ export default function SpecialsMenuUpdate(){
                                         </div>
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'appetizers' && item.sequence).length && 
-                                            <div style={{width:'100%', color:'grey',textAlign:'center',fontSize:'40px'}}>
-                                                <span   style={{cursor:'pointer'}} 
-                                                        onClick={()=>moveDown(data._id)}>
-                                                    <FaCaretUp style={{transform:'rotate(180deg)'}} />
-                                                </span>
-                                            </div>
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'0px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                transform:'rotate(180deg',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveDown(data._id))} />
                                         }
 
                                     </div>
@@ -213,24 +216,24 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            {allSpecials.filter(item=>item.section == 'entrées').length == 1 && 
+                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
                                 <div className='specials-h2'>entrée</div>}
-                            {allSpecials.filter(item=>item.section == 'entrées').length > 1 && 
+                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
                                 <div className='specials-h2'>entrées</div>}
 
-                            {allSpecials.filter(item=>item.section == 'entrées').map(data=>{
+                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
                                         {data.sequence != '1' && 
-                                            <div style={{   width:'100%',
-                                                            color:'grey',
-                                                            textAlign:'center',
-                                                            fontSize:'40px'}}>
-                                                                <span   onClick={()=>moveUp(data._id)} 
-                                                                        style={{cursor:'pointer'}}>
-                                                                    <FaCaretUp />
-                                                                </span>
-                                            </div>}
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'10px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveUp(data._id))} />
+                                        }
 
                                         <div>#{data.sequence}</div>                                        
                                         <span className='name'>{data.name} </span>
@@ -249,12 +252,15 @@ export default function SpecialsMenuUpdate(){
                                         </div>     
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'entrées' && item.sequence).length && 
-                                            <div style={{width:'100%', color:'grey',textAlign:'center',fontSize:'40px'}}>
-                                                <span   style={{cursor:'pointer'}} 
-                                                        onClick={()=>moveDown(data._id)}>
-                                                    <FaCaretUp style={{transform:'rotate(180deg)'}} />
-                                                </span>
-                                            </div>
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'0px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                transform:'rotate(180deg',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveDown(data._id))} />
                                         }
 
                                     </div>
@@ -278,24 +284,25 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            {allSpecials.filter(item=>item.section == 'desserts').length == 1 && 
+                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
                                 <div className='specials-h2'>dessert</div>}
-                            {allSpecials.filter(item=>item.section == 'desserts').length > 1 && 
+                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
                                 <div className='specials-h2'>desserts</div>}
 
-                            {allSpecials.filter(item=>item.section == 'desserts').map(data=>{
+                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
                                         {data.sequence != '1' && 
-                                            <div style={{   width:'100%',
-                                                            color:'grey',
-                                                            textAlign:'center',
-                                                            fontSize:'40px'}}>
-                                                                <span   onClick={()=>moveUp(data._id)} 
-                                                                        style={{cursor:'pointer'}}>
-                                                                    <FaCaretUp />
-                                                                </span>
-                                            </div>}
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'10px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveUp(data._id))} />
+
+                                        }
 
                                         <div>#{data.sequence}</div>                                        
                                         <span className='name'>{data.name} </span>
@@ -314,12 +321,15 @@ export default function SpecialsMenuUpdate(){
                                         </div>
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'desserts' && item.sequence).length && 
-                                            <div style={{width:'100%', color:'grey',textAlign:'center',fontSize:'40px'}}>
-                                                <span   style={{cursor:'pointer'}} 
-                                                        onClick={()=>moveDown(data._id)}>
-                                                    <FaCaretUp style={{transform:'rotate(180deg)'}} />
-                                                </span>
-                                            </div>
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'0px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                transform:'rotate(180deg',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveDown(data._id))} />
                                         }
 
                                     </div>
@@ -343,6 +353,7 @@ export default function SpecialsMenuUpdate(){
                             <footer style={{marginTop:'auto',
                                             textAlign:'left',
                                             fontSize:'11px',
+                                            paddingTop:'20px',
                                             fontFamily:'serif'}}>
                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                 or seafood may increase the risk of foodborne illnesses.<br/>
@@ -442,49 +453,53 @@ export default function SpecialsMenuUpdate(){
 
 
 
-
-                        <div style={{   width:'4.25in',
-                                        minHeight:'5.5in',
-                                        padding:'24px 55px 10px',
-                                        display:'flex',
-                                        margin: '0 auto',
-                                        // color:'red',
-                                        flexDirection:'column',
-                                        // backgroundImage:'url(./SpecialsFront.jpg)',
-                                        // backgroundSize:'4.25in 5.5in',
-                                        border:'1px solid black'}}>
-                            <div>
-                                <div className='specials-h1'>archives</div>
-                            </div>
-
-                            <br/><br/>
-
-                            {allSpecials.filter(item=>item.sequence == 0).map(data=>{
-                                return(
-                                    <div key={data._id} className='special'>
-                                        <div>#{data.sequence}</div>    
-                                        <div>section: {data.section}</div>                                    
-                                        <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                        <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
-                                        <div style={{marginTop:'5px'}}>
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
-                                            <span   className='btn unarchive-btn'
-                                                    onClick={()=>unarchiveSpecial(data._id)}>
-                                                UNarchive</span>
-                                        </div>
+                        {allSpecials.filter(item=>item.sequence == 0).length &&
+                            <>
+                                <div style={{   width:'4.25in',
+                                                minHeight:'5.5in',
+                                                padding:'24px 55px 10px',
+                                                display:'flex',
+                                                margin: '0 auto',
+                                                // color:'red',
+                                                flexDirection:'column',
+                                                // backgroundImage:'url(./SpecialsFront.jpg)',
+                                                // backgroundSize:'4.25in 5.5in',
+                                                border:'1px solid black'}}>
+                                    <div>
+                                        <div className='specials-h1'>archives</div>
                                     </div>
-                                )
-                            })}
+
+                                    <br/><br/>
+
+                                    {allSpecials.filter(item=>item.sequence == 0).map(data=>{
+                                        return(
+                                            <div key={data._id} className='special'>
+                                                <div>#{data.sequence}</div>    
+                                                <div>section: {data.section}</div>                                    
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+                                                <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                                <div style={{marginTop:'5px'}}>
+                                                    <span   className='btn delete-btn'
+                                                            onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                                    <span   className='btn unarchive-btn'
+                                                            onClick={()=>unarchiveSpecial(data._id)}>
+                                                        UNarchive</span>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
 
 
-                        </div>
+                                </div>
+
+                            
+                            </>}
 
 
 
