@@ -5,6 +5,8 @@ import './Specials.css'
 import './SpecialsMenuFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
+import { PiPlusCircleDuotone } from "react-icons/pi";
+import { PiMinusCircleDuotone } from "react-icons/pi";
 
 
 export default function SpecialsMenuUpdate(){
@@ -59,6 +61,15 @@ export default function SpecialsMenuUpdate(){
                                 height:'100%',
                                 border:'1px solid green'
                                 }}>
+
+                        <div style={{   textAlign:'center',
+                                        display:'flex',
+                                        gap:'10px',
+                                        alignItems:'center'}}>
+                            <span><PiMinusCircleDuotone style={{fontSize:'50px',cursor:'pointer'}} /></span>
+                            <span>page margins<br/>left & right</span>
+                            <span><PiPlusCircleDuotone style={{fontSize:'50px',cursor:'pointer'}} /></span>
+                        </div>
                         <div style={{   width:'4.25in',
                                         height:'5.5in',
                                         padding:'0',
