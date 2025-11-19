@@ -194,7 +194,12 @@ app.get('/api/formats/specials', async(req,res)=>{
     try{
         let allFormats = await Pixel.find()
         if (allFormats.length == 0){
-            console.log('DB is EMPTY!!!!')
+            await Pixel.create({
+                menu:'specials',
+                name: 'pageMarginsLeftRight',
+                pixels: 0
+            })
+            allFormats = await Pixel.find()
         }
         console.log(allFormats)
         res.json(allFormats)

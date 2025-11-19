@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const PixelSchema = new mongoose.Schema({
-    pixel:{type:Number},
+    pixels:{type:Number},
     menu:{type:String},
     name:{type:String}
 })
