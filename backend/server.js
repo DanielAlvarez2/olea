@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const Special = require('./models/Special.js')
+const Pixel = require('./models/Pixel.js')
 
 const app = express()
 app.use(express.json())
@@ -189,3 +190,15 @@ app.put('/api/specials/:id', async(req,res)=>{
     }
 })
 
+app.get('/api/formats/specials', async(req,res)=>{ 
+    try{
+        let allFormats = await Pixel.find()
+        if (allFormats.length == 0){
+            console.log('DB is EMPTY!!!!')
+        }
+        console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})

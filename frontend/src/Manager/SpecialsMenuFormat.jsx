@@ -11,6 +11,9 @@ import { PiMinusCircleDuotone } from "react-icons/pi";
 
 export default function SpecialsMenuUpdate(){
     const [allSpecials, setAllSpecials] = useState([])
+    const [specialsFormatting, setSpecialsFormatting] = useState([])
+
+    useEffect(()=>getSpecialsFormatting(),[])
     useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -22,6 +25,18 @@ export default function SpecialsMenuUpdate(){
             fetch(`${BASE_URL}/api/specials`)
                 .then(res=>res.json())
                 .then(json=>setAllSpecials(json))
+                .then(console.log(specialsFormatting))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getSpecialsFormatting(){
+        try{
+            fetch(`${BASE_URL}/api/formats/specials`)
+                .then(res=>res.json())
+                .then(json=>setSpecialsFormatting(json))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -73,6 +88,7 @@ export default function SpecialsMenuUpdate(){
                         <div style={{   width:'4.25in',
                                         height:'5.5in',
                                         padding:'0',
+                                        marginBottom:'50px',
                                         display:'flex',
                                         // color:'red',
                                         flexDirection:'column',
