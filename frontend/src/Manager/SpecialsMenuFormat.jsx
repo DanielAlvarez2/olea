@@ -35,17 +35,21 @@ export default function SpecialsMenuUpdate(){
         try{
             fetch(`${BASE_URL}/api/formats/specials`)
                 .then(res=>res.json())
-                .then(json=>setSpecialsFormatting(json))
+                .then(json=>setPageMarginsLeftRight(json.filter(item=>item.name == 'pageMarginsLeftRight')[0].pixels))
                 .catch(err=>console.log(err))
-            useSpecialsFormatting()
+            
         }catch(err){
             console.log(err)
         }
     }
 
-    function useSpecialsFormatting(){
-        console.log(specialsFormatting)
-        // setPageMarginsLeftRight(specialsFormatting.filter(item=>item.name == 'pageMarginsLeftRight')[0].pixels)
+    function increasePageMarginsLeftRight(){
+        setPageMarginsLeftRight(prev=>prev + 1)
+    }
+
+    function decreasePageMarginsLeftRight(){
+        if (pageMarginsLeftRight == 0) return
+        setPageMarginsLeftRight(prev=>prev - 1)
     }
 
 
@@ -85,19 +89,18 @@ export default function SpecialsMenuUpdate(){
                                         display:'flex',
                                         gap:'10px',
                                         alignItems:'center'}}>
-                            <span><PiMinusCircleDuotone style={{fontSize:'50px',cursor:'pointer'}} /></span>
+                            <span><PiMinusCircleDuotone style={{fontSize:'50px',cursor:'pointer'}}
+                                                        onClick={decreasePageMarginsLeftRight} /></span>
                             <span>page margins<br/>left & right</span>
-                            <span><PiPlusCircleDuotone style={{fontSize:'50px',cursor:'pointer'}} /></span>
+                            <span><PiPlusCircleDuotone  style={{fontSize:'50px',cursor:'pointer'}} 
+                                                        onClick={increasePageMarginsLeftRight} /></span>
                         </div>
                         <div style={{   width:'4.25in',
                                         height:'5.5in',
-                                        padding:`0 ${specialsFormatting.filter(item=>item.name == 'pageMarginsLeftRight')[0].pixels}px`,
+                                        padding:`0 ${pageMarginsLeftRight}px`,
                                         marginBottom:'50px',
                                         display:'flex',
-                                        // color:'red',
                                         flexDirection:'column',
-                                        // backgroundImage:'url(./SpecialsFront.jpg)',
-                                        // backgroundSize:'4.25in 5.5in',
                                         border:'1px solid red'}}>
                             <div>
                                 
