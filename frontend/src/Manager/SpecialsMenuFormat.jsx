@@ -12,7 +12,7 @@ import { PiMinusCircleDuotone } from "react-icons/pi";
 export default function SpecialsMenuUpdate(){
     const [allSpecials, setAllSpecials] = useState([])
     const [specialsFormatting, setSpecialsFormatting] = useState([])
-
+    const [pageMarginsLeftRight, setPageMarginsLeftRight] = useState(0)
     useEffect(()=>getSpecialsFormatting(),[])
     useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -25,7 +25,6 @@ export default function SpecialsMenuUpdate(){
             fetch(`${BASE_URL}/api/specials`)
                 .then(res=>res.json())
                 .then(json=>setAllSpecials(json))
-                .then(console.log(specialsFormatting))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -38,11 +37,16 @@ export default function SpecialsMenuUpdate(){
                 .then(res=>res.json())
                 .then(json=>setSpecialsFormatting(json))
                 .catch(err=>console.log(err))
+            useSpecialsFormatting()
         }catch(err){
             console.log(err)
         }
     }
 
+    function useSpecialsFormatting(){
+        console.log(specialsFormatting)
+        // setPageMarginsLeftRight(specialsFormatting.filter(item=>item.name == 'pageMarginsLeftRight')[0].pixels)
+    }
 
 
 
@@ -87,7 +91,7 @@ export default function SpecialsMenuUpdate(){
                         </div>
                         <div style={{   width:'4.25in',
                                         height:'5.5in',
-                                        padding:'0',
+                                        padding:`0 ${specialsFormatting.filter(item=>item.name == 'pageMarginsLeftRight')[0].pixels}px`,
                                         marginBottom:'50px',
                                         display:'flex',
                                         // color:'red',
@@ -96,6 +100,7 @@ export default function SpecialsMenuUpdate(){
                                         // backgroundSize:'4.25in 5.5in',
                                         border:'1px solid red'}}>
                             <div>
+                                
                                 <div className='specials-h1'>today's specials</div>
                             </div>
 
