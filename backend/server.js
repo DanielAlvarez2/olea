@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const Special = require('./models/Special.js')
 const Pixel = require('./models/Pixel.js')
+const SpecialsFormat = require('./models/SpecialsFormat.js')
 
 const app = express()
 app.use(express.json())
