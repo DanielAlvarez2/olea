@@ -13,6 +13,7 @@ export default function SpecialsMenuUpdate(){
     const [allSpecials, setAllSpecials] = useState([])
     const [specialsFormatting, setSpecialsFormatting] = useState([])
     const [pageMarginsLeftRight, setPageMarginsLeftRight] = useState(0)
+    const [menuItemMarginsTopBottom, setMenuItemMarginsTopBottom] = useState(0)
     useEffect(()=>getSpecialsFormatting(),[])
     useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -39,6 +40,7 @@ export default function SpecialsMenuUpdate(){
                     console.log(json[0])
                     setSpecialsFormatting(json[0])
                     setPageMarginsLeftRight(json[0].pageMarginsLeftRight)
+                    setMenuItemMarginsTopBottom(json[0].menuItemMarginsTopBottom)
                 })
                 .catch(err=>console.log(err))
             
@@ -56,6 +58,19 @@ export default function SpecialsMenuUpdate(){
     function decreasePageMarginsLeftRight(){
         if (pageMarginsLeftRight == 0) return
         fetch(`${BASE_URL}/api/formats/specials/decreasePageMargins`, {method:'PUT'})
+            .then(()=>getSpecialsFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function increaseMenuItemMarginsTopBottom(){
+        fetch(`${BASE_URL}/api/formats/specials/increaseMenuItemMargins`, {method:'PUT'})
+            .then(()=>getSpecialsFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function decreaseMenuItemMarginsTopBottom(){
+        if (menuItemMarginsTopBottom == 0) return
+        fetch(`${BASE_URL}/api/formats/specials/decreaseMenuItemMargins`, {method:'PUT'})
             .then(()=>getSpecialsFormatting())
             .catch(err=>console.log(err))
     }
@@ -103,6 +118,18 @@ export default function SpecialsMenuUpdate(){
                             <span><PiPlusCircleDuotone  style={{fontSize:'50px',cursor:'pointer'}} 
                                                         onClick={increasePageMarginsLeftRight} /></span>
                         </div>
+
+                        <div style={{   textAlign:'center',
+                                        display:'flex',
+                                        gap:'10px',
+                                        alignItems:'center'}}>
+                            <span><PiMinusCircleDuotone style={{fontSize:'50px',cursor:'pointer'}}
+                                                        onClick={decreaseMenuItemMarginsTopBottom} /></span>
+                            <span>menu item margins<br/>top & bottom</span>
+                            <span><PiPlusCircleDuotone  style={{fontSize:'50px',cursor:'pointer'}} 
+                                                        onClick={increaseMenuItemMarginsTopBottom} /></span>
+                        </div>
+
                         <div style={{   width:'4.25in',
                                         height:'5.5in',
                                         padding:`0 ${pageMarginsLeftRight}px`,
@@ -112,10 +139,9 @@ export default function SpecialsMenuUpdate(){
                                         border:'1px solid red'}}>
                             <div>
                                 
-                                <div className='specials-h1'>today's specials</div>
+                                <div    className='specials-h1'
+                                        style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
                             </div>
-
-
 
 
 
@@ -136,7 +162,9 @@ export default function SpecialsMenuUpdate(){
 
                             {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                 return(
-                                    <div key={data._id} className='special'>
+                                    <div    key={data._id}
+                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                            className='special'>
                                     
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
@@ -176,7 +204,9 @@ export default function SpecialsMenuUpdate(){
 
                             {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                 return(
-                                    <div key={data._id} className='special'>
+                                    <div    key={data._id} 
+                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                            className='special'>
                                         
                                   
                                         <span className='name'>{data.name} </span>
@@ -216,7 +246,9 @@ export default function SpecialsMenuUpdate(){
 
                             {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
                                 return(
-                                    <div key={data._id} className='special'>
+                                    <div    key={data._id} 
+                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                            className='special'>
                                         
                                   
                                         <span className='name'>{data.name} </span>

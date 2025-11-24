@@ -197,7 +197,7 @@ app.get('/api/formats/specials', async(req,res)=>{
         if (allFormats.length == 0){
             await SpecialsFormat.create({
                 pageMarginsLeftRight: 0,
-                menuItemsMarginTopBottom: 0,
+                menuItemMarginsTopBottom: 0,
                 doubleSided: false,
                 letterPaper: true,
                 showLegalText: true
@@ -230,6 +230,30 @@ app.put('/api/formats/specials/decreasePageMargins', async(req,res)=>{
         await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {pageMarginsLeftRight: allFormats[0].pageMarginsLeftRight - 1})
         res.json('page margins decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/specials/increaseMenuItemMargins', async(req,res)=>{
+    try{
+        const allFormats = await SpecialsFormat.find()
+        console.log(allFormats[0])
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {menuItemMarginsTopBottom: allFormats[0].menuItemMarginsTopBottom + 1})
+        res.json('menu item margins increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/specials/decreaseMenuItemMargins', async(req,res)=>{
+    try{
+        const allFormats = await SpecialsFormat.find()
+        console.log(allFormats[0])
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {menuItemMarginsTopBottom: allFormats[0].menuItemMarginsTopBottom - 1})
+        res.json('menu item margins increased')
     }catch(err){
         console.log(err)
     }
