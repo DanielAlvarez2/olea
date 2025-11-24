@@ -35,7 +35,7 @@ export default function SpecialsMenuUpdate(){
         try{
             fetch(`${BASE_URL}/api/formats/specials`)
                 .then(res=>res.json())
-                .then(json=>setPageMarginsLeftRight(json.filter(item=>item.name == 'pageMarginsLeftRight')[0].pixels))
+                .then(json=>setSpecialsFormatting(json[0]))
                 .catch(err=>console.log(err))
             
         }catch(err){

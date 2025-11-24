@@ -193,14 +193,16 @@ app.put('/api/specials/:id', async(req,res)=>{
 
 app.get('/api/formats/specials', async(req,res)=>{ 
     try{
-        let allFormats = await Pixel.find()
+        let allFormats = await SpecialsFormat.find()
         if (allFormats.length == 0){
-            await Pixel.create({
-                menu:'specials',
-                name: 'pageMarginsLeftRight',
-                pixels: 0
+            await SpecialsFormat.create({
+                pageMarginsLeftRight: 0,
+                menuItemsMarginTopBottom: 0,
+                doubleSided: false,
+                letterPaper: true,
+                showLegalText: true
             })
-            allFormats = await Pixel.find()
+            allFormats = await SpecialsFormat.find()
         }
         console.log(allFormats)
         res.json(allFormats)
