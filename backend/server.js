@@ -210,3 +210,15 @@ app.get('/api/formats/specials', async(req,res)=>{
         console.log(err)
     }
 })
+app.put('/api/formats/specials/increasePageMargins', async(req,res)=>{
+    try{
+        console.log('WORKING!!!')
+        const allFormats = await SpecialsFormat.find()
+        console.log(allFormats[0])
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMarginsLeftRight: allFormats[0].pageMarginsLeftRight + 1})
+        res.json('page margins increased')
+    }catch(err){
+        console.log(err)
+    }
+})

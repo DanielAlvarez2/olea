@@ -35,7 +35,11 @@ export default function SpecialsMenuUpdate(){
         try{
             fetch(`${BASE_URL}/api/formats/specials`)
                 .then(res=>res.json())
-                .then(json=>setSpecialsFormatting(json[0]))
+                .then(json=>{
+                    console.log(json[0])
+                    setSpecialsFormatting(json[0])
+                    setPageMarginsLeftRight(json[0].pageMarginsLeftRight)
+                })
                 .catch(err=>console.log(err))
             
         }catch(err){
@@ -44,6 +48,9 @@ export default function SpecialsMenuUpdate(){
     }
 
     function increasePageMarginsLeftRight(){
+        fetch(`${BASE_URL}/api/formats/specials/increasePageMargins`, {method:'PUT'})
+            .then(()=>getSpecialsFormatting())
+            .catch(err=>console.log(err))
         setPageMarginsLeftRight(prev=>prev + 1)
     }
 
