@@ -51,12 +51,13 @@ export default function SpecialsMenuUpdate(){
         fetch(`${BASE_URL}/api/formats/specials/increasePageMargins`, {method:'PUT'})
             .then(()=>getSpecialsFormatting())
             .catch(err=>console.log(err))
-        setPageMarginsLeftRight(prev=>prev + 1)
     }
 
     function decreasePageMarginsLeftRight(){
         if (pageMarginsLeftRight == 0) return
-        setPageMarginsLeftRight(prev=>prev - 1)
+        fetch(`${BASE_URL}/api/formats/specials/decreasePageMargins`, {method:'PUT'})
+            .then(()=>getSpecialsFormatting())
+            .catch(err=>console.log(err))
     }
 
 
