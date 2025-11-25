@@ -5,6 +5,7 @@ const Special = require('./models/Special.js')
 const Pixel = require('./models/Pixel.js')
 const SpecialsFormat = require('./models/SpecialsFormat.js')
 
+
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -254,6 +255,30 @@ app.put('/api/formats/specials/decreaseMenuItemMargins', async(req,res)=>{
         await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {menuItemMarginsTopBottom: allFormats[0].menuItemMarginsTopBottom - 1})
         res.json('menu item margins increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/specials/togglePaperSize', async(req,res)=>{
+    try{
+        const allFormats = await SpecialsFormat.find()
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {letterPaper: !allFormats[0].letterPaper}
+        )
+        res.json('paper size changed')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/specials/toggleLegalText', async(req,res)=>{
+    try{
+        const allFormats = await SpecialsFormat.find()
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {showLegalText: !allFormats[0].showLegalText}
+        )
+        res.json('paper size changed')
     }catch(err){
         console.log(err)
     }

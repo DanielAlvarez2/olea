@@ -7,6 +7,8 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
+import { FaToggleOff } from "react-icons/fa6";
+import { FaToggleOn } from "react-icons/fa6";
 
 
 export default function SpecialsMenuUpdate(){
@@ -14,6 +16,8 @@ export default function SpecialsMenuUpdate(){
     const [specialsFormatting, setSpecialsFormatting] = useState([])
     const [pageMarginsLeftRight, setPageMarginsLeftRight] = useState(0)
     const [menuItemMarginsTopBottom, setMenuItemMarginsTopBottom] = useState(0)
+    const [letterPaper, setLetterPaper] = useState(true)
+    const [showLegalText, setShowLegalText] = useState(true)
     useEffect(()=>getSpecialsFormatting(),[])
     useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -41,6 +45,8 @@ export default function SpecialsMenuUpdate(){
                     setSpecialsFormatting(json[0])
                     setPageMarginsLeftRight(json[0].pageMarginsLeftRight)
                     setMenuItemMarginsTopBottom(json[0].menuItemMarginsTopBottom)
+                    setLetterPaper(json[0].letterPaper)
+                    setShowLegalText(json[0].showLegalText)
                 })
                 .catch(err=>console.log(err))
             
@@ -75,6 +81,18 @@ export default function SpecialsMenuUpdate(){
             .catch(err=>console.log(err))
     }
 
+    function togglePaperSize(){
+        fetch(`${BASE_URL}/api/formats/specials/togglePaperSize`, {method:'PUT'})
+            .then(()=>getSpecialsFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function toggleLegalText(){
+        fetch(`${BASE_URL}/api/formats/specials/toggleLegalText`, {method:'PUT'})
+            .then(()=>getSpecialsFormatting())
+            .catch(err=>console.log(err))
+    }
+
 
 
 
@@ -99,7 +117,7 @@ export default function SpecialsMenuUpdate(){
                     <div className='main-menu' 
                         style={{display:'flex',
                                 flex:'1',
-                                
+                                paddingBottom:'150px',
                                 flexDirection:'column',
                                 gap:'10px',
                                 justifyContent:'space-evenly',
@@ -131,9 +149,8 @@ export default function SpecialsMenuUpdate(){
                         </div>
 
                         <div style={{   width:'4.25in',
-                                        height:'5.5in',
+                                        height: letterPaper ? '5.5in' : '7in',
                                         padding:`0 ${pageMarginsLeftRight}px`,
-                                        marginBottom:'50px',
                                         display:'flex',
                                         flexDirection:'column',
                                         border:'1px solid red'}}>
@@ -277,19 +294,65 @@ export default function SpecialsMenuUpdate(){
 
 
 
-
-                            <footer style={{marginTop:'auto',
-                                            textAlign:'left',
-                                            fontSize:'11px',
-                                            paddingTop:'20px',
-                                            fontFamily:'serif'}}>
-                                Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                or seafood may increase the risk of foodborne illnesses.<br/>
-                                <span style={{fontWeight:'900'}}>
-                                Please alert your server if you have special dietary requirements:<br/>
-                                gl (gluten), d (dairy), n (nuts)</span>
-                            </footer>
+                            {showLegalText && 
+                                                <footer style={{marginTop:'auto',
+                                                                textAlign:'left',
+                                                                fontSize:'11px',
+                                                                paddingTop:'20px',
+                                                                fontFamily:'serif'}}>
+                                                    Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                    or seafood may increase the risk of foodborne illnesses.<br/>
+                                                    <span style={{fontWeight:'900'}}>
+                                                    Please alert your server if you have special dietary requirements:<br/>
+                                                    gl (gluten), d (dairy), n (nuts)</span>
+                                                </footer>
+                            }
+                            
+                        
                         </div>
+                        
+                        <div>
+                            <div style={{textAlign:'center'}}>paper size</div>
+            
+                            <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                <span>letter</span>
+                                <span>
+                                    {letterPaper ? 
+                                                    <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={togglePaperSize} />
+                                    : 
+                                                    <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={togglePaperSize} />
+                                    }
+                                    
+
+                                </span>
+                                <span>legal</span>
+                            </div> 
+                        </div>  
+
+
+                        <div>
+                            <div style={{textAlign:'center'}}>legal text</div>
+            
+                            <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                <span>show</span>
+                                <span>
+                                    {showLegalText ? 
+                                                    <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={toggleLegalText} />
+                                    : 
+                                                    <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={toggleLegalText} />
+                                    }
+                                    
+
+                                </span>
+                                <span>hide</span>
+                            </div> 
+                        </div>  
+
+
                     </div>         
 
 
