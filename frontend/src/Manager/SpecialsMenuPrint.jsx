@@ -77,9 +77,15 @@ export default function SpecialsMenuPrint(){
     return(
         <>
             <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
-                <ManagerNavbar page='specials' />
-                    <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; print</div>
+                <div className='no-print'>
+                    <ManagerNavbar page='specials' />
+                </div>
+                    <div    className='no-print'
+                            style={{textAlign:'center',
+                                    fontSize:'30px'}}>menu manager</div>
+                    <div    className='no-print' 
+                            style={{textAlign:'center',
+                                    fontSize:'30px'}}>specials &gt; print</div>
 
 
                     <div className='main-menu' 
@@ -87,7 +93,6 @@ export default function SpecialsMenuPrint(){
                                 flex:'1',
                                 paddingBottom:'150px',
                                 flexDirection:'column',
-                                gap:'10px',
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
@@ -98,7 +103,10 @@ export default function SpecialsMenuPrint(){
                         <div>
                             
                             {doubleSided &&                             
-                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                <div    className='no-print' 
+                                        style={{display:'flex',
+                                                gap:'10px',
+                                                alignItems:'center'}}>
                                     <span>front</span>
                                     <span>
                                         {front ? 
@@ -130,9 +138,10 @@ export default function SpecialsMenuPrint(){
 
 
 
-                        
+                        <div style={{display:'flex'}}>
+
                             {front && 
-                                <div style={{   width:'4.25in',
+                                <span style={{   width:'4.25in',
                                                 height: letterPaper ? '5.5in' : '7in',
                                                 padding:`0 ${pageMarginsLeftRight}px`,
                                                 display:'flex',
@@ -216,10 +225,10 @@ export default function SpecialsMenuPrint(){
                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                         </footer>
                                     }
-                                </div>
+                                </span>
                             }
                             {doubleSided && !front &&
-                                            <div style={{   width:'4.25in',
+                                            <span style={{   width:'4.25in',
                                                             height: letterPaper ? '5.5in' : '7in',
                                                             padding:`0 ${pageMarginsLeftRight}px`,
                                                             display:'flex',
@@ -286,9 +295,488 @@ export default function SpecialsMenuPrint(){
                                                                         gl (gluten), d (dairy), n (nuts)</span>
                                                                     </footer>
                                                 }
-                                            </div>
+                                            </span>
                             }
                         
+                            {front && 
+                                <span style={{   width:'4.25in',
+                                                height: letterPaper ? '5.5in' : '7in',
+                                                padding:`0 ${pageMarginsLeftRight}px`,
+                                                display:'flex',
+                                                flexDirection:'column',
+                                                border:'1px solid red'}}>
+                                    <div>
+                                        <div    className='specials-h1'
+                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                    </div>
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
+                                        <div className='specials-h2'>appetizer</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
+                                        <div className='specials-h2'>appetizers</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                                        return(
+                                            <div    key={data._id}
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+                                            </div>
+                                        )
+                                    })}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
+                                        <div className='specials-h2'>entrée</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
+                                        <div className='specials-h2'>entrées</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+                                            </div>
+                                        )
+                                    })}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                        <div className='specials-h2'>dessert</div>}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                        <div className='specials-h2'>desserts</div>}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                
+                                        
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+
+
+                                            </div>
+                                        )
+                                    })}
+                                    {showLegalText && 
+                                                        <footer style={{marginTop:'auto',
+                                                                        textAlign:'left',
+                                                                        fontSize:'11px',
+                                                                        paddingTop:'20px',
+                                                                        fontFamily:'serif'}}>
+                                                            Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                            or seafood may increase the risk of foodborne illnesses.<br/>
+                                                            <span style={{fontWeight:'900'}}>
+                                                            Please alert your server if you have special dietary requirements:<br/>
+                                                            gl (gluten), d (dairy), n (nuts)</span>
+                                                        </footer>
+                                    }
+                                </span>
+                            }
+                            {doubleSided && !front &&
+                                            <span style={{   width:'4.25in',
+                                                            height: letterPaper ? '5.5in' : '7in',
+                                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                                            display:'flex',
+                                                            flexDirection:'column',
+                                                            border:'1px solid red'}}>
+                                                <div>
+                                                    
+                                                    <div    className='specials-h1'
+                                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                </div>
+
+
+
+
+
+                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                                    <div className='specials-h2'>dessert</div>}
+                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                                    <div className='specials-h2'>desserts</div>}
+
+                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                                    return(
+                                                        <div    key={data._id} 
+                                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                                className='special'>
+                                                            
+                                                    
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated && 
+                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                            <span> {data.description}</span>
+                                                            {data.price.length < 3 ? 
+                                                                <span className='price'> &nbsp;{data.price}</span> : 
+                                                                <div className='price'>{data.price}</div> }
+
+
+                                                        </div>
+                                                    )
+                                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                {showLegalText && 
+                                                                    <footer style={{marginTop:'auto',
+                                                                                    textAlign:'left',
+                                                                                    fontSize:'11px',
+                                                                                    paddingTop:'20px',
+                                                                                    fontFamily:'serif'}}>
+                                                                        Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                                        or seafood may increase the risk of foodborne illnesses.<br/>
+                                                                        <span style={{fontWeight:'900'}}>
+                                                                        Please alert your server if you have special dietary requirements:<br/>
+                                                                        gl (gluten), d (dairy), n (nuts)</span>
+                                                                    </footer>
+                                                }
+                                            </span>
+                            }
+                        
+                        </div>
+
+                        <div style={{display:'flex'}}>
+
+                            {front && 
+                                <span style={{   width:'4.25in',
+                                                height: letterPaper ? '5.5in' : '7in',
+                                                padding:`0 ${pageMarginsLeftRight}px`,
+                                                display:'flex',
+                                                flexDirection:'column',
+                                                border:'1px solid red'}}>
+                                    <div>
+                                        <div    className='specials-h1'
+                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                    </div>
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
+                                        <div className='specials-h2'>appetizer</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
+                                        <div className='specials-h2'>appetizers</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                                        return(
+                                            <div    key={data._id}
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+                                            </div>
+                                        )
+                                    })}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
+                                        <div className='specials-h2'>entrée</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
+                                        <div className='specials-h2'>entrées</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+                                            </div>
+                                        )
+                                    })}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                        <div className='specials-h2'>dessert</div>}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                        <div className='specials-h2'>desserts</div>}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                
+                                        
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+
+
+                                            </div>
+                                        )
+                                    })}
+                                    {showLegalText && 
+                                                        <footer style={{marginTop:'auto',
+                                                                        textAlign:'left',
+                                                                        fontSize:'11px',
+                                                                        paddingTop:'20px',
+                                                                        fontFamily:'serif'}}>
+                                                            Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                            or seafood may increase the risk of foodborne illnesses.<br/>
+                                                            <span style={{fontWeight:'900'}}>
+                                                            Please alert your server if you have special dietary requirements:<br/>
+                                                            gl (gluten), d (dairy), n (nuts)</span>
+                                                        </footer>
+                                    }
+                                </span>
+                            }
+                            {doubleSided && !front &&
+                                            <span style={{   width:'4.25in',
+                                                            height: letterPaper ? '5.5in' : '7in',
+                                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                                            display:'flex',
+                                                            flexDirection:'column',
+                                                            border:'1px solid red'}}>
+                                                <div>
+                                                    
+                                                    <div    className='specials-h1'
+                                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                </div>
+
+
+
+
+
+                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                                    <div className='specials-h2'>dessert</div>}
+                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                                    <div className='specials-h2'>desserts</div>}
+
+                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                                    return(
+                                                        <div    key={data._id} 
+                                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                                className='special'>
+                                                            
+                                                    
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated && 
+                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                            <span> {data.description}</span>
+                                                            {data.price.length < 3 ? 
+                                                                <span className='price'> &nbsp;{data.price}</span> : 
+                                                                <div className='price'>{data.price}</div> }
+
+
+                                                        </div>
+                                                    )
+                                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                {showLegalText && 
+                                                                    <footer style={{marginTop:'auto',
+                                                                                    textAlign:'left',
+                                                                                    fontSize:'11px',
+                                                                                    paddingTop:'20px',
+                                                                                    fontFamily:'serif'}}>
+                                                                        Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                                        or seafood may increase the risk of foodborne illnesses.<br/>
+                                                                        <span style={{fontWeight:'900'}}>
+                                                                        Please alert your server if you have special dietary requirements:<br/>
+                                                                        gl (gluten), d (dairy), n (nuts)</span>
+                                                                    </footer>
+                                                }
+                                            </span>
+                            }
+                        
+                            {front && 
+                                <span style={{   width:'4.25in',
+                                                height: letterPaper ? '5.5in' : '7in',
+                                                padding:`0 ${pageMarginsLeftRight}px`,
+                                                display:'flex',
+                                                flexDirection:'column',
+                                                border:'1px solid red'}}>
+                                    <div>
+                                        <div    className='specials-h1'
+                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                    </div>
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
+                                        <div className='specials-h2'>appetizer</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
+                                        <div className='specials-h2'>appetizers</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                                        return(
+                                            <div    key={data._id}
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+                                            </div>
+                                        )
+                                    })}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
+                                        <div className='specials-h2'>entrée</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
+                                        <div className='specials-h2'>entrées</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+                                            </div>
+                                        )
+                                    })}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                        <div className='specials-h2'>dessert</div>}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                        <div className='specials-h2'>desserts</div>}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                
+                                        
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+
+
+                                            </div>
+                                        )
+                                    })}
+                                    {showLegalText && 
+                                                        <footer style={{marginTop:'auto',
+                                                                        textAlign:'left',
+                                                                        fontSize:'11px',
+                                                                        paddingTop:'20px',
+                                                                        fontFamily:'serif'}}>
+                                                            Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                            or seafood may increase the risk of foodborne illnesses.<br/>
+                                                            <span style={{fontWeight:'900'}}>
+                                                            Please alert your server if you have special dietary requirements:<br/>
+                                                            gl (gluten), d (dairy), n (nuts)</span>
+                                                        </footer>
+                                    }
+                                </span>
+                            }
+                            {doubleSided && !front &&
+                                            <span style={{   width:'4.25in',
+                                                            height: letterPaper ? '5.5in' : '7in',
+                                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                                            display:'flex',
+                                                            flexDirection:'column',
+                                                            border:'1px solid red'}}>
+                                                <div>
+                                                    
+                                                    <div    className='specials-h1'
+                                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                </div>
+
+
+
+
+
+                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                                    <div className='specials-h2'>dessert</div>}
+                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                                    <div className='specials-h2'>desserts</div>}
+
+                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                                    return(
+                                                        <div    key={data._id} 
+                                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                                className='special'>
+                                                            
+                                                    
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated && 
+                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                            <span> {data.description}</span>
+                                                            {data.price.length < 3 ? 
+                                                                <span className='price'> &nbsp;{data.price}</span> : 
+                                                                <div className='price'>{data.price}</div> }
+
+
+                                                        </div>
+                                                    )
+                                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                {showLegalText && 
+                                                                    <footer style={{marginTop:'auto',
+                                                                                    textAlign:'left',
+                                                                                    fontSize:'11px',
+                                                                                    paddingTop:'20px',
+                                                                                    fontFamily:'serif'}}>
+                                                                        Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                                        or seafood may increase the risk of foodborne illnesses.<br/>
+                                                                        <span style={{fontWeight:'900'}}>
+                                                                        Please alert your server if you have special dietary requirements:<br/>
+                                                                        gl (gluten), d (dairy), n (nuts)</span>
+                                                                    </footer>
+                                                }
+                                            </span>
+                            }
+                        
+                        </div>
 
 
 

@@ -121,3 +121,10 @@ a{
   font-size: 20px;
   margin: 10px 0px;
 }
+@media print{
+  .no-print{
+    display: none !important;
+    height:0;
+    width:0;
+  }
+}
