@@ -283,3 +283,15 @@ app.put('/api/formats/specials/toggleLegalText', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.put('/api/formats/specials/toggleDoubleSided', async(req,res)=>{
+    try{
+        const allFormats = await SpecialsFormat.find()
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {doubleSided: !allFormats[0].doubleSided}
+        )
+        res.json('double sided changed')
+    }catch(err){
+        console.log(err)
+    }
+})

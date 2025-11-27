@@ -18,6 +18,7 @@ export default function SpecialsMenuUpdate(){
     const [menuItemMarginsTopBottom, setMenuItemMarginsTopBottom] = useState(0)
     const [letterPaper, setLetterPaper] = useState(true)
     const [showLegalText, setShowLegalText] = useState(true)
+    const [doubleSided, setDoubleSided] = useState(false)
     useEffect(()=>getSpecialsFormatting(),[])
     useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -47,6 +48,7 @@ export default function SpecialsMenuUpdate(){
                     setMenuItemMarginsTopBottom(json[0].menuItemMarginsTopBottom)
                     setLetterPaper(json[0].letterPaper)
                     setShowLegalText(json[0].showLegalText)
+                    setDoubleSided(json[0].doubleSided)
                 })
                 .catch(err=>console.log(err))
             
@@ -93,6 +95,11 @@ export default function SpecialsMenuUpdate(){
             .catch(err=>console.log(err))
     }
 
+    function toggleDoubleSided(){
+        fetch(`${BASE_URL}/api/formats/specials/toggleDoubleSided`, {method:'PUT'})
+            .then(()=>getSpecialsFormatting())
+            .catch(err=>console.log(err))
+    }
 
 
 
@@ -147,6 +154,85 @@ export default function SpecialsMenuUpdate(){
                             <span><PiPlusCircleDuotone  style={{fontSize:'50px',cursor:'pointer'}} 
                                                         onClick={increaseMenuItemMarginsTopBottom} /></span>
                         </div>
+
+
+                        <div>
+                            <div style={{textAlign:'center'}}>paper size</div>
+            
+                            <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                <span>letter</span>
+                                <span>
+                                    {letterPaper ? 
+                                                    <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={togglePaperSize} />
+                                    : 
+                                                    <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={togglePaperSize} />
+                                    }
+                                    
+
+                                </span>
+                                <span>legal</span>
+                            </div> 
+                        </div>  
+
+
+                        <div>
+                            <div style={{textAlign:'center'}}>legal text</div>
+            
+                            <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                <span>show</span>
+                                <span>
+                                    {showLegalText ? 
+                                                    <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={toggleLegalText} />
+                                    : 
+                                                    <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={toggleLegalText} />
+                                    }
+                                    
+
+                                </span>
+                                <span>hide</span>
+                            </div> 
+                        </div>  
+
+
+                        <div>
+            
+                            <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                <span>1-sided</span>
+                                <span>
+                                    {doubleSided ? 
+                                                    <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={toggleDoubleSided} />
+                                    : 
+                                                    <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                    onClick={toggleDoubleSided} />
+                                    }
+                                    
+
+                                </span>
+                                <span>2-sided</span>
+                            </div> 
+                        </div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         <div style={{   width:'4.25in',
                                         height: letterPaper ? '5.5in' : '7in',
@@ -256,12 +342,12 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                            {doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
                                 <div className='specials-h2'>dessert</div>}
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                            {doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
                                 <div className='specials-h2'>desserts</div>}
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                            {doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
                                 return(
                                     <div    key={data._id} 
                                             style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
@@ -307,50 +393,103 @@ export default function SpecialsMenuUpdate(){
                                                     gl (gluten), d (dairy), n (nuts)</span>
                                                 </footer>
                             }
-                            
-                        
                         </div>
                         
-                        <div>
-                            <div style={{textAlign:'center'}}>paper size</div>
-            
-                            <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
-                                <span>letter</span>
-                                <span>
-                                    {letterPaper ? 
-                                                    <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                    onClick={togglePaperSize} />
-                                    : 
-                                                    <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                    onClick={togglePaperSize} />
-                                    }
-                                    
-
-                                </span>
-                                <span>legal</span>
-                            </div> 
-                        </div>  
 
 
-                        <div>
-                            <div style={{textAlign:'center'}}>legal text</div>
-            
-                            <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
-                                <span>show</span>
-                                <span>
-                                    {showLegalText ? 
-                                                    <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                    onClick={toggleLegalText} />
-                                    : 
-                                                    <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                    onClick={toggleLegalText} />
-                                    }
-                                    
 
-                                </span>
-                                <span>hide</span>
-                            </div> 
-                        </div>  
+
+
+
+
+
+
+
+
+                        {!doubleSided && 
+                                        <div style={{   width:'4.25in',
+                                                        height: letterPaper ? '5.5in' : '7in',
+                                                        padding:`0 ${pageMarginsLeftRight}px`,
+                                                        marginTop:'50px',
+                                                        display:'flex',
+                                                        flexDirection:'column',
+                                                        border:'1px solid red'}}>
+                                            <div>
+                                                
+                                                <div    className='specials-h1'
+                                                        style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                            </div>
+
+
+
+
+
+                                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                                <div className='specials-h2'>dessert</div>}
+                                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                                <div className='specials-h2'>desserts</div>}
+
+                                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                                return(
+                                                    <div    key={data._id} 
+                                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                            className='special'>
+                                                        
+                                                
+                                                        <span className='name'>{data.name} </span>
+                                                        {data.allergiesAbbreviated && 
+                                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                        <span> {data.description}</span>
+                                                        {data.price.length < 3 ? 
+                                                            <span className='price'> &nbsp;{data.price}</span> : 
+                                                            <div className='price'>{data.price}</div> }
+
+
+                                                    </div>
+                                                )
+                                            })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            {showLegalText && 
+                                                                <footer style={{marginTop:'auto',
+                                                                                textAlign:'left',
+                                                                                fontSize:'11px',
+                                                                                paddingTop:'20px',
+                                                                                fontFamily:'serif'}}>
+                                                                    Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                                    or seafood may increase the risk of foodborne illnesses.<br/>
+                                                                    <span style={{fontWeight:'900'}}>
+                                                                    Please alert your server if you have special dietary requirements:<br/>
+                                                                    gl (gluten), d (dairy), n (nuts)</span>
+                                                                </footer>
+                                            }
+                                        </div>
+
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                     </div>         
