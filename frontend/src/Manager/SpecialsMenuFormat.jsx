@@ -204,10 +204,10 @@ export default function SpecialsMenuUpdate(){
                                 <span>1-sided</span>
                                 <span>
                                     {doubleSided ? 
-                                                    <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                    <FaToggleOn    style={{cursor:'pointer',fontSize:'30px'}}
                                                                     onClick={toggleDoubleSided} />
                                     : 
-                                                    <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                    <FaToggleOff     style={{cursor:'pointer',fontSize:'30px'}}
                                                                     onClick={toggleDoubleSided} />
                                     }
                                     
@@ -234,6 +234,7 @@ export default function SpecialsMenuUpdate(){
 
 
                         <div id='specials-double-sided-flexbox' style={{display:'flex',gap:'20px'}}>
+
                             <div style={{   width:'4.25in',
                                             height: letterPaper ? '5.5in' : '7in',
                                             padding:`0 ${pageMarginsLeftRight}px`,
@@ -342,12 +343,12 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                                {doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
                                     <div className='specials-h2'>dessert</div>}
-                                {doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
                                     <div className='specials-h2'>desserts</div>}
 
-                                {doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
                                     return(
                                         <div    key={data._id} 
                                                 style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
@@ -406,7 +407,7 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            {!doubleSided && 
+                            {doubleSided && 
                                             <div style={{   width:'4.25in',
                                                             height: letterPaper ? '5.5in' : '7in',
                                                             padding:`0 ${pageMarginsLeftRight}px`,
