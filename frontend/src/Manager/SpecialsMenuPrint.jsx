@@ -2,7 +2,6 @@ import {Link} from 'react-router'
 import {useState, useEffect} from 'react'
 import './Manager.css'
 import './Specials.css'
-import './SpecialsMenuFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { PiPlusCircleDuotone } from "react-icons/pi";
@@ -142,13 +141,13 @@ export default function SpecialsMenuPrint(){
                             {front && 
                                 <span style={{  width:'4.24in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                padding:`0 ${pageMarginsLeftRight}px`,
+                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 display:'flex',
                                                 flexDirection:'column',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
-                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                     </div>
                                     {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
                                         <div className='specials-h2'>appetizer</div>}
@@ -229,14 +228,14 @@ export default function SpecialsMenuPrint(){
                             {doubleSided && !front &&
                                             <span style={{  width:'4.24in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             display:'flex',
                                                             flexDirection:'column',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
-                                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                                 </div>
 
 
@@ -300,13 +299,13 @@ export default function SpecialsMenuPrint(){
                             {front && 
                                 <span style={{  width:'4.24in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                padding:`0 ${pageMarginsLeftRight}px`,
+                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 display:'flex',
                                                 flexDirection:'column',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
-                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                     </div>
                                     {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
                                         <div className='specials-h2'>appetizer</div>}
@@ -387,14 +386,14 @@ export default function SpecialsMenuPrint(){
                             {doubleSided && !front &&
                                             <span style={{  width:'4.24in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             display:'flex',
                                                             flexDirection:'column',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
-                                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                                 </div>
 
 
@@ -462,13 +461,13 @@ export default function SpecialsMenuPrint(){
                             {front && 
                                 <span style={{  width:'4.24in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                padding:`0 ${pageMarginsLeftRight}px`,
+                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 display:'flex',
                                                 flexDirection:'column',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
-                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                     </div>
                                     {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
                                         <div className='specials-h2'>appetizer</div>}
@@ -549,14 +548,14 @@ export default function SpecialsMenuPrint(){
                             {doubleSided && !front &&
                                             <span style={{  width:'4.24in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             display:'flex',
                                                             flexDirection:'column',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
-                                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                                 </div>
 
 
@@ -620,13 +619,13 @@ export default function SpecialsMenuPrint(){
                             {front && 
                                 <span style={{  width:'4.24in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                padding:`0 ${pageMarginsLeftRight}px`,
+                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 display:'flex',
                                                 flexDirection:'column',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
-                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                     </div>
                                     {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
                                         <div className='specials-h2'>appetizer</div>}
@@ -707,14 +706,14 @@ export default function SpecialsMenuPrint(){
                             {doubleSided && !front &&
                                             <span style={{  width:'4.24in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             display:'flex',
                                                             flexDirection:'column',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
-                                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                                 </div>
 
 

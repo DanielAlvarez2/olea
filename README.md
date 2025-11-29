@@ -1,4 +1,5 @@
 OPTIMIZATIONS *********************************  
+in specials: anchor legal text to bottom of page position:absolute  
 create a 404 page  
 print take-out menu  
 custom component: LegalDisclaimer  

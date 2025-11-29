@@ -237,14 +237,14 @@ export default function SpecialsMenuUpdate(){
 
                             <div style={{   width:'4.25in',
                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                             display:'flex',
                                             flexDirection:'column',
                                             border:'1px solid red'}}>
                                 <div>
                                     
                                     <div    className='specials-h1'
-                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                 </div>
 
 
@@ -410,14 +410,14 @@ export default function SpecialsMenuUpdate(){
                             {doubleSided && 
                                             <div style={{   width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             display:'flex',
                                                             flexDirection:'column',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
-                                                            style={{margin:`${menuItemMarginsTopBottom}px 0`}} >today's specials</div>
+                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                                 </div>
 
 
