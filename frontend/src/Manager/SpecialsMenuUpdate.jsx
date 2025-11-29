@@ -460,7 +460,7 @@ export default function SpecialsMenuUpdate(){
                                                 minHeight:'5.5in',
                                                 padding:'24px 55px 10px',
                                                 display:'flex',
-                                                margin: '0 auto',
+                                                margin: '0 auto 50px',
                                                 // color:'red',
                                                 flexDirection:'column',
                                                 // backgroundImage:'url(./SpecialsFront.jpg)',
@@ -491,6 +491,7 @@ export default function SpecialsMenuUpdate(){
                                                     <span   className='btn unarchive-btn'
                                                             onClick={()=>unarchiveSpecial(data._id)}>
                                                         UNarchive</span>
+                                                    <br/><br/>
                                                 </div>
                                             </div>
                                         )
