@@ -236,7 +236,7 @@ export default function SpecialsMenuUpdate(){
                         <div id='specials-double-sided-flexbox' style={{display:'flex',gap:'20px'}}>
 
                             <div style={{   width:'4.25in',
-                                            height: letterPaper ? '5.5in' : '7in',
+                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                             padding:`0 ${pageMarginsLeftRight}px`,
                                             display:'flex',
                                             flexDirection:'column',
@@ -409,7 +409,7 @@ export default function SpecialsMenuUpdate(){
 
                             {doubleSided && 
                                             <div style={{   width:'4.25in',
-                                                            height: letterPaper ? '5.5in' : '7in',
+                                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`0 ${pageMarginsLeftRight}px`,
                                                             display:'flex',
                                                             flexDirection:'column',
