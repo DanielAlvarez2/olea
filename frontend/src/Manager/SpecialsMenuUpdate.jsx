@@ -123,6 +123,7 @@ export default function SpecialsMenuUpdate(){
                         <div style={{   width:'4.25in',
                                         minHeight:'5.5in',
                                         padding:'24px 55px 10px',
+                                        position:'relative',
                                         display:'flex',
                                         // color:'red',
                                         flexDirection:'column',
@@ -351,7 +352,10 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            <footer style={{marginTop:'auto',
+                            <footer style={{position:'absolute',
+                                            bottom:'0',
+                                            display:'none',
+                                            // marginTop:'auto',
                                             textAlign:'left',
                                             fontSize:'11px',
                                             paddingTop:'20px',
