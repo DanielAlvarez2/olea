@@ -9,13 +9,14 @@ import { FaCaretUp } from "react-icons/fa";
 
 export default function SpecialsMenuUpdate(){
     const [allSpecials, setAllSpecials] = useState([])
+    const [editMode, setEditMode] = useState(false)
     useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
     async function createNewSpecial(formData){
-        await fetch(`${BASE_URL}/api/specials`,{ method:'POST',
+        await fetch(`${BASE_URL}/api/specials`,{method:'POST',
                                                 headers:{'Content-Type':'application/json'},
                                                 body: JSON.stringify({
                                                     menu: formData.get('menu'),
@@ -78,6 +79,14 @@ export default function SpecialsMenuUpdate(){
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
+        }
+    }
+
+    function editSpecial(id){
+        try{
+            setEditMode(true)
+        }catch(err){
+            console.log(erer)
         }
     }
 
@@ -182,6 +191,8 @@ export default function SpecialsMenuUpdate(){
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editSpecial(data._id)}>EDIT</span>                                                    
                                         </div>
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'appetizers' && item.sequence).length && 
@@ -352,31 +363,20 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            <footer style={{position:'absolute',
-                                            bottom:'0',
-                                            display:'none',
-                                            // marginTop:'auto',
-                                            textAlign:'left',
-                                            fontSize:'11px',
-                                            paddingTop:'20px',
-                                            fontFamily:'serif'}}>
-                                Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                or seafood may increase the risk of foodborne illnesses.<br/>
-                                <span style={{fontWeight:'900'}}>
-                                Please alert your server if you have special dietary requirements:<br/>
-                                gl (gluten), d (dairy), n (nuts)</span>
-                            </footer>
                         </div>
                     </div>         
 
 
                     <form   action={createNewSpecial} 
-                            style={{background:'lightgreen',
+                            style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`,
                                     margin:'20px auto',
                                     padding:'20px 10px',
                                     borderRadius:'10px',
                                     width:'320px'}}>
-                        <h2 style={{textAlign:'center'}}>create new special</h2>
+                        <h2 style={{textAlign:'center'}}>
+                            {editMode ? 'update special' : 'create new special'}
+
+                        </h2>
                         <br/>
                         <input  type='hidden'
                                 name='menu' 
@@ -435,7 +435,7 @@ export default function SpecialsMenuUpdate(){
                                         display:'block',
                                         margin:'0 auto',
                                         fontSize:'20px'}}
-                                value='create new special' />
+                                value = {editMode ? 'update special' : 'create new special'} />
 
                     </form>   
 

@@ -89,3 +89,7 @@
 .unarchive-btn{
   background:yellow;
 }
+.edit-btn{
+  background:blue;
+  color: white;
+}
