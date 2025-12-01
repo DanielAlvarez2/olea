@@ -82,11 +82,22 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
-    function editSpecial(id){
+    function editSpecial(id,section,name,allergiesAbbreviated,allergiesComplete,description,price){
         try{
             setEditMode(true)
+            document.querySelector('#specials-form').scrollIntoView()
+            document.querySelector('#special-id').value = id
+            document.querySelector('#section').innerHTML = section
+            document.querySelector('#section-wrapper').style.display = 'block'
+            document.querySelector('#name').value = name
+            document.querySelector('#allergies-abbreviated').value = allergiesAbbreviated
+            document.querySelector('#allergies-complete').value = allergiesComplete
+            document.querySelector('#description').value = description
+            document.querySelector('#price').value = price
+
+            
         }catch(err){
-            console.log(erer)
+            console.log(err)
         }
     }
 
@@ -192,7 +203,13 @@ export default function SpecialsMenuUpdate(){
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(data._id)}>EDIT</span>                                                    
+                                                    onClick={()=>editSpecial(   data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.description,
+                                                                                data.price)}>EDIT</span>                                                    
                                         </div>
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'appetizers' && item.sequence).length && 
@@ -368,6 +385,7 @@ export default function SpecialsMenuUpdate(){
 
 
                     <form   action={createNewSpecial} 
+                            id='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`,
                                     margin:'20px auto',
                                     padding:'20px 10px',
@@ -378,23 +396,41 @@ export default function SpecialsMenuUpdate(){
 
                         </h2>
                         <br/>
+
+                        <input type='hidden' name='id' id='special-id' value='' />
                         <input  type='hidden'
                                 name='menu' 
                                 value='specials' />
-                        <label>
-                            section&nbsp; 
-                            <select name='section' required defaultValue=''>
-                                <option disabled value=''>select...</option>
-                                <option>appetizers</option>
-                                <option>entrées</option>
-                                <option>desserts</option>
-                            </select>
-                        </label>
-                        <br/><br/>
+                        
+                        <div    style={{display:'none'}}
+                                id='section-wrapper'>
+                                            section: <span id='section'></span>
+                                <br/><br/>
+                        </div> 
+
+                        {!editMode &&                         
+                                        <label>
+                                            section    
+                                            &nbsp; 
+                                            <select name='section' required defaultValue=''>
+                                                <option disabled value=''>select...</option>
+                                                <option>appetizers</option>
+                                                <option>entrées</option>
+                                                <option>desserts</option>
+                                            </select>
+
+                                            <br/><br/>
+                                        </label>
+
+                        }             
+                        
+                        
+
                         <label>
                             name<br/>
                             <input  type='text' 
                                     name='name' 
+                                    id='name'
                                     required
                                     style={{width:'100%'}} />
                         </label>
@@ -403,12 +439,14 @@ export default function SpecialsMenuUpdate(){
                             allergies - abbreviated<br/>
                             <input  type='text' 
                                     name='allergies-abbreviated' 
+                                    id='allergies-abbreviated'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
                         <label>
                             allergies - complete<br/>
                             <input  type='text'
+                                    id='allergies-complete'
                                     name='allergies-complete' 
                                     style={{width:'100%'}} />
                         </label>
@@ -417,6 +455,7 @@ export default function SpecialsMenuUpdate(){
                             description<br/>
                             <textarea   rows='5'
                                         name='description' 
+                                        id='description'
                                         style={{width:'100%'}}></textarea>
                         </label>
                         <br/><br/>
@@ -424,6 +463,7 @@ export default function SpecialsMenuUpdate(){
                             price<br/>
                             <input  type='text'
                                     required 
+                                    id='price'
                                     name='price' />
                         </label>
                         <br/><br/>
