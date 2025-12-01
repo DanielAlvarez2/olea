@@ -35,6 +35,26 @@ export default function SpecialsMenuUpdate(){
         .catch(err=>console.log(err))
     }
 
+    async function updateSpecial(formData){
+        alert('updateSpecial()')
+        alert(formData.get('id'))
+        await fetch(`${BASE_URL}/api/specials/${formData.get('id')}`,{  method:'PUT',
+                                                                        headers:{'Content-Type':'application/json'},
+                                                                        body: JSON.stringify({
+                                                                                name: formData.get('name'),
+                                                                                allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                                                allergiesComplete: formData.get('allergies-complete'),
+                                                                                description: formData.get('description'),
+                                                                                price: formData.get('price')
+                                                    })
+        })
+        .then(alert(`
+            Special Updated:
+             - ${formData.get('name')}`))
+        .then(getSpecials())
+        .catch(err=>console.log(err))
+    }
+
     function getSpecials(){
         try{
             fetch(`${BASE_URL}/api/specials`)
@@ -384,7 +404,7 @@ export default function SpecialsMenuUpdate(){
                     </div>         
 
 
-                    <form   action={createNewSpecial} 
+                    <form   action={editMode ? updateSpecial : createNewSpecial} 
                             id='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`,
                                     margin:'20px auto',
@@ -397,7 +417,7 @@ export default function SpecialsMenuUpdate(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='special-id' value='' />
+                        <input type='hidden' name='id' id='special-id' />
                         <input  type='hidden'
                                 name='menu' 
                                 value='specials' />

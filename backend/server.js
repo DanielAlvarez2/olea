@@ -176,8 +176,9 @@ app.get('/api/specials/:id', async(req,res)=>{
 app.put('/api/specials/:id', async(req,res)=>{
     try{
         await Special.findByIdAndUpdate({_id:req.params.id},{
-            section: req.body.section,
             name: req.body.name,
+            allergiesAbbreviated: req.body.allergiesAbbreviated,
+            allergiesComplete: req.body.allergiesComplete,
             description: req.body.description,
             price: req.body.price
         })
