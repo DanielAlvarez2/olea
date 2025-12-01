@@ -27,6 +27,7 @@ import Events from './Manager/Events.jsx'
 import RestaurantWeeks from './Manager/RestaurantWeeks.jsx'
 import RestaurantWeeksScan from './Manager/RestaurantWeeksScan.jsx'
 import RestaurantWeeksScreenshot from './Manager/RestaurantWeeksScreenshot.jsx'
+import PrinterConfig from './Manager/PrinterConfig.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -52,6 +53,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='dessert-menu' element={<DessertMenu />} />
         <Route path='specials-menu' element={<SpecialsMenu />} />
         <Route path='events' element={<Events />} />
+        <Route path='printer-config' element={<PrinterConfig />} />
         
         <Route path='specials-menu-update' element={<SpecialsMenuUpdate />} />
         <Route path='specials-menu-format' element={<SpecialsMenuFormat />} />

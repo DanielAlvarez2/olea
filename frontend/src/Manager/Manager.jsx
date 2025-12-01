@@ -25,6 +25,7 @@ export default function Manager(){
                         <Link to='/wine-list'><li style={{flexGrow:'1'}}>wine list</li></Link>
                         <Link to='/takeout'><li style={{flexGrow:'1'}}>takeout</li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>events</li></Link>
+                        <Link to='/printer-config'><li style={{flexGrow:'1'}}>printer<br/>config</li></Link>
                     </ul>
 
             
