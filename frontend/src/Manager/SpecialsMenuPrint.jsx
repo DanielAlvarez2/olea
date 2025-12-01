@@ -142,8 +142,7 @@ export default function SpecialsMenuPrint(){
                                 <span style={{  width:'4.24in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                display:'flex',
-                                                flexDirection:'column',
+                                                position:'relative',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
@@ -211,11 +210,13 @@ export default function SpecialsMenuPrint(){
                                         )
                                     })}
                                     {showLegalText && 
-                                                        <footer style={{marginTop:'auto',
-                                                                        textAlign:'left',
-                                                                        fontSize:'11px',
-                                                                        paddingTop:'20px',
-                                                                        fontFamily:'serif'}}>
+                                                    <footer style={{position:'absolute',
+                                                                    bottom:'6mm',
+                                                                    // marginTop:'auto',
+                                                                    textAlign:'left',
+                                                                    fontSize:'11px',
+                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                    fontFamily:'serif'}}>
                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                             or seafood may increase the risk of foodborne illnesses.<br/>
                                                             <span style={{fontWeight:'900'}}>
@@ -229,8 +230,7 @@ export default function SpecialsMenuPrint(){
                                             <span style={{  width:'4.24in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                            display:'flex',
-                                                            flexDirection:'column',
+                                                            position:'relative',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
@@ -281,12 +281,13 @@ export default function SpecialsMenuPrint(){
 
 
                                                 {showLegalText && 
-                                                                    <footer style={{marginTop:'auto',
-                                                                                    textAlign:'left',
-                                                                                    fontSize:'11px',
-                                                                                    paddingTop:'20px',
-                                                                                    fontFamily:'serif'}}>
-                                                                        Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                                <footer style={{position:'absolute',
+                                                                                bottom:'6mm',
+                                                                                // marginTop:'auto',
+                                                                                textAlign:'left',
+                                                                                fontSize:'11px',
+                                                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                                fontFamily:'serif'}}>                                                                        Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                         or seafood may increase the risk of foodborne illnesses.<br/>
                                                                         <span style={{fontWeight:'900'}}>
                                                                         Please alert your server if you have special dietary requirements:<br/>
@@ -300,8 +301,7 @@ export default function SpecialsMenuPrint(){
                                 <span style={{  width:'4.24in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                display:'flex',
-                                                flexDirection:'column',
+                                                position:'relative',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
@@ -369,11 +369,13 @@ export default function SpecialsMenuPrint(){
                                         )
                                     })}
                                     {showLegalText && 
-                                                        <footer style={{marginTop:'auto',
-                                                                        textAlign:'left',
-                                                                        fontSize:'11px',
-                                                                        paddingTop:'20px',
-                                                                        fontFamily:'serif'}}>
+                                                    <footer style={{position:'absolute',
+                                                                    bottom:'6mm',
+                                                                    // marginTop:'auto',
+                                                                    textAlign:'left',
+                                                                    fontSize:'11px',
+                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                    fontFamily:'serif'}}>
                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                             or seafood may increase the risk of foodborne illnesses.<br/>
                                                             <span style={{fontWeight:'900'}}>
@@ -387,8 +389,7 @@ export default function SpecialsMenuPrint(){
                                             <span style={{  width:'4.24in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                            display:'flex',
-                                                            flexDirection:'column',
+                                                            position:'relative',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
@@ -439,11 +440,13 @@ export default function SpecialsMenuPrint(){
 
 
                                                 {showLegalText && 
-                                                                    <footer style={{marginTop:'auto',
-                                                                                    textAlign:'left',
-                                                                                    fontSize:'11px',
-                                                                                    paddingTop:'20px',
-                                                                                    fontFamily:'serif'}}>
+                                                                <footer style={{position:'absolute',
+                                                                                bottom:'6mm',
+                                                                                // marginTop:'auto',
+                                                                                textAlign:'left',
+                                                                                fontSize:'11px',
+                                                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                                fontFamily:'serif'}}>
                                                                         Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                         or seafood may increase the risk of foodborne illnesses.<br/>
                                                                         <span style={{fontWeight:'900'}}>
@@ -462,8 +465,7 @@ export default function SpecialsMenuPrint(){
                                 <span style={{  width:'4.24in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                display:'flex',
-                                                flexDirection:'column',
+                                                position:'relative',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
@@ -531,11 +533,13 @@ export default function SpecialsMenuPrint(){
                                         )
                                     })}
                                     {showLegalText && 
-                                                        <footer style={{marginTop:'auto',
-                                                                        textAlign:'left',
-                                                                        fontSize:'11px',
-                                                                        paddingTop:'20px',
-                                                                        fontFamily:'serif'}}>
+                                                    <footer style={{position:'absolute',
+                                                                    bottom:'6mm',
+                                                                    // marginTop:'auto',
+                                                                    textAlign:'left',
+                                                                    fontSize:'11px',
+                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                    fontFamily:'serif'}}>
                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                             or seafood may increase the risk of foodborne illnesses.<br/>
                                                             <span style={{fontWeight:'900'}}>
@@ -549,8 +553,7 @@ export default function SpecialsMenuPrint(){
                                             <span style={{  width:'4.24in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                            display:'flex',
-                                                            flexDirection:'column',
+                                                            position:'relative',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
@@ -601,11 +604,13 @@ export default function SpecialsMenuPrint(){
 
 
                                                 {showLegalText && 
-                                                                    <footer style={{marginTop:'auto',
-                                                                                    textAlign:'left',
-                                                                                    fontSize:'11px',
-                                                                                    paddingTop:'20px',
-                                                                                    fontFamily:'serif'}}>
+                                                                <footer style={{position:'absolute',
+                                                                                bottom:'6mm',
+                                                                                // marginTop:'auto',
+                                                                                textAlign:'left',
+                                                                                fontSize:'11px',
+                                                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                                fontFamily:'serif'}}>
                                                                         Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                         or seafood may increase the risk of foodborne illnesses.<br/>
                                                                         <span style={{fontWeight:'900'}}>
@@ -620,8 +625,7 @@ export default function SpecialsMenuPrint(){
                                 <span style={{  width:'4.24in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                display:'flex',
-                                                flexDirection:'column',
+                                                position:'relative',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
@@ -689,11 +693,13 @@ export default function SpecialsMenuPrint(){
                                         )
                                     })}
                                     {showLegalText && 
-                                                        <footer style={{marginTop:'auto',
-                                                                        textAlign:'left',
-                                                                        fontSize:'11px',
-                                                                        paddingTop:'20px',
-                                                                        fontFamily:'serif'}}>
+                                                    <footer style={{position:'absolute',
+                                                                    bottom:'6mm',
+                                                                    // marginTop:'auto',
+                                                                    textAlign:'left',
+                                                                    fontSize:'11px',
+                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                    fontFamily:'serif'}}>
                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                             or seafood may increase the risk of foodborne illnesses.<br/>
                                                             <span style={{fontWeight:'900'}}>
@@ -707,8 +713,7 @@ export default function SpecialsMenuPrint(){
                                             <span style={{  width:'4.24in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                            display:'flex',
-                                                            flexDirection:'column',
+                                                            position:'relative',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
@@ -759,11 +764,13 @@ export default function SpecialsMenuPrint(){
 
 
                                                 {showLegalText && 
-                                                                    <footer style={{marginTop:'auto',
-                                                                                    textAlign:'left',
-                                                                                    fontSize:'11px',
-                                                                                    paddingTop:'20px',
-                                                                                    fontFamily:'serif'}}>
+                                                                <footer style={{position:'absolute',
+                                                                                bottom:'6mm',
+                                                                                // marginTop:'auto',
+                                                                                textAlign:'left',
+                                                                                fontSize:'11px',
+                                                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                                fontFamily:'serif'}}>
                                                                         Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                         or seafood may increase the risk of foodborne illnesses.<br/>
                                                                         <span style={{fontWeight:'900'}}>
