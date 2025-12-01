@@ -36,8 +36,6 @@ export default function SpecialsMenuUpdate(){
     }
 
     async function updateSpecial(formData){
-        alert('updateSpecial()')
-        alert(formData.get('id'))
         await fetch(`${BASE_URL}/api/specials/${formData.get('id')}`,{  method:'PUT',
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
@@ -51,6 +49,7 @@ export default function SpecialsMenuUpdate(){
         .then(alert(`
             Special Updated:
              - ${formData.get('name')}`))
+        .then(setEditMode(false))
         .then(getSpecials())
         .catch(err=>console.log(err))
     }
@@ -105,7 +104,7 @@ export default function SpecialsMenuUpdate(){
     function editSpecial(id,section,name,allergiesAbbreviated,allergiesComplete,description,price){
         try{
             setEditMode(true)
-            document.querySelector('#specials-form').scrollIntoView()
+            document.querySelector('#specials-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#special-id').value = id
             document.querySelector('#section').innerHTML = section
             document.querySelector('#section-wrapper').style.display = 'block'
@@ -114,8 +113,6 @@ export default function SpecialsMenuUpdate(){
             document.querySelector('#allergies-complete').value = allergiesComplete
             document.querySelector('#description').value = description
             document.querySelector('#price').value = price
-
-            
         }catch(err){
             console.log(err)
         }
@@ -299,6 +296,14 @@ export default function SpecialsMenuUpdate(){
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editSpecial(   data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.description,
+                                                                                data.price)}>EDIT</span>                                                    
                                         </div>     
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'entrées' && item.sequence).length && 
@@ -368,6 +373,14 @@ export default function SpecialsMenuUpdate(){
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editSpecial(   data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.description,
+                                                                                data.price)}>EDIT</span>                                                    
                                         </div>
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'desserts' && item.sequence).length && 
