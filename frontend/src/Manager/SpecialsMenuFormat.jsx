@@ -115,7 +115,7 @@ export default function SpecialsMenuUpdate(){
 
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div className='manager-page-wrapper' style={{padding:'0'}}>
                 <ManagerNavbar page='specials' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; format</div>
@@ -136,11 +136,12 @@ export default function SpecialsMenuUpdate(){
                         <div style={{   textAlign:'center',
                                         display:'flex',
                                         gap:'10px',
-                                        alignItems:'center'}}>
-                            <span><PiMinusCircleDuotone style={{fontSize:'50px',cursor:'pointer'}}
+                                        alignItems:'center',
+                                        }}>
+                            <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                         onClick={decreasePageMarginsLeftRight} /></span>
                             <span>page margins<br/>left & right</span>
-                            <span><PiPlusCircleDuotone  style={{fontSize:'50px',cursor:'pointer'}} 
+                            <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                         onClick={increasePageMarginsLeftRight} /></span>
                         </div>
 
@@ -148,10 +149,10 @@ export default function SpecialsMenuUpdate(){
                                         display:'flex',
                                         gap:'10px',
                                         alignItems:'center'}}>
-                            <span><PiMinusCircleDuotone style={{fontSize:'50px',cursor:'pointer'}}
+                            <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                         onClick={decreaseMenuItemMarginsTopBottom} /></span>
                             <span>menu item margins<br/>top & bottom</span>
-                            <span><PiPlusCircleDuotone  style={{fontSize:'50px',cursor:'pointer'}} 
+                            <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                         onClick={increaseMenuItemMarginsTopBottom} /></span>
                         </div>
 
@@ -233,15 +234,15 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                        <div id='specials-double-sided-flexbox' style={{display:'flex',gap:'20px'}}>
+                        <div id='specials-double-sided-flexbox'>
 
                             <div style={{   width:'4.25in',
-                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                            position:'relative',
-                                            // display:'flex',
-                                            // flexDirection:'column',
-                                            border:'1px solid red'}}>
+                                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                            // display:'flex',
+                                                            position:'relative',
+                                                            // flexDirection:'column',
+                                                            border:'1px solid red'}}>
                                 <div>
                                     
                                     <div    className='specials-h1'

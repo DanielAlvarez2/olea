@@ -1,3 +1,14 @@
 .specials-h2{
     padding: 0;
 }
+#specials-double-sided-flexbox{
+    display:flex;
+    gap:20px;
+}
+
+
+@media (max-width:850px){
+    #specials-double-sided-flexbox{
+        flex-direction: column;
+    }
+}
