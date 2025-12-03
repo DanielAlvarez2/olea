@@ -139,7 +139,7 @@ export default function SpecialsMenuPrint(){
                         <div style={{display:'flex'}}>
 
                             {front && 
-                                <span style={{  width:'4.24in',
+                                <span style={{  width:'4.25in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
@@ -227,7 +227,7 @@ export default function SpecialsMenuPrint(){
                                 </span>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'4.24in',
+                                            <span style={{  width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
@@ -298,7 +298,7 @@ export default function SpecialsMenuPrint(){
                             }
                         
                             {front && 
-                                <span style={{  width:'4.24in',
+                                <span style={{  width:'4.25in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
@@ -386,7 +386,7 @@ export default function SpecialsMenuPrint(){
                                 </span>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'4.24in',
+                                            <span style={{  width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
@@ -462,7 +462,7 @@ export default function SpecialsMenuPrint(){
                         <div style={{display:'flex'}}>
 
                             {front && 
-                                <span style={{  width:'4.24in',
+                                <span style={{  width:'4.25in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
@@ -550,7 +550,7 @@ export default function SpecialsMenuPrint(){
                                 </span>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'4.24in',
+                                            <span style={{  width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
@@ -622,7 +622,7 @@ export default function SpecialsMenuPrint(){
                             }
                         
                             {front && 
-                                <span style={{  width:'4.24in',
+                                <span style={{  width:'4.25in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
@@ -710,7 +710,7 @@ export default function SpecialsMenuPrint(){
                                 </span>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'4.24in',
+                                            <span style={{  width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',

@@ -84,7 +84,7 @@ export default function SpecialsMenuPrint2(){
                                     fontSize:'30px'}}>menu manager</div>
                     <div    className='no-print' 
                             style={{textAlign:'center',
-                                    fontSize:'30px'}}>specials &gt; print</div>
+                                    fontSize:'30px'}}>specials &gt; print2</div>
 
 
                     <div className='main-menu' 
