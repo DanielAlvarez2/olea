@@ -140,7 +140,7 @@ export default function SpecialsMenuUpdate(){
 
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div className='manager-page-wrapper' style={{padding:'0 0 50px'}}>
                 <ManagerNavbar page='specials' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; update</div>
@@ -149,26 +149,17 @@ export default function SpecialsMenuUpdate(){
                     <div className='main-menu' 
                         style={{display:'flex',
                                 flex:'1',
-                                
                                 flexDirection:'column',
                                 gap:'10px',
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
                                 }}>
-                        <div style={{   width:'4.25in',
-                                        minHeight:'5.5in',
-                                        padding:'24px 55px 10px',
-                                        position:'relative',
-                                        display:'flex',
-                                        // color:'red',
-                                        flexDirection:'column',
-                                        // backgroundImage:'url(./SpecialsFront.jpg)',
-                                        // backgroundSize:'4.25in 5.5in',
-                                        border:'1px solid black'}}>
+
+
+                        <div className='specials-update-menu'>
                             <div>
-                                <div className='specials-h1'>today's specials</div>
+                                <div className='specials-h1' style={{marginBottom:'0'}}>today's specials</div>
                             </div>
 
 
@@ -186,9 +177,9 @@ export default function SpecialsMenuUpdate(){
 
 
                             {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
-                                <div className='specials-h2'>appetizer</div>}
+                                <div className='specials-h2 specials-update-heading'>appetizer</div>}
                             {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
-                                <div className='specials-h2'>appetizers</div>}
+                                <div className='specials-h2 specials-update-heading'>appetizers</div>}
 
                             {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                 return(
@@ -205,7 +196,6 @@ export default function SpecialsMenuUpdate(){
                                         }
                                         
                                         
-                                        <div>#{data.sequence}</div>
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -215,8 +205,6 @@ export default function SpecialsMenuUpdate(){
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>
                                         <div style={{marginTop:'5px'}}>
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                             <span   className='btn edit-btn'
@@ -227,6 +215,9 @@ export default function SpecialsMenuUpdate(){
                                                                                 data.allergiesComplete,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+
                                         </div>
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'appetizers' && item.sequence).length && 
@@ -264,9 +255,9 @@ export default function SpecialsMenuUpdate(){
 
 
                             {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                <div className='specials-h2'>entrée</div>}
+                                <div className='specials-h2 specials-update-heading'>entrée</div>}
                             {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                <div className='specials-h2'>entrées</div>}
+                                <div className='specials-h2 specials-update-heading'>entrées</div>}
 
                             {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                 return(
@@ -281,8 +272,7 @@ export default function SpecialsMenuUpdate(){
                                                                 width:'100%'}}
                                                         onClick={(()=>moveUp(data._id))} />
                                         }
-
-                                        <div>#{data.sequence}</div>                                        
+                                     
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -292,8 +282,6 @@ export default function SpecialsMenuUpdate(){
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
                                         <div style={{marginTop:'5px'}}>
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                             <span   className='btn edit-btn'
@@ -304,6 +292,8 @@ export default function SpecialsMenuUpdate(){
                                                                                 data.allergiesComplete,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>                                                                                
                                         </div>     
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'entrées' && item.sequence).length && 
@@ -340,9 +330,9 @@ export default function SpecialsMenuUpdate(){
 
 
                             {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                <div className='specials-h2'>dessert</div>}
+                                <div className='specials-h2 specials-update-heading'>dessert</div>}
                             {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                <div className='specials-h2'>desserts</div>}
+                                <div className='specials-h2 specials-update-heading'>desserts</div>}
 
                             {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
                                 return(
@@ -358,8 +348,7 @@ export default function SpecialsMenuUpdate(){
                                                         onClick={(()=>moveUp(data._id))} />
 
                                         }
-
-                                        <div>#{data.sequence}</div>                                        
+                                     
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -369,8 +358,6 @@ export default function SpecialsMenuUpdate(){
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
                                         <div style={{marginTop:'5px'}}>
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                             <span   className='btn edit-btn'
@@ -381,6 +368,8 @@ export default function SpecialsMenuUpdate(){
                                                                                 data.allergiesComplete,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                         </div>
 
                                         {data.sequence != allSpecials.filter(item=>item.section == 'desserts' && item.sequence).length && 
@@ -533,16 +522,7 @@ export default function SpecialsMenuUpdate(){
 
                         {allSpecials.filter(item=>item.sequence == 0).length &&
                             <>
-                                <div style={{   width:'4.25in',
-                                                minHeight:'5.5in',
-                                                padding:'24px 55px 10px',
-                                                display:'flex',
-                                                margin: '0 auto 50px',
-                                                // color:'red',
-                                                flexDirection:'column',
-                                                // backgroundImage:'url(./SpecialsFront.jpg)',
-                                                // backgroundSize:'4.25in 5.5in',
-                                                border:'1px solid black'}}>
+                                <div className='specials-update-menu'>
                                     <div>
                                         <div className='specials-h1'>archives</div>
                                     </div>
@@ -551,8 +531,7 @@ export default function SpecialsMenuUpdate(){
 
                                     {allSpecials.filter(item=>item.sequence == 0).map(data=>{
                                         return(
-                                            <div key={data._id} className='special'>
-                                                <div>#{data.sequence}</div>    
+                                            <div key={data._id} className='special'>  
                                                 <div>section: {data.section}</div>                                    
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
@@ -563,12 +542,12 @@ export default function SpecialsMenuUpdate(){
                                                     <div className='price'>{data.price}</div> }
                                                 <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
                                                 <div style={{marginTop:'5px'}}>
-                                                    <span   className='btn delete-btn'
-                                                            onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                                     <span   className='btn unarchive-btn'
                                                             onClick={()=>unarchiveSpecial(data._id)}>
                                                         UNarchive</span>
-                                                    <br/><br/>
+                                                    <span   className='btn delete-btn'
+                                                            onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                                    <br/><br/><br/>
                                                 </div>
                                             </div>
                                         )

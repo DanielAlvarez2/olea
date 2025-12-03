@@ -138,6 +138,12 @@ export default function SpecialsMenuPrint(){
 
                         <div style={{display:'flex'}}>
 
+
+
+
+
+
+
                             {front && 
                                 <span style={{  width:'4.25in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
@@ -226,6 +232,18 @@ export default function SpecialsMenuPrint(){
                                     }
                                 </span>
                             }
+
+
+
+
+
+
+
+
+
+
+
+                            
                             {doubleSided && !front &&
                                             <span style={{  width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',

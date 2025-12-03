@@ -1,3 +1,18 @@
 .specials-h2{
     padding: 40px 0 10px;
 }
+.specials-update-heading{
+    margin: 60px 0 20px;
+}
+.specials-update-menu{
+    width:4.25in;
+    min-height:5.5in;
+    padding:24px 55px 10px;
+    border:1px solid black;
+    margin:0 auto;
+}
+@media (max-width:4.25in){
+    .specials-update-menu{
+        width:100vw;
+    }
+}
