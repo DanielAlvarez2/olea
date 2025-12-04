@@ -138,6 +138,22 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
+    function clearForm(){
+        try{
+            document.querySelector('#special-id').value = ''
+            document.querySelector('#section').innerHTML = ''
+            document.querySelector('#section-wrapper').style.display = 'none'
+            document.querySelector('#name').value = ''
+            document.querySelector('#allergies-abbreviated').value = ''
+            document.querySelector('#allergies-complete').value = ''
+            document.querySelector('#description').value = ''
+            document.querySelector('#price').value = ''
+            setEditMode(false)
+        }catch(err){
+            console.log(err)
+        }
+    }
+
     return(
         <>
             <div className='manager-page-wrapper' style={{padding:'0 0 50px'}}>
@@ -490,28 +506,30 @@ export default function SpecialsMenuUpdate(){
                         </label>
                         <br/><br/>
 
-                        <div style={{display:'flex'}}>
+                        <div style={{display:'flex',justifyContent:'space-around'}}>
                             <input  type='submit' 
                                     style={{padding:'10px 10px',
                                             cursor:'pointer',
                                             borderRadius:'10px',
                                             border:'2px solid black',
-                                            margin:'0 auto',
+                                            
                                             background:'lightgrey',
                                             fontSize:'20px'}}
                                     value = {editMode ? 'update special' : 'create new special'} />
                             {editMode &&                             
-                                        <div style={{   display:'grid',
+                                        <div onClick={clearForm}
+                                             style={{   display:'grid',
                                                         alignContent:'center',
                                                         cursor:'pointer',
                                                         borderRadius:'10px',
                                                         border:'2px solid black',
-                                                        background:'red',
-                                                        color:'white',
-                                                        height:'60px',
+                                                        background:'rgb(255, 89, 118)',
+                                                        fontWeight:'900',
+                                                        color:'black',
+                                                        // height:'60px',
                                                         padding:'0 20px',
                                                         fontSize:'20px'
-                                        }}>
+                                                    }}>
                                             cancel
                                         </div>
                             }
