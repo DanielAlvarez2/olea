@@ -490,14 +490,32 @@ export default function SpecialsMenuUpdate(){
                         </label>
                         <br/><br/>
 
-                        <input  type='submit' 
-                                style={{padding:'10px 10px',
-                                        cursor:'pointer',
-                                        borderRadius:'10px',
-                                        display:'block',
-                                        margin:'0 auto',
-                                        fontSize:'20px'}}
-                                value = {editMode ? 'update special' : 'create new special'} />
+                        <div style={{display:'flex'}}>
+                            <input  type='submit' 
+                                    style={{padding:'10px 10px',
+                                            cursor:'pointer',
+                                            borderRadius:'10px',
+                                            border:'2px solid black',
+                                            margin:'0 auto',
+                                            background:'lightgrey',
+                                            fontSize:'20px'}}
+                                    value = {editMode ? 'update special' : 'create new special'} />
+                            {editMode &&                             
+                                        <div style={{   display:'grid',
+                                                        alignContent:'center',
+                                                        cursor:'pointer',
+                                                        borderRadius:'10px',
+                                                        border:'2px solid black',
+                                                        background:'red',
+                                                        color:'white',
+                                                        height:'60px',
+                                                        padding:'0 20px',
+                                                        fontSize:'20px'
+                                        }}>
+                                            cancel
+                                        </div>
+                            }
+                        </div>
 
                     </form>   
 
