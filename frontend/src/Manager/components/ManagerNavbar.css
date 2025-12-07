@@ -4,3 +4,9 @@
 .manager-navbar a{
     color:black;
 }
+
+@media (max-width: 350px){
+    .manager-navbar{
+        font-size:14px;
+    }
+}
