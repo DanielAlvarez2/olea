@@ -162,16 +162,6 @@ export default function SpecialsMenuUpdate(){
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; update</div>
 
 
-                    <div className='main-menu' 
-                        style={{display:'flex',
-                                flex:'1',
-                                flexDirection:'column',
-                                gap:'10px',
-                                justifyContent:'space-evenly',
-                                alignItems:'center',
-                                height:'100%',
-                                }}>
-
 
                         <div className='specials-update-menu'>
                             <div>
@@ -419,16 +409,12 @@ export default function SpecialsMenuUpdate(){
 
 
                         </div>
-                    </div>         
+                      
 
 
                     <form   action={editMode ? updateSpecial : createNewSpecial} 
                             id='specials-form'
-                            style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`,
-                                    margin:'20px auto',
-                                    padding:'20px 10px',
-                                    borderRadius:'10px',
-                                    width:'320px'}}>
+                            style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
                             {editMode ? 'update special' : 'create new special'}
 
@@ -506,7 +492,7 @@ export default function SpecialsMenuUpdate(){
                         </label>
                         <br/><br/>
 
-                        <div style={{display:'flex',justifyContent:'space-around'}}>
+                        <div id='specials-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
                             <input  type='submit' 
                                     style={{padding:'10px 10px',
                                             cursor:'pointer',
@@ -519,7 +505,7 @@ export default function SpecialsMenuUpdate(){
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',
-                                                        alignContent:'center',
+                                                        placeContent:'center',
                                                         cursor:'pointer',
                                                         borderRadius:'10px',
                                                         border:'2px solid black',
@@ -527,7 +513,7 @@ export default function SpecialsMenuUpdate(){
                                                         fontWeight:'900',
                                                         color:'black',
                                                         // height:'60px',
-                                                        padding:'0 20px',
+                                                        padding:'10px 10px',
                                                         fontSize:'20px'
                                                     }}>
                                             cancel

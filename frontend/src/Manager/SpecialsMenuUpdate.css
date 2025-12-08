@@ -11,8 +11,28 @@
     border:1px solid black;
     margin:0 auto;
 }
+#specials-form{
+    margin:20px auto;
+    padding:20px 10px;
+    border-radius:10px;
+    width:320px;
+}
 @media (max-width:4.25in){
     .specials-update-menu{
-        width:100vw;
+        width:100%;
+    }
+}
+@media (max-width:325px){
+    #specials-form{
+        width:100%;
+        /* background:red; */
+    }
+}
+@media (max-width:275px){
+    #specials-form-buttons{
+        flex-direction: column;
+        width:200px;
+        margin:0 auto;
+        gap:20px;
     }
 }

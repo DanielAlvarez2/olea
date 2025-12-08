@@ -103,8 +103,10 @@ a{
 .manager-page-wrapper{
   padding:0 10px;
   min-height: 100vh;
+  width:100%;
   display:flex;
   flex-direction: column;
+  align-items: center;
 }
 
 @media (max-width: 640px){
