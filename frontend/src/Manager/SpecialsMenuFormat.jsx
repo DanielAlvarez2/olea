@@ -237,12 +237,10 @@ export default function SpecialsMenuUpdate(){
                         <div id='specials-double-sided-flexbox'>
 
                             <div style={{   width:'4.25in',
-                                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                            // display:'flex',
-                                                            position:'relative',
-                                                            // flexDirection:'column',
-                                                            border:'1px solid red'}}>
+                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                            position:'relative',
+                                            border:'1px solid red'}}>
                                 <div>
                                     
                                     <div    className='specials-h1'
@@ -415,9 +413,7 @@ export default function SpecialsMenuUpdate(){
                                             <div style={{   width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                            // display:'flex',
                                                             position:'relative',
-                                                            // flexDirection:'column',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
