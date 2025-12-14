@@ -75,8 +75,8 @@ export default function SpecialsMenuPrint(){
 
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red',padding:'0'}}>
-                <div className='no-print'>
+            <div className='manager-page-wrapper'>
+                <div style={{width:'100%'}} className='no-print'>
                     <ManagerNavbar page='specials' />
                 </div>
                     <div    className='no-print'

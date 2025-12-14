@@ -6,7 +6,7 @@ import SpecialsMenuUpdate from './SpecialsMenuUpdate.jsx'
 export default function SpecialsMenu(){
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div className='manager-page-wrapper'>
                 <ManagerNavbar page='specials' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials</div>
