@@ -7,7 +7,7 @@
 .specials-update-menu{
     width:4.25in;
     min-height:5.5in;
-    padding:24px 55px 10px;
+    padding:24px 55px 50px;
     border:1px solid black;
     margin:0 auto;
 }
@@ -26,6 +26,9 @@
     #specials-form{
         width:100%;
         /* background:red; */
+    }
+    .specials-update-menu{
+        padding:24px 20px 50px;
     }
 }
 @media (max-width:275px){
