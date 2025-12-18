@@ -15,7 +15,7 @@
 
 @media (max-width:4.25in){
     #specials-double-sided-flexbox{
-        transform: scale(0.75);
+        transform: scale(0.70);
         background:pink;
     }
 }
@@ -23,6 +23,6 @@
 @media (max-width:410px){
     .main-menu{
         width:100%;
-        /* background:yellow; */
+        background:yellow;
     }
 }
