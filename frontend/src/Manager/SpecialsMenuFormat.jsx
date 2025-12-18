@@ -129,7 +129,6 @@ export default function SpecialsMenuUpdate(){
                                 gap:'10px',
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
-                                height:'100%',
                                 border:'1px solid green'
                                 }}>
 
