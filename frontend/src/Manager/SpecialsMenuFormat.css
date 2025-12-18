@@ -23,6 +23,6 @@
 @media (max-width:410px){
     .main-menu{
         width:100%;
-        background:yellow;
+        /* background:yellow; */
     }
 }
