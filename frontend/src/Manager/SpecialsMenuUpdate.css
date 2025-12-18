@@ -17,6 +17,9 @@
     border-radius:10px;
     width:320px;
 }
+.main-menu{
+    padding-bottom: 50px;
+}
 @media (max-width:4.25in){
     .specials-update-menu{
         width:100%;

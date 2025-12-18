@@ -5,7 +5,10 @@
     display:flex;
     gap:20px;
 }
-
+.main-menu{
+    width:100%;
+    padding-bottom: 50px;
+}
 
 @media (max-width:850px){
     #specials-double-sided-flexbox{
@@ -15,12 +18,7 @@
 
 @media (max-width:4.25in){
     #specials-double-sided-flexbox{
-        transform-origin:top;
-        transform: scale(0.70);
-        /* background:pink; */
-    }
-    .main-menu{
-        padding-bottom: 0px !important;
+        zoom:0.7;
     }
 }
 

@@ -1,7 +1,7 @@
 import {Link} from 'react-router'
 import {useState, useEffect} from 'react'
 import './Manager.css'
-import './Specials.css'
+import './SpecialsMenuPrint.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { PiPlusCircleDuotone } from "react-icons/pi";
