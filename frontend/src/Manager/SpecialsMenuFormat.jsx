@@ -124,7 +124,7 @@ export default function SpecialsMenuUpdate(){
                     <div className='main-menu' 
                         style={{display:'flex',
                                 flex:'1',
-                                paddingBottom:'150px',
+                                paddingBottom:'50px',
                                 flexDirection:'column',
                                 gap:'10px',
                                 justifyContent:'space-evenly',
