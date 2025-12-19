@@ -61,7 +61,17 @@ export default function SpecialsMenuPrint(){
         setFront(prev=>!prev)
     }
 
-
+    function printSpecials(){
+        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+            alert(`
+WARNING: 
+Printing from Safari Browser is not supported.
+Please switch to a different browser to proceed.`)
+            return
+        }else{
+            window.print()
+        }
+    }
 
 
 
@@ -121,6 +131,7 @@ export default function SpecialsMenuPrint(){
                         </div>  
 
                         <div    className='no-print' 
+                                onClick={()=>printSpecials()}
                                 style={{background:'lightgrey',
                                         width:'50px',
                                         marginBottom:'10px',
