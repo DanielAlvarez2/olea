@@ -120,6 +120,20 @@ export default function SpecialsMenuPrint(){
                             }
                         </div>  
 
+                        <div    className='no-print' 
+                                style={{background:'lightgrey',
+                                        width:'50px',
+                                        marginBottom:'10px',
+                                        cursor:'pointer',
+                                        border:'1px solid black',
+                                        borderRadius:'5px',
+                                        display:'grid',
+                                        placeContent:'center',
+                                        padding:'5px',
+
+                                }}>
+                            Print
+                        </div>
 
 
 
