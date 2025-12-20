@@ -132,7 +132,10 @@ export default function SpecialsMenuUpdate(){
                                 border:'1px solid green'
                                 }}>
 
-                        <div>
+                        <div style={{   display:'flex',
+                                        alignItems:'center',
+                                        gap:'10px',
+                                        flexDirection:'column'}}>
                             <div style={{   textAlign:'center',
                                             display:'flex',
                                             gap:'10px',
