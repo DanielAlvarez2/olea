@@ -127,7 +127,7 @@ export default function SpecialsMenuUpdate(){
                                 paddingBottom:'50px',
                                 flexDirection:'column',
                                 gap:'10px',
-                                justifyContent:'space-evenly',
+                                justifyContent:'center',
                                 alignItems:'center',
                                 border:'1px solid green'
                                 }}>
