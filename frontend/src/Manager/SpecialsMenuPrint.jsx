@@ -65,8 +65,10 @@ export default function SpecialsMenuPrint(){
         if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
             alert(`
 WARNING: 
+
 Printing from Safari Browser is not supported.
-Please switch to a different browser to proceed.`)
+Please switch to a different browser to proceed.
+`)
             return
         }else{
             window.print()
@@ -171,7 +173,7 @@ Please switch to a different browser to proceed.`)
 
                             {front && 
                                 <span style={{  width:'4.25in',
-                                                height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 border:'1px solid red'}}>
@@ -271,7 +273,7 @@ Please switch to a different browser to proceed.`)
                             
                             {doubleSided && !front &&
                                             <span style={{  width:'4.25in',
-                                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                            height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             border:'1px solid red'}}>
@@ -342,7 +344,7 @@ Please switch to a different browser to proceed.`)
                         
                             {front && 
                                 <span style={{  width:'4.25in',
-                                                height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 border:'1px solid red'}}>
@@ -430,7 +432,7 @@ Please switch to a different browser to proceed.`)
                             }
                             {doubleSided && !front &&
                                             <span style={{  width:'4.25in',
-                                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                            height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             border:'1px solid red'}}>
@@ -506,7 +508,7 @@ Please switch to a different browser to proceed.`)
 
                             {front && 
                                 <span style={{  width:'4.25in',
-                                                height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 border:'1px solid red'}}>
@@ -594,7 +596,7 @@ Please switch to a different browser to proceed.`)
                             }
                             {doubleSided && !front &&
                                             <span style={{  width:'4.25in',
-                                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                            height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             border:'1px solid red'}}>
@@ -666,7 +668,7 @@ Please switch to a different browser to proceed.`)
                         
                             {front && 
                                 <span style={{  width:'4.25in',
-                                                height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 border:'1px solid red'}}>
@@ -754,7 +756,7 @@ Please switch to a different browser to proceed.`)
                             }
                             {doubleSided && !front &&
                                             <span style={{  width:'4.25in',
-                                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                            height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             border:'1px solid red'}}>
