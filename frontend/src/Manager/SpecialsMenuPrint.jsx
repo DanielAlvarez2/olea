@@ -103,7 +103,7 @@ Please switch to a different browser to proceed.
                         style={{display:'flex',
                                 flex:'1',
                                 flexDirection:'column',
-                                justifyContent:'space-evenly',
+                                // justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
                                 border:'1px solid green'
