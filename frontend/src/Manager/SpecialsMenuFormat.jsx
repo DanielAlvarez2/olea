@@ -244,7 +244,7 @@ export default function SpecialsMenuUpdate(){
 
                             <div style={{   width:'4.25in',
                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                             position:'relative',
                                             border:'1px solid red'}}>
                                 <div>
@@ -389,7 +389,7 @@ export default function SpecialsMenuUpdate(){
 
                                 {showLegalText && 
                                                 <footer style={{position:'absolute',
-                                                                bottom:'6mm',
+                                                                bottom:'14mm',
                                                                 // marginTop:'auto',
                                                                 textAlign:'left',
                                                                 fontSize:'11px',
@@ -418,7 +418,7 @@ export default function SpecialsMenuUpdate(){
                             {doubleSided && 
                                             <div style={{   width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                                             position:'relative',
                                                             border:'1px solid red'}}>
                                                 <div>
@@ -471,7 +471,7 @@ export default function SpecialsMenuUpdate(){
 
                                                 {showLegalText && 
                                                                     <footer style={{position:'absolute',
-                                                                                    bottom:'6mm',
+                                                                                    bottom:'14mm',
                                                                                     // marginTop:'auto',
                                                                                     textAlign:'left',
                                                                                     fontSize:'11px',

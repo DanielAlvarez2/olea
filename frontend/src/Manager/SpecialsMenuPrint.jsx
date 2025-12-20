@@ -174,7 +174,7 @@ Please switch to a different browser to proceed.
                             {front && 
                                 <span style={{  width:'4.25in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                                 position:'relative',
                                                 border:'1px solid red'}}>
                                     <div>
@@ -244,7 +244,7 @@ Please switch to a different browser to proceed.
                                     })}
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'6mm',
+                                                                    bottom:'14mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     fontSize:'11px',
@@ -274,7 +274,7 @@ Please switch to a different browser to proceed.
                             {doubleSided && !front &&
                                             <span style={{  width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                                             position:'relative',
                                                             border:'1px solid red'}}>
                                                 <div>
@@ -327,7 +327,7 @@ Please switch to a different browser to proceed.
 
                                                 {showLegalText && 
                                                                 <footer style={{position:'absolute',
-                                                                                bottom:'6mm',
+                                                                                bottom:'14mm',
                                                                                 // marginTop:'auto',
                                                                                 textAlign:'left',
                                                                                 fontSize:'11px',
@@ -345,7 +345,7 @@ Please switch to a different browser to proceed.
                             {front && 
                                 <span style={{  width:'4.25in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                                 position:'relative',
                                                 border:'1px solid red'}}>
                                     <div>
@@ -415,7 +415,7 @@ Please switch to a different browser to proceed.
                                     })}
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'6mm',
+                                                                    bottom:'14mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     fontSize:'11px',
@@ -433,7 +433,7 @@ Please switch to a different browser to proceed.
                             {doubleSided && !front &&
                                             <span style={{  width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                                             position:'relative',
                                                             border:'1px solid red'}}>
                                                 <div>
@@ -486,7 +486,7 @@ Please switch to a different browser to proceed.
 
                                                 {showLegalText && 
                                                                 <footer style={{position:'absolute',
-                                                                                bottom:'6mm',
+                                                                                bottom:'14mm',
                                                                                 // marginTop:'auto',
                                                                                 textAlign:'left',
                                                                                 fontSize:'11px',
@@ -509,7 +509,7 @@ Please switch to a different browser to proceed.
                             {front && 
                                 <span style={{  width:'4.25in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                                 position:'relative',
                                                 border:'1px solid red'}}>
                                     <div>
@@ -579,7 +579,7 @@ Please switch to a different browser to proceed.
                                     })}
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'6mm',
+                                                                    bottom:'14mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     fontSize:'11px',
@@ -597,7 +597,7 @@ Please switch to a different browser to proceed.
                             {doubleSided && !front &&
                                             <span style={{  width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                                             position:'relative',
                                                             border:'1px solid red'}}>
                                                 <div>
@@ -650,7 +650,7 @@ Please switch to a different browser to proceed.
 
                                                 {showLegalText && 
                                                                 <footer style={{position:'absolute',
-                                                                                bottom:'6mm',
+                                                                                bottom:'14mm',
                                                                                 // marginTop:'auto',
                                                                                 textAlign:'left',
                                                                                 fontSize:'11px',
@@ -669,7 +669,7 @@ Please switch to a different browser to proceed.
                             {front && 
                                 <span style={{  width:'4.25in',
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                                 position:'relative',
                                                 border:'1px solid red'}}>
                                     <div>
@@ -739,7 +739,7 @@ Please switch to a different browser to proceed.
                                     })}
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'6mm',
+                                                                    bottom:'14mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     fontSize:'11px',
@@ -757,7 +757,7 @@ Please switch to a different browser to proceed.
                             {doubleSided && !front &&
                                             <span style={{  width:'4.25in',
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px) 14mm`,
                                                             position:'relative',
                                                             border:'1px solid red'}}>
                                                 <div>
@@ -810,7 +810,7 @@ Please switch to a different browser to proceed.
 
                                                 {showLegalText && 
                                                                 <footer style={{position:'absolute',
-                                                                                bottom:'6mm',
+                                                                                bottom:'14mm',
                                                                                 // marginTop:'auto',
                                                                                 textAlign:'left',
                                                                                 fontSize:'11px',
