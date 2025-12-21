@@ -18,10 +18,15 @@ import Manager from './Manager/Manager.jsx'
 import DinnerMenu from './Manager/DinnerMenu.jsx'
 import TakeoutMenu from './Manager/TakeoutMenu.jsx'
 import DessertMenu from './Manager/DessertMenu.jsx'
+
 import SpecialsMenu from './Manager/SpecialsMenu.jsx'
 import SpecialsMenuUpdate from './Manager/SpecialsMenuUpdate.jsx'
 import SpecialsMenuFormat from './Manager/SpecialsMenuFormat.jsx'
 import SpecialsMenuPrint from './Manager/SpecialsMenuPrint.jsx'
+
+import DessertMenuUpdate from './Manager/DessertMenuUpdate.jsx'
+import DessertsUpdate from './Manager/DessertsUpdate.jsx'
+
 import WineList from './Manager/WineList.jsx'
 import Events from './Manager/Events.jsx'
 import RestaurantWeeks from './Manager/RestaurantWeeks.jsx'
@@ -59,6 +64,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='specials-menu-format' element={<SpecialsMenuFormat />} />
         <Route path='specials-menu-print' element={<SpecialsMenuPrint />} />
 
+        <Route path='dessert-menu-update' element={<DessertMenuUpdate />} />
+        <Route path='desserts-update' element={<DessertsUpdate />} />
 
         <Route path='restaurant-weeks' element={<RestaurantWeeks />} />
         <Route path='restaurant-weeks-screenshot' element={<RestaurantWeeksScreenshot />} />
