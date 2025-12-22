@@ -8,15 +8,15 @@ import { FaCaretUp } from "react-icons/fa";
 
 
 export default function DessertsUpdate(){
-    const [allSpecials, setAllSpecials] = useState([])
+    const [allDesserts, setAllDesserts] = useState([])
     const [editMode, setEditMode] = useState(false)
-    useEffect(()=>getSpecials(),[])
+    useEffect(()=>getDesserts(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
-    async function createNewSpecial(formData){
-        await fetch(`${BASE_URL}/api/specials`,{method:'POST',
+    async function createNewDessert(formData){
+        await fetch(`${BASE_URL}/api/desserts`,{method:'POST',
                                                 headers:{'Content-Type':'application/json'},
                                                 body: JSON.stringify({
                                                     menu: formData.get('menu'),
@@ -29,14 +29,14 @@ export default function DessertsUpdate(){
                                                 })
         })
         .then(alert(`
-            New Special Created:
+            New Dessert Created:
              - ${formData.get('name')}`))
-        .then(getSpecials())
+        .then(getDesserts())
         .catch(err=>console.log(err))
     }
 
-    async function updateSpecial(formData){
-        await fetch(`${BASE_URL}/api/specials/${formData.get('id')}`,{  method:'PUT',
+    async function updateDessert(formData){
+        await fetch(`${BASE_URL}/api/desserts/${formData.get('id')}`,{  method:'PUT',
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
                                                                                 name: formData.get('name'),
@@ -47,65 +47,65 @@ export default function DessertsUpdate(){
                                                     })
         })
         .then(alert(`
-            Special Updated:
+            Dessert Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
-        .then(getSpecials())
+        .then(getDesserts())
         .catch(err=>console.log(err))
     }
 
-    function getSpecials(){
+    function getDesserts(){
         try{
-            fetch(`${BASE_URL}/api/specials`)
+            fetch(`${BASE_URL}/api/desserts`)
                 .then(res=>res.json())
-                .then(json=>setAllSpecials(json))
+                .then(json=>setAllDesserts(json))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
         }
     }
 
-    function deleteSpecial(id){
+    function deleteDessert(id){
         try{
-            fetch(`${BASE_URL}/api/specials/delete/${id}`,{method:'DELETE'})
-                .then(res=>res.json())
-                .then(data=>alert(data))
-                .then(()=>getSpecials())
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
-
-    function archiveSpecial(id){
-        try{
-            fetch(`${BASE_URL}/api/specials/archive/${id}`,{method:'PUT'})
+            fetch(`${BASE_URL}/api/desserts/delete/${id}`,{method:'DELETE'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getSpecials())
+                .then(()=>getDesserts())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
         }
     }
 
-    function unarchiveSpecial(id){
+    function archiveDessert(id){
         try{
-            fetch(`${BASE_URL}/api/specials/unarchive/${id}`,{method:'PUT'})
+            fetch(`${BASE_URL}/api/desserts/archive/${id}`,{method:'PUT'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getSpecials())
+                .then(()=>getDesserts())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
         }
     }
 
-    function editSpecial(id,section,name,allergiesAbbreviated,allergiesComplete,description,price){
+    function unarchiveDessert(id){
+        try{
+            fetch(`${BASE_URL}/api/desserts/unarchive/${id}`,{method:'PUT'})
+                .then(res=>res.json())
+                .then(data=>alert(data))
+                .then(()=>getDesserts())
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function editDessert(id,section,name,allergiesAbbreviated,allergiesComplete,description,price){
         try{
             setEditMode(true)
-            document.querySelector('#specials-form').scrollIntoView({behavior:'smooth'})
-            document.querySelector('#special-id').value = id
+            document.querySelector('#desserts-form').scrollIntoView({behavior:'smooth'})
+            document.querySelector('#dessert-id').value = id
             document.querySelector('#section').innerHTML = section
             document.querySelector('#section-wrapper').style.display = 'block'
             document.querySelector('#name').value = name
@@ -120,8 +120,8 @@ export default function DessertsUpdate(){
 
     function moveUp(id){
         try{
-            fetch(`${BASE_URL}/api/specials/move-up/${id}`,{method:'PUT'})
-                .then(()=>getSpecials())
+            fetch(`${BASE_URL}/api/desserts/move-up/${id}`,{method:'PUT'})
+                .then(()=>getDesserts())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -130,8 +130,8 @@ export default function DessertsUpdate(){
 
     function moveDown(id){
         try{
-            fetch(`${BASE_URL}/api/specials/move-down/${id}`,{method:'PUT'})
-                .then(()=>getSpecials())
+            fetch(`${BASE_URL}/api/desserts/move-down/${id}`,{method:'PUT'})
+                .then(()=>getDesserts())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -140,7 +140,7 @@ export default function DessertsUpdate(){
 
     function clearForm(){
         try{
-            document.querySelector('#special-id').value = ''
+            document.querySelector('#dessert-id').value = ''
             document.querySelector('#section').innerHTML = ''
             document.querySelector('#section-wrapper').style.display = 'none'
             document.querySelector('#name').value = ''
@@ -157,15 +157,16 @@ export default function DessertsUpdate(){
     return(
         <>
             <div className='manager-page-wrapper'>
-                <ManagerNavbar page='specials' />
+                <ManagerNavbar page='desserts' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; update &gt; desserts</div>
 
 
 
-                        <div className='specials-update-menu'>
+                        <div className='desserts-update-menu'>
                             <div>
-                                <div className='specials-h1' style={{marginBottom:'0'}}>today's specials</div>
+                                <div className='desserts-h1' style={{marginBottom:'0'}}>desserts</div>
+                                <br/>
                             </div>
 
 
@@ -182,14 +183,10 @@ export default function DessertsUpdate(){
 
 
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
-                                <div className='specials-h2 specials-update-heading'>appetizer</div>}
-                            {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
-                                <div className='specials-h2 specials-update-heading'>appetizers</div>}
-
-                            {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                            {allDesserts.filter(item=>item.sequence).map(data=>{
                                 return(
-                                    <div key={data._id} className='special'>
+                                    <div key={data._id} className='dessert'>
+
                                         {data.sequence != '1' && 
                                             <FaCaretUp style={{ margin:'0 auto',
                                                                 fontSize:'60px',
@@ -212,9 +209,9 @@ export default function DessertsUpdate(){
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                                    onClick={()=>archiveDessert(data._id)}>ARCHIVE</span>
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
+                                                    onClick={()=>editDessert(   data._id,
                                                                                 data.section,
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
@@ -222,11 +219,11 @@ export default function DessertsUpdate(){
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                                    onClick={()=>deleteDessert(data._id)}>DELETE</span>
 
                                         </div>
 
-                                        {data.sequence != allSpecials.filter(item=>item.section == 'appetizers' && item.sequence).length && 
+                                        {data.sequence != allDesserts.filter(item=>item.sequence).length && 
                                             <FaCaretUp style={{ margin:'0 auto',
                                                                 fontSize:'60px',
                                                                 position:'relative',
@@ -259,140 +256,6 @@ export default function DessertsUpdate(){
 
 
 
-
-                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                <div className='specials-h2 specials-update-heading'>entrée</div>}
-                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                <div className='specials-h2 specials-update-heading'>entrées</div>}
-
-                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                return(
-                                    <div key={data._id} className='special'>
-                                        {data.sequence != '1' && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'10px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveUp(data._id))} />
-                                        }
-                                     
-                                        <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                        <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
-                                        <div style={{marginTop:'5px'}}>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
-                                            <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                data.description,
-                                                                                data.price)}>EDIT</span>                                                    
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>                                                                                
-                                        </div>     
-
-                                        {data.sequence != allSpecials.filter(item=>item.section == 'entrées' && item.sequence).length && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'0px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                transform:'rotate(180deg',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveDown(data._id))} />
-                                        }
-
-                                    </div>
-                                )
-                            })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                <div className='specials-h2 specials-update-heading'>dessert</div>}
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                <div className='specials-h2 specials-update-heading'>desserts</div>}
-
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                return(
-                                    <div key={data._id} className='special'>
-                                        {data.sequence != '1' && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'10px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveUp(data._id))} />
-
-                                        }
-                                     
-                                        <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                        <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
-                                        <div style={{marginTop:'5px'}}>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
-                                            <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                data.description,
-                                                                                data.price)}>EDIT</span>                                                    
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
-                                        </div>
-
-                                        {data.sequence != allSpecials.filter(item=>item.section == 'desserts' && item.sequence).length && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'0px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                transform:'rotate(180deg',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveDown(data._id))} />
-                                        }
-
-                                    </div>
-                                )
-                            })}
 
 
 
@@ -412,42 +275,24 @@ export default function DessertsUpdate(){
                       
 
 
-                    <form   action={editMode ? updateSpecial : createNewSpecial} 
-                            id='specials-form'
+                    <form   action={editMode ? updateDessert : createNewDessert} 
+                            id='desserts-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'update special' : 'create new special'}
+                            {editMode ? 'update dessert' : 'create new dessert'}
 
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='special-id' />
+                        <input type='hidden' name='id' id='dessert-id' />
+
                         <input  type='hidden'
                                 name='menu' 
-                                value='specials' />
-                        
-                        <div    style={{display:'none'}}
-                                id='section-wrapper'>
-                                            section: <span id='section'></span>
-                                <br/><br/>
-                        </div> 
+                                value='dessert' />
 
-                        {!editMode &&                         
-                                        <label>
-                                            section    
-                                            &nbsp; 
-                                            <select name='section' required defaultValue=''>
-                                                <option disabled value=''>select...</option>
-                                                <option>appetizers</option>
-                                                <option>entrées</option>
-                                                <option>desserts</option>
-                                            </select>
-
-                                            <br/><br/>
-                                        </label>
-
-                        }             
-                        
+                        <input  type='hidden'
+                                name='section' 
+                                value='desserts' />                        
                         
 
                         <label>
@@ -492,7 +337,7 @@ export default function DessertsUpdate(){
                         </label>
                         <br/><br/>
 
-                        <div id='specials-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
+                        <div id='desserts-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
                             <input  type='submit' 
                                     style={{padding:'10px 10px',
                                             cursor:'pointer',
@@ -501,7 +346,7 @@ export default function DessertsUpdate(){
                                             
                                             background:'lightgrey',
                                             fontSize:'20px'}}
-                                    value = {editMode ? 'update special' : 'create new special'} />
+                                    value = {editMode ? 'update dessert' : 'create new dessert'} />
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',
@@ -542,18 +387,18 @@ export default function DessertsUpdate(){
 
 
 
-                        {allSpecials.filter(item=>item.sequence == 0).length &&
+                        {allDesserts.filter(item=>item.sequence == 0).length &&
                             <>
-                                <div className='specials-update-menu'>
+                                <div className='desserts-update-menu'>
                                     <div>
-                                        <div className='specials-h1'>archives</div>
+                                        <div className='desserts-h1'>archives</div>
                                     </div>
 
                                     <br/><br/>
 
-                                    {allSpecials.filter(item=>item.sequence == 0).map(data=>{
+                                    {allDesserts.filter(item=>item.sequence == 0).map(data=>{
                                         return(
-                                            <div key={data._id} className='special'>  
+                                            <div key={data._id} className='dessert'>  
                                                 <div>section: {data.section}</div>                                    
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
@@ -565,10 +410,10 @@ export default function DessertsUpdate(){
                                                 <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
                                                 <div style={{marginTop:'5px'}}>
                                                     <span   className='btn unarchive-btn'
-                                                            onClick={()=>unarchiveSpecial(data._id)}>
+                                                            onClick={()=>unarchiveDessert(data._id)}>
                                                         UNarchive</span>
                                                     <span   className='btn delete-btn'
-                                                            onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                                            onClick={()=>deleteDessert(data._id)}>DELETE</span>
                                                     <br/><br/><br/>
                                                 </div>
                                             </div>
