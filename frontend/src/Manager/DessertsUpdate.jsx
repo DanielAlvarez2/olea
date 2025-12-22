@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import './Manager.css'
 import './Specials.css'
 import './SpecialsMenuUpdate.css'
+import './DessertsUpdate.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 
@@ -387,7 +388,7 @@ export default function DessertsUpdate(){
 
 
 
-                        {allDesserts.filter(item=>item.sequence == 0).length &&
+                        {allDesserts.filter(item=>item.sequence == 0).length > 0 &&
                             <>
                                 <div className='desserts-update-menu'>
                                     <div>

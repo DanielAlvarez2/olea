@@ -1,0 +1,44 @@
+.desserts-h2{
+    padding: 40px 0 10px;
+}
+.desserts-update-heading{
+    margin: 60px 0 20px;
+}
+.desserts-update-menu{
+    width:4.25in;
+    min-height:5.5in;
+    padding:24px 55px 50px;
+    border:1px solid black;
+    margin:0 auto;
+}
+#desserts-form{
+    margin:20px auto;
+    padding:20px 10px;
+    border-radius:10px;
+    width:320px;
+}
+.main-menu{
+    padding-bottom: 50px;
+}
+@media (max-width:4.25in){
+    .desserts-update-menu{
+        width:100%;
+    }
+}
+@media (max-width:325px){
+    #desserts-form{
+        width:100%;
+        /* background:red; */
+    }
+    .desserts-update-menu{
+        padding:24px 20px 50px;
+    }
+}
+@media (max-width:275px){
+    #desserts-form-buttons{
+        flex-direction: column;
+        width:200px;
+        margin:0 auto;
+        gap:20px;
+    }
+}
