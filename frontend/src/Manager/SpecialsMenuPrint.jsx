@@ -106,7 +106,8 @@ Please switch to a different browser to proceed.
                                 // justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                border:'1px solid green',
+                                paddingBottom:'0'
                                 }}>
 
 
