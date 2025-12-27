@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const Special = require('./models/Special.js')
+const Dessert = require('./models/Dessert.js')
 const Pixel = require('./models/Pixel.js')
 const SpecialsFormat = require('./models/SpecialsFormat.js')
 
@@ -28,6 +29,30 @@ app.post('/api/specials', async(req,res)=>{
     try{
         const maxSequence = await Special.findOne({section:req.body.section}).sort({sequence:-1})
         await Special.create({
+            menu: req.body.menu,
+            section: req.body.section,
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            allergiesAbbreviated: req.body.allergiesAbbreviated,
+            allergiesComplete: req.body.allergiesComplete,
+            sequence: maxSequence ? maxSequence.sequence + 1 : 1
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/desserts', async(req,res)=>{
+    try{
+        const maxSequence = await Dessert.findOne().sort({sequence:-1})
+        await Dessert.create({
             menu: req.body.menu,
             section: req.body.section,
             name: req.body.name,
