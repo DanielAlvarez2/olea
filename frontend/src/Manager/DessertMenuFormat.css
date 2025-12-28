@@ -4,3 +4,20 @@
     border:1px solid black;
     background:beige;
 }
+.dessert-name{
+    font-family: sans-serif;
+    font-size:16px;
+    font-weight:600;
+}
+.dessert-allergies{
+    font-family: serif;
+    font-style: italic;
+}
+.dessert-description{
+    font-family:serif;
+}
+.dessert-price{
+    font-family:serif;
+    font-weight:600;
+    font-style: italic;
+}
