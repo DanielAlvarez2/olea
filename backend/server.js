@@ -97,6 +97,25 @@ app.delete('/api/specials/delete/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/desserts/delete/:id', async(req,res)=>{
+    try{
+        const target = await Dessert.findById(req.params.id)
+        const maxSequence = await Dessert.findOne().sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await Dessert.findOneAndUpdate({sequence: i},{sequence: i-1})
+        }
+        await Dessert.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/specials/archive/:id', async(req,res)=>{
     try{
         const target = await Special.findById(req.params.id)
@@ -121,11 +140,46 @@ app.put('/api/specials/archive/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/desserts/archive/:id', async(req,res)=>{
+    try{
+        const target = await Dessert.findById(req.params.id)
+        const maxSequence = await Dessert.findOne().sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await Dessert.findOneAndUpdate({sequence: i},{sequence: i-1})
+        }
+        await Dessert.findByIdAndUpdate(req.params.id,{sequence: 0})
+        console.log(`
+            Archived:
+             - ${target.name}`)
+        res.json(`
+            Archived:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/specials/unarchive/:id', async(req,res)=>{
     try{
         const target = await Special.findById(req.params.id)
         const maxSequence = await Special.findOne({section:target.section}).sort({sequence:-1})
         await Special.findByIdAndUpdate(req.params.id, {sequence: maxSequence.sequence + 1})
+        console.log(`
+            UNarchived:
+             - ${target.name}`)
+        res.json(`
+            UNarchived:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/desserts/unarchive/:id', async(req,res)=>{
+    try{
+        const target = await Dessert.findById(req.params.id)
+        const maxSequence = await Dessert.findOne().sort({sequence:-1})
+        await Dessert.findByIdAndUpdate(req.params.id, {sequence: maxSequence.sequence + 1})
         console.log(`
             UNarchived:
              - ${target.name}`)
