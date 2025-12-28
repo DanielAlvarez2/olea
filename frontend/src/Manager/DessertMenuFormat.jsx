@@ -32,21 +32,29 @@ export default function DessertMenuFormat(){
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; format</div>
                     <div className='main-menu'>
                         <div id='dessert-menu-format-front'>
-                            <span className='logo'>olea</span>
-                            <hr/>
+                            <div id='footer-top'>
+                                <span className='logo'>olea</span>
+                                <hr/>
 
-                            {allDesserts.map(data=>{
-                                return (
-                                    <div key={data._id}>
-                                        <span className='dessert-name'>{data.name}</span>
-                                        {data.allergiesAbbreviated &&   <span className='dessert-allergies'>
-                                                                            &nbsp;({data.allergiesAbbreviated})
-                                                                        </span>}
-                                        <span className='dessert-description'>&nbsp;{data.description}</span>
-                                        <span className='dessert-price'>&nbsp; &nbsp; {data.price}</span>
-                                    </div>
-                                )
-                            })}
+                                {allDesserts.map(data=>{
+                                    return (
+                                        <div key={data._id}>
+                                            <span className='dessert-name'>{data.name}</span>
+                                            {data.allergiesAbbreviated &&   <span className='dessert-allergies'>
+                                                                                &nbsp;({data.allergiesAbbreviated})
+                                                                            </span>}
+                                            <span className='dessert-description'>&nbsp;{data.description}</span>
+                                            <span className='dessert-price'>&nbsp; &nbsp; {data.price}</span>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <footer>
+                                jessica delgado, pastry chef
+                                <hr/>
+                                please alert your server if you have any special dietary requirements<br/>
+                                <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
+                            </footer>
                         </div>
                     </div>
 

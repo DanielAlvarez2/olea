@@ -3,6 +3,8 @@
     height:8.5in;
     border:1px solid black;
     background:beige;
+    display:flex;
+    flex-direction: column;
 }
 .dessert-name{
     font-family: sans-serif;
@@ -20,4 +22,9 @@
     font-family:serif;
     font-weight:600;
     font-style: italic;
+}
+footer{
+    margin-top:auto;
+    font-family: serif;
+    font-weight: 700;
 }
