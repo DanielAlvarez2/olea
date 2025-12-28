@@ -188,6 +188,15 @@ app.get('/api/specials', async(req,res)=>{
     }
 })
 
+app.get('/api/desserts', async(req,res)=>{
+    try{
+        const allDesserts = await Dessert.find().sort({sequence:1})
+        res.json(allDesserts)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/specials/:id', async(req,res)=>{
     try{
         const special = await Special.findById(req.params.id)
