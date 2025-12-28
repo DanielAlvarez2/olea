@@ -281,6 +281,26 @@ app.put('/api/specials/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/desserts/:id', async(req,res)=>{
+    try{
+        await Dessert.findByIdAndUpdate({_id:req.params.id},{
+            name: req.body.name,
+            allergiesAbbreviated: req.body.allergiesAbbreviated,
+            allergiesComplete: req.body.allergiesComplete,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`
+            Update to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/formats/specials', async(req,res)=>{ 
     try{
         let allFormats = await SpecialsFormat.find()

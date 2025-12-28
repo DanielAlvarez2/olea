@@ -107,8 +107,6 @@ export default function DessertsUpdate(){
             setEditMode(true)
             document.querySelector('#desserts-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#dessert-id').value = id
-            document.querySelector('#section').innerHTML = section
-            document.querySelector('#section-wrapper').style.display = 'block'
             document.querySelector('#name').value = name
             document.querySelector('#allergies-abbreviated').value = allergiesAbbreviated
             document.querySelector('#allergies-complete').value = allergiesComplete
@@ -142,8 +140,6 @@ export default function DessertsUpdate(){
     function clearForm(){
         try{
             document.querySelector('#dessert-id').value = ''
-            document.querySelector('#section').innerHTML = ''
-            document.querySelector('#section-wrapper').style.display = 'none'
             document.querySelector('#name').value = ''
             document.querySelector('#allergies-abbreviated').value = ''
             document.querySelector('#allergies-complete').value = ''
