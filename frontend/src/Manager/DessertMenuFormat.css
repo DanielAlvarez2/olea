@@ -7,10 +7,15 @@
     flex-direction: column;
     padding:8mm;
     padding-top:10px;
+    font-size:15px;
+}
+.dessert-menu-front-content{
+    padding-left: 20px;
+    padding-right: 83px;
 }
 .dessert-name{
-    font-family: sans-serif;
-    font-size:16px;
+    font-family: FuturaLight;
+    font-size:15px;
     font-weight:600;
 }
 .dessert-allergies{
@@ -19,6 +24,7 @@
 }
 .dessert-description{
     font-family:serif;
+    font-size: 15px;
 }
 .dessert-price{
     font-family:serif;
@@ -29,4 +35,8 @@ footer{
     margin-top:auto;
     font-family: serif;
     font-weight: 700;
+    font-size:12px;
+}
+.dessert{
+    margin-bottom:6px;
 }
