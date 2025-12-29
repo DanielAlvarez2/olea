@@ -26,14 +26,17 @@ export default function DessertMenuFormat(){
 
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div className='manager-page-wrapper' style={{border:'1px solid red',color:'red'}}>
                 <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; format</div>
                     <div className='main-menu'>
-                        <div id='dessert-menu-format-front'>
+                        <div    id='dessert-menu-format-front' 
+                                style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}>
                             <div id='footer-top'>
-                                <span className='logo'>olea</span>
+                                <span   className='logo' 
+                                        style={{color:'red',
+                                                fontSize:'60px'}}>olea</span>
                                 <hr/>
 
                                 {allDesserts.map(data=>{
