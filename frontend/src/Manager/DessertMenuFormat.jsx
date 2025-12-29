@@ -52,7 +52,7 @@ export default function DessertMenuFormat(){
                             </div>
                             <footer>
                                 jessica delgado, pastry chef
-                                <hr/>
+                                <hr style={{marginTop:'5px'}}/>
                                 please alert your server if you have any special dietary requirements<br/>
                                 <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                             </footer>

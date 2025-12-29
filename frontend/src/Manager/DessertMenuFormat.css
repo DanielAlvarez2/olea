@@ -5,6 +5,7 @@
     background:beige;
     display:flex;
     flex-direction: column;
+    padding:8mm;
 }
 .dessert-name{
     font-family: sans-serif;
