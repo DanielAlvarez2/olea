@@ -3,10 +3,29 @@ import './Dessert.css'
 import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
-import { useEffect } from 'react'
+import { useState,useEffect } from 'react'
 
 export default function Dessert(){
     useEffect(()=>window.scrollTo(0,0),[])
+    const [allDesserts, setAllDesserts] = useState([])
+    useEffect(()=>getDesserts(),[])
+
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'
+
+    function getDesserts(){
+        try{
+            fetch(`${BASE_URL}/api/desserts`)
+                .then(res=>res.json())
+                .then(json=>setAllDesserts(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+
     return (
         <div className='page-wrapper webpage'>
             <div className='webpage-wrapper'>
@@ -17,14 +36,23 @@ export default function Dessert(){
                                                     
                         <div className='dessert-left'>
                                                 
-                            <h2>DESSERT MENU</h2>
-                            <span className='cheese'>
-                                <span>cheese platter</span>
-                                <span>for one $12 / for two $18</span>
-                            </span>
+                            <h2>DESSERT MENU</h2><br/><br/>
+
+                                {allDesserts.map(data=>{
+                                    return(
+                                            <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                    <span>
+                                                        <span className='website-name'>{data.name}</span><br/>
+                                                        {data.description}
+                                                    </span>
+                                                    <span>{data.price}</span>
+                                                </div>
+                                                <br/>
+                                            </>
+                                    )
+                                })}
                                                 
 
-                            trio of manchego, murcia, mahón; walnuts, quince paste, toast
 
 
                             <br/><br/><br/><br/>
