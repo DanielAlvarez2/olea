@@ -20,8 +20,9 @@ export default function DessertMenuUpdate(){
                                 border:'1px solid green'
                                 }}>
                         <Link to='/desserts-update'><li style={{flexGrow:'1'}}>desserts</li></Link>
-                        <Link to='/specials'><li style={{flexGrow:'1'}}>coffee/tea</li></Link>
-                        <Link to='/dessert'><li style={{flexGrow:'1'}}>drinks</li></Link>
+                        <Link to='/coffee-update'><li style={{flexGrow:'1'}}>coffee</li></Link>
+                        <Link to='/tea-update'><li style={{flexGrow:'1'}}>tea</li></Link>
+                        <Link to='/dessert-drinks-update'><li style={{flexGrow:'1'}}>drinks</li></Link>
                     </ul>
 
             

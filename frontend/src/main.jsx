@@ -27,6 +27,7 @@ import SpecialsMenuPrint from './Manager/SpecialsMenuPrint.jsx'
 import DessertMenuUpdate from './Manager/DessertMenuUpdate.jsx'
 import DessertMenuFormat from './Manager/DessertMenuFormat.jsx'
 import DessertsUpdate from './Manager/DessertsUpdate.jsx'
+import CoffeeUpdate from './Manager/CoffeeUpdate.jsx'
 
 import WineList from './Manager/WineList.jsx'
 import Events from './Manager/Events.jsx'
@@ -67,6 +68,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
         <Route path='dessert-menu-update' element={<DessertMenuUpdate />} />
         <Route path='desserts-update' element={<DessertsUpdate />} />
+        <Route path='coffee-update' element={<CoffeeUpdate />} />
         <Route path='dessert-menu-format' element={<DessertMenuFormat />} />
 
         <Route path='restaurant-weeks' element={<RestaurantWeeks />} />

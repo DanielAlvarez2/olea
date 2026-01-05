@@ -3,12 +3,12 @@ import {useState, useEffect} from 'react'
 import './Manager.css'
 import './Specials.css'
 import './SpecialsMenuUpdate.css'
-import './DessertsUpdate.css'
+import './CoffeeUpdate.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 
 
-export default function DessertsUpdate(){
+export default function CoffeeUpdate(){
     const [allDesserts, setAllDesserts] = useState([])
     const [editMode, setEditMode] = useState(false)
     useEffect(()=>getDesserts(),[])
@@ -156,7 +156,7 @@ export default function DessertsUpdate(){
             <div className='manager-page-wrapper'>
                 <ManagerNavbar page='desserts' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; update &gt; desserts</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; update &gt; coffee</div>
 
 
 
