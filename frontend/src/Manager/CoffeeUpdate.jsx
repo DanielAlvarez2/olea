@@ -171,7 +171,7 @@ export default function CoffeeUpdate(){
                                                                                 data.name,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
-                                                    onClick={()=>deleteDessert(data._id)}>DELETE</span>
+                                                    onClick={()=>deleteCoffee(data._id)}>DELETE</span>
 
                                         </div>
 

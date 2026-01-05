@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const Special = require('./models/Special.js')
 const Dessert = require('./models/Dessert.js')
+const Coffee = require('./models/Coffee.js')
 const Pixel = require('./models/Pixel.js')
 const SpecialsFormat = require('./models/SpecialsFormat.js')
 
@@ -73,6 +74,27 @@ app.post('/api/desserts', async(req,res)=>{
     }
 })
 
+app.post('/api/coffees', async(req,res)=>{
+    try{
+        const maxSequence = await Coffee.findOne().sort({sequence:-1})
+        await Coffee.create({
+            menu: req.body.menu,
+            section: req.body.section,
+            name: req.body.name,
+            price: req.body.price,
+            sequence: maxSequence ? maxSequence.sequence + 1 : 1
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.delete('/api/specials/delete/:id', async(req,res)=>{
     try{
         const target = await Special.findById(req.params.id)
@@ -105,6 +127,25 @@ app.delete('/api/desserts/delete/:id', async(req,res)=>{
             await Dessert.findOneAndUpdate({sequence: i},{sequence: i-1})
         }
         await Dessert.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.delete('/api/coffees/delete/:id', async(req,res)=>{
+    try{
+        const target = await Coffee.findById(req.params.id)
+        const maxSequence = await Coffee.findOne().sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await Coffee.findOneAndUpdate({sequence: i},{sequence: i-1})
+        }
+        await Coffee.findByIdAndDelete(req.params.id)
         console.log(`
             Deleted from Database:
              - ${target.name}`)
@@ -280,6 +321,15 @@ app.get('/api/desserts', async(req,res)=>{
     try{
         const allDesserts = await Dessert.find().sort({sequence:1})
         res.json(allDesserts)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/coffees', async(req,res)=>{
+    try{
+        const allCoffees = await Coffee.find().sort({sequence:1})
+        res.json(allCoffees)
     }catch(err){
         console.log(err)
     }
