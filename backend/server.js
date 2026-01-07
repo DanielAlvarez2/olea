@@ -4,6 +4,7 @@ const cors = require('cors')
 const Special = require('./models/Special.js')
 const Dessert = require('./models/Dessert.js')
 const Coffee = require('./models/Coffee.js')
+const Tea = require('./models/Tea.js')
 const Pixel = require('./models/Pixel.js')
 const SpecialsFormat = require('./models/SpecialsFormat.js')
 
@@ -82,6 +83,27 @@ app.post('/api/coffees', async(req,res)=>{
             section: req.body.section,
             name: req.body.name,
             price: req.body.price,
+            sequence: maxSequence ? maxSequence.sequence + 1 : 1
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/teas', async(req,res)=>{
+    try{
+        const maxSequence = await Tea.findOne().sort({sequence:-1})
+        await Tea.create({
+            menu: req.body.menu,
+            section: req.body.section,
+            type: req.body.type,
+            name: req.body.name,
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
         console.log(`
