@@ -76,7 +76,7 @@ export default function CoffeeUpdate(){
     function editCoffee(id,section,name,price){
         try{
             setEditMode(true)
-            document.querySelector('#coffee-form').scrollIntoView({behavior:'smooth'})
+            document.querySelector('#desserts-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#coffee-id').value = id
             document.querySelector('#name').value = name
             document.querySelector('#price').value = price

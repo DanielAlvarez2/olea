@@ -269,6 +269,38 @@ app.put('/api/desserts/move-up/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/coffees/move-up/:id', async(req,res)=>{
+    try{
+        const target= await Coffee.findById(req.params.id)
+        await Coffee.findOneAndUpdate({sequence: target.sequence - 1},{sequence: target.sequence})
+        await Coffee.findByIdAndUpdate(req.params.id,{sequence: target.sequence - 1})
+        console.log(`
+            Moved Up:
+            ${target.name}`)
+        res.json(`
+            Moved Up:
+            ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/coffees/move-down/:id', async(req,res)=>{
+    try{
+        const target= await Coffee.findById(req.params.id)
+        await Coffee.findOneAndUpdate({sequence: target.sequence + 1},{sequence: target.sequence})
+        await Coffee.findByIdAndUpdate(req.params.id,{sequence: target.sequence + 1})
+        console.log(`
+            Moved Down:
+            ${target.name}`)
+        res.json(`
+            Moved Down:
+            ${target.name}`)       
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/desserts/move-down/:id', async(req,res)=>{
     try{
         const target= await Dessert.findById(req.params.id)
@@ -355,7 +387,7 @@ app.put('/api/specials/:id', async(req,res)=>{
             price: req.body.price
         })
         console.log(`
-            Update to Database: 
+            Updated to Database: 
              - ${req.body.name}`)
         res.json(`
             Updated to Database: 
@@ -375,7 +407,24 @@ app.put('/api/desserts/:id', async(req,res)=>{
             price: req.body.price
         })
         console.log(`
-            Update to Database: 
+            Updated to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/coffees/:id', async(req,res)=>{
+    try{
+        await Coffee.findByIdAndUpdate({_id:req.params.id},{
+            name: req.body.name,
+            price: req.body.price
+        })
+        console.log(`
+            Updated to Database: 
              - ${req.body.name}`)
         res.json(`
             Updated to Database: 
