@@ -162,7 +162,7 @@ export default function TeaUpdate(){
                                     </label>
                                 </div>
                                 
-                            </div>
+                            </div><br/><br/>
 
 
 
@@ -178,7 +178,7 @@ export default function TeaUpdate(){
 
 
 
-                            {allTeas.filter(item=>item.sequence).map(data=>{
+                            {displayTeas == 'black' && allTeas.filter(item=>item.type == 'black').map(data=>{
                                 return(
                                     <div key={data._id} className='dessert'>
 
@@ -207,7 +207,54 @@ export default function TeaUpdate(){
 
                                         </div>
 
-                                        {data.sequence != allTeas.filter(item=>item.sequence).length && 
+                                        {data.sequence != allTeas.filter(item=>item.type == 'black').length && 
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'0px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                transform:'rotate(180deg',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveDown(data._id))} />
+                                        }
+
+                                    </div>
+                                )
+                            })}
+
+
+
+                            {displayTeas == 'green' && allTeas.filter(item=>item.type == 'green').map(data=>{
+                                return(
+                                    <div key={data._id} className='dessert'>
+
+                                        {data.sequence != '1' && 
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'10px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveUp(data._id))} />
+                                        }
+                                        
+                                        
+                                        <span className='name'>{data.name} </span>
+                                            
+                                        <div style={{marginTop:'5px'}}>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editTea(   data._id,
+                                                                                data.section,
+                                                                                data.type,
+                                                                                data.name)}>EDIT</span>                                                    
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteTea(data._id)}>DELETE</span>
+
+                                        </div>
+
+                                        {data.sequence != allTeas.filter(item=>item.type == 'green').length && 
                                             <FaCaretUp style={{ margin:'0 auto',
                                                                 fontSize:'60px',
                                                                 position:'relative',
@@ -226,7 +273,50 @@ export default function TeaUpdate(){
 
 
 
+                            {displayTeas == 'herbal' && allTeas.filter(item=>item.type == 'herbal').map(data=>{
+                                return(
+                                    <div key={data._id} className='dessert'>
 
+                                        {data.sequence != '1' && 
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'10px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveUp(data._id))} />
+                                        }
+                                        
+                                        
+                                        <span className='name'>{data.name} </span>
+                                            
+                                        <div style={{marginTop:'5px'}}>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editTea(   data._id,
+                                                                                data.section,
+                                                                                data.type,
+                                                                                data.name)}>EDIT</span>                                                    
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteTea(data._id)}>DELETE</span>
+
+                                        </div>
+
+                                        {data.sequence != allTeas.filter(item=>item.type == 'herbal').length && 
+                                            <FaCaretUp style={{ margin:'0 auto',
+                                                                fontSize:'60px',
+                                                                position:'relative',
+                                                                top:'0px',
+                                                                color:'grey',
+                                                                cursor:'pointer',
+                                                                transform:'rotate(180deg',
+                                                                width:'100%'}}
+                                                        onClick={(()=>moveDown(data._id))} />
+                                        }
+
+                                    </div>
+                                )
+                            })}
 
 
 
