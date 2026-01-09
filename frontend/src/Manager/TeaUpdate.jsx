@@ -122,6 +122,10 @@ export default function TeaUpdate(){
         setDisplayTeas(e.target.value)
     }
 
+    function updateTeaPrice(){
+
+    }
+
     return(
         <>
             <div className='manager-page-wrapper'>
@@ -369,7 +373,7 @@ export default function TeaUpdate(){
                                 value='teas' />       
 
                         <label>
-                            type:&nbsp;
+                            type&nbsp;
                             <select defaultValue=''
                                     name='type'>
                                 <option disabled value=''>select...</option>
@@ -422,6 +426,54 @@ export default function TeaUpdate(){
                     </form>   
 
             
+                    <form   action={updateTeaPrice} 
+                            id='desserts-form'
+                            style={{background:'lightgreen'}}>
+                        <h2 style={{textAlign:'center'}}>
+                            update tea price
+
+                        </h2>
+                        <br/>
+
+                        <input type='hidden' name='id' id='coffee-id' />
+
+                        <input  type='hidden'
+                                name='menu' 
+                                value='dessert' />
+
+                        <input  type='hidden'
+                                name='section' 
+                                value='teas' />       
+
+                        
+
+                        current price: 4.5
+                        <br/>
+                        <br/>
+
+                        <label>
+                            new price<br/>
+                            <input  type='text' 
+                                    name='tea-price' 
+                                    id='tea-price'
+                                    required
+                                    style={{width:'100px'}} />
+                        </label>
+                        <br/><br/>
+
+                        <div id='tea-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
+                            <input  type='submit' 
+                                    style={{padding:'10px 10px',
+                                            cursor:'pointer',
+                                            borderRadius:'10px',
+                                            border:'2px solid black',
+                                            background:'lightgrey',
+                                            fontSize:'20px'}}
+                                    value = 'update' />
+                        </div>
+
+                    </form>   
+
 
 
 
