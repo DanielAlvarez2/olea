@@ -9,6 +9,7 @@ import { FaCaretUp } from "react-icons/fa";
 
 export default function TeaUpdate(){
     const [allTeas, setAllTeas] = useState([])
+    const [displayTeas, setDisplayTeas] = useState('black')
     const [editMode, setEditMode] = useState(false)
     useEffect(()=>getTeas(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -117,6 +118,10 @@ export default function TeaUpdate(){
         }
     }
 
+    function changeTeaTypeDisplay(e){
+        setDisplayTeas(e.target.value)
+    }
+
     return(
         <>
             <div className='manager-page-wrapper'>
@@ -130,6 +135,33 @@ export default function TeaUpdate(){
                             <div>
                                 <div className='desserts-h1' style={{marginBottom:'0'}}>teas</div>
                                 <br/>
+
+                                <div style={{display:'flex',justifyContent:'space-between'}}>
+                                    <label>
+                                        <input  type='radio'
+                                                value='black' 
+                                                checked={displayTeas == 'black'}
+                                                onChange={changeTeaTypeDisplay}
+                                                name='display-type' /> &nbsp;black
+                                    </label>
+                                        
+                                    <label>
+                                        <input  type='radio'
+                                                value='green' 
+                                                checked={displayTeas == 'green'}
+                                                onChange={changeTeaTypeDisplay}
+                                                name='display-type' /> &nbsp;green
+                                    </label>
+
+                                    <label>
+                                        <input  type='radio'
+                                                value='herbal'
+                                                checked={displayTeas == 'herbal'}
+                                                onChange={changeTeaTypeDisplay}
+                                                name='display-type' /> &nbsp;herbal
+                                    </label>
+                                </div>
+                                
                             </div>
 
 

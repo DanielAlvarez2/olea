@@ -98,7 +98,7 @@ app.post('/api/coffees', async(req,res)=>{
 
 app.post('/api/teas', async(req,res)=>{
     try{
-        const maxSequence = await Tea.findOne().sort({sequence:-1})
+        const maxSequence = await Tea.findOne({type:req.body.type}).sort({sequence:-1})
         await Tea.create({
             menu: req.body.menu,
             section: req.body.section,
