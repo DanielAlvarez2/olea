@@ -179,6 +179,25 @@ app.delete('/api/coffees/delete/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/teas/delete/:id', async(req,res)=>{
+    try{
+        const target = await Tea.findById(req.params.id)
+        const maxSequence = await Tea.findOne({type:target.type}).sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await Tea.findOneAndUpdate({type:target.type,sequence: i},{sequence: i-1})
+        }
+        await Tea.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/specials/archive/:id', async(req,res)=>{
     try{
         const target = await Special.findById(req.params.id)
