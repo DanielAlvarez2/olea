@@ -362,7 +362,7 @@ export default function TeaUpdate(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='coffee-id' />
+                        <input type='hidden' name='id' id='tea-id' />
 
                         <input  type='hidden'
                                 name='menu' 
@@ -375,11 +375,12 @@ export default function TeaUpdate(){
                         <label>
                             type&nbsp;
                             <select defaultValue=''
+                                    id='tea-type'
                                     name='type'>
                                 <option disabled value=''>select...</option>
-                                <option>black</option>
-                                <option>green</option>
-                                <option>herbal</option>
+                                <option value='black'>black</option>
+                                <option value='green'>green</option>
+                                <option value='herbal'>herbal</option>
                             </select>
                         </label>
                         <br/><br/>
