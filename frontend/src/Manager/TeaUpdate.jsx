@@ -131,12 +131,19 @@ export default function TeaUpdate(){
         setDisplayTeas(e.target.value)
     }
 
-    function updateTeaPrice(formData){
+    async function updateTeaPrice(formData){
         try{
-            fetch(`${BASE_URL}/api/teas/update-price`)
-                .then()
-                .then()
-                .catch(err=>console.log(err))
+            await fetch(`${BASE_URL}/api/teas/update-price`,{method:'PUT',
+                                                                headers:{'Content-type':'application/json'},
+                                                                body: JSON.stringify({
+                                                                    price: formData.get('tea-price')
+                                                                })
+            })
+                    .then(alert(`
+                        New Tea Price:
+                         - ${formData.get('tea-price')}`))
+                    .then(getTeaPrice())
+                    .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
         }

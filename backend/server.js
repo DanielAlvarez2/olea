@@ -458,6 +458,24 @@ app.post('/api/teas/create-price', async(req,res)=>{
     }
 })
 
+app.put('/api/teas/update-price', async(req,res)=>{
+    try{
+        const currentTeaPrice = await TeaPrice.findOne()
+        await TeaPrice.findByIdAndUpdate({_id:currentTeaPrice._id},{
+            price: req.body.price
+        })
+        console.log(`
+            Updated in Database: 
+             - New Tea Price: ${req.body.price}`)
+        res.json(`
+            Updated in Database: 
+             - New Tea Price: ${req.body.price}`)        
+    }catch(err){
+        console.log(err)
+    }
+})
+
+
 app.get('/api/teas/price', async(req,res)=>{
     try{
         const teaPrice = await TeaPrice.findOne()
