@@ -40,3 +40,14 @@ footer{
 .dessert{
     margin-bottom:6px;
 }
+.coffee-tea-heading{
+    color:blue;
+    font-family: FuturaExtraBold;
+}
+.coffee-tea-heading-italics{
+    font-family:serif;
+    font-style: italic;
+}
+.tea-name{
+    font-family: serif;
+}

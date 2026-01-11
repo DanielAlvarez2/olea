@@ -7,11 +7,33 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 export default function DessertMenuFormat(){
 
     const [allDesserts, setAllDesserts] = useState([])
+    const [teaPrice, setTeaPrice] = useState('')
+    const [allTeas, setAllTeas] = useState([])
     useEffect(()=>getDesserts(),[])
-
+    useEffect(()=>getTeaPrice(),[])
+    useEffect(()=>getTeas(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
+
+    function getTeas(){
+        try{
+            fetch(`${BASE_URL}/api/teas`)
+                .then(res=>res.json())
+                .then(json=>setAllTeas(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+
+    function getTeaPrice(){
+        fetch(`${BASE_URL}/api/teas/price`)
+            .then(res=>res.json())
+            .then(json=>setTeaPrice(json))
+            .catch(err=>console.log(err))
+    }
 
     function getDesserts(){
         try{
@@ -53,8 +75,146 @@ export default function DessertMenuFormat(){
                                             </div>
                                         )
                                     })}
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <span className='coffee-tea-heading'>
+                                        coffee
+                                    </span>
+                                    &nbsp;
+                                    <span className='dessert-price'>
+                                        (decaffeinated available)
+                                    </span>
+
+
+
+
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    
+                                    
+                                    
+                                    <span className='coffee-tea-heading'>
+                                        organic-artisan whole leaf tea
+                                    </span>
+                                    &nbsp;
+                                    <span className='dessert-price'>
+                                        (pouch)
+                                    </span>
+                                    <span className='dessert-price'>
+                                        {teaPrice ? ` ${teaPrice}` : ''}
+                                    </span>
+                                    <br/>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <span   className='dessert-price'
+                                            style={{fontStyle:'normal'}}>
+                                        black &nbsp;
+                                    </span>
+                                                                {allTeas.filter(item=>item.type == 'black').map(data=>{
+                                                                    return(
+                                                                        <span key={data._id}>
+                                                                            <span className='tea-name'>{data.name} 
+                                                                                {data.sequence != allTeas.filter(item=>item.type == 'black').length
+                                                                                    && ', '
+                                                                                }
+                                                                            </span>
+                                                                        </span>
+                                                                    )
+                                                                })}
+                                    
+                                    <br/>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <span   className='dessert-price'
+                                            style={{fontStyle:'normal'}}>
+                                        green &nbsp;
+                                    </span>
+                                                                {allTeas.filter(item=>item.type == 'green').map(data=>{
+                                                                    return(
+                                                                        <span key={data._id}>
+                                                                            <span className='tea-name'>{data.name} 
+                                                                                {data.sequence != allTeas.filter(item=>item.type == 'green').length
+                                                                                    && ', '
+                                                                                }
+                                                                            </span>
+                                                                        </span>
+                                                                    )
+                                                                })}
+                                    
+                                    <br/>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <span className='dessert-price'>
+                                        <span style={{fontStyle:'normal'}}>herbal</span>
+                                        <span>(caffeine free)</span>
+                                        &nbsp;
+                                    </span>
+                                                                {allTeas.filter(item=>item.type == 'herbal').map(data=>{
+                                                                    return(
+                                                                        <span key={data._id}>
+                                                                            <span className='tea-name'>{data.name} 
+                                                                                {data.sequence != allTeas.filter(item=>item.type == 'herbal').length
+                                                                                    && ', '
+                                                                                }
+                                                                            </span>
+                                                                        </span>
+                                                                    )
+                                                                })}
+                                
+                                    <br/>
+
+
+
+
+
+
+
+
+
+
                                 </div>
                             </div>
+
+
+
+
+
+
+
+
+
+
+
+
                             <footer>
                                 <div className='dessert-menu-front-content'>
                                     jessica delgado, pastry chef
