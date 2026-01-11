@@ -5,7 +5,10 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 export default function Manager(){
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div    className='manager-page-wrapper' 
+                    style={{border:'1px solid red',
+                            background:'pink'
+                    }}>
                 <ManagerNavbar />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>main menu</div>
