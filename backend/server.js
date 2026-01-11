@@ -5,6 +5,7 @@ const Special = require('./models/Special.js')
 const Dessert = require('./models/Dessert.js')
 const Coffee = require('./models/Coffee.js')
 const Tea = require('./models/Tea.js')
+const TeaPrice = require('./models/TeaPrice.js')
 const Pixel = require('./models/Pixel.js')
 const SpecialsFormat = require('./models/SpecialsFormat.js')
 
@@ -436,6 +437,35 @@ app.get('/api/coffees', async(req,res)=>{
     try{
         const allCoffees = await Coffee.find().sort({sequence:1})
         res.json(allCoffees)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/teas/create-price', async(req,res)=>{
+    try{
+        await TeaPrice.create({
+            price: req.body.price
+        })
+        console.log(`
+            Added to Database: 
+             - Tea Price: ${req.body.price}`)
+        res.json(`
+            Added to Database: 
+             - Tea Price: ${req.body.price}`)        
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/teas/price', async(req,res)=>{
+    try{
+        const teaPrice = await TeaPrice.findOne()
+        if (teaPrice){
+            res.json(teaPrice.price)
+        }else{
+            res.json('')
+        } 
     }catch(err){
         console.log(err)
     }

@@ -8,13 +8,22 @@ import { FaCaretUp } from "react-icons/fa";
 
 
 export default function TeaUpdate(){
+    const [teaPrice, setTeaPrice] = useState('')
     const [allTeas, setAllTeas] = useState([])
     const [displayTeas, setDisplayTeas] = useState('black')
     const [editMode, setEditMode] = useState(false)
     useEffect(()=>getTeas(),[])
+    useEffect(()=>getTeaPrice(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
+
+    function getTeaPrice(){
+        fetch(`${BASE_URL}/api/teas/price`)
+            .then(res=>res.json())
+            .then(json=>setTeaPrice(json))
+            .catch(err=>console.log(err))
+    }
 
     async function createNewTea(formData){
         await fetch(`${BASE_URL}/api/teas`,{method:'POST',
@@ -122,8 +131,33 @@ export default function TeaUpdate(){
         setDisplayTeas(e.target.value)
     }
 
-    function updateTeaPrice(){
+    function updateTeaPrice(formData){
+        try{
+            fetch(`${BASE_URL}/api/teas/update-price`)
+                .then()
+                .then()
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
 
+    async function createTeaPrice(formData){
+        try{
+            await fetch(`${BASE_URL}/api/teas/create-price`,{   method:'POST',
+                                                                headers:{'Content-Type':'application/json'},
+                                                                body: JSON.stringify({
+                                                                    price: formData.get('tea-price') 
+                                                                })
+                                                            })
+                    .then(alert(`
+                        New Tea Price:
+                         - ${formData.get('tea-price')}`))
+                    .then(getTeaPrice())
+                    .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
     }
 
     return(
@@ -427,7 +461,7 @@ export default function TeaUpdate(){
                     </form>   
 
             
-                    <form   action={updateTeaPrice} 
+                    <form   action={teaPrice ? updateTeaPrice : createTeaPrice} 
                             id='desserts-form'
                             style={{background:'lightgreen'}}>
                         <h2 style={{textAlign:'center'}}>
@@ -448,7 +482,7 @@ export default function TeaUpdate(){
 
                         
 
-                        current price: 4.5
+                        current price: {teaPrice ? teaPrice : '***n/a***'}
                         <br/>
                         <br/>
 
