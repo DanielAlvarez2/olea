@@ -9,9 +9,11 @@ export default function DessertMenuFormat(){
     const [allDesserts, setAllDesserts] = useState([])
     const [teaPrice, setTeaPrice] = useState('')
     const [allTeas, setAllTeas] = useState([])
+    const [allCoffees, setAllCoffees] = useState([])
     useEffect(()=>getDesserts(),[])
     useEffect(()=>getTeaPrice(),[])
     useEffect(()=>getTeas(),[])
+    useEffect(()=>getCoffees(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
@@ -21,6 +23,17 @@ export default function DessertMenuFormat(){
             fetch(`${BASE_URL}/api/teas`)
                 .then(res=>res.json())
                 .then(json=>setAllTeas(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getCoffees(){
+        try{
+            fetch(`${BASE_URL}/api/coffees`)
+                .then(res=>res.json())
+                .then(json=>setAllCoffees(json))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -87,8 +100,20 @@ export default function DessertMenuFormat(){
                                     &nbsp;
                                     <span className='dessert-price'>
                                         (decaffeinated available)
-                                    </span>
+                                    </span><br/>
 
+                                                                {allCoffees.map(data=>{
+                                                                    return(
+                                                                        <span key={data._id}>
+                                                                            <span className='coffee-name'>{data.name} </span> 
+                                                                            <span className='coffee-price'>{data.price}</span> 
+                                                                                {data.sequence != allCoffees.length
+                                                                                    && ' / '
+                                                                                }
+                                                                            
+                                                                        </span>
+                                                                    )
+                                                                })}
 
 
 
