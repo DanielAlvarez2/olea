@@ -105,8 +105,8 @@ export default function DessertMenuFormat(){
                                                                 {allCoffees.map(data=>{
                                                                     return(
                                                                         <span key={data._id}>
-                                                                            <span className='coffee-name'>{data.name} </span> 
-                                                                            <span className='coffee-price'>{data.price}</span> 
+                                                                            <span className='dessert-description'>{data.name} </span> 
+                                                                            <span className='dessert-price'>{data.price}</span> 
                                                                                 {data.sequence != allCoffees.length
                                                                                     && ' / '
                                                                                 }
