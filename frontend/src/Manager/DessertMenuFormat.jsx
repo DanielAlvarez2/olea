@@ -61,7 +61,8 @@ export default function DessertMenuFormat(){
 
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red',color:'red'}}>
+            <div    className='manager-page-wrapper' 
+                    style={{border:'1px solid red',color:'red'}}>
                 <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; format</div>
@@ -74,10 +75,24 @@ export default function DessertMenuFormat(){
                                                 fontSize:'57px'}}>olea</span>
                                 <hr style={{marginBottom:'7px'}}/>
 
+
+
+
+
+
+
                                 <div className='dessert-menu-front-content'>
+
+
+
+
+
+
+
+
                                     {allDesserts.map(data=>{
                                         return (
-                                            <div key={data._id} className='dessert'>
+                                            <div key={data._id} className='dessert dessert-item'>
                                                 <span className='dessert-name'>{data.name}</span>
                                                 {data.allergiesAbbreviated &&   <span className='dessert-allergies'>
                                                                                     &nbsp;({data.allergiesAbbreviated})
@@ -92,100 +107,100 @@ export default function DessertMenuFormat(){
                                     
                                     
                                     
-                                    
-                                    
-                                    <span className='coffee-tea-heading'>
-                                        coffee
-                                    </span>
-                                    &nbsp;
-                                    <span className='dessert-price'>
-                                        (decaffeinated available)
-                                    </span><br/>
+                                    <div className='dessert-item'>                                    
+                                        <span className='coffee-tea-heading'>
+                                            coffee
+                                        </span>
+                                        &nbsp;
+                                        <span className='dessert-price'>
+                                            (decaffeinated available)
+                                        </span><br/>
 
-                                                                {allCoffees.map(data=>{
-                                                                    return(
-                                                                        <span key={data._id}>
-                                                                            <span className='dessert-description'>{data.name} </span> 
-                                                                            <span className='dessert-price'>{data.price}</span> 
-                                                                                {data.sequence != allCoffees.length
-                                                                                    && ' / '
-                                                                                }
-                                                                            
-                                                                        </span>
-                                                                    )
-                                                                })}
-
-
-
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    
-                                    
-                                    
-                                    <span className='coffee-tea-heading'>
-                                        organic-artisan whole leaf tea
-                                    </span>
-                                    &nbsp;
-                                    <span className='dessert-price'>
-                                        (pouch)
-                                    </span>
-                                    <span className='dessert-price'>
-                                        {teaPrice ? ` ${teaPrice}` : ''}
-                                    </span>
-                                    <br/>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    <span   className='dessert-price'
-                                            style={{fontStyle:'normal'}}>
-                                        black &nbsp;
-                                    </span>
-                                                                {allTeas.filter(item=>item.type == 'black').map(data=>{
-                                                                    return(
-                                                                        <span key={data._id}>
-                                                                            <span className='tea-name'>{data.name} 
-                                                                                {data.sequence != allTeas.filter(item=>item.type == 'black').length
-                                                                                    && ', '
-                                                                                }
+                                                                    {allCoffees.map(data=>{
+                                                                        return(
+                                                                            <span key={data._id}>
+                                                                                <span className='dessert-description'>{data.name} </span> 
+                                                                                <span className='dessert-price'>{data.price}</span> 
+                                                                                    {data.sequence != allCoffees.length
+                                                                                        && ' / '
+                                                                                    }
+                                                                                
                                                                             </span>
-                                                                        </span>
-                                                                    )
-                                                                })}
+                                                                        )
+                                                                    })}
+                                    </div>
+
+
+
                                     
-                                    <br/>
+
+
+
+
+
+
+                                    <div className='dessert-item'>                                    
+                                        <span className='coffee-tea-heading'>
+                                            organic-artisan whole leaf tea
+                                        </span>
+                                        &nbsp;
+                                        <span className='dessert-price'>
+                                            (pouch)
+                                        </span>
+                                        <span className='dessert-price'>
+                                            {teaPrice ? ` ${teaPrice}` : ''}
+                                        </span>
+
                                     
                                     
+                                        <br/>
                                     
                                     
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    <span   className='dessert-price'
-                                            style={{fontStyle:'normal'}}>
-                                        green &nbsp;
-                                    </span>
-                                                                {allTeas.filter(item=>item.type == 'green').map(data=>{
-                                                                    return(
-                                                                        <span key={data._id}>
-                                                                            <span className='tea-name'>{data.name} 
-                                                                                {data.sequence != allTeas.filter(item=>item.type == 'green').length
-                                                                                    && ', '
-                                                                                }
+                                        
+                                        <span   className='dessert-price'
+                                                style={{fontStyle:'normal'}}>
+                                            black &nbsp;
+                                        </span>
+                                                                    {allTeas.filter(item=>item.type == 'black').map(data=>{
+                                                                        return(
+                                                                            <span key={data._id}>
+                                                                                <span className='tea-name'>{data.name} 
+                                                                                    {data.sequence != allTeas.filter(item=>item.type == 'black').length
+                                                                                        && ', '
+                                                                                    }
+                                                                                </span>
                                                                             </span>
-                                                                        </span>
-                                                                    )
-                                                                })}
+                                                                        )
+                                                                    })}
+                                        
+                                        <br/>
                                     
-                                    <br/>
                                     
                                     
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <span   className='dessert-price'
+                                                style={{fontStyle:'normal'}}>
+                                            green &nbsp;
+                                        </span>
+                                                                    {allTeas.filter(item=>item.type == 'green').map(data=>{
+                                                                        return(
+                                                                            <span key={data._id}>
+                                                                                <span className='tea-name'>{data.name} 
+                                                                                    {data.sequence != allTeas.filter(item=>item.type == 'green').length
+                                                                                        && ', '
+                                                                                    }
+                                                                                </span>
+                                                                            </span>
+                                                                        )
+                                                                    })}
+                                    
+                                    
+                                    </div>                                    
                                     
                                     
                                     
