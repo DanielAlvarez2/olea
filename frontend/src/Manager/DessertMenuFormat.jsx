@@ -3,6 +3,9 @@ import {useState,useEffect} from 'react'
 import './Manager.css'
 import './DessertMenuFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
+import { PiPlusCircleDuotone } from "react-icons/pi";
+import { PiMinusCircleDuotone } from "react-icons/pi";
+
 
 export default function DessertMenuFormat(){
 
@@ -59,19 +62,52 @@ export default function DessertMenuFormat(){
         }
     }
 
+    function decreaseMenuItemMarginsTopBottom(){
+
+    }
+
+    function increaseMenuItemMarginsTopBottom(){
+        
+    }
+
     return(
         <>
             <div    className='manager-page-wrapper' 
-                    style={{border:'1px solid red',color:'red'}}>
+                    style={{border:'1px solid red',
+                            // color:'red'
+                            }}>
                 <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; format</div>
                     <div className='main-menu'>
+
+
+
+
+
+                            <div style={{   textAlign:'center',
+                                            display:'flex',
+                                            gap:'10px',
+                                            justifyContent:'center',
+                                            border:'1px solid green',
+                                            alignItems:'center'}}>
+                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                            onClick={decreaseMenuItemMarginsTopBottom} /></span>
+                                <span>menu item margins<br/>top & bottom</span>
+                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                            onClick={increaseMenuItemMarginsTopBottom} /></span>
+                            </div>
+
+
+
+
                         <div    id='dessert-menu-format-front' 
-                                style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}>
+                                // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
+                        >
                             <div id='footer-top'>
                                 <span   className='logo dessert-menu-front-content' 
-                                        style={{color:'red',
+                                        style={{
+                                            // color:'red',
                                                 fontSize:'57px'}}>olea</span>
                                 <hr style={{marginBottom:'7px'}}/>
 
