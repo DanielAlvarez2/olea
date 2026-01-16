@@ -294,7 +294,7 @@ export default function DessertMenuFormat(){
 
                             <div className='dessert-footer'>
                                 <div className='dessert-menu-front-content'>
-                                    jessica delgado, pastry chef
+                                    jessica delgado, pastry chef!
                                 </div>
                                 <hr style={{marginTop:'5px'}}/>
                                 <div className='dessert-menu-front-content'>
