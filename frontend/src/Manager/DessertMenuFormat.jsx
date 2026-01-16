@@ -97,6 +97,7 @@ export default function DessertMenuFormat(){
                                 <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                             onClick={increaseMenuItemMarginsTopBottom} /></span>
                             </div>
+                            <br/>
 
 
 
