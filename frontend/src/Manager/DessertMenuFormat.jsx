@@ -292,7 +292,7 @@ export default function DessertMenuFormat(){
 
 
 
-                            <footer>
+                            <div className='dessert-footer'>
                                 <div className='dessert-menu-front-content'>
                                     jessica delgado, pastry chef
                                 </div>
@@ -301,7 +301,7 @@ export default function DessertMenuFormat(){
                                     please alert your server if you have any special dietary requirements<br/>
                                     <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                 </div>
-                            </footer>
+                            </div>
                         </div>
                     </div>
 
