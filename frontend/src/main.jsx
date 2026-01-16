@@ -26,6 +26,7 @@ import Anniversary from './Manager/Anniversary.jsx'
 
 import NYE from './Manager/NYE.jsx'
 import NYEscan from './Manager/NYEscan.jsx'
+import NYEscreenshot from './Manager/NYEscreenshot.jsx'
 
 import SpecialsMenu from './Manager/SpecialsMenu.jsx'
 import SpecialsMenuUpdate from './Manager/SpecialsMenuUpdate.jsx'
@@ -94,6 +95,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         
         <Route path='nye' element={<NYE />} />
         <Route path='nye-scan' element={<NYEscan />} />
+        <Route path='nye-screenshot' element={<NYEscreenshot />} />
 
 
       </Routes>
