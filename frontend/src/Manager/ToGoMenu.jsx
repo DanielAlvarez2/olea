@@ -2,7 +2,7 @@ import {Link} from 'react-router'
 import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
-export default function TakeOutMenu(){
+export default function ToGoMenu(){
     return(
         <>
             <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
