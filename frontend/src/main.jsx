@@ -16,8 +16,10 @@ import Press from './Press.jsx'
 import Jobs from './Jobs.jsx'
 import Manager from './Manager/Manager.jsx'
 import DinnerMenu from './Manager/DinnerMenu.jsx'
-import TakeoutMenu from './Manager/TakeoutMenu.jsx'
 import DessertMenu from './Manager/DessertMenu.jsx'
+
+import TakeoutMenu from './Manager/TakeOutMenu.jsx'
+import TakeoutScan from './Manager/TakeoutMenuScan.jsx'
 
 import SpecialsMenu from './Manager/SpecialsMenu.jsx'
 import SpecialsMenuUpdate from './Manager/SpecialsMenuUpdate.jsx'
@@ -73,9 +75,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='tea-update' element={<TeaUpdate />} />
         <Route path='dessert-menu-format' element={<DessertMenuFormat />} />
 
+
+
         <Route path='restaurant-weeks' element={<RestaurantWeeks />} />
         <Route path='restaurant-weeks-screenshot' element={<RestaurantWeeksScreenshot />} />
         <Route path='restaurant-weeks-scan' element={<RestaurantWeeksScan />} />
+        
+        <Route path='takeout-scan' element={<TakeoutScan />} />
 
 
       </Routes>
