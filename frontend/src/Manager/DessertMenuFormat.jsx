@@ -109,7 +109,7 @@ export default function DessertMenuFormat(){
                                 <span   className='logo dessert-menu-front-content' 
                                         style={{
                                             // color:'red',
-                                                display:'block'
+                                                display:'block',
                                                 fontSize:'57px'}}>olea</span>
                                 <hr style={{marginBottom:'7px'}}/>
 
