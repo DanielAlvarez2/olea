@@ -21,6 +21,12 @@ import DessertMenu from './Manager/DessertMenu.jsx'
 import TakeoutMenu from './Manager/TakeOutMenu.jsx'
 import TakeoutScan from './Manager/TakeoutMenuScan.jsx'
 
+import AnniversaryScan from './Manager/AnniversaryScan.jsx'
+import Anniversary from './Manager/Anniversary.jsx'
+
+import NYE from './Manager/NYE.jsx'
+import NYEscan from './Manager/NYEscan.jsx'
+
 import SpecialsMenu from './Manager/SpecialsMenu.jsx'
 import SpecialsMenuUpdate from './Manager/SpecialsMenuUpdate.jsx'
 import SpecialsMenuFormat from './Manager/SpecialsMenuFormat.jsx'
@@ -82,6 +88,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='restaurant-weeks-scan' element={<RestaurantWeeksScan />} />
         
         <Route path='takeout-scan' element={<TakeoutScan />} />
+
+        <Route path='anniversary-scan' element={<AnniversaryScan />} />
+        <Route path='anniversary' element={<Anniversary />} />
+        
+        <Route path='nye' element={<NYE />} />
+        <Route path='nye-scan' element={<NYEscan />} />
 
 
       </Routes>
