@@ -13,6 +13,10 @@ export default function DessertMenuFormat(){
     const [teaPrice, setTeaPrice] = useState('')
     const [allTeas, setAllTeas] = useState([])
     const [allCoffees, setAllCoffees] = useState([])
+    const [dessertsFormatting, setDessertsFormatting] = useState([])
+    const [pageMarginRight, setPageMarginRight] = useState(0)
+    const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(20)
+    useEffect(()=>getDessertsFormatting(),[])
     useEffect(()=>getDesserts(),[])
     useEffect(()=>getTeaPrice(),[])
     useEffect(()=>getTeas(),[])
@@ -20,6 +24,21 @@ export default function DessertMenuFormat(){
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
+
+    function getDessertsFormatting(){
+        try{
+            fetch(`${BASE_URL}/api/formats/desserts`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setDessertsFormatting(json[0])
+                    setPageMarginRight(json[0].pageMarginRight)
+                    setDessertItemMarginsTopBottom(json[0].dessertItemMarginsTopBottom)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     function getTeas(){
         try{
@@ -119,7 +138,10 @@ export default function DessertMenuFormat(){
 
 
 
-                                <div className='dessert-menu-front-content'>
+                                <div className='dessert-menu-front-content'
+                                        style={{paddingRight:`${pageMarginRight + 20}px`}}
+                                        // style={{paddingRight:'83px'}}
+                                        >
 
 
 
@@ -130,7 +152,9 @@ export default function DessertMenuFormat(){
 
                                     {allDesserts.map(data=>{
                                         return (
-                                            <div key={data._id} className='dessert dessert-item'>
+                                            <div    key={data._id}
+                                                    style={{margin:`${dessertItemMarginsTopBottom}px 0`}} 
+                                                    className='dessert dessert-item'>
                                                 <span className='dessert-name'>{data.name}</span>
                                                 {data.allergiesAbbreviated &&   <span className='dessert-allergies'>
                                                                                     &nbsp;({data.allergiesAbbreviated})

@@ -8,6 +8,7 @@ const Tea = require('./models/Tea.js')
 const TeaPrice = require('./models/TeaPrice.js')
 const Pixel = require('./models/Pixel.js')
 const SpecialsFormat = require('./models/SpecialsFormat.js')
+const DessertsFormat = require('./models/DessertsFormat.js')
 
 
 const app = express()
@@ -594,6 +595,23 @@ app.get('/api/formats/specials', async(req,res)=>{
                 showLegalText: true
             })
             allFormats = await SpecialsFormat.find()
+        }
+        console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/formats/desserts', async(req,res)=>{ 
+    try{
+        let allFormats = await DessertsFormat.find()
+        if (allFormats.length == 0){
+            await DessertsFormat.create({
+                pageMarginRight: 0,
+                dessertItemMarginsTopBottom: 0,
+            })
+            allFormats = await DessertsFormat.find()
         }
         console.log(allFormats)
         res.json(allFormats)
