@@ -82,11 +82,24 @@ export default function DessertMenuFormat(){
     }
 
     function decreaseMenuItemMarginsTopBottom(){
-
+    
     }
 
     function increaseMenuItemMarginsTopBottom(){
         
+    }
+
+    function decreasePageMarginRight(){
+        if (pageMarginRight == 0) return
+        fetch(`${BASE_URL}/api/formats/desserts/decreasePageMarginRight`,{method:'PUT'})
+        .then(()=>getDessertsFormatting())
+        .catch(err=>console.log(err))
+    }
+    
+    function increasePageMarginRight(){
+        fetch(`${BASE_URL}/api/formats/desserts/increasePageMarginRight`,{method:'PUT'})
+            .then(()=>getDessertsFormatting())
+            .catch(err=>console.log(err))
     }
 
     return(
@@ -116,6 +129,21 @@ export default function DessertMenuFormat(){
                                 <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                             onClick={increaseMenuItemMarginsTopBottom} /></span>
                             </div>
+
+                            <div style={{   textAlign:'center',
+                                            display:'flex',
+                                            gap:'10px',
+                                            justifyContent:'center',
+                                            border:'1px solid green',
+                                            alignItems:'center'}}>
+                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                            onClick={decreasePageMarginRight} /></span>
+                                <span>page margin: right</span>
+                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                            onClick={increasePageMarginRight} /></span>
+                            </div>
+
+
                             <br/>
 
 
