@@ -163,7 +163,7 @@ export default function DessertMenuFormat(){
                                             // color:'red',
                                                 display:'block',
                                                 fontSize:'57px'}}>olea</span>
-                                <hr style={{marginBottom:'7px'}}/>
+                                <hr/>
 
 
 
