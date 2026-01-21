@@ -15,7 +15,7 @@ export default function DessertMenuFormat(){
     const [allCoffees, setAllCoffees] = useState([])
     const [dessertsFormatting, setDessertsFormatting] = useState([])
     const [pageMarginRight, setPageMarginRight] = useState(0)
-    const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(20)
+    const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(0)
     useEffect(()=>getDessertsFormatting(),[])
     useEffect(()=>getDesserts(),[])
     useEffect(()=>getTeaPrice(),[])
@@ -81,12 +81,17 @@ export default function DessertMenuFormat(){
         }
     }
 
-    function decreaseMenuItemMarginsTopBottom(){
-    
+    function decreaseDessertItemMarginsTopBottom(){
+        if (dessertItemMarginsTopBottom == 0) return
+        fetch(`${BASE_URL}/api/formats/desserts/decreaseDessertItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getDessertsFormatting())
+            .catch(err=>console.log(err))
     }
 
-    function increaseMenuItemMarginsTopBottom(){
-        
+    function increaseDessertItemMarginsTopBottom(){
+        fetch(`${BASE_URL}/api/formats/desserts/increaseDessertItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getDessertsFormatting())
+            .catch(err=>console.log(err))
     }
 
     function decreasePageMarginRight(){
@@ -124,10 +129,10 @@ export default function DessertMenuFormat(){
                                             border:'1px solid green',
                                             alignItems:'center'}}>
                                 <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                            onClick={decreaseMenuItemMarginsTopBottom} /></span>
+                                                            onClick={decreaseDessertItemMarginsTopBottom} /></span>
                                 <span>menu item margins<br/>top & bottom</span>
                                 <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                            onClick={increaseMenuItemMarginsTopBottom} /></span>
+                                                            onClick={increaseDessertItemMarginsTopBottom} /></span>
                             </div>
 
                             <div style={{   textAlign:'center',

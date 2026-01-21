@@ -656,6 +656,30 @@ app.put('/api/formats/desserts/increasePageMarginRight', async(req,res)=>{
     }
 })
 
+app.put('/api/formats/desserts/decreaseDessertItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await DessertsFormat.find()
+        console.log(allFormats[0])
+        await DessertsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {dessertItemMarginsTopBottom: allFormats[0].dessertItemMarginsTopBottom - 1})
+        res.json('dessert item margins decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/desserts/increaseDessertItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await DessertsFormat.find()
+        console.log(allFormats[0])
+        await DessertsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {dessertItemMarginsTopBottom: allFormats[0].dessertItemMarginsTopBottom + 1})
+        res.json('dessert item margins increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/specials/decreasePageMargins', async(req,res)=>{
     try{
         const allFormats = await SpecialsFormat.find()
