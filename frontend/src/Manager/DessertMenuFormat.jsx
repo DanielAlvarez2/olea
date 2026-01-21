@@ -212,30 +212,33 @@ export default function DessertMenuFormat(){
                                     
                                     
                                     {
-                                        (allCoffees > 0) && alert(allCoffees.length)
-                                    }
-                                    <div className='dessert-item'>                                    
-                                        <span className='coffee-tea-heading'>
-                                            coffee
-                                        </span>
-                                        &nbsp;
-                                        <span className='dessert-price'>
-                                            (decaffeinated available)
-                                        </span><br/>
+                                        (allCoffees.length > 0) && <>
+                                            <div className='dessert-item'>                                    
+                                                <span className='coffee-tea-heading'>
+                                                    coffee
+                                                </span>
+                                                &nbsp;
+                                                <span className='dessert-price'>
+                                                    (decaffeinated available)
+                                                </span><br/>
 
-                                                                    {allCoffees.map(data=>{
-                                                                        return(
-                                                                            <span key={data._id}>
-                                                                                <span className='dessert-description'>{data.name} </span> 
-                                                                                <span className='dessert-price'>{data.price}</span> 
-                                                                                    {data.sequence != allCoffees.length
-                                                                                        && ' / '
-                                                                                    }
-                                                                                
-                                                                            </span>
-                                                                        )
-                                                                    })}
-                                    </div>
+                                                                            {allCoffees.map(data=>{
+                                                                                return(
+                                                                                    <span key={data._id}>
+                                                                                        <span className='dessert-description'>{data.name} </span> 
+                                                                                        <span className='dessert-price'>{data.price}</span> 
+                                                                                            {data.sequence != allCoffees.length
+                                                                                                && ' / '
+                                                                                            }
+                                                                                        
+                                                                                    </span>
+                                                                                )
+                                                                            })}
+                                            </div>
+                                        
+                                        
+                                        </> 
+                                    }
 
 
 
