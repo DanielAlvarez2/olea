@@ -16,11 +16,14 @@ export default function DessertMenuFormat(){
     const [dessertsFormatting, setDessertsFormatting] = useState([])
     const [pageMarginRight, setPageMarginRight] = useState(0)
     const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(0)
-    useEffect(()=>getDessertsFormatting(),[])
-    useEffect(()=>getDesserts(),[])
-    useEffect(()=>getTeaPrice(),[])
-    useEffect(()=>getTeas(),[])
-    useEffect(()=>getCoffees(),[])
+    useEffect(()=>{ 
+                getDessertsFormatting()
+                getDesserts()
+                getTeaPrice()
+                getTeas()
+                getCoffees()
+    },[])
+    
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
@@ -55,7 +58,9 @@ export default function DessertMenuFormat(){
         try{
             fetch(`${BASE_URL}/api/coffees`)
                 .then(res=>res.json())
-                .then(json=>setAllCoffees(json))
+                .then(json=>{
+                    setAllCoffees(json)
+                    console.log(json)})
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -106,6 +111,11 @@ export default function DessertMenuFormat(){
             .then(()=>getDessertsFormatting())
             .catch(err=>console.log(err))
     }
+
+    function calcNumberOfCoffees(){
+        window.onload = (allCoffees.length > 0) && alert(allCoffees.length)
+    }
+    calcNumberOfCoffees()
 
     return(
         <>
@@ -201,7 +211,9 @@ export default function DessertMenuFormat(){
                                     
                                     
                                     
-                                    
+                                    {
+                                        (allCoffees > 0) && alert(allCoffees.length)
+                                    }
                                     <div className='dessert-item'>                                    
                                         <span className='coffee-tea-heading'>
                                             coffee
