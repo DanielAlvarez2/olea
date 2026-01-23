@@ -717,7 +717,7 @@ Please switch to a different browser to proceed.
 
                     </div>
 
-            
+                    <br className='no-print'/>
             </div>{/* .manager-page-wrapper */}
         </>
     )
