@@ -21,7 +21,7 @@ export default function DessertMenu(){
                                 }}>
                         <Link to='/dessert-menu-update'><li style={{flexGrow:'1'}}>update</li></Link>
                         <Link to='/dessert-menu-format'><li style={{flexGrow:'1'}}>format</li></Link>
-                        <Link to='/dessert'><li style={{flexGrow:'1'}}>print</li></Link>
+                        <Link to='/dessert-menu-print'><li style={{flexGrow:'1'}}>print</li></Link>
                     </ul>
 
             

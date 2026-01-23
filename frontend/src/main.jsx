@@ -36,6 +36,7 @@ import SpecialsMenuPrint from './Manager/SpecialsMenuPrint.jsx'
 
 import DessertMenuUpdate from './Manager/DessertMenuUpdate.jsx'
 import DessertMenuFormat from './Manager/DessertMenuFormat.jsx'
+import DessertMenuPrint from './Manager/DessertMenuPrint.jsx'
 import DessertsUpdate from './Manager/DessertsUpdate.jsx'
 import CoffeeUpdate from './Manager/CoffeeUpdate.jsx'
 import TeaUpdate from './Manager/TeaUpdate.jsx'
@@ -82,6 +83,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='coffee-update' element={<CoffeeUpdate />} />
         <Route path='tea-update' element={<TeaUpdate />} />
         <Route path='dessert-menu-format' element={<DessertMenuFormat />} />
+        <Route path='dessert-menu-print' element={<DessertMenuPrint />} />
 
 
 
