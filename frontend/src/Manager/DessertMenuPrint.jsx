@@ -3,12 +3,13 @@ import {useState,useEffect} from 'react'
 import './Manager.css'
 import './DessertMenuFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
-import { PiPlusCircleDuotone } from "react-icons/pi";
-import { PiMinusCircleDuotone } from "react-icons/pi";
+import { FaToggleOff } from "react-icons/fa6";
+import { FaToggleOn } from "react-icons/fa6";
 
 
 export default function DessertMenuPrint(){
 
+    const [front, setFront] = useState(true)    
     const [allDesserts, setAllDesserts] = useState([])
     const [teaPrice, setTeaPrice] = useState('')
     const [allTeas, setAllTeas] = useState([])
@@ -147,6 +148,10 @@ export default function DessertMenuPrint(){
             .catch(err=>console.log(err))
     }
 
+    function toggleFront(){
+        setFront(prev=>!prev)
+    }
+
     return(
         <>
             <div    className='manager-page-wrapper' 
@@ -161,33 +166,52 @@ export default function DessertMenuPrint(){
 
 
 
+                    <div style={{   border:'1px solid green',
+                                    textAlign:'center',
+                                    display:'flex',
+                                    flexDirection:'column',
+                                    alignItems:'center',
+                                    width:'100%'}}>
 
-                            <div style={{   textAlign:'center',
-                                            display:'flex',
-                                            gap:'10px',
-                                            justifyContent:'center',
-                                            border:'1px solid green',
-                                            alignItems:'center'}}>
-                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                            onClick={decreaseDessertItemMarginsTopBottom} /></span>
-                                <span>menu item margins<br/>top & bottom</span>
-                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                            onClick={increaseDessertItemMarginsTopBottom} /></span>
-                            </div>
+                    
+                        <div>
+                            
+                            {                            
+                                <div    className='no-print' 
+                                        style={{display:'flex',
+                                                gap:'10px',
+                                                alignItems:'center'}}>
+                                    <span>front</span>
+                                    <span>
+                                        {front ? 
+                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFront} />
+                                        : 
+                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFront} />
+                                        }
+                                    </span>
+                                    <span>back</span>
+                                </div> 
+                            }
+                        </div>  
 
-                            <div style={{   textAlign:'center',
-                                            display:'flex',
-                                            gap:'10px',
-                                            justifyContent:'center',
-                                            border:'1px solid green',
-                                            alignItems:'center'}}>
-                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                            onClick={decreasePageMarginRight} /></span>
-                                <span>page margin: right</span>
-                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                            onClick={increasePageMarginRight} /></span>
-                            </div>
+                        <div    className='no-print' 
+                                onClick={()=>printSpecials()}
+                                style={{background:'lightgrey',
+                                        width:'50px',
+                                        marginBottom:'10px',
+                                        cursor:'pointer',
+                                        border:'1px solid black',
+                                        borderRadius:'5px',
+                                        display:'grid',
+                                        placeContent:'center',
+                                        padding:'5px',
 
+                                }}>
+                            Print
+                        </div>
+                    </div>
 
                             <br/>
 
