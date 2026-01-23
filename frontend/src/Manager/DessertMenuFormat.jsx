@@ -56,10 +56,12 @@ export default function DessertMenuFormat(){
 
     function getCoffees(){
         try{
+            let coffeeArray
             fetch(`${BASE_URL}/api/coffees`)
                 .then(res=>res.json())
                 .then(json=>{
                     setAllCoffees(json)
+                    json.forEach(coffee=>console.log(coffee.name, coffee.price))
                     console.log(json)})
                 .catch(err=>console.log(err))
         }catch(err){
