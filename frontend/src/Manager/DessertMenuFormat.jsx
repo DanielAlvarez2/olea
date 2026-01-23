@@ -255,10 +255,10 @@ export default function DessertMenuFormat(){
 
                                                                             {allCoffees.map(data=>{
                                                                                 return(
-                                                                                    <>
+                                                                                    <span key={data._id}>
                                                                                         {data.sequence <= lastCoffeeSequenceLine1 && 
                                                                                         
-                                                                                        <span key={data._id}>
+                                                                                        <span>
                                                                                             <span className='dessert-description'>{data.name} </span> 
                                                                                             <span className='dessert-price'>{data.price}</span> 
                                                                                                 {data.sequence != allCoffees.length
@@ -267,15 +267,15 @@ export default function DessertMenuFormat(){
                                                                                             
                                                                                         </span>
                                                                                         }
-                                                                                    </>
+                                                                                    </span>
                                                                                 )
                                                                             })}<br/>
                                                                             {allCoffees.map(data=>{
                                                                                 return(
-                                                                                    <>
+                                                                                    <span key={data._id}>
                                                                                         {data.sequence > lastCoffeeSequenceLine1 && 
                                                                                         
-                                                                                        <span key={data._id}>
+                                                                                        <span>
                                                                                             <span className='dessert-description'>{data.name} </span> 
                                                                                             <span className='dessert-price'>{data.price}</span> 
                                                                                                 {data.sequence != allCoffees.length
@@ -284,7 +284,7 @@ export default function DessertMenuFormat(){
                                                                                             
                                                                                         </span>
                                                                                         }
-                                                                                    </>
+                                                                                    </span>
                                                                                 )
                                                                             })}<br/>
 
