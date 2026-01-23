@@ -135,7 +135,7 @@ export default function DessertMenuFormat(){
     }
 
     function decreasePageMarginRight(){
-        if (pageMarginRight == 0) return
+        if (pageMarginRight <= 0) return
         fetch(`${BASE_URL}/api/formats/desserts/decreasePageMarginRight`,{method:'PUT'})
         .then(()=>getDessertsFormatting())
         .catch(err=>console.log(err))
@@ -301,7 +301,7 @@ export default function DessertMenuFormat(){
 
 
 
-
+                                    <br/>
 
                                     <div className='dessert-item'>                                    
                                         <span className='coffee-tea-heading'>
