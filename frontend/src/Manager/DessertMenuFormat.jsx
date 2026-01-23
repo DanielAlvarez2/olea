@@ -13,6 +13,7 @@ export default function DessertMenuFormat(){
     const [teaPrice, setTeaPrice] = useState('')
     const [allTeas, setAllTeas] = useState([])
     const [allCoffees, setAllCoffees] = useState([])
+    const [lastCoffeeSequenceLine1, setLastCoffeeSequenceLine1] = useState(1)
     const [dessertsFormatting, setDessertsFormatting] = useState([])
     const [pageMarginRight, setPageMarginRight] = useState(0)
     const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(0)
@@ -56,13 +57,45 @@ export default function DessertMenuFormat(){
 
     function getCoffees(){
         try{
-            let coffeeArray
+            let coffeeArray = []
+            let line1 = []
+            let line2 = []
+            let midpoint
+            let finalCoffeeSequenceLine1
+            let midpointCoffeeCharsLine1 = []
+            let midpointCoffeeCharsLine2 = []
             fetch(`${BASE_URL}/api/coffees`)
                 .then(res=>res.json())
                 .then(json=>{
                     setAllCoffees(json)
-                    json.forEach(coffee=>console.log(coffee.name, coffee.price))
-                    console.log(json)})
+                    json.forEach(coffee=>{
+                                    const coffeeName = coffee.name.split('')
+                                    const coffeePrice = coffee.price.split('')
+                                    for (let i=0;i<coffeeName.length;i++){
+                                        coffeeArray.push(coffee.sequence)
+                                    }
+                                    for (let i=0;i<coffeePrice.length;i++){
+                                        coffeeArray.push(coffee.sequence)
+                                    }
+                                })
+                    midpoint = Math.floor(coffeeArray.length/2)
+                    finalCoffeeSequenceLine1 = coffeeArray[midpoint]
+                    for (let i=0;i<=midpoint;i++){
+                        line1.push(coffeeArray[i])
+                    }
+                    for (let i=midpoint+1;i<coffeeArray.length;i++){
+                        line2.push(coffeeArray[i])
+                    }
+                    for(let i=0;i<line1.length;i++){
+                        if (line1[i] == finalCoffeeSequenceLine1) midpointCoffeeCharsLine1.push(finalCoffeeSequenceLine1)
+                    }
+                    for(let i=0;i<line2.length;i++){
+                        if (line2[i] == finalCoffeeSequenceLine1) midpointCoffeeCharsLine2.push(finalCoffeeSequenceLine1)
+                    }
+                    
+                    if(midpointCoffeeCharsLine1 < midpointCoffeeCharsLine2) finalCoffeeSequenceLine1 = finalCoffeeSequenceLine1 - 1
+                    setLastCoffeeSequenceLine1(finalCoffeeSequenceLine1)
+                    })
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -113,11 +146,6 @@ export default function DessertMenuFormat(){
             .then(()=>getDessertsFormatting())
             .catch(err=>console.log(err))
     }
-
-    function calcNumberOfCoffees(){
-        window.onload = (allCoffees.length > 0) && alert(allCoffees.length)
-    }
-    calcNumberOfCoffees()
 
     return(
         <>
@@ -224,18 +252,42 @@ export default function DessertMenuFormat(){
                                                     (decaffeinated available)
                                                 </span><br/>
 
+
                                                                             {allCoffees.map(data=>{
                                                                                 return(
-                                                                                    <span key={data._id}>
-                                                                                        <span className='dessert-description'>{data.name} </span> 
-                                                                                        <span className='dessert-price'>{data.price}</span> 
-                                                                                            {data.sequence != allCoffees.length
-                                                                                                && ' / '
-                                                                                            }
+                                                                                    <>
+                                                                                        {data.sequence <= lastCoffeeSequenceLine1 && 
                                                                                         
-                                                                                    </span>
+                                                                                        <span key={data._id}>
+                                                                                            <span className='dessert-description'>{data.name} </span> 
+                                                                                            <span className='dessert-price'>{data.price}</span> 
+                                                                                                {data.sequence != allCoffees.length
+                                                                                                    && ' / '
+                                                                                                }
+                                                                                            
+                                                                                        </span>
+                                                                                        }
+                                                                                    </>
                                                                                 )
-                                                                            })}
+                                                                            })}<br/>
+                                                                            {allCoffees.map(data=>{
+                                                                                return(
+                                                                                    <>
+                                                                                        {data.sequence > lastCoffeeSequenceLine1 && 
+                                                                                        
+                                                                                        <span key={data._id}>
+                                                                                            <span className='dessert-description'>{data.name} </span> 
+                                                                                            <span className='dessert-price'>{data.price}</span> 
+                                                                                                {data.sequence != allCoffees.length
+                                                                                                    && ' / '
+                                                                                                }
+                                                                                            
+                                                                                        </span>
+                                                                                        }
+                                                                                    </>
+                                                                                )
+                                                                            })}<br/>
+
                                             </div>
                                         
                                         
