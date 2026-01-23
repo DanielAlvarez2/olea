@@ -152,16 +152,32 @@ export default function DessertMenuPrint(){
         setFront(prev=>!prev)
     }
 
+
+    function printPage(){
+        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+            alert(`
+WARNING: 
+
+Printing from Safari Browser is not supported.
+Please switch to a different browser to proceed.
+`)
+            return
+        }else{
+            window.print()
+        }
+    }
+
     return(
         <>
             <div    className='manager-page-wrapper' 
                     style={{border:'1px solid red',
-                            // color:'red'
                             }}>
-                <ManagerNavbar page='dessert' />
-                    <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; print</div>
-                    <div className='main-menu'>
+                <div style={{width:'100%'}} className='no-print'>
+                    <ManagerNavbar page='dessert' />
+                </div>                                
+                        <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
+                        <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>dessert &gt; print</div>
+                        <div className='main-menu' style={{paddingBottom:'0'}}>
 
 
 
@@ -197,7 +213,7 @@ export default function DessertMenuPrint(){
                         </div>  
 
                         <div    className='no-print' 
-                                onClick={()=>printSpecials()}
+                                onClick={()=>printPage()}
                                 style={{background:'lightgrey',
                                         width:'50px',
                                         marginBottom:'10px',
@@ -213,7 +229,7 @@ export default function DessertMenuPrint(){
                         </div>
                     </div>
 
-                            <br/>
+                            <br className='no-print'/>
 
 
 
