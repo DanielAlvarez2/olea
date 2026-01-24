@@ -154,6 +154,7 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
+
     return(
         <>
             <div className='manager-page-wrapper'>
@@ -201,7 +202,7 @@ export default function SpecialsMenuUpdate(){
                                                         onClick={(()=>moveUp(data._id))} />
                                         }
                                         
-                                        
+                                        {data.sequence}<br/>
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -278,7 +279,7 @@ export default function SpecialsMenuUpdate(){
                                                                 width:'100%'}}
                                                         onClick={(()=>moveUp(data._id))} />
                                         }
-                                     
+                                        {data.sequence}<br/>
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -354,7 +355,7 @@ export default function SpecialsMenuUpdate(){
                                                         onClick={(()=>moveUp(data._id))} />
 
                                         }
-                                     
+                                        {data.sequence}<br/>
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}

@@ -246,6 +246,7 @@ export default function SpecialsMenuUpdate(){
                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                             position:'relative',
+                                            background:'white',
                                             border:'1px solid red'}}>
                                 <div>
                                     
@@ -420,6 +421,7 @@ export default function SpecialsMenuUpdate(){
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
+                                                            background:'white',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     

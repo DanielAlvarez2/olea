@@ -212,20 +212,9 @@ Please switch to a different browser to proceed.
                             }
                         </div>  
 
-                        <div    className='no-print' 
-                                onClick={()=>printPage()}
-                                style={{background:'lightgrey',
-                                        width:'50px',
-                                        marginBottom:'10px',
-                                        cursor:'pointer',
-                                        border:'1px solid black',
-                                        borderRadius:'5px',
-                                        display:'grid',
-                                        placeContent:'center',
-                                        padding:'5px',
-
-                                }}>
-                            Print
+                        <div    className='no-print print-btn' 
+                                onClick={()=>printPage()}>
+                            print
                         </div>
                     </div>
 
@@ -237,7 +226,7 @@ Please switch to a different browser to proceed.
 
                         
                             <div    className='dessert-menu-format-front' 
-                                    style={{background:'none'}}
+                                    style={{background:'white'}}
                                     // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                             >
                                 <div id='footer-top'>
@@ -476,7 +465,7 @@ Please switch to a different browser to proceed.
 
 
                             <div    className='dessert-menu-format-front' 
-                                    style={{background:'none'}}
+                                    style={{background:'white'}}
                                     // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                             >
                                 <div id='footer-top'>

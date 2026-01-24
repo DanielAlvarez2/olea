@@ -133,20 +133,9 @@ Please switch to a different browser to proceed.
                             }
                         </div>  
 
-                        <div    className='no-print' 
-                                onClick={()=>printSpecials()}
-                                style={{background:'lightgrey',
-                                        width:'50px',
-                                        marginBottom:'10px',
-                                        cursor:'pointer',
-                                        border:'1px solid black',
-                                        borderRadius:'5px',
-                                        display:'grid',
-                                        placeContent:'center',
-                                        padding:'5px',
-
-                                }}>
-                            Print
+                        <div    className='no-print print-btn' 
+                                onClick={()=>printSpecials()}>
+                            print
                         </div>
 
 
@@ -177,6 +166,7 @@ Please switch to a different browser to proceed.
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
+                                                background:'white',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
@@ -277,6 +267,7 @@ Please switch to a different browser to proceed.
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
+                                                            background:'white',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
@@ -348,6 +339,7 @@ Please switch to a different browser to proceed.
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
+                                                background:'white',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
@@ -436,6 +428,7 @@ Please switch to a different browser to proceed.
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
+                                                            background:'white',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
@@ -512,6 +505,7 @@ Please switch to a different browser to proceed.
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
+                                                background:'white',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
@@ -600,6 +594,7 @@ Please switch to a different browser to proceed.
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
+                                                            background:'white',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
@@ -672,6 +667,7 @@ Please switch to a different browser to proceed.
                                                 height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
+                                                background:'white',
                                                 border:'1px solid red'}}>
                                     <div>
                                         <div    className='specials-h1'
@@ -760,6 +756,7 @@ Please switch to a different browser to proceed.
                                                             height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
+                                                            background:'white',
                                                             border:'1px solid red'}}>
                                                 <div>
                                                     
