@@ -237,6 +237,7 @@ Please switch to a different browser to proceed.
 
                         
                             <div    className='dessert-menu-format-front' 
+                                    style={{background:'none'}}
                                     // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                             >
                                 <div id='footer-top'>
@@ -475,6 +476,7 @@ Please switch to a different browser to proceed.
 
 
                             <div    className='dessert-menu-format-front' 
+                                    style={{background:'none'}}
                                     // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                             >
                                 <div id='footer-top'>
