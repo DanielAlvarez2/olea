@@ -20,6 +20,9 @@ test printer margins on all browsers and os's
 -       +  
   space  
     -  
+
+Specials sequence somehow lost #1 in all 3 sections  
+  
   
 SALES PITCH ***********************************  
 Vicente Caride photos  
