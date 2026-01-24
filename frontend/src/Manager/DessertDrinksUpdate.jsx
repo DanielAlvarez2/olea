@@ -169,11 +169,28 @@ export default function DessertDrinksUpdate(){
 
 
 
+                            <div>
+                                <div className='desserts-h1'>section:</div>
+                                <select defaultValue=''>
+                                    <option disabled value=''>select...</option>
+                                    <option>dessert wines</option>
+                                    <option>dessert cocktails</option>
+                                    <option>japanese whisky</option>
+                                    <option>single malt scotch</option>
+                                    <option>brandy de Jerez</option>
+                                    <option>grappa</option>
+                                    <option>patxaran</option>
+                                </select>
+                            </div>
 
 
 
-
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 
@@ -276,7 +293,7 @@ export default function DessertDrinksUpdate(){
                             id='desserts-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'update dessert' : 'create new dessert'}
+                            {editMode ? 'update dessert drink' : 'create new dessert drink'}
 
                         </h2>
                         <br/>
