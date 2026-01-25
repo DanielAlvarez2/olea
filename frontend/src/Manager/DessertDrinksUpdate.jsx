@@ -9,14 +9,16 @@ import { FaCaretUp } from "react-icons/fa";
 
 
 export default function DessertDrinksUpdate(){
+    const [allDessertDrinks, setAllDessertDrinks] = useState([])
     const [allDesserts, setAllDesserts] = useState([])
     const [editMode, setEditMode] = useState(false)
     useEffect(()=>getDesserts(),[])
+    useEffect(()=>getDessertDrinks(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
-    async function createNewDessert(formData){
+    async function createNewDessertDrink(formData){
         await fetch(`${BASE_URL}/api/desserts`,{method:'POST',
                                                 headers:{'Content-Type':'application/json'},
                                                 body: JSON.stringify({
@@ -60,6 +62,16 @@ export default function DessertDrinksUpdate(){
             fetch(`${BASE_URL}/api/desserts`)
                 .then(res=>res.json())
                 .then(json=>setAllDesserts(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+    function getDessertDrinks(){
+        try{
+            fetch(`${BASE_URL}/api/dessert-drinks`)
+                .then(res=>res.json())
+                .then(json=>setAllDessertDrinks(json))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -168,20 +180,27 @@ export default function DessertDrinksUpdate(){
 
 
 
-
-                            <div>
-                                <div className='desserts-h1'>section:</div>
-                                <select defaultValue=''>
-                                    <option disabled value=''>select...</option>
-                                    <option>dessert wines</option>
-                                    <option>dessert cocktails</option>
-                                    <option>japanese whisky</option>
-                                    <option>single malt scotch</option>
-                                    <option>brandy de Jerez</option>
-                                    <option>grappa</option>
-                                    <option>patxaran</option>
-                                </select>
-                            </div>
+                            {allDessertDrinks[0] == undefined ? 
+                                <div style={{whiteSpace:'pre-wrap'}}>
+                                ERROR:<br/>
+                                Database is Empty<br/>
+                                Please Create a New Dessert Drink Below<br/><br/>
+                                </div>                            
+                            : 
+                                <div>
+                                    <div className='desserts-h1'>category:</div>
+                                    <select defaultValue=''>
+                                        <option disabled value=''>select...</option>
+                                        <option>dessert wines</option>
+                                        <option>dessert cocktails</option>
+                                        <option>japanese whisky</option>
+                                        <option>single malt scotch</option>
+                                        <option>brandy de Jerez</option>
+                                        <option>grappa</option>
+                                        <option>patxaran</option>
+                                    </select>
+                                </div>
+                            }
 
 
 
@@ -289,7 +308,7 @@ export default function DessertDrinksUpdate(){
                       
 
 
-                    <form   action={editMode ? updateDessert : createNewDessert} 
+                    <form   action={editMode ? updateDessertDrink : createNewDessertDrink} 
                             id='desserts-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
@@ -306,40 +325,32 @@ export default function DessertDrinksUpdate(){
 
                         <input  type='hidden'
                                 name='section' 
-                                value='desserts' />                        
+                                value='dessert drinks' />                        
                         
+                        <label>
+                            pre-description<br/>
+                            <input  type='text' 
+                                    name='pre-description' 
+                                    id='pre-description'
+                                    style={{width:'100%'}} />
+                        </label>
+                        <br/><br/>
 
                         <label>
-                            name<br/>
+                            <span style={{fontWeight:'900'}}>name</span><br/>
                             <input  type='text' 
                                     name='name' 
                                     id='name'
                                     required
-                                    style={{width:'100%'}} />
+                                    style={{width:'100%',fontWeight:'900'}} />
                         </label>
                         <br/><br/>
                         <label>
-                            allergies - abbreviated<br/>
-                            <input  type='text' 
-                                    name='allergies-abbreviated' 
-                                    id='allergies-abbreviated'
-                                    style={{width:'100%'}} />
-                        </label>
-                        <br/><br/>
-                        <label>
-                            allergies - complete<br/>
+                            post-description<br/>
                             <input  type='text'
-                                    id='allergies-complete'
-                                    name='allergies-complete' 
+                                    id='post-description'
+                                    name='post-description' 
                                     style={{width:'100%'}} />
-                        </label>
-                        <br/><br/>
-                        <label>
-                            description<br/>
-                            <textarea   rows='5'
-                                        name='description' 
-                                        id='description'
-                                        style={{width:'100%'}}></textarea>
                         </label>
                         <br/><br/>
                         <label>
@@ -347,11 +358,14 @@ export default function DessertDrinksUpdate(){
                             <input  type='text'
                                     required 
                                     id='price'
+                                    autoComplete='off'
+                                    style={{width:'5ch'}}
                                     name='price' />
                         </label>
                         <br/><br/>
 
-                        <div id='desserts-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
+                        <div    id='desserts-form-buttons' 
+                                style={{display:'flex',justifyContent:'space-around'}}>
                             <input  type='submit' 
                                     style={{padding:'10px 10px',
                                             cursor:'pointer',
@@ -360,7 +374,7 @@ export default function DessertDrinksUpdate(){
                                             
                                             background:'lightgrey',
                                             fontSize:'20px'}}
-                                    value = {editMode ? 'update dessert' : 'create new dessert'} />
+                                    value = {editMode ? 'update dessert drink' : 'create new dessert drink'} />
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',

@@ -434,6 +434,15 @@ app.get('/api/desserts', async(req,res)=>{
     }
 })
 
+app.get('/api/dessert-drinks', async(req,res)=>{
+    try{
+        const allDessertDrinks = await DessertDrinks.find().sort({sequence:1})
+        res.json(allDessertDrinks)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/coffees', async(req,res)=>{
     try{
         const allCoffees = await Coffee.find().sort({sequence:1})
