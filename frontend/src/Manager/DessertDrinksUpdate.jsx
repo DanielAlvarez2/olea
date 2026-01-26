@@ -175,6 +175,9 @@ export default function DessertDrinksUpdate(){
         }
     }
 
+    function handleChange(e){
+        setCurrentCategory(e.target.value)
+    }
     return(
         <>
             <div className='manager-page-wrapper'>
@@ -200,9 +203,9 @@ export default function DessertDrinksUpdate(){
                             : 
                                 <div>
                                     <div className='desserts-h1'>category:</div>
-                                    <select defaultValue=''>
+                                    <select defaultValue='' onChange={handleChange}>
                                         <option disabled value=''>select...</option>
-                                        {dessertDrinkCategories.map(category=><option key={category}>{category}</option>)}
+                                        {dessertDrinkCategories.map(category=><option key={category} value={category}>{category}</option>)}
                                         
                                     </select>
                                 </div>
@@ -215,7 +218,7 @@ export default function DessertDrinksUpdate(){
 
 
 
-                            {allDessertDrinks.filter(item=>item.category == 'brandy de Jerez').map(data=>{
+                            {allDessertDrinks.filter(item=>item.category == currentCategory).map(data=>{
                                 return(
                                     <div key={data._id} className='dessert-drinks-display'>
 
