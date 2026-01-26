@@ -189,7 +189,10 @@ export default function DessertDrinksUpdate(){
     }
 
     function moveCategoryDown(i){
-
+        fetch(`${BASE_URL}/api/dessert-drinks/move-category-down/${i}`,{method:'PUT'})
+            .then(()=>getDessertDrinks())
+            .then(()=>getDessertDrinkCategories())
+            .catch(err=>console.log(err))
     }
 
     return(
