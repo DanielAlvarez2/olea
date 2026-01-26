@@ -455,46 +455,49 @@ export default function DessertDrinksUpdate(){
                         </div>
 
                     </form>   
+                {dessertDrinkCategories.length > 1 &&    
+                    <>
+                        <div className='desserts-update-menu' style={{minHeight:'auto'}}>
+                            <div className='desserts-h1'>
+                                categories
+                            </div><br/>
 
-                    <div className='desserts-update-menu' style={{minHeight:'auto'}}>
-                        <div className='desserts-h1'>
-                            categories
-                        </div><br/>
+                            {dessertDrinkCategories.map((category,i)=>( 
+                                                                    
+                                            <div key={category} style={{textAlign:'center'}}>
 
-                        {dessertDrinkCategories.map((category,i)=>( 
-                                                                
-                                        <div key={category} style={{textAlign:'center'}}>
-
-                                            {i+1 != '1' && 
-                                                <FaCaretUp style={{ margin:'0 auto',
-                                                                    fontSize:'60px',
-                                                                    position:'relative',
-                                                                    top:'10px',
-                                                                    color:'grey',
-                                                                    cursor:'pointer',
-                                                                    width:'100%'}}
-                                                            onClick={(()=>moveCategoryUp(i+1))} />
-                                            }
-
-
-                                                                    {i+1} {category}
-
-                                            {i+1 != dessertDrinkCategories.length && 
-                                                <FaCaretUp style={{ margin:'0 auto',
-                                                                    fontSize:'60px',
-                                                                    position:'relative',
-                                                                    top:'0px',
-                                                                    color:'grey',
-                                                                    cursor:'pointer',
-                                                                    transform:'rotate(180deg',
-                                                                    width:'100%'}}
-                                                            onClick={(()=>moveCategoryDown(i+1))} />
-                                            }
+                                                {i+1 != '1' && 
+                                                    <FaCaretUp style={{ margin:'0 auto',
+                                                                        fontSize:'60px',
+                                                                        position:'relative',
+                                                                        top:'10px',
+                                                                        color:'grey',
+                                                                        cursor:'pointer',
+                                                                        width:'100%'}}
+                                                                onClick={(()=>moveCategoryUp(i+1))} />
+                                                }
 
 
-                                        </div>))}
+                                                                        {i+1} {category}
 
-                    </div><br/><br/>
+                                                {i+1 != dessertDrinkCategories.length && 
+                                                    <FaCaretUp style={{ margin:'0 auto',
+                                                                        fontSize:'60px',
+                                                                        position:'relative',
+                                                                        top:'0px',
+                                                                        color:'grey',
+                                                                        cursor:'pointer',
+                                                                        transform:'rotate(180deg',
+                                                                        width:'100%'}}
+                                                                onClick={(()=>moveCategoryDown(i+1))} />
+                                                }
+
+
+                                            </div>))}
+
+                        </div><br/><br/>
+                    </>             
+                }
 
 
 
