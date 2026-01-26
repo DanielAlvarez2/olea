@@ -444,7 +444,14 @@ export default function DessertDrinksUpdate(){
                     </form>   
 
                     <div className='desserts-update-menu' style={{minHeight:'auto'}}>
-x
+                        <div className='desserts-h1'>
+                            categories
+                        </div><br/>
+
+                        {dessertDrinkCategories.map((category,i)=>( <div key={category} style={{textAlign:'center'}}>
+                                                                    {i+1} {category}
+                                                                </div>))}
+
                     </div><br/><br/>
 
 
