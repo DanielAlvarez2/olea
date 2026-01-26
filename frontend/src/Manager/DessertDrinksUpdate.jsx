@@ -181,6 +181,16 @@ export default function DessertDrinksUpdate(){
         setDisplayCategoryDropdown(prev=>!prev)
     }
 
+    function moveCategoryUp(i){
+        fetch(`${BASE_URL}/api/dessert-drinks/move-category-up/${i}`,{method:'PUT'})
+            .then(()=>getDessertDrinks())
+            .then(()=>getDessertDrinkCategories())
+            .catch(err=>console.log(err))
+    }
+
+    function moveCategoryDown(i){
+
+    }
 
     return(
         <>
@@ -460,7 +470,7 @@ export default function DessertDrinksUpdate(){
                                                                     color:'grey',
                                                                     cursor:'pointer',
                                                                     width:'100%'}}
-                                                            onClick={(()=>moveUp(data._id))} />
+                                                            onClick={(()=>moveCategoryUp(i+1))} />
                                             }
 
 
@@ -475,7 +485,7 @@ export default function DessertDrinksUpdate(){
                                                                     cursor:'pointer',
                                                                     transform:'rotate(180deg',
                                                                     width:'100%'}}
-                                                            onClick={(()=>moveDown(data._id))} />
+                                                            onClick={(()=>moveCategoryDown(i+1))} />
                                             }
 
 

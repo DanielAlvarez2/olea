@@ -348,6 +348,30 @@ app.put('/api/dessert-drinks/move-up/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/dessert-drinks/move-category-up/:sequence', async(req,res)=>{
+    try{
+        console.log(req.params.sequence)
+        await DessertDrink.updateMany(
+            {categorySequence:req.params.sequence},
+            {$set:{categorySequence:0}}
+        )
+        await DessertDrink.updateMany(
+            {categorySequence:req.params.sequence-1},
+            {$set:{categorySequence:req.params.sequence}}
+        )
+        await DessertDrink.updateMany(
+            {categorySequence:0},
+            {$set:{categorySequence:req.params.sequence-1}}
+        )
+        console.log(`
+            Moved Category Up`)
+        res.json(`
+            Moved Category Up`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/coffees/move-up/:id', async(req,res)=>{
     try{
         const target= await Coffee.findById(req.params.id)
