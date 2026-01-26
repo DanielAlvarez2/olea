@@ -19,22 +19,22 @@ export default function DessertDrinksUpdate(){
                     'http://localhost:1436'
 
     async function createNewDessertDrink(formData){
-        await fetch(`${BASE_URL}/api/desserts`,{method:'POST',
-                                                headers:{'Content-Type':'application/json'},
-                                                body: JSON.stringify({
-                                                    menu: formData.get('menu'),
-                                                    section: formData.get('section'),
-                                                    name: formData.get('name'),
-                                                    allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                    allergiesComplete: formData.get('allergies-complete'),
-                                                    description: formData.get('description'),
-                                                    price: formData.get('price')
+        await fetch(`${BASE_URL}/api/dessert-drinks`,{  method:'POST',
+                                                        headers:{'Content-Type':'application/json'},
+                                                        body: JSON.stringify({
+                                                            menu: formData.get('menu'),
+                                                            section: formData.get('section'),
+                                                            category: formData.get('category'),
+                                                            preDescription: formData.get('pre-description'),
+                                                            name: formData.get('name'),
+                                                            postDescription: formData.get('post-description'),
+                                                            price: formData.get('price')
                                                 })
         })
         .then(alert(`
-            New Dessert Created:
+            New Dessert Drink Created:
              - ${formData.get('name')}`))
-        .then(getDesserts())
+        .then(getDessertDrinks())
         .catch(err=>console.log(err))
     }
 
@@ -182,9 +182,8 @@ export default function DessertDrinksUpdate(){
 
                             {allDessertDrinks[0] == undefined ? 
                                 <div style={{whiteSpace:'pre-wrap'}}>
-                                ERROR:<br/>
-                                Database is Empty<br/>
-                                Please Create a New Dessert Drink Below<br/><br/>
+                                    DATABASE IS EMPTY<br/>
+                                    Please Create a New Dessert Drink Below<br/><br/>
                                 </div>                            
                             : 
                                 <div>
@@ -325,12 +324,22 @@ export default function DessertDrinksUpdate(){
 
                         <input  type='hidden'
                                 name='section' 
-                                value='dessert drinks' />                        
-                        
+                                value='dessert drinks' />     
+
+                        <label>
+                            category<br/>
+                            <input  type='text'
+                                    required
+                                    autoComplete='off'
+                                    name='category' />
+                        </label>                   
+                        <br/><br/>
+
                         <label>
                             pre-description<br/>
                             <input  type='text' 
                                     name='pre-description' 
+                                    autoComplete='off'
                                     id='pre-description'
                                     style={{width:'100%'}} />
                         </label>
@@ -340,6 +349,7 @@ export default function DessertDrinksUpdate(){
                             <span style={{fontWeight:'900'}}>name</span><br/>
                             <input  type='text' 
                                     name='name' 
+                                    autoComplete='off'
                                     id='name'
                                     required
                                     style={{width:'100%',fontWeight:'900'}} />
@@ -349,6 +359,7 @@ export default function DessertDrinksUpdate(){
                             post-description<br/>
                             <input  type='text'
                                     id='post-description'
+                                    autoComplete='off'
                                     name='post-description' 
                                     style={{width:'100%'}} />
                         </label>

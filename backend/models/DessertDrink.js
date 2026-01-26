@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
-const DessertDrinksdSchema = new mongoose.Schema({
+const DessertDrinkSchema = new mongoose.Schema({
     menu:{type:String},
     section:{type:String},
     category:{type:String},
+    categorySequence:{type:Number},
     preDescription:{type:String},
     name:{type:String},
     postDescription:{type:String},

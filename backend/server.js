@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const Special = require('./models/Special.js')
 const Dessert = require('./models/Dessert.js')
+const DessertDrink = require('./models/DessertDrink.js')
 const Coffee = require('./models/Coffee.js')
 const Tea = require('./models/Tea.js')
 const TeaPrice = require('./models/TeaPrice.js')
@@ -436,12 +437,43 @@ app.get('/api/desserts', async(req,res)=>{
 
 app.get('/api/dessert-drinks', async(req,res)=>{
     try{
-        const allDessertDrinks = await DessertDrinks.find().sort({sequence:1})
+        const allDessertDrinks = await DessertDrink.find().sort({sequence:1})
         res.json(allDessertDrinks)
     }catch(err){
         console.log(err)
     }
 })
+
+app.post('/api/dessert-drinks', async(req,res)=>{
+    try{
+        const maxSequence = await DessertDrink.findOne({category:req.body.category.trim()})
+                                                .sort({sequence:-1})
+        const existingCategoryItem = await DessertDrink.findOne({category:req.body.category.trim()})
+        const maxCategorySequence = await DessertDrink.findOne().sort({categorySequence:-1})
+        
+        await DessertDrink.create({
+            menu: req.body.menu,
+            section: req.body.section,
+            category:req.body.category.trim(),
+            categorySequence: existingCategoryItem  ? existingCategoryItem.categorySequence 
+                                                    : maxCategorySequence ? maxCategorySequence.categorySequence + 1 : 1, 
+            name: req.body.name.trim(),
+            preDescription: req.body.preDescription.trim(),
+            postDescription: req.body.postDescription.trim(),
+            price: req.body.price.trim(),
+            sequence: maxSequence ? maxSequence.sequence + 1 : 1
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.get('/api/coffees', async(req,res)=>{
     try{
