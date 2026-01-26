@@ -13,8 +13,10 @@ export default function DessertDrinksUpdate(){
     const [allDessertDrinks, setAllDessertDrinks] = useState([])
     const [allDesserts, setAllDesserts] = useState([])
     const [editMode, setEditMode] = useState(false)
-    useEffect(()=>getDesserts(),[])
+    const [currentCategory, setCurrentCategory] = useState('')
+    const [dessertDrinkCategories, setDessertDrinkCategories] = useState([])
     useEffect(()=>getDessertDrinks(),[])
+    useEffect(()=>getDessertDrinkCategories(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
@@ -58,22 +60,31 @@ export default function DessertDrinksUpdate(){
         .catch(err=>console.log(err))
     }
 
-    function getDesserts(){
+    function getDessertDrinks(){
         try{
-            fetch(`${BASE_URL}/api/desserts`)
+            fetch(`${BASE_URL}/api/dessert-drinks`)
                 .then(res=>res.json())
-                .then(json=>setAllDesserts(json))
+                .then(json=>{
+                    setAllDessertDrinks(json)
+                })
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
         }
     }
-    function getDessertDrinks(){
+    function getDessertDrinkCategories(){
         try{
-            fetch(`${BASE_URL}/api/dessert-drinks`)
+            fetch(`${BASE_URL}/api/dessert-drink-categories`)
                 .then(res=>res.json())
-                .then(json=>setAllDessertDrinks(json))
+                .then(json=>{
+                    let dessertDrinkCategories = new Set()
+                    console.log(json)
+                    json.forEach(drink=>dessertDrinkCategories.add(drink.category))
+                    console.log(dessertDrinkCategories)
+                    setDessertDrinkCategories([...dessertDrinkCategories])
+                })
                 .catch(err=>console.log(err))
+
         }catch(err){
             console.log(err)
         }
@@ -191,13 +202,8 @@ export default function DessertDrinksUpdate(){
                                     <div className='desserts-h1'>category:</div>
                                     <select defaultValue=''>
                                         <option disabled value=''>select...</option>
-                                        <option>dessert wines</option>
-                                        <option>dessert cocktails</option>
-                                        <option>japanese whisky</option>
-                                        <option>single malt scotch</option>
-                                        <option>brandy de Jerez</option>
-                                        <option>grappa</option>
-                                        <option>patxaran</option>
+                                        {dessertDrinkCategories.map(category=><option key={category}>{category}</option>)}
+                                        
                                     </select>
                                 </div>
                             }
@@ -209,7 +215,7 @@ export default function DessertDrinksUpdate(){
 
 
 
-                            {allDessertDrinks.filter(item=>item.category == 'dessert wines').map(data=>{
+                            {allDessertDrinks.filter(item=>item.category == 'brandy de Jerez').map(data=>{
                                 return(
                                     <div key={data._id} className='dessert-drinks-display'>
 

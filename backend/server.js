@@ -463,6 +463,15 @@ app.get('/api/dessert-drinks', async(req,res)=>{
     }
 })
 
+app.get('/api/dessert-drink-categories', async(req,res)=>{
+    try{
+        const allDessertDrinkCategories = await DessertDrink.find().sort({categorySequence:1})
+        res.json(allDessertDrinkCategories)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.post('/api/dessert-drinks', async(req,res)=>{
     try{
         const maxSequence = await DessertDrink.findOne({category:req.body.category.trim()})
