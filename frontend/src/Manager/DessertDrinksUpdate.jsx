@@ -42,14 +42,14 @@ export default function DessertDrinksUpdate(){
         .catch(err=>console.log(err))
     }
 
-    async function updateDessert(formData){
-        await fetch(`${BASE_URL}/api/desserts/${formData.get('id')}`,{  method:'PUT',
+    async function updateDessertDrink(formData){
+        await fetch(`${BASE_URL}/api/dessert-drinks/${formData.get('id')}`,{  method:'PUT',
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
                                                                                 name: formData.get('name'),
-                                                                                allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                                                allergiesComplete: formData.get('allergies-complete'),
-                                                                                description: formData.get('description'),
+                                                                                
+                                                                                postDescription: formData.get('post-description'),
+                                                                                preDescription: formData.get('pre-description'),
                                                                                 price: formData.get('price')
                                                     })
         })
@@ -57,7 +57,7 @@ export default function DessertDrinksUpdate(){
             Dessert Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
-        .then(getDesserts())
+        .then(getDessertDrinks())
         .catch(err=>console.log(err))
     }
 
@@ -125,15 +125,15 @@ export default function DessertDrinksUpdate(){
         }
     }
 
-    function editDessert(id,section,name,allergiesAbbreviated,allergiesComplete,description,price){
+    function editDessertDrink(id,category,preDescription,name,postDescription,price){
         try{
             setEditMode(true)
             document.querySelector('#desserts-form').scrollIntoView({behavior:'smooth'})
-            document.querySelector('#dessert-id').value = id
+            document.querySelector('#dessert-drink-id').value = id
+            document.querySelector('#category-edit').textContent = `: ${category}`
             document.querySelector('#name').value = name
-            document.querySelector('#allergies-abbreviated').value = allergiesAbbreviated
-            document.querySelector('#allergies-complete').value = allergiesComplete
-            document.querySelector('#description').value = description
+            document.querySelector('#pre-description').value = preDescription
+            document.querySelector('#post-description').value = postDescription
             document.querySelector('#price').value = price
         }catch(err){
             console.log(err)
@@ -162,11 +162,11 @@ export default function DessertDrinksUpdate(){
 
     function clearForm(){
         try{
-            document.querySelector('#dessert-id').value = ''
+            document.querySelector('#dessert-drink-id').value = ''
             document.querySelector('#name').value = ''
-            document.querySelector('#allergies-abbreviated').value = ''
-            document.querySelector('#allergies-complete').value = ''
-            document.querySelector('#description').value = ''
+            document.querySelector('#category-edit').textContent = ''
+            document.querySelector('#pre-description').value = ''
+            document.querySelector('#post-description').value = ''
             document.querySelector('#price').value = ''
             setEditMode(false)
         }catch(err){
@@ -246,13 +246,12 @@ export default function DessertDrinksUpdate(){
                                         <div style={{marginTop:'5px'}}>
                                             
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editDessert(   data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                data.description,
-                                                                                data.price)}>EDIT</span>                                                    
+                                                    onClick={()=>editDessertDrink(  data._id,
+                                                                                    data.category,
+                                                                                    data.preDescription,
+                                                                                    data.name,
+                                                                                    data.postDescription,
+                                                                                    data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
                                                     onClick={()=>deleteDessertDrink(data._id)}>DELETE</span>
 
@@ -319,7 +318,7 @@ export default function DessertDrinksUpdate(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='dessert-id' />
+                        <input type='hidden' name='id' id='dessert-drink-id' />
 
                         <input  type='hidden'
                                 name='menu' 
@@ -330,8 +329,9 @@ export default function DessertDrinksUpdate(){
                                 value='dessert drinks' />     
 
                         <label>
-                            category<br/>
-                            {allDessertDrinks.length == 0 && 
+                            category<span id='category-edit'></span><br/>
+                            
+                            {allDessertDrinks.length == 0 && !editMode &&
                                         <>
                                             <input  type='text'
                                                     required
@@ -340,7 +340,7 @@ export default function DessertDrinksUpdate(){
                                                     name='category' /><br/>
                                         </>
                             }
-                            {allDessertDrinks.length > 0 &&
+                            {allDessertDrinks.length > 0 && !editMode &&
                                 <div style={{display:'flex',justifyContent:'space-between'}}>
                                     {displayCategoryDropdown ? 
                                         <select defaultValue='' 
