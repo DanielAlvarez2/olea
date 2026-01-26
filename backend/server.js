@@ -332,6 +332,22 @@ app.put('/api/desserts/move-up/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/dessert-drinks/move-up/:id', async(req,res)=>{
+    try{
+        const target= await DessertDrink.findById(req.params.id)
+        await DessertDrink.findOneAndUpdate({category:target.category,sequence: target.sequence - 1},{sequence: target.sequence})
+        await DessertDrink.findByIdAndUpdate(req.params.id,{sequence: target.sequence - 1})
+        console.log(`
+            Moved Up:
+            ${target.name}`)
+        res.json(`
+            Moved Up:
+            ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/coffees/move-up/:id', async(req,res)=>{
     try{
         const target= await Coffee.findById(req.params.id)
@@ -402,6 +418,23 @@ app.put('/api/desserts/move-down/:id', async(req,res)=>{
         const target= await Dessert.findById(req.params.id)
         await Dessert.findOneAndUpdate({sequence: target.sequence + 1},{sequence: target.sequence})
         await Dessert.findByIdAndUpdate(req.params.id,{sequence: target.sequence + 1})
+        console.log(`
+            Moved Down:
+            ${target.name}`)
+        res.json(`
+            Moved Down:
+            ${target.name}`)
+       
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/dessert-drinks/move-down/:id', async(req,res)=>{
+    try{
+        const target= await DessertDrink.findById(req.params.id)
+        await DessertDrink.findOneAndUpdate({category:target.category,sequence: target.sequence + 1},{sequence: target.sequence})
+        await DessertDrink.findByIdAndUpdate(req.params.id,{sequence: target.sequence + 1})
         console.log(`
             Moved Down:
             ${target.name}`)

@@ -12,7 +12,6 @@ import { FaCaretUp } from "react-icons/fa";
 export default function DessertDrinksUpdate(){
     const [allDessertDrinks, setAllDessertDrinks] = useState([])
     const [displayCategoryDropdown, setDisplayCategoryDropdown] = useState(true)
-    const [allDesserts, setAllDesserts] = useState([])
     const [editMode, setEditMode] = useState(false)
     const [currentCategory, setCurrentCategory] = useState('')
     const [dessertDrinkCategories, setDessertDrinkCategories] = useState([])
@@ -39,6 +38,7 @@ export default function DessertDrinksUpdate(){
             New Dessert Drink Created:
              - ${formData.get('name')}`))
         .then(getDessertDrinks())
+        .then(getDessertDrinkCategories())
         .catch(err=>console.log(err))
     }
 
@@ -142,8 +142,8 @@ export default function DessertDrinksUpdate(){
 
     function moveUp(id){
         try{
-            fetch(`${BASE_URL}/api/desserts/move-up/${id}`,{method:'PUT'})
-                .then(()=>getDesserts())
+            fetch(`${BASE_URL}/api/dessert-drinks/move-up/${id}`,{method:'PUT'})
+                .then(()=>getDessertDrinks())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -152,8 +152,8 @@ export default function DessertDrinksUpdate(){
 
     function moveDown(id){
         try{
-            fetch(`${BASE_URL}/api/desserts/move-down/${id}`,{method:'PUT'})
-                .then(()=>getDesserts())
+            fetch(`${BASE_URL}/api/dessert-drinks/move-down/${id}`,{method:'PUT'})
+                .then(()=>getDessertDrinks())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -331,32 +331,44 @@ export default function DessertDrinksUpdate(){
 
                         <label>
                             category<br/>
-                            <div style={{display:'flex',justifyContent:'space-between'}}>
-                                {displayCategoryDropdown ? 
-                                    <select defaultValue='' required>
-                                            <option disabled value=''>select...</option>
-                                            {dessertDrinkCategories.map(category=><option key={category} value={category}>{category}</option>)}        
-                                    </select>                                
-                                : 
-                                    <input  type='text'
-                                            required
-                                            id='category-text'
-                                            autoComplete='off'
-                                            name='category' />
-                                }
-                                
+                            {allDessertDrinks.length == 0 && 
+                                        <>
+                                            <input  type='text'
+                                                    required
+                                                    id='category-text'
+                                                    autoComplete='off'
+                                                    name='category' /><br/>
+                                        </>
+                            }
+                            {allDessertDrinks.length > 0 &&
+                                <div style={{display:'flex',justifyContent:'space-between'}}>
+                                    {displayCategoryDropdown ? 
+                                        <select defaultValue='' 
+                                                name='category'
+                                                required>
+                                                <option disabled value=''>select...</option>
+                                                {dessertDrinkCategories.map(category=><option key={category} value={category}>{category}</option>)}        
+                                        </select>                                
+                                    : 
+                                        <input  type='text'
+                                                required
+                                                id='category-text'
+                                                placeholder=' + add new category'
+                                                autoComplete='off'
+                                                name='category' />
+                                    }
+                                    
+                                    <div    style={{background:'lightgrey',
+                                                    padding:'0px 10px',
+                                                    cursor:'pointer',
+                                                    border:'1px solid black',
+                                                    borderRadius:'5px'}}
+                                            onClick={toggleCategoryDropdown}>
+                                        {displayCategoryDropdown ? 'New Category' : 'Existing Categories'}
+                                    </div>
 
-                                <div    style={{background:'lightgrey',
-                                                padding:'0px 10px',
-                                                cursor:'pointer',
-                                                border:'1px solid black',
-                                                borderRadius:'5px'}}
-                                        onClick={toggleCategoryDropdown}
-                                >
-                                    {displayCategoryDropdown ? 'New Category' : 'Existing Categories'}
                                 </div>
-
-                            </div>
+                            }
                         </label>                   
                         <br/>
 
@@ -432,7 +444,18 @@ export default function DessertDrinksUpdate(){
 
                     </form>   
 
-            
+                    <div className='desserts-update-menu' style={{minHeight:'auto'}}>
+x
+                    </div><br/><br/>
+
+
+
+
+
+
+
+
+                    
 
 
 
@@ -442,53 +465,6 @@ export default function DessertDrinksUpdate(){
 
 
 
-
-
-
-
-
-
-
-
-
-                        {allDesserts.filter(item=>item.sequence == 0).length > 0 &&
-                            <>
-                                <div className='desserts-update-menu'>
-                                    <div>
-                                        <div className='desserts-h1'>archives</div>
-                                    </div>
-
-                                    <br/><br/>
-
-                                    {allDesserts.filter(item=>item.sequence == 0).map(data=>{
-                                        return(
-                                            <div key={data._id} className='dessert'>  
-                                                <div>section: {data.section}</div>                                    
-                                                <span className='name'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
-                                                <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
-                                                <div style={{marginTop:'5px'}}>
-                                                    <span   className='btn unarchive-btn'
-                                                            onClick={()=>unarchiveDessert(data._id)}>
-                                                        UNarchive</span>
-                                                    <span   className='btn delete-btn'
-                                                            onClick={()=>deleteDessert(data._id)}>DELETE</span>
-                                                    <br/><br/><br/>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-
-
-                                </div>
-
-                            
-                            </>}
 
 
 
