@@ -448,9 +448,38 @@ export default function DessertDrinksUpdate(){
                             categories
                         </div><br/>
 
-                        {dessertDrinkCategories.map((category,i)=>( <div key={category} style={{textAlign:'center'}}>
+                        {dessertDrinkCategories.map((category,i)=>( 
+                                                                
+                                        <div key={category} style={{textAlign:'center'}}>
+
+                                            {i+1 != '1' && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'10px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveUp(data._id))} />
+                                            }
+
+
                                                                     {i+1} {category}
-                                                                </div>))}
+
+                                            {i+1 != dessertDrinkCategories.length && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'0px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    transform:'rotate(180deg',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveDown(data._id))} />
+                                            }
+
+
+                                        </div>))}
 
                     </div><br/><br/>
 
