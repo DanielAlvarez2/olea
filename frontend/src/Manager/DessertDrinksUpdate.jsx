@@ -47,7 +47,6 @@ export default function DessertDrinksUpdate(){
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
                                                                                 name: formData.get('name'),
-                                                                                
                                                                                 postDescription: formData.get('post-description'),
                                                                                 preDescription: formData.get('pre-description'),
                                                                                 price: formData.get('price')
