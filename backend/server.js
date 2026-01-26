@@ -163,6 +163,25 @@ app.delete('/api/desserts/delete/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/dessert-drinks/delete/:id', async(req,res)=>{
+    try{
+        const target = await DessertDrink.findById(req.params.id)
+        const maxSequence = await DessertDrink.findOne({category:target.category}).sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await DessertDrink.findOneAndUpdate({sequence: i},{sequence: i-1})
+        }
+        await DessertDrink.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.delete('/api/coffees/delete/:id', async(req,res)=>{
     try{
         const target = await Coffee.findById(req.params.id)

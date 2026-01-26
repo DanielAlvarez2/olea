@@ -4,6 +4,7 @@ import './Manager.css'
 import './Specials.css'
 import './SpecialsMenuUpdate.css'
 import './DessertsUpdate.css'
+import './DessertDrinksUpdate.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 
@@ -78,12 +79,12 @@ export default function DessertDrinksUpdate(){
         }
     }
 
-    function deleteDessert(id){
+    function deleteDessertDrink(id){
         try{
-            fetch(`${BASE_URL}/api/desserts/delete/${id}`,{method:'DELETE'})
+            fetch(`${BASE_URL}/api/dessert-drinks/delete/${id}`,{method:'DELETE'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getDesserts())
+                .then(()=>getDessertDrinks())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -172,13 +173,13 @@ export default function DessertDrinksUpdate(){
 
 
 
-                        <div className='desserts-update-menu'>
+                        <div className='desserts-update-menu' style={{minHeight:'auto'}}>
                             <div>
                                 <div className='desserts-h1' style={{marginBottom:'0'}}>after dinner drinks</div>
                                 <br/>
                             </div>
 
-
+                            
 
                             {allDessertDrinks[0] == undefined ? 
                                 <div style={{whiteSpace:'pre-wrap'}}>
@@ -203,21 +204,14 @@ export default function DessertDrinksUpdate(){
 
 
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
+                            <br/><br/>
 
 
 
-
-
-
-                            {allDesserts.filter(item=>item.sequence).map(data=>{
+                            {allDessertDrinks.filter(item=>item.category == 'dessert wines').map(data=>{
                                 return(
-                                    <div key={data._id} className='dessert'>
+                                    <div key={data._id} className='dessert-drinks-display'>
 
                                         {data.sequence != '1' && 
                                             <FaCaretUp style={{ margin:'0 auto',
@@ -231,17 +225,12 @@ export default function DessertDrinksUpdate(){
                                         }
                                         
                                         
-                                        <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                        <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                        <span> {data.preDescription}</span>
+                                        <span className='dessert-drink-name'>&nbsp;{data.name} </span>
+                                        <span> {data.postDescription}</span>
+                                        <span className='price'> &nbsp;{data.price}</span>  
                                         <div style={{marginTop:'5px'}}>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveDessert(data._id)}>ARCHIVE</span>
+                                            
                                             <span   className='btn edit-btn'
                                                     onClick={()=>editDessert(   data._id,
                                                                                 data.section,
@@ -251,7 +240,7 @@ export default function DessertDrinksUpdate(){
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
-                                                    onClick={()=>deleteDessert(data._id)}>DELETE</span>
+                                                    onClick={()=>deleteDessertDrink(data._id)}>DELETE</span>
 
                                         </div>
 
