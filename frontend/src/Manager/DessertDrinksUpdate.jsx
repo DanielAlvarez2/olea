@@ -11,6 +11,7 @@ import { FaCaretUp } from "react-icons/fa";
 
 export default function DessertDrinksUpdate(){
     const [allDessertDrinks, setAllDessertDrinks] = useState([])
+    const [displayCategoryDropdown, setDisplayCategoryDropdown] = useState(true)
     const [allDesserts, setAllDesserts] = useState([])
     const [editMode, setEditMode] = useState(false)
     const [currentCategory, setCurrentCategory] = useState('')
@@ -78,9 +79,7 @@ export default function DessertDrinksUpdate(){
                 .then(res=>res.json())
                 .then(json=>{
                     let dessertDrinkCategories = new Set()
-                    console.log(json)
                     json.forEach(drink=>dessertDrinkCategories.add(drink.category))
-                    console.log(dessertDrinkCategories)
                     setDessertDrinkCategories([...dessertDrinkCategories])
                 })
                 .catch(err=>console.log(err))
@@ -178,6 +177,12 @@ export default function DessertDrinksUpdate(){
     function handleChange(e){
         setCurrentCategory(e.target.value)
     }
+
+    function toggleCategoryDropdown(){
+        setDisplayCategoryDropdown(prev=>!prev)
+    }
+
+
     return(
         <>
             <div className='manager-page-wrapper'>
@@ -253,7 +258,7 @@ export default function DessertDrinksUpdate(){
 
                                         </div>
 
-                                        {data.sequence != allDesserts.filter(item=>item.sequence).length && 
+                                        {data.sequence != allDessertDrinks.filter(item=>item.category == data.category).length && 
                                             <FaCaretUp style={{ margin:'0 auto',
                                                                 fontSize:'60px',
                                                                 position:'relative',
@@ -326,12 +331,34 @@ export default function DessertDrinksUpdate(){
 
                         <label>
                             category<br/>
-                            <input  type='text'
-                                    required
-                                    autoComplete='off'
-                                    name='category' />
+                            <div style={{display:'flex',justifyContent:'space-between'}}>
+                                {displayCategoryDropdown ? 
+                                    <select defaultValue='' required>
+                                            <option disabled value=''>select...</option>
+                                            {dessertDrinkCategories.map(category=><option key={category} value={category}>{category}</option>)}        
+                                    </select>                                
+                                : 
+                                    <input  type='text'
+                                            required
+                                            id='category-text'
+                                            autoComplete='off'
+                                            name='category' />
+                                }
+                                
+
+                                <div    style={{background:'lightgrey',
+                                                padding:'0px 10px',
+                                                cursor:'pointer',
+                                                border:'1px solid black',
+                                                borderRadius:'5px'}}
+                                        onClick={toggleCategoryDropdown}
+                                >
+                                    {displayCategoryDropdown ? 'New Category' : 'Existing Categories'}
+                                </div>
+
+                            </div>
                         </label>                   
-                        <br/><br/>
+                        <br/>
 
                         <label>
                             pre-description<br/>
