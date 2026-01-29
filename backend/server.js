@@ -166,13 +166,13 @@ app.delete('/api/desserts/delete/:id', async(req,res)=>{
 app.delete('/api/dessert-drinks/delete/:id', async(req,res)=>{
     try{
         const target = await DessertDrink.findById(req.params.id)
-        if(target.sequence == 1) {
-            const maxCategorySequence = await DessertDrink.findOne().sort({categorySequence:-1})
+        const maxSequence = await DessertDrink.findOne({category:target.category}).sort({sequence:-1})
+        const maxCategorySequence = await DessertDrink.findOne().sort({categorySequence:-1})
+        if(target.sequence == 1 && target.categorySequence != maxCategorySequence && target.sequence != maxSequence) {
             for (let i=target.categorySequence+1;i<=maxCategorySequence;i++){
                 await DessertDrink.updateMany({categorySequence:i},{$set:{categorySequence:i-1}})
             }
         }else{
-            const maxSequence = await DessertDrink.findOne({category:target.category}).sort({sequence:-1})
             for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
                 await DessertDrink.findOneAndUpdate({sequence: i},{sequence: i-1})
             }
