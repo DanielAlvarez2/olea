@@ -37,8 +37,9 @@ export default function DessertDrinksUpdate(){
         .then(alert(`
             New Dessert Drink Created:
              - ${formData.get('name')}`))
-        .then(getDessertDrinks())
-        .then(getDessertDrinkCategories())
+        .then(()=>getDessertDrinks())
+        .then(()=>getDessertDrinkCategories())
+        .then(()=>setCurrentCategory(formData.get('category')))
         .catch(err=>console.log(err))
     }
 
@@ -94,6 +95,7 @@ export default function DessertDrinksUpdate(){
                 .then(res=>res.json())
                 .then(data=>alert(data))
                 .then(()=>getDessertDrinks())
+                .then(()=>getDessertDrinkCategories())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -220,7 +222,7 @@ export default function DessertDrinksUpdate(){
                             : 
                                 <div>
                                     <div className='desserts-h1'>category:</div>
-                                    <select defaultValue='' onChange={handleChange}>
+                                    <select id='category-dropdown' defaultValue={currentCategory} value={currentCategory} onChange={handleChange}>
                                         <option disabled value=''>select...</option>
                                         {dessertDrinkCategories.map(category=><option key={category} value={category}>{category}</option>)}
                                         
