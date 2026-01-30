@@ -217,7 +217,7 @@ export default function DessertDrinksUpdate(){
                             {allDessertDrinks[0] == undefined ? 
                                 <div style={{whiteSpace:'pre-wrap'}}>
                                     DATABASE IS EMPTY<br/>
-                                    Please Create a New Dessert Drink Below<br/><br/>
+                                    <br/>
                                 </div>                            
                             : 
                                 <div>

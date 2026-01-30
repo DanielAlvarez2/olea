@@ -5,10 +5,14 @@ import './DessertMenuFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
+import { FaToggleOff } from "react-icons/fa6";
+import { FaToggleOn } from "react-icons/fa6";
+
 
 
 export default function DessertMenuFormat(){
 
+    const [frontView, setFrontView] = useState(true)
     const [allDesserts, setAllDesserts] = useState([])
     const [teaPrice, setTeaPrice] = useState('')
     const [allTeas, setAllTeas] = useState([])
@@ -147,6 +151,10 @@ export default function DessertMenuFormat(){
             .catch(err=>console.log(err))
     }
 
+    function toggleFrontView(){
+        setFrontView(prev=>!prev)
+    }
+
     return(
         <>
             <div    className='manager-page-wrapper' 
@@ -168,6 +176,23 @@ export default function DessertMenuFormat(){
                                             justifyContent:'center',
                                             border:'1px solid green',
                                             alignItems:'center'}}>
+                                <span>front</span>
+                                    {frontView  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFrontView}/></span> 
+                                                
+                                                : 
+                                                    <span><FaToggleOn   style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFrontView}/></span>    
+                                    }  
+                                <span>back</span>
+                            </div>
+
+                            <div style={{   textAlign:'center',
+                                            display:'flex',
+                                            gap:'10px',
+                                            justifyContent:'center',
+                                            border:'1px solid green',
+                                            alignItems:'center'}}>
                                 <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                             onClick={decreaseDessertItemMarginsTopBottom} /></span>
                                 <span>menu item margins<br/>top & bottom</span>
@@ -181,6 +206,8 @@ export default function DessertMenuFormat(){
                                             justifyContent:'center',
                                             border:'1px solid green',
                                             alignItems:'center'}}>
+
+                                                
                                 <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                             onClick={decreasePageMarginRight} /></span>
                                 <span>page margin: right</span>
