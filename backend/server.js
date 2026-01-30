@@ -167,11 +167,18 @@ app.delete('/api/dessert-drinks/delete/:id', async(req,res)=>{
     try{
         const target = await DessertDrink.findById(req.params.id)
         const maxSequence = await DessertDrink.findOne({category:target.category}).sort({sequence:-1})
-        const maxCategorySequence = await DessertDrink.findOne().sort({categorySequence:-1})
-        if(target.sequence == 1 && target.categorySequence != maxCategorySequence && target.sequence != maxSequence) {
-            for (let i=target.categorySequence+1;i<=maxCategorySequence;i++){
-                await DessertDrink.updateMany({categorySequence:i},{$set:{categorySequence:i-1}})
-            }
+        const maxCategorySequenceDrink = await DessertDrink.findOne().sort({categorySequence:-1})
+        const maxCategorySequence = maxCategorySequenceDrink.categorySequence
+        if(target.sequence == 1 
+            && target.categorySequence != maxCategorySequence 
+            && target.sequence != maxSequence) {
+                console.log('***fire***')
+                console.log('target.categorySequence: '+ target.categorySequence)
+                console.log('maxCategorySequence: '+ maxCategorySequence)
+                for (let i=target.categorySequence+1;i<=maxCategorySequence;i++){
+                    console.log('i: '+i)
+                    await DessertDrink.updateMany({categorySequence:i},{$set:{categorySequence:i-1}})
+                }
         }else{
             for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
                 await DessertDrink.findOneAndUpdate({sequence: i},{sequence: i-1})
