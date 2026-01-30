@@ -171,7 +171,7 @@ app.delete('/api/dessert-drinks/delete/:id', async(req,res)=>{
         const maxCategorySequence = maxCategorySequenceDrink.categorySequence
         if(target.sequence == 1 
             && target.categorySequence != maxCategorySequence 
-            && target.sequence != maxSequence) {
+            && target.sequence == maxSequence) {
                 console.log('***fire***')
                 console.log('target.categorySequence: '+ target.categorySequence)
                 console.log('maxCategorySequence: '+ maxCategorySequence)
@@ -180,8 +180,10 @@ app.delete('/api/dessert-drinks/delete/:id', async(req,res)=>{
                     await DessertDrink.updateMany({categorySequence:i},{$set:{categorySequence:i-1}})
                 }
         }else{
+            console.log('target.sequence: '+target.sequence)
+            console.log('maxSequence.sequence: '+maxSequence.sequence)
             for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
-                await DessertDrink.findOneAndUpdate({sequence: i},{sequence: i-1})
+                await DessertDrink.findOneAndUpdate({category:target.category,sequence: i},{$set:{sequence: i-1}})
             }
         }
         await DessertDrink.findByIdAndDelete(req.params.id)
