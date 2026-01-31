@@ -225,33 +225,37 @@ export default function DessertMenuFormat(){
                                 <span>back</span>
                             </div>
 
-                            <div style={{   textAlign:'center',
-                                            display:'flex',
-                                            gap:'10px',
-                                            justifyContent:'center',
-                                            border:'1px solid green',
-                                            alignItems:'center'}}>
-                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                            onClick={decreaseDessertItemMarginsTopBottom} /></span>
-                                <span>menu item margins<br/>top & bottom</span>
-                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                            onClick={increaseDessertItemMarginsTopBottom} /></span>
-                            </div>
+                            {frontView &&                             
+                                <>                            
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    justifyContent:'center',
+                                                    border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreaseDessertItemMarginsTopBottom} /></span>
+                                        <span>menu item margins<br/>top & bottom</span>
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increaseDessertItemMarginsTopBottom} /></span>
+                                    </div>
 
-                            <div style={{   textAlign:'center',
-                                            display:'flex',
-                                            gap:'10px',
-                                            justifyContent:'center',
-                                            border:'1px solid green',
-                                            alignItems:'center'}}>
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    justifyContent:'center',
+                                                    border:'1px solid green',
+                                                    alignItems:'center'}}>
 
-                                                
-                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                            onClick={decreasePageMarginRight} /></span>
-                                <span>page margin: right</span>
-                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                            onClick={increasePageMarginRight} /></span>
-                            </div>
+                                                        
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreasePageMarginRight} /></span>
+                                        <span>page margin: right</span>
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increasePageMarginRight} /></span>
+                                    </div>
+                                </>
+                            }
 
 
                             <br/>
@@ -269,6 +273,7 @@ export default function DessertMenuFormat(){
                                                 style={{
                                                     // color:'red',
                                                         display:'block',
+                                                        cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
                                         <hr/>
 
@@ -506,6 +511,7 @@ export default function DessertMenuFormat(){
                                                 style={{
                                                     // color:'red',
                                                         display:'block',
+                                                        cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
                                         <hr/>
 
@@ -534,7 +540,7 @@ export default function DessertMenuFormat(){
                                                                         {drink.category == data && 
                                                                             <div key={data+drink._id} style={{fontFamily:'serif'}}>
                                                                                 {drink.sequence == 1 && <div style={{marginTop:'7px'}} className='desserts-h1'>{drink.category}</div>}
-                                                                                <div style={{display:'flex',gap:'10px',justifyContent:'space-between'}}>
+                                                                                <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                     <div className='dessert-drink-left'>
                                                                                         {drink.preDescription && <span>{drink.preDescription} </span>}
                                                                                         <span style={{fontWeight:'900'}}>{drink.name} </span>
