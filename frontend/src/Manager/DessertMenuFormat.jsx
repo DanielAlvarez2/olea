@@ -532,8 +532,8 @@ export default function DessertMenuFormat(){
                                                             return (
                                                                     <>
                                                                         {drink.category == data && 
-                                                                            <div key={data+drink._id}>
-                                                                                {drink.sequence == 1 && <div style={{marginTop:'10px'}} className='desserts-h1'>{drink.category}</div>}
+                                                                            <div key={data+drink._id} style={{fontFamily:'serif'}}>
+                                                                                {drink.sequence == 1 && <div style={{marginTop:'7px'}} className='desserts-h1'>{drink.category}</div>}
                                                                                 <div style={{display:'flex',gap:'10px',justifyContent:'space-between'}}>
                                                                                     <div className='dessert-drink-left'>
                                                                                         {drink.preDescription && <span>{drink.preDescription} </span>}
