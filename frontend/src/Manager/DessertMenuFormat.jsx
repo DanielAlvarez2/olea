@@ -2,6 +2,7 @@ import {Link} from 'react-router'
 import {useState,useEffect} from 'react'
 import './Manager.css'
 import './DessertMenuFormat.css'
+import './DessertDrinksUpdate.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
@@ -14,6 +15,8 @@ export default function DessertMenuFormat(){
 
     const [frontView, setFrontView] = useState(true)
     const [allDesserts, setAllDesserts] = useState([])
+    const [allDessertDrinks, setAllDessertDrinks] = useState([])
+    const [dessertDrinkCategories, setDessertDrinkCategories] = useState([])
     const [teaPrice, setTeaPrice] = useState('')
     const [allTeas, setAllTeas] = useState([])
     const [allCoffees, setAllCoffees] = useState([])
@@ -24,6 +27,9 @@ export default function DessertMenuFormat(){
     useEffect(()=>{ 
                 getDessertsFormatting()
                 getDesserts()
+                getDessertDrinks()
+                getDessertDrinks()
+                getDessertDrinkCategories()
                 getTeaPrice()
                 getTeas()
                 getCoffees()
@@ -32,6 +38,38 @@ export default function DessertMenuFormat(){
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
+
+
+    function getDessertDrinks(){
+        try{
+            fetch(`${BASE_URL}/api/dessert-drinks`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setAllDessertDrinks(json)
+                    console.log(json)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getDessertDrinkCategories(){
+        try{
+            fetch(`${BASE_URL}/api/dessert-drink-categories`)
+                .then(res=>res.json())
+                .then(json=>{
+                    let dessertDrinkCategories = new Set()
+                    json.forEach(drink=>dessertDrinkCategories.add(drink.category))
+                    setDessertDrinkCategories([...dessertDrinkCategories])
+                    console.log([...dessertDrinkCategories])
+                })
+                .catch(err=>console.log(err))
+
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     function getDessertsFormatting(){
         try{
@@ -487,7 +525,25 @@ export default function DessertMenuFormat(){
 
 
 
+                                            {dessertDrinkCategories.map(data=>{
+                                                return (
+                                                    <div key={data}>
+                                                        {allDessertDrinks.map(drink=>{
+                                                            return (
+                                                                    <>
+                                                                        {drink.category == data && 
+                                                                            <div key={data+drink._id}>
+                                                                                {drink.name}
+                                                                            </div>                                                                        
+                                                                        }
+                                                                    </>
 
+                                                                
+                                                            )
+                                                        })}
+                                                    </div>
+                                                )
+                                            })}
 
                                             {allDesserts.map(data=>{
                                                 return (

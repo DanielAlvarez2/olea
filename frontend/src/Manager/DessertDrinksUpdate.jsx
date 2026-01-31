@@ -73,6 +73,7 @@ export default function DessertDrinksUpdate(){
             console.log(err)
         }
     }
+    
     function getDessertDrinkCategories(){
         try{
             fetch(`${BASE_URL}/api/dessert-drink-categories`)
