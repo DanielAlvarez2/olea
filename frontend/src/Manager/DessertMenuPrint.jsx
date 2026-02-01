@@ -11,6 +11,7 @@ export default function DessertMenuPrint(){
 
     const [front, setFront] = useState(true)    
     const [allDesserts, setAllDesserts] = useState([])
+    const [allDessertDrinks, setAllDessertDrinks] = useState([])
     const [teaPrice, setTeaPrice] = useState('')
     const [allTeas, setAllTeas] = useState([])
     const [allCoffees, setAllCoffees] = useState([])
@@ -20,10 +21,13 @@ export default function DessertMenuPrint(){
     const [pageMarginRightBack, setPageMarginRightBack] = useState(0)
     const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(0)
     const [dessertDrinkCategories, setDessertDrinkCategories] = useState([])
+    const [categoriesMarginTop, setCategoriesMarginTop] = useState(0)
 
     useEffect(()=>{ 
                 getDessertsFormatting()
                 getDesserts()
+                getDessertDrinks()
+                getDessertDrinkCategories()
                 getTeaPrice()
                 getTeas()
                 getCoffees()
@@ -33,6 +37,39 @@ export default function DessertMenuPrint(){
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
+
+    function getDessertDrinks(){
+        try{
+            fetch(`${BASE_URL}/api/dessert-drinks`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setAllDessertDrinks(json)
+                    // console.log(json)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getDessertDrinkCategories(){
+        try{
+            fetch(`${BASE_URL}/api/dessert-drink-categories`)
+                .then(res=>res.json())
+                .then(json=>{
+                    let dessertDrinkCategories = new Set()
+                    json.forEach(drink=>dessertDrinkCategories.add(drink.category))
+                    setDessertDrinkCategories([...dessertDrinkCategories])
+                    // console.log([...dessertDrinkCategories])
+                })
+                .catch(err=>console.log(err))
+
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+
     function getDessertsFormatting(){
         try{
             fetch(`${BASE_URL}/api/formats/desserts`)
@@ -40,6 +77,8 @@ export default function DessertMenuPrint(){
                 .then(json=>{
                     setDessertsFormatting(json[0])
                     setPageMarginRight(json[0].pageMarginRight)
+                    setPageMarginRightBack(json[0].pageMarginRightBack)
+                    setCategoriesMarginTop(json[0].categoriesMarginTop)
                     setDessertItemMarginsTopBottom(json[0].dessertItemMarginsTopBottom)
                 })
                 .catch(err=>console.log(err))
@@ -279,7 +318,7 @@ Please switch to a different browser to proceed.
                                                         {
                                                             (allCoffees.length > 0) && <>
                                                                 <div className='dessert-item'>                                    
-                                                                    <span className='coffee-tea-heading'>
+                                                                    <span className='dessert-menu-heading'>
                                                                         coffee
                                                                     </span>
                                                                     &nbsp;
@@ -339,7 +378,7 @@ Please switch to a different browser to proceed.
                                                         <br/>
 
                                                         <div className='dessert-item'>                                    
-                                                            <span className='coffee-tea-heading'>
+                                                            <span className='dessert-menu-heading'>
                                                                 organic-artisan whole leaf tea
                                                             </span>
                                                             &nbsp;
@@ -518,7 +557,7 @@ Please switch to a different browser to proceed.
                                                         {
                                                             (allCoffees.length > 0) && <>
                                                                 <div className='dessert-item'>                                    
-                                                                    <span className='coffee-tea-heading'>
+                                                                    <span className='dessert-menu-heading'>
                                                                         coffee
                                                                     </span>
                                                                     &nbsp;
@@ -578,7 +617,7 @@ Please switch to a different browser to proceed.
                                                         <br/>
 
                                                         <div className='dessert-item'>                                    
-                                                            <span className='coffee-tea-heading'>
+                                                            <span className='dessert-menu-heading'>
                                                                 organic-artisan whole leaf tea
                                                             </span>
                                                             &nbsp;
@@ -747,9 +786,9 @@ Please switch to a different browser to proceed.
                                                                 <div key={data} style={{lineHeight:'1.4'}}>
                                                                     {allDessertDrinks.map(drink=>{
                                                                         return (
-                                                                                <>
+                                                                                <div key={drink._id}>
                                                                                     {drink.category == data && 
-                                                                                        <div key={data+drink._id} style={{fontFamily:'serif'}}>
+                                                                                        <div style={{fontFamily:'serif'}}>
                                                                                             {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading'>{drink.category}</div>}
                                                                                             <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                                 <div className='dessert-drink-left'>
@@ -764,7 +803,7 @@ Please switch to a different browser to proceed.
                                                                                             </div>
                                                                                         </div>                                                                        
                                                                                     }
-                                                                                </>
+                                                                                </div>
 
                                                                             
                                                                         )
@@ -860,9 +899,9 @@ Please switch to a different browser to proceed.
                                                                 <div key={data} style={{lineHeight:'1.4'}}>
                                                                     {allDessertDrinks.map(drink=>{
                                                                         return (
-                                                                                <>
+                                                                                <div key={drink._id}>
                                                                                     {drink.category == data && 
-                                                                                        <div key={data+drink._id} style={{fontFamily:'serif'}}>
+                                                                                        <div style={{fontFamily:'serif'}}>
                                                                                             {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading'>{drink.category}</div>}
                                                                                             <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                                 <div className='dessert-drink-left'>
@@ -877,7 +916,7 @@ Please switch to a different browser to proceed.
                                                                                             </div>
                                                                                         </div>                                                                        
                                                                                     }
-                                                                                </>
+                                                                                </div>
 
                                                                             
                                                                         )

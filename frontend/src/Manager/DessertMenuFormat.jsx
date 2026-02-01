@@ -30,7 +30,6 @@ export default function DessertMenuFormat(){
                 getDessertsFormatting()
                 getDesserts()
                 getDessertDrinks()
-                getDessertDrinks()
                 getDessertDrinkCategories()
                 getTeaPrice()
                 getTeas()
@@ -48,7 +47,7 @@ export default function DessertMenuFormat(){
                 .then(res=>res.json())
                 .then(json=>{
                     setAllDessertDrinks(json)
-                    console.log(json)
+                    // console.log(json)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -64,7 +63,7 @@ export default function DessertMenuFormat(){
                     let dessertDrinkCategories = new Set()
                     json.forEach(drink=>dessertDrinkCategories.add(drink.category))
                     setDessertDrinkCategories([...dessertDrinkCategories])
-                    console.log([...dessertDrinkCategories])
+                    // console.log([...dessertDrinkCategories])
                 })
                 .catch(err=>console.log(err))
 
@@ -575,9 +574,9 @@ export default function DessertMenuFormat(){
                                                     <div key={data} style={{lineHeight:'1.4'}}>
                                                         {allDessertDrinks.map(drink=>{
                                                             return (
-                                                                    <>
+                                                                    <div key={drink._id}>
                                                                         {drink.category == data && 
-                                                                            <div key={data+drink._id} style={{fontFamily:'serif'}}>
+                                                                            <div style={{fontFamily:'serif'}}>
                                                                                 {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading'>{drink.category}</div>}
                                                                                 <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                     <div className='dessert-drink-left'>
@@ -592,7 +591,7 @@ export default function DessertMenuFormat(){
                                                                                 </div>
                                                                             </div>                                                                        
                                                                         }
-                                                                    </>
+                                                                    </div>
 
                                                                 
                                                             )
