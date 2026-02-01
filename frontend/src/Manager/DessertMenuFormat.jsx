@@ -23,6 +23,7 @@ export default function DessertMenuFormat(){
     const [lastCoffeeSequenceLine1, setLastCoffeeSequenceLine1] = useState(1)
     const [dessertsFormatting, setDessertsFormatting] = useState([])
     const [pageMarginRight, setPageMarginRight] = useState(0)
+    const [pageMarginRightBack, setPageMarginRightBack] = useState(0)
     const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(0)
     useEffect(()=>{ 
                 getDessertsFormatting()
@@ -78,6 +79,7 @@ export default function DessertMenuFormat(){
                 .then(json=>{
                     setDessertsFormatting(json[0])
                     setPageMarginRight(json[0].pageMarginRight)
+                    setPageMarginRightBack(json[0].pageMarginRightBack)
                     setDessertItemMarginsTopBottom(json[0].dessertItemMarginsTopBottom)
                 })
                 .catch(err=>console.log(err))
@@ -182,12 +184,26 @@ export default function DessertMenuFormat(){
         .then(()=>getDessertsFormatting())
         .catch(err=>console.log(err))
     }
+
+    function decreasePageMarginRightBack(){
+        if (pageMarginRightBack <= 0) return
+        fetch(`${BASE_URL}/api/formats/desserts/decreasePageMarginRightBack`,{method:'PUT'})
+        .then(()=>getDessertsFormatting())
+        .catch(err=>console.log(err))
+    }
     
     function increasePageMarginRight(){
         fetch(`${BASE_URL}/api/formats/desserts/increasePageMarginRight`,{method:'PUT'})
             .then(()=>getDessertsFormatting())
             .catch(err=>console.log(err))
     }
+
+    function increasePageMarginRightBack(){
+        fetch(`${BASE_URL}/api/formats/desserts/increasePageMarginRightBack`,{method:'PUT'})
+            .then(()=>getDessertsFormatting())
+            .catch(err=>console.log(err))
+    }
+
 
     function toggleFrontView(){
         setFrontView(prev=>!prev)
@@ -225,8 +241,7 @@ export default function DessertMenuFormat(){
                                 <span>back</span>
                             </div>
 
-                            {frontView &&                             
-                                <>                            
+                                                       
                                     <div style={{   textAlign:'center',
                                                     display:'flex',
                                                     gap:'10px',
@@ -249,15 +264,12 @@ export default function DessertMenuFormat(){
 
                                                         
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMarginRight} /></span>
+                                                                    onClick={frontView ? decreasePageMarginRight : decreasePageMarginRightBack} /></span>
                                         <span>page margin: right</span>
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMarginRight} /></span>
+                                                                    onClick={frontView ? increasePageMarginRight : increasePageMarginRightBack} /></span>
                                     </div>
-                                </>
-                            }
-
-
+                                
                             <br/>
 
 
@@ -316,7 +328,7 @@ export default function DessertMenuFormat(){
                                             {
                                                 (allCoffees.length > 0) && <>
                                                     <div className='dessert-item'>                                    
-                                                        <span className='coffee-tea-heading'>
+                                                        <span className='dessert-menu-heading'>
                                                             coffee
                                                         </span>
                                                         &nbsp;
@@ -376,7 +388,7 @@ export default function DessertMenuFormat(){
                                             <br/>
 
                                             <div className='dessert-item'>                                    
-                                                <span className='coffee-tea-heading'>
+                                                <span className='dessert-menu-heading'>
                                                     organic-artisan whole leaf tea
                                                 </span>
                                                 &nbsp;
@@ -504,7 +516,8 @@ export default function DessertMenuFormat(){
                                 </div>
                             :
                                 <div    className='dessert-menu-format-front' 
-                                        // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
+                                        // style={{backgroundImage:'url("scan-dessert-menu-back.jpg")',backgroundSize:'5.5in 8.5in'}}
+                                        
                                 >
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
@@ -522,7 +535,10 @@ export default function DessertMenuFormat(){
 
 
                                         <div className='dessert-menu-front-content'
-                                                style={{paddingRight:`${pageMarginRight + 20}px`}}
+                                                style={{paddingRight:`${pageMarginRightBack + 20}px`,
+                                                        // color:'red',
+                                                        
+                                                    }}
                                                 // style={{paddingRight:'83px'}}
                                                 >
 
@@ -539,7 +555,7 @@ export default function DessertMenuFormat(){
                                                                     <>
                                                                         {drink.category == data && 
                                                                             <div key={data+drink._id} style={{fontFamily:'serif'}}>
-                                                                                {drink.sequence == 1 && <div style={{marginTop:'7px'}} className='desserts-h1'>{drink.category}</div>}
+                                                                                {drink.sequence == 1 && <div style={{marginTop:'7px'}} className='dessert-menu-heading'>{drink.category}</div>}
                                                                                 <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                     <div className='dessert-drink-left'>
                                                                                         {drink.preDescription && <span>{drink.preDescription} </span>}

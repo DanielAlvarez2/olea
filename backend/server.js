@@ -799,6 +799,7 @@ app.get('/api/formats/desserts', async(req,res)=>{
         if (allFormats.length == 0){
             await DessertsFormat.create({
                 pageMarginRight: 0,
+                pageMarginRightBack: 0,
                 dessertItemMarginsTopBottom: 0,
             })
             allFormats = await DessertsFormat.find()
@@ -834,6 +835,18 @@ app.put('/api/formats/desserts/decreasePageMarginRight', async(req,res)=>{
     }
 })
 
+app.put('/api/formats/desserts/decreasePageMarginRightBack', async(req,res)=>{
+    try{
+        const allFormats = await DessertsFormat.find()
+        console.log(allFormats[0])
+        await DessertsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMarginRightBack: allFormats[0].pageMarginRightBack - 1})
+        res.json('page margin back decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/desserts/increasePageMarginRight', async(req,res)=>{
     try{
         const allFormats = await DessertsFormat.find()
@@ -845,6 +858,19 @@ app.put('/api/formats/desserts/increasePageMarginRight', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.put('/api/formats/desserts/increasePageMarginRightBack', async(req,res)=>{
+    try{
+        const allFormats = await DessertsFormat.find()
+        console.log(allFormats[0])
+        await DessertsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMarginRightBack: allFormats[0].pageMarginRightBack + 1})
+        res.json('page margin back increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.put('/api/formats/desserts/decreaseDessertItemMarginsTopBottom', async(req,res)=>{
     try{
