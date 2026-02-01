@@ -24,6 +24,7 @@ export default function DessertMenuFormat(){
     const [dessertsFormatting, setDessertsFormatting] = useState([])
     const [pageMarginRight, setPageMarginRight] = useState(0)
     const [pageMarginRightBack, setPageMarginRightBack] = useState(0)
+    const [categoriesMarginTop, setCategoriesMarginTop] = useState(0)
     const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(0)
     useEffect(()=>{ 
                 getDessertsFormatting()
@@ -80,6 +81,7 @@ export default function DessertMenuFormat(){
                     setDessertsFormatting(json[0])
                     setPageMarginRight(json[0].pageMarginRight)
                     setPageMarginRightBack(json[0].pageMarginRightBack)
+                    setCategoriesMarginTop(json[0].categoriesMarginTop)
                     setDessertItemMarginsTopBottom(json[0].dessertItemMarginsTopBottom)
                 })
                 .catch(err=>console.log(err))
@@ -166,8 +168,21 @@ export default function DessertMenuFormat(){
     }
 
     function decreaseDessertItemMarginsTopBottom(){
-        if (dessertItemMarginsTopBottom == 0) return
+        if (dessertItemMarginsTopBottom <= 0) return
         fetch(`${BASE_URL}/api/formats/desserts/decreaseDessertItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getDessertsFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function decreaseCategoriesMarginTop(){
+        if (categoriesMarginTop <= 0) return
+        fetch(`${BASE_URL}/api/formats/desserts/decreaseCategoriesMarginTop`, {method:'PUT'})
+            .then(()=>getDessertsFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function increaseCategoriesMarginTop(){
+        fetch(`${BASE_URL}/api/formats/desserts/increaseCategoriesMarginTop`, {method:'PUT'})
             .then(()=>getDessertsFormatting())
             .catch(err=>console.log(err))
     }
@@ -249,10 +264,18 @@ export default function DessertMenuFormat(){
                                                     border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseDessertItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom</span>
+                                                                    onClick={frontView  ? decreaseDessertItemMarginsTopBottom
+                                                                                        : decreaseCategoriesMarginTop
+                                                                    } /></span>
+                                        {
+                                            frontView   ? <span>menu item margins<br/>top & bottom</span>
+                                                        : <span>categories<br/>margin top</span>
+                                        }
+                                        
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseDessertItemMarginsTopBottom} /></span>
+                                                                    onClick={frontView  ? increaseDessertItemMarginsTopBottom
+                                                                                        : increaseCategoriesMarginTop
+                                                                    } /></span>
                                     </div>
 
                                     <div style={{   textAlign:'center',
@@ -555,7 +578,7 @@ export default function DessertMenuFormat(){
                                                                     <>
                                                                         {drink.category == data && 
                                                                             <div key={data+drink._id} style={{fontFamily:'serif'}}>
-                                                                                {drink.sequence == 1 && <div style={{marginTop:'7px'}} className='dessert-menu-heading'>{drink.category}</div>}
+                                                                                {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading'>{drink.category}</div>}
                                                                                 <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                     <div className='dessert-drink-left'>
                                                                                         {drink.preDescription && <span>{drink.preDescription} </span>}

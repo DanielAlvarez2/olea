@@ -801,6 +801,7 @@ app.get('/api/formats/desserts', async(req,res)=>{
                 pageMarginRight: 0,
                 pageMarginRightBack: 0,
                 dessertItemMarginsTopBottom: 0,
+                categoriesMarginTop: 0
             })
             allFormats = await DessertsFormat.find()
         }
@@ -879,6 +880,30 @@ app.put('/api/formats/desserts/decreaseDessertItemMarginsTopBottom', async(req,r
         await DessertsFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {dessertItemMarginsTopBottom: allFormats[0].dessertItemMarginsTopBottom - 1})
         res.json('dessert item margins decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/desserts/decreaseCategoriesMarginTop', async(req,res)=>{
+    try{
+        const allFormats = await DessertsFormat.find()
+        console.log(allFormats[0])
+        await DessertsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {categoriesMarginTop: allFormats[0].categoriesMarginTop - 1})
+        res.json('dessert drinks categories margin top decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/desserts/increaseCategoriesMarginTop', async(req,res)=>{
+    try{
+        const allFormats = await DessertsFormat.find()
+        console.log(allFormats[0])
+        await DessertsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {categoriesMarginTop: allFormats[0].categoriesMarginTop + 1})
+        res.json('dessert drinks categories margin top increased')
     }catch(err){
         console.log(err)
     }

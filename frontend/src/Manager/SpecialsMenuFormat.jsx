@@ -64,7 +64,7 @@ export default function SpecialsMenuUpdate(){
     }
 
     function decreasePageMarginsLeftRight(){
-        if (pageMarginsLeftRight == 0) return
+        if (pageMarginsLeftRight <= 0) return
         fetch(`${BASE_URL}/api/formats/specials/decreasePageMargins`, {method:'PUT'})
             .then(()=>getSpecialsFormatting())
             .catch(err=>console.log(err))
@@ -77,7 +77,7 @@ export default function SpecialsMenuUpdate(){
     }
 
     function decreaseMenuItemMarginsTopBottom(){
-        if (menuItemMarginsTopBottom == 0) return
+        if (menuItemMarginsTopBottom <= 0) return
         fetch(`${BASE_URL}/api/formats/specials/decreaseMenuItemMargins`, {method:'PUT'})
             .then(()=>getSpecialsFormatting())
             .catch(err=>console.log(err))
