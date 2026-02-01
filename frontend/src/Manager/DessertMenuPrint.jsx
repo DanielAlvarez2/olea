@@ -792,6 +792,9 @@ Please switch to a different browser to proceed.
                                                                                             {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading'>{drink.category}</div>}
                                                                                             <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                                 <div className='dessert-drink-left'>
+                                                                                                    {drink.category == 'dessert cocktails' && 
+                                                                                                        <span style={{marginRight:'3px',fontSize:'10px',position:'relative',bottom:'1px'}}>&#9679;</span> 
+                                                                                                    }
                                                                                                     {drink.preDescription && <span>{drink.preDescription} </span>}
                                                                                                     <span style={{fontWeight:'900'}}>{drink.name} </span>
                                                                                                     <span>{drink.postDescription}</span>                                                                                    
@@ -905,6 +908,9 @@ Please switch to a different browser to proceed.
                                                                                             {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading'>{drink.category}</div>}
                                                                                             <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                                 <div className='dessert-drink-left'>
+                                                                                                    {drink.category == 'dessert cocktails' && 
+                                                                                                        <span style={{marginRight:'3px',fontSize:'10px',position:'relative',bottom:'1px'}}>&#9679;</span> 
+                                                                                                    }
                                                                                                     {drink.preDescription && <span>{drink.preDescription} </span>}
                                                                                                     <span style={{fontWeight:'900'}}>{drink.name} </span>
                                                                                                     <span>{drink.postDescription}</span>                                                                                    
