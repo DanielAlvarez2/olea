@@ -202,7 +202,7 @@ export default function SpecialsMenuUpdate(){
                                                         onClick={(()=>moveUp(data._id))} />
                                         }
                                         
-                                        {data.sequence}<br/>
+                                        {/* {data.sequence}<br/> */}
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -279,7 +279,7 @@ export default function SpecialsMenuUpdate(){
                                                                 width:'100%'}}
                                                         onClick={(()=>moveUp(data._id))} />
                                         }
-                                        {data.sequence}<br/>
+                                        {/* {data.sequence}<br/> */}
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -355,7 +355,7 @@ export default function SpecialsMenuUpdate(){
                                                         onClick={(()=>moveUp(data._id))} />
 
                                         }
-                                        {data.sequence}<br/>
+                                        {/* {data.sequence}<br/> */}
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -417,7 +417,7 @@ export default function SpecialsMenuUpdate(){
                             id='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'update special' : 'create new special'}
+                            {editMode ? 'update dinner item' : 'create new dinner item'}
 
                         </h2>
                         <br/>
@@ -439,9 +439,10 @@ export default function SpecialsMenuUpdate(){
                                             &nbsp; 
                                             <select name='section' required defaultValue=''>
                                                 <option disabled value=''>select...</option>
+                                                <option>cured meats</option>
                                                 <option>appetizers</option>
                                                 <option>entrées</option>
-                                                <option>desserts</option>
+                                                <option>sides</option>
                                             </select>
 
                                             <br/><br/>
@@ -476,6 +477,16 @@ export default function SpecialsMenuUpdate(){
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
+
+                        <label>
+                            description-intro<br/>
+                            <input  type='text'
+                                    name='description-intro'
+                                    id='description-intro'
+                                    style={{width:'100%'}} />
+                        </label>
+                        <br/><br/>
+
                         <label>
                             description<br/>
                             <textarea   rows='5'
@@ -499,10 +510,10 @@ export default function SpecialsMenuUpdate(){
                                             cursor:'pointer',
                                             borderRadius:'10px',
                                             border:'2px solid black',
-                                            
+                                            color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
-                                    value = {editMode ? 'update special' : 'create new special'} />
+                                    value = {editMode ? 'update dinner item' : 'create new dinner item'} />
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',

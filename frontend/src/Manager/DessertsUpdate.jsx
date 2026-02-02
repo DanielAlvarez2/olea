@@ -340,7 +340,7 @@ export default function DessertsUpdate(){
                                             cursor:'pointer',
                                             borderRadius:'10px',
                                             border:'2px solid black',
-                                            
+                                            color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
                                     value = {editMode ? 'update dessert' : 'create new dessert'} />

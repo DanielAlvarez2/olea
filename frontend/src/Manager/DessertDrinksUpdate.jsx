@@ -434,7 +434,7 @@ export default function DessertDrinksUpdate(){
                                             cursor:'pointer',
                                             borderRadius:'10px',
                                             border:'2px solid black',
-                                            
+                                            color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
                                     value = {editMode ? 'update dessert drink' : 'create new dessert drink'} />

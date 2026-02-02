@@ -202,7 +202,7 @@ export default function SpecialsMenuUpdate(){
                                                         onClick={(()=>moveUp(data._id))} />
                                         }
                                         
-                                        {data.sequence}<br/>
+                                        {/* {data.sequence}<br/> */}
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -279,7 +279,7 @@ export default function SpecialsMenuUpdate(){
                                                                 width:'100%'}}
                                                         onClick={(()=>moveUp(data._id))} />
                                         }
-                                        {data.sequence}<br/>
+                                        {/* {data.sequence}<br/> */}
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -355,7 +355,7 @@ export default function SpecialsMenuUpdate(){
                                                         onClick={(()=>moveUp(data._id))} />
 
                                         }
-                                        {data.sequence}<br/>
+                                        {/* {data.sequence}<br/> */}
                                         <span className='name'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -499,7 +499,7 @@ export default function SpecialsMenuUpdate(){
                                             cursor:'pointer',
                                             borderRadius:'10px',
                                             border:'2px solid black',
-                                            
+                                            color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
                                     value = {editMode ? 'update special' : 'create new special'} />
