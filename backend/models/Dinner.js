@@ -7,6 +7,7 @@ const DinnerSchema = new mongoose.Schema({
     allergiesComplete:{type:String},
     descriptionIntro:{type:String},
     description:{type:String},
+    postDescription:{type:String},
     price:{type:String},
     sequence:{type:Number}
 },{timestamps:true})
