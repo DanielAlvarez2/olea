@@ -496,12 +496,17 @@ export default function SpecialsMenuUpdate(){
                         </label>
                         <br/><br/>
 
+                        <label>
                             extra description<br/>
                             <input  type='text'
                                     id='post-description'
                                     placeholder='(Please allow 40 minutes cooking time)'
                                     style={{width:'100%'}}
                                     name='post-description' />
+                        
+                        </label>
+                        <br/><br/>
+                        
                         <label>
                             price<br/>
                             <input  type='text'
