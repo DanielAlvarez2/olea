@@ -538,7 +538,7 @@ export default function DessertMenuFormat(){
                                 </div>
                             :
                                 <div    className='dessert-menu-format-front' 
-                                        // style={{backgroundImage:'url("scan-dessert-menu-back.jpg")',backgroundSize:'5.5in 8.5in'}}
+                                        // style={{backgroundImage:'url("scan-dessert-menu-back.jpg"),',color:'red',backgroundSize:'5.5in 8.5in'}}
                                         
                                 >
                                     <div id='footer-top'>
