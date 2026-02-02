@@ -158,7 +158,7 @@ export default function SpecialsMenuUpdate(){
     return(
         <>
             <div className='manager-page-wrapper'>
-                <ManagerNavbar page='specials' />
+                <ManagerNavbar page='dinner' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dinner &gt; update</div>
 
