@@ -10,6 +10,7 @@ import { FaCaretUp } from "react-icons/fa";
 export default function SpecialsMenuUpdate(){
     const [allDinnerItems, setAllDinnerItems] = useState([])
     const [editMode, setEditMode] = useState(false)
+    const [displaySection, setDisplaySection] = useState('cured meats')
     useEffect(()=>getDinnerItems(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -156,6 +157,9 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
+    function handleChangeDisplaySection(e){
+        setDisplaySection(e.target.value)
+    }
 
     return(
         <>
@@ -171,6 +175,14 @@ export default function SpecialsMenuUpdate(){
                                 <div className='specials-h1' style={{marginBottom:'0'}}>dinner menu</div>
                             </div>
 
+                            <br/>
+                            section &nbsp; 
+                                <select name='display-section' defaultValue={displaySection} onChange={handleChangeDisplaySection}>
+                                    <option value='cured meats'>cured meats</option>
+                                    <option value='appetizers'>appetizers</option>
+                                    <option value='entrées'>entrées</option>
+                                    <option value='sides'>sides</option>
+                                </select>
 
 
 
@@ -184,13 +196,12 @@ export default function SpecialsMenuUpdate(){
 
 
 
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').length == 1 && 
+                                <div className='specials-h2 specials-update-heading'>cured meat</div>}
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').length > 1 && 
+                                <div className='specials-h2 specials-update-heading'>cured meats</div>}
 
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
-                                <div className='specials-h2 specials-update-heading'>appetizer</div>}
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
-                                <div className='specials-h2 specials-update-heading'>appetizers</div>}
-
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
                                         {data.sequence != '1' && 
@@ -205,13 +216,17 @@ export default function SpecialsMenuUpdate(){
                                         }
                                         
                                         {/* {data.sequence}<br/> */}
-                                        <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                        <div>
+                                            <span className='name'>{data.name} </span>
+                                            {data.allergiesAbbreviated && 
+                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                        </div>
+                                        {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
                                         <span> {data.description}</span>
                                         {data.price.length < 3 ? 
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
+                                        {data.postDescription && <div>{data.postDescription}</div>}
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn archive-btn'
@@ -229,7 +244,7 @@ export default function SpecialsMenuUpdate(){
 
                                         </div>
 
-                                        {data.sequence != allDinnerItems.filter(item=>item.section == 'appetizers' && item.sequence).length && 
+                                        {data.sequence != allDinnerItems.filter(item=>item.section == 'cured meats' && item.sequence).length && 
                                             <FaCaretUp style={{ margin:'0 auto',
                                                                 fontSize:'60px',
                                                                 position:'relative',
