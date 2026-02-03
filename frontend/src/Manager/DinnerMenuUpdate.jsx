@@ -8,34 +8,36 @@ import { FaCaretUp } from "react-icons/fa";
 
 
 export default function SpecialsMenuUpdate(){
-    const [allSpecials, setAllSpecials] = useState([])
+    const [allDinnerItems, setAllDinnerItems] = useState([])
     const [editMode, setEditMode] = useState(false)
-    useEffect(()=>getSpecials(),[])
+    useEffect(()=>getDinnerItems(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
-    async function createNewSpecial(formData){
-        await fetch(`${BASE_URL}/api/specials`,{method:'POST',
-                                                headers:{'Content-Type':'application/json'},
-                                                body: JSON.stringify({
-                                                    menu: formData.get('menu'),
-                                                    section: formData.get('section'),
-                                                    name: formData.get('name'),
-                                                    allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                    allergiesComplete: formData.get('allergies-complete'),
-                                                    description: formData.get('description'),
-                                                    price: formData.get('price')
-                                                })
+    async function createDinnerItem(formData){
+        await fetch(`${BASE_URL}/api/dinner-items`,{method:'POST',
+                                                    headers:{'Content-Type':'application/json'},
+                                                    body: JSON.stringify({
+                                                        menu: formData.get('menu'),
+                                                        section: formData.get('section'),
+                                                        name: formData.get('name'),
+                                                        allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                        allergiesComplete: formData.get('allergies-complete'),
+                                                        description: formData.get('description'),
+                                                        postDescription: formData.get('post-description'),
+                                                        descriptionIntro: formData.get('description-intro'),
+                                                        price: formData.get('price')
+                                                    })
         })
         .then(alert(`
-            New Special Created:
+            New Dinner Item Created:
              - ${formData.get('name')}`))
-        .then(getSpecials())
+        .then(getDinnerItems())
         .catch(err=>console.log(err))
     }
 
-    async function updateSpecial(formData){
+    async function updateDinnerItem(formData){
         await fetch(`${BASE_URL}/api/specials/${formData.get('id')}`,{  method:'PUT',
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
@@ -50,15 +52,15 @@ export default function SpecialsMenuUpdate(){
             Special Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
-        .then(getSpecials())
+        .then(getDinnerItems())
         .catch(err=>console.log(err))
     }
 
-    function getSpecials(){
+    function getDinnerItems(){
         try{
-            fetch(`${BASE_URL}/api/specials`)
+            fetch(`${BASE_URL}/api/dinner-items`)
                 .then(res=>res.json())
-                .then(json=>setAllSpecials(json))
+                .then(json=>setAllDinnerItems(json))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -70,7 +72,7 @@ export default function SpecialsMenuUpdate(){
             fetch(`${BASE_URL}/api/specials/delete/${id}`,{method:'DELETE'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getSpecials())
+                .then(()=>getDinnerItems())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -82,7 +84,7 @@ export default function SpecialsMenuUpdate(){
             fetch(`${BASE_URL}/api/specials/archive/${id}`,{method:'PUT'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getSpecials())
+                .then(()=>getDinnerItems())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -94,7 +96,7 @@ export default function SpecialsMenuUpdate(){
             fetch(`${BASE_URL}/api/specials/unarchive/${id}`,{method:'PUT'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getSpecials())
+                .then(()=>getDinnerItems())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -121,7 +123,7 @@ export default function SpecialsMenuUpdate(){
     function moveUp(id){
         try{
             fetch(`${BASE_URL}/api/specials/move-up/${id}`,{method:'PUT'})
-                .then(()=>getSpecials())
+                .then(()=>getDinnerItems())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -131,7 +133,7 @@ export default function SpecialsMenuUpdate(){
     function moveDown(id){
         try{
             fetch(`${BASE_URL}/api/specials/move-down/${id}`,{method:'PUT'})
-                .then(()=>getSpecials())
+                .then(()=>getDinnerItems())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -183,12 +185,12 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
                                 <div className='specials-h2 specials-update-heading'>appetizer</div>}
-                            {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
                                 <div className='specials-h2 specials-update-heading'>appetizers</div>}
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
                                         {data.sequence != '1' && 
@@ -227,7 +229,7 @@ export default function SpecialsMenuUpdate(){
 
                                         </div>
 
-                                        {data.sequence != allSpecials.filter(item=>item.section == 'appetizers' && item.sequence).length && 
+                                        {data.sequence != allDinnerItems.filter(item=>item.section == 'appetizers' && item.sequence).length && 
                                             <FaCaretUp style={{ margin:'0 auto',
                                                                 fontSize:'60px',
                                                                 position:'relative',
@@ -261,12 +263,12 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
                                 <div className='specials-h2 specials-update-heading'>entrée</div>}
-                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
                                 <div className='specials-h2 specials-update-heading'>entrées</div>}
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
                                         {data.sequence != '1' && 
@@ -303,7 +305,7 @@ export default function SpecialsMenuUpdate(){
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>                                                                                
                                         </div>     
 
-                                        {data.sequence != allSpecials.filter(item=>item.section == 'entrées' && item.sequence).length && 
+                                        {data.sequence != allDinnerItems.filter(item=>item.section == 'entrées' && item.sequence).length && 
                                             <FaCaretUp style={{ margin:'0 auto',
                                                                 fontSize:'60px',
                                                                 position:'relative',
@@ -336,12 +338,12 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
                                 <div className='specials-h2 specials-update-heading'>dessert</div>}
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
                                 <div className='specials-h2 specials-update-heading'>desserts</div>}
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                            {allDinnerItems.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
                                         {data.sequence != '1' && 
@@ -379,7 +381,7 @@ export default function SpecialsMenuUpdate(){
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                         </div>
 
-                                        {data.sequence != allSpecials.filter(item=>item.section == 'desserts' && item.sequence).length && 
+                                        {data.sequence != allDinnerItems.filter(item=>item.section == 'desserts' && item.sequence).length && 
                                             <FaCaretUp style={{ margin:'0 auto',
                                                                 fontSize:'60px',
                                                                 position:'relative',
@@ -413,7 +415,7 @@ export default function SpecialsMenuUpdate(){
                       
 
 
-                    <form   action={editMode ? updateSpecial : createNewSpecial} 
+                    <form   action={editMode ? updateDinnerItem : createDinnerItem} 
                             id='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
@@ -423,9 +425,10 @@ export default function SpecialsMenuUpdate(){
                         <br/>
 
                         <input type='hidden' name='id' id='special-id' />
+
                         <input  type='hidden'
                                 name='menu' 
-                                value='specials' />
+                                value='dinner' />
                         
                         <div    style={{display:'none'}}
                                 id='section-wrapper'>
@@ -566,7 +569,7 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                        {allSpecials.filter(item=>item.sequence == 0).length &&
+                        {allDinnerItems.filter(item=>item.sequence == 0).length &&
                             <>
                                 <div className='specials-update-menu'>
                                     <div>
@@ -575,7 +578,7 @@ export default function SpecialsMenuUpdate(){
 
                                     <br/><br/>
 
-                                    {allSpecials.filter(item=>item.sequence == 0).map(data=>{
+                                    {allDinnerItems.filter(item=>item.sequence == 0).map(data=>{
                                         return(
                                             <div key={data._id} className='special'>  
                                                 <div>section: {data.section}</div>                                    

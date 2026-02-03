@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const DinnerSchema = new mongoose.Schema({
+const DinnerMenuItemSchema = new mongoose.Schema({
     menu:{type:String},
     section:{type:String},
     name:{type:String},
@@ -12,4 +12,4 @@ const DinnerSchema = new mongoose.Schema({
     sequence:{type:Number}
 },{timestamps:true})
 
-module.exports = mongoose.model('Dinner',DinnerSchema)
+module.exports = mongoose.model('DinnerMenuItem',DinnerMenuItemSchema)

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const Special = require('./models/Special.js')
 const Dessert = require('./models/Dessert.js')
-const Dinner = require('./models/Dinner.js')
+const DinnerMenuItem = require('./models/DinnerMenuItem.js')
 const DessertDrink = require('./models/DessertDrink.js')
 const Coffee = require('./models/Coffee.js')
 const Tea = require('./models/Tea.js')
@@ -44,6 +44,32 @@ app.post('/api/specials', async(req,res)=>{
             allergiesComplete: req.body.allergiesComplete,
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/dinner-items', async(req,res)=>{
+    try{
+        const maxSequence = await DinnerMenuItem.findOne({section:req.body.section}).sort({sequence:-1})
+        await DinnerMenuItem.create({
+                                        menu: req.body.menu,
+                                        section: req.body.section,
+                                        name: req.body.name,
+                                        description: req.body.description,
+                                        descriptionIntro: req.body.descriptionIntro,
+                                        postDescription: req.body.postDescription,
+                                        price: req.body.price,
+                                        allergiesAbbreviated: req.body.allergiesAbbreviated,
+                                        allergiesComplete: req.body.allergiesComplete,
+                                        sequence: maxSequence ? maxSequence.sequence + 1 : 1
+                                    })
         console.log(`
             Added to Database: 
              - ${req.body.name}`)
@@ -546,6 +572,16 @@ app.get('/api/specials', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.get('/api/dinner-items', async(req,res)=>{
+    try{
+        const allDinnerItems = await DinnerMenuItem.find().sort({sequence:1})
+        res.json(allDinnerItems)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.get('/api/desserts', async(req,res)=>{
     try{
