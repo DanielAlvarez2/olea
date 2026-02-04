@@ -316,6 +316,30 @@ app.put('/api/specials/archive/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/dinner-menu-items/archive/:id', async(req,res)=>{
+    try{
+        const target = await DinnerMenuItem.findById(req.params.id)
+        const maxSequence = await DinnerMenuItem.findOne({section: target.section}).sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await DinnerMenuItem.findOneAndUpdate({
+                $and:[
+                    {section: target.section},
+                    {sequence: i}
+                ]
+            },{sequence: i-1})
+        }
+        await DinnerMenuItem.findByIdAndUpdate(req.params.id,{sequence: 0})
+        console.log(`
+            Archived:
+             - ${target.name}`)
+        res.json(`
+            Archived:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/desserts/archive/:id', async(req,res)=>{
     try{
         const target = await Dessert.findById(req.params.id)
@@ -350,6 +374,23 @@ app.put('/api/specials/unarchive/:id', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.put('/api/dinner-menu-items/unarchive/:id', async(req,res)=>{
+    try{
+        const target = await DinnerMenuItem.findById(req.params.id)
+        const maxSequence = await DinnerMenuItem.findOne({section:target.section}).sort({sequence:-1})
+        await DinnerMenuItem.findByIdAndUpdate(req.params.id, {sequence: maxSequence.sequence + 1})
+        console.log(`
+            UNarchived:
+             - ${target.name}`)
+        res.json(`
+            UNarchived:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.put('/api/desserts/unarchive/:id', async(req,res)=>{
     try{

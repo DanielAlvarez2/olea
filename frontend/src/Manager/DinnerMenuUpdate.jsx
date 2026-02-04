@@ -82,9 +82,9 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
-    function archiveSpecial(id){
+    function archiveItem(id){
         try{
-            fetch(`${BASE_URL}/api/specials/archive/${id}`,{method:'PUT'})
+            fetch(`${BASE_URL}/api/dinner-menu-items/archive/${id}`,{method:'PUT'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
                 .then(()=>getDinnerItems())
@@ -94,9 +94,9 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
-    function unarchiveSpecial(id){
+    function unarchiveItem(id){
         try{
-            fetch(`${BASE_URL}/api/specials/unarchive/${id}`,{method:'PUT'})
+            fetch(`${BASE_URL}/api/dinner-menu-items/unarchive/${id}`,{method:'PUT'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
                 .then(()=>getDinnerItems())
@@ -235,7 +235,7 @@ export default function SpecialsMenuUpdate(){
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             <div style={{marginTop:'5px'}}>
                                                 <span   className='btn archive-btn'
-                                                        onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
                                                         onClick={()=>editItem(  data._id,
                                                                                 data.section,
@@ -318,7 +318,7 @@ export default function SpecialsMenuUpdate(){
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             <div style={{marginTop:'5px'}}>
                                                 <span   className='btn archive-btn'
-                                                        onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
                                                         onClick={()=>editItem(  data._id,
                                                                                 data.section,
@@ -409,7 +409,7 @@ export default function SpecialsMenuUpdate(){
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             <div style={{marginTop:'5px'}}>
                                                 <span   className='btn archive-btn'
-                                                        onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
                                                         onClick={()=>editItem(  data._id,
                                                                                 data.section,
@@ -505,7 +505,7 @@ export default function SpecialsMenuUpdate(){
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             <div style={{marginTop:'5px'}}>
                                                 <span   className='btn archive-btn'
-                                                        onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
                                                         onClick={()=>editItem(  data._id,
                                                                                 data.section,
@@ -720,7 +720,7 @@ export default function SpecialsMenuUpdate(){
 
                         {allDinnerItems.filter(item=>item.sequence == 0).length != 0 &&
                             <>
-                                <div className='specials-update-menu'>
+                                <div className='specials-update-menu' style={{minHeight:'auto'}}>
                                     <div>
                                         <div className='specials-h1'>archives</div>
                                     </div>
@@ -741,7 +741,7 @@ export default function SpecialsMenuUpdate(){
                                                 <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
                                                 <div style={{marginTop:'5px'}}>
                                                     <span   className='btn unarchive-btn'
-                                                            onClick={()=>unarchiveSpecial(data._id)}>
+                                                            onClick={()=>unarchiveItem(data._id)}>
                                                         UNarchive</span>
                                                     <span   className='btn delete-btn'
                                                             onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
