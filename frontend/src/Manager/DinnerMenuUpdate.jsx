@@ -16,7 +16,7 @@ export default function SpecialsMenuUpdate(){
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
-    async function createDinnerItem(formData){
+    async function createItem(formData){
         await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
                                                     headers:{'Content-Type':'application/json'},
                                                     body: JSON.stringify({
@@ -38,16 +38,18 @@ export default function SpecialsMenuUpdate(){
         .catch(err=>console.log(err))
     }
 
-    async function updateDinnerItem(formData){
-        await fetch(`${BASE_URL}/api/specials/${formData.get('id')}`,{  method:'PUT',
-                                                                        headers:{'Content-Type':'application/json'},
-                                                                        body: JSON.stringify({
-                                                                                name: formData.get('name'),
-                                                                                allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                                                allergiesComplete: formData.get('allergies-complete'),
-                                                                                description: formData.get('description'),
-                                                                                price: formData.get('price')
-                                                    })
+    async function updateItem(formData){
+        await fetch(`${BASE_URL}/api/dinner-menu-items/${formData.get('id')}`,{ method:'PUT',
+                                                                                headers:{'Content-Type':'application/json'},
+                                                                                body: JSON.stringify({
+                                                                                    name: formData.get('name'),
+                                                                                    allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                                                    allergiesComplete: formData.get('allergies-complete'),
+                                                                                    description: formData.get('description'),
+                                                                                    postDescription: formData.get('post-description'),
+                                                                                    descriptionIntro: formData.get('description-intro'),
+                                                                                    price: formData.get('price')
+                                                                                })
         })
         .then(alert(`
             Special Updated:
@@ -104,17 +106,19 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
-    function editSpecial(id,section,name,allergiesAbbreviated,allergiesComplete,description,price){
+    function editItem(id,section,name,allergiesAbbreviated,allergiesComplete,descriptionIntro,description,postDescription,price){
         try{
             setEditMode(true)
             document.querySelector('#specials-form').scrollIntoView({behavior:'smooth'})
-            document.querySelector('#special-id').value = id
+            document.querySelector('#item-id').value = id
             document.querySelector('#section').innerHTML = section
             document.querySelector('#section-wrapper').style.display = 'block'
             document.querySelector('#name').value = name
             document.querySelector('#allergies-abbreviated').value = allergiesAbbreviated
             document.querySelector('#allergies-complete').value = allergiesComplete
             document.querySelector('#description').value = description
+            document.querySelector('#description-intro').value = descriptionIntro
+            document.querySelector('#post-description').value = postDescription
             document.querySelector('#price').value = price
         }catch(err){
             console.log(err)
@@ -143,13 +147,15 @@ export default function SpecialsMenuUpdate(){
 
     function clearForm(){
         try{
-            document.querySelector('#special-id').value = ''
+            document.querySelector('#item-id').value = ''
             document.querySelector('#section').innerHTML = ''
             document.querySelector('#section-wrapper').style.display = 'none'
             document.querySelector('#name').value = ''
             document.querySelector('#allergies-abbreviated').value = ''
             document.querySelector('#allergies-complete').value = ''
             document.querySelector('#description').value = ''
+            document.querySelector('#description-intro').value = ''
+            document.querySelector('#post-description').value = ''
             document.querySelector('#price').value = ''
             setEditMode(false)
         }catch(err){
@@ -231,13 +237,15 @@ export default function SpecialsMenuUpdate(){
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editSpecial(   data._id,
-                                                                                    data.section,
-                                                                                    data.name,
-                                                                                    data.allergiesAbbreviated,
-                                                                                    data.allergiesComplete,
-                                                                                    data.description,
-                                                                                    data.price)}>EDIT</span>                                                    
+                                                        onClick={()=>editItem(  data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.descriptionIntro,
+                                                                                data.description,
+                                                                                data.postDescription,
+                                                                                data.price)}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
@@ -312,13 +320,15 @@ export default function SpecialsMenuUpdate(){
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editSpecial(   data._id,
-                                                                                    data.section,
-                                                                                    data.name,
-                                                                                    data.allergiesAbbreviated,
-                                                                                    data.allergiesComplete,
-                                                                                    data.description,
-                                                                                    data.price)}>EDIT</span>                                                    
+                                                        onClick={()=>editItem(  data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.descriptionIntro,
+                                                                                data.description,
+                                                                                data.postDescription,
+                                                                                data.price)}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
@@ -401,13 +411,15 @@ export default function SpecialsMenuUpdate(){
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editSpecial(   data._id,
-                                                                                    data.section,
-                                                                                    data.name,
-                                                                                    data.allergiesAbbreviated,
-                                                                                    data.allergiesComplete,
-                                                                                    data.description,
-                                                                                    data.price)}>EDIT</span>                                                    
+                                                        onClick={()=>editItem(  data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.descriptionIntro,
+                                                                                data.description,
+                                                                                data.postDescription,
+                                                                                data.price)}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
@@ -495,13 +507,15 @@ export default function SpecialsMenuUpdate(){
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editSpecial(   data._id,
-                                                                                    data.section,
-                                                                                    data.name,
-                                                                                    data.allergiesAbbreviated,
-                                                                                    data.allergiesComplete,
-                                                                                    data.description,
-                                                                                    data.price)}>EDIT</span>                                                    
+                                                        onClick={()=>editItem(  data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.descriptionIntro,
+                                                                                data.description,
+                                                                                data.postDescription,
+                                                                                data.price)}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
@@ -550,7 +564,7 @@ export default function SpecialsMenuUpdate(){
                       
 
 
-                    <form   action={editMode ? updateDinnerItem : createDinnerItem} 
+                    <form   action={editMode ? updateItem : createItem} 
                             id='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
@@ -559,7 +573,7 @@ export default function SpecialsMenuUpdate(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='special-id' />
+                        <input type='hidden' name='id' id='item-id' />
 
                         <input  type='hidden'
                                 name='menu' 

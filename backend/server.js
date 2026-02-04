@@ -805,6 +805,29 @@ app.put('/api/specials/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/dinner-menu-items/:id', async(req,res)=>{
+    try{
+        await DinnerMenuItem.findByIdAndUpdate({_id:req.params.id},{
+            name: req.body.name,
+            allergiesAbbreviated: req.body.allergiesAbbreviated,
+            allergiesComplete: req.body.allergiesComplete,
+            descriptionIntro: req.body.descriptionIntro,
+            description: req.body.description,
+            postDescription: req.body.postDescription,
+            price: req.body.price
+        })
+        console.log(`
+            Updated to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+
 app.put('/api/desserts/:id', async(req,res)=>{
     try{
         await Dessert.findByIdAndUpdate({_id:req.params.id},{
