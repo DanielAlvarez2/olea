@@ -79,4 +79,6 @@ also keep the one in frontend, but only keep:
 dist  
 
 
-
+Is dessert menu missing archive section?  
+  
+Dessert menu format screen displaying too short only on apple tablets in portrait mode???  

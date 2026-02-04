@@ -55,7 +55,7 @@ app.post('/api/specials', async(req,res)=>{
     }
 })
 
-app.post('/api/dinner-items', async(req,res)=>{
+app.post('/api/dinner-menu-items', async(req,res)=>{
     try{
         const maxSequence = await DinnerMenuItem.findOne({section:req.body.section}).sort({sequence:-1})
         await DinnerMenuItem.create({
@@ -170,6 +170,31 @@ app.delete('/api/specials/delete/:id', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.delete('/api/dinner-menu-items/delete/:id', async(req,res)=>{
+    try{
+        const target = await DinnerMenuItem.findById(req.params.id)
+        const maxSequence = await DinnerMenuItem.findOne({section: target.section}).sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await DinnerMenuItem.findOneAndUpdate({
+                $and:[
+                    {section: target.section},
+                    {sequence: i}
+                ]
+            },{sequence: i-1})
+        }
+        await DinnerMenuItem.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.delete('/api/desserts/delete/:id', async(req,res)=>{
     try{
@@ -362,6 +387,28 @@ app.put('/api/specials/move-up/:id', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.put('/api/dinner-menu-items/move-up/:id', async(req,res)=>{
+    try{
+        const target= await DinnerMenuItem.findById(req.params.id)
+        await DinnerMenuItem.findOneAndUpdate({
+            $and:[
+                {section: target.section},
+                {sequence: target.sequence - 1}
+            ]
+        },{sequence: target.sequence})
+        await DinnerMenuItem.findByIdAndUpdate(req.params.id,{sequence: target.sequence - 1})
+        console.log(`
+            Moved Up:
+            ${target.name}`)
+        res.json(`
+            Moved Up:
+            ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.put('/api/desserts/move-up/:id', async(req,res)=>{
     try{
@@ -564,6 +611,28 @@ app.put('/api/specials/move-down/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/dinner-menu-items/move-down/:id', async(req,res)=>{
+    try{
+        const target= await DinnerMenuItem.findById(req.params.id)
+        await DinnerMenuItem.findOneAndUpdate({
+            $and:[
+                {section: target.section},
+                {sequence: target.sequence + 1}
+            ]
+        },{sequence: target.sequence})
+        await DinnerMenuItem.findByIdAndUpdate(req.params.id,{sequence: target.sequence + 1})
+        console.log(`
+            Moved Down:
+            ${target.name}`)
+        res.json(`
+            Moved Down:
+            ${target.name}`)
+       
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/specials', async(req,res)=>{
     try{
         const allSpecials = await Special.find().sort({sequence:1})
@@ -573,7 +642,7 @@ app.get('/api/specials', async(req,res)=>{
     }
 })
 
-app.get('/api/dinner-items', async(req,res)=>{
+app.get('/api/dinner-menu-items', async(req,res)=>{
     try{
         const allDinnerItems = await DinnerMenuItem.find().sort({sequence:1})
         res.json(allDinnerItems)

@@ -17,7 +17,7 @@ export default function SpecialsMenuUpdate(){
                     'http://localhost:1436'
 
     async function createDinnerItem(formData){
-        await fetch(`${BASE_URL}/api/dinner-items`,{method:'POST',
+        await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
                                                     headers:{'Content-Type':'application/json'},
                                                     body: JSON.stringify({
                                                         menu: formData.get('menu'),
@@ -59,7 +59,7 @@ export default function SpecialsMenuUpdate(){
 
     function getDinnerItems(){
         try{
-            fetch(`${BASE_URL}/api/dinner-items`)
+            fetch(`${BASE_URL}/api/dinner-menu-items`)
                 .then(res=>res.json())
                 .then(json=>setAllDinnerItems(json))
                 .catch(err=>console.log(err))
@@ -68,9 +68,9 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
-    function deleteSpecial(id){
+    function deleteDinnerItem(id){
         try{
-            fetch(`${BASE_URL}/api/specials/delete/${id}`,{method:'DELETE'})
+            fetch(`${BASE_URL}/api/dinner-menu-items/delete/${id}`,{method:'DELETE'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
                 .then(()=>getDinnerItems())
@@ -123,7 +123,7 @@ export default function SpecialsMenuUpdate(){
 
     function moveUp(id){
         try{
-            fetch(`${BASE_URL}/api/specials/move-up/${id}`,{method:'PUT'})
+            fetch(`${BASE_URL}/api/dinner-menu-items/move-up/${id}`,{method:'PUT'})
                 .then(()=>getDinnerItems())
                 .catch(err=>console.log(err))
         }catch(err){
@@ -133,7 +133,7 @@ export default function SpecialsMenuUpdate(){
 
     function moveDown(id){
         try{
-            fetch(`${BASE_URL}/api/specials/move-down/${id}`,{method:'PUT'})
+            fetch(`${BASE_URL}/api/dinner-menu-items/move-down/${id}`,{method:'PUT'})
                 .then(()=>getDinnerItems())
                 .catch(err=>console.log(err))
         }catch(err){
@@ -170,7 +170,7 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                        <div className='specials-update-menu'>
+                        <div className='specials-update-menu' style={{minHeight:'auto'}}>
                             <div>
                                 <div className='specials-h1' style={{marginBottom:'0'}}>dinner menu</div>
                             </div>
@@ -193,72 +193,155 @@ export default function SpecialsMenuUpdate(){
 
 
 
+                            {displaySection == 'cured meats' && 
+                                <>
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>cured meat</div>}
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>cured meats</div>}
 
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
+                                    return(
+                                        <div key={data._id} className='special'>
+                                            {data.sequence != '1' && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'10px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveUp(data._id))} />
+                                            }
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </div>
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            <span> {data.description}</span>
+                                            {data.price.length < 3 ? 
+                                                <span className='price'> &nbsp;{data.price}</span> : 
+                                                <div className='price'>{data.price}</div> }
+                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            <div style={{marginTop:'5px'}}>
+                                                <span   className='btn archive-btn'
+                                                        onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                                <span   className='btn edit-btn'
+                                                        onClick={()=>editSpecial(   data._id,
+                                                                                    data.section,
+                                                                                    data.name,
+                                                                                    data.allergiesAbbreviated,
+                                                                                    data.allergiesComplete,
+                                                                                    data.description,
+                                                                                    data.price)}>EDIT</span>                                                    
+                                                <span   className='btn delete-btn'
+                                                        onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
+                                            </div>
 
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').length == 1 && 
-                                <div className='specials-h2 specials-update-heading'>cured meat</div>}
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').length > 1 && 
-                                <div className='specials-h2 specials-update-heading'>cured meats</div>}
+                                            {data.sequence != allDinnerItems.filter(item=>item.section == 'cured meats' && item.sequence).length && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'0px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    transform:'rotate(180deg',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveDown(data._id))} />
+                                            }
 
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
-                                return(
-                                    <div key={data._id} className='special'>
-                                        {data.sequence != '1' && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'10px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveUp(data._id))} />
-                                        }
-                                        
-                                        {/* {data.sequence}<br/> */}
-                                        <div>
-                                            <span className='name'>{data.name} </span>
-                                            {data.allergiesAbbreviated && 
-                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                         </div>
-                                        {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
-                                        <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        {data.postDescription && <div>{data.postDescription}</div>}
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>
-                                        <div style={{marginTop:'5px'}}>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
-                                            <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                data.description,
-                                                                                data.price)}>EDIT</span>                                                    
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                    )
+                                })}
+                                
+                                </>
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {displaySection == 'appetizers' && 
+                                <>
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>appetizer</div>}
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>appetizers</div>}
+
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                                    return(
+                                        <div key={data._id} className='special'>
+                                            {data.sequence != '1' && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'10px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveUp(data._id))} />
+                                            }
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </div>
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            <span> {data.description}</span>
+                                            {data.price.length < 3 ? 
+                                                <span className='price'> &nbsp;{data.price}</span> : 
+                                                <div className='price'>{data.price}</div> }
+                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            <div style={{marginTop:'5px'}}>
+                                                <span   className='btn archive-btn'
+                                                        onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                                <span   className='btn edit-btn'
+                                                        onClick={()=>editSpecial(   data._id,
+                                                                                    data.section,
+                                                                                    data.name,
+                                                                                    data.allergiesAbbreviated,
+                                                                                    data.allergiesComplete,
+                                                                                    data.description,
+                                                                                    data.price)}>EDIT</span>                                                    
+                                                <span   className='btn delete-btn'
+                                                        onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
+
+                                            </div>
+
+                                            {data.sequence != allDinnerItems.filter(item=>item.section == 'appetizers' && item.sequence).length && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'0px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    transform:'rotate(180deg',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveDown(data._id))} />
+                                            }
 
                                         </div>
-
-                                        {data.sequence != allDinnerItems.filter(item=>item.section == 'cured meats' && item.sequence).length && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'0px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                transform:'rotate(180deg',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveDown(data._id))} />
-                                        }
-
-                                    </div>
-                                )
-                            })}
+                                    )
+                                })}
+                                
+                                </>
+                            }
 
 
 
@@ -278,139 +361,176 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                <div className='specials-h2 specials-update-heading'>entrée</div>}
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                <div className='specials-h2 specials-update-heading'>entrées</div>}
-
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                return(
-                                    <div key={data._id} className='special'>
-                                        {data.sequence != '1' && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'10px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveUp(data._id))} />
-                                        }
-                                        {/* {data.sequence}<br/> */}
-                                        <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                        <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
-                                        <div style={{marginTop:'5px'}}>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
-                                            <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                data.description,
-                                                                                data.price)}>EDIT</span>                                                    
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>                                                                                
-                                        </div>     
-
-                                        {data.sequence != allDinnerItems.filter(item=>item.section == 'entrées' && item.sequence).length && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'0px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                transform:'rotate(180deg',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveDown(data._id))} />
-                                        }
-
-                                    </div>
-                                )
-                            })}
 
 
+                            {displaySection == 'entrées' && 
+                                <>
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>entrée</div>}
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>entrées</div>}
 
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                                    return(
+                                        <div key={data._id} className='special'>
+                                            {data.sequence != '1' && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'10px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveUp(data._id))} />
+                                            }
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </div>
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            <span> {data.description}</span>
+                                            {data.price.length < 3 ? 
+                                                <span className='price'> &nbsp;{data.price}</span> : 
+                                                <div className='price'>{data.price}</div> }
+                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            <div style={{marginTop:'5px'}}>
+                                                <span   className='btn archive-btn'
+                                                        onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                                <span   className='btn edit-btn'
+                                                        onClick={()=>editSpecial(   data._id,
+                                                                                    data.section,
+                                                                                    data.name,
+                                                                                    data.allergiesAbbreviated,
+                                                                                    data.allergiesComplete,
+                                                                                    data.description,
+                                                                                    data.price)}>EDIT</span>                                                    
+                                                <span   className='btn delete-btn'
+                                                        onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
+                                            </div>
 
+                                            {data.sequence != allDinnerItems.filter(item=>item.section == 'entrées' && item.sequence).length && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'0px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    transform:'rotate(180deg',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveDown(data._id))} />
+                                            }
 
-
-
-
-
-
-
-
-
-
-
-
-
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                <div className='specials-h2 specials-update-heading'>dessert</div>}
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                <div className='specials-h2 specials-update-heading'>desserts</div>}
-
-                            {allDinnerItems.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                return(
-                                    <div key={data._id} className='special'>
-                                        {data.sequence != '1' && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'10px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveUp(data._id))} />
-
-                                        }
-                                        {/* {data.sequence}<br/> */}
-                                        <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                        <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
-                                        <div style={{marginTop:'5px'}}>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
-                                            <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                data.description,
-                                                                                data.price)}>EDIT</span>                                                    
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                         </div>
+                                    )
+                                })}
+                                
+                                </>
+                            }
 
-                                        {data.sequence != allDinnerItems.filter(item=>item.section == 'desserts' && item.sequence).length && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'0px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                transform:'rotate(180deg',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveDown(data._id))} />
-                                        }
 
-                                    </div>
-                                )
-                            })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {displaySection == 'sides' && 
+                                <>
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'sides').length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>side</div>}
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'sides').length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>sides</div>}
+
+                                {allDinnerItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{
+                                    return(
+                                        <div key={data._id} className='special'>
+                                            {data.sequence != '1' && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'10px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveUp(data._id))} />
+                                            }
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </div>
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            <span> {data.description}</span>
+                                            {data.price.length < 3 ? 
+                                                <span className='price'> &nbsp;{data.price}</span> : 
+                                                <div className='price'>{data.price}</div> }
+                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            <div style={{marginTop:'5px'}}>
+                                                <span   className='btn archive-btn'
+                                                        onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
+                                                <span   className='btn edit-btn'
+                                                        onClick={()=>editSpecial(   data._id,
+                                                                                    data.section,
+                                                                                    data.name,
+                                                                                    data.allergiesAbbreviated,
+                                                                                    data.allergiesComplete,
+                                                                                    data.description,
+                                                                                    data.price)}>EDIT</span>                                                    
+                                                <span   className='btn delete-btn'
+                                                        onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
+
+                                            </div>
+
+                                            {data.sequence != allDinnerItems.filter(item=>item.section == 'sides' && item.sequence).length && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'0px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    transform:'rotate(180deg',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveDown(data._id))} />
+                                            }
+
+                                        </div>
+                                    )
+                                })}
+                                
+                                </>
+                            }
+
+
+
+
+
+
 
 
 
@@ -518,7 +638,7 @@ export default function SpecialsMenuUpdate(){
                             extra description<br/>
                             <input  type='text'
                                     id='post-description'
-                                    placeholder='(Please allow 40 minutes cooking time)'
+                                    placeholder='(please allow 40 minutes cooking time)'
                                     style={{width:'100%'}}
                                     name='post-description' />
                         
@@ -584,7 +704,7 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                        {allDinnerItems.filter(item=>item.sequence == 0).length &&
+                        {allDinnerItems.filter(item=>item.sequence == 0).length != 0 &&
                             <>
                                 <div className='specials-update-menu'>
                                     <div>
@@ -610,7 +730,7 @@ export default function SpecialsMenuUpdate(){
                                                             onClick={()=>unarchiveSpecial(data._id)}>
                                                         UNarchive</span>
                                                     <span   className='btn delete-btn'
-                                                            onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                                            onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
                                                     <br/><br/><br/>
                                                 </div>
                                             </div>

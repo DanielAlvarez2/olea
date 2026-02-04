@@ -543,7 +543,7 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                        {allSpecials.filter(item=>item.sequence == 0).length &&
+                        {allSpecials.filter(item=>item.sequence == 0).length != 0 &&
                             <>
                                 <div className='specials-update-menu'>
                                     <div>
