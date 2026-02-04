@@ -271,7 +271,11 @@ export default function DinnerMenuFormat(){
 
 
 
-                                <div    className='dinner-menu-format' style={{width:'8.5in',height:'14in',border:'1px solid black'}} 
+                                <div    className='dinner-menu-format' 
+                                        style={{width:'8.5in',
+                                                background:'white',
+                                                height:'14in',
+                                                border:'1px solid black'}} 
                                         // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                                 >
                                     <div id='footer-top'>
