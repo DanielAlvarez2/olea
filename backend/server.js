@@ -685,8 +685,8 @@ app.get('/api/specials', async(req,res)=>{
 
 app.get('/api/dinner-menu-items', async(req,res)=>{
     try{
-        const allDinnerItems = await DinnerMenuItem.find().sort({sequence:1})
-        res.json(allDinnerItems)
+        const allDinnerMenuItems = await DinnerMenuItem.find().sort({sequence:1})
+        res.json(allDinnerMenuItems)
     }catch(err){
         console.log(err)
     }
