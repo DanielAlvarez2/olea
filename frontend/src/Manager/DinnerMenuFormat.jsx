@@ -274,6 +274,10 @@ export default function DinnerMenuFormat(){
                                 <div    className='dinner-menu-format' 
                                         style={{width:'8.5in',
                                                 background:'white',
+                                                padding:'38px 50px',
+                                                backgroundImage:'url(scan-dinner-menu.jpg)',
+                                                backgroundSize:'8.5in 14in',
+                                                color:'red',
                                                 height:'14in',
                                                 border:'1px solid black'}} 
                                         // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
@@ -281,11 +285,11 @@ export default function DinnerMenuFormat(){
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
-                                                    // color:'red',
+                                                        color:'red',
                                                         display:'block',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
-                                        <hr/>
+                                        {/* <hr/> */}
 
 
 
