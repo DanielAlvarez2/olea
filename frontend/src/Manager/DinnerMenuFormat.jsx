@@ -293,7 +293,7 @@ export default function DinnerMenuFormat(){
                                         style={{width:'8.5in',
                                                 background:'white',
                                                 padding:'38px 50px',
-                                                backgroundImage:'url(scan-dinner-menu.jpg)',
+                                                // backgroundImage:'url(scan-dinner-menu.jpg)',
                                                 backgroundSize:'8.5in 14in',
                                                 color:'red',
                                                 height:'14in',
@@ -492,18 +492,60 @@ export default function DinnerMenuFormat(){
 
 
 
+                                        <div style={{display:'flex',flexWrap:'wrap'}}>
+
+                                        
+                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{
+                                                    return(
+                                                        <div    key={data._id}
+                                                                style={{flexBasis:'50%'}}
+                                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                                className='special'>
+                                                        
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated &&   <>
+                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                            </>
+                                                            }
+                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                            {data.description && <span> {data.description}</span>}
+                                                            
+                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+
+
+                                                        </div>
+                                                    )
+                                                })}
+
+                                        </div>
+
+
+
+
+
+
+
+
 
 
 
 
                                     <div className='dessert-footer'>
-                                        <div className='dessert-menu-front-content'>
-                                            jessica delgado, pastry chef
-                                        </div>
+                                        
                                         <hr style={{marginTop:'5px'}}/>
-                                        <div className='dessert-menu-front-content'>
-                                            please alert your server if you have any special dietary requirements<br/>
-                                            <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
+                                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                                            <div className='chef name' style={{textDecoration:'underline'}}>manuel romero, chef</div>
+                                            <div className='dessert-menu-front-content' style={{width:'65%'}}>
+                                                <span style={{fontWeight:'100'}}>
+                                                    consumer advisory: consumption of undercooked meat, poultry, 
+                                                    eggs, or seafood may increase the risk of food-borne illnesses<br/>
+                                                    all menu items are subject to change according to seasonality and availability<br/>
+                                                </span>
+                                                
+                                                please alert your server if you have special dietary requirements before ordering<br/>
+                                                <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
