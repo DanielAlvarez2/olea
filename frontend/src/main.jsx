@@ -24,6 +24,10 @@ import TakeoutScan from './Manager/TakeoutMenuScan.jsx'
 import AnniversaryScan from './Manager/AnniversaryScan.jsx'
 import Anniversary from './Manager/Anniversary.jsx'
 
+import ValentinesDay from './Manager/ValentinesDay.jsx'
+import ValentinesDayScreenshot from './Manager/ValentinesDayScreenshot.jsx'
+import ValentinesDayScan from './Manager/ValentinesDayScan.jsx'
+
 import NYE from './Manager/NYE.jsx'
 import NYEscan from './Manager/NYEscan.jsx'
 import NYEscreenshot from './Manager/NYEscreenshot.jsx'
@@ -103,6 +107,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='anniversary-scan' element={<AnniversaryScan />} />
         <Route path='anniversary' element={<Anniversary />} />
         
+        <Route path='valentines-day' element={<ValentinesDay />} />
+        <Route path='valentines-day-screenshot' element={<ValentinesDayScreenshot />} />
+        <Route path='valentines-day-scan' element={<ValentinesDayScan />} />
+
         <Route path='nye' element={<NYE />} />
         <Route path='nye-scan' element={<NYEscan />} />
         <Route path='nye-screenshot' element={<NYEscreenshot />} />

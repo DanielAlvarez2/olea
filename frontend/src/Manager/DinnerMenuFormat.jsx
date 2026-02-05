@@ -293,7 +293,7 @@ export default function DinnerMenuFormat(){
                                         style={{width:'8.5in',
                                                 background:'white',
                                                 padding:'38px 50px',
-                                                // backgroundImage:'url(scan-dinner-menu.jpg)',
+                                                backgroundImage:'url(scan-dinner-menu.jpg)',
                                                 backgroundSize:'8.5in 14in',
                                                 color:'red',
                                                 height:'14in',
@@ -486,7 +486,8 @@ export default function DinnerMenuFormat(){
 
 
 
-
+                                    <div style={{   fontSize:'25px',
+                                    }}>sides</div>
 
 
 
