@@ -12,6 +12,7 @@ const Pixel = require('./models/Pixel.js')
 const SpecialsFormat = require('./models/SpecialsFormat.js')
 const DessertsFormat = require('./models/DessertsFormat.js')
 const DinnerFormat = require('./models/DinnerFormat.js')
+const TakeoutFormat = require('./models/TakeoutFormat.js')
 
 
 const app = express()
@@ -1001,6 +1002,24 @@ app.get('/api/formats/dinner', async(req,res)=>{
     }
 })
 
+app.get('/api/formats/takeout', async(req,res)=>{ 
+    try{
+        let allFormats = await TakeoutFormat.find()
+        if (allFormats.length == 0){
+            await TakeoutFormat.create({
+                pageMargin: 0,
+                takeoutItemMarginsTopBottom: 0,
+                takeoutItemMarginsLeftRight: 0
+            })
+            allFormats = await TakeoutFormat.find()
+        }
+        console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/specials/increasePageMargins', async(req,res)=>{
     try{
         const allFormats = await SpecialsFormat.find()
@@ -1032,6 +1051,30 @@ app.put('/api/formats/dinner/increasePageMargin', async(req,res)=>{
         await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {pageMargin: allFormats[0].pageMargin + 1})
         res.json('page margin increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/takeout/decreasePageMargin', async(req,res)=>{
+    try{
+        const allFormats = await TakeoutFormat.find()
+        console.log(allFormats[0])
+        await TakeoutFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMargin: allFormats[0].pageMargin - 1})
+        res.json('takeout page margin decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/takeout/increasePageMargin', async(req,res)=>{
+    try{
+        const allFormats = await TakeoutFormat.find()
+        console.log(allFormats[0])
+        await TakeoutFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMargin: allFormats[0].pageMargin + 1})
+        res.json('takeout page margin increased')
     }catch(err){
         console.log(err)
     }
@@ -1129,6 +1172,54 @@ app.put('/api/formats/dinner/increaseDinnerItemMarginsTopBottom', async(req,res)
         await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {dinnerItemMarginsTopBottom: allFormats[0].dinnerItemMarginsTopBottom + 1})
         res.json('dinner item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/takeout/decreaseTakeoutItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await TakeoutFormat.find()
+        console.log(allFormats[0])
+        await TakeoutFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {takeoutItemMarginsLeftRight: allFormats[0].takeoutItemMarginsLeftRight - 1})
+        res.json('takeout item margins left/right decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/takeout/increaseTakeoutItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await TakeoutFormat.find()
+        console.log(allFormats[0])
+        await TakeoutFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {takeoutItemMarginsLeftRight: allFormats[0].takeoutItemMarginsLeftRight + 1})
+        res.json('takeout item margins left/right increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/takeout/decreaseTakeoutItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await TakeoutFormat.find()
+        console.log(allFormats[0])
+        await TakeoutFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {takeoutItemMarginsTopBottom: allFormats[0].takeoutItemMarginsTopBottom - 1})
+        res.json('takeout item margins top/bottom decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/takeout/increaseTakeoutItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await TakeoutFormat.find()
+        console.log(allFormats[0])
+        await TakeoutFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {takeoutItemMarginsTopBottom: allFormats[0].takeoutItemMarginsTopBottom + 1})
+        res.json('takeout item margins top/bottom increased')
     }catch(err){
         console.log(err)
     }

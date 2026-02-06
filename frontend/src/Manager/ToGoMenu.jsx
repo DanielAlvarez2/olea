@@ -19,8 +19,7 @@ export default function ToGoMenu(){
                                 height:'100%',
                                 border:'1px solid green'
                                 }}>
-                        <Link to='/takeout-scan'><li style={{flexGrow:'1'}}>scan</li></Link>
-                        <Link to='/takeout'><li style={{flexGrow:'1'}}>format</li></Link>
+                        <Link to='/takeout-menu-format'><li style={{flexGrow:'1'}}>format</li></Link>
                         <Link to='/takeout'><li style={{flexGrow:'1'}}>print</li></Link>
                         
                     </ul>

@@ -16,9 +16,11 @@ import Press from './Press.jsx'
 import Jobs from './Jobs.jsx'
 import Manager from './Manager/Manager.jsx'
 import DinnerMenu from './Manager/DinnerMenu.jsx'
+// import TakeoutMenu from './Manager/TakeoutMenu.jsx'
 import DessertMenu from './Manager/DessertMenu.jsx'
 
 import ToGoMenu from './Manager/ToGoMenu.jsx'
+import TakeoutMenuFormat from './Manager/TakeoutMenuFormat.jsx'
 import TakeoutScan from './Manager/TakeoutMenuScan.jsx'
 
 import AnniversaryScan from './Manager/AnniversaryScan.jsx'
@@ -74,6 +76,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
         <Route path='manager' element={<Manager />} />
         <Route path='dinner-menu' element={<DinnerMenu />} />
+        {/* <Route path='takeout-menu' element={<TakeoutMenu />} /> */}
         <Route path='takeout' element={<ToGoMenu />} />
         <Route path='wine-list' element={<WineList />} />
         <Route path='dessert-menu' element={<DessertMenu />} />
@@ -103,6 +106,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='restaurant-weeks-scan' element={<RestaurantWeeksScan />} />
         
         <Route path='takeout-scan' element={<TakeoutScan />} />
+        <Route path='takeout-menu-format' element={<TakeoutMenuFormat />} />
 
         <Route path='anniversary-scan' element={<AnniversaryScan />} />
         <Route path='anniversary' element={<Anniversary />} />
