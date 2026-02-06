@@ -36,6 +36,7 @@ import NYEscreenshot from './Manager/NYEscreenshot.jsx'
 
 import DinnerMenuUpdate from './Manager/DinnerMenuUpdate.jsx'
 import DinnerMenuFormat from './Manager/DinnerMenuFormat.jsx'
+import DinnerMenuPrint from './Manager/DinnerMenuPrint.jsx'
 
 import SpecialsMenu from './Manager/SpecialsMenu.jsx'
 import SpecialsMenuUpdate from './Manager/SpecialsMenuUpdate.jsx'
@@ -90,6 +91,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
         <Route path='dinner-menu-update' element={<DinnerMenuUpdate />} />
         <Route path='dinner-menu-format' element={<DinnerMenuFormat />} />
+        <Route path='dinner-menu-print' element={<DinnerMenuPrint />} />
 
         <Route path='dessert-menu-update' element={<DessertMenuUpdate />} />
         <Route path='desserts-update' element={<DessertsUpdate />} />
