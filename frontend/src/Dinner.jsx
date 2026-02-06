@@ -3,10 +3,34 @@ import './Dinner.css'
 import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+
 
 export default function Dinner(){
+
+    const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
+
     useEffect(()=>window.scrollTo(0,0),[])    
+    useEffect(()=>getDinnerMenuItems(),[])
+
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'    
+
+    function getDinnerMenuItems(){
+        try{
+            fetch(`${BASE_URL}/api/dinner-menu-items`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setAllDinnerMenuItems(json)
+                    console.log(json)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
     return(
                 <div className='page-wrapper webpage'>
                     <div className='webpage-wrapper'>
@@ -35,13 +59,195 @@ export default function Dinner(){
                                     Tax and gratuity not included.<br/><br/>
 
                                     <h2>DINNER MENU</h2>
-                                    appetizers<br/><br/>
-                                
-                                    <span className='jamon'>
-                                        <span>jamón Ibérico</span>
-                                        <span>1 oz. $19 / 2 oz. $38</span>
-                                    </span>
-                                                  
+                                    appetizers<br/><br/>                                         
+
+                                                    {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
+                                                        return(
+                                                            <div    key={data._id}     
+                                                                    className='special'>
+                                                            
+                                                                <span className='name'>{data.name} </span>
+                                                                {data.allergiesAbbreviated &&   <>
+                                                                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                                </>
+                                                                }
+                                                                {data.description && <br/>}
+                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                {data.description && <span> {data.description}</span>}
+                                                                
+                                                                <span className='price'> &nbsp;{data.price}</span> 
+                                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+
+
+                                                            </div>
+                                                        )
+                                                    })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                                                    return(
+                                                        <div    key={data._id}
+                                                                className='special'>
+                                                        
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated &&   <>
+                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                            </>
+                                                            }
+                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                            {data.description && <span> {data.description}</span>}
+                                                            
+                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+
+
+                                                        </div>
+                                                    )
+                                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    main courses<br/><br/>                                         
+                                    
+                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                                                    return(
+                                                        <div    key={data._id}
+                                                                className='special'>
+                                                        
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated &&   <>
+                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                            </>
+                                                            }
+                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                            {data.description && <span> {data.description}</span>}
+                                                            
+                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+
+
+                                                        </div>
+                                                    )
+                                                })}
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    sides<br/><br/>                                         
+
+                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{
+                                                    return(
+                                                        <div    key={data._id}
+                                                                className='special'>
+                                                        
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated &&   <>
+                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                            </>
+                                                            }
+                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                            {data.description && <span> {data.description}</span>}
+                                                            
+                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+
+
+                                                        </div>
+                                                    )
+                                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                     <br/><br/><br/><br/>
                                     we do our best to keep this information accurate and up to date, but because we make frequent adjustments, based on season and availability, our menus are subject to change
