@@ -24,19 +24,14 @@ export default function DinnerMenuFormat(){
     const [allCoffees, setAllCoffees] = useState([])
     const [lastCoffeeSequenceLine1, setLastCoffeeSequenceLine1] = useState(1)
     const [dessertsFormatting, setDessertsFormatting] = useState([])
-    const [pageMarginRight, setPageMarginRight] = useState(0)
-    const [pageMarginRightBack, setPageMarginRightBack] = useState(0)
+    const [dinnerFormatting, setDinnerFormatting] = useState([])
+    const [pageMargin, setPageMargin] = useState(0)
     const [categoriesMarginTop, setCategoriesMarginTop] = useState(0)
-    const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(0)
+    const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
+    const [dinnerItemMarginsLeftRight, setDinnerItemMarginsLeftRight] = useState(0)
     useEffect(()=>{ 
-                getDessertsFormatting()
-                getDesserts()
+                getDinnerFormatting()
                 getDinnerMenuItems()
-                getDessertDrinks()
-                getDessertDrinkCategories()
-                getTeaPrice()
-                getTeas()
-                getCoffees()
     },[])
     
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -44,19 +39,6 @@ export default function DinnerMenuFormat(){
                     'http://localhost:1436'
 
 
-    function getDessertDrinks(){
-        try{
-            fetch(`${BASE_URL}/api/dessert-drinks`)
-                .then(res=>res.json())
-                .then(json=>{
-                    setAllDessertDrinks(json)
-                    // console.log(json)
-                })
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
 
     function getDinnerMenuItems(){
         try{
@@ -72,33 +54,15 @@ export default function DinnerMenuFormat(){
         }
     }
 
-    function getDessertDrinkCategories(){
+    function getDinnerFormatting(){
         try{
-            fetch(`${BASE_URL}/api/dessert-drink-categories`)
+            fetch(`${BASE_URL}/api/formats/dinner`)
                 .then(res=>res.json())
                 .then(json=>{
-                    let dessertDrinkCategories = new Set()
-                    json.forEach(drink=>dessertDrinkCategories.add(drink.category))
-                    setDessertDrinkCategories([...dessertDrinkCategories])
-                    // console.log([...dessertDrinkCategories])
-                })
-                .catch(err=>console.log(err))
-
-        }catch(err){
-            console.log(err)
-        }
-    }
-
-    function getDessertsFormatting(){
-        try{
-            fetch(`${BASE_URL}/api/formats/desserts`)
-                .then(res=>res.json())
-                .then(json=>{
-                    setDessertsFormatting(json[0])
-                    setPageMarginRight(json[0].pageMarginRight)
-                    setPageMarginRightBack(json[0].pageMarginRightBack)
-                    setCategoriesMarginTop(json[0].categoriesMarginTop)
-                    setDessertItemMarginsTopBottom(json[0].dessertItemMarginsTopBottom)
+                    setDinnerFormatting(json[0])
+                    setPageMargin(json[0].pageMargin)
+                    setDinnerItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
+                    setDinnerItemMarginsLeftRight(json[0].dinnerItemMarginsLeft)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -106,82 +70,6 @@ export default function DinnerMenuFormat(){
         }
     }
 
-    function getTeas(){
-        try{
-            fetch(`${BASE_URL}/api/teas`)
-                .then(res=>res.json())
-                .then(json=>setAllTeas(json))
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
-
-    function getCoffees(){
-        try{
-            let coffeeArray = []
-            let line1 = []
-            let line2 = []
-            let midpoint
-            let finalCoffeeSequenceLine1
-            let midpointCoffeeCharsLine1 = []
-            let midpointCoffeeCharsLine2 = []
-            fetch(`${BASE_URL}/api/coffees`)
-                .then(res=>res.json())
-                .then(json=>{
-                    setAllCoffees(json)
-                    json.forEach(coffee=>{
-                                    const coffeeName = coffee.name.split('')
-                                    const coffeePrice = coffee.price.split('')
-                                    for (let i=0;i<coffeeName.length;i++){
-                                        coffeeArray.push(coffee.sequence)
-                                    }
-                                    for (let i=0;i<coffeePrice.length;i++){
-                                        coffeeArray.push(coffee.sequence)
-                                    }
-                                })
-                    midpoint = Math.floor(coffeeArray.length/2)
-                    finalCoffeeSequenceLine1 = coffeeArray[midpoint]
-                    for (let i=0;i<=midpoint;i++){
-                        line1.push(coffeeArray[i])
-                    }
-                    for (let i=midpoint+1;i<coffeeArray.length;i++){
-                        line2.push(coffeeArray[i])
-                    }
-                    for(let i=0;i<line1.length;i++){
-                        if (line1[i] == finalCoffeeSequenceLine1) midpointCoffeeCharsLine1.push(finalCoffeeSequenceLine1)
-                    }
-                    for(let i=0;i<line2.length;i++){
-                        if (line2[i] == finalCoffeeSequenceLine1) midpointCoffeeCharsLine2.push(finalCoffeeSequenceLine1)
-                    }
-                    
-                    if(midpointCoffeeCharsLine1 < midpointCoffeeCharsLine2) finalCoffeeSequenceLine1 = finalCoffeeSequenceLine1 - 1
-                    setLastCoffeeSequenceLine1(finalCoffeeSequenceLine1)
-                    })
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
-
-
-    function getTeaPrice(){
-        fetch(`${BASE_URL}/api/teas/price`)
-            .then(res=>res.json())
-            .then(json=>setTeaPrice(json))
-            .catch(err=>console.log(err))
-    }
-
-    function getDesserts(){
-        try{
-            fetch(`${BASE_URL}/api/desserts`)
-                .then(res=>res.json())
-                .then(json=>setAllDesserts(json))
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
 
     function decreaseDessertItemMarginsTopBottom(){
         if (dessertItemMarginsTopBottom <= 0) return
@@ -190,18 +78,6 @@ export default function DinnerMenuFormat(){
             .catch(err=>console.log(err))
     }
 
-    function decreaseCategoriesMarginTop(){
-        if (categoriesMarginTop <= 0) return
-        fetch(`${BASE_URL}/api/formats/desserts/decreaseCategoriesMarginTop`, {method:'PUT'})
-            .then(()=>getDessertsFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increaseCategoriesMarginTop(){
-        fetch(`${BASE_URL}/api/formats/desserts/increaseCategoriesMarginTop`, {method:'PUT'})
-            .then(()=>getDessertsFormatting())
-            .catch(err=>console.log(err))
-    }
 
     function increaseDessertItemMarginsTopBottom(){
         fetch(`${BASE_URL}/api/formats/desserts/increaseDessertItemMarginsTopBottom`, {method:'PUT'})
@@ -209,29 +85,17 @@ export default function DinnerMenuFormat(){
             .catch(err=>console.log(err))
     }
 
-    function decreasePageMarginRight(){
-        if (pageMarginRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/desserts/decreasePageMarginRight`,{method:'PUT'})
-        .then(()=>getDessertsFormatting())
+    function decreasePageMargin(){
+        if (pageMargin <= 0) return
+        fetch(`${BASE_URL}/api/formats/dinner/decreasePageMargin`,{method:'PUT'})
+        .then(()=>getDinnerFormatting())
         .catch(err=>console.log(err))
     }
 
-    function decreasePageMarginRightBack(){
-        if (pageMarginRightBack <= 0) return
-        fetch(`${BASE_URL}/api/formats/desserts/decreasePageMarginRightBack`,{method:'PUT'})
-        .then(()=>getDessertsFormatting())
-        .catch(err=>console.log(err))
-    }
     
-    function increasePageMarginRight(){
-        fetch(`${BASE_URL}/api/formats/desserts/increasePageMarginRight`,{method:'PUT'})
-            .then(()=>getDessertsFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increasePageMarginRightBack(){
-        fetch(`${BASE_URL}/api/formats/desserts/increasePageMarginRightBack`,{method:'PUT'})
-            .then(()=>getDessertsFormatting())
+    function increasePageMargin(){
+        fetch(`${BASE_URL}/api/formats/dinner/increasePageMargin`,{method:'PUT'})
+            .then(()=>getDinnerFormatting())
             .catch(err=>console.log(err))
     }
 
@@ -275,13 +139,28 @@ export default function DinnerMenuFormat(){
                                                     justifyContent:'center',
                                                     border:'1px solid green',
                                                     alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreaseDessertItemMarginsTopBottom} /></span>
+                                        <span>menu item margins<br/>left & right</span>
+                                        
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increaseDessertItemMarginsTopBottom} /></span>
+                                    </div>
+
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    justifyContent:'center',
+                                                    border:'1px solid green',
+                                                    alignItems:'center'}}>
 
                                                         
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMarginRight} /></span>
-                                        <span>page margin: right</span>
+                                                                    onClick={decreasePageMargin} /></span>
+                                        <span>page margin</span>
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMarginRight} /></span>
+                                                                    onClick={increasePageMargin} /></span>
                                     </div>
                                 
                             <br/>
@@ -292,7 +171,7 @@ export default function DinnerMenuFormat(){
                                 <div    className='dinner-menu-format' 
                                         style={{width:'8.5in',
                                                 background:'white',
-                                                padding:`0px 0px 0px 0px`,
+                                                padding:`${pageMargin/2}px ${pageMargin}px 0px`,
                                                 // backgroundImage:'url(scan-dinner-menu.jpg)',
                                                 backgroundSize:'8.5in 14in',
                                                 color:'red',

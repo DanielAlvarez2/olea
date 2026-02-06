@@ -11,6 +11,7 @@ const TeaPrice = require('./models/TeaPrice.js')
 const Pixel = require('./models/Pixel.js')
 const SpecialsFormat = require('./models/SpecialsFormat.js')
 const DessertsFormat = require('./models/DessertsFormat.js')
+const DinnerFormat = require('./models/DinnerFormat.js')
 
 
 const app = express()
@@ -982,6 +983,24 @@ app.get('/api/formats/desserts', async(req,res)=>{
     }
 })
 
+app.get('/api/formats/dinner', async(req,res)=>{ 
+    try{
+        let allFormats = await DinnerFormat.find()
+        if (allFormats.length == 0){
+            await DinnerFormat.create({
+                pageMargin: 0,
+                dinnerItemMarginsTopBottom: 0,
+                dinnerItemMarginsLeftRight: 0
+            })
+            allFormats = await DinnerFormat.find()
+        }
+        console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/specials/increasePageMargins', async(req,res)=>{
     try{
         const allFormats = await SpecialsFormat.find()
@@ -994,13 +1013,25 @@ app.put('/api/formats/specials/increasePageMargins', async(req,res)=>{
     }
 })
 
-app.put('/api/formats/desserts/decreasePageMarginRight', async(req,res)=>{
+app.put('/api/formats/dinner/decreasePageMargin', async(req,res)=>{
     try{
-        const allFormats = await DessertsFormat.find()
+        const allFormats = await DinnerFormat.find()
         console.log(allFormats[0])
-        await DessertsFormat.findByIdAndUpdate( allFormats[0]._id,
-                                                {pageMarginRight: allFormats[0].pageMarginRight - 1})
+        await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMargin: allFormats[0].pageMargin - 1})
         res.json('page margin decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/dinner/increasePageMargin', async(req,res)=>{
+    try{
+        const allFormats = await DinnerFormat.find()
+        console.log(allFormats[0])
+        await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMargin: allFormats[0].pageMargin + 1})
+        res.json('page margin increased')
     }catch(err){
         console.log(err)
     }
