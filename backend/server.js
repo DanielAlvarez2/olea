@@ -1092,7 +1092,7 @@ app.put('/api/formats/dinner/decreaseDinnerItemMarginsLeftRight', async(req,res)
         console.log(allFormats[0])
         await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {dinnerItemMarginsLeftRight: allFormats[0].dinnerItemMarginsLeftRight - 1})
-        res.json('dinner item margins decreased')
+        res.json('dinner item margins left/right decreased')
     }catch(err){
         console.log(err)
     }
@@ -1104,11 +1104,36 @@ app.put('/api/formats/dinner/increaseDinnerItemMarginsLeftRight', async(req,res)
         console.log(allFormats[0])
         await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {dinnerItemMarginsLeftRight: allFormats[0].dinnerItemMarginsLeftRight + 1})
-        res.json('dinner item margins increased')
+        res.json('dinner item margins left/right increased')
     }catch(err){
         console.log(err)
     }
 })
+
+app.put('/api/formats/dinner/decreaseDinnerItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await DinnerFormat.find()
+        console.log(allFormats[0])
+        await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {dinnerItemMarginsTopBottom: allFormats[0].dinnerItemMarginsTopBottom - 1})
+        res.json('dinner item margins top/bottom decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/dinner/increaseDinnerItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await DinnerFormat.find()
+        console.log(allFormats[0])
+        await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {dinnerItemMarginsTopBottom: allFormats[0].dinnerItemMarginsTopBottom + 1})
+        res.json('dinner item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.put('/api/formats/desserts/decreaseCategoriesMarginTop', async(req,res)=>{
     try{

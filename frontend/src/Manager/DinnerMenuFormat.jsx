@@ -76,17 +76,16 @@ export default function DinnerMenuFormat(){
 
 
 
-    function decreaseDessertItemMarginsTopBottom(){
-        if (dessertItemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/desserts/decreaseDessertItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getDessertsFormatting())
+    function decreaseDinnerItemMarginsTopBottom(){
+        if (dinnerItemMarginsTopBottom <= 0) return
+        fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getDinnerFormatting())
             .catch(err=>console.log(err))
     }
 
-
-    function increaseDessertItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/desserts/increaseDessertItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getDessertsFormatting())
+    function increaseDinnerItemMarginsTopBottom(){
+        fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getDinnerFormatting())
             .catch(err=>console.log(err))
     }
 
@@ -130,12 +129,12 @@ export default function DinnerMenuFormat(){
                                                     border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseDessertItemMarginsTopBottom} /></span>
+                                                                    onClick={decreaseDinnerItemMarginsTopBottom} /></span>
                                         <span>menu item margins<br/>top & bottom</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseDessertItemMarginsTopBottom} /></span>
+                                                                    onClick={increaseDinnerItemMarginsTopBottom} /></span>
                                     </div>
 
                                     <div style={{   textAlign:'center',
@@ -191,7 +190,7 @@ export default function DinnerMenuFormat(){
                                                         display:'block',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
-                                        <hr />
+                                        <hr style={{marginBottom:`${dinnerItemMarginsTopBottom}px`}} />
 
 
 
@@ -214,7 +213,9 @@ export default function DinnerMenuFormat(){
                                                     {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
                                                         return(
                                                             <div    key={data._id}
-                                                                    style={{padding:`0 ${dinnerItemMarginsLeftRight}px`}}
+                                                                    style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                            margin:`${dinnerItemMarginsTopBottom}px 0`
+                                                                    }}
                                                                     // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                                     className='special'>
                                                             
@@ -252,7 +253,9 @@ export default function DinnerMenuFormat(){
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`}}
+                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                        margin:`${dinnerItemMarginsTopBottom}px 0`
+                                                                }}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                                 className='special'>
                                                         
@@ -300,7 +303,9 @@ export default function DinnerMenuFormat(){
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`}}
+                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                        margin:`${dinnerItemMarginsTopBottom}px 0`
+                                                                }}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                                 className='special'>
                                                         
@@ -320,12 +325,27 @@ export default function DinnerMenuFormat(){
                                                     )
                                                 })}
 
-                                                <div className='special' style={{border:'1px solid black',paddingLeft:`${dinnerItemMarginsLeftRight}px`}}>
-                                                    chef's tasting menu six courses 109 / person<br/>
-                                                    48-hours notice and reservation required<br/>
+                                                <div    className='special' 
+                                                        style={{border:'1px solid black',
+                                                                fontFamily:'serif',
+                                                                padding:`${dinnerItemMarginsTopBottom}px ${dinnerItemMarginsLeftRight}px`,
+                                                        }}
+                                                                >
+                                                    <span style={{fontFamily:'FuturaLight', fontSize:'20px'}}>
+                                                        chef's tasting menu &nbsp; 
+                                                    </span> 
+                                                    <span style={{fontStyle:'italic'}}>
+                                                        six courses <span style={{fontWeight:'900'}}>109</span> / person
+                                                    </span>
+                                                    <br/>
+                                                    <span style={{fontStyle:'italic', fontWeight:'900'}}>
+                                                        48-hours notice and reservation required<br/>
+                                                    </span>
                                                     full table participation<br/>
                                                     available tuesday through thursday<br/>
-                                                    optional wine pairing available 52 / person
+                                                    <span style={{fontStyle:'italic'}}>
+                                                        optional wine pairing available <span style={{fontWeight:'900'}}>52</span> / person
+                                                    </span>
                                                 </div>
                                             
                                             </div>{/* id='dinner-menu-right' */}
@@ -382,8 +402,8 @@ export default function DinnerMenuFormat(){
 
 
 
-                                    <div style={{   fontSize:'25px',padding:`0 ${dinnerItemMarginsLeftRight}px`}}
-                                        
+                                    <div style={{   fontSize:'25px',
+                                                    padding:`0 ${dinnerItemMarginsLeftRight}px`}}
                                     >
 
                                         sides
@@ -392,13 +412,19 @@ export default function DinnerMenuFormat(){
 
 
 
-                                        <div style={{display:'flex',flexWrap:'wrap',border:'1px solid black'}}>
+                                        <div style={{   display:'flex',
+                                                        flexWrap:'wrap',
+                                                        marginBottom:`${dinnerItemMarginsTopBottom}px`,
+                                                        border:'1px solid black'}}>
 
                                         
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                style={{flexBasis:'50%',padding:`0 ${dinnerItemMarginsLeftRight}px`}}
+                                                                style={{flexBasis:'50%',
+                                                                        padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                        margin:`${dinnerItemMarginsTopBottom/2}px 0`
+                                                                }}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                                 className='special'>
                                                         
@@ -433,7 +459,7 @@ export default function DinnerMenuFormat(){
 
                                     <div className='dessert-footer'>
                                         
-                                        <hr />
+                                        
                                         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                                             <div className='chef name' style={{textDecoration:'underline'}}>manuel romero, chef</div>
                                             <div style={{width:'65%'}}>
