@@ -325,30 +325,30 @@ export default function DinnerMenuFormat(){
                                             <div    id='dinner-menu-left'
                                                     style={{width:'50%'}}        
                                             >
-
-                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
-                                                    return(
-                                                        <div    key={data._id}
-                                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                className='special'>
-                                                        
-                                                            <span className='name'>{data.name} </span>
-                                                            {data.allergiesAbbreviated &&   <>
-                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
-                                                                                            </>
-                                                            }
-                                                            {data.description && <br/>}
-                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                            {data.description && <span> {data.description}</span>}
+                                                <div className='cured-meats' style={{border:'1px solid black'}}>
+                                                    {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
+                                                        return(
+                                                            <div    key={data._id}
+                                                                    // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                                    className='special'>
                                                             
-                                                            <span className='price'> &nbsp;{data.price}</span> 
-                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                                <span className='name'>{data.name} </span>
+                                                                {data.allergiesAbbreviated &&   <>
+                                                                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                                </>
+                                                                }
+                                                                {data.description && <br/>}
+                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                {data.description && <span> {data.description}</span>}
+                                                                
+                                                                <span className='price'> &nbsp;{data.price}</span> 
+                                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
-                                                        </div>
-                                                    )
-                                                })}
-
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>{/* .cured-meats */}
 
 
 
@@ -432,7 +432,15 @@ export default function DinnerMenuFormat(){
                                                     )
                                                 })}
 
-                                            </div>
+                                                <div className='special' style={{border:'1px solid black'}}>
+                                                    chef's tasting menu six courses 109 / person<br/>
+                                                    48-hours notice and reservation required<br/>
+                                                    full table participation<br/>
+                                                    available tuesday through thursday<br/>
+                                                    optional wine pairing available 52 / person
+                                                </div>
+                                            
+                                            </div>{/* id='dinner-menu-right' */}
 
 
 
@@ -492,7 +500,7 @@ export default function DinnerMenuFormat(){
 
 
 
-                                        <div style={{display:'flex',flexWrap:'wrap'}}>
+                                        <div style={{display:'flex',flexWrap:'wrap',border:'1px solid black'}}>
 
                                         
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{

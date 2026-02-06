@@ -52,9 +52,10 @@ export default function SpecialsMenuUpdate(){
                                                                                 })
         })
         .then(alert(`
-            Special Updated:
+            Dinner Menu Item Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
+        .then(document.querySelector('#section-wrapper').style.display = 'none')
         .then(getDinnerItems())
         .catch(err=>console.log(err))
     }
@@ -579,11 +580,13 @@ export default function SpecialsMenuUpdate(){
                                 name='menu' 
                                 value='dinner' />
                         
-                        <div    style={{display:'none'}}
-                                id='section-wrapper'>
-                                            section: <span id='section'></span>
-                                <br/><br/>
-                        </div> 
+                       
+                            <div    style={{display:'none'}}
+                                    id='section-wrapper'>
+                                                section: <span id='section'></span>
+                                    <br/><br/>
+                            </div> 
+                        
 
                         {!editMode &&                         
                                         <label>
