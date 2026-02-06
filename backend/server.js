@@ -1086,6 +1086,30 @@ app.put('/api/formats/desserts/decreaseDessertItemMarginsTopBottom', async(req,r
     }
 })
 
+app.put('/api/formats/dinner/decreaseDinnerItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await DinnerFormat.find()
+        console.log(allFormats[0])
+        await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {dinnerItemMarginsLeftRight: allFormats[0].dinnerItemMarginsLeftRight - 1})
+        res.json('dinner item margins decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/dinner/increaseDinnerItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await DinnerFormat.find()
+        console.log(allFormats[0])
+        await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {dinnerItemMarginsLeftRight: allFormats[0].dinnerItemMarginsLeftRight + 1})
+        res.json('dinner item margins increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/desserts/decreaseCategoriesMarginTop', async(req,res)=>{
     try{
         const allFormats = await DessertsFormat.find()

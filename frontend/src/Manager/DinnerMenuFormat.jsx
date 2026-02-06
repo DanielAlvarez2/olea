@@ -16,17 +16,8 @@ import { FaToggleOn } from "react-icons/fa6";
 export default function DinnerMenuFormat(){
 
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
-    const [allDesserts, setAllDesserts] = useState([])
-    const [allDessertDrinks, setAllDessertDrinks] = useState([])
-    const [dessertDrinkCategories, setDessertDrinkCategories] = useState([])
-    const [teaPrice, setTeaPrice] = useState('')
-    const [allTeas, setAllTeas] = useState([])
-    const [allCoffees, setAllCoffees] = useState([])
-    const [lastCoffeeSequenceLine1, setLastCoffeeSequenceLine1] = useState(1)
-    const [dessertsFormatting, setDessertsFormatting] = useState([])
     const [dinnerFormatting, setDinnerFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
-    const [categoriesMarginTop, setCategoriesMarginTop] = useState(0)
     const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
     const [dinnerItemMarginsLeftRight, setDinnerItemMarginsLeftRight] = useState(0)
     useEffect(()=>{ 
@@ -62,13 +53,27 @@ export default function DinnerMenuFormat(){
                     setDinnerFormatting(json[0])
                     setPageMargin(json[0].pageMargin)
                     setDinnerItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
-                    setDinnerItemMarginsLeftRight(json[0].dinnerItemMarginsLeft)
+                    setDinnerItemMarginsLeftRight(json[0].dinnerItemMarginsLeftRight)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
         }
     }
+
+    function decreaseDinnerItemMarginsLeftRight(){
+        if (dinnerItemMarginsLeftRight <= 0) return
+        fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsLeftRight`, {method:'PUT'})
+            .then(()=>getDinnerFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function increaseDinnerItemMarginsLeftRight(){
+        fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsLeftRight`, {method:'PUT'})
+            .then(()=>getDinnerFormatting())
+            .catch(err=>console.log(err))
+    }
+
 
 
     function decreaseDessertItemMarginsTopBottom(){
@@ -140,12 +145,12 @@ export default function DinnerMenuFormat(){
                                                     border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseDessertItemMarginsTopBottom} /></span>
+                                                                    onClick={decreaseDinnerItemMarginsLeftRight} /></span>
                                         <span>menu item margins<br/>left & right</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseDessertItemMarginsTopBottom} /></span>
+                                                                    onClick={increaseDinnerItemMarginsLeftRight} /></span>
                                     </div>
 
                                     <div style={{   textAlign:'center',
@@ -182,7 +187,7 @@ export default function DinnerMenuFormat(){
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
                                                         color:'red',
-                                                        padding:`0px 0px 0px 0px`,
+                                                        padding:`0 ${dinnerItemMarginsLeftRight}px`,
                                                         display:'block',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
@@ -209,6 +214,7 @@ export default function DinnerMenuFormat(){
                                                     {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
                                                         return(
                                                             <div    key={data._id}
+                                                                    style={{padding:`0 ${dinnerItemMarginsLeftRight}px`}}
                                                                     // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                                     className='special'>
                                                             
@@ -246,6 +252,7 @@ export default function DinnerMenuFormat(){
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                                     return(
                                                         <div    key={data._id}
+                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`}}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                                 className='special'>
                                                         
@@ -293,6 +300,7 @@ export default function DinnerMenuFormat(){
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                                     return(
                                                         <div    key={data._id}
+                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`}}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                                 className='special'>
                                                         
@@ -312,7 +320,7 @@ export default function DinnerMenuFormat(){
                                                     )
                                                 })}
 
-                                                <div className='special' style={{border:'1px solid black'}}>
+                                                <div className='special' style={{border:'1px solid black',paddingLeft:`${dinnerItemMarginsLeftRight}px`}}>
                                                     chef's tasting menu six courses 109 / person<br/>
                                                     48-hours notice and reservation required<br/>
                                                     full table participation<br/>
@@ -374,8 +382,12 @@ export default function DinnerMenuFormat(){
 
 
 
-                                    <div style={{   fontSize:'25px',
-                                    }}>sides</div>
+                                    <div style={{   fontSize:'25px',padding:`0 ${dinnerItemMarginsLeftRight}px`}}
+                                        
+                                    >
+
+                                        sides
+                                    </div>
 
 
 
@@ -386,7 +398,7 @@ export default function DinnerMenuFormat(){
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                style={{flexBasis:'50%'}}
+                                                                style={{flexBasis:'50%',padding:`0 ${dinnerItemMarginsLeftRight}px`}}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                                 className='special'>
                                                         
