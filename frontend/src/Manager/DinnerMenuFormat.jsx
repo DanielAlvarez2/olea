@@ -292,7 +292,7 @@ export default function DinnerMenuFormat(){
                                 <div    className='dinner-menu-format' 
                                         style={{width:'8.5in',
                                                 background:'white',
-                                                padding:'38px 50px',
+                                                padding:`0px 0px 0px 0px`,
                                                 // backgroundImage:'url(scan-dinner-menu.jpg)',
                                                 backgroundSize:'8.5in 14in',
                                                 color:'red',
@@ -303,10 +303,11 @@ export default function DinnerMenuFormat(){
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
                                                         color:'red',
+                                                        padding:`0px 0px 0px 0px`,
                                                         display:'block',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
-                                        <hr style={{marginBottom:'37px'}} />
+                                        <hr />
 
 
 
@@ -315,7 +316,7 @@ export default function DinnerMenuFormat(){
 
 
                                         <div className='dessert-menu-front-content'
-                                                style={{paddingRight:`${pageMarginRight + 20}px`,
+                                                style={{padding:`0px 0px 0px 0px`,
                                                         display:'flex'}}
                                                 // style={{paddingRight:'83px'}}
                                                 >
@@ -541,10 +542,10 @@ export default function DinnerMenuFormat(){
 
                                     <div className='dessert-footer'>
                                         
-                                        <hr style={{marginTop:'5px'}}/>
+                                        <hr />
                                         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                                             <div className='chef name' style={{textDecoration:'underline'}}>manuel romero, chef</div>
-                                            <div className='dessert-menu-front-content' style={{width:'65%'}}>
+                                            <div style={{width:'65%'}}>
                                                 <span style={{fontWeight:'100'}}>
                                                     consumer advisory: consumption of undercooked meat, poultry, 
                                                     eggs, or seafood may increase the risk of food-borne illnesses<br/>
