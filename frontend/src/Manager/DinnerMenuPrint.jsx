@@ -124,9 +124,9 @@ Please switch to a different browser to proceed.
                     style={{border:'1px solid red',
                             // color:'red'
                             }}>
-                <div style={{width:'100%'}} className='no-print'>
 
-                <ManagerNavbar page='dinner' />
+                <div style={{width:'100%'}} className='no-print'>
+                    <ManagerNavbar page='dinner' />
                 </div>
                     <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>dinner &gt; print</div>

@@ -104,6 +104,19 @@ export default function TakeoutMenuPrint(){
             .catch(err=>console.log(err))
     }
 
+    function printPage(){
+        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+            alert(`
+WARNING: 
+
+Printing from Safari Browser is not supported.
+Please switch to a different browser to proceed.
+`)
+            return
+        }else{
+            window.print()
+        }
+    }
 
 
     return(
@@ -112,63 +125,37 @@ export default function TakeoutMenuPrint(){
                     style={{border:'1px solid red',
                             // color:'red'
                             }}>
-                <ManagerNavbar page='takeout' />
-                    <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>takeout &gt; print</div>
-                    <div className='main-menu'>
+                <div style={{width:'100%'}} className='no-print'>
+                    <ManagerNavbar page='dinner' />
+                </div>
+                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>takeout &gt; print</div>
+                    <div className='main-menu' style={{paddingBottom:0}}>
 
 
 
 
 
 
+                        <br className='no-print'/>
                                                        
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseTakeoutItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseTakeoutItemMarginsTopBottom} /></span>
-                                    </div>
+                            <div style={{   border:'1px solid green',
+                                            textAlign:'center',
+                                            display:'grid',
+                                            placeContent:'center',
+                                            width:'100%'}}>
 
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseTakeoutItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseTakeoutItemMarginsLeftRight} /></span>
-                                    </div>
+                            
 
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    border:'1px solid green',
-                                                    alignItems:'center'}}>
+                                <div    className='no-print print-btn' 
+                                        style={{marginTop:'10px'}}
+                                        onClick={()=>printPage()}>
+                                    print
+                                </div>
+                            </div>
 
-                                                        
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMargin} /></span>
-                                        <span>page margin</span>
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMargin} /></span>
-                                    </div>
-                                
-                            <br/>
+                            <br className='no-print'/>
+
 
 
 
@@ -180,7 +167,7 @@ export default function TakeoutMenuPrint(){
                                                 // backgroundImage:'url(scan-dinner-menu.jpg)',
                                                 backgroundSize:'8.5in 14in',
                                                 // color:'red',
-                                                height:'11in',
+                                                height:'10.955in',
                                                 border:'1px solid black'}} 
                                 >
                                     <div id='footer-top'>
