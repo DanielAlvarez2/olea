@@ -21,6 +21,7 @@ import DessertMenu from './Manager/DessertMenu.jsx'
 
 import ToGoMenu from './Manager/ToGoMenu.jsx'
 import TakeoutMenuFormat from './Manager/TakeoutMenuFormat.jsx'
+import TakeoutMenuPrint from './Manager/TakeoutMenuPrint.jsx'
 import TakeoutScan from './Manager/TakeoutMenuScan.jsx'
 
 import AnniversaryScan from './Manager/AnniversaryScan.jsx'
@@ -109,6 +110,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         
         <Route path='takeout-scan' element={<TakeoutScan />} />
         <Route path='takeout-menu-format' element={<TakeoutMenuFormat />} />
+        <Route path='takeout-menu-print' element={<TakeoutMenuPrint />} />
 
         <Route path='anniversary-scan' element={<AnniversaryScan />} />
         <Route path='anniversary' element={<Anniversary />} />
