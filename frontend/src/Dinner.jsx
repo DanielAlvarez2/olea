@@ -59,44 +59,42 @@ export default function Dinner(){
                                     Tax and gratuity not included.<br/><br/>
 
                                     <h2>DINNER MENU</h2>
-                                    appetizers<br/><br/>                                         
-
-                                                    {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
-                                                        return(
-                                                            <div    key={data._id}     
-                                                                    className='special'>
-                                                            
-                                                                <span className='name'>{data.name} </span>
-                                                                {data.allergiesAbbreviated &&   <>
-                                                                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
-                                                                                                </>
-                                                                }
-                                                                {data.description && <br/>}
-                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                                {data.description && <span> {data.description}</span>}
-                                                                
-                                                                <span className='price'> &nbsp;{data.price}</span> 
-                                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-
-
-                                                            </div>
-                                                        )
-                                                    })}
 
 
 
+                                    <div className='website-menu-section'>appetizers</div>
 
+                                    {allDinnerMenuItems
+                                        .filter(item=>item.section == 'cured meats' && item.sequence)
+                                        .map(data=>{
+                                            return(
+                                                <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <span>
+                                                            <span className='website-name'>{data.name}</span><br/>
+                                                            {data.description}
+                                                        </span>
+                                                        <span>{data.price}</span>
+                                                    </div>
+                                                    <br/>
+                                                </>
+                                            )
+                                        })}
 
-
-
-
-
-
-
-
-
-
-
+                                    {allDinnerMenuItems
+                                        .filter(item=>item.section == 'appetizers' && item.sequence)
+                                        .map(data=>{
+                                            return(
+                                                <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <span>
+                                                            <span className='website-name'>{data.name}</span><br/>
+                                                            {data.description}
+                                                        </span>
+                                                        <span>{data.price}</span>
+                                                    </div>
+                                                    <br/>
+                                                </>
+                                            )
+                                        })}
 
 
 
@@ -104,141 +102,46 @@ export default function Dinner(){
 
 
 
-
-
-                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
-                                                    return(
-                                                        <div    key={data._id}
-                                                                className='special'>
-                                                        
-                                                            <span className='name'>{data.name} </span>
-                                                            {data.allergiesAbbreviated &&   <>
-                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
-                                                                                            </>
-                                                            }
-                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                            {data.description && <span> {data.description}</span>}
-                                                            
-                                                            <span className='price'> &nbsp;{data.price}</span> 
-                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-
-
-                                                        </div>
-                                                    )
-                                                })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    main courses<br/><br/>                                         
+                                    <div className='website-menu-section'>main courses</div>
                                     
-                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                                    return(
-                                                        <div    key={data._id}
-                                                                className='special'>
-                                                        
-                                                            <span className='name'>{data.name} </span>
-                                                            {data.allergiesAbbreviated &&   <>
-                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
-                                                                                            </>
-                                                            }
-                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                            {data.description && <span> {data.description}</span>}
-                                                            
-                                                            <span className='price'> &nbsp;{data.price}</span> 
-                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-
-
-                                                        </div>
-                                                    )
-                                                })}
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    sides<br/><br/>                                         
-
-                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{
-                                                    return(
-                                                        <div    key={data._id}
-                                                                className='special'>
-                                                        
-                                                            <span className='name'>{data.name} </span>
-                                                            {data.allergiesAbbreviated &&   <>
-                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
-                                                                                            </>
-                                                            }
-                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                            {data.description && <span> {data.description}</span>}
-                                                            
-                                                            <span className='price'> &nbsp;{data.price}</span> 
-                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-
-
-                                                        </div>
-                                                    )
-                                                })}
+                                    {allDinnerMenuItems
+                                        .filter(item=>item.section == 'entrées' && item.sequence)
+                                        .map(data=>{
+                                            return(
+                                                <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <span>
+                                                            <span className='website-name'>{data.name}</span><br/>
+                                                            {data.description}
+                                                        </span>
+                                                        <span>{data.price}</span>
+                                                    </div>
+                                                    <br/>
+                                                </>
+                                            )
+                                        })}
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                    <div className='website-menu-section'>sides</div>
+                                    
+                                    {allDinnerMenuItems
+                                        .filter(item=>item.section == 'sides' && item.sequence)
+                                        .map(data=>{
+                                            return(
+                                                <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <span>
+                                                            <span className='website-name'>{data.name}</span><br/>
+                                                            {data.description}
+                                                        </span>
+                                                        <span>{data.price}</span>
+                                                    </div>
+                                                    <br/>
+                                                </>
+                                            )
+                                        })}
 
 
 

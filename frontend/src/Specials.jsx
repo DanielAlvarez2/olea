@@ -35,12 +35,10 @@ export default function Home(){
                                 .filter(item=>item.section == 'appetizers' && item.sequence)
                                 .length == 1 && 
                                     <div className='website-menu-section'>appetizer</div>}
-                            
                             {allSpecials
                                 .filter(item=>item.section == 'appetizers' && item.sequence)
                                 .length > 1 && 
                                     <div className='website-menu-section'>appetizers</div>}
-
                                 {allSpecials
                                     .filter(item=>item.section == 'appetizers' && item.sequence)
                                     .map(data=>{
