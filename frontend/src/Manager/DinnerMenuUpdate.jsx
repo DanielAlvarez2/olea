@@ -722,6 +722,7 @@ export default function SpecialsMenuUpdate(){
                         tasting menu:<br/> 
                         $100/person &rarr; 
                         $<input type='number'
+                                min='1'
                                 max='999' 
                                 placeholder='100'
                                 style={{width:'6ch'}} />/person
@@ -730,6 +731,7 @@ export default function SpecialsMenuUpdate(){
                         wine pairing:<br/> 
                         &nbsp; $50/person &rarr; 
                         $<input type='number'
+                                min='1'
                                 max='999'
                                 placeholder='50' 
                                 style={{width:'6ch'}} />/person
