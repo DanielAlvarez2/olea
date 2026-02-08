@@ -13,6 +13,7 @@ const SpecialsFormat = require('./models/SpecialsFormat.js')
 const DessertsFormat = require('./models/DessertsFormat.js')
 const DinnerFormat = require('./models/DinnerFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
+const TastingMenuPricing = require('./models/TastingMenuPricing.js')
 
 
 const app = express()
@@ -870,6 +871,26 @@ app.put('/api/dinner-menu-items/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/tasting-menu-prices/update', async(req,res)=>{
+    try{
+        let currentPrices = await TastingMenuPricing.find()
+        if (!currentPrices.length){
+            TastingMenuPricing.create({
+                tastingMenuPrice: req.body.tastingMenuPrice,
+                winePairingPrice: req.body.winePairingPrice
+            })
+        }else{
+            await TastingMenuPricing.findByIdAndUpdate({_id:currentPrices[0]._id},{
+                                                        tastingMenuPrice: req.body.tastingMenuPrice,
+                                                        winePairingPrice: req.body.winePairingPrice
+            })
+        }
+        currentPrices = await TastingMenuPricing.find()
+        res.json(currentPrices)
+    }catch(err){
+        console.log(err)
+    }
+})
 
 app.put('/api/desserts/:id', async(req,res)=>{
     try{

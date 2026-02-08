@@ -168,8 +168,17 @@ export default function SpecialsMenuUpdate(){
         setDisplaySection(e.target.value)
     }
 
-    function updateTastingMenu(){
-
+    function updateTastingMenu(formData){
+        fetch(`${BASE_URL}/api/tasting-menu-prices/update`,{method:'PUT',
+                                                            headers:{'Content-Type':'application/json'},
+                                                            body: JSON.stringify({
+                                                                tastingMenuPrice:formData.get('tasting-menu-price'),
+                                                                winePairingPrice:formData.get('wine-pairing-price')
+                                                            })
+        })
+        .then(res=>res.json())
+        .then(json=>alert(json))
+        .catch(err=>console.log(err))
     }
 
     return(
@@ -725,6 +734,7 @@ export default function SpecialsMenuUpdate(){
                                 min='1'
                                 max='999' 
                                 placeholder='100'
+                                name='tasting-menu-price'
                                 style={{width:'6ch'}} />/person
                         <br/><br/>
 
@@ -734,6 +744,7 @@ export default function SpecialsMenuUpdate(){
                                 min='1'
                                 max='999'
                                 placeholder='50' 
+                                name='wine-pairing-price'
                                 style={{width:'6ch'}} />/person
                         <br/><br/>
 

@@ -82,3 +82,5 @@ dist
 Is dessert menu missing archive section?  
   
 Dessert menu format screen displaying too short only on apple tablets in portrait mode???  
+
+useContext for BASE_URL environment variable
