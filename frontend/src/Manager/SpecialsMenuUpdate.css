@@ -12,7 +12,7 @@
     margin:0 auto;
     background:white;
 }
-#specials-form{
+.specials-form{
     margin:20px auto;
     padding:20px 10px;
     border-radius:10px;
@@ -27,7 +27,7 @@
     }
 }
 @media (max-width:325px){
-    #specials-form{
+    .specials-form{
         width:100%;
         /* background:red; */
     }

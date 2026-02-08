@@ -110,7 +110,7 @@ export default function SpecialsMenuUpdate(){
     function editItem(id,section,name,allergiesAbbreviated,allergiesComplete,descriptionIntro,description,postDescription,price){
         try{
             setEditMode(true)
-            document.querySelector('#specials-form').scrollIntoView({behavior:'smooth'})
+            document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#item-id').value = id
             document.querySelector('#section').innerHTML = section
             document.querySelector('#section-wrapper').style.display = 'block'
@@ -166,6 +166,10 @@ export default function SpecialsMenuUpdate(){
 
     function handleChangeDisplaySection(e){
         setDisplaySection(e.target.value)
+    }
+
+    function updateTastingMenu(){
+
     }
 
     return(
@@ -566,7 +570,7 @@ export default function SpecialsMenuUpdate(){
 
 
                     <form   action={editMode ? updateItem : createItem} 
-                            id='specials-form'
+                            className='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
                             {editMode ? 'update dinner item' : 'create new dinner item'}
@@ -705,6 +709,45 @@ export default function SpecialsMenuUpdate(){
             
 
 
+
+                    <form   action={updateTastingMenu} 
+                            id='tasting-menu-form'
+                            className='specials-form'
+                            style={{background:`lightblue`}}>
+                        <h2 style={{textAlign:'center'}}>
+                            tasting menu prices
+                        </h2>
+                        <br/>
+
+                        tasting menu:<br/> 
+                        $100/person &rarr; 
+                        $<input type='number'
+                                max='999' 
+                                placeholder='100'
+                                style={{width:'6ch'}} />/person
+                        <br/><br/>
+
+                        wine pairing:<br/> 
+                        &nbsp; $50/person &rarr; 
+                        $<input type='number'
+                                max='999'
+                                placeholder='50' 
+                                style={{width:'6ch'}} />/person
+                        <br/><br/>
+
+                        <div style={{display:'flex', justifyContent:'center'}}>
+                            <input  type='submit' 
+                                    style={{padding:'10px 10px',
+                                            cursor:'pointer',
+                                            borderRadius:'10px',
+                                            border:'2px solid black',
+                                            color:'black',
+                                            background:'lightgrey',
+                                            fontSize:'20px'}}
+                                    value = 'update' />                        
+                        </div>
+                        
+                    </form>
 
 
 

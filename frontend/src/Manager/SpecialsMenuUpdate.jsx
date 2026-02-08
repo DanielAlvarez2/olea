@@ -104,7 +104,7 @@ export default function SpecialsMenuUpdate(){
     function editSpecial(id,section,name,allergiesAbbreviated,allergiesComplete,description,price){
         try{
             setEditMode(true)
-            document.querySelector('#specials-form').scrollIntoView({behavior:'smooth'})
+            document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#special-id').value = id
             document.querySelector('#section').innerHTML = section
             document.querySelector('#section-wrapper').style.display = 'block'
@@ -414,7 +414,7 @@ export default function SpecialsMenuUpdate(){
 
 
                     <form   action={editMode ? updateSpecial : createNewSpecial} 
-                            id='specials-form'
+                            className='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
                             {editMode ? 'update special' : 'create new special'}
