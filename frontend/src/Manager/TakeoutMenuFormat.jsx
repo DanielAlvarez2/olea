@@ -15,6 +15,7 @@ import { FaToggleOn } from "react-icons/fa6";
 
 export default function TakeoutMenuFormat(){
 
+    const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
     const [takeoutFormatting, setTakeoutFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
@@ -25,7 +26,8 @@ export default function TakeoutMenuFormat(){
                 getTakeoutFormatting()
                 getDinnerMenuItems()
     },[])
-    
+    useEffect(()=>getTastingMenuPrices(),[])
+
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
@@ -40,6 +42,17 @@ export default function TakeoutMenuFormat(){
                     setAllDinnerMenuItems(json)
                     // console.log(json)
                 })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getTastingMenuPrices(){
+        try{
+            fetch(`${BASE_URL}/api/tasting-menu-prices`)
+                .then(res=>res.json())
+                .then(json=>setTastingMenuPrices(json[0]))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -336,7 +349,7 @@ export default function TakeoutMenuFormat(){
                                                         chef's tasting menu &nbsp; 
                                                     </span> 
                                                     <span style={{fontStyle:'italic'}}>
-                                                        six courses <span style={{fontWeight:'900'}}>109</span> / person
+                                                        six courses <span style={{fontWeight:'900'}}>{tastingMenuPrices.tastingMenuPrice}</span> / person
                                                     </span>
                                                     <br/>
                                                     <span style={{fontStyle:'italic', fontWeight:'900'}}>
@@ -345,7 +358,7 @@ export default function TakeoutMenuFormat(){
                                                     full table participation<br/>
                                                     available tuesday through thursday<br/>
                                                     <span style={{fontStyle:'italic'}}>
-                                                        optional wine pairing available <span style={{fontWeight:'900'}}>52</span> / person
+                                                        optional wine pairing available <span style={{fontWeight:'900'}}>{tastingMenuPrices.winePairingPrice}</span> / person
                                                     </span>
                                                 </div>
                                             

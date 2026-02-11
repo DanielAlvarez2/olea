@@ -7,11 +7,12 @@ import { useState, useEffect } from 'react'
 
 
 export default function Dinner(){
-
+    const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
 
     useEffect(()=>window.scrollTo(0,0),[])    
     useEffect(()=>getDinnerMenuItems(),[])
+    useEffect(()=>getTastingMenuPrices(),[])
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -31,6 +32,18 @@ export default function Dinner(){
         }
     }
 
+    function getTastingMenuPrices(){
+        try{
+            fetch(`${BASE_URL}/api/tasting-menu-prices`)
+                .then(res=>res.json())
+                .then(json=>setTastingMenuPrices(json[0]))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+
     return(
                 <div className='page-wrapper webpage'>
                     <div className='webpage-wrapper'>
@@ -49,11 +62,11 @@ export default function Dinner(){
                                     Our dinner menu below is available for takeout and curbside pickup. Please preorder if possible by phone (203.780.8925). During special days we can only take a limited amount of takeout orders due to volume.
                                     <br/><br/>
 
-                                    <span className='bold'>CHEF’S TASTING MENU</span> $105 / person <br/>
+                                    <span className='bold'>CHEF’S TASTING MENU</span> ${tastingMenuPrices.tastingMenuPrice} / person <br/>
                                     <span className='bold'>no substitutions or modifications<br/>
                                     A minimum of two days notice is required</span><br/>
                                     six courses / reservations and full table participation required<br/>
-                                    optional wine pairing available $52 / person<br/>
+                                    optional wine pairing available ${tastingMenuPrices.winePairingPrice} / person<br/>
                                     available Tuesday through Thursday<br/>
                                     Please let us know in advance about any food restrictions or allergies.<br/>
                                     Tax and gratuity not included.<br/><br/>

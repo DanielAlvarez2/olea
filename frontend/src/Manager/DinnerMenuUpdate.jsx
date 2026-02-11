@@ -7,7 +7,7 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 
 
-export default function SpecialsMenuUpdate(){
+export default function DinnerMenuUpdate(){
     const [allDinnerItems, setAllDinnerItems] = useState([])
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])
     const [editMode, setEditMode] = useState(false)
