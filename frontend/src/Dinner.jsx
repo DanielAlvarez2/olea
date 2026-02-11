@@ -69,7 +69,7 @@ export default function Dinner(){
                                     A minimum of two days notice is required</span><br/>
                                     six courses / reservations and full table participation required<br/>
                                     optional wine pairing available 
-                                    {tastingMenuPrices.winePairingPrice != 0 ? `${tastingMenuPrices.winePairingPrice} / person` : ''}
+                                    {tastingMenuPrices.winePairingPrice != 0 ? ` $${tastingMenuPrices.winePairingPrice} / person` : ''}
                                     <br/>
                                     available Tuesday through Thursday<br/>
                                     Please let us know in advance about any food restrictions or allergies.<br/>
