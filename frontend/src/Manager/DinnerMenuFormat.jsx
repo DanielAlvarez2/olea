@@ -348,7 +348,11 @@ export default function DinnerMenuFormat(){
                                                         chef's tasting menu &nbsp; 
                                                     </span> 
                                                     <span style={{fontStyle:'italic'}}>
-                                                        six courses <span style={{fontWeight:'900'}}>{tastingMenuPrices.tastingMenuPrice}</span> / person
+                                                        six courses 
+                                                        {tastingMenuPrices.tastingMenuPrice != 0 ? <>
+                                                                                                        <span style={{fontWeight:'900'}}>{tastingMenuPrices.tastingMenuPrice}</span> / person
+                                                                                                    </>
+                                                                                                 : ''}
                                                     </span>
                                                     <br/>
                                                     <span style={{fontStyle:'italic', fontWeight:'900'}}>
@@ -357,7 +361,11 @@ export default function DinnerMenuFormat(){
                                                     full table participation<br/>
                                                     available tuesday through thursday<br/>
                                                     <span style={{fontStyle:'italic'}}>
-                                                        optional wine pairing available <span style={{fontWeight:'900'}}>{tastingMenuPrices.winePairingPrice}</span> / person
+                                                        optional wine pairing available 
+                                                        {tastingMenuPrices.winePairingPrice != 0 ? <>
+                                                                                                        <span style={{fontWeight:'900'}}>{tastingMenuPrices.winePairingPrice}</span> / person
+                                                                                                    </>
+                                                                                                 : ''}
                                                     </span>
                                                 </div>
                                             
