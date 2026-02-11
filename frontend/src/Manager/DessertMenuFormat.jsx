@@ -267,8 +267,8 @@ export default function DessertMenuFormat(){
                                                                                         : decreaseCategoriesMarginTop
                                                                     } /></span>
                                         {
-                                            frontView   ? <span>menu item margins<br/>top & bottom</span>
-                                                        : <span>categories<br/>margin top</span>
+                                            frontView   ? <span>menu item margins<br/>top & bottom &#8597;</span>
+                                                        : <span>categories<br/>margin top &#8593;</span>
                                         }
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
@@ -287,7 +287,7 @@ export default function DessertMenuFormat(){
                                                         
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                                     onClick={frontView ? decreasePageMarginRight : decreasePageMarginRightBack} /></span>
-                                        <span>page margin: right</span>
+                                        <span>page margin: right &#8592;</span>
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                                     onClick={frontView ? increasePageMarginRight : increasePageMarginRightBack} /></span>
                                     </div>

@@ -143,7 +143,7 @@ export default function DinnerMenuFormat(){
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                                     onClick={decreaseDinnerItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom</span>
+                                        <span>menu item margins<br/>top & bottom &#8597;</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
@@ -158,7 +158,7 @@ export default function DinnerMenuFormat(){
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                                     onClick={decreaseDinnerItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right</span>
+                                        <span>menu item margins<br/>left & right &#8596;</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
@@ -192,7 +192,7 @@ export default function DinnerMenuFormat(){
                                                 // backgroundImage:'url(scan-dinner-menu.jpg)',
                                                 backgroundSize:'8.5in 14in',
                                                 // color:'red',
-                                                height:'14in',
+                                                height:'13.95in',
                                                 border:'1px solid black'}} 
                                 >
                                     <div id='footer-top'>
@@ -222,7 +222,7 @@ export default function DinnerMenuFormat(){
                                             <div    id='dinner-menu-left'
                                                     style={{width:'50%'}}        
                                             >
-                                                <div className='cured-meats' style={{border:'1px solid black'}}>
+                                                <div className='cured-meats' style={{border:'1px solid #888'}}>
                                                     {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
                                                         return(
                                                             <div    key={data._id}
@@ -339,7 +339,7 @@ export default function DinnerMenuFormat(){
                                                 })}
 
                                                 <div    className='special' 
-                                                        style={{border:'1px solid black',
+                                                        style={{border:'1px solid #888',
                                                                 fontFamily:'serif',
                                                                 padding:`${dinnerItemMarginsTopBottom}px ${dinnerItemMarginsLeftRight}px`,
                                                         }}
@@ -350,7 +350,7 @@ export default function DinnerMenuFormat(){
                                                     <span style={{fontStyle:'italic'}}>
                                                         six courses 
                                                         {tastingMenuPrices.tastingMenuPrice != 0 ? <>
-                                                                                                        <span style={{fontWeight:'900'}}>{tastingMenuPrices.tastingMenuPrice}</span> / person
+                                                                                                        <span style={{fontWeight:'900'}}> {tastingMenuPrices.tastingMenuPrice}</span> / person
                                                                                                     </>
                                                                                                  : ''}
                                                     </span>
@@ -363,7 +363,7 @@ export default function DinnerMenuFormat(){
                                                     <span style={{fontStyle:'italic'}}>
                                                         optional wine pairing available 
                                                         {tastingMenuPrices.winePairingPrice != 0 ? <>
-                                                                                                        <span style={{fontWeight:'900'}}>{tastingMenuPrices.winePairingPrice}</span> / person
+                                                                                                        <span style={{fontWeight:'900'}}> {tastingMenuPrices.winePairingPrice}</span> / person
                                                                                                     </>
                                                                                                  : ''}
                                                     </span>
@@ -436,7 +436,7 @@ export default function DinnerMenuFormat(){
                                         <div style={{   display:'flex',
                                                         flexWrap:'wrap',
                                                         marginBottom:`${dinnerItemMarginsTopBottom}px`,
-                                                        border:'1px solid black'}}>
+                                                        border:'1px solid #888'}}>
 
                                         
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{

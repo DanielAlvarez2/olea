@@ -143,7 +143,7 @@ export default function SpecialsMenuUpdate(){
                                             }}>
                                 <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                             onClick={decreasePageMarginsLeftRight} /></span>
-                                <span>page margins<br/>left & right</span>
+                                <span>page margins<br/>left & right &#8596;</span>
                                 <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                             onClick={increasePageMarginsLeftRight} /></span>
                             </div>
@@ -154,7 +154,7 @@ export default function SpecialsMenuUpdate(){
                                             alignItems:'center'}}>
                                 <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                             onClick={decreaseMenuItemMarginsTopBottom} /></span>
-                                <span>menu item margins<br/>top & bottom</span>
+                                <span>menu item margins<br/>top & bottom &#8597;</span>
                                 <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                             onClick={increaseMenuItemMarginsTopBottom} /></span>
                             </div>

@@ -19,12 +19,14 @@ export default function WineList(){
                                 height:'100%',
                                 border:'1px solid green'
                                 }}>
-                        <Link to='/dinner-menu'><li style={{flexGrow:'1'}}>dinner</li></Link>
-                        <Link to='/specials'><li style={{flexGrow:'1'}}>specials</li></Link>
-                        <Link to='/dessert'><li style={{flexGrow:'1'}}>dessert</li></Link>
-                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>wine list</li></Link>
-                        <Link to='/takeout'><li style={{flexGrow:'1'}}>takeout</li></Link>
-                        <Link to='/events'><li style={{flexGrow:'1'}}>events</li></Link>
+                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>wine by the glass</li></Link>
+                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>wine by the bottle</li></Link>
+                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>sangria</li></Link>
+                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>non-alcoholic</li></Link>
+                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>beer</li></Link>
+                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>craft drinks</li></Link>
+                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>sherries</li></Link>
+                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>spirits</li></Link>
                     </ul>
 
             

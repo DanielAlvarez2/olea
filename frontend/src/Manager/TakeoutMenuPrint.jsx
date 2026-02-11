@@ -210,7 +210,7 @@ Please switch to a different browser to proceed.
                                             <div    id='dinner-menu-left'
                                                     style={{width:'50%'}}        
                                             >
-                                                <div className='cured-meats' style={{border:'1px solid black'}}>
+                                                <div className='cured-meats' style={{border:'1px solid #888'}}>
                                                     {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
                                                         return(
                                                             <div    key={data._id}
@@ -327,7 +327,7 @@ Please switch to a different browser to proceed.
                                                 })}
 
                                                 <div    className='special' 
-                                                        style={{border:'1px solid black',
+                                                        style={{border:'1px solid #888',
                                                                 fontFamily:'serif',
                                                                 padding:`${takeoutItemMarginsTopBottom}px ${takeoutItemMarginsLeftRight}px`,
                                                         }}
@@ -338,7 +338,7 @@ Please switch to a different browser to proceed.
                                                     <span style={{fontStyle:'italic'}}>
                                                         six courses 
                                                         {tastingMenuPrices.tastingMenuPrice != 0 ? <>
-                                                                                                        <span style={{fontWeight:'900'}}>{tastingMenuPrices.tastingMenuPrice}</span> / person
+                                                                                                        <span style={{fontWeight:'900'}}> {tastingMenuPrices.tastingMenuPrice}</span> / person
                                                                                                     </>
                                                                                                  : ''}
                                                     </span>
@@ -351,7 +351,7 @@ Please switch to a different browser to proceed.
                                                     <span style={{fontStyle:'italic'}}>
                                                         optional wine pairing available 
                                                         {tastingMenuPrices.winePairingPrice != 0 ? <>
-                                                                                                        <span style={{fontWeight:'900'}}>{tastingMenuPrices.winePairingPrice}</span> / person
+                                                                                                        <span style={{fontWeight:'900'}}> {tastingMenuPrices.winePairingPrice}</span> / person
                                                                                                     </>
                                                                                                  : ''}
                                                     </span>
@@ -424,7 +424,7 @@ Please switch to a different browser to proceed.
                                         <div style={{   display:'flex',
                                                         flexWrap:'wrap',
                                                         marginBottom:`${takeoutItemMarginsTopBottom}px`,
-                                                        border:'1px solid black'}}>
+                                                        border:'1px solid #888'}}>
 
                                         
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{
