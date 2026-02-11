@@ -871,20 +871,35 @@ app.put('/api/dinner-menu-items/:id', async(req,res)=>{
     }
 })
 
+app.get('/api/tasting-menu-prices', async(req,res)=>{ 
+    try{
+        let currentPrices = await TastingMenuPricing.find()
+        console.log('currentPrices = '+ currentPrices)
+        if (currentPrices.length == 0){
+            await TastingMenuPricing.create({
+                tastingMenuPrice: 0,
+                winePairingPrice: 0,
+            })
+            currentPrices = await TastingMenuPricing.find()
+        }        
+        console.log(currentPrices)
+        res.json(currentPrices)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/tasting-menu-prices/update', async(req,res)=>{
     try{
         let currentPrices = await TastingMenuPricing.find()
-        if (!currentPrices.length){
-            TastingMenuPricing.create({
-                tastingMenuPrice: req.body.tastingMenuPrice,
-                winePairingPrice: req.body.winePairingPrice
-            })
-        }else{
-            await TastingMenuPricing.findByIdAndUpdate({_id:currentPrices[0]._id},{
-                                                        tastingMenuPrice: req.body.tastingMenuPrice,
+        await TastingMenuPricing.findByIdAndUpdate({_id:currentPrices[0]._id},{
+                                                        tastingMenuPrice: req.body.tastingMenuPrice 
+                                                                            ? req.body.tastingMenuPrice 
+                                                                            : currentPrices[0].tastingMenuPrice,
                                                         winePairingPrice: req.body.winePairingPrice
-            })
-        }
+                                                                            ? req.body.winePairingPrice
+                                                                            : currentPrices[0].winePairingPrice
+        })
         currentPrices = await TastingMenuPricing.find()
         res.json(currentPrices)
     }catch(err){

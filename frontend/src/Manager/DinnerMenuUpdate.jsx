@@ -9,9 +9,11 @@ import { FaCaretUp } from "react-icons/fa";
 
 export default function SpecialsMenuUpdate(){
     const [allDinnerItems, setAllDinnerItems] = useState([])
+    const [tastingMenuPrices, setTastingMenuPrices] = useState([])
     const [editMode, setEditMode] = useState(false)
     const [displaySection, setDisplaySection] = useState('cured meats')
     useEffect(()=>getDinnerItems(),[])
+    useEffect(()=>getTastingMenuPrices(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
@@ -65,6 +67,17 @@ export default function SpecialsMenuUpdate(){
             fetch(`${BASE_URL}/api/dinner-menu-items`)
                 .then(res=>res.json())
                 .then(json=>setAllDinnerItems(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getTastingMenuPrices(){
+        try{
+            fetch(`${BASE_URL}/api/tasting-menu-prices`)
+                .then(res=>res.json())
+                .then(json=>setTastingMenuPrices(json[0]))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -177,7 +190,7 @@ export default function SpecialsMenuUpdate(){
                                                             })
         })
         .then(res=>res.json())
-        .then(json=>alert(json))
+        .then(json=>setTastingMenuPrices(json[0]))
         .catch(err=>console.log(err))
     }
 
@@ -729,21 +742,19 @@ export default function SpecialsMenuUpdate(){
                         <br/>
 
                         tasting menu:<br/> 
-                        $100/person &rarr; 
+                        ${tastingMenuPrices.tastingMenuPrice}/person &rarr; 
                         $<input type='number'
                                 min='1'
                                 max='999' 
-                                placeholder='100'
                                 name='tasting-menu-price'
                                 style={{width:'6ch'}} />/person
                         <br/><br/>
 
                         wine pairing:<br/> 
-                        &nbsp; $50/person &rarr; 
+                        &nbsp; ${tastingMenuPrices.winePairingPrice}/person &rarr; 
                         $<input type='number'
                                 min='1'
                                 max='999'
-                                placeholder='50' 
                                 name='wine-pairing-price'
                                 style={{width:'6ch'}} />/person
                         <br/><br/>
