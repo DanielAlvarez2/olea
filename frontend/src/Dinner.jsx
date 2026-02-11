@@ -63,7 +63,7 @@ export default function Dinner(){
                                     <br/><br/>
 
                                     <span className='bold'>CHEF’S TASTING MENU</span> 
-                                    {tastingMenuPrices.tastingMenuPrice != 0 ? ` ${tastingMenuPrices.tastingMenuPrice} / person` : ''} 
+                                    {tastingMenuPrices.tastingMenuPrice != 0 ? ` $${tastingMenuPrices.tastingMenuPrice} / person` : ''} 
                                     <br/>
                                     <span className='bold'>no substitutions or modifications<br/>
                                     A minimum of two days notice is required</span><br/>
