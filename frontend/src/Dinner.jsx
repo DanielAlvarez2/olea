@@ -62,7 +62,9 @@ export default function Dinner(){
                                     Our dinner menu below is available for takeout and curbside pickup. Please preorder if possible by phone (203.780.8925). During special days we can only take a limited amount of takeout orders due to volume.
                                     <br/><br/>
 
-                                    <span className='bold'>CHEF’S TASTING MENU</span> ${tastingMenuPrices.tastingMenuPrice} / person <br/>
+                                    <span className='bold'>CHEF’S TASTING MENU</span> 
+                                    {tastingMenuPrices.tastingMenuPrice != 0 ? `${tastingMenuPrices.tastingMenuPrice} / person` : ''} 
+                                    <br/>
                                     <span className='bold'>no substitutions or modifications<br/>
                                     A minimum of two days notice is required</span><br/>
                                     six courses / reservations and full table participation required<br/>
