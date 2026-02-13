@@ -77,10 +77,13 @@ when setting up new project: must create a .gitignore in /backend
 also keep the one in frontend, but only keep:  
 /node_models  
 dist  
-
-
+  
+  
 Is dessert menu missing archive section?  
   
 Dessert menu format screen displaying too short only on apple tablets in portrait mode???  
-
-useContext for BASE_URL environment variable
+  
+useContext for BASE_URL environment variable  
+  
+olea is closed for a private function  
+  
