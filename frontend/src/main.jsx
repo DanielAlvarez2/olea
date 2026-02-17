@@ -52,6 +52,8 @@ import DessertDrinksUpdate from './Manager/DessertDrinksUpdate.jsx'
 import CoffeeUpdate from './Manager/CoffeeUpdate.jsx'
 import TeaUpdate from './Manager/TeaUpdate.jsx'
 
+import WineBTG from './Manager/WineBTG.jsx'
+
 import WineList from './Manager/WineList.jsx'
 import Events from './Manager/Events.jsx'
 import RestaurantWeeks from './Manager/RestaurantWeeks.jsx'
@@ -85,6 +87,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='specials-menu' element={<SpecialsMenu />} />
         <Route path='events' element={<Events />} />
         <Route path='printer-config' element={<PrinterConfig />} />
+        
+        <Route path='wine-btg' element={<WineBTG />} />
         
         <Route path='specials-menu-update' element={<SpecialsMenuUpdate />} />
         <Route path='specials-menu-format' element={<SpecialsMenuFormat />} />
