@@ -43,6 +43,14 @@ ${formData.get('name')}
 
     }
 
+    async function deleteWineBTG(id){
+        await fetch(`${BASE_URL}/api/wines-btg/${id}`,{method:'DELETE'})
+        .then(res=>res.json())
+        .then(json=>alert(json))
+        .then(()=>getWinesBTG())
+        .catch(err=>console.log(err))
+    }
+
     function clearForm(){
 
     }
@@ -82,10 +90,51 @@ ${formData.get('name')}
                             {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
-                                        <span className='grapes'>{data.grapes} </span>
-                                        <span className='name'>{data.name} </span>
+                                        
+                                        <span className='grapes'>{data.grapes}, </span>
+                                        <span className='name'>{data.name}, </span>
                                         <span> {data.description}</span>
-                                        <span className='price'> &nbsp;{data.price}</span> : 
+                                        <span className='price'> &nbsp;{data.price}</span> 
+                                            
+                                        <div style={{margin:'5px 0'}}>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editWineBTG(   data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.description,
+                                                                                data.price)}>EDIT</span>                                                    
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteWineBTG(data._id)}>DELETE</span>
+
+                                        </div>
+                                        <br/>
+
+
+                                    </div>
+                                )
+                            })}
+
+
+
+
+
+
+
+
+
+
+                        <div className='specials-h2 specials-update-heading'>White</div>
+
+                            {winesBTG.filter(item=>item.section == 'White').length == 0 && <>This Section is Empty</>}
+                            {winesBTG.filter(item=>item.section == 'White').map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>
+                                        <span className='grapes'>{data.grapes}, </span>
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span>
+                                        <span className='price'> &nbsp;{data.price}</span> 
                                             
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn edit-btn'
@@ -100,7 +149,7 @@ ${formData.get('name')}
                                                     onClick={()=>deleteWineBTG(data._id)}>DELETE</span>
 
                                         </div>
-
+                                        <br/>
 
                                     </div>
                                 )
@@ -108,9 +157,83 @@ ${formData.get('name')}
 
 
 
-                        <div className='specials-h2 specials-update-heading'>White</div>
+
+
+
+
+
+
+
+
                         <div className='specials-h2 specials-update-heading'>Rosé</div>
+
+                            {winesBTG.filter(item=>item.section == 'Rosé').length == 0 && <>This Section is Empty</>}
+                            {winesBTG.filter(item=>item.section == 'Rosé').map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>
+                                        
+                                        <span className='grapes'>{data.grapes}, </span>
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span>
+                                        <span className='price'> &nbsp;{data.price}</span> 
+                                            
+                                        <div style={{marginTop:'5px'}}>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editWineBTG(   data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.description,
+                                                                                data.price)}>EDIT</span>                                                    
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteWineBTG(data._id)}>DELETE</span>
+
+                                        </div>
+                                        <br/>
+
+                                    </div>
+                                )
+                            })}
+
+
+
+
+
+
+
+
+
+
                         <div className='specials-h2 specials-update-heading'>Red</div>
+
+                            {winesBTG.filter(item=>item.section == 'Red').length == 0 && <>This Section is Empty</>}
+                            {winesBTG.filter(item=>item.section == 'Red').map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>
+                                        <span className='grapes'>{data.grapes}, </span>
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span>
+                                        <span className='price'> &nbsp;{data.price}</span> 
+                                            
+                                        <div style={{marginTop:'5px'}}>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editWineBTG(   data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.description,
+                                                                                data.price)}>EDIT</span>                                                    
+                                            <span   className='btn delete-btn'
+                                                    onClick={()=>deleteWineBTG(data._id)}>DELETE</span>
+
+                                        </div>
+                                        <br/>
+
+                                    </div>
+                                )
+                            })}
 
 
 
@@ -187,6 +310,7 @@ ${formData.get('name')}
                             <input  type='text'
                                     name='vintage' 
                                     id='vintage'
+                                    required
                                     style={{width:'50px'}} />
                         </label>
                         <br/><br/>
@@ -196,6 +320,7 @@ ${formData.get('name')}
                             <input  type='text'
                                     name='description' 
                                     id='description'
+                                    required
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
