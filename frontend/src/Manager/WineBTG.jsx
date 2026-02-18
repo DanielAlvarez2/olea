@@ -1,8 +1,52 @@
 import {Link} from 'react-router'
+import {useState, useEffect} from 'react'
 import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
 export default function WineBTG(){
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'
+    
+    const [winesBTG, setWinesBTG] = useState([])
+    const [editMode, setEditMode] = useState(false)
+
+    function getWinesBTG(){
+        fetch(`${BASE_URL}/api/wines-btg`)
+            .then(res=>res.json())
+            .then(json=>setWinesBTG(json))
+            .catch(err=>console.log(err))
+    }
+
+    useEffect(()=>getWinesBTG(),[])
+
+    async function createWineBTG(formData){
+        await fetch(`${BASE_URL}/api/wines-btg`,{   method:'POST',
+                                                    headers:{'Content-Type':'application/json'},
+                                                    body: JSON.stringify({  menu: formData.get('menu'),
+                                                                            section: formData.get('section'),
+                                                                            grapes: formData.get('grapes'),
+                                                                            name: formData.get('name'),
+                                                                            description: formData.get('description'),
+                                                                            price: formData.get('price')
+                                                    })
+        })
+        .then(alert(`
+New Wine BTG Created:
+${formData.get('name')}
+            `))
+        .then(getWinesBTG())
+        .catch(err=>console.log(err))
+    }
+
+    function updateWineBTG(){
+
+    }
+
+    function clearForm(){
+
+    }
+
     return(
         <>
             <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
@@ -32,39 +76,20 @@ export default function WineBTG(){
 
 
 
-                        <div className='specials-h2 specials-update-heading'>cava</div>
-                        <div className='specials-h2 specials-update-heading'>white</div>
-                        <div className='specials-h2 specials-update-heading'>rosé</div>
-                        <div className='specials-h2 specials-update-heading'>red</div>
+                        <div className='specials-h2 specials-update-heading'>Cava</div>
 
-                            {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                            {winesBTG.filter(item=>item.section == 'Cava').length == 0 && <>This Section is Empty</>}
+                            {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
-                                        {data.sequence != '1' && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'10px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveUp(data._id))} />
-                                        }
-                                        
-                                        {/* {data.sequence}<br/> */}
+                                        <span className='grapes'>{data.grapes} </span>
                                         <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                         <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                        <span className='price'> &nbsp;{data.price}</span> : 
+                                            
                                         <div style={{marginTop:'5px'}}>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
+                                                    onClick={()=>editWineBTG(   data._id,
                                                                                 data.section,
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
@@ -72,21 +97,10 @@ export default function WineBTG(){
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
+                                                    onClick={()=>deleteWineBTG(data._id)}>DELETE</span>
 
                                         </div>
 
-                                        {data.sequence != allSpecials.filter(item=>item.section == 'appetizers' && item.sequence).length && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'0px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                transform:'rotate(180deg',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveDown(data._id))} />
-                                        }
 
                                     </div>
                                 )
@@ -94,187 +108,29 @@ export default function WineBTG(){
 
 
 
+                        <div className='specials-h2 specials-update-heading'>White</div>
+                        <div className='specials-h2 specials-update-heading'>Rosé</div>
+                        <div className='specials-h2 specials-update-heading'>Red</div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                <div className='specials-h2 specials-update-heading'>entrée</div>}
-                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                <div className='specials-h2 specials-update-heading'>entrées</div>}
-
-                            {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                return(
-                                    <div key={data._id} className='special'>
-                                        {data.sequence != '1' && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'10px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveUp(data._id))} />
-                                        }
-                                        {/* {data.sequence}<br/> */}
-                                        <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                        <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
-                                        <div style={{marginTop:'5px'}}>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
-                                            <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                data.description,
-                                                                                data.price)}>EDIT</span>                                                    
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>                                                                                
-                                        </div>     
-
-                                        {data.sequence != allSpecials.filter(item=>item.section == 'entrées' && item.sequence).length && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'0px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                transform:'rotate(180deg',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveDown(data._id))} />
-                                        }
-
-                                    </div>
-                                )
-                            })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                <div className='specials-h2 specials-update-heading'>dessert</div>}
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                <div className='specials-h2 specials-update-heading'>desserts</div>}
-
-                            {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                return(
-                                    <div key={data._id} className='special'>
-                                        {data.sequence != '1' && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'10px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveUp(data._id))} />
-
-                                        }
-                                        {/* {data.sequence}<br/> */}
-                                        <span className='name'>{data.name} </span>
-                                        {data.allergiesAbbreviated && 
-                                            <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                        <span> {data.description}</span>
-                                        {data.price.length < 3 ? 
-                                            <span className='price'> &nbsp;{data.price}</span> : 
-                                            <div className='price'>{data.price}</div> }
-                                        <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
-                                        <div style={{marginTop:'5px'}}>
-                                            <span   className='btn archive-btn'
-                                                    onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
-                                            <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                data.description,
-                                                                                data.price)}>EDIT</span>                                                    
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteSpecial(data._id)}>DELETE</span>
-                                        </div>
-
-                                        {data.sequence != allSpecials.filter(item=>item.section == 'desserts' && item.sequence).length && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'0px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                transform:'rotate(180deg',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveDown(data._id))} />
-                                        }
-
-                                    </div>
-                                )
-                            })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        </div>
+                        </div>{/* .specials-update-menu */}
                       
 
-
-                    <form   action={editMode ? updateSpecial : createNewSpecial} 
+                    <form   action={editMode ? updateWineBTG : createWineBTG} 
                             className='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'update special' : 'create new special'}
+                            {editMode ? 'update wine BTG' : 'create wine BTG'}
 
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='special-id' />
+                        <input type='hidden' name='id' id='wine-btg-id' />
+
                         <input  type='hidden'
                                 name='menu' 
-                                value='specials' />
+                                value='wine btg' />
                         
                         <div    style={{display:'none'}}
                                 id='section-wrapper'>
@@ -288,9 +144,10 @@ export default function WineBTG(){
                                             &nbsp; 
                                             <select name='section' required defaultValue=''>
                                                 <option disabled value=''>select...</option>
-                                                <option>appetizers</option>
-                                                <option>entrées</option>
-                                                <option>desserts</option>
+                                                <option>Cava</option>
+                                                <option>White</option>
+                                                <option>Rosé</option>
+                                                <option>Red</option>
                                             </select>
 
                                             <br/><br/>
@@ -299,6 +156,19 @@ export default function WineBTG(){
                         }             
                         
                         
+
+
+                        <label>
+                            grape varietal(s)<br/>
+                            <input  type='text' 
+                                    name='grapes' 
+                                    id='grapes'
+                                    required
+                                    style={{width:'100%'}} />
+                        </label>
+                        <br/><br/>
+
+
 
                         <label>
                             name<br/>
@@ -309,35 +179,33 @@ export default function WineBTG(){
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
+
+
+
                         <label>
-                            allergies - abbreviated<br/>
-                            <input  type='text' 
-                                    name='allergies-abbreviated' 
-                                    id='allergies-abbreviated'
-                                    style={{width:'100%'}} />
-                        </label>
-                        <br/><br/>
-                        <label>
-                            allergies - complete<br/>
+                            vintage<br/>
                             <input  type='text'
-                                    id='allergies-complete'
-                                    name='allergies-complete' 
-                                    style={{width:'100%'}} />
+                                    name='vintage' 
+                                    id='vintage'
+                                    style={{width:'50px'}} />
                         </label>
                         <br/><br/>
+
                         <label>
                             description<br/>
-                            <textarea   rows='5'
-                                        name='description' 
-                                        id='description'
-                                        style={{width:'100%'}}></textarea>
+                            <input  type='text'
+                                    name='description' 
+                                    id='description'
+                                    style={{width:'100%'}} />
                         </label>
                         <br/><br/>
+
                         <label>
                             price<br/>
                             <input  type='text'
                                     required 
                                     id='price'
+                                    style={{width:'40px'}}
                                     name='price' />
                         </label>
                         <br/><br/>
@@ -351,7 +219,7 @@ export default function WineBTG(){
                                             color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
-                                    value = {editMode ? 'update special' : 'create new special'} />
+                                    value = {editMode ? 'update wine BTG' : 'create wine BTG'} />
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',

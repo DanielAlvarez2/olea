@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const Special = require('./models/Special.js')
+const WineBTG = require('./models/WineBTG.js')
 const Dessert = require('./models/Dessert.js')
 const DinnerMenuItem = require('./models/DinnerMenuItem.js')
 const DessertDrink = require('./models/DessertDrink.js')
@@ -53,6 +54,29 @@ app.post('/api/specials', async(req,res)=>{
         res.json(`
             Added to Database: 
              - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/wines-btg', async(req,res)=>{
+    try{
+        await WineBTG.create({
+            menu: req.body.menu,
+            section: req.body.section,
+            grapes: req.body.grapes,
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`
+            Added to Database:
+             - ${req.body.name}
+            `)
+        res.json(`
+            Added to Database:
+             - ${req.body.name}
+            `)
     }catch(err){
         console.log(err)
     }
@@ -681,6 +705,15 @@ app.get('/api/specials', async(req,res)=>{
     try{
         const allSpecials = await Special.find().sort({sequence:1})
         res.json(allSpecials)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/wines-btg', async(req,res)=>{
+    try{
+        const allWinesBTG = await WineBTG.find().sort({price:1})
+        res.json(allWinesBTG)
     }catch(err){
         console.log(err)
     }
