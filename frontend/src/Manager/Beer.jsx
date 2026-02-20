@@ -8,91 +8,82 @@ export default function Beer(){
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
     
-    const [winesBTG, setWinesBTG] = useState([])
+    const [beer, setBeer] = useState([])
     const [editMode, setEditMode] = useState(false)
 
-    function getWinesBTG(){
-        fetch(`${BASE_URL}/api/wines-btg`)
+    function getBeer(){
+        fetch(`${BASE_URL}/api/beer`)
             .then(res=>res.json())
-            .then(json=>setWinesBTG(json))
+            .then(json=>setBeer(json))
             .catch(err=>console.log(err))
     }
 
-    useEffect(()=>getWinesBTG(),[])
+    useEffect(()=>getBeer(),[])
 
-    async function createWineBTG(formData){
-        await fetch(`${BASE_URL}/api/wines-btg`,{   method:'POST',
+    async function createBeer(formData){
+        await fetch(`${BASE_URL}/api/beer`,{   method:'POST',
                                                     headers:{'Content-Type':'application/json'},
-                                                    body: JSON.stringify({  menu: formData.get('menu'),
+                                                    body: JSON.stringify({  
                                                                             section: formData.get('section'),
-                                                                            grapes: formData.get('grapes'),
                                                                             name: formData.get('name'),
                                                                             description: formData.get('description'),
-                                                                            vintage: formData.get('vintage'),
                                                                             price: formData.get('price')
                                                     })
         })
         .then(alert(`
-New Wine BTG Created:
+New Beer Created:
 ${formData.get('name')}
             `))
-        .then(getWinesBTG())
+        .then(getBeer())
         .catch(err=>console.log(err))
     }
 
-    function editWineBTG(id,section,grapes,name,vintage,description,price){
+    function editBeer(id,section,name,description,price){
         try{
             setEditMode(true)
             document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
-            document.querySelector('#wine-btg-id').value = id
+            document.querySelector('#beer-id').value = id
             document.querySelector('#section').innerHTML = section
             document.querySelector('#section-wrapper').style.display = 'block'
-            document.querySelector('#grapes').value = grapes
             document.querySelector('#name').value = name
-            document.querySelector('#vintage').value = vintage
             document.querySelector('#description').value = description
             document.querySelector('#price').value = price
-
         }catch(err){
             console.log(err)
         }
     }
 
-    async function updateWineBTG(formData){
-        await fetch(`${BASE_URL}/api/wines-btg/${formData.get('id')}`,{ method:'PUT',
+    async function updateBeer(formData){
+        await fetch(`${BASE_URL}/api/beer/${formData.get('id')}`,{ method:'PUT',
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
-                                                                            grapes: formData.get('grapes'),
                                                                             name: formData.get('name'),
-                                                                            vintage: formData.get('vintage'),
                                                                             description: formData.get('description'),
                                                                             price: formData.get('price')
                                                                         })
         })
         .then(alert(`
-            Wine BTG Updated:
+            Beer Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
-        .then(getWinesBTG())
+        .then(getBeer())
         .catch(err=>console.log(err))
     }
 
-    async function deleteWineBTG(id){
-        await fetch(`${BASE_URL}/api/wines-btg/${id}`,{method:'DELETE'})
+    async function deleteBeer(id){
+        await fetch(`${BASE_URL}/api/beer/${id}`,{method:'DELETE'})
         .then(res=>res.json())
         .then(json=>alert(json))
-        .then(()=>getWinesBTG())
+        .then(()=>getBeer())
         .catch(err=>console.log(err))
     }
 
     function clearForm(){
         try{
-            document.querySelector('#wine-btg-id').value = ''
+            document.querySelector('#beer-id').value = ''
             document.querySelector('#section').innerHTML = ''
             document.querySelector('#section-wrapper').style.display = 'none'
-            document.querySelector('#grapes').value = ''
             document.querySelector('#name').value = ''
-            document.querySelector('#vintage').value = ''
             document.querySelector('#description').value = ''
             document.querySelector('#price').value = ''
             setEditMode(false)
@@ -130,30 +121,25 @@ ${formData.get('name')}
 
 
 
-                        <div className='specials-h2 specials-update-heading'>Cava</div>
+                        <div className='specials-h2 specials-update-heading'>DRAFT</div>
 
-                            {winesBTG.filter(item=>item.section == 'Cava').length == 0 && <>This Section is Empty</>}
-                            {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
+                            {beer.filter(item=>item.section == 'DRAFT').length == 0 && <>This Section is Empty</>}
+                            {beer.filter(item=>item.section == 'DRAFT').map(data=>{
                                 return(
-                                    <div key={data._id} className='special'>
-                                        
-                                        <span className='grapes'>{data.grapes}, </span>
+                                    <div key={data._id} className='special'>                                        
                                         <span className='name'>{data.name}, </span>
-                                        <span className='vintage'>{data.vintage}, </span>
                                         <span> {data.description}</span>
                                         <span className='price'> &nbsp;{data.price}</span> 
                                             
                                         <div style={{margin:'5px 0'}}>
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editWineBTG(   data._id,
+                                                    onClick={()=>editBeer(   data._id,
                                                                                 data.section,
-                                                                                data.grapes,
                                                                                 data.name,
-                                                                                data.vintage,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
-                                                    onClick={()=>deleteWineBTG(data._id)}>DELETE</span>
+                                                    onClick={()=>deleteBeer(data._id)}>DELETE</span>
 
                                         </div>
                                         <br/>
@@ -172,29 +158,25 @@ ${formData.get('name')}
 
 
 
-                        <div className='specials-h2 specials-update-heading'>White</div>
+                        <div className='specials-h2 specials-update-heading'>CAN</div>
 
-                            {winesBTG.filter(item=>item.section == 'White').length == 0 && <>This Section is Empty</>}
-                            {winesBTG.filter(item=>item.section == 'White').map(data=>{
+                            {beer.filter(item=>item.section == 'CAN').length == 0 && <>This Section is Empty</>}
+                            {beer.filter(item=>item.section == 'CAN').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
-                                        <span className='grapes'>{data.grapes}, </span>
                                         <span className='name'>{data.name}, </span>
-                                        <span className='vintage'>{data.vintage}, </span>                                        
                                         <span> {data.description}</span>
                                         <span className='price'> &nbsp;{data.price}</span> 
                                             
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editWineBTG(   data._id,
+                                                    onClick={()=>editBeer(   data._id,
                                                                                 data.section,
-                                                                                data.grapes,
                                                                                 data.name,
-                                                                                data.vintage,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
-                                                    onClick={()=>deleteWineBTG(data._id)}>DELETE</span>
+                                                    onClick={()=>deleteBeer(data._id)}>DELETE</span>
 
                                         </div>
                                         <br/>
@@ -213,30 +195,25 @@ ${formData.get('name')}
 
 
 
-                        <div className='specials-h2 specials-update-heading'>Rosé</div>
+                        <div className='specials-h2 specials-update-heading'>BOTTLE</div>
 
-                            {winesBTG.filter(item=>item.section == 'Rosé').length == 0 && <>This Section is Empty</>}
-                            {winesBTG.filter(item=>item.section == 'Rosé').map(data=>{
+                            {beer.filter(item=>item.section == 'BOTTLE').length == 0 && <>This Section is Empty</>}
+                            {beer.filter(item=>item.section == 'BOTTLE').map(data=>{
                                 return(
                                     <div key={data._id} className='special'>
-                                        
-                                        <span className='grapes'>{data.grapes}, </span>
                                         <span className='name'>{data.name}, </span>
-                                        <span className='vintage'>{data.vintage}, </span>                                        
                                         <span> {data.description}</span>
                                         <span className='price'> &nbsp;{data.price}</span> 
                                             
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editWineBTG(   data._id,
+                                                    onClick={()=>editBeer(   data._id,
                                                                                 data.section,
-                                                                                data.grapes,
                                                                                 data.name,
-                                                                                data.vintage,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
-                                                    onClick={()=>deleteWineBTG(data._id)}>DELETE</span>
+                                                    onClick={()=>deleteBeer(data._id)}>DELETE</span>
 
                                         </div>
                                         <br/>
@@ -251,59 +228,23 @@ ${formData.get('name')}
 
 
 
-
-
-
-                        <div className='specials-h2 specials-update-heading'>Red</div>
-
-                            {winesBTG.filter(item=>item.section == 'Red').length == 0 && <>This Section is Empty</>}
-                            {winesBTG.filter(item=>item.section == 'Red').map(data=>{
-                                return(
-                                    <div key={data._id} className='special'>
-                                        <span className='grapes'>{data.grapes}, </span>
-                                        <span className='name'>{data.name}, </span>
-                                        <span className='vintage'>{data.vintage}, </span>                                        
-                                        <span> {data.description}</span>
-                                        <span className='price'> &nbsp;{data.price}</span> 
-                                            
-                                        <div style={{marginTop:'5px'}}>
-                                            <span   className='btn edit-btn'
-                                                    onClick={()=>editWineBTG(   data._id,
-                                                                                data.section,
-                                                                                data.grapes,
-                                                                                data.name,
-                                                                                data.vintage,
-                                                                                data.description,
-                                                                                data.price)}>EDIT</span>                                                    
-                                            <span   className='btn delete-btn'
-                                                    onClick={()=>deleteWineBTG(data._id)}>DELETE</span>
-
-                                        </div>
-                                        <br/>
-
-                                    </div>
-                                )
-                            })}
 
 
 
                         </div>{/* .specials-update-menu */}
                       
 
-                    <form   action={editMode ? updateWineBTG : createWineBTG} 
+                    <form   action={editMode ? updateBeer : createBeer} 
                             className='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'edit wine BTG' : 'add wine BTG'}
+                            {editMode ? 'edit beer' : 'add beer'}
 
                         </h2>
                         <br/>
 
                         <input type='hidden' name='id' id='wine-btg-id' />
 
-                        <input  type='hidden'
-                                name='menu' 
-                                value='wine btg' />
                         
                         <div    style={{display:'none'}}
                                 id='section-wrapper'>
@@ -317,10 +258,9 @@ ${formData.get('name')}
                                             &nbsp; 
                                             <select name='section' required defaultValue=''>
                                                 <option disabled value=''>select...</option>
-                                                <option>Cava</option>
-                                                <option>White</option>
-                                                <option>Rosé</option>
-                                                <option>Red</option>
+                                                <option>DRAFT</option>
+                                                <option>CAN</option>
+                                                <option>BOTTLE</option>
                                             </select>
 
                                             <br/><br/>
@@ -331,15 +271,6 @@ ${formData.get('name')}
                         
 
 
-                        <label>
-                            grape varietal(s)<br/>
-                            <input  type='text' 
-                                    name='grapes' 
-                                    id='grapes'
-                                    required
-                                    style={{width:'100%'}} />
-                        </label>
-                        <br/><br/>
 
 
 
@@ -353,17 +284,6 @@ ${formData.get('name')}
                         </label>
                         <br/><br/>
 
-
-
-                        <label>
-                            vintage<br/>
-                            <input  type='text'
-                                    name='vintage' 
-                                    id='vintage'
-                                    required
-                                    style={{width:'50px'}} />
-                        </label>
-                        <br/><br/>
 
                         <label>
                             description<br/>
@@ -394,7 +314,7 @@ ${formData.get('name')}
                                             color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
-                                    value = {editMode ? 'update wine BTG' : 'create wine BTG'} />
+                                    value = {editMode ? 'update beer' : 'create beer'} />
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',
