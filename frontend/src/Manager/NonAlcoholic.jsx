@@ -33,7 +33,7 @@ export default function NonAlcoholic(){
 New Non-Alcoholic Drink Created:
 ${formData.get('name')}
             `))
-        .then(clearForm())
+        // .then(clearForm())
         .then(getNonAlcoholicDrinks())
         .catch(err=>console.log(err))
     }
@@ -64,7 +64,7 @@ ${formData.get('name')}
             Non-Alcoholic Drink Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
-        .then(clearForm())
+        // .then(clearForm())
         .then(getNonAlcoholicDrinks())
         .catch(err=>console.log(err))
     }

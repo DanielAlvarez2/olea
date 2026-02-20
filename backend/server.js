@@ -7,6 +7,7 @@ const Dessert = require('./models/Dessert.js')
 const DinnerMenuItem = require('./models/DinnerMenuItem.js')
 const DessertDrink = require('./models/DessertDrink.js')
 const NonAlcoholicDrink = require('./models/NonAlcoholicDrink.js')
+const Sherry = require('./models/Sherry.js')
 const Coffee = require('./models/Coffee.js')
 const Tea = require('./models/Tea.js')
 const TeaPrice = require('./models/TeaPrice.js')
@@ -67,6 +68,31 @@ app.post('/api/non-alcoholic-drinks', async (req,res)=>{
             description: req.body.description,
             price: req.body.price
         })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)        
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/sherries', async (req,res)=>{
+    try{
+        await Sherry.create({
+            grapes: req.body.grapes,
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)        
     }catch(err){
         console.log(err)
     }

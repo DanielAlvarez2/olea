@@ -33,7 +33,7 @@ export default function Sherries(){
 New Sherry Created:
 ${formData.get('name')}
             `))
-        .then(clearForm())
+        // .then(clearForm())
         .then(getSherries())
         .catch(err=>console.log(err))
     }
@@ -66,7 +66,7 @@ ${formData.get('name')}
             Sherry Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
-        .then(clearForm())
+        // .then(clearForm())
         .then(getSherries())
         .catch(err=>console.log(err))
     }
@@ -180,7 +180,7 @@ ${formData.get('name')}
                                     name='grapes' 
                                     id='grapes'
                                     required
-                                    style={{width:'100%',fontWeight:'900'}} />
+                                    style={{width:'100%'}} />
                         </label>
                         <br/><br/>
 
