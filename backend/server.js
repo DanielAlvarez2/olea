@@ -253,6 +253,21 @@ app.delete('/api/non-alcoholic-drinks/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/sherries/:id', async(req,res)=>{
+    try{
+        const target = await Sherry.findById(req.params.id)
+        await Sherry.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.delete('/api/wines-btg/:id', async(req,res)=>{
     try{
         const target = await WineBTG.findById(req.params.id)
