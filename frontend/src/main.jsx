@@ -53,9 +53,8 @@ import CoffeeUpdate from './Manager/CoffeeUpdate.jsx'
 import TeaUpdate from './Manager/TeaUpdate.jsx'
 
 import WineBTG from './Manager/WineBTG.jsx'
-
+import Beer from './Manager/Beer.jsx'
 import NonAlcoholic from './Manager/NonAlcoholic.jsx'
-
 import Sherries from './Manager/Sherries.jsx'
 
 import WineList from './Manager/WineList.jsx'
@@ -93,10 +92,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='printer-config' element={<PrinterConfig />} />
         
         <Route path='wine-btg' element={<WineBTG />} />
-
         <Route path='non-alcoholic' element={<NonAlcoholic />} />
-
         <Route path='sherries' element={<Sherries />} />
+        <Route path='beer' element={<Beer />} />
         
         <Route path='specials-menu-update' element={<SpecialsMenuUpdate />} />
         <Route path='specials-menu-format' element={<SpecialsMenuFormat />} />
