@@ -28,6 +28,7 @@ export default function WineBTG(){
                                                                             grapes: formData.get('grapes'),
                                                                             name: formData.get('name'),
                                                                             description: formData.get('description'),
+                                                                            vintage: formData.get('vintage'),
                                                                             price: formData.get('price')
                                                     })
         })
@@ -37,6 +38,24 @@ ${formData.get('name')}
             `))
         .then(getWinesBTG())
         .catch(err=>console.log(err))
+    }
+
+    function editWineBTG(id,section,grapes,name,vintage,description,price){
+        try{
+            setEditMode(true)
+            document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
+            document.querySelector('#wine-btg-id').value = id
+            document.querySelector('#section').innerHTML = section
+            document.querySelector('#section-wrapper').style.display = 'block'
+            document.querySelector('#grapes').value = grapes
+            document.querySelector('#name').value = name
+            document.querySelector('#vintage').value = vintage
+            document.querySelector('#description').value = description
+            document.querySelector('#price').value = price
+
+        }catch(err){
+            console.log(err)
+        }
     }
 
     function updateWineBTG(){
@@ -100,9 +119,9 @@ ${formData.get('name')}
                                             <span   className='btn edit-btn'
                                                     onClick={()=>editWineBTG(   data._id,
                                                                                 data.section,
+                                                                                data.grapes,
                                                                                 data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
+                                                                                data.vintage,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
