@@ -159,9 +159,9 @@ ${formData.get('name')}
                                             <span   className='btn edit-btn'
                                                     onClick={()=>editWineBTG(   data._id,
                                                                                 data.section,
+                                                                                data.grapes,
                                                                                 data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
+                                                                                data.vintage,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
@@ -200,9 +200,9 @@ ${formData.get('name')}
                                             <span   className='btn edit-btn'
                                                     onClick={()=>editWineBTG(   data._id,
                                                                                 data.section,
+                                                                                data.grapes,
                                                                                 data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
+                                                                                data.vintage,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
@@ -239,9 +239,9 @@ ${formData.get('name')}
                                             <span   className='btn edit-btn'
                                                     onClick={()=>editWineBTG(   data._id,
                                                                                 data.section,
+                                                                                data.grapes,
                                                                                 data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
+                                                                                data.vintage,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
@@ -318,7 +318,7 @@ ${formData.get('name')}
                                     name='name' 
                                     id='name'
                                     required
-                                    style={{width:'100%'}} />
+                                    style={{width:'100%',fontWeight:'900'}} />
                         </label>
                         <br/><br/>
 
