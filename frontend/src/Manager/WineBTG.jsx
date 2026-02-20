@@ -87,7 +87,19 @@ ${formData.get('name')}
     }
 
     function clearForm(){
-
+        try{
+            document.querySelector('#wine-btg-id').value = ''
+            document.querySelector('#section').innerHTML = ''
+            document.querySelector('#section-wrapper').style.display = 'none'
+            document.querySelector('#grapes').value = ''
+            document.querySelector('#name').value = ''
+            document.querySelector('#vintage').value = ''
+            document.querySelector('#description').value = ''
+            document.querySelector('#price').value = ''
+            setEditMode(false)
+        }catch(err){
+            console.log(err)
+        }
     }
 
     return(
