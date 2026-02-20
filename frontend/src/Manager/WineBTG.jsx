@@ -58,8 +58,24 @@ ${formData.get('name')}
         }
     }
 
-    function updateWineBTG(){
-
+    async function updateWineBTG(formData){
+        alert(`formData.get('grapes): ${formData.get('grapes')}`)
+        await fetch(`${BASE_URL}/api/wines-btg/${formData.get('id')}`,{ method:'PUT',
+                                                                        headers:{'Content-Type':'application/json'},
+                                                                        body: JSON.stringify({
+                                                                            grapes: formData.get('grapes'),
+                                                                            name: formData.get('name'),
+                                                                            vintage: formData.get('vintage'),
+                                                                            description: formData.get('description'),
+                                                                            price: formData.get('price')
+                                                                        })
+        })
+        .then(alert(`
+            Wine BTG Updated:
+             - ${formData.get('name')}`))
+        .then(setEditMode(false))
+        .then(getWinesBTG())
+        .catch(err=>console.log(err))
     }
 
     async function deleteWineBTG(id){
@@ -112,6 +128,7 @@ ${formData.get('name')}
                                         
                                         <span className='grapes'>{data.grapes}, </span>
                                         <span className='name'>{data.name}, </span>
+                                        <span className='vintage'>{data.vintage}, </span>
                                         <span> {data.description}</span>
                                         <span className='price'> &nbsp;{data.price}</span> 
                                             
@@ -152,6 +169,7 @@ ${formData.get('name')}
                                     <div key={data._id} className='special'>
                                         <span className='grapes'>{data.grapes}, </span>
                                         <span className='name'>{data.name}, </span>
+                                        <span className='vintage'>{data.vintage}, </span>                                        
                                         <span> {data.description}</span>
                                         <span className='price'> &nbsp;{data.price}</span> 
                                             
@@ -193,6 +211,7 @@ ${formData.get('name')}
                                         
                                         <span className='grapes'>{data.grapes}, </span>
                                         <span className='name'>{data.name}, </span>
+                                        <span className='vintage'>{data.vintage}, </span>                                        
                                         <span> {data.description}</span>
                                         <span className='price'> &nbsp;{data.price}</span> 
                                             
@@ -232,6 +251,7 @@ ${formData.get('name')}
                                     <div key={data._id} className='special'>
                                         <span className='grapes'>{data.grapes}, </span>
                                         <span className='name'>{data.name}, </span>
+                                        <span className='vintage'>{data.vintage}, </span>                                        
                                         <span> {data.description}</span>
                                         <span className='price'> &nbsp;{data.price}</span> 
                                             
@@ -263,7 +283,7 @@ ${formData.get('name')}
                             className='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'update wine BTG' : 'create wine BTG'}
+                            {editMode ? 'edit wine BTG' : 'add wine BTG'}
 
                         </h2>
                         <br/>

@@ -6,7 +6,6 @@ const WineBTGSchema = new mongoose.Schema({
     name:{type:String},
     vintage:{type:String},
     description:{type:String},
-    vintage:{type:String},
     price:{type:String},
 },{timestamps:true})
 
