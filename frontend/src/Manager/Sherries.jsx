@@ -3,46 +3,47 @@ import {useState, useEffect} from 'react'
 import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
-export default function NonAlcoholic(){
+export default function Sherries(){
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
     
-    const [nonAlcoholicDrinks, setNonAlcoholicDrinks] = useState([])
+    const [sherries, setSherries] = useState([])
     const [editMode, setEditMode] = useState(false)
 
-    function getNonAlcoholicDrinks(){
-        fetch(`${BASE_URL}/api/non-alcoholic-drinks`)
+    function getSherries(){
+        fetch(`${BASE_URL}/api/sherries`)
             .then(res=>res.json())
-            .then(json=>setNonAlcoholicDrinks(json))
+            .then(json=>setSherries(json))
             .catch(err=>console.log(err))
     }
 
-    useEffect(()=>getNonAlcoholicDrinks(),[])
+    useEffect(()=>getSherries(),[])
 
-    async function createNonAlcoholicDrink(formData){
-        await fetch(`${BASE_URL}/api/non-alcoholic-drinks`,{   method:'POST',
+    async function createSherry(formData){
+        await fetch(`${BASE_URL}/api/sherries`,{   method:'POST',
                                                     headers:{'Content-Type':'application/json'},
-                                                    body: JSON.stringify({  
+                                                    body: JSON.stringify({  grapes: formData.get('grapes'),
                                                                             name: formData.get('name'),
                                                                             description: formData.get('description'), 
                                                                             price: formData.get('price')
                                                     })
         })
         .then(alert(`
-New Non-Alcoholic Drink Created:
+New Sherry Created:
 ${formData.get('name')}
             `))
         .then(clearForm())
-        .then(getNonAlcoholicDrinks())
+        .then(getSherries())
         .catch(err=>console.log(err))
     }
 
-    function editNonAlcoholicDrink(id,name,description,price){
+    function editSherry(id,grapes,name,description,price){
         try{
             setEditMode(true)
             document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
-            document.querySelector('#non-alcoholic-drink-id').value = id
+            document.querySelector('#sherry-id').value = id
+            document.querySelector('#grapes').value = grapes
             document.querySelector('#name').value = name
             document.querySelector('#description').value = description
             document.querySelector('#price').value = price
@@ -51,35 +52,37 @@ ${formData.get('name')}
         }
     }
 
-    async function updateNonAlcoholicDrink(formData){
-        await fetch(`${BASE_URL}/api/non-alcoholic-drinks/${formData.get('id')}`,{ method:'PUT',
+    async function updateSherry(formData){
+        await fetch(`${BASE_URL}/api/sherries/${formData.get('id')}`,{ method:'PUT',
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
+                                                                            grapes: formData.get('grapes'),
                                                                             name: formData.get('name'),
                                                                             description: formData.get('description'),
                                                                             price: formData.get('price')
                                                                         })
         })
         .then(alert(`
-            Non-Alcoholic Drink Updated:
+            Sherry Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
         .then(clearForm())
-        .then(getNonAlcoholicDrinks())
+        .then(getSherries())
         .catch(err=>console.log(err))
     }
 
-    async function deleteNonAlcoholicDrink(id){
-        await fetch(`${BASE_URL}/api/non-alcoholic-drinks/${id}`,{method:'DELETE'})
+    async function deleteSherry(id){
+        await fetch(`${BASE_URL}/api/sherries/${id}`,{method:'DELETE'})
         .then(res=>res.json())
         .then(json=>alert(json))
-        .then(()=>getNonAlcoholicDrinks())
+        .then(()=>getSherries())
         .catch(err=>console.log(err))
     }
 
     function clearForm(){
         try{
-            document.querySelector('#non-alcoholic-drink-id').value = ''
+            document.querySelector('#sherry-id').value = ''
+            document.querySelector('#grapes').value = ''
             document.querySelector('#name').value = ''
             document.querySelector('#description').value = ''
             document.querySelector('#price').value = ''
@@ -94,17 +97,17 @@ ${formData.get('name')}
             <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
                 <ManagerNavbar page='wine-list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; non-alcoholic drinks</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; sherries</div>
 
 
 
 
                         <div className='specials-update-menu' style={{minHeight:'auto'}}>
                             <div>
-                                <div className='specials-h1' style={{marginBottom:'20px'}}>non-alcoholic drinks</div>
+                                <div className='specials-h1' style={{marginBottom:'20px'}}>sherries</div>
                             </div>
 
-                            {nonAlcoholicDrinks.length == 0 && <><br/>This Section is Empty</>}
+                            {sherries.length == 0 && <><br/>This Section is Empty</>}
 
 
 
@@ -118,22 +121,24 @@ ${formData.get('name')}
 
 
 
-                            {nonAlcoholicDrinks.map(data=>{
+                            {sherries.map(data=>{
                                 return(
                                     <div key={data._id} className='special'>                                        
+                                        <span className='grapes'>{data.grapes}, </span>
                                         <span className='name'>{data.name}, </span>
                                         <span> {data.description}</span>
                                         <span className='price'> &nbsp;{data.price}</span> 
                                             
                                         <div style={{margin:'5px 0'}}>
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editNonAlcoholicDrink(   
+                                                    onClick={()=>editSherry(   
                                                                                 data._id,
+                                                                                data.grapes,
                                                                                 data.name,
                                                                                 data.description,
                                                                                 data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
-                                                    onClick={()=>deleteNonAlcoholicDrink(data._id)}>DELETE</span>
+                                                    onClick={()=>deleteSherry(data._id)}>DELETE</span>
 
                                         </div>
                                         <br/>
@@ -155,19 +160,29 @@ ${formData.get('name')}
                         </div>{/* .specials-update-menu */}
                       
 
-                    <form   action={editMode ? updateNonAlcoholicDrink : createNonAlcoholicDrink} 
+                    <form   action={editMode ? updateSherry : createSherry} 
                             className='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'edit non-alcoholic drink' : 'add non-alcoholic drink'}
+                            {editMode ? 'edit sherry' : 'add sherry'}
 
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='non-alcoholic-drink-id' />
+                        <input type='hidden' name='id' id='sherry-id' />
 
 
 
+
+                        <label>
+                            grape varietal(s)<br/>
+                            <input  type='text' 
+                                    name='grapes' 
+                                    id='grapes'
+                                    required
+                                    style={{width:'100%',fontWeight:'900'}} />
+                        </label>
+                        <br/><br/>
 
                         <label>
                             name<br/>
@@ -208,7 +223,7 @@ ${formData.get('name')}
                                             color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
-                                    value = {editMode ? 'update n/a drink' : 'create non-alcoholic drink'} />
+                                    value = {editMode ? 'update sherry' : 'create sherry'} />
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',
