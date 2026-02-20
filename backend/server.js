@@ -6,6 +6,7 @@ const WineBTG = require('./models/WineBTG.js')
 const Dessert = require('./models/Dessert.js')
 const DinnerMenuItem = require('./models/DinnerMenuItem.js')
 const DessertDrink = require('./models/DessertDrink.js')
+const NonAlcoholicDrink = require('./models/NonAlcoholicDrink.js')
 const Coffee = require('./models/Coffee.js')
 const Tea = require('./models/Tea.js')
 const TeaPrice = require('./models/TeaPrice.js')
@@ -54,6 +55,18 @@ app.post('/api/specials', async(req,res)=>{
         res.json(`
             Added to Database: 
              - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/non-alcoholic-drinks', async (req,res)=>{
+    try{
+        await NonAlcoholicDrink.create({
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price
+        })
     }catch(err){
         console.log(err)
     }
@@ -188,6 +201,21 @@ app.delete('/api/specials/delete/:id', async(req,res)=>{
             },{sequence: i-1})
         }
         await Special.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.delete('/api/non-alcoholic-drinks/:id', async(req,res)=>{
+    try{
+        const target = await NonAlcoholicDrink.findById(req.params.id)
+        await NonAlcoholicDrink.findByIdAndDelete(req.params.id)
         console.log(`
             Deleted from Database:
              - ${target.name}`)
@@ -728,6 +756,15 @@ app.get('/api/specials', async(req,res)=>{
     }
 })
 
+app.get('/api/non-alcoholic-drinks', async(req,res)=>{
+    try{
+        const allNonAlcoholicDrinks = await NonAlcoholicDrink.find().sort({price:1})
+        res.json(allNonAlcoholicDrinks)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/wines-btg', async(req,res)=>{
     try{
         const allWinesBTG = await WineBTG.find().sort({price:1})
@@ -886,6 +923,24 @@ app.put('/api/specials/:id', async(req,res)=>{
             name: req.body.name,
             allergiesAbbreviated: req.body.allergiesAbbreviated,
             allergiesComplete: req.body.allergiesComplete,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`
+            Updated to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/non-alcoholic-drinks/:id', async(req,res)=>{
+    try{
+        await NonAlcoholicDrink.findByIdAndUpdate({_id:req.params.id},{
+            name: req.body.name,
             description: req.body.description,
             price: req.body.price
         })

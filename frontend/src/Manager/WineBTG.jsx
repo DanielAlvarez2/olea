@@ -59,7 +59,6 @@ ${formData.get('name')}
     }
 
     async function updateWineBTG(formData){
-        alert(`formData.get('grapes): ${formData.get('grapes')}`)
         await fetch(`${BASE_URL}/api/wines-btg/${formData.get('id')}`,{ method:'PUT',
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
