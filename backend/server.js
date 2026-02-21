@@ -80,6 +80,25 @@ app.post('/api/non-alcoholic-drinks', async (req,res)=>{
     }
 })
 
+app.post('/api/beer', async (req,res)=>{
+    try{
+        await Beer.create({
+            section: req.body.section,
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)        
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.post('/api/sherries', async (req,res)=>{
     try{
         await Sherry.create({
