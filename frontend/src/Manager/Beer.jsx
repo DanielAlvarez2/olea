@@ -243,7 +243,7 @@ ${formData.get('name')}
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='wine-btg-id' />
+                        <input type='hidden' name='id' id='beer-id' />
 
                         
                         <div    style={{display:'none'}}

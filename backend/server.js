@@ -273,6 +273,21 @@ app.delete('/api/non-alcoholic-drinks/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/beer/:id', async(req,res)=>{
+    try{
+        const target = await Beer.findById(req.params.id)
+        await Beer.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.delete('/api/sherries/:id', async(req,res)=>{
     try{
         const target = await Sherry.findById(req.params.id)
@@ -1002,6 +1017,24 @@ app.put('/api/specials/:id', async(req,res)=>{
             name: req.body.name,
             allergiesAbbreviated: req.body.allergiesAbbreviated,
             allergiesComplete: req.body.allergiesComplete,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`
+            Updated to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/beer/:id', async(req,res)=>{
+    try{
+        await Beer.findByIdAndUpdate({_id:req.params.id},{
+            name: req.body.name,
             description: req.body.description,
             price: req.body.price
         })

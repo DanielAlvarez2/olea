@@ -87,3 +87,7 @@ useContext for BASE_URL environment variable
   
 olea is closed for a private function  
   
+ensure beer prices are type number before submitting form i.e. Yimby 10.50 pint  
+  
+  
+   
