@@ -817,6 +817,15 @@ app.get('/api/specials', async(req,res)=>{
     }
 })
 
+app.get('/api/beer', async(req,res)=>{
+    try{
+        const allBeers = await Beer.find().sort({price:1})
+        res.json(allBeers)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/sherries', async(req,res)=>{
     try{
         allSherries = await Sherry.find().sort({price:1})
