@@ -21,8 +21,8 @@ export default function Sangria(){
                                                 body: JSON.stringify({
                                                     name: formData.get('name'),
                                                     description: formData.get('description'),
-                                                    glassPrice: formData.get('glassPrice'),
-                                                    pitcherPrice: formData.get('pitcherPrice')
+                                                    glassPrice: formData.get('glass-price'),
+                                                    pitcherPrice: formData.get('pitcher-price')
                                                 })
         })
         .then(alert(`
@@ -289,8 +289,8 @@ export default function Sangria(){
                             glass price<br/>
                             <input  type='text'
                                     required 
-                                    id='price'
-                                    name='price' />
+                                    id='glass-price'
+                                    name='glass-price' />
                         </label>
                         <br/><br/>
 
@@ -298,8 +298,8 @@ export default function Sangria(){
                             pitcher price<br/>
                             <input  type='text'
                                     required 
-                                    id='price'
-                                    name='price' />
+                                    id='pitcher-price'
+                                    name='pitcher-price' />
                         </label>
                         <br/><br/>
 
