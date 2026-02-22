@@ -9,6 +9,7 @@ const DinnerMenuItem = require('./models/DinnerMenuItem.js')
 const DessertDrink = require('./models/DessertDrink.js')
 const NonAlcoholicDrink = require('./models/NonAlcoholicDrink.js')
 const Sherry = require('./models/Sherry.js')
+const Sangria = require('./models/Sangria.js')
 const Coffee = require('./models/Coffee.js')
 const Tea = require('./models/Tea.js')
 const TeaPrice = require('./models/TeaPrice.js')
@@ -49,6 +50,27 @@ app.post('/api/specials', async(req,res)=>{
             price: req.body.price,
             allergiesAbbreviated: req.body.allergiesAbbreviated,
             allergiesComplete: req.body.allergiesComplete,
+            sequence: maxSequence ? maxSequence.sequence + 1 : 1
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/sangria', async(req,res)=>{
+    try{
+        const maxSequence = await Sangria.findOne({section:req.body.section}).sort({sequence:-1})
+        await Sangria.create({
+            name: req.body.name,
+            description: req.body.description,
+            glassPrice: req.body.glassPrice,
+            pitcherPrice: req.body.pitcherPrice,
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
         console.log(`
