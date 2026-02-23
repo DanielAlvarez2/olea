@@ -1393,6 +1393,24 @@ app.get('/api/white-categories', async(req,res)=>{
     }
 })
 
+app.get('/api/red', async(req,res)=>{
+    try{
+        const allReds = await Red.find().sort({price:1})
+        res.json(allReds)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/red-categories', async(req,res)=>{
+    try{
+        const allRedCategories = await Red.find().sort({categorySequence:1})
+        res.json(allRedCategories)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/dessert-drink-categories', async(req,res)=>{
     try{
         const allDessertDrinkCategories = await DessertDrink.find().sort({categorySequence:1})

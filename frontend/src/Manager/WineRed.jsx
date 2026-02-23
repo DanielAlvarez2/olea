@@ -82,7 +82,7 @@ export default function WineRed(){
                 .then(json=>{
                     let redCategories = new Set()
                     json.forEach(wine=>redCategories.add(wine.category))
-                    setWhiteCategories([...redCategories])
+                    setRedCategories([...redCategories])
                 })
                 .catch(err=>console.log(err))
         }catch(err){
