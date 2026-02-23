@@ -5,6 +5,7 @@ const Special = require('./models/Special.js')
 const WineBTG = require('./models/WineBTG.js')
 const Beer = require('./models/Beer.js')
 const Sparkling = require('./models/Sparkling.js')
+const Rosé = require('./models/Rosé.js')
 const Spirit = require('./models/Spirit.js')
 const Dessert = require('./models/Dessert.js')
 const DinnerMenuItem = require('./models/DinnerMenuItem.js')
@@ -166,6 +167,26 @@ app.post('/api/sherries', async (req,res)=>{
 app.post('/api/sparkling', async (req,res)=>{
     try{
         await Sparkling.create({
+            grapes: req.body.grapes,
+            name: req.body.name,
+            vintage: req.body.vintage,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)        
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/rose', async (req,res)=>{
+    try{
+        await Rosé.create({
             grapes: req.body.grapes,
             name: req.body.name,
             vintage: req.body.vintage,

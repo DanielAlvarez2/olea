@@ -52,6 +52,7 @@ import DessertDrinksUpdate from './Manager/DessertDrinksUpdate.jsx'
 import CoffeeUpdate from './Manager/CoffeeUpdate.jsx'
 import TeaUpdate from './Manager/TeaUpdate.jsx'
 
+import WineRosé from './Manager/WineRosé.jsx'
 import WineSparkling from './Manager/WineSparkling.jsx'
 import WineBTB from './Manager/WineBTB.jsx'
 import WineBTG from './Manager/WineBTG.jsx'
@@ -96,6 +97,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='events' element={<Events />} />
         <Route path='printer-config' element={<PrinterConfig />} />
         
+        <Route path='wine-rosé' element={<WineRosé />} />
         <Route path='wine-sparkling' element={<WineSparkling />} />
         <Route path='wine-btg' element={<WineBTG />} />
         <Route path='wine-btb' element={<WineBTB />} />
