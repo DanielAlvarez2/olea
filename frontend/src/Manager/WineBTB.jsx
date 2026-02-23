@@ -21,7 +21,7 @@ export default function WineBTB(){
                                 }}>
                         <Link to='/wine-sparkling'><li style={{flexGrow:'1'}}>cava & champagne</li></Link>
                         <Link to='/wine-rosé'><li style={{flexGrow:'1'}}>rosé</li></Link>
-                        <Link to='/wine-btb'><li style={{flexGrow:'1'}}>white</li></Link>
+                        <Link to='/wine-white'><li style={{flexGrow:'1'}}>white</li></Link>
                         <Link to='/wine-btb'><li style={{flexGrow:'1'}}>red</li></Link>
                     </ul>
 
