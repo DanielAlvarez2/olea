@@ -38,8 +38,8 @@ export default function Sangria(){
                                                                         body: JSON.stringify({
                                                                                 name: formData.get('name'),
                                                                                 description: formData.get('description'),
-                                                                                glassPrice: formData.get('glassPrice'),
-                                                                                pitcherPrice: formData.get('pitcherPrice'),
+                                                                                glassPrice: formData.get('glass-price'),
+                                                                                pitcherPrice: formData.get('pitcher-price'),
                                                     })
         })
         .then(alert(`
@@ -73,7 +73,7 @@ export default function Sangria(){
         }
     }
 
-    function editSangria(id,name,description,glassPrice, pitcherPrice){
+    function editSangria(id,name,description,glassPrice,pitcherPrice){
         try{
             setEditMode(true)
             document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
@@ -138,7 +138,7 @@ export default function Sangria(){
                             <br/>
 
 
-
+                            {sangrias.length == 0 && <>This Section is Empty</>}
 
 
 
@@ -172,11 +172,12 @@ export default function Sangria(){
                                             <div className='price'>{data.pitcherPrice}</div> 
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editSpecial(   data._id,
+                                                    onClick={()=>editSangria(   data._id,
                                                                                 data.name,
                                                                                 data.description,
+                                                                                data.glassPrice,
                                                                                 data.pitcherPrice,
-                                                                                data.glassPrice)}>EDIT</span>                                                    
+                                                                                )}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
                                                     onClick={()=>deleteSangria(data._id)}>DELETE</span>
 
@@ -260,7 +261,7 @@ export default function Sangria(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='special-id' />
+                        <input type='hidden' name='id' id='sangria-id' />
                         
 
                         
@@ -272,7 +273,7 @@ export default function Sangria(){
                                     name='name' 
                                     id='name'
                                     required
-                                    style={{width:'100%'}} />
+                                    style={{width:'100%',fontWeight:'900'}} />
                         </label>
                         <br/><br/>
 
