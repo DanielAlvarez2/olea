@@ -442,6 +442,21 @@ app.delete('/api/sparkling/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/rose/:id', async(req,res)=>{
+    try{
+        const target = await Rosé.findById(req.params.id)
+        await Rosé.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.delete('/api/wines-btg/:id', async(req,res)=>{
     try{
         const target = await WineBTG.findById(req.params.id)
@@ -1155,6 +1170,15 @@ app.get('/api/sparkling', async(req,res)=>{
     try{
         allSparkling = await Sparkling.find().sort({price:1})
         res.json(allSparkling)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/rose', async(req,res)=>{
+    try{
+        allRosé = await Rosé.find().sort({price:1})
+        res.json(allRosé)
     }catch(err){
         console.log(err)
     }

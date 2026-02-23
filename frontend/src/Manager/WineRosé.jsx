@@ -12,7 +12,7 @@ export default function WineRosé(){
     const [editMode, setEditMode] = useState(false)
 
     function getRosé(){
-        fetch(`${BASE_URL}/api/rosé`)
+        fetch(`${BASE_URL}/api/rose`)
             .then(res=>res.json())
             .then(json=>setRosé(json))
             .catch(err=>console.log(err))
@@ -75,7 +75,7 @@ ${formData.get('name')}
     }
 
     async function deleteRosé(id){
-        await fetch(`${BASE_URL}/api/rosé/${id}`,{method:'DELETE'})
+        await fetch(`${BASE_URL}/api/rose/${id}`,{method:'DELETE'})
         .then(res=>res.json())
         .then(json=>alert(json))
         .then(()=>getRosé())
@@ -130,7 +130,7 @@ ${formData.get('name')}
                                     <div key={data._id} className='special'>                                        
                                         <span className='grapes'>{data.grapes}, </span>
                                         <span className='name'>{data.name}, </span>
-                                        <span> {data.vintage}</span>
+                                        <span> {data.vintage},</span>
                                         <span> {data.description} / {data.price}</span>
                                             
                                         <div style={{margin:'5px 0'}}>
