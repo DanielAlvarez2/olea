@@ -619,6 +619,22 @@ app.put('/api/specials/move-up/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/sangria/move-up/:id', async(req,res)=>{
+    try{
+        const target= await Sangria.findById(req.params.id)
+        await Sangria.findOneAndUpdate({sequence: target.sequence - 1},{sequence: target.sequence})
+        await Sangria.findByIdAndUpdate(req.params.id,{sequence: target.sequence - 1})
+        console.log(`
+            Moved Up:
+            ${target.name}`)
+        res.json(`
+            Moved Up:
+            ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/dinner-menu-items/move-up/:id', async(req,res)=>{
     try{
         const target= await DinnerMenuItem.findById(req.params.id)
@@ -830,6 +846,23 @@ app.put('/api/specials/move-down/:id', async(req,res)=>{
             ]
         },{sequence: target.sequence})
         await Special.findByIdAndUpdate(req.params.id,{sequence: target.sequence + 1})
+        console.log(`
+            Moved Down:
+            ${target.name}`)
+        res.json(`
+            Moved Down:
+            ${target.name}`)
+       
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/sangria/move-down/:id', async(req,res)=>{
+    try{
+        const target= await Sangria.findById(req.params.id)
+        await Sangria.findOneAndUpdate({sequence: target.sequence + 1},{sequence: target.sequence})
+        await Sangria.findByIdAndUpdate(req.params.id,{sequence: target.sequence + 1})
         console.log(`
             Moved Down:
             ${target.name}`)
