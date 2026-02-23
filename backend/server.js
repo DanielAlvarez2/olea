@@ -616,6 +616,31 @@ app.delete('/api/spirits/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/white/:id', async(req,res)=>{
+    try{
+        const target = await White.findById(req.params.id)
+        const maxCategorySequenceWhite = await White.findOne().sort({categorySequence:-1})
+        const maxCategorySequence = maxCategorySequenceWhite.categorySequence
+
+        if(await White.find({categorySequence: target.categorySequence}).length == 1 
+            && target.categorySequence != maxCategorySequence 
+        ) {
+                for (let i=target.categorySequence+1;i<=maxCategorySequence;i++){
+                    await White.updateMany({categorySequence:i},{$set:{categorySequence:i-1}})
+                }
+        }
+        await White.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.delete('/api/coffees/delete/:id', async(req,res)=>{
     try{
         const target = await Coffee.findById(req.params.id)
@@ -1270,6 +1295,24 @@ app.get('/api/spirit-categories', async(req,res)=>{
     try{
         const allSpiritCategories = await Spirit.find().sort({categorySequence:1})
         res.json(allSpiritCategories)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/white', async(req,res)=>{
+    try{
+        const allWhites = await White.find().sort({price:1})
+        res.json(allWhites)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/white-categories', async(req,res)=>{
+    try{
+        const allWhiteCategories = await White.find().sort({categorySequence:1})
+        res.json(allWhiteCategories)
     }catch(err){
         console.log(err)
     }

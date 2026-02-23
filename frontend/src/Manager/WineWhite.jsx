@@ -14,7 +14,7 @@ export default function WineWhite(){
     const [displayCategoryDropdown, setDisplayCategoryDropdown] = useState(true)
     const [editMode, setEditMode] = useState(false)
     const [currentCategory, setCurrentCategory] = useState('')
-    const [whiteCategories, setwhiteCategories] = useState([])
+    const [whiteCategories, setWhiteCategories] = useState([])
     useEffect(()=>getWhite(),[])
     useEffect(()=>getWhiteCategories(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -84,7 +84,6 @@ export default function WineWhite(){
                     setWhiteCategories([...whiteCategories])
                 })
                 .catch(err=>console.log(err))
-
         }catch(err){
             console.log(err)
         }
@@ -201,10 +200,9 @@ export default function WineWhite(){
                                     <div key={data._id} className='dessert-drinks-display'>
                                         
                                         
-                                        <span> {data.grapes}</span>
-                                        <span className='dessert-drink-name'>&nbsp;{data.name} </span>
-                                        <span> {data.description}</span>
-                                        <span className='price'> &nbsp;{data.price}</span>  
+                                        <span> {data.grapes}, </span>
+                                        <span className='dessert-drink-name'>{data.name}</span>
+                                        <span>, {data.description} / {data.price}</span>
                                         <div style={{marginTop:'5px'}}>
                                             
                                             <span   className='btn edit-btn'
@@ -219,7 +217,7 @@ export default function WineWhite(){
                                                     onClick={()=>deleteWhite(data._id)}>DELETE</span>
 
                                         </div>
-
+                                        <br/><br/>
 
                                     </div>
                                 )
