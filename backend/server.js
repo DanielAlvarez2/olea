@@ -974,6 +974,54 @@ app.put('/api/spirits/move-category-down/:sequence', async(req,res)=>{
     }
 })
 
+app.put('/api/white/move-category-up/:sequence', async(req,res)=>{
+    try{
+        console.log(req.params.sequence)
+        await White.updateMany(
+            {categorySequence:req.params.sequence},
+            {$set:{categorySequence:0}}
+        )
+        await White.updateMany(
+            {categorySequence: +req.params.sequence - 1},
+            {$set:{categorySequence:req.params.sequence}}
+        )
+        await White.updateMany(
+            {categorySequence:0},
+            {$set:{categorySequence: +req.params.sequence - 1}}
+        )
+        console.log(`
+            Moved Category Up`)
+        res.json(`
+            Moved Category Up`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/white/move-category-down/:sequence', async(req,res)=>{
+    try{
+        console.log(req.params.sequence)
+        await White.updateMany(
+            {categorySequence:req.params.sequence},
+            {$set:{categorySequence:0}}
+        )
+        await White.updateMany(
+            {categorySequence:+req.params.sequence + 1},
+            {$set:{categorySequence:req.params.sequence}}
+        )
+        await White.updateMany(
+            {categorySequence:0},
+            {$set:{categorySequence: +req.params.sequence + 1}}
+        )
+        console.log(`
+            Moved Category Down`)
+        res.json(`
+            Moved Category Down`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/dessert-drinks/move-category-down/:sequence', async(req,res)=>{
     try{
         console.log(req.params.sequence)
@@ -1589,6 +1637,26 @@ app.put('/api/sherries/:id', async(req,res)=>{
 app.put('/api/sparkling/:id', async(req,res)=>{
     try{
         await Sparkling.findByIdAndUpdate({_id:req.params.id},{
+            grapes: req.body.grapes,
+            name: req.body.name,
+            vintage: req.body.vintage,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`
+            Updated to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/white/:id', async(req,res)=>{
+    try{
+        await White.findByIdAndUpdate({_id:req.params.id},{
             grapes: req.body.grapes,
             name: req.body.name,
             vintage: req.body.vintage,

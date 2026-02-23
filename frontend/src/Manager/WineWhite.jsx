@@ -57,6 +57,7 @@ export default function WineWhite(){
             White Wine Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
+        .then(clearForm())
         .then(getWhite())
         .catch(err=>console.log(err))
     }
@@ -105,7 +106,7 @@ export default function WineWhite(){
     function editWhite(id,category,grapes,name,vintage,description,price){
         try{
             setEditMode(true)
-            document.querySelector('#white-form').scrollIntoView({behavior:'smooth'})
+            document.querySelector('#desserts-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#white-id').value = id
             document.querySelector('#category-edit').textContent = `: ${category}`
             document.querySelector('#grapes').value = grapes

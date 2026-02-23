@@ -34,7 +34,6 @@ export default function WineSparkling(){
 New Sparkling Created:
 ${formData.get('name')}
             `))
-        // .then(clearForm())
         .then(getSparkling())
         .catch(err=>console.log(err))
     }
@@ -69,7 +68,6 @@ ${formData.get('name')}
             Sparkling Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
-        // .then(clearForm())
         .then(getSparkling())
         .catch(err=>console.log(err))
     }
