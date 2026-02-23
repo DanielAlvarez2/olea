@@ -280,6 +280,25 @@ app.delete('/api/specials/delete/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/sangria/delete/:id', async(req,res)=>{
+    try{
+        const target = await Sangria.findById(req.params.id)
+        const maxSequence = await Sangria.findOne().sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await Sangria.findOneAndUpdate({sequence: i},{sequence: i-1})
+        }
+        await Sangria.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.delete('/api/non-alcoholic-drinks/:id', async(req,res)=>{
     try{
         const target = await NonAlcoholicDrink.findById(req.params.id)
