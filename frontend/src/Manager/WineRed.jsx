@@ -30,7 +30,8 @@ export default function WineRed(){
                                                             name: formData.get('name'),
                                                             vintage: formData.get('vintage'),
                                                             description: formData.get('description'),
-                                                            price: formData.get('price')
+                                                            price: formData.get('price'),
+                                                            halfBottlePrice: formData.get('half-bottle-price'),
                                                 })
         })
         .then(alert(`
@@ -204,6 +205,9 @@ export default function WineRed(){
                                         <span> {data.grapes}, </span>
                                         <span className='dessert-drink-name'>{data.name}</span>
                                         <span>, {data.description} / {data.price}</span>
+                                        {data.halfBottlePrice &&
+                                                                <div>1/2 btl. / {data.halfBottlePrice}</div>
+                                        }
                                         <div style={{marginTop:'5px'}}>
                                             
                                             <span   className='btn edit-btn'
@@ -357,16 +361,31 @@ export default function WineRed(){
                         </label>
                         <br/><br/>
 
-                        <label>
-                            price<br/>
-                            <input  type='text'
-                                    required 
-                                    id='price'
-                                    autoComplete='off'
-                                    style={{width:'5ch'}}
-                                    name='price' />
-                        </label>
-                        <br/><br/>
+                        <div style={{display:'flex',alignItems:'flex-end',gap:'20px'}}>
+
+                            <label>
+                                price<br/>
+                                <input  type='text'
+                                        required 
+                                        id='price'
+                                        autoComplete='off'
+                                        style={{width:'5ch'}}
+                                        name='price' />
+                            </label>
+                            <br/><br/>
+
+                            <label>
+                                <span style={{fontSize:'12px'}}>1/2 btl.</span>
+                                <br/>
+                                price<br/>
+                                <input  type='text'
+                                        id='half-bottle-price'
+                                        autoComplete='off'
+                                        style={{width:'5ch'}}
+                                        name='half-bottle-price' />
+                            </label>
+                        </div>
+                            <br/><br/>
 
                         <div    id='desserts-form-buttons' 
                                 style={{display:'flex',justifyContent:'space-around'}}>

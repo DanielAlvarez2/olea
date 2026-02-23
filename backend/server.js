@@ -226,6 +226,7 @@ app.post('/api/red', async(req,res)=>{
             vintage: req.body.vintage.trim(),
             description: req.body.description.trim(),
             price: req.body.price.trim(),
+            halfBottlePrice: req.body.halfBottlePrice.trim(),
         })
         console.log(`
             Added to Database: 
@@ -657,6 +658,31 @@ app.delete('/api/white/:id', async(req,res)=>{
                 }
         }
         await White.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.delete('/api/red/:id', async(req,res)=>{
+    try{
+        const target = await Red.findById(req.params.id)
+        const maxCategorySequenceRed = await Red.findOne().sort({categorySequence:-1})
+        const maxCategorySequence = maxCategorySequenceRed.categorySequence
+
+        if(await Red.find({categorySequence: target.categorySequence}).length == 1 
+            && target.categorySequence != maxCategorySequence 
+        ) {
+                for (let i=target.categorySequence+1;i<=maxCategorySequence;i++){
+                    await Red.updateMany({categorySequence:i},{$set:{categorySequence:i-1}})
+                }
+        }
+        await Red.findByIdAndDelete(req.params.id)
         console.log(`
             Deleted from Database:
              - ${target.name}`)

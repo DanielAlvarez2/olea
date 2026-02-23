@@ -7,6 +7,7 @@ const RedSchema = new mongoose.Schema({
     vintage:{type:String},
     description:{type:String},
     price:{type:Number},
+    halfBottlePrice:{type:Number},
     categorySequence:{type:Number},
 },{timestamps:true})
 
