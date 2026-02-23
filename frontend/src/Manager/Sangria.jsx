@@ -126,13 +126,13 @@ export default function Sangria(){
             <div className='manager-page-wrapper'>
                 <ManagerNavbar page='wine list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; sangria</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; sangría</div>
 
 
 
                         <div className='specials-update-menu' style={{minHeight:'auto'}}>
                             <div>
-                                <div className='specials-h1' style={{marginBottom:'0'}}>sangria</div>
+                                <div className='specials-h1' style={{marginBottom:'0'}}>sangría</div>
                             </div>
 
                             <br/>
@@ -165,11 +165,9 @@ export default function Sangria(){
                                         
                                         {/* {data.sequence}<br/> */}
                                         <span className='name'>{data.name} </span>
-                                        <span> {data.description}</span>
+                                        <span> {data.description}</span> (glass/pitcher) {data.glassPrice} / {data.pitcherPrice}
                                         
                                             
-                                            <div className='price'>{data.glassPrice}</div> 
-                                            <div className='price'>{data.pitcherPrice}</div> 
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn edit-btn'
                                                     onClick={()=>editSangria(   data._id,
@@ -256,7 +254,7 @@ export default function Sangria(){
                             className='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'update sangria' : 'create sangria'}
+                            {editMode ? 'edit sangria' : 'add sangria'}
 
                         </h2>
                         <br/>
@@ -290,6 +288,7 @@ export default function Sangria(){
                             glass price<br/>
                             <input  type='text'
                                     required 
+                                    style={{width:'30px'}}
                                     id='glass-price'
                                     name='glass-price' />
                         </label>
@@ -298,6 +297,7 @@ export default function Sangria(){
                         <label>
                             pitcher price<br/>
                             <input  type='text'
+                                    style={{width:'30px'}}
                                     required 
                                     id='pitcher-price'
                                     name='pitcher-price' />

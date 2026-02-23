@@ -160,11 +160,9 @@ export default function CraftDrinks(){
                                         }
                                         
                                         {/* {data.sequence}<br/> */}
-                                        <span className='name'>{data.name} </span>
-                                        <span> {data.description}</span>
-                                        
-                                            
-                                            <div className='price'>{data.price}</div> 
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span> / {data.price}
+                                                                        
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn edit-btn'
                                                     onClick={()=>editDrink(   data._id,
@@ -284,6 +282,7 @@ export default function CraftDrinks(){
                             price<br/>
                             <input  type='text'
                                     required 
+                                    style={{width:'40px'}}
                                     id='price'
                                     name='price' />
                         </label>

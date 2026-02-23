@@ -4,6 +4,7 @@ const cors = require('cors')
 const Special = require('./models/Special.js')
 const WineBTG = require('./models/WineBTG.js')
 const Beer = require('./models/Beer.js')
+const Spirit = require('./models/Spirit.js')
 const Dessert = require('./models/Dessert.js')
 const DinnerMenuItem = require('./models/DinnerMenuItem.js')
 const DessertDrink = require('./models/DessertDrink.js')
@@ -1097,6 +1098,30 @@ app.post('/api/dessert-drinks', async(req,res)=>{
         console.log(err)
     }
 })
+
+app.post('/api/spirits', async(req,res)=>{
+    try{
+        const existingCategoryItem = await Spirit.findOne({category:req.body.category.trim()})
+        const maxCategorySequence = await Spirit.findOne().sort({categorySequence:-1})
+        
+        await Spirit.create({
+            category:req.body.category.trim(),
+            categorySequence: existingCategoryItem  ? existingCategoryItem.categorySequence 
+                                                    : maxCategorySequence ? maxCategorySequence.categorySequence + 1 : 1, 
+            name: req.body.name.trim(),
+            price: req.body.price.trim(),
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 
 app.get('/api/coffees', async(req,res)=>{
