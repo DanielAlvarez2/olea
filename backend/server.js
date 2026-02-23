@@ -185,21 +185,27 @@ app.post('/api/sparkling', async (req,res)=>{
     }
 })
 
-app.post('/api/white', async (req,res)=>{
+app.post('/api/white', async(req,res)=>{
     try{
+        const existingCategoryItem = await White.findOne({category:req.body.category.trim()})
+        const maxCategorySequence = await White.findOne().sort({categorySequence:-1})
+        
         await White.create({
-            grapes: req.body.grapes,
-            name: req.body.name,
-            vintage: req.body.vintage,
-            description: req.body.description,
-            price: req.body.price
+            category:req.body.category.trim(),
+            categorySequence: existingCategoryItem  ? existingCategoryItem.categorySequence 
+                                                    : maxCategorySequence ? maxCategorySequence.categorySequence + 1 : 1, 
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim(),
         })
         console.log(`
             Added to Database: 
              - ${req.body.name}`)
         res.json(`
             Added to Database: 
-             - ${req.body.name}`)        
+             - ${req.body.name}`)
     }catch(err){
         console.log(err)
     }
