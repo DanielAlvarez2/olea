@@ -61,7 +61,7 @@ export default function CraftDrinks(){
 
     function deleteDrink(id){
         try{
-            fetch(`${BASE_URL}/api/drinks/delete/${id}`,{method:'DELETE'})
+            fetch(`${BASE_URL}/api/drinks/${id}`,{method:'DELETE'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
                 .then(()=>getDrinks())
