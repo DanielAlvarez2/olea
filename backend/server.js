@@ -1060,6 +1060,24 @@ app.get('/api/dessert-drinks', async(req,res)=>{
     }
 })
 
+app.get('/api/spirits', async(req,res)=>{
+    try{
+        const allSpirits = await Spirit.find().sort({price:1})
+        res.json(allSpirits)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/spirit-categories', async(req,res)=>{
+    try{
+        const allSpiritCategories = await Spirit.find().sort({categorySequence:1})
+        res.json(allSpiritCategories)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/dessert-drink-categories', async(req,res)=>{
     try{
         const allDessertDrinkCategories = await DessertDrink.find().sort({categorySequence:1})

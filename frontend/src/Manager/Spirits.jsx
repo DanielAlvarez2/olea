@@ -110,25 +110,6 @@ export default function Spirits(){
         }
     }
 
-    function moveUp(id){
-        try{
-            fetch(`${BASE_URL}/api/spirits/move-up/${id}`,{method:'PUT'})
-                .then(()=>getSpirits())
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
-
-    function moveDown(id){
-        try{
-            fetch(`${BASE_URL}/api/spirits/move-down/${id}`,{method:'PUT'})
-                .then(()=>getSpirits())
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
 
     function clearForm(){
         try{
@@ -208,19 +189,9 @@ export default function Spirits(){
                                 return(
                                     <div key={data._id} className='dessert-drinks-display'>
 
-                                        {data.sequence != '1' && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'10px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveUp(data._id))} />
-                                        }
                                         
                                         
-                                        <span className='dessert-drink-name'>&nbsp;{data.name} </span>
+                                        <span className='dessert-drink-name'>&nbsp;{data.name} /</span>
                                         <span className='price'> &nbsp;{data.price}</span>  
                                         <div style={{marginTop:'5px'}}>
                                             
@@ -233,18 +204,7 @@ export default function Spirits(){
                                                     onClick={()=>deleteSpirit(data._id)}>DELETE</span>
 
                                         </div>
-
-                                        {data.sequence != spirits.filter(item=>item.category == data.category).length && 
-                                            <FaCaretUp style={{ margin:'0 auto',
-                                                                fontSize:'60px',
-                                                                position:'relative',
-                                                                top:'0px',
-                                                                color:'grey',
-                                                                cursor:'pointer',
-                                                                transform:'rotate(180deg',
-                                                                width:'100%'}}
-                                                        onClick={(()=>moveDown(data._id))} />
-                                        }
+                                        <br/><br/>
 
                                     </div>
                                 )
@@ -342,13 +302,13 @@ export default function Spirits(){
                         <br/>
 
                         <label>
-                            <span style={{fontWeight:'900'}}>name</span><br/>
+                            <span>name</span><br/>
                             <input  type='text' 
                                     name='name' 
                                     autoComplete='off'
                                     id='name'
                                     required
-                                    style={{width:'100%',fontWeight:'900'}} />
+                                    style={{width:'100%'}} />
                         </label>
                         <br/><br/>
 
