@@ -93,3 +93,5 @@ alert`item created/deleted/updated` first check response is 200/ok
     
 make all forms trim blank spaces and remove any leading/trailing commas  
   
+search server.js for /delete/ which is not neccesary  
+  

@@ -485,6 +485,38 @@ app.delete('/api/dessert-drinks/delete/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/spirits/:id', async(req,res)=>{
+    try{
+        const target = await Spirit.findById(req.params.id)
+        const maxCategorySequenceDrink = await Spirit.findOne().sort({categorySequence:-1})
+        const maxCategorySequence = maxCategorySequenceDrink.categorySequence
+
+        console.log('target.sequence: ' + target.sequence)
+        console.log('target.categorySequence: '+ target.categorySequence)
+        console.log('maxCategorySequence: '+ maxCategorySequence)
+
+
+        if(await Spirit.find({categorySequence: target.categorySequence}).length == 1 
+            && target.categorySequence != maxCategorySequence 
+        ) {
+                console.log('***fire***')
+                for (let i=target.categorySequence+1;i<=maxCategorySequence;i++){
+                    console.log('i: '+i)
+                    await Spirit.updateMany({categorySequence:i},{$set:{categorySequence:i-1}})
+                }
+        }
+        await Spirit.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.delete('/api/coffees/delete/:id', async(req,res)=>{
     try{
         const target = await Coffee.findById(req.params.id)
