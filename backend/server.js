@@ -1732,7 +1732,28 @@ app.put('/api/white/:id', async(req,res)=>{
             name: req.body.name,
             vintage: req.body.vintage,
             description: req.body.description,
-            price: req.body.price
+            price: req.body.price,
+        })
+        console.log(`
+            Updated to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/red/:id', async(req,res)=>{
+    try{
+        await Red.findByIdAndUpdate({_id:req.params.id},{
+            grapes: req.body.grapes,
+            name: req.body.name,
+            vintage: req.body.vintage,
+            description: req.body.description,
+            price: req.body.price,
+            halfBottlePrice: req.body.halfBottlePrice,
         })
         console.log(`
             Updated to Database: 
