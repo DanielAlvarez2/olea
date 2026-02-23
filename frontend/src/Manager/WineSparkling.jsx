@@ -46,7 +46,7 @@ ${formData.get('name')}
             document.querySelector('#sparkling-id').value = id
             document.querySelector('#grapes').value = grapes
             document.querySelector('#name').value = name
-            document.querySelector('#grapes').value = grapes
+            document.querySelector('#vintage').value = vintage
             document.querySelector('#description').value = description
             document.querySelector('#price').value = price
         }catch(err){
