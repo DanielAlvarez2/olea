@@ -89,5 +89,6 @@ olea is closed for a private function
   
 ensure beer prices are type number before submitting form i.e. Yimby 10.50 pint  
   
-  
+alert(`item created/deleted/updated`) first check response is 200/ok  
+    
    

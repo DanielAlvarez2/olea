@@ -24,7 +24,7 @@ export default function WineList(){
                         <Link to='/sangria'><li style={{flexGrow:'1'}}>sangria</li></Link>
                         <Link to='/non-alcoholic'><li style={{flexGrow:'1'}}>non-alcoholic</li></Link>
                         <Link to='/beer'><li style={{flexGrow:'1'}}>beer</li></Link>
-                        <Link to='/wine-list'><li style={{flexGrow:'1'}}>craft drinks</li></Link>
+                        <Link to='/craft-drinks'><li style={{flexGrow:'1'}}>craft drinks</li></Link>
                         <Link to='/sherries'><li style={{flexGrow:'1'}}>sherries</li></Link>
                         <Link to='/wine-list'><li style={{flexGrow:'1'}}>spirits</li></Link>
                     </ul>

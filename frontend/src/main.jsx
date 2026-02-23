@@ -57,6 +57,7 @@ import Beer from './Manager/Beer.jsx'
 import NonAlcoholic from './Manager/NonAlcoholic.jsx'
 import Sherries from './Manager/Sherries.jsx'
 import Sangria from './Manager/Sangria.jsx'
+import CraftDrinks from './Manager/CraftDrinks.jsx'
 
 import WineList from './Manager/WineList.jsx'
 import Events from './Manager/Events.jsx'
@@ -97,6 +98,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='sherries' element={<Sherries />} />
         <Route path='beer' element={<Beer />} />
         <Route path='sangria' element={<Sangria />} />
+        <Route path='craft-drinks' element={<CraftDrinks />} />
         
         <Route path='specials-menu-update' element={<SpecialsMenuUpdate />} />
         <Route path='specials-menu-format' element={<SpecialsMenuFormat />} />
