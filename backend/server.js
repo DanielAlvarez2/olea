@@ -1536,6 +1536,26 @@ app.put('/api/sparkling/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/rose/:id', async(req,res)=>{
+    try{
+        await Rosé.findByIdAndUpdate({_id:req.params.id},{
+            grapes: req.body.grapes,
+            name: req.body.name,
+            vintage: req.body.vintage,
+            description: req.body.description,
+            price: req.body.price
+        })
+        console.log(`
+            Updated to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/wines-btg/:id', async(req,res)=>{
     try{
         console.log(`req.body: ${req.body}`)

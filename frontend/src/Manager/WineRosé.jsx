@@ -55,7 +55,7 @@ ${formData.get('name')}
     }
 
     async function updateRosé(formData){
-        await fetch(`${BASE_URL}/api/rosé/${formData.get('id')}`,{ method:'PUT',
+        await fetch(`${BASE_URL}/api/rose/${formData.get('id')}`,{ method:'PUT',
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
                                                                             grapes: formData.get('grapes'),
