@@ -5,6 +5,7 @@ const Special = require('./models/Special.js')
 const WineBTG = require('./models/WineBTG.js')
 const Beer = require('./models/Beer.js')
 const Sparkling = require('./models/Sparkling.js')
+const Red = require('./models/Red.js')
 const White = require('./models/White.js')
 const Rosé = require('./models/Rosé.js')
 const Spirit = require('./models/Spirit.js')
@@ -191,6 +192,32 @@ app.post('/api/white', async(req,res)=>{
         const maxCategorySequence = await White.findOne().sort({categorySequence:-1})
         
         await White.create({
+            category:req.body.category.trim(),
+            categorySequence: existingCategoryItem  ? existingCategoryItem.categorySequence 
+                                                    : maxCategorySequence ? maxCategorySequence.categorySequence + 1 : 1, 
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim(),
+        })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/red', async(req,res)=>{
+    try{
+        const existingCategoryItem = await Red.findOne({category:req.body.category.trim()})
+        const maxCategorySequence = await Red.findOne().sort({categorySequence:-1})
+        
+        await Red.create({
             category:req.body.category.trim(),
             categorySequence: existingCategoryItem  ? existingCategoryItem.categorySequence 
                                                     : maxCategorySequence ? maxCategorySequence.categorySequence + 1 : 1, 

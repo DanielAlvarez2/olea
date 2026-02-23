@@ -9,20 +9,20 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 
 
-export default function WineWhite(){
-    const [white, setWhite] = useState([])
+export default function WineRed(){
+    const [red, setRed] = useState([])
     const [displayCategoryDropdown, setDisplayCategoryDropdown] = useState(true)
     const [editMode, setEditMode] = useState(false)
     const [currentCategory, setCurrentCategory] = useState('')
-    const [whiteCategories, setWhiteCategories] = useState([])
-    useEffect(()=>getWhite(),[])
-    useEffect(()=>getWhiteCategories(),[])
+    const [redCategories, setRedCategories] = useState([])
+    useEffect(()=>getRed(),[])
+    useEffect(()=>getRedCategories(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
-    async function createWhite(formData){
-        await fetch(`${BASE_URL}/api/white`,{  method:'POST',
+    async function createRed(formData){
+        await fetch(`${BASE_URL}/api/red`,{  method:'POST',
                                                         headers:{'Content-Type':'application/json'},
                                                         body: JSON.stringify({
                                                             category: formData.get('category'),
@@ -34,16 +34,16 @@ export default function WineWhite(){
                                                 })
         })
         .then(alert(`
-            New White Wine Created:
+            New Red Wine Created:
              - ${formData.get('name')}`))
-        .then(()=>getWhite())
-        .then(()=>getWhiteCategories())
+        .then(()=>getRed())
+        .then(()=>getRedCategories())
         .then(()=>setCurrentCategory(formData.get('category')))
         .catch(err=>console.log(err))
     }
 
-    async function updateWhite(formData){
-        await fetch(`${BASE_URL}/api/white/${formData.get('id')}`,{  method:'PUT',
+    async function updateRed(formData){
+        await fetch(`${BASE_URL}/api/red/${formData.get('id')}`,{  method:'PUT',
                                                                         headers:{'Content-Type':'application/json'},
                                                                         body: JSON.stringify({
                                                                                 grapes: formData.get('grapes'),
@@ -54,20 +54,20 @@ export default function WineWhite(){
                                                     })
         })
         .then(alert(`
-            White Wine Updated:
+            Red Wine Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
         .then(clearForm())
-        .then(getWhite())
+        .then(getRed())
         .catch(err=>console.log(err))
     }
 
-    function getWhite(){
+    function getRed(){
         try{
-            fetch(`${BASE_URL}/api/white`)
+            fetch(`${BASE_URL}/api/red`)
                 .then(res=>res.json())
                 .then(json=>{
-                    setWhite(json)
+                    setRed(json)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -75,14 +75,14 @@ export default function WineWhite(){
         }
     }
     
-    function getWhiteCategories(){
+    function getRedCategories(){
         try{
-            fetch(`${BASE_URL}/api/white-categories`)
+            fetch(`${BASE_URL}/api/red-categories`)
                 .then(res=>res.json())
                 .then(json=>{
-                    let whiteCategories = new Set()
-                    json.forEach(drink=>whiteCategories.add(drink.category))
-                    setWhiteCategories([...whiteCategories])
+                    let redCategories = new Set()
+                    json.forEach(wine=>redCategories.add(wine.category))
+                    setWhiteCategories([...redCategories])
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -90,24 +90,24 @@ export default function WineWhite(){
         }
     }
 
-    function deleteWhite(id){
+    function deleteRed(id){
         try{
-            fetch(`${BASE_URL}/api/white/${id}`,{method:'DELETE'})
+            fetch(`${BASE_URL}/api/red/${id}`,{method:'DELETE'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getWhite())
-                .then(()=>getWhiteCategories())
+                .then(()=>getRed())
+                .then(()=>getRedCategories())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
         }
     }
 
-    function editWhite(id,category,grapes,name,vintage,description,price){
+    function editRed(id,category,grapes,name,vintage,description,price){
         try{
             setEditMode(true)
             document.querySelector('#desserts-form').scrollIntoView({behavior:'smooth'})
-            document.querySelector('#white-id').value = id
+            document.querySelector('#red-id').value = id
             document.querySelector('#category-edit').textContent = `: ${category}`
             document.querySelector('#grapes').value = grapes
             document.querySelector('#name').value = name
@@ -121,7 +121,7 @@ export default function WineWhite(){
 
     function clearForm(){
         try{
-            document.querySelector('#white-id').value = ''
+            document.querySelector('#red-id').value = ''
             document.querySelector('#grapes').value = ''
             document.querySelector('#name').value = ''
             document.querySelector('#category-edit').textContent = ''
@@ -143,16 +143,16 @@ export default function WineWhite(){
     }
 
     function moveCategoryUp(i){
-        fetch(`${BASE_URL}/api/white/move-category-up/${i}`,{method:'PUT'})
-            .then(()=>getWhite())
-            .then(()=>getWhiteCategories())
+        fetch(`${BASE_URL}/api/red/move-category-up/${i}`,{method:'PUT'})
+            .then(()=>getRed())
+            .then(()=>getRedCategories())
             .catch(err=>console.log(err))
     }
 
     function moveCategoryDown(i){
-        fetch(`${BASE_URL}/api/white/move-category-down/${i}`,{method:'PUT'})
-            .then(()=>getWhite())
-            .then(()=>getWhiteCategories())
+        fetch(`${BASE_URL}/api/red/move-category-down/${i}`,{method:'PUT'})
+            .then(()=>getRed())
+            .then(()=>getRedCategories())
             .catch(err=>console.log(err))
     }
 
@@ -161,19 +161,19 @@ export default function WineWhite(){
             <div className='manager-page-wrapper'>
                 <ManagerNavbar page='wine-list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; bottles &gt; white</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; bottles &gt; red</div>
 
 
 
                         <div className='desserts-update-menu' style={{minHeight:'auto'}}>
                             <div>
-                                <div className='desserts-h1' style={{marginBottom:'0'}}>white wines</div>
+                                <div className='desserts-h1' style={{marginBottom:'0'}}>red wines</div>
                                 <br/>
                             </div>
 
                             
 
-                            {white[0] == undefined ? 
+                            {red[0] == undefined ? 
                                 <div style={{whiteSpace:'pre-wrap'}}>
                                     DATABASE IS EMPTY<br/>
                                     <br/>
@@ -183,7 +183,7 @@ export default function WineWhite(){
                                     <div className='desserts-h1'>country:</div>
                                     <select id='category-dropdown' defaultValue={currentCategory} value={currentCategory} onChange={handleChange}>
                                         <option disabled value=''>select...</option>
-                                        {whiteCategories.map(category=><option key={category} value={category}>{category}</option>)}
+                                        {redCategories.map(category=><option key={category} value={category}>{category}</option>)}
                                         
                                     </select>
                                 </div>
@@ -196,7 +196,7 @@ export default function WineWhite(){
 
 
 
-                            {white.filter(item=>item.category == currentCategory).map(data=>{
+                            {red.filter(item=>item.category == currentCategory).map(data=>{
                                 return(
                                     <div key={data._id} className='dessert-drinks-display'>
                                         
@@ -207,7 +207,7 @@ export default function WineWhite(){
                                         <div style={{marginTop:'5px'}}>
                                             
                                             <span   className='btn edit-btn'
-                                                    onClick={()=>editWhite(  data._id,
+                                                    onClick={()=>editRed(  data._id,
                                                                                     data.category,
                                                                                     data.grapes,
                                                                                     data.name,
@@ -215,7 +215,7 @@ export default function WineWhite(){
                                                                                     data.description,
                                                                                     data.price)}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
-                                                    onClick={()=>deleteWhite(data._id)}>DELETE</span>
+                                                    onClick={()=>deleteRed(data._id)}>DELETE</span>
 
                                         </div>
                                         <br/><br/>
@@ -260,21 +260,21 @@ export default function WineWhite(){
                       
 
 
-                    <form   action={editMode ? updateWhite : createWhite} 
+                    <form   action={editMode ? updateRed : createRed} 
                             id='desserts-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'edit white wine' : 'add white wine'}
+                            {editMode ? 'edit red wine' : 'add red wine'}
 
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='white-id' />
+                        <input type='hidden' name='id' id='red-id' />
 
                         <label>
                             country<span id='category-edit'></span><br/>
                             
-                            {white.length == 0 && !editMode &&
+                            {red.length == 0 && !editMode &&
                                         <>
                                             <input  type='text'
                                                     required
@@ -283,14 +283,14 @@ export default function WineWhite(){
                                                     name='category' /><br/>
                                         </>
                             }
-                            {white.length > 0 && !editMode &&
+                            {red.length > 0 && !editMode &&
                                 <div style={{display:'flex',justifyContent:'space-between'}}>
                                     {displayCategoryDropdown ? 
                                         <select defaultValue='' 
                                                 name='category'
                                                 required>
                                                 <option disabled value=''>select...</option>
-                                                {whiteCategories.map(category=><option key={category} value={category}>{category}</option>)}        
+                                                {redCategories.map(category=><option key={category} value={category}>{category}</option>)}        
                                         </select>                                
                                     : 
                                         <input  type='text'
@@ -378,7 +378,7 @@ export default function WineWhite(){
                                             color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
-                                    value = {editMode ? 'update white wine' : 'create white wine'} />
+                                    value = {editMode ? 'update red wine' : 'create red wine'} />
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',
@@ -399,14 +399,14 @@ export default function WineWhite(){
                         </div>
 
                     </form>   
-                {whiteCategories.length > 1 &&    
+                {redCategories.length > 1 &&    
                     <>
                         <div className='desserts-update-menu' style={{minHeight:'auto'}}>
                             <div className='desserts-h1'>
                                 countries
                             </div><br/>
 
-                            {whiteCategories.map((category,i)=>( 
+                            {redCategories.map((category,i)=>( 
                                                                     
                                             <div key={category} style={{textAlign:'center'}}>
 
@@ -424,7 +424,7 @@ export default function WineWhite(){
 
                                                                         {i+1} {category}
 
-                                                {i+1 != whiteCategories.length && 
+                                                {i+1 != redCategories.length && 
                                                     <FaCaretUp style={{ margin:'0 auto',
                                                                         fontSize:'60px',
                                                                         position:'relative',

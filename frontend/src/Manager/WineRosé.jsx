@@ -108,7 +108,7 @@ ${formData.get('name')}
 
                         <div className='specials-update-menu' style={{minHeight:'auto'}}>
                             <div>
-                                <div className='specials-h1' style={{marginBottom:'20px'}}>rosé</div>
+                                <div className='specials-h1' style={{marginBottom:'20px'}}>rosé wines</div>
                             </div>
 
                             {rosé.length == 0 && <><br/>This Section is Empty</>}
