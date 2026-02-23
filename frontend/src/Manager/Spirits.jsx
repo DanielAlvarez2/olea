@@ -51,6 +51,7 @@ export default function Spirits(){
             Spirit Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
+        .then(clearForm())
         .then(getSpirits())
         .catch(err=>console.log(err))
     }
@@ -97,7 +98,7 @@ export default function Spirits(){
         }
     }
 
-    function editSpirit(id,category,nameprice){
+    function editSpirit(id,category,name,price){
         try{
             setEditMode(true)
             document.querySelector('#desserts-form').scrollIntoView({behavior:'smooth'})
@@ -192,7 +193,7 @@ export default function Spirits(){
                                         
                                         
                                         <span className='dessert-drink-name'>&nbsp;{data.name} /</span>
-                                        <span className='price'> &nbsp;{data.price}</span>  
+                                        <span className='price'> &nbsp;{data.price.toString().includes('.') ? data.price.toFixed(2) : data.price}</span>  
                                         <div style={{marginTop:'5px'}}>
                                             
                                             <span   className='btn edit-btn'

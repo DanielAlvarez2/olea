@@ -802,6 +802,54 @@ app.put('/api/dessert-drinks/move-category-up/:sequence', async(req,res)=>{
     }
 })
 
+app.put('/api/spirits/move-category-up/:sequence', async(req,res)=>{
+    try{
+        console.log(req.params.sequence)
+        await Spirit.updateMany(
+            {categorySequence:req.params.sequence},
+            {$set:{categorySequence:0}}
+        )
+        await Spirit.updateMany(
+            {categorySequence: +req.params.sequence - 1},
+            {$set:{categorySequence:req.params.sequence}}
+        )
+        await Spirit.updateMany(
+            {categorySequence:0},
+            {$set:{categorySequence: +req.params.sequence - 1}}
+        )
+        console.log(`
+            Moved Category Up`)
+        res.json(`
+            Moved Category Up`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/spirits/move-category-down/:sequence', async(req,res)=>{
+    try{
+        console.log(req.params.sequence)
+        await Spirit.updateMany(
+            {categorySequence:req.params.sequence},
+            {$set:{categorySequence:0}}
+        )
+        await Spirit.updateMany(
+            {categorySequence:+req.params.sequence + 1},
+            {$set:{categorySequence:req.params.sequence}}
+        )
+        await Spirit.updateMany(
+            {categorySequence:0},
+            {$set:{categorySequence: +req.params.sequence + 1}}
+        )
+        console.log(`
+            Moved Category Down`)
+        res.json(`
+            Moved Category Down`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/dessert-drinks/move-category-down/:sequence', async(req,res)=>{
     try{
         console.log(req.params.sequence)
@@ -1293,6 +1341,23 @@ app.put('/api/drinks/:id', async(req,res)=>{
         await CraftDrink.findByIdAndUpdate({_id:req.params.id},{
             name: req.body.name,
             description: req.body.description,
+            price: req.body.price,
+        })
+        console.log(`
+            Updated to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/spirits/:id', async(req,res)=>{
+    try{
+        await Spirit.findByIdAndUpdate({_id:req.params.id},{
+            name: req.body.name,
             price: req.body.price,
         })
         console.log(`
