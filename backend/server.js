@@ -1182,6 +1182,24 @@ app.put('/api/sangria/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/drinks/:id', async(req,res)=>{
+    try{
+        await CraftDrink.findByIdAndUpdate({_id:req.params.id},{
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+        })
+        console.log(`
+            Updated to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Updated to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/beer/:id', async(req,res)=>{
     try{
         await Beer.findByIdAndUpdate({_id:req.params.id},{
