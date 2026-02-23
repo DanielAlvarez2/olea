@@ -927,6 +927,15 @@ app.get('/api/specials', async(req,res)=>{
     }
 })
 
+app.get('/api/drinks', async(req,res)=>{
+    try{
+        const allDrinks = await CraftDrink.find().sort({sequence:1})
+        res.json(allDrinks)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/sangria', async(req,res)=>{
     try{
         const allSangrias = await Sangria.find().sort({sequence:1})
