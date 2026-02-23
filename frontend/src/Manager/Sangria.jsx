@@ -124,7 +124,7 @@ export default function Sangria(){
     return(
         <>
             <div className='manager-page-wrapper'>
-                <ManagerNavbar page='wine list' />
+                <ManagerNavbar page='wine-list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; sangría</div>
 

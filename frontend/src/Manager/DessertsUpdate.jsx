@@ -154,7 +154,7 @@ export default function DessertsUpdate(){
     return(
         <>
             <div className='manager-page-wrapper'>
-                <ManagerNavbar page='desserts' />
+                <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; update &gt; desserts</div>
 

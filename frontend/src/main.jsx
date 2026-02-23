@@ -52,6 +52,8 @@ import DessertDrinksUpdate from './Manager/DessertDrinksUpdate.jsx'
 import CoffeeUpdate from './Manager/CoffeeUpdate.jsx'
 import TeaUpdate from './Manager/TeaUpdate.jsx'
 
+import WineSparkling from './Manager/WineSparkling.jsx'
+import WineBTB from './Manager/WineBTB.jsx'
 import WineBTG from './Manager/WineBTG.jsx'
 import Beer from './Manager/Beer.jsx'
 import NonAlcoholic from './Manager/NonAlcoholic.jsx'
@@ -94,7 +96,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='events' element={<Events />} />
         <Route path='printer-config' element={<PrinterConfig />} />
         
+        <Route path='wine-sparkling' element={<WineSparkling />} />
         <Route path='wine-btg' element={<WineBTG />} />
+        <Route path='wine-btb' element={<WineBTB />} />
         <Route path='non-alcoholic' element={<NonAlcoholic />} />
         <Route path='sherries' element={<Sherries />} />
         <Route path='beer' element={<Beer />} />

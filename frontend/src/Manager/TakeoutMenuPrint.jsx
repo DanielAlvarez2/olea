@@ -139,7 +139,7 @@ Please switch to a different browser to proceed.
                             // color:'red'
                             }}>
                 <div style={{width:'100%'}} className='no-print'>
-                    <ManagerNavbar page='dinner' />
+                    <ManagerNavbar page='takeout' />
                 </div>
                     <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>takeout &gt; print</div>

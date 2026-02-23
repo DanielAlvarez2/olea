@@ -149,7 +149,7 @@ export default function Spirits(){
     return(
         <>
             <div className='manager-page-wrapper'>
-                <ManagerNavbar page='desserts' />
+                <ManagerNavbar page='wine-list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; spirits</div>
 
