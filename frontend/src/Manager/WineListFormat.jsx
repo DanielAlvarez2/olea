@@ -576,7 +576,7 @@ export default function WineListFormat(){
                                                         style={{margin:'0'}}>
                                                     {x}
                                                 </div>
-                                                {red.filter(item=>item.category == x).map(data=>{
+                                                {white.filter(item=>item.category == x).map(data=>{
                                                     return(
                                                             <div    key={data._id}
                                                                     style={{breakInside:'avoid-column'}}
