@@ -107,20 +107,6 @@ ${formData.get('name')}
                                 <div className='specials-h1' style={{marginBottom:'0'}}>beer</div>
                             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <div className='specials-h2 specials-update-heading'>DRAFT</div>
 
                             {beer.filter(item=>item.section == 'DRAFT').length == 0 && <>This Section is Empty</>}

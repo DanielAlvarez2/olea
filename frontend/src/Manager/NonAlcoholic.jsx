@@ -106,18 +106,6 @@ ${formData.get('name')}
 
                             {nonAlcoholicDrinks.length == 0 && <><br/>This Section is Empty</>}
 
-
-
-
-
-
-
-
-
-
-
-
-
                             {nonAlcoholicDrinks.map(data=>{
                                 return(
                                     <div key={data._id} className='special'>                                        

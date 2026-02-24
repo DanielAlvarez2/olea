@@ -19,9 +19,13 @@ export default function WineBTB(){
                                 height:'100%',
                                 border:'1px solid green'
                                 }}>
-                        <Link to='/wine-btb-update'><li style={{flexGrow:'1'}}>update</li></Link>
-                        <Link to='/wine-btb-format'><li style={{flexGrow:'1'}}>format</li></Link>
-                        <Link to='/wine-btb-print'><li style={{flexGrow:'1'}}>print</li></Link>
+
+                        <Link to='/wine-sparkling'><li style={{flexGrow:'1'}}>cava & champagne</li></Link>
+                        <Link to='/wine-rosé'><li style={{flexGrow:'1'}}>rosé</li></Link>
+                        <Link to='/wine-white'><li style={{flexGrow:'1'}}>white</li></Link>
+                        <Link to='/wine-red'><li style={{flexGrow:'1'}}>red</li></Link>
+                   
+                   
                     </ul>
 
             

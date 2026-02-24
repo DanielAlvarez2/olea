@@ -57,8 +57,8 @@ import WineWhite from './Manager/WineWhite.jsx'
 import WineRosé from './Manager/WineRosé.jsx'
 import WineSparkling from './Manager/WineSparkling.jsx'
 import WineBTB from './Manager/WineBTB.jsx'
-import WineBTBupdate from './Manager/WineBTBupdate.jsx'
-import WineBTBformat from './Manager/WineBTBformat.jsx'
+import WineListUpdate from './Manager/WineListUpdate.jsx'
+import WineListFormat from './Manager/WineListFormat.jsx'
 import WineBTG from './Manager/WineBTG.jsx'
 import Beer from './Manager/Beer.jsx'
 import NonAlcoholic from './Manager/NonAlcoholic.jsx'
@@ -107,8 +107,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='wine-sparkling' element={<WineSparkling />} />
         <Route path='wine-btg' element={<WineBTG />} />
         <Route path='wine-btb' element={<WineBTB />} />
-        <Route path='wine-btb-update' element={<WineBTBupdate />} />
-        <Route path='wine-btb-format' element={<WineBTBformat />} />
+        <Route path='wine-list-update' element={<WineListUpdate />} />
+        <Route path='wine-list-format' element={<WineListFormat />} />
         <Route path='non-alcoholic' element={<NonAlcoholic />} />
         <Route path='sherries' element={<Sherries />} />
         <Route path='beer' element={<Beer />} />

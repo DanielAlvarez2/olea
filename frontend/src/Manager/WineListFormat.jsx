@@ -11,13 +11,25 @@ import { FaToggleOn } from "react-icons/fa6";
 
 
 
-export default function WineBTBFormat(){
+export default function WineListFormat(){
 
+    const [nonAlcoholicDrinks, setNonAlcoholicDrinks] = useState([])
+    const [beer, setBeer] = useState([])
+    const [sherries, setSherries] = useState([])
+    const [drinks, setDrinks] = useState([])
+    const [sangrias, setSangrias] = useState([])
     const [winesBTG, setWinesBTG] = useState([])
     const [sparkling, setSparkling] = useState([])
     const [rosé, setRosé] = useState([])
+    const [white, setWhite] = useState([])
+    const [whiteCategories, setWhiteCategories] = useState([])
+    const [red, setRed] = useState([])
+    const [redCategories, setRedCategories] = useState([])
+    const [spirits, setSpirits] = useState([])
+    const [spiritCategories, setSpiritCategories] = useState([])
 
     const [frontView, setFrontView] = useState(true)
+    const [page1, setPage1] =useState(true)
     const [allDesserts, setAllDesserts] = useState([])
     const [allDessertDrinks, setAllDessertDrinks] = useState([])
     const [dessertDrinkCategories, setDessertDrinkCategories] = useState([])
@@ -42,11 +54,152 @@ export default function WineBTBFormat(){
                 getWinesBTG()
                 getSparkling()
                 getRosé()
+                getWhite()
+                getWhiteCategories()
+                getRed()
+                getRedCategories()
+                getSpirits()
+                getSpiritCategories()
+                getSangrias()
+                getNonAlcoholicDrinks()
+                getBeer()
+                getDrinks()
+                getSherries()
     },[])
     
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
+
+    function getSherries(){
+        fetch(`${BASE_URL}/api/sherries`)
+            .then(res=>res.json())
+            .then(json=>setSherries(json))
+            .catch(err=>console.log(err))
+    }
+
+    function getDrinks(){
+        try{
+            fetch(`${BASE_URL}/api/drinks`)
+                .then(res=>res.json())
+                .then(json=>setDrinks(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getBeer(){
+        fetch(`${BASE_URL}/api/beer`)
+            .then(res=>res.json())
+            .then(json=>setBeer(json))
+            .catch(err=>console.log(err))
+    }
+
+    function getNonAlcoholicDrinks(){
+        fetch(`${BASE_URL}/api/non-alcoholic-drinks`)
+            .then(res=>res.json())
+            .then(json=>setNonAlcoholicDrinks(json))
+            .catch(err=>console.log(err))
+    }
+
+    function getSangrias(){
+        try{
+            fetch(`${BASE_URL}/api/sangria`)
+                .then(res=>res.json())
+                .then(json=>setSangrias(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getRed(){
+        try{
+            fetch(`${BASE_URL}/api/red`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setRed(json)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+    
+    function getRedCategories(){
+        try{
+            fetch(`${BASE_URL}/api/red-categories`)
+                .then(res=>res.json())
+                .then(json=>{
+                    let redCategories = new Set()
+                    json.forEach(wine=>redCategories.add(wine.category))
+                    setRedCategories([...redCategories])
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getWhite(){
+        try{
+            fetch(`${BASE_URL}/api/white`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setWhite(json)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+    
+    function getWhiteCategories(){
+        try{
+            fetch(`${BASE_URL}/api/white-categories`)
+                .then(res=>res.json())
+                .then(json=>{
+                    let whiteCategories = new Set()
+                    json.forEach(drink=>whiteCategories.add(drink.category))
+                    setWhiteCategories([...whiteCategories])
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+                    
+    function getSpirits(){
+        try{
+            fetch(`${BASE_URL}/api/spirits`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setSpirits(json)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+    
+    function getSpiritCategories(){
+        try{
+            fetch(`${BASE_URL}/api/spirit-categories`)
+                .then(res=>res.json())
+                .then(json=>{
+                    let spiritCategories = new Set()
+                    json.forEach(drink=>spiritCategories.add(drink.category))
+                    setSpiritCategories([...spiritCategories])
+                })
+                .catch(err=>console.log(err))
+
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+
 
     function getRosé(){
         fetch(`${BASE_URL}/api/rose`)
@@ -252,6 +405,10 @@ export default function WineBTBFormat(){
         setFrontView(prev=>!prev)
     }
 
+    function togglePage1(){
+        setPage1(prev=>!prev)
+    }
+
     return(
         <>
             <div    className='manager-page-wrapper' 
@@ -261,12 +418,29 @@ export default function WineBTBFormat(){
                             }}>
                 <ManagerNavbar page='wine-list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; wine bottles &gt; format</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; format</div>
                     <div className='main-menu'>
 
 
 
 
+
+                            <div style={{   textAlign:'center',
+                                            display:'flex',
+                                            gap:'10px',
+                                            justifyContent:'center',
+                                            border:'1px solid green',
+                                            alignItems:'center'}}>
+                                <span>page 1</span>
+                                    {page1  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={togglePage1}/></span> 
+                                                
+                                                : 
+                                                    <span><FaToggleOn   style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={togglePage1}/></span>    
+                                    }  
+                                <span>page 2</span>
+                            </div>
 
                             <div style={{   textAlign:'center',
                                             display:'flex',
@@ -347,8 +521,9 @@ export default function WineBTBFormat(){
 
 
 
-                        {
-                            frontView ?                            
+                        {page1 ? 
+                                <>
+                            {frontView ?                            
                                 <div style={{   width:'14in',
                                                 height:'8.5in',
                                                 columns:'4',
@@ -356,6 +531,8 @@ export default function WineBTBFormat(){
                                                 border:'1px solid black',
                                                 background:'white'}}>
 
+
+                                    p1 front
                                     <div    className='specials-h1 specials-update-heading'
                                             style={{margin:'0'}}
                                     >
@@ -509,19 +686,332 @@ export default function WineBTBFormat(){
 
 
 
+
+
+
+
+
+
+                                    <div className='specials-h1'>white</div>
+
+
+                                    {whiteCategories.map(x=>{
+                                        return(
+                                            <div key={x}>
+                                                {x}
+                                                {white.filter(item=>item.category == x).map(data=>{
+                                                    return(
+                                                        <div key={data.name}>
+                                                            {data.name} / {data.price}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        )
+                                    })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div className='specials-h1'>red</div>
+
+
+                                    {redCategories.map(x=>{
+                                        return(
+                                            <div key={x}>
+                                                {x}
+                                                {red.filter(item=>item.category == x).map(data=>{
+                                                    return(
+                                                        <div key={data.name}>
+                                                            {data.name} / {data.price}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        )
+                                    })}
+
+
+
+
+
+
+
+
+
+
+
+
                                 </div>
-                                // <div    className='dessert-menu-format-front' 
-                                //         style={{width:'14in',columnCount:'4',columnFill:'auto'}}
-                                //         style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
-                                // >
-                                //     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta reprehenderit veritatis accusamus eos fugit hic, officiis velit odio impedit labore nam culpa amet optio omnis harum, totam delectus deleniti, consectetur veniam vitae natus. Voluptatum in atque aliquid quod officiis? Temporibus voluptatibus vitae, tenetur perferendis rem nemo enim. Perspiciatis a eius laborum tempora illum, ratione aliquam doloremque quam repellendus! Eius odit obcaecati alias voluptatum necessitatibus? Ea ut corrupti iste excepturi esse velit eum quae molestiae, maxime aperiam, quia quod cumque nihil voluptatibus in veniam earum? Facilis quisquam cumque nostrum harum repellat voluptatum similique iusto, saepe, iure quidem delectus nisi deserunt doloribus! Architecto maiores tempore nisi laudantium unde culpa quasi asperiores reprehenderit iusto in? Deleniti perferendis pariatur nam! Corporis ut vitae suscipit, repudiandae amet eius consectetur iure enim cupiditate eligendi modi velit soluta a adipisci error, culpa molestiae officia! Consequatur dolores beatae aliquam, temporibus sit molestias quasi quaerat at, earum et officiis. Autem, ad reprehenderit. Vitae praesentium pariatur accusamus dicta voluptatem illum atque, reiciendis at fuga obcaecati! Itaque saepe autem ex odit labore aliquam sequi, voluptates dolorum, non adipisci laudantium velit, corporis unde perspiciatis harum. Nisi earum amet quod libero alias optio laborum, minus vel quos, quo praesentium illum! Dolorum voluptate omnis similique nam sint quia. Repellendus ducimus impedit nemo facilis nihil adipisci eligendi perspiciatis quam labore, laboriosam, quaerat dolor suscipit saepe, asperiores nobis quod ad recusandae sequi eius vero cum illum dolores doloremque minima. Voluptatum, sequi quas. Animi dolore necessitatibus ea unde tenetur. Architecto atque eum quam nihil sapiente hic, illum veniam. Quo animi laudantium, nisi error dolor corrupti sint officia accusamus incidunt aut. Accusamus ipsam dolore ad maiores, quasi aspernatur. Quidem amet maxime dolore error cupiditate eligendi harum labore nesciunt a. Neque, adipisci officiis dolorum ullam aliquam, a, ab delectus voluptatibus nostrum facere eligendi deleniti ratione enim illum quisquam facilis porro ut amet officia ad ipsa! Tempore ad quas repudiandae quo delectus voluptatem ut, recusandae beatae natus sapiente modi eius dolore officia in. Expedita soluta illo, eos veniam nobis facere cum hic eveniet sint. Pariatur, quo ducimus. Fugiat assumenda corporis aliquid maxime debitis vitae commodi? Adipisci similique possimus quo nemo voluptas voluptatibus ad modi porro magni nesciunt. Dolor velit cumque nam provident molestias earum consequuntur quibusdam perspiciatis quas laborum? Esse commodi veniam eum totam nisi sint omnis earum pariatur et itaque, temporibus, cumque fugit blanditiis perspiciatis recusandae iste dolorem exercitationem consectetur rerum ratione optio dolores! Odit laborum vero maxime perferendis eum laudantium quibusdam explicabo ipsa non mollitia, aperiam, repellat pariatur! Quia quibusdam aliquam quam voluptate architecto fugit, omnis sed nemo earum amet, pariatur tempora nesciunt blanditiis eos exercitationem ratione! Recusandae, enim deserunt aliquam dolor deleniti nostrum quo eos, non at, esse veniam nulla ratione vitae. Animi temporibus ducimus provident reiciendis beatae non distinctio corrupti natus, nesciunt culpa recusandae magni ab delectus ipsum, aliquid fuga laboriosam aspernatur quia esse unde sequi. Numquam accusamus, repudiandae molestias commodi ipsa, voluptates magni quas doloribus perferendis autem enim dolor tempora explicabo nobis labore nihil et veritatis! Beatae officia ipsa nemo tenetur iste eveniet nesciunt, et, minima molestiae aperiam optio recusandae sit culpa voluptatibus. Nisi ducimus officiis est velit ullam temporibus vero non voluptatum, impedit asperiores, tempore sed iure similique veniam illo corporis aliquam pariatur doloribus error distinctio eligendi unde ab. Ullam eveniet odit cupiditate possimus veniam delectus eum nihil ad est, saepe perferendis quam rem recusandae voluptates dolore reprehenderit aut voluptatibus facere dolores expedita. Inventore dolorem veniam expedita consectetur impedit placeat consequuntur, sint saepe quae veritatis quo ab nulla, fugit rem perferendis omnis, libero unde culpa. Accusamus alias blanditiis natus enim neque ea quas ullam suscipit quam id facilis quisquam labore dignissimos, dolores inventore nihil totam aperiam distinctio illo aliquam porro atque. Beatae, minima minus. Consectetur asperiores voluptatibus excepturi, odio nobis natus sapiente optio et incidunt atque. Dolores, ab corrupti, animi, tempora vitae quo dolorum tempore excepturi deserunt veniam accusantium explicabo! Est dolorum praesentium aliquid unde natus! Nam quidem fuga reprehenderit suscipit doloribus ullam veritatis, perspiciatis quos dolores quis nulla facere minus molestiae consequatur recusandae, distinctio beatae ad reiciendis voluptate atque ab eos laborum expedita sint? Magni quos facilis inventore sed commodi, temporibus saepe atque repellat! Quam doloremque, magnam voluptas quisquam inventore sit qui ratione reiciendis officia eum delectus nulla aliquid voluptatum? Esse, culpa, quae numquam nisi necessitatibus ullam mollitia natus ducimus odit a distinctio aliquid nam modi, quo quos explicabo. Corporis recusandae aut cumque id quidem fugit voluptate voluptatem officiis distinctio quisquam itaque, ipsum tempore. Totam rerum nemo iste nihil, quos repellat corrupti, a molestiae similique libero aut expedita modi cumque saepe distinctio magni ab necessitatibus sapiente quaerat inventore vel! Nostrum, quia iste commodi voluptas, neque ipsam vel laudantium praesentium similique eius aperiam eum cumque in at, modi alias. Porro accusamus pariatur modi provident corporis nulla. Dolores, distinctio quod optio, hic voluptas ipsum, dolorem ratione excepturi quas non corrupti laudantium totam asperiores? Quod tempora veniam officia deserunt distinctio quas molestias dolor quaerat corrupti ipsum, enim adipisci incidunt numquam eveniet vitae necessitatibus accusantium natus doloremque quidem magnam? Consectetur provident quod eum deserunt iure odit ut amet inventore dolore fugiat vel voluptate delectus obcaecati, nesciunt doloremque debitis sequi modi eos enim quasi eveniet consequuntur impedit! Aspernatur, alias cupiditate corporis id nostrum reiciendis nobis qui repellat ipsum obcaecati, tenetur, fuga laudantium optio quia voluptate unde soluta repudiandae! Officia minus, vitae dolores autem ut impedit architecto incidunt ullam laudantium quaerat, libero sed optio dolorum deleniti quis ipsum natus facilis nesciunt consequuntur sit eveniet blanditiis. Incidunt sunt tenetur hic cumque sint illum adipisci, reprehenderit accusantium enim assumenda quae dolores, eius ratione sit eum possimus odit illo quos corrupti similique quibusdam! Repellat assumenda animi odit corporis a facere earum eum eos. Quas, recusandae blanditiis accusantium ratione, corrupti doloremque ducimus neque a veniam quod eos eum? Exercitationem, cumque hic similique corrupti saepe in velit vel soluta quo ea quod architecto. Quas perspiciatis impedit, enim eum sit asperiores est nobis natus, delectus aut aliquid eius. Repellendus ab magnam rerum perspiciatis ducimus culpa inventore harum voluptatem porro. Distinctio harum quod fugiat dolore, dignissimos quasi unde impedit officia ipsa? Esse maiores eum quos libero!
-                                // </div>
                             :
-                                <div    className='dessert-menu-format-front' 
-                                        // style={{backgroundImage:'url("scan-dessert-menu-back.jpg"),',color:'red',backgroundSize:'5.5in 8.5in'}}
+                                <div style={{   width:'14in',
+                                                height:'8.5in',
+                                                columns:'4',
+                                                columnFill:'auto',
+                                                background:'white',
+                                                border:'1px solid black'}} >
+                                    p1 back<br/>
+                                    
+
+                                                                <div className='specials-h1' style={{marginBottom:'0'}}>sangría</div>
+                                                               
+                                    
+                                                                {sangrias.map(data=>{
+                                                                    return(
+                                                                        <div key={data._id} className='special'>
+                                                                            
+                                                                        
+                                                                            <span className='name'>{data.name} </span>
+                                                                            <span> {data.description}</span> (glass/pitcher) {data.glassPrice} / {data.pitcherPrice}
+                                                                            
+                                                                                
+                                                                        
+                                                                        
+                                                                        </div>
+                                                                    )
+                                                                })}
+                                    
+                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div className='specials-h1' style={{marginBottom:'20px'}}>non-alcoholic drinks</div>
+                           
+                            {nonAlcoholicDrinks.map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>                                        
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span>
+                                        <span className='price'> &nbsp;{data.price}</span> 
+                                        
+                                    </div>
+                                )
+                            })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div className='specials-h1' style={{marginBottom:'0'}}>beer</div>
+                            
+
+                        
+
+                            {beer.filter(item=>item.section == 'DRAFT').length != 0 && 
+                                <div className='specials-h2 specials-update-heading'>DRAFT</div>}
+                            {beer.filter(item=>item.section == 'DRAFT').map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>                                        
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span>
+                                        <span className='price'> &nbsp;{data.price}</span> 
+
+                                    </div>
+                                )
+                            })}
+
+
+
+
+
+
+
+
+
+
+                            {beer.filter(item=>item.section == 'CAN').length != 0 && 
+                                <div className='specials-h2 specials-update-heading'>CAN</div>}
+                            {beer.filter(item=>item.section == 'CAN').map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>                                        
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span>
+                                        <span className='price'> &nbsp;{data.price}</span> 
+
+                                    </div>
+                                )
+                            })}
+
+
+
+
+
+
+
+
+
+
+
+                            {beer.filter(item=>item.section == 'BOTTLE').length != 0 && 
+                                <div className='specials-h2 specials-update-heading'>BOTTLE</div>}
+                            {beer.filter(item=>item.section == 'BOTTLE').map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>                                        
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span>
+                                        <span className='price'> &nbsp;{data.price}</span> 
+
+                                    </div>
+                                )
+                            })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div className='specials-h1' style={{marginBottom:'0'}}>craft drinks</div>
+
+                            {drinks.map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>
+                                    
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span> / {data.price}
+                                                                        
+
+                                    </div>
+                                )
+                            })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div className='specials-h1' style={{marginBottom:'20px'}}>sherries</div>
+                            
+                            {sherries.map(data=>{
+                                return(
+                                    <div key={data._id} className='special'>                                        
+                                        <span className='grapes'>{data.grapes}, </span>
+                                        <span className='name'>{data.name}, </span>
+                                        <span> {data.description}</span>
+                                        <span className='price'> &nbsp;{data.price}</span> 
+
+                                    </div>
+                                )
+                            })}
+
+
+
+
+
+
+
+                                </div>
+                            }
+                                </>
+                                :
+                                <>
+                                {
+                            frontView ?                            
+                                <div style={{   width:'14in',
+                                                height:'8.5in',
+                                                columns:'4',
+                                                columnFill:'auto',
+                                                border:'1px solid black',
+                                                background:'white'}}>
+
+
+                                    p2 front<br/>
+                                    bourbon / tequila
+
+                                    {spiritCategories.map(x=>{
+                                        return(
+                                            <div key={x}>
+                                                {x}
+                                                {spirits.filter(item=>item.category == x).map(data=>{
+                                                    return(
+                                                        <div key={data.name}>
+                                                            {data.name} / {data.price.toString().includes('.') ? data.price.toFixed(2) : data.price}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        )
+                                    })}
+                                    
+
+                                </div>
+                            :
+                                <div style={{width:'14in',height:'8.5in',background:'white',border:'1px solid black'}}    
                                         
                                 >
+                                    p2 back<br/>
+                                    amaro / beer-cocktails-wines-spirits
                                 </div>
+                                }
+                                </>
                         }
 
 

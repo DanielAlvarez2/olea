@@ -109,18 +109,6 @@ ${formData.get('name')}
 
                             {sherries.length == 0 && <><br/>This Section is Empty</>}
 
-
-
-
-
-
-
-
-
-
-
-
-
                             {sherries.map(data=>{
                                 return(
                                     <div key={data._id} className='special'>                                        
