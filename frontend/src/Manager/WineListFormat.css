@@ -1,3 +1,28 @@
-.grapes,.vintage,.description,.price{
+.grapes,
+.vintage,
+.description,
+.half-bottle,
+.price{
     font-family: FuturaLight;
+    font-weight:100;
+    font-size: 13.5px;
+}
+.winelist-h1{
+    font-family: FuturaRoundBold;
+    font-size: 27px;
+    /* color:red; */
+}
+.winelist-h2{
+    font-family: FuturaRoundBold;
+    font-size: 16px;
+    /* color:red; */
+}
+.name{
+    /* color:red; */
+    font-family: FuturaRoundBold;
+    font-size:13.5px;
+}
+.grapes{
+    /* color:blue; */
+    font-size: 13.5px;
 }

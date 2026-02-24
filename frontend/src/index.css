@@ -1,4 +1,8 @@
 @font-face{
+  font-family: 'FuturaRoundBold';
+  src: url(./assets/fonts/FuturaRoundBold.ttf)
+}
+@font-face{
   font-family: 'FuturaLight';
   src: url(./assets/fonts/FuturaLight.otf)
 }
