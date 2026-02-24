@@ -1075,6 +1075,54 @@ app.put('/api/white/move-category-down/:sequence', async(req,res)=>{
     }
 })
 
+app.put('/api/red/move-category-up/:sequence', async(req,res)=>{
+    try{
+        console.log(req.params.sequence)
+        await Red.updateMany(
+            {categorySequence:req.params.sequence},
+            {$set:{categorySequence:0}}
+        )
+        await Red.updateMany(
+            {categorySequence: +req.params.sequence - 1},
+            {$set:{categorySequence:req.params.sequence}}
+        )
+        await Red.updateMany(
+            {categorySequence:0},
+            {$set:{categorySequence: +req.params.sequence - 1}}
+        )
+        console.log(`
+            Moved Category Up`)
+        res.json(`
+            Moved Category Up`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/red/move-category-down/:sequence', async(req,res)=>{
+    try{
+        console.log(req.params.sequence)
+        await Red.updateMany(
+            {categorySequence:req.params.sequence},
+            {$set:{categorySequence:0}}
+        )
+        await Red.updateMany(
+            {categorySequence:+req.params.sequence + 1},
+            {$set:{categorySequence:req.params.sequence}}
+        )
+        await Red.updateMany(
+            {categorySequence:0},
+            {$set:{categorySequence: +req.params.sequence + 1}}
+        )
+        console.log(`
+            Moved Category Down`)
+        res.json(`
+            Moved Category Down`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/dessert-drinks/move-category-down/:sequence', async(req,res)=>{
     try{
         console.log(req.params.sequence)

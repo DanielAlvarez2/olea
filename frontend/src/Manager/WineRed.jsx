@@ -347,7 +347,7 @@ export default function WineRed(){
                                     autoComplete='off'
                                     id='vintage'
                                     required
-                                    style={{width:'100%',width:'40px'}} />
+                                    style={{width:'40px'}} />
                         </label>
                         <br/><br/>
 
