@@ -3,6 +3,7 @@ import {useState,useEffect} from 'react'
 import './Manager.css'
 import './DessertMenuFormat.css'
 import './DessertDrinksUpdate.css'
+import './WineListFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
@@ -428,6 +429,7 @@ export default function WineListFormat(){
                             <div style={{   textAlign:'center',
                                             display:'flex',
                                             gap:'10px',
+                                            fontFamily:'FuturaLight',
                                             justifyContent:'center',
                                             border:'1px solid green',
                                             alignItems:'center'}}>
@@ -550,9 +552,9 @@ export default function WineListFormat(){
                                             <div key={data._id} className='special'>
                                                 
                                                 <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}, </span>
-                                                <span className='vintage'>{data.vintage}, </span>
-                                                <span> {data.description}</span>
+                                                <span className='name'>{data.name}</span>
+                                                <span className='vintage'>, {data.vintage}, </span>
+                                                <span className='description'> {data.description}</span>
                                                 <span className='price'> &nbsp;{data.price}</span> 
                                                     
                                                 <br/>
@@ -701,9 +703,13 @@ export default function WineListFormat(){
                                                 {x}
                                                 {white.filter(item=>item.category == x).map(data=>{
                                                     return(
-                                                        <div key={data.name}>
-                                                            {data.name} / {data.price}
-                                                        </div>
+                                            <div key={data._id} className='special'>                                        
+                                                <span className='grapes'>{data.grapes}, </span>
+                                                <span className='name'>{data.name}, </span>
+                                                <span> {data.vintage},</span>
+                                                <span> {data.description} / {data.price}</span>
+
+                                            </div>
                                                     )
                                                 })}
                                             </div>
@@ -735,9 +741,13 @@ export default function WineListFormat(){
                                                 {x}
                                                 {red.filter(item=>item.category == x).map(data=>{
                                                     return(
-                                                        <div key={data.name}>
-                                                            {data.name} / {data.price}
-                                                        </div>
+                                            <div key={data._id} className='special'>                                        
+                                                <span className='grapes'>{data.grapes}, </span>
+                                                <span className='name'>{data.name}, </span>
+                                                <span> {data.vintage},</span>
+                                                <span> {data.description} / {data.price}</span>
+
+                                            </div>
                                                     )
                                                 })}
                                             </div>
@@ -948,7 +958,9 @@ export default function WineListFormat(){
 
 
 
-                            <div className='specials-h1' style={{marginBottom:'20px'}}>sherries</div>
+                            <div className='specials-h1' style={{marginBottom:'20px'}}>
+                                Jerez, Sanlúcar de Barrameda
+                            </div>
                             
                             {sherries.map(data=>{
                                 return(
@@ -984,7 +996,7 @@ export default function WineListFormat(){
 
 
                                     p2 front<br/>
-                                    bourbon / tequila
+                                    
 
                                     {spiritCategories.map(x=>{
                                         return(
