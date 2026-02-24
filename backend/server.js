@@ -22,6 +22,7 @@ const TeaPrice = require('./models/TeaPrice.js')
 const Pixel = require('./models/Pixel.js')
 const SpecialsFormat = require('./models/SpecialsFormat.js')
 const DessertsFormat = require('./models/DessertsFormat.js')
+const WinelistFormat = require('./models/WinelistFormat.js')
 const DinnerFormat = require('./models/DinnerFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
 const TastingMenuPricing = require('./models/TastingMenuPricing.js')
@@ -2019,6 +2020,23 @@ app.get('/api/formats/desserts', async(req,res)=>{
                 categoriesMarginTop: 0
             })
             allFormats = await DessertsFormat.find()
+        }
+        console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/formats/winelist', async(req,res)=>{ 
+    try{
+        let allFormats = await WinelistFormat.find()
+        if (allFormats.length == 0){
+            await WinelistFormat.create({
+                pageMargin: 0,
+                winelistItemMarginsTopBottom: 0
+            })
+            allFormats = await WinelistFormat.find()
         }
         console.log(allFormats)
         res.json(allFormats)

@@ -31,14 +31,11 @@ export default function WineListFormat(){
 
     const [frontView, setFrontView] = useState(true)
     const [page1, setPage1] =useState(true)
-    const [dessertsFormatting, setDessertsFormatting] = useState([])
-    const [pageMarginRight, setPageMarginRight] = useState(0)
-    const [pageMarginRightBack, setPageMarginRightBack] = useState(0)
-    const [categoriesMarginTop, setCategoriesMarginTop] = useState(0)
-    const [dessertItemMarginsTopBottom, setDessertItemMarginsTopBottom] = useState(0)
+    const [winelistFormatting, setWinelistFormatting] = useState([])
+    const [pageMargin, setPageMargin] = useState(50)
+    const [winelistItemMarginsTopBottom, setWinelistItemMarginsTopBottom] = useState(0)
     useEffect(()=>{ 
-                getDessertsFormatting()
-
+                getWinelistFormatting()
                 getWinesBTG()
                 getSparkling()
                 getRosé()
@@ -210,16 +207,17 @@ export default function WineListFormat(){
 
 
 
-    function getDessertsFormatting(){
+    function getWinelistFormatting(){
         try{
-            fetch(`${BASE_URL}/api/formats/desserts`)
+            
+            fetch(`${BASE_URL}/api/formats/winelist`)
                 .then(res=>res.json())
                 .then(json=>{
-                    setDessertsFormatting(json[0])
-                    setPageMarginRight(json[0].pageMarginRight)
-                    setPageMarginRightBack(json[0].pageMarginRightBack)
-                    setCategoriesMarginTop(json[0].categoriesMarginTop)
-                    setDessertItemMarginsTopBottom(json[0].dessertItemMarginsTopBottom)
+                    setWinelistFormatting(json[0])
+                    
+                    console.log(json[0].pageMargin)
+                    setPageMargin(json[0].pageMargin)
+                    setWinelistItemMarginsTopBottom(json[0].winelistItemMarginsTopBottom)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -227,55 +225,29 @@ export default function WineListFormat(){
         }
     }
 
-    function decreaseDessertItemMarginsTopBottom(){
-        if (dessertItemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/desserts/decreaseDessertItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getDessertsFormatting())
+    function decreaseWinelistItemMarginsTopBottom(){
+        if (winelistItemMarginsTopBottom <= 0) return
+        fetch(`${BASE_URL}/api/formats/winelist/decreaseWinelistItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getWinelistFormatting())
             .catch(err=>console.log(err))
     }
 
-    function decreaseCategoriesMarginTop(){
-        if (categoriesMarginTop <= 0) return
-        fetch(`${BASE_URL}/api/formats/desserts/decreaseCategoriesMarginTop`, {method:'PUT'})
-            .then(()=>getDessertsFormatting())
+    function increaseWinelistItemMarginsTopBottom(){
+        fetch(`${BASE_URL}/api/formats/winelist/increaseWinelistItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getWinelistFormatting())
             .catch(err=>console.log(err))
     }
 
-    function increaseCategoriesMarginTop(){
-        fetch(`${BASE_URL}/api/formats/desserts/increaseCategoriesMarginTop`, {method:'PUT'})
-            .then(()=>getDessertsFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increaseDessertItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/desserts/increaseDessertItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getDessertsFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function decreasePageMarginRight(){
-        if (pageMarginRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/desserts/decreasePageMarginRight`,{method:'PUT'})
-        .then(()=>getDessertsFormatting())
+    function decreasePageMargin(){
+        if (pageMargin <= 0) return
+        fetch(`${BASE_URL}/api/formats/winelist/decreasePageMargin`,{method:'PUT'})
+        .then(()=>getWinelistFormatting())
         .catch(err=>console.log(err))
     }
 
-    function decreasePageMarginRightBack(){
-        if (pageMarginRightBack <= 0) return
-        fetch(`${BASE_URL}/api/formats/desserts/decreasePageMarginRightBack`,{method:'PUT'})
-        .then(()=>getDessertsFormatting())
-        .catch(err=>console.log(err))
-    }
-    
-    function increasePageMarginRight(){
-        fetch(`${BASE_URL}/api/formats/desserts/increasePageMarginRight`,{method:'PUT'})
-            .then(()=>getDessertsFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increasePageMarginRightBack(){
-        fetch(`${BASE_URL}/api/formats/desserts/increasePageMarginRightBack`,{method:'PUT'})
-            .then(()=>getDessertsFormatting())
+    function increasePageMargin(){
+        fetch(`${BASE_URL}/api/formats/winelist/increasePageMargin`,{method:'PUT'})
+            .then(()=>getWinelistFormatting())
             .catch(err=>console.log(err))
     }
 
@@ -347,16 +319,12 @@ export default function WineListFormat(){
                                                     border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={frontView  ? decreaseDessertItemMarginsTopBottom
-                                                                                        : decreaseCategoriesMarginTop
-                                                                    } /></span>
+                                                                    onClick={decreaseWinelistItemMarginsTopBottom} /></span>
                                         <span>menu item margins<br/>top & bottom &#8597;</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={frontView  ? increaseDessertItemMarginsTopBottom
-                                                                                        : increaseCategoriesMarginTop
-                                                                    } /></span>
+                                                                    onClick={increaseWinelistItemMarginsTopBottom} /></span>
                                     </div>
 
                                     <div style={{   textAlign:'center',
@@ -368,10 +336,10 @@ export default function WineListFormat(){
 
                                                         
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={frontView ? decreasePageMarginRight : decreasePageMarginRightBack} /></span>
-                                        <span>page margins</span>
+                                                                    onClick={decreasePageMargin} /></span>
+                                        <span>page margin</span>
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={frontView ? increasePageMarginRight : increasePageMarginRightBack} /></span>
+                                                                    onClick={increasePageMargin} /></span>
                                     </div>
                                 
                             <br/>
@@ -407,6 +375,7 @@ export default function WineListFormat(){
                                                 columns:'4',
                                                 columnFill:'auto',
                                                 border:'1px solid black',
+                                                padding:`${pageMargin}px`,
                                                 background:'white',
                                                 // backgroundSize:'14in 8.5in',
                                                 // backgroundPosition:'-51px -54px',
@@ -656,6 +625,7 @@ export default function WineListFormat(){
                                                 columns:'4',
                                                 columnFill:'auto',
                                                 background:'white',
+                                                padding:`${pageMargin}px`,
                                                 border:'1px solid black'}} >
                                     
                                     
@@ -871,6 +841,7 @@ export default function WineListFormat(){
                                                 height:'8.5in',
                                                 columns:'4',
                                                 columnFill:'auto',
+                                                padding:`${pageMargin}px`,
                                                 border:'1px solid black',
                                                 background:'white'}}>
 
@@ -899,7 +870,11 @@ export default function WineListFormat(){
 
                                 </div>
                             :
-                                <div style={{width:'14in',height:'8.5in',background:'white',border:'1px solid black'}}    
+                                <div style={{   width:'14in',
+                                                height:'8.5in',
+                                                background:'white',
+                                                padding:`${pageMargin}px`,
+                                                border:'1px solid black'}}    
                                         
                                 >
                                     p2 back<br/>
