@@ -2093,6 +2093,18 @@ app.put('/api/formats/specials/increasePageMargins', async(req,res)=>{
     }
 })
 
+app.put('/api/formats/winelist/increasePageMargin', async(req,res)=>{
+    try{
+        const allFormats = await WinelistFormat.find()
+        console.log(allFormats[0])
+        await WinelistFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMargin: allFormats[0].pageMargin + 1})
+        res.json('page margins increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/dinner/decreasePageMargin', async(req,res)=>{
     try{
         const allFormats = await DinnerFormat.find()
