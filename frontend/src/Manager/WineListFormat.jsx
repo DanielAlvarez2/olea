@@ -1172,53 +1172,149 @@ export default function WineListFormat(){
                                 </div>
                             }
                                 </>
+
                                 :
+
                                 <>
+
+                                {/* Page 2 */}
                                 {
-                            frontView ?                            
+                            frontView ?  
+                            
                                 <div style={{   width:'14in',
                                                 height:'8.5in',
-                                                columns:'4',
-                                                columnRule:'1px solid black',
-                                                columnFill:'auto',
-                                                padding:`${pageMargin}px`,
+                                                background:'white',
                                                 border:'1px solid black',
-                                                background:'white'}}>
+                                                position:'relative',
+                                                overflow:'hidden'
+                                            }}>
+
+                                    <div style={{   width:'14in',
+                                                    height:'8.5in',
+                                                    position:'absolute',
+                                                    top:'0',
+                                                    left:'7in',
+                                                    columns:'4',
+                                                    columnGap:'0',
+                                                    columnRule:'1px solid black',
+                                                    columnFill:'auto',
+                                                    padding:`${pageMarginTopBottom}px 0`,
+                                                    border:'1px solid black',
+                                                    background:'white'}}>
 
 
-                                    
-                                    
+                                        
+                                        
 
-                                    {spiritCategories.map(x=>{
-                                        return(
-                                            <div key={x} style={{breakInside:'avoid-column'}}>
-                                                <div className='winelist-h1' style={{marginBottom:'0'}}>
-                                                    {x}
+                                        {spiritCategories.map(x=>{
+                                            return(
+                                                <div    key={x} 
+                                                        style={{breakInside:'avoid-column'}}>
+                                                    <div    className='winelist-h1' 
+                                                            style={{marginBottom:'0',
+                                                                    paddingLeft:`${winelistItemMarginsLeftRight}px`
+                                                            }}>
+                                                        {x}<br/>
+                                                    </div>
+
+                                                    {spirits.filter(item=>item.category == x).map(data=>{
+                                                        return(
+                                                            <div    key={data.name}
+                                                                    style={{paddingLeft:`${winelistItemMarginsLeftRight}px`}}    
+                                                            >
+                                                                {data.name} / {data.price.toString().includes('.') ? data.price.toFixed(2) : data.price}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                    <br/>
                                                 </div>
+                                            )
+                                        })}
+                                        
 
-                                                {spirits.filter(item=>item.category == x).map(data=>{
-                                                    return(
-                                                        <div key={data.name}>
-                                                            {data.name} / {data.price.toString().includes('.') ? data.price.toFixed(2) : data.price}
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        )
-                                    })}
-                                    
-
+                                    </div>
                                 </div>
                             :
                                 <div style={{   width:'14in',
                                                 height:'8.5in',
                                                 background:'white',
-                                                padding:`${pageMargin}px`,
-                                                border:'1px solid black'}}    
-                                        
+                                                position:'relative',
+                                                overflow:'hidden',
+                                                border:'1px solid black'}}           
                                 >
-                                    p2 back<br/>
-                                    amaro / beer-cocktails-wines-spirits
+
+                                    <div style={{   width:'14in',
+                                                    height:'8.5in',
+                                                    position:'absolute',
+                                                    top:'0',
+                                                    right:'7in',
+                                                    columns:'4',
+                                                    columnGap:'0',
+                                                    columnRule:'1px solid black',
+                                                    columnFill:'auto',
+                                                    padding:`${pageMarginTopBottom}px 0`,
+                                                    border:'1px solid black',
+                                                    background:'white'}}>
+
+
+                                        
+                                        
+
+                                        {spiritCategories.map(x=>{
+                                            return(
+                                                <div    key={x} 
+                                                        style={{breakInside:'avoid-column'}}>
+                                                    <div    className='winelist-h1' 
+                                                            style={{marginBottom:'0',
+                                                                    paddingLeft:`${winelistItemMarginsLeftRight}px`
+                                                            }}>
+                                                        {x}<br/>
+                                                    </div>
+
+                                                    {spirits.filter(item=>item.category == x).map(data=>{
+                                                        return(
+                                                            <div    key={data.name}
+                                                                    style={{paddingLeft:`${winelistItemMarginsLeftRight}px`}}    
+                                                            >
+                                                                {data.name} / {data.price.toString().includes('.') ? data.price.toFixed(2) : data.price}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                    <br/>
+                                                </div>
+                                            )
+                                        })}
+                                        
+
+                                    </div>
+
+                                    <div style={{   background:'white',
+                                                    width:'3.5in',
+                                                    height:'8.5in',
+                                                    border:'1px solid black',
+                                                    position:'absolute',
+                                                    top:'0',
+                                                    right:'0',
+                                                    
+                                    }}>
+
+                                        <div    className='winelist-h1'
+                                                style={{position:'absolute',
+                                                        left:`${winelistItemMarginsLeftRight}px`,
+                                                        bottom:`${pageMarginTopBottom}px`
+                                                }}        
+                                        >
+                                            beer
+                                            <br/><br/>
+                                            cocktails
+                                            <br/><br/>
+                                            wines
+                                            <br/><br/>
+                                            spirits
+                                            <br/><br/>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 }
                                 </>
