@@ -32,8 +32,8 @@ export default function WineListFormat(){
     const [frontView, setFrontView] = useState(true)
     const [page1, setPage1] =useState(true)
     const [winelistFormatting, setWinelistFormatting] = useState([])
-    const [pageMargin, setPageMargin] = useState(50)
-    const [winelistItemMarginsTopBottom, setWinelistItemMarginsTopBottom] = useState(0)
+    const [pageMarginTopBottom, setPageMarginTopBottom] = useState(50)
+    const [winelistItemMarginsLeftRight, setWinelistItemMarginsLeftRight] = useState(0)
     useEffect(()=>{ 
                 getWinelistFormatting()
                 getWinesBTG()
@@ -205,8 +205,6 @@ export default function WineListFormat(){
             .catch(err=>console.log(err))
     }
 
-
-
     function getWinelistFormatting(){
         try{
             
@@ -214,10 +212,8 @@ export default function WineListFormat(){
                 .then(res=>res.json())
                 .then(json=>{
                     setWinelistFormatting(json[0])
-                    
-                    console.log(json[0].pageMargin)
-                    setPageMargin(json[0].pageMargin)
-                    setWinelistItemMarginsTopBottom(json[0].winelistItemMarginsTopBottom)
+                    setPageMarginTopBottom(json[0].pageMarginTopBottom)
+                    setWinelistItemMarginsLeftRight(json[0].winelistItemMarginsLeftRight)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -225,28 +221,28 @@ export default function WineListFormat(){
         }
     }
 
-    function decreaseWinelistItemMarginsTopBottom(){
-        if (winelistItemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/winelist/decreaseWinelistItemMarginsTopBottom`, {method:'PUT'})
+    function decreaseWinelistItemMarginsLeftRight(){
+        if (winelistItemMarginsLeftRight <= 0) return
+        fetch(`${BASE_URL}/api/formats/winelist/decreaseWinelistItemMarginsLeftRight`, {method:'PUT'})
             .then(()=>getWinelistFormatting())
             .catch(err=>console.log(err))
     }
 
-    function increaseWinelistItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/winelist/increaseWinelistItemMarginsTopBottom`, {method:'PUT'})
+    function increaseWinelistItemMarginsLeftRight(){
+        fetch(`${BASE_URL}/api/formats/winelist/increaseWinelistItemMarginsLeftRight`, {method:'PUT'})
             .then(()=>getWinelistFormatting())
             .catch(err=>console.log(err))
     }
 
-    function decreasePageMargin(){
-        if (pageMargin <= 0) return
-        fetch(`${BASE_URL}/api/formats/winelist/decreasePageMargin`,{method:'PUT'})
+    function decreasePageMarginTopBottom(){
+        if (pageMarginTopBottom <= 0) return
+        fetch(`${BASE_URL}/api/formats/winelist/decreasePageMarginTopBottom`,{method:'PUT'})
         .then(()=>getWinelistFormatting())
         .catch(err=>console.log(err))
     }
 
-    function increasePageMargin(){
-        fetch(`${BASE_URL}/api/formats/winelist/increasePageMargin`,{method:'PUT'})
+    function increasePageMarginTopBottom(){
+        fetch(`${BASE_URL}/api/formats/winelist/increasePageMarginTopBottom`,{method:'PUT'})
             .then(()=>getWinelistFormatting())
             .catch(err=>console.log(err))
     }
@@ -319,12 +315,12 @@ export default function WineListFormat(){
                                                     border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseWinelistItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom &#8597;</span>
+                                                                    onClick={decreaseWinelistItemMarginsLeftRight} /></span>
+                                        <span>menu item margins<br/>left & right &#8596;</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseWinelistItemMarginsTopBottom} /></span>
+                                                                    onClick={increaseWinelistItemMarginsLeftRight} /></span>
                                     </div>
 
                                     <div style={{   textAlign:'center',
@@ -336,10 +332,10 @@ export default function WineListFormat(){
 
                                                         
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMargin} /></span>
-                                        <span>page margin</span>
+                                                                    onClick={decreasePageMarginTopBottom} /></span>
+                                        <span>page margin<br/>top & bottom &#8597;</span>
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMargin} /></span>
+                                                                    onClick={increasePageMarginTopBottom} /></span>
                                     </div>
                                 
                             <br/>
@@ -372,10 +368,12 @@ export default function WineListFormat(){
                             {frontView ?                            
                                 <div style={{   width:'14in',
                                                 height:'8.5in',
-                                                columns:'4',
+                                                columns:'4 3in',
+                                                columnRule:'1px solid black',
+                                                columnGap:'0px',
                                                 columnFill:'auto',
                                                 border:'1px solid black',
-                                                padding:`${pageMargin}px`,
+                                                padding:`${pageMarginTopBottom}px 0`,
                                                 background:'white',
                                                 // backgroundSize:'14in 8.5in',
                                                 // backgroundPosition:'-51px -54px',
@@ -385,24 +383,29 @@ export default function WineListFormat(){
 
                                     
                                     <div    className='winelist-h1'
-                                            style={{margin:'0',fontSize:'27px'}}
+                                            style={{margin:'0',
+                                                    paddingLeft:`${winelistItemMarginsLeftRight}px`,
+                                                    fontSize:'27px'}}
                                     >
                                         wine by the glass
                                     </div>
                                    
                                     <div    className='winelist-h2'
-                                            style={{margin:'0'}}>
+                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
                                         Cava
                                     </div>
 
                                     {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
                                         return(
-                                            <div key={data._id} className='special'>                            
+                                            <div    key={data._id}
+                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
+                                                    className='special winelist-item'>                            
                                                 <span className='grapes'>{data.grapes}, </span>
                                                 <span className='name'>{data.name}</span>
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
+                                                <br/><br/>
                                             </div>
                                         )
                                     })}
@@ -421,6 +424,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
+                                                <br/><br/>
                                             </div>
                                         )
                                     })}
@@ -439,6 +443,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
+                                                <br/><br/>
                                             </div>
                                         )
                                     })}
@@ -457,6 +462,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
+                                                <br/><br/>
                                             </div>
                                         )
                                     })}
@@ -495,6 +501,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
+                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
                                             </div>
                                         )
                                     })}
@@ -522,6 +529,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
+                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
                                             </div>
                                         )
                                     })}
@@ -556,6 +564,7 @@ export default function WineListFormat(){
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
+                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
                                                             </div>
                                                     )
                                                 })}
@@ -600,6 +609,7 @@ export default function WineListFormat(){
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
+                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
                                                             </div>
                                                     )
                                                 })}
@@ -623,6 +633,7 @@ export default function WineListFormat(){
                                 <div style={{   width:'14in',
                                                 height:'8.5in',
                                                 columns:'4',
+                                                columnRule:'1px solid black',
                                                 columnFill:'auto',
                                                 background:'white',
                                                 padding:`${pageMargin}px`,
@@ -840,6 +851,7 @@ export default function WineListFormat(){
                                 <div style={{   width:'14in',
                                                 height:'8.5in',
                                                 columns:'4',
+                                                columnRule:'1px solid black',
                                                 columnFill:'auto',
                                                 padding:`${pageMargin}px`,
                                                 border:'1px solid black',

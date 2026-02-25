@@ -2009,6 +2009,23 @@ app.get('/api/formats/specials', async(req,res)=>{
     }
 })
 
+app.get('/api/formats/winelist', async(req,res)=>{ 
+    try{
+        let allFormats = await WinelistFormat.find()
+        if (allFormats.length == 0){
+            await WinelistFormat.create({
+                pageMarginTopBottom: 0,
+                winelistItemMarginsLeftRight: 0,                
+            })
+            allFormats = await WinelistFormat.find()
+        }
+        console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/formats/desserts', async(req,res)=>{ 
     try{
         let allFormats = await DessertsFormat.find()
@@ -2020,23 +2037,6 @@ app.get('/api/formats/desserts', async(req,res)=>{
                 categoriesMarginTop: 0
             })
             allFormats = await DessertsFormat.find()
-        }
-        console.log(allFormats)
-        res.json(allFormats)
-    }catch(err){
-        console.log(err)
-    }
-})
-
-app.get('/api/formats/winelist', async(req,res)=>{ 
-    try{
-        let allFormats = await WinelistFormat.find()
-        if (allFormats.length == 0){
-            await WinelistFormat.create({
-                pageMargin: 0,
-                winelistItemMarginsTopBottom: 0
-            })
-            allFormats = await WinelistFormat.find()
         }
         console.log(allFormats)
         res.json(allFormats)
@@ -2093,25 +2093,47 @@ app.put('/api/formats/specials/increasePageMargins', async(req,res)=>{
     }
 })
 
-app.put('/api/formats/winelist/increasePageMargin', async(req,res)=>{
+app.put('/api/formats/winelist/increasePageMarginTopBottom', async(req,res)=>{
     try{
         const allFormats = await WinelistFormat.find()
         console.log(allFormats[0])
         await WinelistFormat.findByIdAndUpdate( allFormats[0]._id,
-                                                {pageMargin: allFormats[0].pageMargin + 1})
-        res.json('page margins increased')
+                                                {pageMarginTopBottom: allFormats[0].pageMarginTopBottom + 1})
+        res.json('page margins increased top+bottom')
     }catch(err){
         console.log(err)
     }
 })
 
-app.put('/api/formats/winelist/decreasePageMargin', async(req,res)=>{
+app.put('/api/formats/winelist/increaseWinelistItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await WinelistFormat.find()
+        await WinelistFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {winelistItemMarginsLeftRight: allFormats[0].winelistItemMarginsLeftRight + 1})
+        res.json('winelist item margins increased left+right')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/winelist/decreaseWinelistItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await WinelistFormat.find()
+        await WinelistFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {winelistItemMarginsLeftRight: allFormats[0].winelistItemMarginsLeftRight - 1})
+        res.json('winelist item margins decreased left+right')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/winelist/decreasePageMarginTopBottom', async(req,res)=>{
     try{
         const allFormats = await WinelistFormat.find()
         console.log(allFormats[0])
         await WinelistFormat.findByIdAndUpdate( allFormats[0]._id,
-                                                {pageMargin: allFormats[0].pageMargin - 1})
-        res.json('page margins decreased')
+                                                {pageMarginTopBottom: allFormats[0].pageMarginTopBottom - 1})
+        res.json('page margins decreased top+bottom')
     }catch(err){
         console.log(err)
     }
