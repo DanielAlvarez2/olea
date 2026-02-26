@@ -150,16 +150,41 @@ export default function Home2(){
                         <div id='slideshow'>
                             <div id='left'><div id='left-arrow'>&lt;</div></div>
                             <div id='right'><div id='right-arrow'>&gt;</div></div>
-                            <img src={`${picsShuffled[0]}`} 
+                            {/* <img src={`${picsShuffled[0]}`} 
                                     className='pic-large pic-large-current'
                                     id='pic-large-0'
-                            />
-                            <populateLargeImages />
+                            /> */}
+                            {picsShuffled.map((pic,i)=>(
+                                <img    src={picsShuffled[i]} 
+                                        key={picsShuffled[i]}
+                                        id={`pic-large-${i}`} 
+                                        className= 
+                                        {i == 0 ? 
+                                                    'pic-large pic-large-current'
+                                            : 
+                                                    'pic-large pic-large-hidden'
+                                        }
+                                         
+                                />
+                            ))} 
                         </div>{/* #slideshow */}
 
                         <div id='small-slideshow-wrapper'>
                             <div id='small-slideshow'>
-                                {populateSmallImages}
+                                {picsShuffled.map((pic,i)=>(
+                                    <img    src={picsShuffled[i]}
+                                            key={picsShuffled[i]}
+                                            className='pic-small'
+                                            id={`pic-small-${i}`} 
+                                    />
+                                ))}
+                                {picsShuffled.map((pic,i)=>(
+                                    <img    src={picsShuffled[i]}
+                                            key={`${picsShuffled[i]}b`}
+                                            className='pic-small'
+                                            id={`pic-small-${i}`} 
+                                    />
+                                ))}
                             </div>
                             <div id='shader-left'></div>
                             <div id='shader-right'></div>
