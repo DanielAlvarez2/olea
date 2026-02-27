@@ -363,23 +363,26 @@ export default function WineListFormat(){
 
 
 
+
+
+
+
                         {page1 ? 
                                 <>
                             {frontView ?                            
-                                <div style={{   width:'14in',
-                                                height:'8.5in',
-                                                overflow:'hidden',
+                                <div style={{   
+                                                
+                                                
                                                 columns:'4 3in',
                                                 columnRule:'1px solid black',
                                                 columnGap:'0px',
                                                 columnFill:'auto',
-                                                border:'1px solid black',
+                                                
                                                 padding:`${pageMarginTopBottom}px 0`,
-                                                background:'white',
-                                                // backgroundSize:'14in 8.5in',
-                                                // backgroundPosition:'-51px -54px',
-                                                // backgroundImage:'url("./scan-wine-list-p1-front.jpg")'
-                                                }}>
+                                                
+                                                }}
+                                    className='winelist-format'
+                                >
 
 
                                     
@@ -638,12 +641,9 @@ export default function WineListFormat(){
                             :
                                 
                                 
-                                <div style={{   width:'14in',
-                                                height:'8.5in',
-                                                background:'white',
-                                                overflow:'hidden',
-                                                border:'1px solid black',
-                                                position:'relative'}}>
+                                <div 
+                                    className='winelist-format'                
+                                >
                                     
 
 
@@ -1181,13 +1181,9 @@ export default function WineListFormat(){
                                 {
                             frontView ?  
                             
-                                <div style={{   width:'14in',
-                                                height:'8.5in',
-                                                background:'white',
-                                                border:'1px solid black',
-                                                position:'relative',
-                                                overflow:'hidden'
-                                            }}>
+                                <div 
+                                    className='winelist-format'            
+                                >
 
                                     <div style={{   width:'14in',
                                                     height:'8.5in',
@@ -1235,13 +1231,7 @@ export default function WineListFormat(){
                                     </div>
                                 </div>
                             :
-                                <div style={{   width:'14in',
-                                                height:'8.5in',
-                                                background:'white',
-                                                position:'relative',
-                                                overflow:'hidden',
-                                                border:'1px solid black'}}           
-                                >
+                                <div className='winelist-format'>
 
                                     <div style={{   width:'14in',
                                                     height:'8.5in',

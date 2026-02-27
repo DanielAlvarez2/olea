@@ -26,3 +26,38 @@
     /* color:blue; */
     font-size: 13.5px;
 }
+.winelist-format{
+    width:14in;
+    height:8.5in;
+    background: white;
+    border: 1px solid black;
+    position: relative;
+    overflow:hidden;
+}
+
+@media (max-width:1350px){
+    .winelist-format{
+        zoom:0.75 !important;
+    }
+}
+
+@media (max-width:1015px){
+    .winelist-format{
+        zoom:0.5 !important;
+    }
+}
+
+@media (max-width:505px){
+    .winelist-format{
+        zoom:0.40 !important;
+    }
+}
+
+@media (max-width:405px){
+    .winelist-format{
+        zoom:0.30 !important;
+    }
+}
+
+
+
