@@ -175,9 +175,10 @@ Please switch to a different browser to proceed.
                                                 background:'white',
                                                 padding:`${pageMargin/2}px ${pageMargin}px 0px`,
                                                 // backgroundImage:'url(scan-dinner-menu.jpg)',
-                                                backgroundSize:'8.5in 14in',
+                                                // backgroundSize:'8.5in 14in',
                                                 // color:'red',
-                                                height:'13.95in',
+                                                height:'auto',
+                                                paddingBottom:'30px',
                                                 border:'1px solid black'}} 
                                 >
                                     <div id='footer-top'>
@@ -268,7 +269,7 @@ Please switch to a different browser to proceed.
                                                             
                                                             <span className='price'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-
+                                                            {<div className='allergies-complete'>{data.allergiesComplete}</div>}
 
                                                         </div>
                                                     )
@@ -318,7 +319,7 @@ Please switch to a different browser to proceed.
                                                             
                                                             <span className='price'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-
+                                                            {<div className='allergies-complete'>{data.allergiesComplete}</div>}
 
                                                         </div>
                                                     )
@@ -445,7 +446,7 @@ Please switch to a different browser to proceed.
                                                             
                                                             <span className='price'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-
+                                                            {<div className='allergies-complete'>{data.allergiesComplete}</div>}
 
                                                         </div>
                                                     )
