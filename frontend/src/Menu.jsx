@@ -170,7 +170,7 @@ Please switch to a different browser to proceed.
 
 
 
-                                <div    className='dinner-menu-format' 
+                                <div    className='dinner-menu-format allergies-menu-dinner' 
                                         style={{width:'8.5in',
                                                 background:'white',
                                                 padding:`${pageMargin/2}px ${pageMargin}px 0px`,
@@ -178,7 +178,7 @@ Please switch to a different browser to proceed.
                                                 // backgroundSize:'8.5in 14in',
                                                 // color:'red',
                                                 height:'auto',
-                                                paddingBottom:'30px',
+                                                paddingBottom:'55px',
                                                 border:'1px solid black'}} 
                                 >
                                     <div id='footer-top'>
@@ -468,7 +468,7 @@ Please switch to a different browser to proceed.
                                     <div className='dessert-footer'>
                                         
                                         
-                                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                                        <div className='chef-legal-flexbox'>
 
                                             <div className='chef name' style={{textDecoration:'underline'}}>manuel romero, chef</div>
                                             

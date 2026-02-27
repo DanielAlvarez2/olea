@@ -1,3 +1,26 @@
 .allergies-complete{
     color:red;
 }
+
+.chef-legal-flexbox{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.allergies-menu-dinner{
+    width:8.5in;
+}
+
+@media (max-width: 615px){
+    .allergies-menu-dinner{
+        width:100% !important;
+    }
+}
+
+@media (max-width: 585px){
+    .chef-legal-flexbox{
+        flex-direction: column;
+        gap:30px;
+    }
+}
