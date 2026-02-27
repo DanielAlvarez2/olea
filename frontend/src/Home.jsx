@@ -37,7 +37,6 @@ export default function Home2(){
             const picLarge26 = document.querySelector(`#pic-large-26`)
             const picLarge27 = document.querySelector(`#pic-large-27`)
             const picLarge28 = document.querySelector(`#pic-large-28`)
-            const picLarge29 = document.querySelector(`#pic-large-29`)
 
             const rightArrow = document.querySelector('#right')
             const leftArrow = document.querySelector('#left')
@@ -50,7 +49,7 @@ export default function Home2(){
             function moveRight(){
                 console.log('moveRight() picLargeCurrent starts: ' + picLargeCurrent)
                 document.querySelector('.pic-large-current').classList.toggle('pic-large-current')
-                if(picLargeCurrent == 29){
+                if(picLargeCurrent == 28){
                     picLargeCurrent = 0
                 }else{
                     picLargeCurrent++
@@ -124,22 +123,6 @@ export default function Home2(){
 
     console.log(picsShuffled)
 
-    function populateLargeImages(){
-        let largeImages = ''
-        for(let i=1;i<pics.length;i++){
-            largeImages += `<img src='${picsShuffled[i]}' className='pic-large pic-large-hidden' id='pic-large-${i}'>`
-        }
-        return largeImages
-    }
-
-    function populateSmallImages(){
-        let smallImages = ''
-        for(let i=0;i<pics.length;i++){
-            smallImages += `<img src='${picsShuffled[i]}' className='pic-small' id='pic-large-${i}'>`
-        }
-        return smallImages + smallImages
-    }
-
     return (
         <div className='page-wrapper webpage' >
             <div className='webpage-wrapper'>
@@ -150,10 +133,6 @@ export default function Home2(){
                         <div id='slideshow'>
                             <div id='left'><div id='left-arrow'>&lt;</div></div>
                             <div id='right'><div id='right-arrow'>&gt;</div></div>
-                            {/* <img src={`${picsShuffled[0]}`} 
-                                    className='pic-large pic-large-current'
-                                    id='pic-large-0'
-                            /> */}
                             {picsShuffled.map((pic,i)=>(
                                 <img    src={picsShuffled[i]} 
                                         key={picsShuffled[i]}
