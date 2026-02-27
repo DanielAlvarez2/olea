@@ -8,8 +8,7 @@ import { useEffect } from 'react'
 export default function Home2(){
     useEffect(()=>window.scrollTo(0,0),[])
     useEffect(()=>{
-        const handleWindowLoad = ()=>{
-            console.log('All image files loaded')
+        
             const picLarge0 = document.querySelector(`#pic-large-0`)
             const picLarge1 = document.querySelector(`#pic-large-1`)
             const picLarge2 = document.querySelector(`#pic-large-2`)
@@ -50,12 +49,14 @@ export default function Home2(){
             const smallSlideshow = document.querySelector('#small-slideshow')
 
             function moveRight(){
+                console.log('moveRight() picLargeCurrent starts: ' + picLargeCurrent)
                 document.querySelector('.pic-large-current').classList.toggle('pic-large-current')
                 if(picLargeCurrent == 29){
                     picLargeCurrent = 0
                 }else{
                     picLargeCurrent++
                 }
+                console.log('moveRight() picLargeCurrent ends: ' + picLargeCurrent)
                 document.querySelector(`#pic-large-${picLargeCurrent}`).classList.toggle('pic-large-current')
                 const smallPicMove = document.querySelector('.pic-small')
                 const lastSmallPic = document.querySelector('.pic-small:last-child')
@@ -65,7 +66,7 @@ export default function Home2(){
             function moveLeft(){
                 document.querySelector('.pic-large-current').classList.toggle('pic-large-current')
                 if(picLargeCurrent == 0){
-                    picLargeCurrent = 29
+                    picLargeCurrent = 28
                 }else{
                     picLargeCurrent--
                 }
@@ -75,13 +76,9 @@ export default function Home2(){
                 smallSlideshow.insertBefore(smallPicMove, firstSmallPic)
             }
 
-            setInterval(moveRight,5000)
+            // setInterval(moveRight,5000)
 
-        }
-        window.addEventListener('load',handleWindowLoad)
-        return()=>{
-            window.removeEventListener('load',handleWindowLoad)
-        }
+        
     },[])
 
     const pics = [
@@ -116,13 +113,17 @@ export default function Home2(){
         'slideshow29.webp',
     ]
 
+    let picsINITIALlength = pics.length
+
     let picsShuffled = []
 
-    for(let i=0;i<pics.length;i++){
+    for(let i=0;i<picsINITIALlength;i++){
         let currentPic = Math.floor(Math.random()*pics.length)
         picsShuffled.push(pics[currentPic])
         pics.splice(currentPic,1)
     }
+
+    console.log(picsShuffled)
 
     function populateLargeImages(){
         let largeImages = ''
