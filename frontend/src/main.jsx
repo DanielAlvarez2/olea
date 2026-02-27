@@ -3,7 +3,6 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Home from './Home.jsx'
-import Home2 from './Home2.jsx'
 import Newsletter from './Newsletter.jsx'
 import Giftcards from './Giftcards.jsx'
 import Info from './Info.jsx'
@@ -77,11 +76,10 @@ import RestaurantWeeksScreenshot from './Manager/RestaurantWeeksScreenshot.jsx'
 import PrinterConfig from './Manager/PrinterConfig.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/home2' element={<Home2 />} />
         <Route path='info' element={<Info />} />
         <Route path='free-parking' element={<FreeParking />} />
         <Route path='chef-bio' element={<ChefBio />} />
@@ -160,5 +158,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
       </Routes>
     </BrowserRouter>
-  </StrictMode>
+  // </StrictMode>
 )
