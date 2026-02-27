@@ -185,15 +185,23 @@ export default function DinnerMenuFormat(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 <div    className='dinner-menu-format' 
-                                        style={{width:'8.5in',
-                                                background:'white',
-                                                padding:`${pageMargin/2}px ${pageMargin}px 0px`,
-                                                // backgroundImage:'url(scan-dinner-menu.jpg)',
-                                                backgroundSize:'8.5in 14in',
-                                                // color:'red',
-                                                height:'13.95in',
-                                                border:'1px solid black'}} 
+                                        style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`}} 
                                 >
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 

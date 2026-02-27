@@ -3,3 +3,21 @@
     /* padding-left:10px; */
     font-size:17px;
 }
+.dinner-menu-format{
+    width: 8.5in;
+    height: 13.95in;
+    border: 1px solid black;
+    background:white;
+}
+
+@media (max-width: 615px){
+    .dinner-menu-format{
+        zoom:0.75 !important;
+    }
+}
+
+@media (max-width: 465px){
+    .dinner-menu-format{
+        zoom:0.5 !important;
+    }
+}
