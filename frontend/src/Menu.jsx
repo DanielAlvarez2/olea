@@ -15,7 +15,7 @@ export default function Menu(){
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
     const [dinnerFormatting, setDinnerFormatting] = useState([])
-    const [pageMargin, setPageMargin] = useState(0)
+    // const [pageMargin, setPageMargin] = useState(0)
     const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
     const [dinnerItemMarginsLeftRight, setDinnerItemMarginsLeftRight] = useState(0)
     useEffect(()=>{ 
@@ -173,12 +173,12 @@ Please switch to a different browser to proceed.
                                 <div    className='dinner-menu-format allergies-menu-dinner' 
                                         style={{width:'8.5in',
                                                 background:'white',
-                                                padding:`${pageMargin/2}px ${pageMargin}px 0px`,
+                                                padding:`10px`,
                                                 // backgroundImage:'url(scan-dinner-menu.jpg)',
                                                 // backgroundSize:'8.5in 14in',
                                                 // color:'red',
                                                 height:'auto',
-                                                paddingBottom:'55px',
+                                                // paddingBottom:'55px',
                                                 border:'1px solid black'}} 
                                 >
                                     <div id='footer-top'>
@@ -189,7 +189,7 @@ Please switch to a different browser to proceed.
                                                         display:'block',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
-                                        <hr style={{marginBottom:`${dinnerItemMarginsTopBottom}px`}} />
+                                        <hr style={{marginBottom:`10px`}} />
 
 
 
@@ -212,11 +212,7 @@ Please switch to a different browser to proceed.
                                                     {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
                                                         return(
                                                             <div    key={data._id}
-                                                                    style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
-                                                                            margin:`${dinnerItemMarginsTopBottom}px 0`
-                                                                    }}
-                                                                    // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                    className='special'>
+                                                                    className='special item'>
                                                             
                                                                 <span className='name'>{data.name} </span>
                                                                 {data.allergiesAbbreviated &&   <>
@@ -253,11 +249,7 @@ Please switch to a different browser to proceed.
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
-                                                                        margin:`${dinnerItemMarginsTopBottom}px 0`
-                                                                }}
-                                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                className='special'>
+                                                                className='special item'>
                                                         
                                                             <span className='name'>{data.name} </span>
                                                             {data.allergiesAbbreviated &&   <>
@@ -303,11 +295,7 @@ Please switch to a different browser to proceed.
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
-                                                                        margin:`${dinnerItemMarginsTopBottom}px 0`
-                                                                }}
-                                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                className='special'>
+                                                                className='special item'>
                                                         
                                                             <span className='name'>{data.name} </span>
                                                             {data.allergiesAbbreviated &&   <>
@@ -328,7 +316,8 @@ Please switch to a different browser to proceed.
                                                 <div    className='special' 
                                                         style={{border:'1px solid #888',
                                                                 fontFamily:'serif',
-                                                                padding:`${dinnerItemMarginsTopBottom}px ${dinnerItemMarginsLeftRight}px`,
+                                                                marginTop:`10px`,
+                                                                padding:'5px'
                                                         }}
                                                                 >
                                                     <span style={{fontFamily:'FuturaLight', fontSize:'20px'}}>
@@ -411,7 +400,7 @@ Please switch to a different browser to proceed.
 
 
                                     <div style={{   fontSize:'25px',
-                                                    padding:`0 ${dinnerItemMarginsLeftRight}px`}}
+                                                    paddingTop:`10px`}}
                                     >
 
                                         sides
@@ -422,7 +411,7 @@ Please switch to a different browser to proceed.
 
                                         <div style={{   display:'flex',
                                                         flexWrap:'wrap',
-                                                        marginBottom:`${dinnerItemMarginsTopBottom}px`,
+                                                        marginBottom:`10px`,
                                                         border:'1px solid #888'}}>
 
                                         
@@ -430,11 +419,8 @@ Please switch to a different browser to proceed.
                                                     return(
                                                         <div    key={data._id}
                                                                 style={{flexBasis:'50%',
-                                                                        padding:`0 ${dinnerItemMarginsLeftRight}px`,
-                                                                        margin:`${dinnerItemMarginsTopBottom/2}px 0`
                                                                 }}
-                                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                className='special'>
+                                                                className='special item'>
                                                         
                                                             <span className='name'>{data.name} </span>
                                                             {data.allergiesAbbreviated &&   <>

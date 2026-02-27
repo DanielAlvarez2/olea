@@ -41,7 +41,7 @@ export default function Navbar(){
 
     return(
         <>
-            <div className='navbar'>
+            <div className='navbar' style={{zIndex:'2000'}}>
                 <div className='navbar-mobile-icons'>
                     <IoCloseSharp   className='close-mobile-menu'
                                     onClick={hideMobileMenu} 
