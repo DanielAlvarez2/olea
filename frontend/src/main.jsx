@@ -75,6 +75,8 @@ import RestaurantWeeksScan from './Manager/RestaurantWeeksScan.jsx'
 import RestaurantWeeksScreenshot from './Manager/RestaurantWeeksScreenshot.jsx'
 import PrinterConfig from './Manager/PrinterConfig.jsx'
 
+import Menu from './Menu.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <StrictMode>
     <BrowserRouter>
@@ -91,6 +93,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='giftcards' element={<Giftcards />} />
         <Route path='press' element={<Press />} />
         <Route path='jobs' element={<Jobs />} />
+        
+        <Route path='menu' element={<Menu />} />
+
+
 
         <Route path='manager' element={<Manager />} />
         <Route path='dinner-menu' element={<DinnerMenu />} />
