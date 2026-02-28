@@ -129,7 +129,7 @@ a{
   padding:5px 35px;
 }
 
-input[type="file"]{
+input[type="file"]::file-selector-button{
   cursor: pointer;
 }
 
