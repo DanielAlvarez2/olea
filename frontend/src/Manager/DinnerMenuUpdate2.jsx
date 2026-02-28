@@ -16,12 +16,25 @@ export default function DinnerMenuUpdate2(){
     const [displaySection, setDisplaySection] = useState('cured meats')
     useEffect(()=>getDinnerItems(),[])
     useEffect(()=>getTastingMenuPrices(),[])
+    useEffect(()=>{
+        const userImage = document.querySelector('#image-file')
+        const preview = document.querySelector('#preview')
+        userImage.addEventListener('input',()=>{
+            const url = URL.createObjectURL(userImage.files[0])
+            const img = document.createElement('img')
+            img.src = url
+            img.style.maxWidth = '100%'
+            preview.innerHTML = ''
+            preview.appendChild(img)
+        })
+    },[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
     function removeImageFile(){
         document.querySelector('#image-file').value = ''
+        document.querySelector('#preview').innerHTML = ''
         setImageFileExists(false)
     }                    
 
@@ -612,7 +625,7 @@ export default function DinnerMenuUpdate2(){
                             id='item-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'update dinner item' : 'create new dinner item'}
+                            {editMode ? 'edit dinner item' : 'add dinner item'}
 
                         </h2>
                         <br/>
