@@ -17,6 +17,8 @@ export default function DinnerMenuUpdate2(){
     useEffect(()=>getDinnerItems(),[])
     useEffect(()=>getTastingMenuPrices(),[])
     useEffect(()=>{
+        console.log('default form enctype:')
+        console.log(document.querySelector('#item-form').enctype)
         const userImage = document.querySelector('#image-file')
         const preview = document.querySelector('#preview')
         userImage.addEventListener('input',()=>{
@@ -24,8 +26,12 @@ export default function DinnerMenuUpdate2(){
             const img = document.createElement('img')
             img.src = url
             img.style.maxWidth = '100%'
+            img.style.maxHeight = '350px'
             preview.innerHTML = ''
             preview.appendChild(img)
+            setImageFileExists(true)
+            document.querySelector('#item-form').enctype = 'multipart/form-data'
+            document.querySelector('#item-form').action = createItemWpic
         })
     },[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -35,6 +41,8 @@ export default function DinnerMenuUpdate2(){
     function removeImageFile(){
         document.querySelector('#image-file').value = ''
         document.querySelector('#preview').innerHTML = ''
+        document.querySelector('#item-form').enctype = 'application/x-www-form-urlencoded'
+        document.querySelector('#item-form').action = createItem
         setImageFileExists(false)
     }                    
 
@@ -47,20 +55,26 @@ export default function DinnerMenuUpdate2(){
         }
     }                
 
+    function createItemWpic(formData){
+            alert('createItemWpic')
+            console.log(formData)
+        }
+    
+
     async function createItem(formData){
-        await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
-                                                    headers:{'Content-Type':'application/json'},
-                                                    body: JSON.stringify({
-                                                        menu: formData.get('menu'),
-                                                        section: formData.get('section'),
-                                                        name: formData.get('name'),
-                                                        allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                        allergiesComplete: formData.get('allergies-complete'),
-                                                        description: formData.get('description'),
-                                                        postDescription: formData.get('post-description'),
-                                                        descriptionIntro: formData.get('description-intro'),
-                                                        price: formData.get('price')
-                                                    })
+        await fetch(`${BASE_URL}/api/dinner-menu-items`,{   method:'POST',
+                                                            headers:{'Content-Type':'application/json'},
+                                                            body: JSON.stringify({
+                                                                menu: formData.get('menu'),
+                                                                section: formData.get('section'),
+                                                                name: formData.get('name'),
+                                                                allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                                allergiesComplete: formData.get('allergies-complete'),
+                                                                description: formData.get('description'),
+                                                                postDescription: formData.get('post-description'),
+                                                                descriptionIntro: formData.get('description-intro'),
+                                                                price: formData.get('price')
+                                                            })
         })
         .then(alert(`
             New Dinner Item Created:

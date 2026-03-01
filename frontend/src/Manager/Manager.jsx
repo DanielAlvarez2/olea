@@ -5,7 +5,9 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 export default function Manager(){
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div    className='manager-page-wrapper' 
+                    // style={{border:'1px solid red'}}
+            >
                 <ManagerNavbar />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>main menu</div>
@@ -17,7 +19,7 @@ export default function Manager(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/dinner-menu'><li style={{flexGrow:'1'}}>dinner</li></Link>
                         <Link to='/specials-menu'><li style={{flexGrow:'1'}}>specials</li></Link>

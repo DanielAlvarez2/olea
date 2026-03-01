@@ -226,9 +226,10 @@ export default function DessertMenuFormat(){
     return(
         <>
             <div    className='manager-page-wrapper' 
-                    style={{border:'1px solid red',
-                            // color:'red'
-                            }}>
+                    // style={{border:'1px solid red',
+                    //         // color:'red'
+                    //         }}
+            >
                 <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; format</div>

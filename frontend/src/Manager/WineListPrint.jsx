@@ -276,11 +276,11 @@ Please switch to a different browser to proceed.
     return(
         <>
             <div    className='manager-page-wrapper winelist-wrapper' 
-                    style={{border:'1px solid red',
-                        
-                            // zoom:'0.75'
-                            // color:'red'
-                            }}>
+                    // style={{border:'1px solid red',            
+                    //         // zoom:'0.75'
+                    //         // color:'red'
+                    //         }}
+            >
                 <div className='no-print' style={{width:'100%'}}>
                     <ManagerNavbar page='wine-list' />
                 </div>

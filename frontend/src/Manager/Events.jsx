@@ -5,7 +5,9 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 export default function Events(){
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div    className='manager-page-wrapper' 
+                    // style={{border:'1px solid red'}}
+            >
                 <ManagerNavbar page='events' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>events</div>
@@ -17,7 +19,7 @@ export default function Events(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/valentines-day'><li style={{flexGrow:'1'}}>valentine's day<br/>feb 14</li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>restaurant week</li></Link>

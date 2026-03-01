@@ -1882,7 +1882,7 @@ app.put('/api/dinner-menu-items/:id', async(req,res)=>{
 app.get('/api/tasting-menu-prices', async(req,res)=>{ 
     try{
         let currentPrices = await TastingMenuPricing.find()
-        console.log('currentPrices = '+ currentPrices)
+        // console.log('currentPrices = '+ currentPrices)
         if (currentPrices.length == 0){
             await TastingMenuPricing.create({
                 tastingMenuPrice: 0,

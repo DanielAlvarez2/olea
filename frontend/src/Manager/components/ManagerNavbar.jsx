@@ -20,7 +20,7 @@ export default function ManagerNavbar(props){
                     </ul>
                 </div>
             </nav>        
-                <hr/>
+                <hr style={{width:'100%'}}/>
         </>
     )
 }

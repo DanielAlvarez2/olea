@@ -5,7 +5,9 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 export default function WineListUpdate(){
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div    className='manager-page-wrapper' 
+                    // style={{border:'1px solid red'}}
+            >
                 <ManagerNavbar page='wine-list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; update</div>
@@ -17,7 +19,7 @@ export default function WineListUpdate(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
 
                         <Link to='/wine-btg'><li style={{flexGrow:'1'}}>wine by the glass</li></Link>

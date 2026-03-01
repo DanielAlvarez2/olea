@@ -135,9 +135,10 @@ Please switch to a different browser to proceed.
     return(
         <>
             <div    className='manager-page-wrapper' 
-                    style={{border:'1px solid red',
-                            // color:'red'
-                            }}>
+                    // style={{border:'1px solid red',
+                    //         // color:'red'
+                    //         }}
+            >
                 <div style={{width:'100%'}} className='no-print'>
                     <ManagerNavbar page='takeout' />
                 </div>

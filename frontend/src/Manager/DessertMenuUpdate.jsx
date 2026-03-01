@@ -5,7 +5,9 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 export default function DessertMenuUpdate(){
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div    className='manager-page-wrapper' 
+                    // style={{border:'1px solid red'}}
+            >
                 <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; update</div>
@@ -17,7 +19,7 @@ export default function DessertMenuUpdate(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/desserts-update'><li style={{flexGrow:'1'}}>desserts</li></Link>
                         <Link to='/coffee-update'><li style={{flexGrow:'1'}}>coffee</li></Link>

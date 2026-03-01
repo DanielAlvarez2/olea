@@ -259,10 +259,11 @@ export default function WineListFormat(){
     return(
         <>
             <div    className='manager-page-wrapper' 
-                    style={{border:'1px solid red',
-                            // zoom:'0.75'
-                            // color:'red'
-                            }}>
+                    // style={{border:'1px solid red',
+                    //         // zoom:'0.75'
+                    //         // color:'red'
+                    //         }}
+            >
                 <ManagerNavbar page='wine-list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; format</div>

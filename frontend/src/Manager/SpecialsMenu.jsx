@@ -20,7 +20,7 @@ export default function SpecialsMenu(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/specials-menu-update'><li style={{flexGrow:'1'}}>update</li></Link>
                         <Link to='/specials-menu-format'><li style={{flexGrow:'1'}}>format</li></Link>

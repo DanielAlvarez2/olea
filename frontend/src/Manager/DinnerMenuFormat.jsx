@@ -121,9 +121,10 @@ export default function DinnerMenuFormat(){
     return(
         <>
             <div    className='manager-page-wrapper' 
-                    style={{border:'1px solid red',
-                            // color:'red'
-                            }}>
+                    // style={{border:'1px solid red',
+                    //         color:'red'
+                    //         }}
+            >
                 <ManagerNavbar page='dinner' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dinner &gt; format</div>

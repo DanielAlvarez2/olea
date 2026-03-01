@@ -5,7 +5,9 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 export default function ToGoMenu(){
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div    className='manager-page-wrapper' 
+                    // style={{border:'1px solid red'}}
+            >
                 <ManagerNavbar page='takeout' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>takeout</div>
@@ -17,7 +19,7 @@ export default function ToGoMenu(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/takeout-menu-format'><li style={{flexGrow:'1'}}>format</li></Link>
                         <Link to='/takeout-menu-print'><li style={{flexGrow:'1'}}>print</li></Link>
