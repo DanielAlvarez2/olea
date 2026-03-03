@@ -87,7 +87,9 @@ Please switch to a different browser to proceed.
 
     return(
         <>
-            <div className='manager-page-wrapper'>
+            <div className='manager-page-wrapper'
+                style={{background:'yellow'}}
+            >
                 <div style={{width:'100%'}} className='no-print'>
                     <ManagerNavbar page='specials' />
                 </div>
