@@ -1,0 +1,18 @@
+@media (max-width:1110px){
+    .dessert-menu-print-wrapper{
+        zoom:0.75;
+    }
+}
+
+@media (max-width:625px){
+    .dessert-menu-print-wrapper{
+        zoom:0.5;
+    }
+}
+
+@media (max-width:420px){
+    .dessert-menu-print-wrapper{
+        zoom:0.35;
+    }
+}
+

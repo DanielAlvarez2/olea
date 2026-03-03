@@ -2,6 +2,7 @@ import {Link} from 'react-router'
 import {useState,useEffect} from 'react'
 import './Manager.css'
 import './DessertMenuFormat.css'
+import './DessertMenuPrint.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaToggleOff } from "react-icons/fa6";
 import { FaToggleOn } from "react-icons/fa6";
@@ -275,6 +276,7 @@ Please switch to a different browser to proceed.
 
 
                             {front  ? 
+                                    <div className='dessert-menu-print-wrapper'>
                                         <div style={{display:'flex'}}>
 
                                         
@@ -755,8 +757,10 @@ Please switch to a different browser to proceed.
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                             
                                     :    
+                                    <div className='dessert-menu-print-wrapper'>
                                         <div style={{display:'flex'}}>
                                             <div    className='dessert-menu-format-front' 
                                                     style={{background:'white'}}
@@ -990,7 +994,7 @@ Please switch to a different browser to proceed.
                                                 </div>
                                             </div>
                                         </div>
-                            
+                                    </div>
                             }
 
 
