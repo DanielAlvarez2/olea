@@ -87,7 +87,7 @@ Please switch to a different browser to proceed.
 
     return(
         <>
-            <div className='manager-page-wrapper'
+            <div className='manager-page-wrapper specials-print-wrapper'
                 style={{background:'yellow'}}
             >
                 <div style={{width:'100%'}} className='no-print'>
@@ -109,7 +109,7 @@ Please switch to a different browser to proceed.
                                 alignItems:'center',
                                 height:'100%',
                                 border:'1px solid green',
-                                background:'blue',
+                                // background:'blue',
                                 paddingBottom:'0'
                                 }}>
 

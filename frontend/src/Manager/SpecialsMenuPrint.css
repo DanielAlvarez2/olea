@@ -7,3 +7,8 @@
         zoom:75%;
     }
 }
+@media print{
+    .specials-print-wrapper{
+        maxHeight:8.5in !important;
+    }
+}
