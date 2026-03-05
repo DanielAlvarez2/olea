@@ -95,3 +95,5 @@ make all forms trim blank spaces and remove any leading/trailing commas
   
 search server.js for /delete/ which is not neccesary  
   
+craft drinks can include recipes for emergencies: i.e. funeral  
+  
