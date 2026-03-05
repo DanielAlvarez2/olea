@@ -1529,6 +1529,7 @@ app.post('/api/spirits', async(req,res)=>{
     try{
         const existingCategoryItem = await Spirit.findOne({category:req.body.category.trim()})
         const maxCategorySequence = await Spirit.findOne().sort({categorySequence:-1})
+        console.log('maxCategorySequence: ' + maxCategorySequence)
         
         await Spirit.create({
             category:req.body.category.trim(),
