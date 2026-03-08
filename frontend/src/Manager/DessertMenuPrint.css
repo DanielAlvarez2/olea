@@ -1,3 +1,6 @@
+    .dessert-menu-print-wrapper{
+        zoom:1;
+    }
 @media (max-width:1110px){
     .dessert-menu-print-wrapper{
         zoom:0.75;
@@ -16,3 +19,8 @@
     }
 }
 
+@media print{
+    .dessert-menu-print-wrapper{
+        zoom:1 !important;
+    }
+}
