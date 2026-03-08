@@ -236,7 +236,7 @@ Please switch to a different browser to proceed.
 
 
 
-                            <div style={{   border:'1px solid green',
+                            <div style={{   
                                             textAlign:'center',
                                             display:'flex',
                                             flexDirection:'column',

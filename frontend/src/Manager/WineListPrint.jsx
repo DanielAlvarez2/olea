@@ -303,7 +303,7 @@ Please switch to a different browser to proceed.
                                             gap:'10px',
                                             fontFamily:'FuturaLight',
                                             justifyContent:'center',
-                                            border:'1px solid green',
+                                            // border:'1px solid green',
                                             alignItems:'center'}}
                                     className='no-print'
                             >
@@ -322,7 +322,7 @@ Please switch to a different browser to proceed.
                                             display:'flex',
                                             gap:'10px',
                                             justifyContent:'center',
-                                            border:'1px solid green',
+                                            // border:'1px solid green',
                                             alignItems:'center'}}
                                     className='no-print'
                             >
@@ -342,7 +342,7 @@ Please switch to a different browser to proceed.
                                                     display:'flex',
                                                     gap:'10px',
                                                     justifyContent:'center',
-                                                    border:'1px solid green',
+                                                    // border:'1px solid green',
                                                     alignItems:'center'}}>
                                                         
                                                 <div    className='no-print print-btn' 

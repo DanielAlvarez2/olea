@@ -153,7 +153,8 @@ Please switch to a different browser to proceed.
 
                         <br className='no-print'/>
                                                        
-                            <div style={{   border:'1px solid green',
+                            <div style={{   
+                                            // border:'1px solid green',
                                             textAlign:'center',
                                             display:'grid',
                                             placeContent:'center',

@@ -22,7 +22,7 @@ export default function Events(){
                                 // border:'1px solid green'
                                 }}>
                         <Link to='/valentines-day'><li style={{flexGrow:'1'}}>valentine's day<br/>feb 14</li></Link>
-                        <Link to='/events'><li style={{flexGrow:'1'}}>restaurant week</li></Link>
+                        <Link to='/events'><li style={{flexGrow:'1'}}>restaurant weeks<br/>late march</li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>mother's day<br/>2nd sun may</li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>graduation<br/>3rd sun may</li></Link>
                         <Link to='/anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>aug 27</li></Link>

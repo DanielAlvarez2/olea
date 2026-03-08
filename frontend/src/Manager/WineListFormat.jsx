@@ -278,7 +278,7 @@ export default function WineListFormat(){
                                             gap:'10px',
                                             fontFamily:'FuturaLight',
                                             justifyContent:'center',
-                                            border:'1px solid green',
+                                            // border:'1px solid green',
                                             alignItems:'center'}}>
                                 <span>page 1</span>
                                     {page1  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
@@ -295,7 +295,7 @@ export default function WineListFormat(){
                                             display:'flex',
                                             gap:'10px',
                                             justifyContent:'center',
-                                            border:'1px solid green',
+                                            // border:'1px solid green',
                                             alignItems:'center'}}>
                                 <span>front</span>
                                     {frontView  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
@@ -313,7 +313,7 @@ export default function WineListFormat(){
                                                     display:'flex',
                                                     gap:'10px',
                                                     justifyContent:'center',
-                                                    border:'1px solid green',
+                                                    // border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                                     onClick={decreaseWinelistItemMarginsLeftRight} /></span>
@@ -328,7 +328,7 @@ export default function WineListFormat(){
                                                     display:'flex',
                                                     gap:'10px',
                                                     justifyContent:'center',
-                                                    border:'1px solid green',
+                                                    // border:'1px solid green',
                                                     alignItems:'center'}}>
 
                                                         

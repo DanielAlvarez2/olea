@@ -129,7 +129,7 @@ export default function SpecialsMenuUpdate(){
                                 gap:'10px',
                                 justifyContent:'center',
                                 alignItems:'center',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
 
                         <div style={{   display:'flex',

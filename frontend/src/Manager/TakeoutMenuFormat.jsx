@@ -141,7 +141,7 @@ export default function TakeoutMenuFormat(){
                                                     display:'flex',
                                                     gap:'10px',
                                                     justifyContent:'center',
-                                                    border:'1px solid green',
+                                                    // border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                                     onClick={decreaseTakeoutItemMarginsTopBottom} /></span>
@@ -156,7 +156,7 @@ export default function TakeoutMenuFormat(){
                                                     display:'flex',
                                                     gap:'10px',
                                                     justifyContent:'center',
-                                                    border:'1px solid green',
+                                                    // border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                                     onClick={decreaseTakeoutItemMarginsLeftRight} /></span>
@@ -171,7 +171,7 @@ export default function TakeoutMenuFormat(){
                                                     display:'flex',
                                                     gap:'10px',
                                                     justifyContent:'center',
-                                                    border:'1px solid green',
+                                                    // border:'1px solid green',
                                                     alignItems:'center'}}>
 
                                                         
