@@ -170,7 +170,7 @@ Please switch to a different browser to proceed.
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 background:'white',
-                                                border:'1px solid red'}}>
+                                                border:'1px solid lightgrey'}}>
                                     <div>
                                         <div    className='specials-h1'
                                                 style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
@@ -271,7 +271,7 @@ Please switch to a different browser to proceed.
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid red'}}>
+                                                            border:'1px solid lightgrey'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
@@ -343,7 +343,7 @@ Please switch to a different browser to proceed.
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 background:'white',
-                                                border:'1px solid red'}}>
+                                                border:'1px solid lightgrey'}}>
                                     <div>
                                         <div    className='specials-h1'
                                                 style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
@@ -432,7 +432,7 @@ Please switch to a different browser to proceed.
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid red'}}>
+                                                            border:'1px solid lightgrey'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
@@ -509,7 +509,7 @@ Please switch to a different browser to proceed.
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 background:'white',
-                                                border:'1px solid red'}}>
+                                                border:'1px solid lightgrey'}}>
                                     <div>
                                         <div    className='specials-h1'
                                                 style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
@@ -598,7 +598,7 @@ Please switch to a different browser to proceed.
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid red'}}>
+                                                            border:'1px solid lightgrey'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
@@ -671,7 +671,7 @@ Please switch to a different browser to proceed.
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 background:'white',
-                                                border:'1px solid red'}}>
+                                                border:'1px solid lightgrey'}}>
                                     <div>
                                         <div    className='specials-h1'
                                                 style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
@@ -760,7 +760,7 @@ Please switch to a different browser to proceed.
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid red'}}>
+                                                            border:'1px solid lightgrey'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
