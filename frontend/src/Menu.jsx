@@ -130,8 +130,10 @@ Please switch to a different browser to proceed.
 
     return(
         <>
-            <div    className='manager-page-wrapper' 
-                    style={{border:'1px solid red',
+            <div    className='manager-page-wrapper2' 
+                    style={{
+                            background:'lightgrey',
+                            
                             // color:'red'
                             }}>
 
@@ -140,7 +142,7 @@ Please switch to a different browser to proceed.
                 </div>
                     {/* <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>dinner &gt; print</div> */}
-                    <div className='main-menu' style={{paddingBottom:0}}>
+                    <div className='main-menu2' style={{paddingBottom:0,background:'lightgrey'}}>
 
 
 
@@ -170,7 +172,7 @@ Please switch to a different browser to proceed.
 
 
 
-                                <div    className='dinner-menu-format allergies-menu-dinner' 
+                                <div    className='allergies-menu-dinner' 
                                         style={{width:'8.5in',
                                                 background:'white',
                                                 padding:`10px`,
@@ -184,7 +186,7 @@ Please switch to a different browser to proceed.
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
-                                                        // color:'red',
+                                                        color:'black',
                                                         padding:`0 ${dinnerItemMarginsLeftRight}px`,
                                                         display:'block',
                                                         cursor:'default',

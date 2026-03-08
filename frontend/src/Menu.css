@@ -10,6 +10,7 @@
 
 .allergies-menu-dinner{
     width:8.5in;
+    margin:0 auto;
 }
 
 .dessert-menu-front-content{
@@ -30,5 +31,12 @@
     .chef-legal-flexbox{
         flex-direction: column;
         gap:30px;
+    }
+}
+@media(max-width:820px){
+    .main-menu2,
+    .allergies-menu-dinner,
+    .manager-page-wrapper2{
+        width:100% !important;
     }
 }
