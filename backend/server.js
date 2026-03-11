@@ -48,15 +48,15 @@ app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
 app.post('/api/specials', async(req,res)=>{
     try{
-        const maxSequence = await Special.findOne({section:req.body.section}).sort({sequence:-1})
+        const maxSequence = await Special.findOne({section:req.body.section.trim()}).sort({sequence:-1})
         await Special.create({
-            menu: req.body.menu,
-            section: req.body.section,
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            allergiesAbbreviated: req.body.allergiesAbbreviated,
-            allergiesComplete: req.body.allergiesComplete,
+            menu: req.body.menu.trim(),
+            section: req.body.section.trim(),
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim(),
+            allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
+            allergiesComplete: req.body.allergiesComplete.trim(),
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
         console.log(`
@@ -74,10 +74,10 @@ app.post('/api/sangria', async(req,res)=>{
     try{
         const maxSequence = await Sangria.findOne().sort({sequence:-1})
         await Sangria.create({
-            name: req.body.name,
-            description: req.body.description,
-            glassPrice: req.body.glassPrice,
-            pitcherPrice: req.body.pitcherPrice,
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            glassPrice: req.body.glassPrice.trim(),
+            pitcherPrice: req.body.pitcherPrice.trim(),
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
         console.log(`
@@ -95,9 +95,9 @@ app.post('/api/drinks', async(req,res)=>{
     try{
         const maxSequence = await CraftDrink.findOne().sort({sequence:-1})
         await CraftDrink.create({
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim(),
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
         console.log(`
@@ -114,9 +114,9 @@ app.post('/api/drinks', async(req,res)=>{
 app.post('/api/non-alcoholic-drinks', async (req,res)=>{
     try{
         await NonAlcoholicDrink.create({
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Added to Database: 
@@ -132,10 +132,10 @@ app.post('/api/non-alcoholic-drinks', async (req,res)=>{
 app.post('/api/beer', async (req,res)=>{
     try{
         await Beer.create({
-            section: req.body.section,
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price
+            section: req.body.section.trim(),
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Added to Database: 
@@ -151,10 +151,10 @@ app.post('/api/beer', async (req,res)=>{
 app.post('/api/sherries', async (req,res)=>{
     try{
         await Sherry.create({
-            grapes: req.body.grapes,
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Added to Database: 
@@ -170,11 +170,11 @@ app.post('/api/sherries', async (req,res)=>{
 app.post('/api/sparkling', async (req,res)=>{
     try{
         await Sparkling.create({
-            grapes: req.body.grapes,
-            name: req.body.name,
-            vintage: req.body.vintage,
-            description: req.body.description,
-            price: req.body.price
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Added to Database: 
@@ -243,11 +243,11 @@ app.post('/api/red', async(req,res)=>{
 app.post('/api/rose', async (req,res)=>{
     try{
         await Rosé.create({
-            grapes: req.body.grapes,
-            name: req.body.name,
-            vintage: req.body.vintage,
-            description: req.body.description,
-            price: req.body.price
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Added to Database: 
@@ -263,13 +263,13 @@ app.post('/api/rose', async (req,res)=>{
 app.post('/api/wines-btg', async(req,res)=>{
     try{
         await WineBTG.create({
-            menu: req.body.menu,
-            section: req.body.section,
-            grapes: req.body.grapes,
-            name: req.body.name,
-            vintage: req.body.vintage,
-            description: req.body.description,
-            price: req.body.price
+            menu: req.body.menu.trim(),
+            section: req.body.section.trim(),
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Added to Database:
@@ -286,17 +286,17 @@ app.post('/api/wines-btg', async(req,res)=>{
 
 app.post('/api/dinner-menu-items', async(req,res)=>{
     try{
-        const maxSequence = await DinnerMenuItem.findOne({section:req.body.section}).sort({sequence:-1})
+        const maxSequence = await DinnerMenuItem.findOne({section:req.body.section.trim()}).sort({sequence:-1})
         await DinnerMenuItem.create({
-                                        menu: req.body.menu,
-                                        section: req.body.section,
-                                        name: req.body.name,
-                                        description: req.body.description,
-                                        descriptionIntro: req.body.descriptionIntro,
-                                        postDescription: req.body.postDescription,
-                                        price: req.body.price,
-                                        allergiesAbbreviated: req.body.allergiesAbbreviated,
-                                        allergiesComplete: req.body.allergiesComplete,
+                                        menu: req.body.menu.trim(),
+                                        section: req.body.section.trim(),
+                                        name: req.body.name.trim(),
+                                        description: req.body.description.trim(),
+                                        descriptionIntro: req.body.descriptionIntro.trim(),
+                                        postDescription: req.body.postDescription.trim(),
+                                        price: req.body.price.trim(),
+                                        allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
+                                        allergiesComplete: req.body.allergiesComplete.trim(),
                                         sequence: maxSequence ? maxSequence.sequence + 1 : 1
                                     })
         console.log(`
@@ -314,13 +314,13 @@ app.post('/api/desserts', async(req,res)=>{
     try{
         const maxSequence = await Dessert.findOne().sort({sequence:-1})
         await Dessert.create({
-            menu: req.body.menu,
-            section: req.body.section,
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            allergiesAbbreviated: req.body.allergiesAbbreviated,
-            allergiesComplete: req.body.allergiesComplete,
+            menu: req.body.menu.trim(),
+            section: req.body.section.trim(),
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim(),
+            allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
+            allergiesComplete: req.body.allergiesComplete.trim(),
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
         console.log(`
@@ -338,10 +338,10 @@ app.post('/api/coffees', async(req,res)=>{
     try{
         const maxSequence = await Coffee.findOne().sort({sequence:-1})
         await Coffee.create({
-            menu: req.body.menu,
-            section: req.body.section,
-            name: req.body.name,
-            price: req.body.price,
+            menu: req.body.menu.trim(),
+            section: req.body.section.trim(),
+            name: req.body.name.trim(),
+            price: req.body.price.trim(),
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
         console.log(`
@@ -357,12 +357,12 @@ app.post('/api/coffees', async(req,res)=>{
 
 app.post('/api/teas', async(req,res)=>{
     try{
-        const maxSequence = await Tea.findOne({type:req.body.type}).sort({sequence:-1})
+        const maxSequence = await Tea.findOne({type:req.body.type.trim()}).sort({sequence:-1})
         await Tea.create({
-            menu: req.body.menu,
-            section: req.body.section,
-            type: req.body.type,
-            name: req.body.name,
+            menu: req.body.menu.trim(),
+            section: req.body.section.trim(),
+            type: req.body.type.trim(),
+            name: req.body.name.trim(),
             sequence: maxSequence ? maxSequence.sequence + 1 : 1
         })
         console.log(`
@@ -589,7 +589,7 @@ app.delete('/api/dessert-drinks/delete/:id', async(req,res)=>{
         if(target.sequence == 1 
             && target.categorySequence != maxCategorySequence 
             && target.sequence == maxSequence.sequence) {
-                console.log('***fire***')
+                // console.log('***fire***')
                 for (let i=target.categorySequence+1;i<=maxCategorySequence;i++){
                     console.log('i: '+i)
                     await DessertDrink.updateMany({categorySequence:i},{$set:{categorySequence:i-1}})
@@ -627,7 +627,7 @@ app.delete('/api/spirits/:id', async(req,res)=>{
         if(await Spirit.find({categorySequence: target.categorySequence}).length == 1 
             && target.categorySequence != maxCategorySequence 
         ) {
-                console.log('***fire***')
+                // console.log('***fire***')
                 for (let i=target.categorySequence+1;i<=maxCategorySequence;i++){
                     console.log('i: '+i)
                     await Spirit.updateMany({categorySequence:i},{$set:{categorySequence:i-1}})
@@ -1503,8 +1503,8 @@ app.post('/api/dessert-drinks', async(req,res)=>{
         const maxCategorySequence = await DessertDrink.findOne().sort({categorySequence:-1})
         
         await DessertDrink.create({
-            menu: req.body.menu,
-            section: req.body.section,
+            menu: req.body.menu.trim(),
+            section: req.body.section.trim(),
             category:req.body.category.trim(),
             categorySequence: existingCategoryItem  ? existingCategoryItem.categorySequence 
                                                     : maxCategorySequence ? maxCategorySequence.categorySequence + 1 : 1, 
@@ -1563,7 +1563,7 @@ app.get('/api/coffees', async(req,res)=>{
 app.post('/api/teas/create-price', async(req,res)=>{
     try{
         await TeaPrice.create({
-            price: req.body.price
+            price: req.body.price.trim()
         })
         console.log(`
             Added to Database: 
@@ -1580,7 +1580,7 @@ app.put('/api/teas/update-price', async(req,res)=>{
     try{
         const currentTeaPrice = await TeaPrice.findOne()
         await TeaPrice.findByIdAndUpdate({_id:currentTeaPrice._id},{
-            price: req.body.price
+            price: req.body.price.trim()
         })
         console.log(`
             Updated in Database: 
@@ -1629,11 +1629,11 @@ app.get('/api/specials/:id', async(req,res)=>{
 app.put('/api/specials/:id', async(req,res)=>{
     try{
         await Special.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            allergiesAbbreviated: req.body.allergiesAbbreviated,
-            allergiesComplete: req.body.allergiesComplete,
-            description: req.body.description,
-            price: req.body.price
+            name: req.body.name.trim(),
+            allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
+            allergiesComplete: req.body.allergiesComplete.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
@@ -1649,10 +1649,10 @@ app.put('/api/specials/:id', async(req,res)=>{
 app.put('/api/sangria/:id', async(req,res)=>{
     try{
         await Sangria.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            description: req.body.description,
-            glassPrice: req.body.glassPrice,
-            pitcherPrice: req.body.pitcherPrice,
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            glassPrice: req.body.glassPrice.trim(),
+            pitcherPrice: req.body.pitcherPrice.trim(),
         })
         console.log(`
             Updated to Database: 
@@ -1668,9 +1668,9 @@ app.put('/api/sangria/:id', async(req,res)=>{
 app.put('/api/drinks/:id', async(req,res)=>{
     try{
         await CraftDrink.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim(),
         })
         console.log(`
             Updated to Database: 
@@ -1686,8 +1686,8 @@ app.put('/api/drinks/:id', async(req,res)=>{
 app.put('/api/spirits/:id', async(req,res)=>{
     try{
         await Spirit.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            price: req.body.price,
+            name: req.body.name.trim(),
+            price: req.body.price.trim(),
         })
         console.log(`
             Updated to Database: 
@@ -1703,9 +1703,9 @@ app.put('/api/spirits/:id', async(req,res)=>{
 app.put('/api/beer/:id', async(req,res)=>{
     try{
         await Beer.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
@@ -1721,9 +1721,9 @@ app.put('/api/beer/:id', async(req,res)=>{
 app.put('/api/non-alcoholic-drinks/:id', async(req,res)=>{
     try{
         await NonAlcoholicDrink.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
@@ -1739,10 +1739,10 @@ app.put('/api/non-alcoholic-drinks/:id', async(req,res)=>{
 app.put('/api/sherries/:id', async(req,res)=>{
     try{
         await Sherry.findByIdAndUpdate({_id:req.params.id},{
-            grapes: req.body.grapes,
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
@@ -1758,11 +1758,11 @@ app.put('/api/sherries/:id', async(req,res)=>{
 app.put('/api/sparkling/:id', async(req,res)=>{
     try{
         await Sparkling.findByIdAndUpdate({_id:req.params.id},{
-            grapes: req.body.grapes,
-            name: req.body.name,
-            vintage: req.body.vintage,
-            description: req.body.description,
-            price: req.body.price
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
@@ -1778,11 +1778,11 @@ app.put('/api/sparkling/:id', async(req,res)=>{
 app.put('/api/white/:id', async(req,res)=>{
     try{
         await White.findByIdAndUpdate({_id:req.params.id},{
-            grapes: req.body.grapes,
-            name: req.body.name,
-            vintage: req.body.vintage,
-            description: req.body.description,
-            price: req.body.price,
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim(),
         })
         console.log(`
             Updated to Database: 
@@ -1798,12 +1798,12 @@ app.put('/api/white/:id', async(req,res)=>{
 app.put('/api/red/:id', async(req,res)=>{
     try{
         await Red.findByIdAndUpdate({_id:req.params.id},{
-            grapes: req.body.grapes,
-            name: req.body.name,
-            vintage: req.body.vintage,
-            description: req.body.description,
-            price: req.body.price,
-            halfBottlePrice: req.body.halfBottlePrice,
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim(),
+            halfBottlePrice: req.body.halfBottlePrice.trim(),
         })
         console.log(`
             Updated to Database: 
@@ -1819,11 +1819,11 @@ app.put('/api/red/:id', async(req,res)=>{
 app.put('/api/rose/:id', async(req,res)=>{
     try{
         await Rosé.findByIdAndUpdate({_id:req.params.id},{
-            grapes: req.body.grapes,
-            name: req.body.name,
-            vintage: req.body.vintage,
-            description: req.body.description,
-            price: req.body.price
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
@@ -1840,11 +1840,11 @@ app.put('/api/wines-btg/:id', async(req,res)=>{
     try{
         console.log(`req.body: ${req.body}`)
         await WineBTG.findByIdAndUpdate({_id:req.params.id},{
-            grapes: req.body.grapes,
-            name: req.body.name,
-            vintage: req.body.vintage,
-            description: req.body.description,
-            price: req.body.price
+            grapes: req.body.grapes.trim(),
+            name: req.body.name.trim(),
+            vintage: req.body.vintage.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database:
@@ -1861,13 +1861,13 @@ app.put('/api/wines-btg/:id', async(req,res)=>{
 app.put('/api/dinner-menu-items/:id', async(req,res)=>{
     try{
         await DinnerMenuItem.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            allergiesAbbreviated: req.body.allergiesAbbreviated,
-            allergiesComplete: req.body.allergiesComplete,
-            descriptionIntro: req.body.descriptionIntro,
-            description: req.body.description,
-            postDescription: req.body.postDescription,
-            price: req.body.price
+            name: req.body.name.trim(),
+            allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
+            allergiesComplete: req.body.allergiesComplete.trim(),
+            descriptionIntro: req.body.descriptionIntro.trim(),
+            description: req.body.description.trim(),
+            postDescription: req.body.postDescription.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
@@ -1903,10 +1903,10 @@ app.put('/api/tasting-menu-prices/update', async(req,res)=>{
         let currentPrices = await TastingMenuPricing.find()
         await TastingMenuPricing.findByIdAndUpdate({_id:currentPrices[0]._id},{
                                                         tastingMenuPrice: req.body.tastingMenuPrice 
-                                                                            ? req.body.tastingMenuPrice 
+                                                                            ? req.body.tastingMenuPrice.trim() 
                                                                             : currentPrices[0].tastingMenuPrice,
                                                         winePairingPrice: req.body.winePairingPrice
-                                                                            ? req.body.winePairingPrice
+                                                                            ? req.body.winePairingPrice.trim()
                                                                             : currentPrices[0].winePairingPrice
         })
         currentPrices = await TastingMenuPricing.find()
@@ -1919,11 +1919,11 @@ app.put('/api/tasting-menu-prices/update', async(req,res)=>{
 app.put('/api/desserts/:id', async(req,res)=>{
     try{
         await Dessert.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            allergiesAbbreviated: req.body.allergiesAbbreviated,
-            allergiesComplete: req.body.allergiesComplete,
-            description: req.body.description,
-            price: req.body.price
+            name: req.body.name.trim(),
+            allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
+            allergiesComplete: req.body.allergiesComplete.trim(),
+            description: req.body.description.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
@@ -1959,8 +1959,8 @@ app.put('/api/dessert-drinks/:id', async(req,res)=>{
 app.put('/api/teas/:id', async(req,res)=>{
     try{
         await Tea.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            price: req.body.price
+            name: req.body.name.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
@@ -1976,8 +1976,8 @@ app.put('/api/teas/:id', async(req,res)=>{
 app.put('/api/coffees/:id', async(req,res)=>{
     try{
         await Coffee.findByIdAndUpdate({_id:req.params.id},{
-            name: req.body.name,
-            price: req.body.price
+            name: req.body.name.trim(),
+            price: req.body.price.trim()
         })
         console.log(`
             Updated to Database: 
