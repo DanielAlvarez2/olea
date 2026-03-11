@@ -236,13 +236,18 @@ export default function CoffeeUpdate(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='coffee-id' />
+                        <input  type='hidden' 
+                                name='id' 
+                                maxlength='100'
+                                id='coffee-id' />
 
                         <input  type='hidden'
                                 name='menu' 
+                                maxlength='100'
                                 value='dessert' />
 
                         <input  type='hidden'
+                                maxlength='100'
                                 name='section' 
                                 value='coffees' />                        
                         
@@ -251,6 +256,7 @@ export default function CoffeeUpdate(){
                             name<br/>
                             <input  type='text' 
                                     name='name' 
+                                    maxlength='100'
                                     id='name'
                                     required
                                     style={{width:'100%'}} />
@@ -260,6 +266,7 @@ export default function CoffeeUpdate(){
                             price<br/>
                             <input  type='text'
                                     required 
+                                    maxlength='100'
                                     id='price'
                                     name='price' />
                         </label>

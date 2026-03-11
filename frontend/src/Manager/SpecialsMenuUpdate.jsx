@@ -422,7 +422,10 @@ export default function SpecialsMenuUpdate(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='special-id' />
+                        <input  type='hidden' 
+                                name='id' 
+                                id='special-id' />
+
                         <input  type='hidden'
                                 name='menu' 
                                 value='specials' />
@@ -456,6 +459,7 @@ export default function SpecialsMenuUpdate(){
                             <input  type='text' 
                                     name='name' 
                                     id='name'
+                                    maxlength='100'
                                     required
                                     style={{width:'100%'}} />
                         </label>
@@ -465,6 +469,7 @@ export default function SpecialsMenuUpdate(){
                             <input  type='text' 
                                     name='allergies-abbreviated' 
                                     id='allergies-abbreviated'
+                                    maxlength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -473,6 +478,7 @@ export default function SpecialsMenuUpdate(){
                             <input  type='text'
                                     id='allergies-complete'
                                     name='allergies-complete' 
+                                    maxlength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -480,6 +486,7 @@ export default function SpecialsMenuUpdate(){
                             description<br/>
                             <textarea   rows='5'
                                         name='description' 
+                                        maxlength='100'
                                         id='description'
                                         style={{width:'100%'}}></textarea>
                         </label>
@@ -489,6 +496,7 @@ export default function SpecialsMenuUpdate(){
                             <input  type='text'
                                     required 
                                     id='price'
+                                    maxlength='100'
                                     name='price' />
                         </label>
                         <br/><br/>

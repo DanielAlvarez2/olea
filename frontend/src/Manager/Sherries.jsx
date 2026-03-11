@@ -157,7 +157,9 @@ ${formData.get('name')}
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='sherry-id' />
+                        <input  type='hidden' 
+                                name='id' 
+                                id='sherry-id' />
 
 
 
@@ -167,6 +169,7 @@ ${formData.get('name')}
                             <input  type='text' 
                                     name='grapes' 
                                     id='grapes'
+                                    maxlength='100'
                                     required
                                     style={{width:'100%'}} />
                         </label>
@@ -177,6 +180,7 @@ ${formData.get('name')}
                             <input  type='text' 
                                     name='name' 
                                     id='name'
+                                    maxlength='100'
                                     required
                                     style={{width:'100%',fontWeight:'900'}} />
                         </label>
@@ -187,6 +191,7 @@ ${formData.get('name')}
                             <input  type='text'
                                     name='description' 
                                     id='description'
+                                    maxlength='100'
                                     required
                                     style={{width:'100%'}} />
                         </label>
@@ -197,6 +202,7 @@ ${formData.get('name')}
                             <input  type='text'
                                     required 
                                     id='price'
+                                    maxlength='100'
                                     style={{width:'40px'}}
                                     name='price' />
                         </label>

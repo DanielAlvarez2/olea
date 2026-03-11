@@ -256,7 +256,9 @@ export default function Spirits(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='spirit-id' />
+                        <input  type='hidden' 
+                                name='id' 
+                                id='spirit-id' />
 
                         <label>
                             category<span id='category-edit'></span><br/>
@@ -266,6 +268,7 @@ export default function Spirits(){
                                             <input  type='text'
                                                     required
                                                     id='category-text'
+                                                    maxlength='100'
                                                     autoComplete='off'
                                                     name='category' /><br/>
                                         </>
@@ -285,6 +288,7 @@ export default function Spirits(){
                                                 id='category-text'
                                                 placeholder=' + add new category'
                                                 autoComplete='off'
+                                                maxlength='100'
                                                 name='category' />
                                     }
                                     
@@ -308,6 +312,7 @@ export default function Spirits(){
                                     name='name' 
                                     autoComplete='off'
                                     id='name'
+                                    maxlength='100'
                                     required
                                     style={{width:'100%'}} />
                         </label>
@@ -318,6 +323,7 @@ export default function Spirits(){
                             <input  type='text'
                                     required 
                                     id='price'
+                                    maxlength='100'
                                     autoComplete='off'
                                     style={{width:'5ch'}}
                                     name='price' />

@@ -403,7 +403,9 @@ export default function TeaUpdate(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='tea-id' />
+                        <input  type='hidden' 
+                                name='id' 
+                                id='tea-id' />
 
                         <input  type='hidden'
                                 name='menu' 
@@ -432,6 +434,7 @@ export default function TeaUpdate(){
                                     name='name' 
                                     id='name'
                                     required
+                                    maxlength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -477,7 +480,9 @@ export default function TeaUpdate(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='coffee-id' />
+                        <input  type='hidden' 
+                                name='id' 
+                                id='coffee-id' />
 
                         <input  type='hidden'
                                 name='menu' 
@@ -499,6 +504,7 @@ export default function TeaUpdate(){
                                     name='tea-price' 
                                     id='tea-price'
                                     required
+                                    maxlength='100'
                                     style={{width:'100px'}} />
                         </label>
                         <br/><br/>

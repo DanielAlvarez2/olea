@@ -259,7 +259,9 @@ export default function Sangria(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='sangria-id' />
+                        <input  type='hidden' 
+                                name='id' 
+                                id='sangria-id' />
                         
 
                         
@@ -270,6 +272,7 @@ export default function Sangria(){
                             <input  type='text' 
                                     name='name' 
                                     id='name'
+                                    maxlength='100'
                                     required
                                     style={{width:'100%',fontWeight:'900'}} />
                         </label>
@@ -279,6 +282,7 @@ export default function Sangria(){
                             description<br/>
                             <textarea   rows='5'
                                         name='description' 
+                                        maxlength='100'
                                         id='description'
                                         style={{width:'100%'}}></textarea>
                         </label>
@@ -288,6 +292,7 @@ export default function Sangria(){
                             glass price<br/>
                             <input  type='text'
                                     required 
+                                    maxlength='100'
                                     style={{width:'30px'}}
                                     id='glass-price'
                                     name='glass-price' />
@@ -299,6 +304,7 @@ export default function Sangria(){
                             <input  type='text'
                                     style={{width:'30px'}}
                                     required 
+                                    maxlength='100'
                                     id='pitcher-price'
                                     name='pitcher-price' />
                         </label>

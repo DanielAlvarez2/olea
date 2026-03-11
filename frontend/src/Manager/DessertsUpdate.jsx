@@ -281,7 +281,9 @@ export default function DessertsUpdate(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='dessert-id' />
+                        <input  type='hidden' 
+                                name='id' 
+                                id='dessert-id' />
 
                         <input  type='hidden'
                                 name='menu' 
@@ -304,6 +306,7 @@ export default function DessertsUpdate(){
                         <label>
                             allergies - abbreviated<br/>
                             <input  type='text' 
+                                    maxlength='100'
                                     name='allergies-abbreviated' 
                                     id='allergies-abbreviated'
                                     style={{width:'100%'}} />
@@ -312,6 +315,7 @@ export default function DessertsUpdate(){
                         <label>
                             allergies - complete<br/>
                             <input  type='text'
+                                    maxlength='100'
                                     id='allergies-complete'
                                     name='allergies-complete' 
                                     style={{width:'100%'}} />
@@ -320,6 +324,7 @@ export default function DessertsUpdate(){
                         <label>
                             description<br/>
                             <textarea   rows='5'
+                                        maxlength='100'
                                         name='description' 
                                         id='description'
                                         style={{width:'100%'}}></textarea>
@@ -329,6 +334,7 @@ export default function DessertsUpdate(){
                             price<br/>
                             <input  type='text'
                                     required 
+                                    maxlength='100'
                                     id='price'
                                     name='price' />
                         </label>

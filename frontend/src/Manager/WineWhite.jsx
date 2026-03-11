@@ -269,7 +269,9 @@ export default function WineWhite(){
                         </h2>
                         <br/>
 
-                        <input type='hidden' name='id' id='white-id' />
+                        <input  type='hidden' 
+                                name='id' 
+                                id='white-id' />
 
                         <label>
                             country<span id='category-edit'></span><br/>
@@ -280,6 +282,7 @@ export default function WineWhite(){
                                                     required
                                                     id='category-text'
                                                     autoComplete='off'
+                                                    maxlength='100'
                                                     name='category' /><br/>
                                         </>
                             }
@@ -298,6 +301,7 @@ export default function WineWhite(){
                                                 id='category-text'
                                                 placeholder=' + add new country'
                                                 autoComplete='off'
+                                                maxlength='100'
                                                 name='category' />
                                     }
                                     
@@ -321,6 +325,7 @@ export default function WineWhite(){
                                     name='grapes' 
                                     autoComplete='off'
                                     id='grapes'
+                                    maxlength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -332,6 +337,7 @@ export default function WineWhite(){
                                     autoComplete='off'
                                     id='name'
                                     required
+                                    maxlength='100'
                                     style={{width:'100%',fontWeight:'900'}} />
                         </label>
                         <br/><br/>
@@ -343,6 +349,7 @@ export default function WineWhite(){
                                     autoComplete='off'
                                     id='vintage'
                                     required
+                                    maxlength='100'
                                     style={{width:'40px'}} />
                         </label>
                         <br/><br/>
@@ -353,6 +360,7 @@ export default function WineWhite(){
                                     id='description'
                                     autoComplete='off'
                                     name='description' 
+                                    maxlength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -363,6 +371,7 @@ export default function WineWhite(){
                                     required 
                                     id='price'
                                     autoComplete='off'
+                                    maxlength='100'
                                     style={{width:'5ch'}}
                                     name='price' />
                         </label>
