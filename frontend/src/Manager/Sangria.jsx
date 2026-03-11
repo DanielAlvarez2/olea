@@ -282,7 +282,7 @@ export default function Sangria(){
                             description<br/>
                             <textarea   rows='5'
                                         name='description' 
-                                        maxlength='100'
+                                        maxlength='500'
                                         id='description'
                                         style={{width:'100%'}}></textarea>
                         </label>

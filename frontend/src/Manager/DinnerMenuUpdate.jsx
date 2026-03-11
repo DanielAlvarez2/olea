@@ -677,7 +677,7 @@ export default function DinnerMenuUpdate(){
                         <label>
                             description<br/>
                             <textarea   rows='5'
-                                        maxlength='100'
+                                        maxlength='500'
                                         name='description' 
                                         id='description'
                                         style={{width:'100%'}}></textarea>
