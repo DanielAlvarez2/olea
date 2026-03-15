@@ -592,6 +592,7 @@ export default function DinnerMenuUpdate(){
 
 
                     <form   action={editMode ? updateItem : createItem} 
+                            id='specials-item-form'
                             className='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         <h2 style={{textAlign:'center'}}>

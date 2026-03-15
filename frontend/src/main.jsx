@@ -72,8 +72,10 @@ import CraftDrinks from './Manager/CraftDrinks.jsx'
 import WineList from './Manager/WineList.jsx'
 import Events from './Manager/Events.jsx'
 import RestaurantWeeks from './Manager/RestaurantWeeks.jsx'
+import RestaurantWeeksSpring from './Manager/RestaurantWeeksSpring.jsx'
 import RestaurantWeeksScan from './Manager/RestaurantWeeksScan.jsx'
 import RestaurantWeeksScreenshot from './Manager/RestaurantWeeksScreenshot.jsx'
+import RestaurantWeeksSpringScreenshot from './Manager/RestaurantWeeksSpringScreenshot.jsx'
 import PrinterConfig from './Manager/PrinterConfig.jsx'
 
 import Menu from './Menu.jsx'
@@ -143,6 +145,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='dessert-menu-print' element={<DessertMenuPrint />} />
 
 
+
+        <Route path='restaurant-weeks-spring' element={<RestaurantWeeksSpring />} />
+        <Route path='restaurant-weeks-spring-screenshot' element={<RestaurantWeeksSpringScreenshot />} />
 
         <Route path='restaurant-weeks' element={<RestaurantWeeks />} />
         <Route path='restaurant-weeks-screenshot' element={<RestaurantWeeksScreenshot />} />
