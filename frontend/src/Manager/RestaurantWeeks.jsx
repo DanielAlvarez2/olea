@@ -20,7 +20,7 @@ export default function RestaurantWeeks(){
                                 border:'1px solid green'
                                 }}>
                         <Link to='/restaurant-weeks-screenshot'><li style={{flexGrow:'1'}}>restaurant weeks<br/>screenshot</li></Link>
-                        <Link to='/restaurant-weeks'><li style={{flexGrow:'1'}}>restaurant weeks<br/>menu scan</li></Link>
+                        <Link to='/restaurant-weeks-scan'><li style={{flexGrow:'1'}}>restaurant weeks<br/>menu scan</li></Link>
                     </ul>
 
             

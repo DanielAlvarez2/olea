@@ -1,5 +1,5 @@
-export default function RestaurantWeeks(){
+export default function RestaurantWeeksScan(){
     return(
-        <img src='restaurant-weeks-nov.jpg' />
+        <img src='scan-restaurant-weeks-fall.jpg' />
     )
 }
