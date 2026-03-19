@@ -1,5 +1,5 @@
 export default function RestaurantWeeksSpringScreenshot(){
     return(
-        <img src='screenshot-restaurant-week-spring.jpg' />
+        <img src='screenshot-restaurant-week-spring.jpg' style={{maxWidth:'100%'}} />
     )
 }
