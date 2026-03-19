@@ -1,9 +1,9 @@
 export default function NYEscan(){
     return (
         <>
-            <img src='scan-nye-front.jpg' style={{width:'11in',height:'8.5in'}} />
+            <img src='scan-nye-front.jpg'  style={{maxWidth:'100%'}} />
             <br/><br/>
-            <img src='scan-nye-back.jpg' style={{width:'11in',height:'8.5in'}} />
+            <img src='scan-nye-back.jpg'  style={{maxWidth:'100%'}} />
 
         </>
     )
