@@ -286,7 +286,7 @@ export default function WineRed(){
                                                     required
                                                     id='category-text'
                                                     autoComplete='off'
-                                                    maxlength='100'
+                                                    maxLength='100'
                                                     name='category' /><br/>
                                         </>
                             }
@@ -305,7 +305,7 @@ export default function WineRed(){
                                                 id='category-text'
                                                 placeholder=' + add new country'
                                                 autoComplete='off'
-                                                maxlength='100'
+                                                maxLength='100'
                                                 name='category' />
                                     }
                                     
@@ -329,7 +329,7 @@ export default function WineRed(){
                                     name='grapes' 
                                     autoComplete='off'
                                     id='grapes'
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -341,7 +341,7 @@ export default function WineRed(){
                                     autoComplete='off'
                                     id='name'
                                     required
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%',fontWeight:'900'}} />
                         </label>
                         <br/><br/>
@@ -353,7 +353,7 @@ export default function WineRed(){
                                     autoComplete='off'
                                     id='vintage'
                                     required
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'40px'}} />
                         </label>
                         <br/><br/>
@@ -364,7 +364,7 @@ export default function WineRed(){
                                     id='description'
                                     autoComplete='off'
                                     name='description' 
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -376,7 +376,7 @@ export default function WineRed(){
                                 <input  type='text'
                                         required 
                                         id='price'
-                                        maxlength='100'
+                                        maxLength='100'
                                         autoComplete='off'
                                         style={{width:'5ch'}}
                                         name='price' />
@@ -390,7 +390,7 @@ export default function WineRed(){
                                 <input  type='text'
                                         id='half-bottle-price'
                                         autoComplete='off'
-                                        maxlength='100'
+                                        maxLength='100'
                                         style={{width:'5ch'}}
                                         name='half-bottle-price' />
                             </label>

@@ -459,7 +459,7 @@ export default function SpecialsMenuUpdate(){
                             <input  type='text' 
                                     name='name' 
                                     id='name'
-                                    maxlength='100'
+                                    maxLength='100'
                                     required
                                     style={{width:'100%'}} />
                         </label>
@@ -469,7 +469,7 @@ export default function SpecialsMenuUpdate(){
                             <input  type='text' 
                                     name='allergies-abbreviated' 
                                     id='allergies-abbreviated'
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -478,7 +478,7 @@ export default function SpecialsMenuUpdate(){
                             <input  type='text'
                                     id='allergies-complete'
                                     name='allergies-complete' 
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -486,7 +486,7 @@ export default function SpecialsMenuUpdate(){
                             description<br/>
                             <textarea   rows='5'
                                         name='description' 
-                                        maxlength='500'
+                                        maxLength='500'
                                         id='description'
                                         style={{width:'100%'}}></textarea>
                         </label>
@@ -496,7 +496,7 @@ export default function SpecialsMenuUpdate(){
                             <input  type='text'
                                     required 
                                     id='price'
-                                    maxlength='100'
+                                    maxLength='100'
                                     name='price' />
                         </label>
                         <br/><br/>

@@ -266,7 +266,7 @@ export default function CraftDrinks(){
                             <input  type='text' 
                                     name='name' 
                                     id='name'
-                                    maxlength='100'
+                                    maxLength='100'
                                     required
                                     style={{width:'100%',fontWeight:'900'}} />
                         </label>
@@ -275,7 +275,7 @@ export default function CraftDrinks(){
                         <label>
                             description<br/>
                             <textarea   rows='5'
-                                        maxlength='500'
+                                        maxLength='500'
                                         name='description' 
                                         id='description'
                                         style={{width:'100%'}}></textarea>
@@ -286,7 +286,7 @@ export default function CraftDrinks(){
                             price<br/>
                             <input  type='text'
                                     required 
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'40px'}}
                                     id='price'
                                     name='price' />

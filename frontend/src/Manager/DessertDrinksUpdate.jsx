@@ -352,7 +352,7 @@ export default function DessertDrinksUpdate(){
                                         <>
                                             <input  type='text'
                                                     required
-                                                    maxlength='100'
+                                                    maxLength='100'
                                                     id='category-text'
                                                     autoComplete='off'
                                                     name='category' /><br/>
@@ -370,7 +370,7 @@ export default function DessertDrinksUpdate(){
                                     : 
                                         <input  type='text'
                                                 required
-                                                maxlength='100'
+                                                maxLength='100'
                                                 id='category-text'
                                                 placeholder=' + add new category'
                                                 autoComplete='off'
@@ -395,7 +395,7 @@ export default function DessertDrinksUpdate(){
                             pre-description<br/>
                             <input  type='text' 
                                     name='pre-description' 
-                                    maxlength='100'
+                                    maxLength='100'
                                     autoComplete='off'
                                     id='pre-description'
                                     style={{width:'100%'}} />
@@ -406,7 +406,7 @@ export default function DessertDrinksUpdate(){
                             <span style={{fontWeight:'900'}}>name</span><br/>
                             <input  type='text' 
                                     name='name' 
-                                    maxlength='100'
+                                    maxLength='100'
                                     autoComplete='off'
                                     id='name'
                                     required
@@ -418,7 +418,7 @@ export default function DessertDrinksUpdate(){
                             <input  type='text'
                                     id='post-description'
                                     autoComplete='off'
-                                    maxlength='100'
+                                    maxLength='100'
                                     name='post-description' 
                                     style={{width:'100%'}} />
                         </label>
@@ -428,7 +428,7 @@ export default function DessertDrinksUpdate(){
                             <input  type='text'
                                     required 
                                     id='price'
-                                    maxlength='100'
+                                    maxLength='100'
                                     autoComplete='off'
                                     style={{width:'5ch'}}
                                     name='price' />

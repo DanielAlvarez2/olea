@@ -434,7 +434,7 @@ export default function TeaUpdate(){
                                     name='name' 
                                     id='name'
                                     required
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -504,7 +504,7 @@ export default function TeaUpdate(){
                                     name='tea-price' 
                                     id='tea-price'
                                     required
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100px'}} />
                         </label>
                         <br/><br/>

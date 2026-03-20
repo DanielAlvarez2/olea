@@ -641,7 +641,7 @@ export default function DinnerMenuUpdate(){
                             <input  type='text' 
                                     name='name' 
                                     id='name'
-                                    maxlength='100'
+                                    maxLength='100'
                                     required
                                     style={{width:'100%'}} />
                         </label>
@@ -651,7 +651,7 @@ export default function DinnerMenuUpdate(){
                             <input  type='text' 
                                     name='allergies-abbreviated' 
                                     id='allergies-abbreviated'
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -659,7 +659,7 @@ export default function DinnerMenuUpdate(){
                             allergies - complete<br/>
                             <input  type='text'
                                     id='allergies-complete'
-                                    maxlength='100'
+                                    maxLength='100'
                                     name='allergies-complete' 
                                     style={{width:'100%'}} />
                         </label>
@@ -669,7 +669,7 @@ export default function DinnerMenuUpdate(){
                             description-intro<br/>
                             <input  type='text'
                                     name='description-intro'
-                                    maxlength='100'
+                                    maxLength='100'
                                     id='description-intro'
                                     style={{width:'100%'}} />
                         </label>
@@ -678,7 +678,7 @@ export default function DinnerMenuUpdate(){
                         <label>
                             description<br/>
                             <textarea   rows='5'
-                                        maxlength='500'
+                                        maxLength='500'
                                         name='description' 
                                         id='description'
                                         style={{width:'100%'}}></textarea>
@@ -689,7 +689,7 @@ export default function DinnerMenuUpdate(){
                             extra description<br/>
                             <input  type='text'
                                     id='post-description'
-                                    maxlength='100'
+                                    maxLength='100'
                                     placeholder='(please allow 40 minutes cooking time)'
                                     style={{width:'100%'}}
                                     name='post-description' />
@@ -701,7 +701,7 @@ export default function DinnerMenuUpdate(){
                             price<br/>
                             <input  type='text'
                                     required 
-                                    maxlength='100'
+                                    maxLength='100'
                                     id='price'
                                     name='price' />
                         </label>
@@ -756,7 +756,7 @@ export default function DinnerMenuUpdate(){
                         $<input type='number'
                                 min='1'
                                 max='999' 
-                                maxlength='100'
+                                maxLength='100'
                                 name='tasting-menu-price'
                                 style={{width:'6ch'}} />/person
                         <br/><br/>
@@ -766,7 +766,7 @@ export default function DinnerMenuUpdate(){
                         $<input type='number'
                                 min='1'
                                 max='999'
-                                maxlength='100'
+                                maxLength='100'
                                 name='wine-pairing-price'
                                 style={{width:'6ch'}} />/person
                         <br/><br/>

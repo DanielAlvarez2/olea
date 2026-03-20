@@ -187,7 +187,7 @@ ${formData.get('name')}
                                     name='grapes' 
                                     id='grapes'
                                     required
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -198,7 +198,7 @@ ${formData.get('name')}
                                     name='name' 
                                     id='name'
                                     required
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%',fontWeight:'900'}} />
                         </label>
                         <br/><br/>
@@ -208,7 +208,7 @@ ${formData.get('name')}
                             <input  type='text'
                                     required 
                                     id='vintage'
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'40px'}}
                                     name='vintage' />
                         </label>
@@ -221,7 +221,7 @@ ${formData.get('name')}
                                     name='description' 
                                     id='description'
                                     required
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'100%'}} />
                         </label>
                         <br/><br/>
@@ -231,7 +231,7 @@ ${formData.get('name')}
                             <input  type='text'
                                     required 
                                     id='price'
-                                    maxlength='100'
+                                    maxLength='100'
                                     style={{width:'40px'}}
                                     name='price' />
                         </label>

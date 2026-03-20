@@ -306,7 +306,7 @@ export default function DessertsUpdate(){
                         <label>
                             allergies - abbreviated<br/>
                             <input  type='text' 
-                                    maxlength='100'
+                                    maxLength='100'
                                     name='allergies-abbreviated' 
                                     id='allergies-abbreviated'
                                     style={{width:'100%'}} />
@@ -315,7 +315,7 @@ export default function DessertsUpdate(){
                         <label>
                             allergies - complete<br/>
                             <input  type='text'
-                                    maxlength='100'
+                                    maxLength='100'
                                     id='allergies-complete'
                                     name='allergies-complete' 
                                     style={{width:'100%'}} />
@@ -324,7 +324,7 @@ export default function DessertsUpdate(){
                         <label>
                             description<br/>
                             <textarea   rows='5'
-                                        maxlength='500'
+                                        maxLength='500'
                                         name='description' 
                                         id='description'
                                         style={{width:'100%'}}></textarea>
@@ -334,7 +334,7 @@ export default function DessertsUpdate(){
                             price<br/>
                             <input  type='text'
                                     required 
-                                    maxlength='100'
+                                    maxLength='100'
                                     id='price'
                                     name='price' />
                         </label>
