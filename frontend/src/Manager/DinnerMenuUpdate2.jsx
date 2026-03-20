@@ -194,6 +194,11 @@ export default function DinnerMenuUpdate(){
         .catch(err=>console.log(err))
     }
 
+    function testCloudinary(formData){
+        alert('testCloudinary')
+        console.log(formData.get('pic'))
+    }
+
     return(
         <>
             <div className='manager-page-wrapper'>
@@ -839,7 +844,10 @@ export default function DinnerMenuUpdate(){
                             
                             </>}
 
-
+<form action={testCloudinary}>
+    <input type='file' name='pic' />
+    <input type='submit' />
+</form>
 
 
 
