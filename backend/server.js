@@ -27,10 +27,11 @@ const DinnerFormat = require('./models/DinnerFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
 const TastingMenuPricing = require('./models/TastingMenuPricing.js')
 
+const {cloudinary} = require('./middleware/cloudinary.js')
 
 const app = express()
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+app.use(express.json({limit:'50mb'}))
+app.use(express.urlencoded({limit:'50mb',extended:true}))
 app.use(cors())
 
 console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
@@ -45,6 +46,48 @@ console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
 
 const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
+
+
+
+app.post('/api/cloudinary/upload', async(req,res)=>{
+    try{
+        const fileString = req.body.data
+        const cloudinaryResponse = await cloudinary.uploader.upload(fileString)
+        // console.log(cloudinaryResponse)
+        res.json({cloudinaryResponse})
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/dinner-menu-items', async(req,res)=>{
+    try{
+        const maxSequence = await DinnerMenuItem.findOne({section:req.body.section.trim()}).sort({sequence:-1})
+        await DinnerMenuItem.create({
+                                        menu: req.body.menu.trim(),
+                                        section: req.body.section.trim(),
+                                        name: req.body.name.trim(),
+                                        description: req.body.description.trim(),
+                                        descriptionIntro: req.body.descriptionIntro.trim(),
+                                        postDescription: req.body.postDescription.trim(),
+                                        price: req.body.price.trim(),
+                                        allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
+                                        allergiesComplete: req.body.allergiesComplete.trim(),
+                                        sequence: maxSequence ? maxSequence.sequence + 1 : 1,
+                                        cloudinary_secure_URL: req.body.cloudinary_secure_URL,
+                                        cloudinary_public_ID: req.body.cloudinary_public_ID
+                                    })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.post('/api/specials', async(req,res)=>{
     try{
@@ -284,31 +327,6 @@ app.post('/api/wines-btg', async(req,res)=>{
     }
 })
 
-app.post('/api/dinner-menu-items', async(req,res)=>{
-    try{
-        const maxSequence = await DinnerMenuItem.findOne({section:req.body.section.trim()}).sort({sequence:-1})
-        await DinnerMenuItem.create({
-                                        menu: req.body.menu.trim(),
-                                        section: req.body.section.trim(),
-                                        name: req.body.name.trim(),
-                                        description: req.body.description.trim(),
-                                        descriptionIntro: req.body.descriptionIntro.trim(),
-                                        postDescription: req.body.postDescription.trim(),
-                                        price: req.body.price.trim(),
-                                        allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
-                                        allergiesComplete: req.body.allergiesComplete.trim(),
-                                        sequence: maxSequence ? maxSequence.sequence + 1 : 1
-                                    })
-        console.log(`
-            Added to Database: 
-             - ${req.body.name}`)
-        res.json(`
-            Added to Database: 
-             - ${req.body.name}`)
-    }catch(err){
-        console.log(err)
-    }
-})
 
 app.post('/api/desserts', async(req,res)=>{
     try{
@@ -2441,3 +2459,4 @@ app.put('/api/formats/specials/toggleDoubleSided', async(req,res)=>{
         console.log(err)
     }
 })
+

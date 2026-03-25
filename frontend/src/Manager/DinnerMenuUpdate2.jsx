@@ -7,7 +7,7 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 
 
-export default function DinnerMenuUpdate(){
+export default function DinnerMenuUpdate2(){
     const [allDinnerItems, setAllDinnerItems] = useState([])
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])
     const [editMode, setEditMode] = useState(false)
@@ -19,6 +19,27 @@ export default function DinnerMenuUpdate(){
                     'http://localhost:1436'
 
     async function createItem(formData){
+        let cloudinary_secure_URL = ''
+        let cloudinary_public_ID = ''
+        if(previewSource){
+            try{
+                await fetch('/api/cloudinary/upload', { method:'POST',
+                                                        body: JSON.stringify({data:previewSource}),
+                                                        headers: {'Content-type':'application/json'}
+                })
+                .then(res=>res.json())
+                .then(json=>{
+                    console.log(json)
+                    console.log(json.cloudinaryResponse.public_id)
+                    cloudinary_public_ID = json.cloudinaryResponse.public_id
+                    cloudinary_secure_URL = json.cloudinaryResponse.secure_url
+                })
+                .catch(err=>console.log(err))
+            }catch(err){
+                console.log(err)
+            }
+        }
+
         await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
                                                     headers:{'Content-Type':'application/json'},
                                                     body: JSON.stringify({
@@ -30,7 +51,9 @@ export default function DinnerMenuUpdate(){
                                                         description: formData.get('description'),
                                                         postDescription: formData.get('post-description'),
                                                         descriptionIntro: formData.get('description-intro'),
-                                                        price: formData.get('price')
+                                                        price: formData.get('price'),
+                                                        cloudinary_secure_URL,
+                                                        cloudinary_public_ID
                                                     })
         })
         .then(alert(`
@@ -197,6 +220,21 @@ export default function DinnerMenuUpdate(){
     function testCloudinary(formData){
         alert('testCloudinary')
         console.log(formData.get('pic'))
+    }
+
+    const [fileInputState, setFileInputState] = useState('')
+    // const [selectedFile, setSelectedFile] = useState('')
+    const [previewSource, setPreviewSource] = useState()
+    function handleFileInputChange(e){
+        const file = e.target.files[0]
+        previewFile(file)
+    }
+    function previewFile(file){
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = ()=>{
+            setPreviewSource(reader.result)
+        }
     }
 
     return(
@@ -711,6 +749,18 @@ export default function DinnerMenuUpdate(){
                                     name='price' />
                         </label>
                         <br/><br/>
+
+                        <label>
+                            image file (optional)
+                            <input  name='image-file' 
+                                    id='image-file'
+                                    onChange={handleFileInputChange} 
+                                    value={fileInputState}
+                                    type='file'/>
+                        </label>
+                        <br/><br/>
+
+                        {previewSource && <img src={previewSource} style={{maxWidth:'300px',maxHeight:'300px'}} />}
 
                         <div id='specials-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
                             <input  type='submit' 
