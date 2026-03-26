@@ -303,6 +303,9 @@ export default function DinnerMenuUpdate2(){
                                                 <div className='price'>{data.price}</div> }
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}
                                             <div style={{marginTop:'5px'}}>
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
