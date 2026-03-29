@@ -33,6 +33,7 @@ export default function DinnerMenuUpdate2(){
                     console.log(json.cloudinaryResponse.public_id)
                     cloudinary_public_ID = json.cloudinaryResponse.public_id
                     cloudinary_secure_URL = json.cloudinaryResponse.secure_url
+                    setPreviewSource('')
                 })
                 .catch(err=>console.log(err))
             }catch(err){
@@ -64,6 +65,29 @@ export default function DinnerMenuUpdate2(){
     }
 
     async function updateItem(formData){
+        let cloudinary_secure_URL = ''
+        let cloudinary_public_ID = ''
+
+        if(previewSource && !itemHasImage){
+            try{
+                await fetch('/api/cloudinary/upload', { method:'POST',
+                                                        body: JSON.stringify({data:previewSource}),
+                                                        headers: {'Content-type':'application/json'}
+                })
+                .then(res=>res.json())
+                .then(json=>{
+                    console.log(json)
+                    console.log(json.cloudinaryResponse.public_id)
+                    cloudinary_public_ID = json.cloudinaryResponse.public_id
+                    cloudinary_secure_URL = json.cloudinaryResponse.secure_url
+                    setPreviewSource('')
+                })
+                .catch(err=>console.log(err))
+            }catch(err){
+                console.log(err)
+            }
+        }
+
         await fetch(`${BASE_URL}/api/dinner-menu-items/${formData.get('id')}`,{ method:'PUT',
                                                                                 headers:{'Content-Type':'application/json'},
                                                                                 body: JSON.stringify({
@@ -73,7 +97,9 @@ export default function DinnerMenuUpdate2(){
                                                                                     description: formData.get('description'),
                                                                                     postDescription: formData.get('post-description'),
                                                                                     descriptionIntro: formData.get('description-intro'),
-                                                                                    price: formData.get('price')
+                                                                                    price: formData.get('price'),
+                                                                                    cloudinary_public_ID,
+                                                                                    cloudinary_secure_URL
                                                                                 })
         })
         .then(alert(`
@@ -143,7 +169,17 @@ export default function DinnerMenuUpdate2(){
         }
     }
 
-    function editItem(id,section,name,allergiesAbbreviated,allergiesComplete,descriptionIntro,description,postDescription,price){
+    function editItem(  id,
+                        section,
+                        name,
+                        allergiesAbbreviated,
+                        allergiesComplete,
+                        descriptionIntro,
+                        description,
+                        postDescription,
+                        price,
+                        cloudinary_public_ID,
+                        cloudinary_secure_URL){
         try{
             setEditMode(true)
             document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
@@ -157,6 +193,9 @@ export default function DinnerMenuUpdate2(){
             document.querySelector('#description-intro').value = descriptionIntro
             document.querySelector('#post-description').value = postDescription
             document.querySelector('#price').value = price
+            document.querySelector('#current-image').src = cloudinary_secure_URL
+            document.querySelector('#cloudinary_public_ID').value = 'test'
+            document.querySelector('#cloudinary_secure_URL').value = 'test'
         }catch(err){
             console.log(err)
         }
@@ -194,6 +233,8 @@ export default function DinnerMenuUpdate2(){
             document.querySelector('#description-intro').value = ''
             document.querySelector('#post-description').value = ''
             document.querySelector('#price').value = ''
+            document.querySelector('#cloudinary_public_ID').value = ''
+            document.querySelector('#cloudinary_secure_URL').value = ''
             setEditMode(false)
         }catch(err){
             console.log(err)
@@ -222,20 +263,21 @@ export default function DinnerMenuUpdate2(){
         console.log(formData.get('pic'))
     }
 
-    const [fileInputState, setFileInputState] = useState('')
-    // const [selectedFile, setSelectedFile] = useState('')
     const [previewSource, setPreviewSource] = useState()
     function handleFileInputChange(e){
         const file = e.target.files[0]
         previewFile(file)
     }
     function previewFile(file){
+        console.log(file.name)
         const reader = new FileReader()
         reader.readAsDataURL(file)
         reader.onloadend = ()=>{
             setPreviewSource(reader.result)
         }
     }
+
+    const [itemHasImage, setItemHasImage] = useState(false)
 
     return(
         <>
@@ -318,7 +360,9 @@ export default function DinnerMenuUpdate2(){
                                                                                 data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                data.price)}>EDIT</span>                                                    
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL)}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
@@ -753,12 +797,28 @@ export default function DinnerMenuUpdate2(){
                         </label>
                         <br/><br/>
 
+                        {/* {editMode && <>current image:<br/></>}
+                        <img id='current-image' style={{maxWidth:'100px',maxHeight:'100px'}} />
+                        
+                        {editMode && <><br/><br/></>} */}
+                        
+                        <input  type='hidden' 
+                                value=''
+                                id='cloudinary_public_ID'                                                    
+                                name='cloudinary_public_ID' />
+                        <input  type='hidden'
+                                value='' 
+                                id='cloudinary_secure_URL'
+                                name='cloudinary_secure_URL' />
+
                         <label>
-                            image file (optional)
+                            {editMode   ? itemHasImage ? 'update image (optional)' : 'add image (optional)' 
+                                        : 'image file (optional)'}
+                            
                             <input  name='image-file' 
                                     id='image-file'
                                     onChange={handleFileInputChange} 
-                                    value={fileInputState}
+                                    // value={fileInputState}
                                     type='file'/>
                         </label>
                         <br/><br/>

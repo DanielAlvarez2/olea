@@ -1886,7 +1886,9 @@ app.put('/api/dinner-menu-items/:id', async(req,res)=>{
             descriptionIntro: req.body.descriptionIntro.trim(),
             description: req.body.description.trim(),
             postDescription: req.body.postDescription.trim(),
-            price: req.body.price.trim()
+            price: req.body.price.trim(),
+            cloudinary_public_ID: req.body.cloudinary_public_ID,
+            cloudinary_secure_URL: req.body.cloudinary_secure_URL
         })
         console.log(`
             Updated to Database: 
