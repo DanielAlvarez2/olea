@@ -12,10 +12,9 @@ export default function Login(){
                 Password:<br/>
                 <input type='password' /><br/><br/>
                 <button>LOG IN</button>
+                <br/>
+                <div>Don't have an account? <Link to='/register'>Register</Link></div>
             </form>
-            <div>
-                Don't have an account? <Link to='/register'>Register</Link>
-            </div>
         </div>
     )
 }

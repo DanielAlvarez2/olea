@@ -22,7 +22,15 @@
     cursor:pointer;
     border-radius: 10px;
     font-size: 17px;
+    border: none;
 }
 .auth-wrapper a{
     color:blue;
+}
+.auth-wrapper input{
+    width:250px;
+}
+.auth-wrapper div{
+    width:100%;
+    text-align: center;
 }
