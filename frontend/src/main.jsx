@@ -79,6 +79,9 @@ import RestaurantWeeksSpringScreenshot from './Manager/RestaurantWeeksSpringScre
 import RestaurantWeeksSpringScan from './Manager/RestaurantWeeksSpringScan.jsx'
 import PrinterConfig from './Manager/PrinterConfig.jsx'
 
+import Login from './Manager/Login.jsx'
+import Register from './Manager/Register.jsx'
+
 import Menu from './Menu.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -144,6 +147,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='tea-update' element={<TeaUpdate />} />
         <Route path='dessert-menu-format' element={<DessertMenuFormat />} />
         <Route path='dessert-menu-print' element={<DessertMenuPrint />} />
+
+        <Route path='login' element={<Login />} />
+        <Route path='register' element={<Register />} />
 
 
 
