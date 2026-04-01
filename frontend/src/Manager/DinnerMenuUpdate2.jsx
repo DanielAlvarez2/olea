@@ -182,6 +182,8 @@ export default function DinnerMenuUpdate2(){
                         cloudinary_secure_URL){
         try{
             setEditMode(true)
+            cloudinary_secure_URL && setItemHasImage(true)
+            cloudinary_secure_URL && document.querySelector('#current-image').style.display = 'block'
             document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#item-id').value = id
             document.querySelector('#section').innerHTML = section
@@ -194,8 +196,8 @@ export default function DinnerMenuUpdate2(){
             document.querySelector('#post-description').value = postDescription
             document.querySelector('#price').value = price
             document.querySelector('#current-image').src = cloudinary_secure_URL
-            document.querySelector('#cloudinary_public_ID').value = 'test'
-            document.querySelector('#cloudinary_secure_URL').value = 'test'
+            document.querySelector('#cloudinary_public_ID').value = cloudinary_public_ID
+            document.querySelector('#cloudinary_secure_URL').value = cloudinary_secure_URL
         }catch(err){
             console.log(err)
         }
@@ -235,7 +237,13 @@ export default function DinnerMenuUpdate2(){
             document.querySelector('#price').value = ''
             document.querySelector('#cloudinary_public_ID').value = ''
             document.querySelector('#cloudinary_secure_URL').value = ''
+            document.querySelector('#current-image').src = ''
+            document.querySelector('#current-image').display = 'none'
+            document.querySelector('#image-file').value = ''
+
             setEditMode(false)
+            setItemHasImage(false)
+            setPreviewSource('')
         }catch(err){
             console.log(err)
         }
@@ -797,10 +805,13 @@ export default function DinnerMenuUpdate2(){
                         </label>
                         <br/><br/>
 
-                        {/* {editMode && <>current image:<br/></>}
+                        {editMode && <>current image:<br/></>}
+
                         <img id='current-image' style={{maxWidth:'100px',maxHeight:'100px'}} />
+                    
                         
-                        {editMode && <><br/><br/></>} */}
+                        
+                        {editMode && <><br/><br/></>}
                         
                         <input  type='hidden' 
                                 value=''
