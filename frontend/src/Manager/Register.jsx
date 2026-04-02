@@ -11,7 +11,7 @@ export default function Register(){
                 <input type='email' /><br/><br/>
                 Password:<br/>
                 <input type='password' /><br/><br/>
-                <button>SIGN UP</button><br/>
+                <button>CREATE ACCOUNT</button><br/>
                 <div>Already have an account? <Link to='/login'>Log In</Link></div>
             </form>
         </div>

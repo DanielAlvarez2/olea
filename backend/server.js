@@ -51,10 +51,21 @@ app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
 app.post('/api/cloudinary/upload', async(req,res)=>{
     try{
-        const fileString = req.body.data
-        const cloudinaryResponse = await cloudinary.uploader.upload(fileString)
-        // console.log(cloudinaryResponse)
+        // const fileString = req.body.data
+        // console.log('req.body.data: '+req.body.data)
+        const cloudinaryResponse = await cloudinary.uploader.upload(req.body.data)
+        console.log('cloudinaryResponse:'+cloudinaryResponse)
         res.json({cloudinaryResponse})
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.delete('/api/cloudinary/delete', async(req,res)=>{
+    try{
+        // console.log('req.body.data: '+req.body.data)
+        await cloudinary.uploader.destroy(req.body.data, {invalidate:true}, function(error,result){console.log(result,error)})
+        res.json('Cloudinary Image Deleted')
     }catch(err){
         console.log(err)
     }
