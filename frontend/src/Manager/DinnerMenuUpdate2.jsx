@@ -5,6 +5,7 @@ import './Specials.css'
 import './SpecialsMenuUpdate.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
+import { MdDoNotDisturbAlt } from "react-icons/md";
 
 
 export default function DinnerMenuUpdate2(){
@@ -15,6 +16,9 @@ export default function DinnerMenuUpdate2(){
     const [currentImage, setCurrentImage] = useState('')
     const [cloudinaryPublicID, setCloudinaryPublicID] = useState('')
     const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
+    const [isChecked, setIsChecked] = useState(false)
+    // const [doNotCircleColor, setDoNotCircleColor] = useState('#88888800')
+
     useEffect(()=>getDinnerItems(),[])
     useEffect(()=>getTastingMenuPrices(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -314,7 +318,10 @@ export default function DinnerMenuUpdate2(){
             setPreviewSource(reader.result)
         }
     }
-
+    function handleToggleChange(){
+        setIsChecked(!isChecked)
+        document.querySelector('#do-not-circle').style.color = isChecked ? 'transparent' : 'red'
+    }
 
     return(
         <>
@@ -836,10 +843,24 @@ export default function DinnerMenuUpdate2(){
 
                         {editMode && currentImage && <>current image:<br/></>}
 
-                        {currentImage && <img   id='current-image'
-                                                src={currentImage} 
-                                                style={{maxWidth:'100px',maxHeight:'100px'}} />}
-
+                        {currentImage &&    <>
+                                                <div style={{   position:'relative',
+                                                                display:'inline-block'}}>
+                                                    <div style={{   position:'absolute',
+                                                                    width:'100%',
+                                                                    height:'100%',
+                                                                    display:'grid',
+                                                                    placeContent:'center',
+                                                                    top:'0',
+                                                                    left:'0'}}><MdDoNotDisturbAlt   size='60' 
+                                                                                                    id='do-not-circle'
+                                                                                                    style={{color:'transparent'}} /></div>
+                                                    <img    id='current-image'
+                                                            src={currentImage} 
+                                                            style={{maxWidth:'100px',maxHeight:'100px'}} />
+                                                </div>                    
+                                            </>
+                        }
                         
                     
                         
@@ -854,6 +875,19 @@ export default function DinnerMenuUpdate2(){
                                 value={cloudinarySecureURL}
                                 id='cloudinary_secure_URL'
                                 name='cloudinary_secure_URL' />
+
+                        {editMode && currentImage &&    <>                                                        
+                                                            <label>
+                                                                <input  type='checkbox'
+                                                                        checked={isChecked}
+                                                                        onChange={handleToggleChange} 
+                                                                        name='no-image-checkbox'
+                                                                        id='no-image-checkbox'
+                                                                />
+                                                                &nbsp;display NO image
+                                                                <br/><br/>
+                                                            </label>
+                                                        </>}
 
                         <label>
                             {editMode   ? currentImage ? 'update image (optional)' : 'add image (optional)' 
