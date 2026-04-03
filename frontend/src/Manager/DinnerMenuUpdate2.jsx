@@ -84,8 +84,6 @@ export default function DinnerMenuUpdate2(){
                 })
                 .then(res=>res.json())
                 .then(json=>{
-                    console.log(json)
-                    console.log(json.cloudinaryResponse.public_id)
                     cloudinary_public_ID = json.cloudinaryResponse.public_id
                     cloudinary_secure_URL = json.cloudinaryResponse.secure_url
                     setPreviewSource('')
@@ -111,9 +109,6 @@ export default function DinnerMenuUpdate2(){
                 })
                 .then(res=>res.json())
                 .then(json=>{
-                    console.log(json)
-                    console.log('new pic: '+json.cloudinaryResponse.public_id)
-                    console.log('new pic: '+json.cloudinaryResponse.secure_url)
                     cloudinary_public_ID = json.cloudinaryResponse.public_id
                     cloudinary_secure_URL = json.cloudinaryResponse.secure_url
                     setPreviewSource('')
@@ -124,6 +119,21 @@ export default function DinnerMenuUpdate2(){
             }
         }
 
+        // OLD PIC -> NO PIC
+        if(currentImage && isChecked){
+            try{
+                await fetch('/api/cloudinary/delete', { method:'DELETE',
+                                                        body: JSON.stringify({data:formData.get('cloudinary_public_ID')}),
+                                                        headers:{'Content-type':'application/json'}
+                })
+                .then(setPreviewSource(''))
+                .catch(err=>console.log(err))
+                cloudinary_public_ID = ''
+                cloudinary_secure_URL = ''
+            }catch(err){
+                console.log(err)
+            }
+        }
 
         await fetch(`${BASE_URL}/api/dinner-menu-items/${formData.get('id')}`,{ method:'PUT',
                                                                                 headers:{'Content-Type':'application/json'},
@@ -220,6 +230,7 @@ export default function DinnerMenuUpdate2(){
                         cloudinary_secure_URL){
         try{
             setEditMode(true)
+            setIsChecked(false)
             setCurrentImage(cloudinary_secure_URL ? cloudinary_secure_URL : '')
             setCloudinaryPublicID(cloudinary_public_ID ? cloudinary_public_ID : '')
             setCloudinarySecureURL(cloudinary_secure_URL ? cloudinary_secure_URL : '')
@@ -274,6 +285,7 @@ export default function DinnerMenuUpdate2(){
             document.querySelector('#image-file').value = ''
 
             setEditMode(false)
+            setIsChecked(false)
             setCurrentImage('')
             setCloudinaryPublicID('')
             setCloudinarySecureURL('')
@@ -319,6 +331,8 @@ export default function DinnerMenuUpdate2(){
         }
     }
     function handleToggleChange(){
+        !isChecked && setPreviewSource('')
+        if(!isChecked) document.querySelector('#image-file').value = ''
         setIsChecked(!isChecked)
         document.querySelector('#do-not-circle').style.color = isChecked ? 'transparent' : 'red'
     }
