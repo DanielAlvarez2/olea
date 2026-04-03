@@ -5,6 +5,7 @@ import './Specials.css'
 import './SpecialsMenuUpdate.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
+import { MdDoNotDisturbAlt } from "react-icons/md";
 
 
 export default function DinnerMenuUpdate(){
@@ -12,6 +13,11 @@ export default function DinnerMenuUpdate(){
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])
     const [editMode, setEditMode] = useState(false)
     const [displaySection, setDisplaySection] = useState('cured meats')
+    const [currentImage, setCurrentImage] = useState('')
+    const [cloudinaryPublicID, setCloudinaryPublicID] = useState('')
+    const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
+    const [isChecked, setIsChecked] = useState(false)
+
     useEffect(()=>getDinnerItems(),[])
     useEffect(()=>getTastingMenuPrices(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -19,6 +25,26 @@ export default function DinnerMenuUpdate(){
                     'http://localhost:1436'
 
     async function createItem(formData){
+        let cloudinary_secure_URL = ''
+        let cloudinary_public_ID = ''
+        if(previewSource){
+            try{
+                await fetch('/api/cloudinary/upload', { method:'POST',
+                                                        body: JSON.stringify({data:previewSource}),
+                                                        headers: {'Content-type':'application/json'}
+                })
+                .then(res=>res.json())
+                .then(json=>{
+                    cloudinary_public_ID = json.cloudinaryResponse.public_id
+                    cloudinary_secure_URL = json.cloudinaryResponse.secure_url
+                    setPreviewSource('')
+                })
+                .catch(err=>console.log(err))
+            }catch(err){
+                console.log(err)
+            }
+        }
+
         await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
                                                     headers:{'Content-Type':'application/json'},
                                                     body: JSON.stringify({
@@ -30,7 +56,9 @@ export default function DinnerMenuUpdate(){
                                                         description: formData.get('description'),
                                                         postDescription: formData.get('post-description'),
                                                         descriptionIntro: formData.get('description-intro'),
-                                                        price: formData.get('price')
+                                                        price: formData.get('price'),
+                                                        cloudinary_secure_URL,
+                                                        cloudinary_public_ID
                                                     })
         })
         .then(alert(`
@@ -41,6 +69,68 @@ export default function DinnerMenuUpdate(){
     }
 
     async function updateItem(formData){
+        let cloudinary_secure_URL = ''
+        let cloudinary_public_ID = ''
+
+        // NO PIC -> ADD PIC
+        if(!currentImage && previewSource){
+            try{
+                await fetch('/api/cloudinary/upload', { method:'POST',
+                                                        body: JSON.stringify({data:previewSource}),
+                                                        headers: {'Content-type':'application/json'}
+                })
+                .then(res=>res.json())
+                .then(json=>{
+                    cloudinary_public_ID = json.cloudinaryResponse.public_id
+                    cloudinary_secure_URL = json.cloudinaryResponse.secure_url
+                    setPreviewSource('')
+                })
+                .catch(err=>console.log(err))
+            }catch(err){
+                console.log(err)
+            }
+        }
+
+        //OLD PIC -> NEW PIC
+        if(currentImage && previewSource){
+            try{
+                await fetch('/api/cloudinary/delete', { method:'DELETE',
+                                                        body: JSON.stringify({data:formData.get('cloudinary_public_ID')}),
+                                                        headers:{'Content-type':'application/json'}
+                })
+
+                await fetch('/api/cloudinary/upload', { method:'POST',
+                                                        body: JSON.stringify({data:previewSource}),
+                                                        headers: {'Content-type':'application/json'}
+                })
+                .then(res=>res.json())
+                .then(json=>{
+                    cloudinary_public_ID = json.cloudinaryResponse.public_id
+                    cloudinary_secure_URL = json.cloudinaryResponse.secure_url
+                    setPreviewSource('')
+                })
+                .catch(err=>console.log(err))                
+            }catch(err){
+                console.log(err)
+            }
+        }
+
+        // OLD PIC -> NO PIC
+        if(currentImage && isChecked){
+            try{
+                await fetch('/api/cloudinary/delete', { method:'DELETE',
+                                                        body: JSON.stringify({data:formData.get('cloudinary_public_ID')}),
+                                                        headers:{'Content-type':'application/json'}
+                })
+                .then(setPreviewSource(''))
+                .catch(err=>console.log(err))
+                cloudinary_public_ID = ''
+                cloudinary_secure_URL = ''
+            }catch(err){
+                console.log(err)
+            }
+        }
+
         await fetch(`${BASE_URL}/api/dinner-menu-items/${formData.get('id')}`,{ method:'PUT',
                                                                                 headers:{'Content-Type':'application/json'},
                                                                                 body: JSON.stringify({
@@ -50,7 +140,9 @@ export default function DinnerMenuUpdate(){
                                                                                     description: formData.get('description'),
                                                                                     postDescription: formData.get('post-description'),
                                                                                     descriptionIntro: formData.get('description-intro'),
-                                                                                    price: formData.get('price')
+                                                                                    price: formData.get('price'),
+                                                                                    cloudinary_public_ID,
+                                                                                    cloudinary_secure_URL
                                                                                 })
         })
         .then(alert(`
@@ -67,6 +159,7 @@ export default function DinnerMenuUpdate(){
             fetch(`${BASE_URL}/api/dinner-menu-items`)
                 .then(res=>res.json())
                 .then(json=>setAllDinnerItems(json))
+                .then(clearForm())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -120,9 +213,23 @@ export default function DinnerMenuUpdate(){
         }
     }
 
-    function editItem(id,section,name,allergiesAbbreviated,allergiesComplete,descriptionIntro,description,postDescription,price){
+    function editItem(  id,
+                        section,
+                        name,
+                        allergiesAbbreviated,
+                        allergiesComplete,
+                        descriptionIntro,
+                        description,
+                        postDescription,
+                        price,
+                        cloudinary_public_ID,
+                        cloudinary_secure_URL){
         try{
             setEditMode(true)
+            setIsChecked(false)
+            setCurrentImage(cloudinary_secure_URL ? cloudinary_secure_URL : '')
+            setCloudinaryPublicID(cloudinary_public_ID ? cloudinary_public_ID : '')
+            setCloudinarySecureURL(cloudinary_secure_URL ? cloudinary_secure_URL : '')
             document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#item-id').value = id
             document.querySelector('#section').innerHTML = section
@@ -171,7 +278,14 @@ export default function DinnerMenuUpdate(){
             document.querySelector('#description-intro').value = ''
             document.querySelector('#post-description').value = ''
             document.querySelector('#price').value = ''
+            document.querySelector('#image-file').value = ''
+
             setEditMode(false)
+            setIsChecked(false)
+            setCurrentImage('')
+            setCloudinaryPublicID('')
+            setCloudinarySecureURL('')
+            setPreviewSource('')
         }catch(err){
             console.log(err)
         }
@@ -192,6 +306,25 @@ export default function DinnerMenuUpdate(){
         .then(res=>res.json())
         .then(json=>setTastingMenuPrices(json[0]))
         .catch(err=>console.log(err))
+    }
+
+    const [previewSource, setPreviewSource] = useState()
+    function handleFileInputChange(e){
+        const file = e.target.files[0]
+        previewFile(file)
+    }
+    function previewFile(file){
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = ()=>{
+            setPreviewSource(reader.result)
+        }
+    }
+    function handleToggleChange(){
+        !isChecked && setPreviewSource('')
+        if(!isChecked) document.querySelector('#image-file').value = ''
+        setIsChecked(!isChecked)
+        document.querySelector('#do-not-circle').style.color = isChecked ? 'transparent' : 'red'
     }
 
     return(
@@ -260,6 +393,9 @@ export default function DinnerMenuUpdate(){
                                                 <div className='price'>{data.price}</div> }
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}
                                             <div style={{marginTop:'5px'}}>
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
@@ -272,7 +408,9 @@ export default function DinnerMenuUpdate(){
                                                                                 data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                data.price)}>EDIT</span>                                                    
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL)}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
@@ -707,6 +845,69 @@ export default function DinnerMenuUpdate(){
                         </label>
                         <br/><br/>
 
+                        {editMode && currentImage && <>current image:<br/></>}
+
+                        {currentImage &&    <>
+                                                <div style={{   position:'relative',
+                                                                display:'inline-block'}}>
+                                                    <div style={{   position:'absolute',
+                                                                    width:'100%',
+                                                                    height:'100%',
+                                                                    display:'grid',
+                                                                    placeContent:'center',
+                                                                    top:'0',
+                                                                    left:'0'}}><MdDoNotDisturbAlt   size='60' 
+                                                                                                    id='do-not-circle'
+                                                                                                    style={{color:'transparent'}} /></div>
+                                                    <img    id='current-image'
+                                                            src={currentImage} 
+                                                            style={{maxWidth:'100px',maxHeight:'100px'}} />
+                                                </div>                    
+                                            </>
+                        }
+                        
+                    
+                        
+                        
+                        {editMode && currentImage && <><br/><br/></>}
+                        
+                        <input  type='hidden' 
+                                value={cloudinaryPublicID}
+                                id='cloudinary_public_ID'                                                    
+                                name='cloudinary_public_ID' />
+                        <input  type='hidden'
+                                value={cloudinarySecureURL}
+                                id='cloudinary_secure_URL'
+                                name='cloudinary_secure_URL' />
+
+                        {editMode && currentImage &&    <>                                                        
+                                                            <label>
+                                                                <input  type='checkbox'
+                                                                        checked={isChecked}
+                                                                        onChange={handleToggleChange} 
+                                                                        name='no-image-checkbox'
+                                                                        id='no-image-checkbox'
+                                                                />
+                                                                &nbsp;display NO image
+                                                                <br/><br/>
+                                                            </label>
+                                                        </>}
+
+                        <label>
+                            {editMode   ? currentImage ? 'update image (optional)' : 'add image (optional)' 
+                                        : 'image file (optional)'}
+                            
+                            <input  name='image-file' 
+                                    id='image-file'
+                                    onChange={handleFileInputChange} 
+                                    type='file'/>
+                        </label>
+                        <br/><br/>
+
+                        {previewSource && <img src={previewSource} style={{maxWidth:'300px',maxHeight:'300px'}} />}
+
+
+                        <br/><br/>
                         <div id='specials-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
                             <input  type='submit' 
                                     style={{padding:'10px 10px',
@@ -727,7 +928,6 @@ export default function DinnerMenuUpdate(){
                                                         background:'rgb(255, 89, 118)',
                                                         fontWeight:'900',
                                                         color:'black',
-                                                        // height:'60px',
                                                         padding:'10px 10px',
                                                         fontSize:'20px'
                                                     }}>
@@ -838,8 +1038,6 @@ export default function DinnerMenuUpdate(){
 
                             
                             </>}
-
-
 
 
 
