@@ -216,9 +216,9 @@ export default function DinnerMenuUpdate2(){
                         cloudinary_secure_URL){
         try{
             setEditMode(true)
-            setCurrentImage(cloudinary_secure_URL)
-            setCloudinaryPublicID(cloudinary_public_ID)
-            setCloudinarySecureURL(cloudinary_secure_URL)
+            setCurrentImage(cloudinary_secure_URL ? cloudinary_secure_URL : '')
+            setCloudinaryPublicID(cloudinary_public_ID ? cloudinary_public_ID : '')
+            setCloudinarySecureURL(cloudinary_secure_URL ? cloudinary_secure_URL : '')
             document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#item-id').value = id
             document.querySelector('#section').innerHTML = section
