@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
 import { useState, useEffect } from 'react'
+import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
 export default function Dinner(){
@@ -24,7 +25,6 @@ export default function Dinner(){
                 .then(res=>res.json())
                 .then(json=>{
                     setAllDinnerMenuItems(json)
-                    console.log(json)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -43,9 +43,27 @@ export default function Dinner(){
         }
     }
 
-
+    function showModal(pic){
+        if(pic == 'undefined') return
+        document.querySelector('.modal').style.display = 'block'
+        
+    }
     return(
-                <div className='page-wrapper webpage'>
+                <div className='page-wrapper webpage' style={{position:'relative'}}>
+                    <div className='modal' style={{ position:'absolute',
+                                                    inset:'0',
+                                                    zIndex:'1000',
+                                                    background:'lightgrey',
+                                                    display:'none'
+                    }}>
+                        <AiTwotoneCloseCircle   size='70' 
+                                                onClick={()=>document.querySelector('.modal').style.display = 'none'}
+                                                style={{position:'fixed',
+                                                        cursor:'pointer',
+                                                        top:'5px',
+                                                        right:'5px'}} />
+                    </div>{/* .modal */}
+
                     <div className='webpage-wrapper'>
                         <Navbar />
         
@@ -85,7 +103,8 @@ export default function Dinner(){
                                         .filter(item=>item.section == 'cured meats' && item.sequence)
                                         .map(data=>{
                                             return(
-                                                <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                <div key={data._id} onClick={()=>showModal(`${data.cloudinary_secure_URL}`)} >  
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
                                                             {data.description}
@@ -93,7 +112,7 @@ export default function Dinner(){
                                                         <span>{data.price}</span>
                                                     </div>
                                                     <br/>
-                                                </>
+                                                </div>
                                             )
                                         })}
 
@@ -101,7 +120,8 @@ export default function Dinner(){
                                         .filter(item=>item.section == 'appetizers' && item.sequence)
                                         .map(data=>{
                                             return(
-                                                <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                <div key={data._id}>  
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
                                                             {data.description}
@@ -109,7 +129,7 @@ export default function Dinner(){
                                                         <span>{data.price}</span>
                                                     </div>
                                                     <br/>
-                                                </>
+                                                </div>
                                             )
                                         })}
 
@@ -125,7 +145,8 @@ export default function Dinner(){
                                         .filter(item=>item.section == 'entrées' && item.sequence)
                                         .map(data=>{
                                             return(
-                                                <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                <div key={data._id}>  
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
                                                             {data.description}
@@ -133,7 +154,7 @@ export default function Dinner(){
                                                         <span>{data.price}</span>
                                                     </div>
                                                     <br/>
-                                                </>
+                                                </div>
                                             )
                                         })}
 
@@ -148,7 +169,8 @@ export default function Dinner(){
                                         .filter(item=>item.section == 'sides' && item.sequence)
                                         .map(data=>{
                                             return(
-                                                <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                <div key={data._id}>  
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
                                                             {data.description}
@@ -156,7 +178,7 @@ export default function Dinner(){
                                                         <span>{data.price}</span>
                                                     </div>
                                                     <br/>
-                                                </>
+                                                </div>
                                             )
                                         })}
 
