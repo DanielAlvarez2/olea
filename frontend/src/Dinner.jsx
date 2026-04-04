@@ -43,18 +43,25 @@ export default function Dinner(){
         }
     }
 
-    function showModal(pic){
+    function showModal(pic,name,price){
         if(pic == 'undefined') return
-        document.querySelector('.modal').style.display = 'block'
+        document.querySelector('.modal').style.display = 'grid'
+        document.querySelector('.modal-image').src = pic
+        document.querySelector('.modal-name').innerHTML = name
+        document.querySelector('.modal-price').innerHTML = price
         
     }
     return(
                 <div className='page-wrapper webpage' style={{position:'relative'}}>
-                    <div className='modal' style={{ position:'absolute',
+                    <div className='modal' style={{ position:'fixed',
                                                     inset:'0',
+                                                    height:'100vh',
+                                                    width:'100%',
                                                     zIndex:'1000',
-                                                    background:'lightgrey',
-                                                    display:'none'
+                                                    background:'#888',
+                                                    color:'black',
+                                                    display:'none',
+                                                    placeContent:'center'
                     }}>
                         <AiTwotoneCloseCircle   size='70' 
                                                 onClick={()=>document.querySelector('.modal').style.display = 'none'}
@@ -62,6 +69,17 @@ export default function Dinner(){
                                                         cursor:'pointer',
                                                         top:'5px',
                                                         right:'5px'}} />
+                        <div className='modal-content'>
+                            <figure style={{display:'table'}}>
+                                <img className='modal-image' style={{maxHeight:'60vh',maxWidth:'90%'}} />
+                                <figcaption style={{display:'table-caption',captionSide:'bottom'}}>
+                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                        <span className='modal-name'></span>
+                                        <span className='modal-price'></span>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>{/* .modal-content */}
                     </div>{/* .modal */}
 
                     <div className='webpage-wrapper'>
@@ -103,7 +121,11 @@ export default function Dinner(){
                                         .filter(item=>item.section == 'cured meats' && item.sequence)
                                         .map(data=>{
                                             return(
-                                                <div key={data._id} onClick={()=>showModal(`${data.cloudinary_secure_URL}`)} >  
+                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`
+                                                                                            
+                                                                                            )} >  
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
