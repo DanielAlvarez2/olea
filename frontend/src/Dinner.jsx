@@ -71,7 +71,7 @@ export default function Dinner(){
                                                         right:'5px'}} />
                         <div className='modal-content'>
                             <figure style={{display:'table'}}>
-                                <img className='modal-image' style={{maxHeight:'60vh',maxWidth:'90%'}} />
+                                <img className='modal-image' style={{maxHeight:'60vh',maxWidth:'90vw'}} />
                                 <figcaption style={{display:'table-caption',captionSide:'bottom'}}>
                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                         <span className='modal-name'></span>
