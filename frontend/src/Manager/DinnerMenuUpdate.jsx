@@ -359,6 +359,30 @@ export default function DinnerMenuUpdate(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             {displaySection == 'cured meats' && 
                                 <>
                                 {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').length == 1 && 
@@ -447,6 +471,21 @@ export default function DinnerMenuUpdate(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             {displaySection == 'appetizers' && 
                                 <>
                                 {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
@@ -481,6 +520,9 @@ export default function DinnerMenuUpdate(){
                                                 <div className='price'>{data.price}</div> }
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                            
                                             <div style={{marginTop:'5px'}}>
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
@@ -538,6 +580,35 @@ export default function DinnerMenuUpdate(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             {displaySection == 'entrées' && 
                                 <>
                                 {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
@@ -572,6 +643,9 @@ export default function DinnerMenuUpdate(){
                                                 <div className='price'>{data.price}</div> }
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                            
                                             <div style={{marginTop:'5px'}}>
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
@@ -634,6 +708,29 @@ export default function DinnerMenuUpdate(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             {displaySection == 'sides' && 
                                 <>
                                 {allDinnerItems.filter(item=>item.sequence && item.section == 'sides').length == 1 && 
@@ -668,6 +765,9 @@ export default function DinnerMenuUpdate(){
                                                 <div className='price'>{data.price}</div> }
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                            
                                             <div style={{marginTop:'5px'}}>
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>

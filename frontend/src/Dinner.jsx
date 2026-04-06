@@ -113,9 +113,27 @@ export default function Dinner(){
 
                                     <h2>DINNER MENU</h2>
 
-
-
                                     <div className='website-menu-section'>appetizers</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                     {allDinnerMenuItems
                                         .filter(item=>item.section == 'cured meats' && item.sequence)
@@ -138,11 +156,32 @@ export default function Dinner(){
                                             )
                                         })}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     {allDinnerMenuItems
                                         .filter(item=>item.section == 'appetizers' && item.sequence)
                                         .map(data=>{
                                             return(
-                                                <div key={data._id}>  
+                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`
+                                                                                            
+                                                                                            )} >  
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
@@ -163,11 +202,39 @@ export default function Dinner(){
 
                                     <div className='website-menu-section'>main courses</div>
                                     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     {allDinnerMenuItems
                                         .filter(item=>item.section == 'entrées' && item.sequence)
                                         .map(data=>{
                                             return(
-                                                <div key={data._id}>  
+                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`
+                                                                                            
+                                                                                            )} >  
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
@@ -187,11 +254,40 @@ export default function Dinner(){
 
                                     <div className='website-menu-section'>sides</div>
                                     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     {allDinnerMenuItems
                                         .filter(item=>item.section == 'sides' && item.sequence)
                                         .map(data=>{
                                             return(
-                                                <div key={data._id}>  
+                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`
+                                                                                            
+                                                                                            )} >  
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
