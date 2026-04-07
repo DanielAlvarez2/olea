@@ -51,6 +51,10 @@ export default function Dinner(){
         document.querySelector('.modal-price').innerHTML = price
         
     }
+    function closeModal(){
+        document.querySelector('.modal-image').src = ''
+        document.querySelector('.modal').style.display = 'none'
+    }
     return(
                 <div className='page-wrapper webpage' style={{position:'relative'}}>
                     <div className='modal' style={{ position:'fixed',
@@ -64,7 +68,7 @@ export default function Dinner(){
                                                     placeContent:'center'
                     }}>
                         <AiTwotoneCloseCircle   size='70' 
-                                                onClick={()=>document.querySelector('.modal').style.display = 'none'}
+                                                onClick={closeModal}
                                                 style={{position:'fixed',
                                                         cursor:'pointer',
                                                         top:'5px',
