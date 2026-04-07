@@ -151,6 +151,7 @@ export default function Dinner(){
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
+                                                            {data.descriptionIntro}
                                                             {data.description}
                                                         </span>
                                                         <span>{data.price}</span>
@@ -189,6 +190,7 @@ export default function Dinner(){
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
+                                                            {data.descriptionIntro && `${data.descriptionIntro}; `}
                                                             {data.description}
                                                         </span>
                                                         <span>{data.price}</span>
