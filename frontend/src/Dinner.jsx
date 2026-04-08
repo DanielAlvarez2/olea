@@ -43,16 +43,23 @@ export default function Dinner(){
         }
     }
 
-    function showModal(pic,name,price){
+    function showModal(pic,name,price,descriptionIntro,description){
         if(pic == 'undefined') return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
         document.querySelector('.modal-price').innerHTML = price
+        if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
+        document.querySelector('.modal-description').innerHTML = description
         
     }
     function closeModal(){
         document.querySelector('.modal-image').src = ''
+        document.querySelector('.modal-name').innerHTML = ''
+        document.querySelector('.modal-price').innerHTML = ''
+        document.querySelector('.modal-description-intro').innerHTML = ''
+        document.querySelector('.modal-description').innerHTML = ''
+        document.querySelector('.modal').style.display = 'none'
         document.querySelector('.modal').style.display = 'none'
     }
     return(
@@ -81,6 +88,8 @@ export default function Dinner(){
                                         <span className='modal-name'></span>
                                         <span className='modal-price'></span>
                                     </div>
+                                    <span className='modal-description-intro'></span>
+                                    <span className='modal-description'></span>
                                 </figcaption>
                             </figure>
                         </div>{/* .modal-content */}
@@ -145,7 +154,9 @@ export default function Dinner(){
                                             return(
                                                 <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
                                                                                             `${data.name}`,
-                                                                                            `${data.price}`
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
                                                                                             
                                                                                             )} >  
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
@@ -184,7 +195,9 @@ export default function Dinner(){
                                             return(
                                                 <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
                                                                                             `${data.name}`,
-                                                                                            `${data.price}`
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
                                                                                             
                                                                                             )} >  
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
@@ -238,12 +251,15 @@ export default function Dinner(){
                                             return(
                                                 <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
                                                                                             `${data.name}`,
-                                                                                            `${data.price}`
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
                                                                                             
                                                                                             )} >  
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
+                                                            {data.descriptionIntro && `${data.descriptionIntro}; `}
                                                             {data.description}
                                                         </span>
                                                         <span>{data.price}</span>
@@ -291,12 +307,15 @@ export default function Dinner(){
                                             return(
                                                 <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
                                                                                             `${data.name}`,
-                                                                                            `${data.price}`
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
                                                                                             
                                                                                             )} >  
                                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                                         <span>
                                                             <span className='website-name'>{data.name}</span><br/>
+                                                            {data.descriptionIntro && `${data.descriptionIntro}; `}
                                                             {data.description}
                                                         </span>
                                                         <span>{data.price}</span>
