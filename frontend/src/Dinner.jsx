@@ -85,7 +85,7 @@ export default function Dinner(){
                                 <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw'}} />
                                 <figcaption style={{display:'table-caption',captionSide:'bottom'}}>
                                     <div style={{display:'flex',justifyContent:'space-between'}}>
-                                        <span className='modal-name'></span>
+                                        <span className='modal-name' style={{fontWeight:'900'}}></span>
                                         <span className='modal-price'></span>
                                     </div>
                                     <span className='modal-description-intro'></span>
