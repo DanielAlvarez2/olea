@@ -69,7 +69,7 @@ export default function Dinner(){
                                                     height:'100vh',
                                                     width:'100%',
                                                     zIndex:'1000',
-                                                    background:'#888',
+                                                    background:'#888888ee',
                                                     color:'black',
                                                     display:'none',
                                                     placeContent:'center'
@@ -82,13 +82,13 @@ export default function Dinner(){
                                                         right:'5px'}} />
                         <div className='modal-content'>
                             <figure style={{display:'table'}}>
-                                <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw'}} />
-                                <figcaption style={{display:'table-caption',captionSide:'bottom'}}>
+                                <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw',borderRadius:'25px'}} />
+                                <figcaption style={{display:'table-caption',padding:'10px',captionSide:'bottom',borderRadius:'25px',background:'#ccc'}}>
                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                         <span className='modal-name' style={{fontWeight:'900'}}></span>
                                         <span className='modal-price'></span>
                                     </div>
-                                    <span className='modal-description-intro'></span>
+                                    <span className='modal-description-intro' style={{fontStyle:'italic'}}></span>
                                     <span className='modal-description'></span>
                                 </figcaption>
                             </figure>
