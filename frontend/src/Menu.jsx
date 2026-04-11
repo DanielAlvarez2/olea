@@ -133,9 +133,20 @@ Please switch to a different browser to proceed.
             <div    className='manager-page-wrapper2' 
                     style={{
                             background:'lightgrey',
-                            
+                            position:'relative'
                             // color:'red'
                             }}>
+                                    <div className='modal' style={{ position:'fixed',
+                                                    inset:'0',
+                                                    height:'100vh',
+                                                    width:'100%',
+                                                    zIndex:'1000',
+                                                    background:'#888888ee',
+                                                    color:'black',
+                                                    display:'none',
+                                                    placeContent:'center'
+                    }}></div>
+
 
                 <div style={{width:'100%'}} className='no-print'>
                     {/* <ManagerNavbar page='dinner' /> */}
