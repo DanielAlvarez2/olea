@@ -1,12 +1,6 @@
 import {Link} from 'react-router'
 import {useState,useEffect} from 'react'
-// import './Manager.css'
-// import './DessertMenuFormat.css'
-// import './DessertDrinksUpdate.css'
-// import './DessertDrinksUpdate.css'
-// import './DinnerMenuFormat.css'
 import './Menu.css'
-// import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
@@ -15,12 +9,7 @@ export default function Menu(){
 
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
-    // const [dinnerFormatting, setDinnerFormatting] = useState([])
-    // const [pageMargin, setPageMargin] = useState(0)
-    // const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
-    // const [dinnerItemMarginsLeftRight, setDinnerItemMarginsLeftRight] = useState(0)
     useEffect(()=>{ 
-                // getDinnerFormatting()
                 getDinnerMenuItems()
     },[])
     useEffect(()=>getTastingMenuPrices(),[])    
@@ -37,7 +26,6 @@ export default function Menu(){
                 .then(res=>res.json())
                 .then(json=>{
                     setAllDinnerMenuItems(json)
-                    // console.log(json)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -55,78 +43,6 @@ export default function Menu(){
             console.log(err)
         }
     }
-
-    // function getDinnerFormatting(){
-    //     try{
-    //         fetch(`${BASE_URL}/api/formats/dinner`)
-    //             .then(res=>res.json())
-    //             .then(json=>{
-    //                 setDinnerFormatting(json[0])
-    //                 setPageMargin(json[0].pageMargin)
-    //                 setDinnerItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
-    //                 setDinnerItemMarginsLeftRight(json[0].dinnerItemMarginsLeftRight)
-    //             })
-    //             .catch(err=>console.log(err))
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // }
-
-    // function decreaseDinnerItemMarginsLeftRight(){
-    //     if (dinnerItemMarginsLeftRight <= 0) return
-    //     fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsLeftRight`, {method:'PUT'})
-    //         .then(()=>getDinnerFormatting())
-    //         .catch(err=>console.log(err))
-    // }
-
-    // function increaseDinnerItemMarginsLeftRight(){
-    //     fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsLeftRight`, {method:'PUT'})
-    //         .then(()=>getDinnerFormatting())
-    //         .catch(err=>console.log(err))
-    // }
-
-
-
-    // function decreaseDinnerItemMarginsTopBottom(){
-    //     if (dinnerItemMarginsTopBottom <= 0) return
-    //     fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsTopBottom`, {method:'PUT'})
-    //         .then(()=>getDinnerFormatting())
-    //         .catch(err=>console.log(err))
-    // }
-
-    // function increaseDinnerItemMarginsTopBottom(){
-    //     fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsTopBottom`, {method:'PUT'})
-    //         .then(()=>getDinnerFormatting())
-    //         .catch(err=>console.log(err))
-    // }
-
-    // function decreasePageMargin(){
-    //     if (pageMargin <= 0) return
-    //     fetch(`${BASE_URL}/api/formats/dinner/decreasePageMargin`,{method:'PUT'})
-    //     .then(()=>getDinnerFormatting())
-    //     .catch(err=>console.log(err))
-    // }
-
-    
-    // function increasePageMargin(){
-    //     fetch(`${BASE_URL}/api/formats/dinner/increasePageMargin`,{method:'PUT'})
-    //         .then(()=>getDinnerFormatting())
-    //         .catch(err=>console.log(err))
-    // }
-
-//     function printPage(){
-//         if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
-//             alert(`
-// WARNING: 
-
-// Printing from Safari Browser is not supported.
-// Please switch to a different browser to proceed.
-// `)
-//             return
-//         }else{
-//             window.print()
-//         }
-//     }
 
     function showModal(pic,name,price,descriptionIntro,description){
         if(pic == 'undefined') return
@@ -154,7 +70,6 @@ export default function Menu(){
                     style={{
                             background:'lightgrey',
                             position:'relative'
-                            // color:'red'
                             }}>
                 <div className='modal' style={{ position:'fixed',
                                                     inset:'0',
@@ -189,34 +104,12 @@ export default function Menu(){
                 </div>{/* .modal */}
 
 
-                <div style={{width:'100%'}} className='no-print'>
-                    {/* <ManagerNavbar page='dinner' /> */}
-                </div>
-                    {/* <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>dinner &gt; print</div> */}
                     <div className='main-menu2' style={{paddingBottom:0,background:'lightgrey'}}>
 
 
 
 
 
-
-                        {/* <br className='no-print'/>
-                                                       
-                            <div style={{   border:'1px solid green',
-                                            textAlign:'center',
-                                            display:'grid',
-                                            placeContent:'center',
-                                            width:'100%'}}>
-
-                            
-
-                                <div    className='no-print print-btn' 
-                                        style={{marginTop:'10px'}}
-                                        onClick={()=>printPage()}>
-                                    print
-                                </div>
-                            </div> */}
 
                             <br className='no-print'/>
 
@@ -228,18 +121,13 @@ export default function Menu(){
                                         style={{width:'8.5in',
                                                 background:'white',
                                                 padding:`10px`,
-                                                // backgroundImage:'url(scan-dinner-menu.jpg)',
-                                                // backgroundSize:'8.5in 14in',
-                                                // color:'red',
                                                 height:'auto',
-                                                // paddingBottom:'55px',
                                                 border:'1px solid black'}} 
                                 >
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
                                                         color:'black',
-                                                        // padding:`0 ${dinnerItemMarginsLeftRight}px`,
                                                         display:'block',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
@@ -254,7 +142,6 @@ export default function Menu(){
                                         <div className='dessert-menu-front-content'
                                                 style={{padding:`0px 0px 0px 0px`,
                                                         display:'flex'}}
-                                                // style={{paddingRight:'83px'}}
                                                 >
 
 
