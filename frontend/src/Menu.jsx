@@ -199,7 +199,7 @@ export default function Menu(){
                                                                 {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
                                                                 {data.description && <span> {data.description}</span>}
                                                                 
-                                                                <span className='price'> &nbsp;{data.price}</span> 
+                                                                <span className='price'> &nbsp;{data.price.includes('/') ? <div style={{display:'inline-block',marginLeft:'auto',border:'1px solid red'}}>{data.price.split('/')[0].trim()}<br/>{data.price.split('/')[1].trim()}</div> : data.price}</span> 
                                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                                                 {<div className='allergies-complete'>{data.allergiesComplete}</div>}
 
