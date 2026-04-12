@@ -160,6 +160,7 @@ export default function Menu(){
                                                     inset:'0',
                                                     height:'100vh',
                                                     width:'100%',
+                                                    fontFamily:'FuturaLight',
                                                     zIndex:'1000',
                                                     background:'#888888ee',
                                                     color:'black',
