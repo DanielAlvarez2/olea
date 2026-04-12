@@ -44,14 +44,15 @@ export default function Menu(){
         }
     }
 
-    function showModal(pic,name,price,descriptionIntro,description){
+    function showModal(pic,name,price,descriptionIntro,description,allergiesComplete){
         if(pic == 'undefined') return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
         document.querySelector('.modal-price').innerHTML = price
         if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
-        document.querySelector('.modal-description').innerHTML = description        
+        document.querySelector('.modal-description').innerHTML = description   
+        document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete    
     }
 
     function closeModal(){
@@ -61,8 +62,29 @@ export default function Menu(){
         document.querySelector('.modal-description-intro').innerHTML = ''
         document.querySelector('.modal-description').innerHTML = ''
         document.querySelector('.modal').style.display = 'none'
-        document.querySelector('.modal').style.display = 'none'
+        document.querySelector('.modal-allergies-complete').innerHTML = ''
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return(
         <>
@@ -98,6 +120,7 @@ export default function Menu(){
                                     </div>
                                     <span className='modal-description-intro' style={{fontStyle:'italic'}}></span>
                                     <span className='modal-description'></span>
+                                    <div className='modal-allergies-complete' style={{color:'red'}}></div>
                                 </figcaption>
                             </figure>
                         </div>{/* .modal-content */}
@@ -154,11 +177,12 @@ export default function Menu(){
                                                         return(
                                                             <div    key={data._id}
                                                                     className='special item'
-                                                                    onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
-                                                                                            `${data.name}`,
-                                                                                            `${data.price}`,
-                                                                                            `${data.descriptionIntro}`,
-                                                                                            `${data.description}`
+                                                                    onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                                            data.name,
+                                                                                            data.price,
+                                                                                            data.descriptionIntro,
+                                                                                            data.description,
+                                                                                            data.allergiesComplete
                                                                                             )}                                                                    
                                                                     >
                                                             
@@ -198,11 +222,12 @@ export default function Menu(){
                                                     return(
                                                         <div    key={data._id}
                                                                 className='special item'
-                                                                onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
-                                                                                            `${data.name}`,
-                                                                                            `${data.price}`,
-                                                                                            `${data.descriptionIntro}`,
-                                                                                            `${data.description}`
+                                                                onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                                            data.name,
+                                                                                            data.price,
+                                                                                            data.descriptionIntro,
+                                                                                            data.description,
+                                                                                            data.allergiesComplete
                                                                                             )}
                                                                 >
                                                         
@@ -251,11 +276,12 @@ export default function Menu(){
                                                     return(
                                                         <div    key={data._id}
                                                                 className='special item'
-                                                                onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
-                                                                                            `${data.name}`,
-                                                                                            `${data.price}`,
-                                                                                            `${data.descriptionIntro}`,
-                                                                                            `${data.description}`
+                                                                onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                                            data.name,
+                                                                                            data.price,
+                                                                                            data.descriptionIntro,
+                                                                                            data.description,
+                                                                                            data.allergiesComplete
                                                                                             )}
                                                                 >
                                                         
@@ -385,11 +411,12 @@ export default function Menu(){
                                                                 style={{flexBasis:'50%',
                                                                 }}
                                                                 className='special item'
-                                                                onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
-                                                                                            `${data.name}`,
-                                                                                            `${data.price}`,
-                                                                                            `${data.descriptionIntro}`,
-                                                                                            `${data.description}`
+                                                                onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                                            data.name,
+                                                                                            data.price,
+                                                                                            data.descriptionIntro,
+                                                                                            data.description,
+                                                                                            data.allergiesComplete
                                                                                             )}
                                                                 >
                                                         
