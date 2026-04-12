@@ -7,6 +7,7 @@ import {useState,useEffect} from 'react'
 // import './DinnerMenuFormat.css'
 import './Menu.css'
 // import ManagerNavbar from './components/ManagerNavbar.jsx'
+import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
 
@@ -14,12 +15,12 @@ export default function Menu(){
 
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
-    const [dinnerFormatting, setDinnerFormatting] = useState([])
+    // const [dinnerFormatting, setDinnerFormatting] = useState([])
     // const [pageMargin, setPageMargin] = useState(0)
-    const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
-    const [dinnerItemMarginsLeftRight, setDinnerItemMarginsLeftRight] = useState(0)
+    // const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
+    // const [dinnerItemMarginsLeftRight, setDinnerItemMarginsLeftRight] = useState(0)
     useEffect(()=>{ 
-                getDinnerFormatting()
+                // getDinnerFormatting()
                 getDinnerMenuItems()
     },[])
     useEffect(()=>getTastingMenuPrices(),[])    
@@ -55,78 +56,97 @@ export default function Menu(){
         }
     }
 
-    function getDinnerFormatting(){
-        try{
-            fetch(`${BASE_URL}/api/formats/dinner`)
-                .then(res=>res.json())
-                .then(json=>{
-                    setDinnerFormatting(json[0])
-                    setPageMargin(json[0].pageMargin)
-                    setDinnerItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
-                    setDinnerItemMarginsLeftRight(json[0].dinnerItemMarginsLeftRight)
-                })
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
+    // function getDinnerFormatting(){
+    //     try{
+    //         fetch(`${BASE_URL}/api/formats/dinner`)
+    //             .then(res=>res.json())
+    //             .then(json=>{
+    //                 setDinnerFormatting(json[0])
+    //                 setPageMargin(json[0].pageMargin)
+    //                 setDinnerItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
+    //                 setDinnerItemMarginsLeftRight(json[0].dinnerItemMarginsLeftRight)
+    //             })
+    //             .catch(err=>console.log(err))
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // }
 
-    function decreaseDinnerItemMarginsLeftRight(){
-        if (dinnerItemMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
-    }
+    // function decreaseDinnerItemMarginsLeftRight(){
+    //     if (dinnerItemMarginsLeftRight <= 0) return
+    //     fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsLeftRight`, {method:'PUT'})
+    //         .then(()=>getDinnerFormatting())
+    //         .catch(err=>console.log(err))
+    // }
 
-    function increaseDinnerItemMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
-    }
+    // function increaseDinnerItemMarginsLeftRight(){
+    //     fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsLeftRight`, {method:'PUT'})
+    //         .then(()=>getDinnerFormatting())
+    //         .catch(err=>console.log(err))
+    // }
 
 
 
-    function decreaseDinnerItemMarginsTopBottom(){
-        if (dinnerItemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
-    }
+    // function decreaseDinnerItemMarginsTopBottom(){
+    //     if (dinnerItemMarginsTopBottom <= 0) return
+    //     fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsTopBottom`, {method:'PUT'})
+    //         .then(()=>getDinnerFormatting())
+    //         .catch(err=>console.log(err))
+    // }
 
-    function increaseDinnerItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
-    }
+    // function increaseDinnerItemMarginsTopBottom(){
+    //     fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsTopBottom`, {method:'PUT'})
+    //         .then(()=>getDinnerFormatting())
+    //         .catch(err=>console.log(err))
+    // }
 
-    function decreasePageMargin(){
-        if (pageMargin <= 0) return
-        fetch(`${BASE_URL}/api/formats/dinner/decreasePageMargin`,{method:'PUT'})
-        .then(()=>getDinnerFormatting())
-        .catch(err=>console.log(err))
-    }
+    // function decreasePageMargin(){
+    //     if (pageMargin <= 0) return
+    //     fetch(`${BASE_URL}/api/formats/dinner/decreasePageMargin`,{method:'PUT'})
+    //     .then(()=>getDinnerFormatting())
+    //     .catch(err=>console.log(err))
+    // }
 
     
-    function increasePageMargin(){
-        fetch(`${BASE_URL}/api/formats/dinner/increasePageMargin`,{method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
+    // function increasePageMargin(){
+    //     fetch(`${BASE_URL}/api/formats/dinner/increasePageMargin`,{method:'PUT'})
+    //         .then(()=>getDinnerFormatting())
+    //         .catch(err=>console.log(err))
+    // }
+
+//     function printPage(){
+//         if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+//             alert(`
+// WARNING: 
+
+// Printing from Safari Browser is not supported.
+// Please switch to a different browser to proceed.
+// `)
+//             return
+//         }else{
+//             window.print()
+//         }
+//     }
+
+    function showModal(pic,name,price,descriptionIntro,description){
+        if(pic == 'undefined') return
+        document.querySelector('.modal').style.display = 'grid'
+        document.querySelector('.modal-image').src = pic
+        document.querySelector('.modal-name').innerHTML = name
+        document.querySelector('.modal-price').innerHTML = price
+        if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
+        document.querySelector('.modal-description').innerHTML = description        
     }
 
-    function printPage(){
-        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
-            alert(`
-WARNING: 
-
-Printing from Safari Browser is not supported.
-Please switch to a different browser to proceed.
-`)
-            return
-        }else{
-            window.print()
-        }
+    function closeModal(){
+        document.querySelector('.modal-image').src = ''
+        document.querySelector('.modal-name').innerHTML = ''
+        document.querySelector('.modal-price').innerHTML = ''
+        document.querySelector('.modal-description-intro').innerHTML = ''
+        document.querySelector('.modal-description').innerHTML = ''
+        document.querySelector('.modal').style.display = 'none'
+        document.querySelector('.modal').style.display = 'none'
     }
-
 
     return(
         <>
@@ -136,7 +156,7 @@ Please switch to a different browser to proceed.
                             position:'relative'
                             // color:'red'
                             }}>
-                                    <div className='modal' style={{ position:'fixed',
+                <div className='modal' style={{ position:'fixed',
                                                     inset:'0',
                                                     height:'100vh',
                                                     width:'100%',
@@ -145,7 +165,27 @@ Please switch to a different browser to proceed.
                                                     color:'black',
                                                     display:'none',
                                                     placeContent:'center'
-                    }}></div>
+                }}>
+                        <AiTwotoneCloseCircle   size='70' 
+                                                onClick={closeModal}
+                                                style={{position:'fixed',
+                                                        cursor:'pointer',
+                                                        top:'5px',
+                                                        right:'5px'}} />
+                        <div className='modal-content'>
+                            <figure style={{display:'table'}}>
+                                <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw',borderRadius:'25px'}} />
+                                <figcaption style={{display:'table-caption',padding:'10px',captionSide:'bottom',borderRadius:'25px',background:'#ccc'}}>
+                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                        <span className='modal-name' style={{fontWeight:'900'}}></span>
+                                        <span className='modal-price'></span>
+                                    </div>
+                                    <span className='modal-description-intro' style={{fontStyle:'italic'}}></span>
+                                    <span className='modal-description'></span>
+                                </figcaption>
+                            </figure>
+                        </div>{/* .modal-content */}
+                </div>{/* .modal */}
 
 
                 <div style={{width:'100%'}} className='no-print'>
@@ -198,7 +238,7 @@ Please switch to a different browser to proceed.
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
                                                         color:'black',
-                                                        padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                        // padding:`0 ${dinnerItemMarginsLeftRight}px`,
                                                         display:'block',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
@@ -225,7 +265,14 @@ Please switch to a different browser to proceed.
                                                     {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
                                                         return(
                                                             <div    key={data._id}
-                                                                    className='special item'>
+                                                                    className='special item'
+                                                                    onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
+                                                                                            )}                                                                    
+                                                                    >
                                                             
                                                                 <span className='name'>{data.name} </span>
                                                                 {data.allergiesAbbreviated &&   <>
@@ -262,7 +309,14 @@ Please switch to a different browser to proceed.
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                className='special item'>
+                                                                className='special item'
+                                                                onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
+                                                                                            )}
+                                                                >
                                                         
                                                             <span className='name'>{data.name} </span>
                                                             {data.allergiesAbbreviated &&   <>
@@ -308,7 +362,14 @@ Please switch to a different browser to proceed.
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                className='special item'>
+                                                                className='special item'
+                                                                onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
+                                                                                            )}
+                                                                >
                                                         
                                                             <span className='name'>{data.name} </span>
                                                             {data.allergiesAbbreviated &&   <>
@@ -413,6 +474,8 @@ Please switch to a different browser to proceed.
 
 
                                     <div style={{   fontSize:'25px',
+                                                    fontFamily:'FuturaLight',
+                                                    paddingLeft:'5px',
                                                     paddingTop:`10px`}}
                                     >
 
@@ -433,7 +496,14 @@ Please switch to a different browser to proceed.
                                                         <div    key={data._id}
                                                                 style={{flexBasis:'50%',
                                                                 }}
-                                                                className='special item'>
+                                                                className='special item'
+                                                                onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
+                                                                                            )}
+                                                                >
                                                         
                                                             <span className='name'>{data.name} </span>
                                                             {data.allergiesAbbreviated &&   <>

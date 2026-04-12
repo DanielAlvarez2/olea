@@ -414,6 +414,7 @@ Please switch to a different browser to proceed.
 
 
                                     <div style={{   fontSize:'25px',
+                                                    fontFamily:'FuturaLight',
                                                     padding:`0 ${dinnerItemMarginsLeftRight}px`}}
                                     >
 

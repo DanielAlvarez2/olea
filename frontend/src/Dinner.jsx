@@ -50,9 +50,9 @@ export default function Dinner(){
         document.querySelector('.modal-name').innerHTML = name
         document.querySelector('.modal-price').innerHTML = price
         if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
-        document.querySelector('.modal-description').innerHTML = description
-        
+        document.querySelector('.modal-description').innerHTML = description        
     }
+
     function closeModal(){
         document.querySelector('.modal-image').src = ''
         document.querySelector('.modal-name').innerHTML = ''
@@ -62,6 +62,7 @@ export default function Dinner(){
         document.querySelector('.modal').style.display = 'none'
         document.querySelector('.modal').style.display = 'none'
     }
+    
     return(
                 <div className='page-wrapper webpage' style={{position:'relative'}}>
                     <div className='modal' style={{ position:'fixed',
