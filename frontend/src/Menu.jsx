@@ -49,7 +49,11 @@ export default function Menu(){
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
-        document.querySelector('.modal-price').innerHTML = price
+        if (price.includes('/')){
+            document.querySelector('.modal-price').innerHTML = `${price.split('/')[0].trim()}<br/>${price.split('/')[1].trim()}`
+        }else{
+            document.querySelector('.modal-price').innerHTML = price
+        }
         if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
         document.querySelector('.modal-description').innerHTML = description   
         document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete    
