@@ -74,7 +74,6 @@ app.delete('/api/cloudinary/delete', async(req,res)=>{
 app.post('/api/dinner-menu-items', async(req,res)=>{
     let cloudinary_public_ID = ''
     let cloudinary_secure_URL = ''
-    // console.log(req.body.previewSource)
     try{
         if(req.body.previewSource){
             try{
@@ -1904,6 +1903,25 @@ app.put('/api/wines-btg/:id', async(req,res)=>{
 })
 app.put('/api/dinner-menu-items/:id', async(req,res)=>{
     try{
+        let cloudinary_secure_URL = ''
+        let cloudinary_public_ID = ''
+
+        // NO PIC -> ADD PIC
+        if(!req.body.cloudinary_secure_URL && req.body.previewSource){
+            try{
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource)
+                console.log('cloudinaryResponse:')
+                console.log(cloudinaryResponse)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+            }catch(err){
+                console.log(err)
+            }
+        }
+
+        
+
+
         await DinnerMenuItem.findByIdAndUpdate({_id:req.params.id},{
             name: req.body.name.trim(),
             allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
@@ -1912,8 +1930,8 @@ app.put('/api/dinner-menu-items/:id', async(req,res)=>{
             description: req.body.description.trim(),
             postDescription: req.body.postDescription.trim(),
             price: req.body.price.trim(),
-            cloudinary_public_ID: req.body.cloudinary_public_ID,
-            cloudinary_secure_URL: req.body.cloudinary_secure_URL
+            cloudinary_public_ID,
+            cloudinary_secure_URL
         })
         console.log(`
             Updated to Database: 

@@ -51,24 +51,6 @@ export default function DinnerMenuUpdate(){
         let cloudinary_secure_URL = ''
         let cloudinary_public_ID = ''
 
-        // NO PIC -> ADD PIC
-        if(!currentImage && previewSource){
-            try{
-                await fetch('/api/cloudinary/upload', { method:'POST',
-                                                        body: JSON.stringify({data:previewSource}),
-                                                        headers: {'Content-type':'application/json'}
-                })
-                .then(res=>res.json())
-                .then(json=>{
-                    cloudinary_public_ID = json.cloudinaryResponse.public_id
-                    cloudinary_secure_URL = json.cloudinaryResponse.secure_url
-                    setPreviewSource('')
-                })
-                .catch(err=>console.log(err))
-            }catch(err){
-                console.log(err)
-            }
-        }
 
         //OLD PIC -> NEW PIC
         if(currentImage && previewSource){
@@ -121,7 +103,8 @@ export default function DinnerMenuUpdate(){
                                                                                     descriptionIntro: formData.get('description-intro'),
                                                                                     price: formData.get('price'),
                                                                                     cloudinary_public_ID,
-                                                                                    cloudinary_secure_URL
+                                                                                    cloudinary_secure_URL,
+                                                                                    previewSource
                                                                                 })
         })
         .then(alert(`
