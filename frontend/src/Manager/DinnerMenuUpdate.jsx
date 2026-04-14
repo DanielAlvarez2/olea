@@ -48,50 +48,6 @@ export default function DinnerMenuUpdate(){
     }
 
     async function updateItem(formData){
-        let cloudinary_secure_URL = ''
-        let cloudinary_public_ID = ''
-
-
-        //OLD PIC -> NEW PIC
-        if(currentImage && previewSource){
-            try{
-                await fetch('/api/cloudinary/delete', { method:'DELETE',
-                                                        body: JSON.stringify({data:formData.get('cloudinary_public_ID')}),
-                                                        headers:{'Content-type':'application/json'}
-                })
-
-                await fetch('/api/cloudinary/upload', { method:'POST',
-                                                        body: JSON.stringify({data:previewSource}),
-                                                        headers: {'Content-type':'application/json'}
-                })
-                .then(res=>res.json())
-                .then(json=>{
-                    cloudinary_public_ID = json.cloudinaryResponse.public_id
-                    cloudinary_secure_URL = json.cloudinaryResponse.secure_url
-                    setPreviewSource('')
-                })
-                .catch(err=>console.log(err))                
-            }catch(err){
-                console.log(err)
-            }
-        }
-
-        // OLD PIC -> NO PIC
-        if(currentImage && isChecked){
-            try{
-                await fetch('/api/cloudinary/delete', { method:'DELETE',
-                                                        body: JSON.stringify({data:formData.get('cloudinary_public_ID')}),
-                                                        headers:{'Content-type':'application/json'}
-                })
-                .then(setPreviewSource(''))
-                .catch(err=>console.log(err))
-                cloudinary_public_ID = ''
-                cloudinary_secure_URL = ''
-            }catch(err){
-                console.log(err)
-            }
-        }
-
         await fetch(`${BASE_URL}/api/dinner-menu-items/${formData.get('id')}`,{ method:'PUT',
                                                                                 headers:{'Content-Type':'application/json'},
                                                                                 body: JSON.stringify({
@@ -102,9 +58,10 @@ export default function DinnerMenuUpdate(){
                                                                                     postDescription: formData.get('post-description'),
                                                                                     descriptionIntro: formData.get('description-intro'),
                                                                                     price: formData.get('price'),
-                                                                                    cloudinary_public_ID,
-                                                                                    cloudinary_secure_URL,
-                                                                                    previewSource
+                                                                                    cloudinary_public_ID: formData.get('cloudinary_public_ID'),
+                                                                                    cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
+                                                                                    previewSource,
+                                                                                    isChecked
                                                                                 })
         })
         .then(alert(`
@@ -497,7 +454,10 @@ export default function DinnerMenuUpdate(){
                                                                                 data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                data.price)}>EDIT</span>                                                    
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                
+                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
@@ -620,7 +580,10 @@ export default function DinnerMenuUpdate(){
                                                                                 data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                data.price)}>EDIT</span>                                                    
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                
+                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 
@@ -742,7 +705,10 @@ export default function DinnerMenuUpdate(){
                                                                                 data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                data.price)}>EDIT</span>                                                    
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                
+                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
 

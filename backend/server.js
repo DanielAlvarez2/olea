@@ -51,10 +51,9 @@ app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
 app.post('/api/cloudinary/upload', async(req,res)=>{
     try{
-        // const fileString = req.body.data
-        // console.log('req.body.data: '+req.body.data)
         const cloudinaryResponse = await cloudinary.uploader.upload(req.body.data)
-        console.log('cloudinaryResponse:'+cloudinaryResponse)
+        console.log('cloudinaryResponse:')
+        console.log(cloudinaryResponse)
         res.json({cloudinaryResponse})
     }catch(err){
         console.log(err)
@@ -63,7 +62,6 @@ app.post('/api/cloudinary/upload', async(req,res)=>{
 
 app.delete('/api/cloudinary/delete', async(req,res)=>{
     try{
-        // console.log('req.body.data: '+req.body.data)
         await cloudinary.uploader.destroy(req.body.data, {invalidate:true}, function(error,result){console.log(result,error)})
         res.json('Cloudinary Image Deleted')
     }catch(err){
@@ -1919,7 +1917,28 @@ app.put('/api/dinner-menu-items/:id', async(req,res)=>{
             }
         }
 
+        //OLD PIC -> NEW PIC
+        if(req.body.cloudinary_secure_URL && req.body.previewSource){
+            try{
+                await cloudinary.uploader.destroy(req.body.cloudinary_public_ID, {invalidate:true}, function(error,result){console.log(result,error)})
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+            }catch(err){
+                console.log(err)
+            }
+        }
         
+        // OLD PIC -> NO PIC
+        if(req.body.cloudinary_secure_URL && req.body.isChecked){
+            try{
+                await cloudinary.uploader.destroy(req.body.cloudinary_public_ID, {invalidate:true}, function(error,result){console.log(result,error)})                
+                cloudinary_public_ID = ''
+                cloudinary_secure_URL = ''
+            }catch(err){
+                console.log(err)
+            }
+        }
 
 
         await DinnerMenuItem.findByIdAndUpdate({_id:req.params.id},{
