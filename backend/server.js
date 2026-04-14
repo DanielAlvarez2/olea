@@ -72,7 +72,21 @@ app.delete('/api/cloudinary/delete', async(req,res)=>{
 })
 
 app.post('/api/dinner-menu-items', async(req,res)=>{
+    let cloudinary_public_ID = ''
+    let cloudinary_secure_URL = ''
+    // console.log(req.body.previewSource)
     try{
+        if(req.body.previewSource){
+            try{
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource)
+                console.log('cloudinaryResponse:')
+                console.log(cloudinaryResponse)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+            }catch(err){
+                console.log(err)
+            }
+        }
         const maxSequence = await DinnerMenuItem.findOne({section:req.body.section.trim()}).sort({sequence:-1})
         await DinnerMenuItem.create({
                                         menu: req.body.menu.trim(),
@@ -85,8 +99,8 @@ app.post('/api/dinner-menu-items', async(req,res)=>{
                                         allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
                                         allergiesComplete: req.body.allergiesComplete.trim(),
                                         sequence: maxSequence ? maxSequence.sequence + 1 : 1,
-                                        cloudinary_secure_URL: req.body.cloudinary_secure_URL,
-                                        cloudinary_public_ID: req.body.cloudinary_public_ID
+                                        cloudinary_secure_URL,
+                                        cloudinary_public_ID
                                     })
         console.log(`
             Added to Database: 

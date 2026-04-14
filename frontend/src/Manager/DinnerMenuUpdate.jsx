@@ -25,26 +25,6 @@ export default function DinnerMenuUpdate(){
                     'http://localhost:1436'
 
     async function createItem(formData){
-        let cloudinary_secure_URL = ''
-        let cloudinary_public_ID = ''
-        if(previewSource){
-            try{
-                await fetch('/api/cloudinary/upload', { method:'POST',
-                                                        body: JSON.stringify({data:previewSource}),
-                                                        headers: {'Content-type':'application/json'}
-                })
-                .then(res=>res.json())
-                .then(json=>{
-                    cloudinary_public_ID = json.cloudinaryResponse.public_id
-                    cloudinary_secure_URL = json.cloudinaryResponse.secure_url
-                    setPreviewSource('')
-                })
-                .catch(err=>console.log(err))
-            }catch(err){
-                console.log(err)
-            }
-        }
-
         await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
                                                     headers:{'Content-Type':'application/json'},
                                                     body: JSON.stringify({
@@ -57,8 +37,7 @@ export default function DinnerMenuUpdate(){
                                                         postDescription: formData.get('post-description'),
                                                         descriptionIntro: formData.get('description-intro'),
                                                         price: formData.get('price'),
-                                                        cloudinary_secure_URL,
-                                                        cloudinary_public_ID
+                                                        previewSource
                                                     })
         })
         .then(alert(`
