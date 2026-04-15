@@ -800,7 +800,7 @@ export default function DinnerMenuUpdate(){
                                                 <option>entrées</option>
                                                 <option>sides</option>
                                             </select>
-
+                                             <span className='required-field'> *required</span>
                                             <br/><br/>
                                         </label>
 

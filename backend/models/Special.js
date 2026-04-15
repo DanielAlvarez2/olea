@@ -7,7 +7,9 @@ const SpecialSchema = new mongoose.Schema({
     allergiesComplete:{type:String},
     description:{type:String},
     price:{type:String},
-    sequence:{type:Number}
+    sequence:{type:Number},
+    cloudinary_secure_URL:{type:String},
+    cloudinary_public_ID:{type:String}
 },{timestamps:true})
 
 module.exports = mongoose.model('Special',SpecialSchema)

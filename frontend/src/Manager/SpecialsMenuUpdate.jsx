@@ -10,6 +10,11 @@ import { FaCaretUp } from "react-icons/fa";
 export default function SpecialsMenuUpdate(){
     const [allSpecials, setAllSpecials] = useState([])
     const [editMode, setEditMode] = useState(false)
+    const [currentImage, setCurrentImage] = useState('')
+    const [cloudinaryPublicID, setCloudinaryPublicID] = useState('')
+    const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
+    const [isChecked, setIsChecked] = useState(false)
+
     useEffect(()=>getSpecials(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -25,13 +30,14 @@ export default function SpecialsMenuUpdate(){
                                                     allergiesAbbreviated: formData.get('allergies-abbreviated'),
                                                     allergiesComplete: formData.get('allergies-complete'),
                                                     description: formData.get('description'),
-                                                    price: formData.get('price')
+                                                    price: formData.get('price'),
+                                                    previewSource
                                                 })
         })
         .then(alert(`
             New Special Created:
              - ${formData.get('name')}`))
-        .then(getSpecials())
+        .then(()=>getSpecials())
         .catch(err=>console.log(err))
     }
 
@@ -59,6 +65,7 @@ export default function SpecialsMenuUpdate(){
             fetch(`${BASE_URL}/api/specials`)
                 .then(res=>res.json())
                 .then(json=>setAllSpecials(json))
+                .then(clearForm())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -148,12 +155,43 @@ export default function SpecialsMenuUpdate(){
             document.querySelector('#allergies-complete').value = ''
             document.querySelector('#description').value = ''
             document.querySelector('#price').value = ''
+            document.querySelector('#image-file').value = ''
+            document.querySelector('#new-image-dropdown').style.visibility = 'visible'
+
             setEditMode(false)
+            setIsChecked(false)
+            setCurrentImage('')
+            setCloudinaryPublicID('')
+            setCloudinarySecureURL('')
+            setPreviewSource('')
         }catch(err){
             console.log(err)
         }
     }
 
+    const [previewSource, setPreviewSource] = useState()
+    function handleFileInputChange(e){
+        const file = e.target.files[0]
+        previewFile(file)
+    }
+    function previewFile(file){
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = ()=>{
+            setPreviewSource(reader.result)
+        }
+    }
+    function handleToggleChange(){
+        !isChecked && setPreviewSource('')
+        if(!isChecked){
+            document.querySelector('#image-file').value = ''
+            document.querySelector('#new-image-dropdown').style.visibility = 'hidden'
+        }else{
+            document.querySelector('#new-image-dropdown').style.visibility = 'visible'
+        }
+        setIsChecked(!isChecked)
+        document.querySelector('#do-not-circle').style.color = isChecked ? 'transparent' : 'red'
+    }
 
     return(
         <>
@@ -211,6 +249,9 @@ export default function SpecialsMenuUpdate(){
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                        {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                        
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
@@ -288,6 +329,9 @@ export default function SpecialsMenuUpdate(){
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                        {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                        
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
@@ -364,6 +408,9 @@ export default function SpecialsMenuUpdate(){
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                        {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                        
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveSpecial(data._id)}>ARCHIVE</span>
@@ -446,6 +493,7 @@ export default function SpecialsMenuUpdate(){
                                                 <option>entrées</option>
                                                 <option>desserts</option>
                                             </select>
+                                             <span className='required-field'> *required</span>
 
                                             <br/><br/>
                                         </label>
@@ -455,7 +503,7 @@ export default function SpecialsMenuUpdate(){
                         
 
                         <label>
-                            name<br/>
+                            name <span className='required-field'> *required</span><br/>
                             <input  type='text' 
                                     name='name' 
                                     id='name'
@@ -492,7 +540,7 @@ export default function SpecialsMenuUpdate(){
                         </label>
                         <br/><br/>
                         <label>
-                            price<br/>
+                            price <span className='required-field'> *required</span><br/>
                             <input  type='text'
                                     required 
                                     id='price'
@@ -500,6 +548,72 @@ export default function SpecialsMenuUpdate(){
                                     name='price' />
                         </label>
                         <br/><br/>
+
+                        {editMode && currentImage && <>current image:<br/></>}
+
+                        {currentImage &&    <>
+                                                <div style={{   position:'relative',
+                                                                display:'inline-block'}}>
+                                                    <div style={{   position:'absolute',
+                                                                    width:'100%',
+                                                                    height:'100%',
+                                                                    display:'grid',
+                                                                    placeContent:'center',
+                                                                    top:'0',
+                                                                    left:'0'}}><MdDoNotDisturbAlt   size='60' 
+                                                                                                    id='do-not-circle'
+                                                                                                    style={{color:'transparent'}} /></div>
+                                                    <img    id='current-image'
+                                                            src={currentImage} 
+                                                            style={{maxWidth:'100px',maxHeight:'100px'}} />
+                                                </div>                    
+                                            </>
+                        }
+                        
+                    
+                        
+                        
+                        {editMode && currentImage && <><br/><br/></>}
+                        
+                        <input  type='hidden' 
+                                value={cloudinaryPublicID}
+                                id='cloudinary_public_ID'                                                    
+                                name='cloudinary_public_ID' />
+                        <input  type='hidden'
+                                value={cloudinarySecureURL}
+                                id='cloudinary_secure_URL'
+                                name='cloudinary_secure_URL' />
+
+                        {editMode && currentImage &&    <>                                                        
+                                                            <label>
+                                                                <input  type='checkbox'
+                                                                        checked={isChecked}
+                                                                        onChange={handleToggleChange} 
+                                                                        name='no-image-checkbox'
+                                                                        id='no-image-checkbox'
+                                                                />
+                                                                &nbsp;display NO image
+                                                                <br/><br/>
+                                                            </label>
+                                                        </>}
+
+                        <label id='new-image-dropdown'>
+                            {editMode   ? currentImage ? 'update image (optional)' : 'add image (optional)' 
+                                        : 'image file (optional)'}
+                            
+                            <input  name='image-file' 
+                                    id='image-file'
+                                    onChange={handleFileInputChange} 
+                                    type='file'/>
+                            
+                        </label>
+
+                        {previewSource && <img src={previewSource} style={{maxWidth:'300px',maxHeight:'300px'}} />}
+
+
+                        <br/><br/>
+
+
 
                         <div id='specials-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
                             <input  type='submit' 
@@ -572,6 +686,9 @@ export default function SpecialsMenuUpdate(){
                                                     <span className='price'> &nbsp;{data.price}</span> : 
                                                     <div className='price'>{data.price}</div> }
                                                 <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                                {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                                
                                                 <div style={{marginTop:'5px'}}>
                                                     <span   className='btn unarchive-btn'
                                                             onClick={()=>unarchiveSpecial(data._id)}>

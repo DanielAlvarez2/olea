@@ -113,6 +113,15 @@ app.post('/api/dinner-menu-items', async(req,res)=>{
 
 app.post('/api/specials', async(req,res)=>{
     try{
+        let cloudinary_public_ID = ''
+        let cloudinary_secure_URL = ''
+        if(req.body.previewSource){
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource)
+                console.log('cloudinaryResponse:')
+                console.log(cloudinaryResponse)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+        }        
         const maxSequence = await Special.findOne({section:req.body.section.trim()}).sort({sequence:-1})
         await Special.create({
             menu: req.body.menu.trim(),
@@ -122,7 +131,9 @@ app.post('/api/specials', async(req,res)=>{
             price: req.body.price.trim(),
             allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
             allergiesComplete: req.body.allergiesComplete.trim(),
-            sequence: maxSequence ? maxSequence.sequence + 1 : 1
+            sequence: maxSequence ? maxSequence.sequence + 1 : 1,
+            cloudinary_public_ID,
+            cloudinary_secure_URL
         })
         console.log(`
             Added to Database: 
