@@ -430,6 +430,7 @@ app.post('/api/teas', async(req,res)=>{
 app.delete('/api/specials/delete/:id', async(req,res)=>{
     try{
         const target = await Special.findById(req.params.id)
+        if (target.cloudinary_public_ID) cloudinary.uploader.destroy(target.cloudinary_public_ID)        
         const maxSequence = await Special.findOne({section: target.section}).sort({sequence:-1})
         for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
             await Special.findOneAndUpdate({
