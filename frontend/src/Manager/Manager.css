@@ -98,3 +98,7 @@ html{
   background:blue;
   color: white;
 }
+.required-field{
+  color:red;
+  font-size: 10px;
+}

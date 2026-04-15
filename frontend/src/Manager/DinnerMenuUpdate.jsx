@@ -809,7 +809,7 @@ export default function DinnerMenuUpdate(){
                         
 
                         <label>
-                            name<br/>
+                            name <span className='required-field'> *required</span><br/>
                             <input  type='text' 
                                     name='name' 
                                     id='name'
@@ -870,7 +870,7 @@ export default function DinnerMenuUpdate(){
                         <br/><br/>
                         
                         <label>
-                            price<br/>
+                            price <span className='required-field'> *required</span><br/>
                             <input  type='text'
                                     required 
                                     maxLength='100'
