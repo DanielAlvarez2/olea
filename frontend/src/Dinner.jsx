@@ -69,7 +69,7 @@ export default function Dinner(){
                                                     inset:'0',
                                                     height:'100vh',
                                                     width:'100%',
-                                                    zIndex:'1000',
+                                                    zIndex:'3000',
                                                     background:'#888888ee',
                                                     color:'black',
                                                     display:'none',
