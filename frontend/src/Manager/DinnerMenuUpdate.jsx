@@ -198,6 +198,7 @@ export default function DinnerMenuUpdate(){
             document.querySelector('#post-description').value = ''
             document.querySelector('#price').value = ''
             document.querySelector('#image-file').value = ''
+            document.querySelector('#new-image-dropdown').style.visibility = 'visible'
 
             setEditMode(false)
             setIsChecked(false)
@@ -241,7 +242,12 @@ export default function DinnerMenuUpdate(){
     }
     function handleToggleChange(){
         !isChecked && setPreviewSource('')
-        if(!isChecked) document.querySelector('#image-file').value = ''
+        if(!isChecked){
+            document.querySelector('#image-file').value = ''
+            document.querySelector('#new-image-dropdown').style.visibility = 'hidden'
+        }else{
+            document.querySelector('#new-image-dropdown').style.visibility = 'visible'
+        }
         setIsChecked(!isChecked)
         document.querySelector('#do-not-circle').style.color = isChecked ? 'transparent' : 'red'
     }
@@ -921,7 +927,7 @@ export default function DinnerMenuUpdate(){
                                                             </label>
                                                         </>}
 
-                        <label>
+                        <label id='new-image-dropdown'>
                             {editMode   ? currentImage ? 'update image (optional)' : 'add image (optional)' 
                                         : 'image file (optional)'}
                             
@@ -929,8 +935,8 @@ export default function DinnerMenuUpdate(){
                                     id='image-file'
                                     onChange={handleFileInputChange} 
                                     type='file'/>
+                            
                         </label>
-                        <br/><br/>
 
                         {previewSource && <img src={previewSource} style={{maxWidth:'300px',maxHeight:'300px'}} />}
 
