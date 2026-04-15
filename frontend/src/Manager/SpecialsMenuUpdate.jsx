@@ -5,6 +5,8 @@ import './Specials.css'
 import './SpecialsMenuUpdate.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
+import { MdDoNotDisturbAlt } from "react-icons/md";
+
 
 
 export default function SpecialsMenuUpdate(){
@@ -49,7 +51,11 @@ export default function SpecialsMenuUpdate(){
                                                                                 allergiesAbbreviated: formData.get('allergies-abbreviated'),
                                                                                 allergiesComplete: formData.get('allergies-complete'),
                                                                                 description: formData.get('description'),
-                                                                                price: formData.get('price')
+                                                                                price: formData.get('price'),
+                                                                                cloudinary_public_ID: formData.get('cloudinary_public_ID'),
+                                                                                cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
+                                                                                previewSource,
+                                                                                isChecked                                                                                
                                                     })
         })
         .then(alert(`
@@ -108,9 +114,22 @@ export default function SpecialsMenuUpdate(){
         }
     }
 
-    function editSpecial(id,section,name,allergiesAbbreviated,allergiesComplete,description,price){
+    function editSpecial(   id,
+                            section,
+                            name,
+                            allergiesAbbreviated,
+                            allergiesComplete,
+                            description,
+                            price,
+                            cloudinary_public_ID,
+                            cloudinary_secure_URL                                                                                                        
+                        ){
         try{
             setEditMode(true)
+            setIsChecked(false)
+            setCurrentImage(cloudinary_secure_URL ? cloudinary_secure_URL : '')
+            setCloudinaryPublicID(cloudinary_public_ID ? cloudinary_public_ID : '')
+            setCloudinarySecureURL(cloudinary_secure_URL ? cloudinary_secure_URL : '')            
             document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
             document.querySelector('#special-id').value = id
             document.querySelector('#section').innerHTML = section
@@ -262,7 +281,10 @@ export default function SpecialsMenuUpdate(){
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
                                                                                 data.description,
-                                                                                data.price)}>EDIT</span>                                                    
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                                                                                                
+                                                                                )}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
 
@@ -342,7 +364,10 @@ export default function SpecialsMenuUpdate(){
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
                                                                                 data.description,
-                                                                                data.price)}>EDIT</span>                                                    
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                                                                                                
+                                                                                )}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>                                                                                
                                         </div>     
@@ -421,7 +446,10 @@ export default function SpecialsMenuUpdate(){
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
                                                                                 data.description,
-                                                                                data.price)}>EDIT</span>                                                    
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                                                                                                
+                                                                                )}>EDIT</span>                                                    
                                             <span   className='btn delete-btn'
                                                     onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                         </div>
