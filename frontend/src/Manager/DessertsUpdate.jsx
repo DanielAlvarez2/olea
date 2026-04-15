@@ -6,11 +6,17 @@ import './SpecialsMenuUpdate.css'
 import './DessertsUpdate.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
-
+import { MdDoNotDisturbAlt } from "react-icons/md";
 
 export default function DessertsUpdate(){
     const [allDesserts, setAllDesserts] = useState([])
     const [editMode, setEditMode] = useState(false)
+    const [currentImage, setCurrentImage] = useState('')
+    const [cloudinaryPublicID, setCloudinaryPublicID] = useState('')
+    const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
+    const [isChecked, setIsChecked] = useState(false)
+
+
     useEffect(()=>getDesserts(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -26,13 +32,14 @@ export default function DessertsUpdate(){
                                                     allergiesAbbreviated: formData.get('allergies-abbreviated'),
                                                     allergiesComplete: formData.get('allergies-complete'),
                                                     description: formData.get('description'),
-                                                    price: formData.get('price')
+                                                    price: formData.get('price'),
+                                                    previewSource
                                                 })
         })
         .then(alert(`
             New Dessert Created:
              - ${formData.get('name')}`))
-        .then(getDesserts())
+        .then(()=>getDesserts())
         .catch(err=>console.log(err))
     }
 
@@ -51,7 +58,7 @@ export default function DessertsUpdate(){
             Dessert Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
-        .then(getDesserts())
+        .then(()=>getDesserts())
         .catch(err=>console.log(err))
     }
 
@@ -149,6 +156,30 @@ export default function DessertsUpdate(){
         }catch(err){
             console.log(err)
         }
+    }
+
+    const [previewSource, setPreviewSource] = useState()
+    function handleFileInputChange(e){
+        const file = e.target.files[0]
+        previewFile(file)
+    }
+    function previewFile(file){
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = ()=>{
+            setPreviewSource(reader.result)
+        }
+    }
+    function handleToggleChange(){
+        !isChecked && setPreviewSource('')
+        if(!isChecked){
+            document.querySelector('#image-file').value = ''
+            document.querySelector('#new-image-dropdown').style.visibility = 'hidden'
+        }else{
+            document.querySelector('#new-image-dropdown').style.visibility = 'visible'
+        }
+        setIsChecked(!isChecked)
+        document.querySelector('#do-not-circle').style.color = isChecked ? 'transparent' : 'red'
     }
 
     return(
@@ -295,7 +326,7 @@ export default function DessertsUpdate(){
                         
 
                         <label>
-                            name<br/>
+                            name <span className='required-field'> *required</span><br/>
                             <input  type='text' 
                                     name='name' 
                                     id='name'
@@ -331,13 +362,77 @@ export default function DessertsUpdate(){
                         </label>
                         <br/><br/>
                         <label>
-                            price<br/>
+                            price <span className='required-field'> *required</span><br/>
                             <input  type='text'
                                     required 
                                     maxLength='100'
                                     id='price'
                                     name='price' />
                         </label>
+                        <br/><br/>
+
+                        {editMode && currentImage && <>current image:<br/></>}
+
+                        {currentImage &&    <>
+                                                <div style={{   position:'relative',
+                                                                display:'inline-block'}}>
+                                                    <div style={{   position:'absolute',
+                                                                    width:'100%',
+                                                                    height:'100%',
+                                                                    display:'grid',
+                                                                    placeContent:'center',
+                                                                    top:'0',
+                                                                    left:'0'}}><MdDoNotDisturbAlt   size='60' 
+                                                                                                    id='do-not-circle'
+                                                                                                    style={{color:'transparent'}} /></div>
+                                                    <img    id='current-image'
+                                                            src={currentImage} 
+                                                            style={{maxWidth:'100px',maxHeight:'100px'}} />
+                                                </div>                    
+                                            </>
+                        }
+                        
+                    
+                        
+                        
+                        {editMode && currentImage && <><br/><br/></>}
+                        
+                        <input  type='hidden' 
+                                value={cloudinaryPublicID}
+                                id='cloudinary_public_ID'                                                    
+                                name='cloudinary_public_ID' />
+                        <input  type='hidden'
+                                value={cloudinarySecureURL}
+                                id='cloudinary_secure_URL'
+                                name='cloudinary_secure_URL' />
+
+                        {editMode && currentImage &&    <>                                                        
+                                                            <label>
+                                                                <input  type='checkbox'
+                                                                        checked={isChecked}
+                                                                        onChange={handleToggleChange} 
+                                                                        name='no-image-checkbox'
+                                                                        id='no-image-checkbox'
+                                                                />
+                                                                &nbsp;display NO image
+                                                                <br/><br/>
+                                                            </label>
+                                                        </>}
+
+                        <label id='new-image-dropdown'>
+                            {editMode   ? currentImage ? 'update image (optional)' : 'add image (optional)' 
+                                        : 'image file (optional)'}
+                            
+                            <input  name='image-file' 
+                                    id='image-file'
+                                    onChange={handleFileInputChange} 
+                                    type='file'/>
+                            
+                        </label>
+
+                        {previewSource && <img src={previewSource} style={{maxWidth:'300px',maxHeight:'300px'}} />}
+
+
                         <br/><br/>
 
                         <div id='desserts-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
