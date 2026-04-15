@@ -62,7 +62,7 @@ export default function SpecialsMenuUpdate(){
             Special Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
-        .then(getSpecials())
+        .then(()=>getSpecials())
         .catch(err=>console.log(err))
     }
 
