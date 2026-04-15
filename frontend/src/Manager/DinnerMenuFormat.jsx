@@ -491,7 +491,11 @@ export default function DinnerMenuFormat(){
                                         
                                         
                                         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+
                                             <div className='chef name' style={{textDecoration:'underline'}}>manuel romero, chef</div>
+                                            
+                                            <img src='qr-dinner.png' height='60px' />
+                                            
                                             <div style={{width:'65%'}}>
                                                 <span style={{fontWeight:'100'}}>
                                                     consumer advisory: consumption of undercooked meat, poultry, 
@@ -503,8 +507,7 @@ export default function DinnerMenuFormat(){
                                                 <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div>                                </div>
 
 
 
