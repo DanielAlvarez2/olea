@@ -43,7 +43,7 @@ export default function DinnerMenuUpdate(){
         .then(alert(`
             New Dinner Item Created:
              - ${formData.get('name')}`))
-        .then(getDinnerItems())
+        .then(()=>getDinnerItems())
         .catch(err=>console.log(err))
     }
 
@@ -69,7 +69,7 @@ export default function DinnerMenuUpdate(){
              - ${formData.get('name')}`))
         .then(setEditMode(false))
         .then(document.querySelector('#section-wrapper').style.display = 'none')
-        .then(getDinnerItems())
+        .then(()=>getDinnerItems())
         .catch(err=>console.log(err))
     }
 
