@@ -600,6 +600,7 @@ app.delete('/api/dinner-menu-items/delete/:id', async(req,res)=>{
 app.delete('/api/desserts/delete/:id', async(req,res)=>{
     try{
         const target = await Dessert.findById(req.params.id)
+        if (target.cloudinary_public_ID) cloudinary.uploader.destroy(target.cloudinary_public_ID)        
         const maxSequence = await Dessert.findOne().sort({sequence:-1})
         for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
             await Dessert.findOneAndUpdate({sequence: i},{sequence: i-1})

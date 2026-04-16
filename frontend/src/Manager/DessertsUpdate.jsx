@@ -67,6 +67,7 @@ export default function DessertsUpdate(){
             fetch(`${BASE_URL}/api/desserts`)
                 .then(res=>res.json())
                 .then(json=>setAllDesserts(json))
+                .then(clearForm())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -152,7 +153,15 @@ export default function DessertsUpdate(){
             document.querySelector('#allergies-complete').value = ''
             document.querySelector('#description').value = ''
             document.querySelector('#price').value = ''
+            document.querySelector('#image-file').value = ''
+            document.querySelector('#new-image-dropdown').style.visibility = 'visible'
+
             setEditMode(false)
+            setIsChecked(false)
+            setCurrentImage('')
+            setCloudinaryPublicID('')
+            setCloudinarySecureURL('')
+            setPreviewSource('')
         }catch(err){
             console.log(err)
         }
