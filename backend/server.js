@@ -2044,12 +2044,53 @@ app.put('/api/tasting-menu-prices/update', async(req,res)=>{
 
 app.put('/api/desserts/:id', async(req,res)=>{
     try{
+        let cloudinary_secure_URL = ''
+        let cloudinary_public_ID = ''
+
+        // NO PIC -> ADD PIC
+        if(!req.body.cloudinary_secure_URL && req.body.previewSource){
+            try{
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource)
+                console.log('cloudinaryResponse:')
+                console.log(cloudinaryResponse)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+            }catch(err){
+                console.log(err)
+            }
+        }
+
+        //OLD PIC -> NEW PIC
+        if(req.body.cloudinary_secure_URL && req.body.previewSource){
+            try{
+                await cloudinary.uploader.destroy(req.body.cloudinary_public_ID, {invalidate:true}, function(error,result){console.log(result,error)})
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+            }catch(err){
+                console.log(err)
+            }
+        }
+        
+        // OLD PIC -> NO PIC
+        if(req.body.cloudinary_secure_URL && req.body.isChecked){
+            try{
+                await cloudinary.uploader.destroy(req.body.cloudinary_public_ID, {invalidate:true}, function(error,result){console.log(result,error)})                
+                cloudinary_public_ID = ''
+                cloudinary_secure_URL = ''
+            }catch(err){
+                console.log(err)
+            }
+        }
+
         await Dessert.findByIdAndUpdate({_id:req.params.id},{
             name: req.body.name.trim(),
             allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
             allergiesComplete: req.body.allergiesComplete.trim(),
             description: req.body.description.trim(),
-            price: req.body.price.trim()
+            price: req.body.price.trim(),
+            cloudinary_public_ID,
+            cloudinary_secure_URL
         })
         console.log(`
             Updated to Database: 
