@@ -36,7 +36,7 @@ export default function DessertsUpdate(){
                                                     previewSource
                                                 })
         })
-        .then(alert(`
+        .then(()=>alert(`
             New Dessert Created:
              - ${formData.get('name')}`))
         .then(()=>getDesserts())
@@ -54,7 +54,7 @@ export default function DessertsUpdate(){
                                                                                 price: formData.get('price')
                                                     })
         })
-        .then(alert(`
+        .then(()=>alert(`
             Dessert Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))
@@ -235,6 +235,9 @@ export default function DessertsUpdate(){
                                             <span className='price'> &nbsp;{data.price}</span> : 
                                             <div className='price'>{data.price}</div> }
                                         <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                        {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                        
                                         <div style={{marginTop:'5px'}}>
                                             <span   className='btn archive-btn'
                                                     onClick={()=>archiveDessert(data._id)}>ARCHIVE</span>
@@ -505,7 +508,10 @@ export default function DessertsUpdate(){
                                                 {data.price.length < 3 ? 
                                                     <span className='price'> &nbsp;{data.price}</span> : 
                                                     <div className='price'>{data.price}</div> }
-                                                <div className='allergies-complete'>{data.allergiesComplete}</div>                                            
+                                                <div className='allergies-complete'>{data.allergiesComplete}</div> 
+                                                {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                                                                           
                                                 <div style={{marginTop:'5px'}}>
                                                     <span   className='btn unarchive-btn'
                                                             onClick={()=>unarchiveDessert(data._id)}>

@@ -40,7 +40,7 @@ export default function DinnerMenuUpdate(){
                                                         previewSource
                                                     })
         })
-        .then(alert(`
+        .then(()=>alert(`
             New Dinner Item Created:
              - ${formData.get('name')}`))
         .then(()=>getDinnerItems())
@@ -64,7 +64,7 @@ export default function DinnerMenuUpdate(){
                                                                                     isChecked
                                                                                 })
         })
-        .then(alert(`
+        .then(()=>alert(`
             Dinner Menu Item Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))

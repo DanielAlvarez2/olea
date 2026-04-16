@@ -36,7 +36,7 @@ export default function SpecialsMenuUpdate(){
                                                     previewSource
                                                 })
         })
-        .then(alert(`
+        .then(()=>alert(`
             New Special Created:
              - ${formData.get('name')}`))
         .then(()=>getSpecials())
@@ -58,7 +58,7 @@ export default function SpecialsMenuUpdate(){
                                                                                 isChecked                                                                                
                                                     })
         })
-        .then(alert(`
+        .then(()=>alert(`
             Special Updated:
              - ${formData.get('name')}`))
         .then(setEditMode(false))

@@ -47,28 +47,6 @@ console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
 const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
-
-
-// app.post('/api/cloudinary/upload', async(req,res)=>{
-//     try{
-//         const cloudinaryResponse = await cloudinary.uploader.upload(req.body.data)
-//         console.log('cloudinaryResponse:')
-//         console.log(cloudinaryResponse)
-//         res.json({cloudinaryResponse})
-//     }catch(err){
-//         console.log(err)
-//     }
-// })
-
-// app.delete('/api/cloudinary/delete', async(req,res)=>{
-//     try{
-//         await cloudinary.uploader.destroy(req.body.data, {invalidate:true}, function(error,result){console.log(result,error)})
-//         res.json('Cloudinary Image Deleted')
-//     }catch(err){
-//         console.log(err)
-//     }
-// })
-
 app.post('/api/dinner-menu-items', async(req,res)=>{
     let cloudinary_public_ID = ''
     let cloudinary_secure_URL = ''
@@ -363,6 +341,15 @@ app.post('/api/wines-btg', async(req,res)=>{
 
 app.post('/api/desserts', async(req,res)=>{
     try{
+        let cloudinary_public_ID = ''
+        let cloudinary_secure_URL = ''    
+        if(req.body.previewSource){
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource)
+                console.log('cloudinaryResponse:')
+                console.log(cloudinaryResponse)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+        }        
         const maxSequence = await Dessert.findOne().sort({sequence:-1})
         await Dessert.create({
             menu: req.body.menu.trim(),
@@ -372,7 +359,9 @@ app.post('/api/desserts', async(req,res)=>{
             price: req.body.price.trim(),
             allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
             allergiesComplete: req.body.allergiesComplete.trim(),
-            sequence: maxSequence ? maxSequence.sequence + 1 : 1
+            sequence: maxSequence ? maxSequence.sequence + 1 : 1,
+            cloudinary_public_ID,
+            cloudinary_secure_URL
         })
         console.log(`
             Added to Database: 
