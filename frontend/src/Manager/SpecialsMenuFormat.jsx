@@ -251,7 +251,9 @@ export default function SpecialsMenuUpdate(){
                                 <div>
                                     
                                     <div    className='specials-h1'
-                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
+                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >
+                                        today's specials
+                                    </div>
                                 </div>
 
 
