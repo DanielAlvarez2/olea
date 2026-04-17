@@ -83,6 +83,7 @@ import Register from './Manager/Register.jsx'
 import ProtectedRoute from './Manager/ProtectedRoute.jsx'
 
 import Menu from './Menu.jsx'
+import QRdessert from './QRdessert.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <StrictMode>
@@ -94,6 +95,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='chef-bio' element={<ChefBio />} />
         <Route path='private-parties' element={<PrivateParties />} />
         <Route path='dinner' element={<Dinner />} />
+        <Route path='dinner' element={<Dinner />} />
         <Route path='specials' element={<Specials />} />
         <Route path='dessert' element={<Dessert />} />
         <Route path='newsletter' element={<Newsletter />} />
@@ -101,7 +103,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='press' element={<Press />} />
         <Route path='jobs' element={<Jobs />} />
         
+        {/* QR CODE MENUS */}
         <Route path='menu' element={<Menu />} />
+        <Route path='menus' element={<Menu />} />
+        <Route path='QRdessert' element={<QRdessert />} />
 
 
 

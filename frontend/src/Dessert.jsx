@@ -26,13 +26,12 @@ export default function Dessert(){
         }
     }
 
-    function showModal(pic,name,price,descriptionIntro,description){
+    function showModal(pic,name,price,description){
         if(pic == 'undefined') return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
         document.querySelector('.modal-price').innerHTML = price
-        if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
         document.querySelector('.modal-description').innerHTML = description        
     }
 
@@ -40,12 +39,28 @@ export default function Dessert(){
         document.querySelector('.modal-image').src = ''
         document.querySelector('.modal-name').innerHTML = ''
         document.querySelector('.modal-price').innerHTML = ''
-        document.querySelector('.modal-description-intro').innerHTML = ''
         document.querySelector('.modal-description').innerHTML = ''
         document.querySelector('.modal').style.display = 'none'
         document.querySelector('.modal').style.display = 'none'
     }
     
+    function showModal(pic,name,price,description){
+        if(pic == 'undefined') return
+        document.querySelector('.modal').style.display = 'grid'
+        document.querySelector('.modal-image').src = pic
+        document.querySelector('.modal-name').innerHTML = name
+        document.querySelector('.modal-price').innerHTML = price
+        document.querySelector('.modal-description').innerHTML = description        
+    }
+
+    function closeModal(){
+        document.querySelector('.modal-image').src = ''
+        document.querySelector('.modal-name').innerHTML = ''
+        document.querySelector('.modal-price').innerHTML = ''
+        document.querySelector('.modal-description').innerHTML = ''
+        document.querySelector('.modal').style.display = 'none'
+        document.querySelector('.modal').style.display = 'none'
+    }
 
     return (
         <div className='page-wrapper webpage'>
@@ -53,7 +68,7 @@ export default function Dessert(){
                                                     inset:'0',
                                                     height:'100vh',
                                                     width:'100%',
-                                                    zIndex:'1000',
+                                                    zIndex:'3000',
                                                     background:'#888888ee',
                                                     color:'black',
                                                     display:'none',
@@ -73,7 +88,6 @@ export default function Dessert(){
                                         <span className='modal-name' style={{fontWeight:'900'}}></span>
                                         <span className='modal-price'></span>
                                     </div>
-                                    <span className='modal-description-intro' style={{fontStyle:'italic'}}></span>
                                     <span className='modal-description'></span>
                                 </figcaption>
                             </figure>
@@ -92,7 +106,14 @@ export default function Dessert(){
 
                                 {allDesserts.map(data=>{
                                     return(
-                                            <>  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                            <div    key={data._id}
+                                                    onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.description}`
+                                                    )}   
+                                            >  
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
                                                     <span>
                                                         <span className='website-name'>{data.name}</span><br/>
                                                         {data.description}
@@ -100,7 +121,7 @@ export default function Dessert(){
                                                     <span>{data.price}</span>
                                                 </div>
                                                 <br/>
-                                            </>
+                                            </div>
                                     )
                                 })}
                                                 

@@ -37,7 +37,6 @@ export default function Home(){
         document.querySelector('.modal-price').innerHTML = ''
         document.querySelector('.modal-description').innerHTML = ''
         document.querySelector('.modal').style.display = 'none'
-        document.querySelector('.modal').style.display = 'none'
     }
 
 

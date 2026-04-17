@@ -60,7 +60,6 @@ export default function Dinner(){
         document.querySelector('.modal-description-intro').innerHTML = ''
         document.querySelector('.modal-description').innerHTML = ''
         document.querySelector('.modal').style.display = 'none'
-        document.querySelector('.modal').style.display = 'none'
     }
     
     return(
