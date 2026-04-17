@@ -45,7 +45,7 @@ export default function Menu(){
     }
 
     function showModal(pic,name,price,descriptionIntro,description,allergiesComplete){
-        if(pic == 'undefined') return
+        if(!pic) return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
@@ -102,7 +102,7 @@ export default function Menu(){
                                                     height:'100vh',
                                                     width:'100%',
                                                     fontFamily:'FuturaLight',
-                                                    zIndex:'1000',
+                                                    zIndex:'3000',
                                                     background:'#888888ee',
                                                     color:'black',
                                                     display:'none',

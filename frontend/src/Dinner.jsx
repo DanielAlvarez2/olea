@@ -44,7 +44,7 @@ export default function Dinner(){
     }
 
     function showModal(pic,name,price,descriptionIntro,description){
-        if(pic == 'undefined') return
+        if(!pic) return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
