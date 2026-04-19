@@ -6,18 +6,58 @@ import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 export default function QRdessert(){
 
-    const [allSpecials, setAllSpecials] = useState([])
+    const [allCoffees, setAllCoffees] = useState([])
+    const [lastCoffeeSequenceLine1, setLastCoffeeSequenceLine1] = useState(1)    
     const [allDesserts, setAllDesserts] = useState([])
-    useEffect(()=>getDesserts(),[])
+    useEffect(()=>{
+        getCoffees()
+        getDesserts()
+    },[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
-    function getSpecials(){
+    function getCoffees(){
         try{
-            fetch(`${BASE_URL}/api/specials`)
+            let coffeeArray = []
+            let line1 = []
+            let line2 = []
+            let midpoint
+            let finalCoffeeSequenceLine1
+            let midpointCoffeeCharsLine1 = []
+            let midpointCoffeeCharsLine2 = []
+            fetch(`${BASE_URL}/api/coffees`)
                 .then(res=>res.json())
-                .then(json=>setAllSpecials(json))
+                .then(json=>{
+                    setAllCoffees(json)
+                    json.forEach(coffee=>{
+                                    const coffeeName = coffee.name.split('')
+                                    const coffeePrice = coffee.price.split('')
+                                    for (let i=0;i<coffeeName.length;i++){
+                                        coffeeArray.push(coffee.sequence)
+                                    }
+                                    for (let i=0;i<coffeePrice.length;i++){
+                                        coffeeArray.push(coffee.sequence)
+                                    }
+                                })
+                    midpoint = Math.floor(coffeeArray.length/2)
+                    finalCoffeeSequenceLine1 = coffeeArray[midpoint]
+                    for (let i=0;i<=midpoint;i++){
+                        line1.push(coffeeArray[i])
+                    }
+                    for (let i=midpoint+1;i<coffeeArray.length;i++){
+                        line2.push(coffeeArray[i])
+                    }
+                    for(let i=0;i<line1.length;i++){
+                        if (line1[i] == finalCoffeeSequenceLine1) midpointCoffeeCharsLine1.push(finalCoffeeSequenceLine1)
+                    }
+                    for(let i=0;i<line2.length;i++){
+                        if (line2[i] == finalCoffeeSequenceLine1) midpointCoffeeCharsLine2.push(finalCoffeeSequenceLine1)
+                    }
+                    
+                    if(midpointCoffeeCharsLine1 < midpointCoffeeCharsLine2) finalCoffeeSequenceLine1 = finalCoffeeSequenceLine1 - 1
+                    setLastCoffeeSequenceLine1(finalCoffeeSequenceLine1)
+                    })
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -118,9 +158,17 @@ export default function QRdessert(){
                                 padding:'20px',
                                 minHeight:'8.5in',
                                 border:'1px solid black'}}>
-                    <div style={{fontSize:'21px',fontFamily:'FuturaExtraBold'}}>
-                        dessert menu
-                    </div>
+
+
+                                        <span   className='logo dessert-menu-front-content' 
+                                                style={{
+                                                        color:'black',
+                                                        // padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                        display:'block',
+                                                        cursor:'default',
+                                                        fontSize:'57px'}}>olea</span>
+                                        <hr style={{marginBottom:`5px`}} />
+
 
 
 
@@ -156,99 +204,64 @@ export default function QRdessert(){
 
 
 
-
-                                {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
-                                    <div className='specials-h2'>appetizer</div>}
-                                {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
-                                    <div className='specials-h2'>appetizers</div>}
-
-                                {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
-                                    return(
-                                        <div    key={data._id}
-                                                onClick={()=>showModal( data.cloudinary_secure_URL,
-                                                                        data.name,
-                                                                        data.price,
-                                                                        data.description,
-                                                                        data.allergiesComplete
-                                                                        )}                                                                    
-
-                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                className='special'>
-                                        
-                                            <span className='name'>{data.name} </span>
-                                            {data.allergiesAbbreviated && 
-                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
+                                            {
+                                                (allCoffees.length > 0) && <>
+                                                    <div className='dessert-item'>                                    
+                                                        <span className='dessert-menu-heading'>
+                                                            coffee
+                                                        </span>
+                                                        &nbsp;
+                                                        <span className='dessert-price'>
+                                                            (decaffeinated available)
+                                                        </span><br/>
 
 
-                                        </div>
-                                    )
-                                })}
+                                                                                    {allCoffees.map(data=>{
+                                                                                        return(
+                                                                                            <span key={data._id}>
+                                                                                                {data.sequence <= lastCoffeeSequenceLine1 && 
+                                                                                                
+                                                                                                <span>
+                                                                                                    <span className='dessert-description'>{data.name} </span> 
+                                                                                                    <span className='dessert-price'>{data.price}</span> 
+                                                                                                        {data.sequence != allCoffees.length
+                                                                                                            && ' / '
+                                                                                                        }
+                                                                                                    
+                                                                                                </span>
+                                                                                                }
+                                                                                            </span>
+                                                                                        )
+                                                                                    })}<br/>
+                                                                                    {allCoffees.map(data=>{
+                                                                                        return(
+                                                                                            <span key={data._id}>
+                                                                                                {data.sequence > lastCoffeeSequenceLine1 && 
+                                                                                                
+                                                                                                <span>
+                                                                                                    <span className='dessert-description'>{data.name} </span> 
+                                                                                                    <span className='dessert-price'>{data.price}</span> 
+                                                                                                        {data.sequence != allCoffees.length
+                                                                                                            && ' / '
+                                                                                                        }
+                                                                                                    
+                                                                                                </span>
+                                                                                                }
+                                                                                            </span>
+                                                                                        )
+                                                                                    })}<br/>
 
-                                {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                    <div className='specials-h2'>entrée</div>}
-                                {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                    <div className='specials-h2'>entrées</div>}
-
-                                {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                    return(
-                                        <div    key={data._id} 
-                                                onClick={()=>showModal( data.cloudinary_secure_URL,
-                                                                        data.name,
-                                                                        data.price,
-                                                                        data.description,
-                                                                        data.allergiesComplete
-                                                                        )}                                                                                                            
-                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                className='special'>
-                                            
-                                    
-                                            <span className='name'>{data.name} </span>
-                                            {data.allergiesAbbreviated && 
-                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
-
-
-                                        </div>
-                                    )
-                                })}
-
-                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                    <div className='specials-h2'>dessert</div>}
-                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                    <div className='specials-h2'>desserts</div>}
-
-                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                    return(
-                                        <div    key={data._id} 
-                                                onClick={()=>showModal( data.cloudinary_secure_URL,
-                                                                        data.name,
-                                                                        data.price,
-                                                                        data.description,
-                                                                        data.allergiesComplete
-                                                                        )}                                                                                                            
-                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                className='special'>
-                                            
-                                    
-                                            <span className='name'>{data.name} </span>
-                                            {data.allergiesAbbreviated && 
-                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
+                                                    </div>
+                                                
+                                                
+                                                </> 
+                                            }
 
 
-                                        </div>
-                                    )
-                                })}
+
+
+
+
                     
                 </div>
             </div>
