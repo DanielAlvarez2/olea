@@ -1983,6 +1983,12 @@ app.put('/api/dinner-menu-items/:id', async(req,res)=>{
             }
         }
 
+        //OLD PIC -> SAME PIC
+        if(req.body.cloudinary_secure_URL && !req.body.previewSource){
+            cloudinary_public_ID = req.body.cloudinary_public_ID
+            cloudinary_secure_URL = req.body.cloudinary_secure_URL
+        }
+
 
         await DinnerMenuItem.findByIdAndUpdate({_id:req.params.id},{
             name: req.body.name.trim(),
