@@ -1,13 +1,14 @@
 import {useState, useEffect} from 'react'
 import './index.css'
-import './QRspecials.css'
+import './QRdessert.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
-export default function QRspecials(){
+export default function QRdessert(){
 
     const [allSpecials, setAllSpecials] = useState([])
-    useEffect(()=>getSpecials(),[])
+    const [allDesserts, setAllDesserts] = useState([])
+    useEffect(()=>getDesserts(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
@@ -22,6 +23,19 @@ export default function QRspecials(){
             console.log(err)
         }
     }
+
+    function getDesserts(){
+        try{
+            fetch(`${BASE_URL}/api/desserts`)
+                .then(res=>res.json())
+                .then(json=>setAllDesserts(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+
 
     function showModal(pic,name,price,description,allergiesComplete){
         if(!pic) return
@@ -100,17 +114,39 @@ export default function QRspecials(){
 
             <div style={{width:'100%',minHeight:'100vh',display:'grid',placeContent:'center'}}>
                 <div    id='qr-specials' 
-                        style={{width:'4.25in',
+                        style={{width:'5.5in',
                                 padding:'20px',
-                                minHeight:'5.5in',
+                                minHeight:'8.5in',
                                 border:'1px solid black'}}>
                     <div style={{fontSize:'21px',fontFamily:'FuturaExtraBold'}}>
-                        today's specials
+                        dessert menu
                     </div>
 
 
 
 
+                                                        {allDesserts.map(data=>{
+                                                            return (
+                                                                <div    key={data._id}
+                                                                        onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                                                data.name,
+                                                                                                data.price,
+                                                                                                data.description,
+                                                                                                data.allergiesComplete
+                                                                        )}                                                                                                                                    
+                                                                        // style={{margin:`${dessertItemMarginsTopBottom}px 0`}} 
+                                                                        className='dessert dessert-item'>
+                                                                    <span className='dessert-name'>{data.name}</span>
+                                                                    {data.allergiesAbbreviated &&   <span className='dessert-allergies'>
+                                                                                                        &nbsp;({data.allergiesAbbreviated})
+                                                                                                    </span>}
+                                                                    <span className='dessert-description'>&nbsp;{data.description}</span>
+                                                                    <span className='dessert-price'>&nbsp; &nbsp; {data.price}</span>
+                                                                    
+                                                                </div>
+                                                            )
+                                                        })}
+                                                        
 
 
 
