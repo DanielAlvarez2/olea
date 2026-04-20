@@ -147,7 +147,6 @@ export default function DessertMenuFormat(){
         }
     }
 
-
     function getTeaPrice(){
         fetch(`${BASE_URL}/api/teas/price`)
             .then(res=>res.json())

@@ -6,16 +6,38 @@ import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 export default function QRdessert(){
 
+    const [teaPrice, setTeaPrice] = useState('')
+    const [allTeas, setAllTeas] = useState([])
     const [allCoffees, setAllCoffees] = useState([])
     const [lastCoffeeSequenceLine1, setLastCoffeeSequenceLine1] = useState(1)    
     const [allDesserts, setAllDesserts] = useState([])
     useEffect(()=>{
         getCoffees()
         getDesserts()
+        getTeaPrice()
+        getTeas()
     },[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
+
+    function getTeas(){
+        try{
+            fetch(`${BASE_URL}/api/teas`)
+                .then(res=>res.json())
+                .then(json=>setAllTeas(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getTeaPrice(){
+        fetch(`${BASE_URL}/api/teas/price`)
+            .then(res=>res.json())
+            .then(json=>setTeaPrice(json))
+            .catch(err=>console.log(err))
+    }
 
     function getCoffees(){
         try{
@@ -255,7 +277,93 @@ export default function QRdessert(){
                                                 
                                                 
                                                 </> 
+                                                
                                             }
+
+                                            <br/>
+                                            <div className='dessert-item'>                                    
+                                                <span className='dessert-menu-heading'>
+                                                    organic-artisan whole leaf tea
+                                                </span>
+                                                &nbsp;
+                                                <span className='dessert-price'>
+                                                    (pouch)
+                                                </span>
+                                                <span className='dessert-price'>
+                                                    {teaPrice ? ` ${teaPrice}` : ''}
+                                                </span>
+
+                                            
+                                            
+                                                <br/>
+                                            
+                                            
+                                                
+                                                <span   className='dessert-price'
+                                                        style={{fontStyle:'normal'}}>
+                                                    black &nbsp;
+                                                </span>
+                                                                            {allTeas.filter(item=>item.type == 'black').map(data=>{
+                                                                                return(
+                                                                                    <span key={data._id}>
+                                                                                        <span className='tea-name'>{data.name} 
+                                                                                            {data.sequence != allTeas.filter(item=>item.type == 'black').length
+                                                                                                && ', '
+                                                                                            }
+                                                                                        </span>
+                                                                                    </span>
+                                                                                )
+                                                                            })}
+                                                
+                                                <br/>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <span   className='dessert-price'
+                                                        style={{fontStyle:'normal'}}>
+                                                    green &nbsp;
+                                                </span>
+                                                                            {allTeas.filter(item=>item.type == 'green').map(data=>{
+                                                                                return(
+                                                                                    <span key={data._id}>
+                                                                                        <span className='tea-name'>{data.name} 
+                                                                                            {data.sequence != allTeas.filter(item=>item.type == 'green').length
+                                                                                                && ', '
+                                                                                            }
+                                                                                        </span>
+                                                                                    </span>
+                                                                                )
+                                                                            })}
+                                            
+                                            
+                                            </div>                                    
+
+
+                                            <span className='dessert-price'>
+                                                <span style={{fontStyle:'normal'}}>herbal</span>
+                                                <span>(caffeine free)</span>
+                                                &nbsp;
+                                            </span>
+                                                                        {allTeas.filter(item=>item.type == 'herbal').map(data=>{
+                                                                            return(
+                                                                                <span key={data._id}>
+                                                                                    <span className='tea-name'>{data.name} 
+                                                                                        {data.sequence != allTeas.filter(item=>item.type == 'herbal').length
+                                                                                            && ', '
+                                                                                        }
+                                                                                    </span>
+                                                                                </span>
+                                                                            )
+                                                                        })}
+                                        
+                                            <br/>
+
 
 
 
@@ -264,6 +372,7 @@ export default function QRdessert(){
 
                     
                 </div>
+                
             </div>
         {/* wrapper */}
         </div>
