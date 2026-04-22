@@ -1,11 +1,14 @@
 import {useState, useEffect} from 'react'
 import './index.css'
 import './QRdessert.css'
+import './Manager/DessertDrinksUpdate.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
 export default function QRdessert(){
 
+    const [allDessertDrinks, setAllDessertDrinks] = useState([])
+    const [dessertDrinkCategories, setDessertDrinkCategories] = useState([])
     const [teaPrice, setTeaPrice] = useState('')
     const [allTeas, setAllTeas] = useState([])
     const [allCoffees, setAllCoffees] = useState([])
@@ -14,12 +17,46 @@ export default function QRdessert(){
     useEffect(()=>{
         getCoffees()
         getDesserts()
+        getDessertDrinks()
+        getDessertDrinkCategories()        
         getTeaPrice()
         getTeas()
     },[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
+
+    function getDessertDrinks(){
+        try{
+            fetch(`${BASE_URL}/api/dessert-drinks`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setAllDessertDrinks(json)
+                    // console.log(json)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getDessertDrinkCategories(){
+        try{
+            fetch(`${BASE_URL}/api/dessert-drink-categories`)
+                .then(res=>res.json())
+                .then(json=>{
+                    let dessertDrinkCategories = new Set()
+                    json.forEach(drink=>dessertDrinkCategories.add(drink.category))
+                    setDessertDrinkCategories([...dessertDrinkCategories])
+                    // console.log([...dessertDrinkCategories])
+                })
+                .catch(err=>console.log(err))
+
+        }catch(err){
+            console.log(err)
+        }
+    }
+
 
     function getTeas(){
         try{
@@ -382,8 +419,68 @@ export default function QRdessert(){
 
                         
                     </div>{/* .qr-dessert-menu */}
+
+
+
+
+
+
+
                     <br/>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div className='qr-dessert-menu'>
+                        <span   className='logo dessert-menu-front-content' 
+                                style={{
+                                color:'black',
+                                display:'block',
+                                cursor:'default',
+                                fontSize:'57px'}}>olea</span>
+                        <hr style={{marginBottom:`5px`}} />
+                                            {dessertDrinkCategories.map(data=>{
+                                                return (
+                                                    <div key={data} style={{lineHeight:'1.4'}}>
+                                                        {allDessertDrinks.map(drink=>{
+                                                            return (
+                                                                    <div key={drink._id}>
+                                                                        {drink.category == data && 
+                                                                            <div style={{fontFamily:'serif'}}>
+                                                                                {drink.sequence == 1 && <div style={{marginTop:'5px'}} className='dessert-menu-heading'>{drink.category}</div>}
+                                                                                <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
+                                                                                    <div className='dessert-drink-left'>
+                                                                                        {drink.category == 'dessert cocktails' && 
+                                                                                            <span style={{marginRight:'3px',fontSize:'10px',position:'relative',bottom:'1px'}}>&#9679;</span> 
+                                                                                        }
+                                                                                        {drink.preDescription && <span>{drink.preDescription} </span>}
+                                                                                        <span style={{fontWeight:'900'}}>{drink.name} </span>
+                                                                                        <span>{drink.postDescription}</span>                                                                                    
+                                                                                    </div>                                                                                    
+                                                                                    <div    className='dessert-drink-right'
+                                                                                            style={{textAlign:'left',fontWeight:'900',width:'15px'}}>
+                                                                                        {drink.price}
+                                                                                    </div>                                                                                    
+                                                                                </div>
+                                                                            </div>                                                                        
+                                                                        }
+                                                                    </div>
+
+                                                                
+                                                            )
+                                                        })}
+                                                    </div>
+                                                )
+                                            })}
+
+                        <hr/>
 
                     </div>{/* .qr-dessert-menu */}
 
