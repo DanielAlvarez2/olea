@@ -213,7 +213,20 @@ export default function QRspecials(){
                                         </div>
                                     )
                                 })}
-                    
+                                                <footer style={{
+                                                                // position:'absolute',
+                                                                bottom:'6mm',
+                                                                marginTop:'20px',
+                                                                textAlign:'left',
+                                                                fontSize:'11px',
+                                                                // paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                fontFamily:'serif'}}>
+                                                        Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                        or seafood may increase the risk of foodborne illnesses.<br/>
+                                                        <span style={{fontWeight:'900'}}>
+                                                        Please alert your server if you have special dietary requirements:<br/>
+                                                        gl (gluten), d (dairy), n (nuts)</span>
+                                                    </footer>                    
                 </div>
             </div>
         {/* wrapper */}
