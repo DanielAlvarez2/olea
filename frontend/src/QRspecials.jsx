@@ -98,15 +98,25 @@ export default function QRspecials(){
 
 
 
-            <div style={{width:'100%',minHeight:'100vh',display:'grid',placeContent:'center'}}>
+            <div style={{   width:'100%',
+                            minHeight:'100vh',
+                            display:'grid',
+                            placeContent:'center'}}
+                 id='content-grid'
+            >
                 <div    id='qr-specials' 
                         style={{width:'4.25in',
                                 padding:'20px',
                                 minHeight:'5.5in',
+                                display:'flex',
+                                flexDirection:'column',
                                 border:'1px solid black'}}>
-                    <div style={{fontSize:'21px',fontFamily:'FuturaExtraBold'}}>
-                        today's specials
-                    </div>
+                    <div id='footer-flexbox-top'>
+
+
+                        <div style={{fontSize:'21px',fontFamily:'FuturaExtraBold'}}>
+                            today's specials
+                        </div>
 
 
 
@@ -213,10 +223,15 @@ export default function QRspecials(){
                                         </div>
                                     )
                                 })}
+                        
+                        
+                    </div>{/* #footer-flexbox-top */}
+
                                                 <footer style={{
                                                                 // position:'absolute',
                                                                 bottom:'6mm',
-                                                                marginTop:'20px',
+                                                                paddingTop:'20px',
+                                                                marginTop:'auto',
                                                                 textAlign:'left',
                                                                 fontSize:'11px',
                                                                 // paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
@@ -228,7 +243,8 @@ export default function QRspecials(){
                                                         gl (gluten), d (dairy), n (nuts)</span>
                                                     </footer>                    
                 </div>
-            </div>
+            </div>{/* #content-grid */}
+
         {/* wrapper */}
         </div>
     )
