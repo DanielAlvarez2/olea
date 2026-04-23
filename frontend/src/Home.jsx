@@ -3,8 +3,10 @@ import './Home.css'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import { useEffect } from 'react'
+import {preload} from 'react-dom'
 
-export default function Home2(){
+export default function Home(){
+    preload('/fonts/FuturaLigt.otf',{as:'font',type:'font/otf',crossorigin:'anonymous'})
     useEffect(()=>window.scrollTo(0,0),[])
     useEffect(()=>{
         
