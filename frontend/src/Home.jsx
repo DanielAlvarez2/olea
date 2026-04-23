@@ -74,8 +74,9 @@ export default function Home2(){
                 smallSlideshow.insertBefore(smallPicMove, firstSmallPic)
             }
 
-            setInterval(moveRight,5000)
+            const startCarousel = setInterval(moveRight,5000)
 
+            return ()=> clearInterval(startCarousel)
         
     },[])
 
