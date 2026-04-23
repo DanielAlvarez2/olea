@@ -214,10 +214,13 @@ export default function QRdessert(){
             <div style={{   width:'100%',
                             minHeight:'100vh',
                             display:'grid',
+                            background:'#eee',
                             placeContent:'center'}}>
                 <div id='qr-dessert-grid-content'>
 
                     <div className='qr-dessert-menu'>
+                        
+                            <div className='qr-dessert-footer-flexbox-top'>
 
 
                                             <span   className='logo dessert-menu-front-content' 
@@ -226,6 +229,7 @@ export default function QRdessert(){
                                                             // padding:`0 ${dinnerItemMarginsLeftRight}px`,
                                                             display:'block',
                                                             cursor:'default',
+                                                            paddingLeft:'0',
                                                             fontSize:'57px'}}>olea</span>
                                             <hr style={{marginBottom:`5px`}} />
 
@@ -400,20 +404,24 @@ export default function QRdessert(){
                                                                                 )
                                                                             })}
                                             
-                                                <br/><br/><br/><br/>
+                                                
 
+                            </div>{/* .qr-dessert-footer-flexbox-top */}
 
-                                        <div className='dessert-footer'>
-                                            <div className='dessert-menu-front-content'>
+                                        <div className='dessert-footer' style={{marginTop:'auto'}}>
+                                            <div className='dessert-menu-front-content'
+                                                    style={{paddingLeft:'0'}}
+                                            >
                                                 jessica delgado, pastry chef
                                             </div>
                                             <hr style={{marginTop:'5px'}}/>
-                                            <div className='dessert-menu-front-content'>
+                                            <div className='dessert-menu-front-content' style={{paddingLeft:'0'}}>
                                                 please alert your server if you have any special dietary requirements<br/>
                                                 <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                             </div>
                                         </div>
 
+                        
 
 
 
@@ -439,10 +447,16 @@ export default function QRdessert(){
                     
                     
                     <div className='qr-dessert-menu'>
+
+                        
+                            <div className='qr-dessert-footer-flexbox-top'>
+
+
                         <span   className='logo dessert-menu-front-content' 
                                 style={{
                                 color:'black',
                                 display:'block',
+                                paddingLeft:'0',
                                 cursor:'default',
                                 fontSize:'57px'}}>olea</span>
                         <hr style={{marginBottom:`5px`}} />
@@ -479,8 +493,10 @@ export default function QRdessert(){
                                                     </div>
                                                 )
                                             })}
+                            </div>{/* .qr-dessert-footer-flexbox-top */}
 
-                        <hr/>
+                        <hr style={{marginTop:'auto'}}/>
+                        
 
                     </div>{/* .qr-dessert-menu */}
 

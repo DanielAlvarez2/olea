@@ -7,7 +7,21 @@
 .qr-dessert-menu{
     width:5.5in;
     padding:20px;
+    background:white;
     min-height:8.5in;
-    border:1px solid black;
-                                
+    border:1px solid black;  
+    display:flex;
+    flex-direction: column;                      
+}
+
+/* .qr-dessert-footer-flexbox{
+    display:flex;
+    flex-direction: column;
+    border:1px solid red;
+} */
+
+@media (max-width:5.5in){
+    .qr-dessert-menu{
+        width:100%;
+    }
 }
