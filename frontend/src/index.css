@@ -1,4 +1,4 @@
-@font-face{
+/* @font-face{
   font-family: 'FuturaRoundBold';
   src: url(./assets/fonts/FuturaRoundBold.ttf)
 }
@@ -13,7 +13,7 @@
 @font-face{
   font-family: 'FuturaExtraBold';
   src: url(./assets/fonts/FuturaExtraBold.otf)
-}
+} */
 *{
   margin:0;
   padding:0;
