@@ -1,6 +1,7 @@
 @font-face{
   font-family: 'FuturaRoundBold';
-  src: url(./assets/fonts/FuturaRoundBold.ttf)
+  src: url(./assets/fonts/FuturaRoundBold.ttf);
+  font-display:block;
 }
 @font-face{
   font-family: 'FuturaLight';
@@ -9,9 +10,11 @@
 }
 @font-face{
   font-family: 'FuturaMedium';
-  src: url(./assets/fonts/FuturaMedium.otf)
+  src: url(./assets/fonts/FuturaMedium.otf);
+  font-display:block;
 }
 @font-face{
   font-family: 'FuturaExtraBold';
-  src: url(./assets/fonts/FuturaExtraBold.otf)
+  src: url(./assets/fonts/FuturaExtraBold.otf);
+  font-display:block;
 }
