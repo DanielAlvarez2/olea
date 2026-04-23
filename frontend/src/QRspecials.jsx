@@ -101,16 +101,11 @@ export default function QRspecials(){
             <div style={{   width:'100%',
                             minHeight:'100vh',
                             display:'grid',
+                            background:'#eee',
                             placeContent:'center'}}
                  id='content-grid'
             >
-                <div    id='qr-specials' 
-                        style={{width:'4.25in',
-                                padding:'20px',
-                                minHeight:'5.5in',
-                                display:'flex',
-                                flexDirection:'column',
-                                border:'1px solid black'}}>
+                <div    id='qr-specials'>
                     <div id='footer-flexbox-top'>
 
 

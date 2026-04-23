@@ -4,3 +4,17 @@
 .special{
     margin:10px 0;
 }
+#qr-specials{
+    width:4.25in;
+    padding:20px;
+    background:white;
+    min-height:5.5in;
+    display:flex;
+    flex-direction:column;
+    border:1px solid black;
+}
+@media (max-width:4.25in){
+    #qr-specials{
+        width:100%;
+    }
+}
