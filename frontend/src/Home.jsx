@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import {preload} from 'react-dom'
 
 export default function Home(){
-    preload('./assets/fonts/FuturaLigt.otf',{as:'font',type:'font/otf',crossorigin:'anonymous'})
+    preload('./assets/fonts/FuturaLight.otf',{as:'font',type:'font/otf',crossorigin:'anonymous'})
     useEffect(()=>window.scrollTo(0,0),[])
     useEffect(()=>{
         
