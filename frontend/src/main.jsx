@@ -84,7 +84,7 @@ import ProtectedRoute from './Manager/ProtectedRoute.jsx'
 
 import Menu from './Menu.jsx'
 import QRspecials from './QRspecials.jsx'
-import QRdessert from './QRdessert.jsx'
+import QRdessert from './QR-dessert.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <StrictMode>
@@ -108,7 +108,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='menu' element={<Menu />} />
         <Route path='menus' element={<Menu />} />
         <Route path='QRspecials' element={<QRspecials />} />
-        <Route path='QRdessert' element={<QRdessert />} />
+        <Route path='QR-dessert' element={<QRdessert />} />
 
 
 
