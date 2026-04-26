@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import './index.css'
-import './QRspecials.css'
+import './QR-specials.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
