@@ -135,51 +135,6 @@ export default function DinnerMenuFormat(){
 
 
 
-                                                       
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseDinnerItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom &#8597;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseDinnerItemMarginsTopBottom} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseDinnerItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right &#8596;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseDinnerItemMarginsLeftRight} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-
-                                                        
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMargin} /></span>
-                                        <span>page margin</span>
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMargin} /></span>
-                                    </div>
                                 
                             <br/>
 
@@ -513,7 +468,57 @@ export default function DinnerMenuFormat(){
 
                     </div>
 
-            
+                                                       
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreaseDinnerItemMarginsTopBottom} /></span>
+                                        <span>menu item margins<br/>top & bottom &#8597;</span>
+                                        
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increaseDinnerItemMarginsTopBottom} /></span>
+                                    </div>
+
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreaseDinnerItemMarginsLeftRight} /></span>
+                                        <span>menu item margins<br/>left & right &#8596;</span>
+                                        
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increaseDinnerItemMarginsLeftRight} /></span>
+                                    </div>
+
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+
+                                                        
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreasePageMargin} /></span>
+                                        <span>page margin</span>
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increasePageMargin} /></span>
+                                    </div>
+                                    <br/><br/>
+
+
             </div>{/* .manager-page-wrapper */}
         </>
     )
