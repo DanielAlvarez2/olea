@@ -530,10 +530,14 @@ export default function DessertMenuFormat(){
                                             jessica delgado, pastry chef
                                         </div>
                                         <hr style={{marginTop:'5px'}}/>
-                                        <div className='dessert-menu-front-content'>
-                                            please alert your server if you have any special dietary requirements<br/>
-                                            <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
-                                        </div>
+                                            <div style={{display:'flex',justifyContent:'space-between'}}>
+
+                                                <div className='dessert-menu-front-content'>
+                                                    please alert your server if you have any special dietary requirements<br/>
+                                                    <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
+                                                </div>
+                                                <img src='qr-dessert.png' width='40px' />
+                                            </div>
                                     </div>
                                 </div>
                             :
