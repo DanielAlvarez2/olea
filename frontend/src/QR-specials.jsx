@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react'
 import './index.css'
 import './QR-specials.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
+import QRnavbar from './components/QR-navbar.jsx'
+
 
 
 export default function QRspecials(){
@@ -101,10 +103,11 @@ export default function QRspecials(){
             <div style={{   width:'100%',
                             minHeight:'100vh',
                             display:'grid',
-                            background:'#eee',
+                            background:'lightgrey',
                             placeContent:'center'}}
                  id='content-grid'
             >
+                <QRnavbar />
                 <div    id='qr-specials'>
                     <div id='footer-flexbox-top'>
 

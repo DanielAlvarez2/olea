@@ -3,6 +3,8 @@ import './index.css'
 import './QR-dessert.css'
 import './Manager/DessertDrinksUpdate.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
+import QRnavbar from './components/QR-navbar.jsx'
+
 
 
 export default function QRdessert(){
@@ -214,8 +216,9 @@ export default function QRdessert(){
             <div style={{   width:'100%',
                             minHeight:'100vh',
                             display:'grid',
-                            background:'#eee',
+                            background:'lightgrey',
                             placeContent:'center'}}>
+                <QRnavbar />
                 <div id='qr-dessert-grid-content'>
 
                     <div className='qr-dessert-menu'>
