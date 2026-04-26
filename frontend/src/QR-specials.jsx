@@ -231,14 +231,18 @@ export default function QRspecials(){
                                                                 paddingTop:'20px',
                                                                 marginTop:'auto',
                                                                 textAlign:'left',
+                                                                display:'flex',
                                                                 fontSize:'11px',
                                                                 // paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                 fontFamily:'serif'}}>
-                                                        Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                        or seafood may increase the risk of foodborne illnesses.<br/>
-                                                        <span style={{fontWeight:'900'}}>
-                                                        Please alert your server if you have special dietary requirements:<br/>
-                                                        gl (gluten), d (dairy), n (nuts)</span>
+                                                        <div>
+                                                            Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                            or seafood may increase the risk of foodborne illnesses.<br/>
+                                                            <span style={{fontWeight:'900'}}>
+                                                            Please alert your server if you have special dietary requirements:<br/>
+                                                            gl (gluten), d (dairy), n (nuts)</span>   
+                                                        </div>
+                                                        <img src='qr-specials.jpg' width='50px' />
                                                     </footer>                    
                 </div>
             </div>{/* #content-grid */}
