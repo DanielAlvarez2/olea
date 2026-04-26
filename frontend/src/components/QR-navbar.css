@@ -1,0 +1,12 @@
+#qr-navbar{
+    width:8.5in;
+    font-family: FuturaLight;
+}
+#qr-navbar a{
+    color:white;
+}
+@media (max-width:8.5in){
+    #qr-navbar{
+        width:100%;
+    }
+}

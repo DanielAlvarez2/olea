@@ -4,10 +4,13 @@ import {Link} from 'react-router'
 export default function QRnavbar(props){
     return(
         <>
-        <div id='qr-navbar-wrapper' style={{width:'100%',position:'fixed',top:'0'}}>
+        <div id='qr-navbar-wrapper' style={{width:'100%',
+                                            background:'black',
+                                            color:'white',
+                                            position:'fixed',top:'0'}}>
 
-            <div id='qr-navbar' style={{width:'8.5in',
-                                        background:'lightblue',
+            <div id='qr-navbar' style={{
+                                        // background:'lightblue',
                                         margin:'0 auto',
                                         display:'flex',
                                         justifyContent:'space-around'}}>
