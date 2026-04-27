@@ -154,6 +154,7 @@ export default function QRspecials(){
                                             {data.price.length < 3 ? 
                                                 <span className='price'> &nbsp;{data.price}</span> : 
                                                 <div className='price'>{data.price}</div> }
+                                            <div style={{color:'red'}}>{data.allergiesComplete}</div>
 
 
                                         </div>
@@ -185,6 +186,7 @@ export default function QRspecials(){
                                             {data.price.length < 3 ? 
                                                 <span className='price'> &nbsp;{data.price}</span> : 
                                                 <div className='price'>{data.price}</div> }
+                                            <div style={{color:'red'}}>{data.allergiesComplete}</div>
 
 
                                         </div>
@@ -216,6 +218,7 @@ export default function QRspecials(){
                                             {data.price.length < 3 ? 
                                                 <span className='price'> &nbsp;{data.price}</span> : 
                                                 <div className='price'>{data.price}</div> }
+                                            <div style={{color:'red'}}>{data.allergiesComplete}</div>
 
 
                                         </div>

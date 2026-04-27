@@ -257,6 +257,7 @@ export default function QRdessert(){
                                                                                                         </span>}
                                                                         <span className='dessert-description'>&nbsp;{data.description}</span>
                                                                         <span className='dessert-price'>&nbsp; &nbsp; {data.price}</span>
+                                                                        <div style={{color:'red'}}>{data.allergiesComplete}</div>
                                                                         
                                                                     </div>
                                                                 )
