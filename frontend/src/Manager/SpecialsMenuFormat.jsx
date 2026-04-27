@@ -398,12 +398,17 @@ export default function SpecialsMenuUpdate(){
                                                                 fontSize:'11px',
                                                                 paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                 fontFamily:'serif'}}>
-                                                        Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                        or seafood may increase the risk of foodborne illnesses.<br/>
-                                                        <span style={{fontWeight:'900'}}>
-                                                        Please alert your server if you have special dietary requirements:<br/>
-                                                        gl (gluten), d (dairy), n (nuts)</span>
-                                                    </footer>
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <div>
+                                                            Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                            or seafood may increase the risk of foodborne illnesses.<br/>
+                                                            <span style={{fontWeight:'900'}}>
+                                                            Please alert your server if you have special dietary requirements:<br/>
+                                                            gl (gluten), d (dairy), n (nuts)</span>
+                                                        </div>
+                                                        <img src='qr-specials.jpg' width='50px' />
+                                                    </div>
+                                                </footer>
                                 }
                             </div>
                             
@@ -481,11 +486,16 @@ export default function SpecialsMenuUpdate(){
                                                                                     fontSize:'11px',
                                                                                     paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                                     fontFamily:'serif'}}>
-                                                                        Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                        or seafood may increase the risk of foodborne illnesses.<br/>
-                                                                        <span style={{fontWeight:'900'}}>
-                                                                        Please alert your server if you have special dietary requirements:<br/>
-                                                                        gl (gluten), d (dairy), n (nuts)</span>
+                                                                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                                            <div>
+                                                                                Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                                                or seafood may increase the risk of foodborne illnesses.<br/>
+                                                                                <span style={{fontWeight:'900'}}>
+                                                                                Please alert your server if you have special dietary requirements:<br/>
+                                                                                gl (gluten), d (dairy), n (nuts)</span>
+                                                                            </div>
+                                                                            <img src='qr-specials.jpg' width='50px' />
+                                                                        </div>
                                                                     </footer>
                                                 }
                                             </div>
