@@ -2,6 +2,7 @@
     width:8.5in;
     /* background:blue; */
     margin: 0 auto;
+    /* font-family: FuturaLight; */
     display: flex;
     justify-content: space-around;
 }
