@@ -3,6 +3,7 @@ import {useState,useEffect} from 'react'
 import './Menu.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 import QRnavbar from './components/QR-navbar.jsx'
+import QRfooter from './components/QR-footer.jsx'
 
 
 
@@ -134,6 +135,7 @@ export default function Menu(){
 
                     <div className='main-menu2' style={{paddingBottom:0,background:'lightgrey'}}>
                         <QRnavbar />
+                        <QRfooter />
 
 
 

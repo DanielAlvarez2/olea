@@ -1,0 +1,17 @@
+#qr-footer-content{
+    width:8.5in;
+    /* background:blue; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+@media (max-width:8.5in){
+    #qr-footer-content{
+        width:100%;
+    }
+}
+@media (max-width:500px){
+    #qr-footer-content{
+        flex-direction: column;
+    }
+}
