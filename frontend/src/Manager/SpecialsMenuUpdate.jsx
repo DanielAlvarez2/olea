@@ -10,6 +10,7 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 
 
 export default function SpecialsMenuUpdate(){
+    const [updatingMenu, setUpdatingMenu] = useState(false)
     const [allSpecials, setAllSpecials] = useState([])
     const [editMode, setEditMode] = useState(false)
     const [currentImage, setCurrentImage] = useState('')
@@ -23,47 +24,57 @@ export default function SpecialsMenuUpdate(){
                     'http://localhost:1436'
 
     async function createNewSpecial(formData){
-        await fetch(`${BASE_URL}/api/specials`,{method:'POST',
-                                                headers:{'Content-Type':'application/json'},
-                                                body: JSON.stringify({
-                                                    menu: formData.get('menu'),
-                                                    section: formData.get('section'),
-                                                    name: formData.get('name'),
-                                                    allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                    allergiesComplete: formData.get('allergies-complete'),
-                                                    description: formData.get('description'),
-                                                    price: formData.get('price'),
-                                                    previewSource
-                                                })
-        })
-        .then(()=>alert(`
-            New Special Created:
-             - ${formData.get('name')}`))
-        .then(()=>getSpecials())
-        .catch(err=>console.log(err))
+        setUpdatingMenu(true)
+        setTimeout(postSpecial,0)
+        async function postSpecial(){
+            await fetch(`${BASE_URL}/api/specials`,{method:'POST',
+                                                    headers:{'Content-Type':'application/json'},
+                                                    body: JSON.stringify({
+                                                        menu: formData.get('menu'),
+                                                        section: formData.get('section'),
+                                                        name: formData.get('name'),
+                                                        allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                        allergiesComplete: formData.get('allergies-complete'),
+                                                        description: formData.get('description'),
+                                                        price: formData.get('price'),
+                                                        previewSource
+                                                    })
+            })
+            .then(()=>alert(`
+                New Special Created:
+                - ${formData.get('name')}`))
+            .then(()=>getSpecials())
+            .then(()=>setUpdatingMenu(false))
+            .catch(err=>console.log(err))
+        }
     }
 
     async function updateSpecial(formData){
-        await fetch(`${BASE_URL}/api/specials/${formData.get('id')}`,{  method:'PUT',
-                                                                        headers:{'Content-Type':'application/json'},
-                                                                        body: JSON.stringify({
-                                                                                name: formData.get('name'),
-                                                                                allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                                                allergiesComplete: formData.get('allergies-complete'),
-                                                                                description: formData.get('description'),
-                                                                                price: formData.get('price'),
-                                                                                cloudinary_public_ID: formData.get('cloudinary_public_ID'),
-                                                                                cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
-                                                                                previewSource,
-                                                                                isChecked                                                                                
-                                                    })
-        })
-        .then(()=>alert(`
-            Special Updated:
-             - ${formData.get('name')}`))
-        .then(setEditMode(false))
-        .then(()=>getSpecials())
-        .catch(err=>console.log(err))
+        setUpdatingMenu(true)
+        setTimeout(putSpecial,0)
+        async function putSpecial(){
+            await fetch(`${BASE_URL}/api/specials/${formData.get('id')}`,{  method:'PUT',
+                                                                            headers:{'Content-Type':'application/json'},
+                                                                            body: JSON.stringify({
+                                                                                    name: formData.get('name'),
+                                                                                    allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                                                    allergiesComplete: formData.get('allergies-complete'),
+                                                                                    description: formData.get('description'),
+                                                                                    price: formData.get('price'),
+                                                                                    cloudinary_public_ID: formData.get('cloudinary_public_ID'),
+                                                                                    cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
+                                                                                    previewSource,
+                                                                                    isChecked                                                                                
+                                                        })
+            })
+            .then(()=>alert(`
+                Special Updated:
+                - ${formData.get('name')}`))
+            .then(()=>setEditMode(false))
+            .then(()=>getSpecials())
+            .then(()=>setUpdatingMenu(false))
+            .catch(err=>console.log(err))
+        }
     }
 
     function getSpecials(){
@@ -644,15 +655,30 @@ export default function SpecialsMenuUpdate(){
 
 
                         <div id='specials-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
-                            <input  type='submit' 
-                                    style={{padding:'10px 10px',
-                                            cursor:'pointer',
-                                            borderRadius:'10px',
-                                            border:'2px solid black',
-                                            color:'black',
-                                            background:'lightgrey',
-                                            fontSize:'20px'}}
+                            {!updatingMenu && 
+                                <input  type='submit' 
+                                style={{padding:'10px 10px',
+                                    cursor:'pointer',
+                                    borderRadius:'10px',
+                                    border:'2px solid black',
+                                    color:'black',
+                                    background:'lightgrey',
+                                    fontSize:'20px'}}
                                     value = {editMode ? 'update special' : 'create new special'} />
+                            }
+                            {updatingMenu &&
+                                <div style={{   padding:'10px',
+                                    borderRadius:'10px',
+                                    border:'2px solid black',
+                                    color:'white',
+                                    fontWeight:'900',
+                                    background:'darkgrey',
+                                    fontSize:'20px',
+                                    cursor:'wait'}}>
+                                        <span className='flashing-text'>updating menu</span>
+                                </div>
+                            }
+
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',

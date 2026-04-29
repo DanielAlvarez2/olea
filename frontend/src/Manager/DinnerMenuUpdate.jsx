@@ -29,57 +29,60 @@ export default function DinnerMenuUpdate(){
         setUpdatingMenu(true)
         setTimeout(postItem,0)
         async function postItem(){
-
-
-        await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
-                                                    headers:{'Content-Type':'application/json'},
-                                                    body: JSON.stringify({
-                                                        menu: formData.get('menu'),
-                                                        section: formData.get('section'),
-                                                        name: formData.get('name'),
-                                                        allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                        allergiesComplete: formData.get('allergies-complete'),
-                                                        description: formData.get('description'),
-                                                        postDescription: formData.get('post-description'),
-                                                        descriptionIntro: formData.get('description-intro'),
-                                                        price: formData.get('price'),
-                                                        previewSource
-                                                    })
-        })
-        .then(setUpdatingMenu(true))
-        .then(()=>alert(`
-            New Dinner Item Created:
-             - ${formData.get('name')}`))
-        .then(()=>getDinnerItems())
-        .then(()=>setUpdatingMenu(false))
-        .catch(err=>console.log(err))
+            await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
+                                                        headers:{'Content-Type':'application/json'},
+                                                        body: JSON.stringify({
+                                                            menu: formData.get('menu'),
+                                                            section: formData.get('section'),
+                                                            name: formData.get('name'),
+                                                            allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                            allergiesComplete: formData.get('allergies-complete'),
+                                                            description: formData.get('description'),
+                                                            postDescription: formData.get('post-description'),
+                                                            descriptionIntro: formData.get('description-intro'),
+                                                            price: formData.get('price'),
+                                                            previewSource
+                                                        })
+            })
+            .then(setUpdatingMenu(true))
+            .then(()=>alert(`
+                New Dinner Item Created:
+                - ${formData.get('name')}`))
+            .then(()=>getDinnerItems())
+            .then(()=>setUpdatingMenu(false))
+            .catch(err=>console.log(err))
         }
     }
 
     async function updateItem(formData){
-        await fetch(`${BASE_URL}/api/dinner-menu-items/${formData.get('id')}`,{ method:'PUT',
-                                                                                headers:{'Content-Type':'application/json'},
-                                                                                body: JSON.stringify({
-                                                                                    name: formData.get('name'),
-                                                                                    allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                                                    allergiesComplete: formData.get('allergies-complete'),
-                                                                                    description: formData.get('description'),
-                                                                                    postDescription: formData.get('post-description'),
-                                                                                    descriptionIntro: formData.get('description-intro'),
-                                                                                    price: formData.get('price'),
-                                                                                    cloudinary_public_ID: formData.get('cloudinary_public_ID'),
-                                                                                    cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
-                                                                                    previewSource,
-                                                                                    isChecked
-                                                                                })
-        })
-        .then(()=>alert(`
-            Dinner Menu Item Updated:
-             - ${formData.get('name')}`))
-        .then(setEditMode(false))
-        .then(document.querySelector('#section-wrapper').style.display = 'none')
-        .then(()=>getDinnerItems())
-        .catch(err=>console.log(err))
+        setUpdatingMenu(true)
+        setTimeout(putItem,0)
+        async function putItem(){
+            await fetch(`${BASE_URL}/api/dinner-menu-items/${formData.get('id')}`,{ method:'PUT',
+                                                                                    headers:{'Content-Type':'application/json'},
+                                                                                    body: JSON.stringify({
+                                                                                        name: formData.get('name'),
+                                                                                        allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                                                        allergiesComplete: formData.get('allergies-complete'),
+                                                                                        description: formData.get('description'),
+                                                                                        postDescription: formData.get('post-description'),
+                                                                                        descriptionIntro: formData.get('description-intro'),
+                                                                                        price: formData.get('price'),
+                                                                                        cloudinary_public_ID: formData.get('cloudinary_public_ID'),
+                                                                                        cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
+                                                                                        previewSource,
+                                                                                        isChecked
+                                                                                    })
+            })
+            .then(()=>alert(`
+                Dinner Menu Item Updated:
+                - ${formData.get('name')}`))
+            .then(()=>setEditMode(false))
+            .then(document.querySelector('#section-wrapper').style.display = 'none')
+            .then(()=>getDinnerItems())
+            .then(()=>setUpdatingMenu(false))
+            .catch(err=>console.log(err))
+        }
     }
 
     function getDinnerItems(){
