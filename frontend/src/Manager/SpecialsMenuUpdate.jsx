@@ -679,7 +679,7 @@ export default function SpecialsMenuUpdate(){
                                 </div>
                             }
 
-                            {editMode &&                             
+                            {editMode && !updatingMenu &&                            
                                         <div onClick={clearForm}
                                              style={{   display:'grid',
                                                         placeContent:'center',

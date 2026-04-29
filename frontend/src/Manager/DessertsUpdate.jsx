@@ -502,7 +502,7 @@ export default function DessertsUpdate(){
                                                     <span className='flashing-text'>updating menu</span>
                                     </div>                                    
                             }
-                            {editMode &&                             
+                            {editMode && !updatingMenu &&                            
                                         <div onClick={clearForm}
                                              style={{   display:'grid',
                                                         placeContent:'center',
