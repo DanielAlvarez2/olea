@@ -9,6 +9,7 @@ import { FaCaretUp } from "react-icons/fa";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 
 export default function DessertsUpdate(){
+    const [updatingMenu, setUpdatingMenu] = useState(false)
     const [allDesserts, setAllDesserts] = useState([])
     const [editMode, setEditMode] = useState(false)
     const [currentImage, setCurrentImage] = useState('')
@@ -23,47 +24,57 @@ export default function DessertsUpdate(){
                     'http://localhost:1436'
 
     async function createNewDessert(formData){
-        await fetch(`${BASE_URL}/api/desserts`,{method:'POST',
-                                                headers:{'Content-Type':'application/json'},
-                                                body: JSON.stringify({
-                                                    menu: formData.get('menu'),
-                                                    section: formData.get('section'),
-                                                    name: formData.get('name'),
-                                                    allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                    allergiesComplete: formData.get('allergies-complete'),
-                                                    description: formData.get('description'),
-                                                    price: formData.get('price'),
-                                                    previewSource
-                                                })
-        })
-        .then(()=>alert(`
-            New Dessert Created:
-             - ${formData.get('name')}`))
-        .then(()=>getDesserts())
-        .catch(err=>console.log(err))
+        setUpdatingMenu(true)
+        setTimeout(postDessert,0)
+        async function postDessert(){
+            await fetch(`${BASE_URL}/api/desserts`,{method:'POST',
+                                                    headers:{'Content-Type':'application/json'},
+                                                    body: JSON.stringify({
+                                                        menu: formData.get('menu'),
+                                                        section: formData.get('section'),
+                                                        name: formData.get('name'),
+                                                        allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                        allergiesComplete: formData.get('allergies-complete'),
+                                                        description: formData.get('description'),
+                                                        price: formData.get('price'),
+                                                        previewSource
+                                                    })
+            })
+            .then(()=>alert(`
+                New Dessert Created:
+                - ${formData.get('name')}`))
+            .then(()=>getDesserts())
+            .then(()=>setUpdatingMenu(false))
+            .catch(err=>console.log(err))
+        }
     }
 
     async function updateDessert(formData){
-        await fetch(`${BASE_URL}/api/desserts/${formData.get('id')}`,{  method:'PUT',
-                                                                        headers:{'Content-Type':'application/json'},
-                                                                        body: JSON.stringify({
-                                                                                name: formData.get('name'),
-                                                                                allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                                                allergiesComplete: formData.get('allergies-complete'),
-                                                                                description: formData.get('description'),
-                                                                                price: formData.get('price'),
-                                                                                cloudinary_public_ID: formData.get('cloudinary_public_ID'),
-                                                                                cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
-                                                                                previewSource,
-                                                                                isChecked
-                                                    })
-        })
-        .then(()=>alert(`
-            Dessert Updated:
-             - ${formData.get('name')}`))
-        .then(setEditMode(false))
-        .then(()=>getDesserts())
-        .catch(err=>console.log(err))
+        setUpdatingMenu(true)
+        setTimeout(putDessert,0)
+        async function putDessert(){
+            await fetch(`${BASE_URL}/api/desserts/${formData.get('id')}`,{  method:'PUT',
+                                                                            headers:{'Content-Type':'application/json'},
+                                                                            body: JSON.stringify({
+                                                                                    name: formData.get('name'),
+                                                                                    allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                                                    allergiesComplete: formData.get('allergies-complete'),
+                                                                                    description: formData.get('description'),
+                                                                                    price: formData.get('price'),
+                                                                                    cloudinary_public_ID: formData.get('cloudinary_public_ID'),
+                                                                                    cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
+                                                                                    previewSource,
+                                                                                    isChecked
+                                                        })
+            })
+            .then(()=>alert(`
+                Dessert Updated:
+                - ${formData.get('name')}`))
+            .then(setEditMode(false))
+            .then(()=>getDesserts())
+            .then(()=>setUpdatingMenu(false))
+            .catch(err=>console.log(err))
+        }
     }
 
     function getDesserts(){
@@ -468,15 +479,29 @@ export default function DessertsUpdate(){
                         <br/><br/>
 
                         <div id='desserts-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
-                            <input  type='submit' 
-                                    style={{padding:'10px 10px',
-                                            cursor:'pointer',
-                                            borderRadius:'10px',
-                                            border:'2px solid black',
-                                            color:'black',
-                                            background:'lightgrey',
-                                            fontSize:'20px'}}
+                            {!updatingMenu && 
+                                <input  type='submit' 
+                                style={{padding:'10px 10px',
+                                    cursor:'pointer',
+                                    borderRadius:'10px',
+                                    border:'2px solid black',
+                                    color:'black',
+                                    background:'lightgrey',
+                                    fontSize:'20px'}}
                                     value = {editMode ? 'update dessert' : 'create new dessert'} />
+                            }
+                            {updatingMenu && 
+                                <div style={{   padding:'10px',
+                                                borderRadius:'10px',
+                                                border:'2px solid black',
+                                                color:'white',
+                                                fontWeight:'900',
+                                                background:'darkgrey',
+                                                fontSize:'20px',
+                                                cursor:'wait'}}>
+                                                    <span className='flashing-text'>updating menu</span>
+                                    </div>                                    
+                            }
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',
