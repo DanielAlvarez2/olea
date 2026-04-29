@@ -9,6 +9,7 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 
 
 export default function DinnerMenuUpdate(){
+    const [updatingMenu, setUpdatingMenu] = useState(false)
     const [allDinnerItems, setAllDinnerItems] = useState([])
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])
     const [editMode, setEditMode] = useState(false)
@@ -25,6 +26,11 @@ export default function DinnerMenuUpdate(){
                     'http://localhost:1436'
 
     async function createItem(formData){
+        setUpdatingMenu(true)
+        setTimeout(postItem,0)
+        async function postItem(){
+
+
         await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
                                                     headers:{'Content-Type':'application/json'},
                                                     body: JSON.stringify({
@@ -40,11 +46,14 @@ export default function DinnerMenuUpdate(){
                                                         previewSource
                                                     })
         })
+        .then(setUpdatingMenu(true))
         .then(()=>alert(`
             New Dinner Item Created:
              - ${formData.get('name')}`))
         .then(()=>getDinnerItems())
+        .then(()=>setUpdatingMenu(false))
         .catch(err=>console.log(err))
+        }
     }
 
     async function updateItem(formData){
@@ -943,15 +952,29 @@ export default function DinnerMenuUpdate(){
 
                         <br/><br/>
                         <div id='specials-form-buttons' style={{display:'flex',justifyContent:'space-around'}}>
-                            <input  type='submit' 
-                                    style={{padding:'10px 10px',
-                                            cursor:'pointer',
-                                            borderRadius:'10px',
-                                            border:'2px solid black',
-                                            color:'black',
-                                            background:'lightgrey',
-                                            fontSize:'20px'}}
-                                    value = {editMode ? 'update dinner item' : 'create new dinner item'} />
+                            {!updatingMenu &&                             
+                                <input  type='submit' 
+                                        style={{padding:'10px 10px',
+                                                cursor:'pointer',
+                                                borderRadius:'10px',
+                                                border:'2px solid black',
+                                                color:'black',
+                                                background:'lightgrey',
+                                                fontSize:'20px'}}
+                                        value = {editMode ? 'update dinner item' : 'create new dinner item'} />
+                            }
+                            {updatingMenu &&                             
+                                <div style={{   padding:'10px',
+                                                borderRadius:'10px',
+                                                border:'2px solid black',
+                                                color:'white',
+                                                fontWeight:'900',
+                                                background:'darkgrey',
+                                                fontSize:'20px',
+                                                cursor:'wait'}}>
+                                                    <span className='flashing-text'>updating menu</span>
+                                </div>
+                            }
                             {editMode &&                             
                                         <div onClick={clearForm}
                                              style={{   display:'grid',
