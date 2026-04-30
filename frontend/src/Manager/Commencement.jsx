@@ -17,7 +17,7 @@ export default function Commencement(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/commencement-screenshot'><li style={{flexGrow:'1'}}>screenshot</li></Link>
                         <Link to='/commencement'><li style={{flexGrow:'1'}}>scan</li></Link>

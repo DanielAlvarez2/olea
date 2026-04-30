@@ -17,7 +17,7 @@ export default function NYE(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/nye-screenshot'><li style={{flexGrow:'1'}}>screenshot</li></Link>
                         <Link to='/nye-scan'><li style={{flexGrow:'1'}}>scan</li></Link>

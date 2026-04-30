@@ -17,7 +17,7 @@ export default function Annivaersary(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>screenshot</li></Link>
                         <Link to='/anniversary-scan'><li style={{flexGrow:'1'}}>anniversary<br/>menu scan</li></Link>

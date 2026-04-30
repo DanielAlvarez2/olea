@@ -17,7 +17,7 @@ export default function RestaurantWeeksSpring(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/restaurant-weeks-spring-screenshot'><li style={{flexGrow:'1'}}>restaurant weeks<br/>screenshot</li></Link>
                         <Link to='/restaurant-weeks-spring-scan'><li style={{flexGrow:'1'}}>restaurant weeks<br/>menu scan</li></Link>

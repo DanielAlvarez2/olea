@@ -17,7 +17,7 @@ export default function MothersDay(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/mothers-day-screenshot'><li style={{flexGrow:'1'}}>screenshot</li></Link>
                         <Link to='/mothers-day'><li style={{flexGrow:'1'}}>scan</li></Link>

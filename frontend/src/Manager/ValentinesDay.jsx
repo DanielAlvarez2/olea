@@ -17,7 +17,7 @@ export default function ValentinesDay(){
                                 justifyContent:'space-evenly',
                                 alignItems:'center',
                                 height:'100%',
-                                border:'1px solid green'
+                                // border:'1px solid green'
                                 }}>
                         <Link to='/valentines-day-screenshot'><li style={{flexGrow:'1'}}>screenshot</li></Link>
                         <Link to='/valentines-day-scan'><li style={{flexGrow:'1'}}>scan</li></Link>
