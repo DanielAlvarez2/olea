@@ -244,7 +244,9 @@ Please switch to a different browser to proceed.
                                                                     fontSize:'11px',
                                                                     paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                     fontFamily:'serif'}}>
-                                                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <div style={{   display:'flex',
+                                                                        alignItems:'flex-end',
+                                                                        justifyContent:'space-between'}}>
                                                             <div>
                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                 or seafood may increase the risk of foodborne illnesses.<br/>
@@ -252,7 +254,7 @@ Please switch to a different browser to proceed.
                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
-                                                            <img src='qr-specials.jpg' width='50px' />
+                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
                                                         </div>
                                                     </footer>
                                     }
@@ -333,7 +335,9 @@ Please switch to a different browser to proceed.
                                                                                 fontSize:'11px',
                                                                                 paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                                 fontFamily:'serif'}}>
-                                                                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                                        <div style={{   display:'flex',
+                                                                                        alignItems:'flex-end',
+                                                                                        justifyContent:'space-between'}}>
                                                                             <div>
                                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                                 or seafood may increase the risk of foodborne illnesses.<br/>
@@ -341,7 +345,7 @@ Please switch to a different browser to proceed.
                                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                                             </div>
-                                                                            <img src='qr-specials.jpg' width='50px' />
+                                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
                                                                         </div>
 
                                                                     </footer>
@@ -429,7 +433,9 @@ Please switch to a different browser to proceed.
                                                                     fontSize:'11px',
                                                                     paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                     fontFamily:'serif'}}>
-                                                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <div style={{display:'flex',
+                                                                    alignItems:'flex-end',
+                                                                    justifyContent:'space-between'}}>
                                                             <div>
                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                 or seafood may increase the risk of foodborne illnesses.<br/>
@@ -437,7 +443,7 @@ Please switch to a different browser to proceed.
                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
-                                                            <img src='qr-specials.jpg' width='50px' />
+                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
                                                         </div>
                                                     </footer>
                                     }
@@ -506,7 +512,9 @@ Please switch to a different browser to proceed.
                                                                                 fontSize:'11px',
                                                                                 paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                                 fontFamily:'serif'}}>
-                                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                                    <div style={{display:'flex',
+                                                                                alignItems:'flex-end',
+                                                                                justifyContent:'space-between'}}>
                                                                         <div>
                                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                             or seafood may increase the risk of foodborne illnesses.<br/>
@@ -514,7 +522,7 @@ Please switch to a different browser to proceed.
                                                                             Please alert your server if you have special dietary requirements:<br/>
                                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                                         </div>
-                                                                        <img src='qr-specials.jpg' width='50px' />
+                                                                        <img src='qr-specials.jpg' width='50px' height='50px' />
                                                                     </div>
                                                                 </footer>
                                                 }
@@ -605,7 +613,9 @@ Please switch to a different browser to proceed.
                                                                     fontSize:'11px',
                                                                     paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                     fontFamily:'serif'}}>
-                                                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <div style={{display:'flex',
+                                                                    alignItems:'flex-end',
+                                                                    justifyContent:'space-between'}}>
                                                             <div>
                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                 or seafood may increase the risk of foodborne illnesses.<br/>
@@ -613,7 +623,7 @@ Please switch to a different browser to proceed.
                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
-                                                            <img src='qr-specials.jpg' width='50px' />
+                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
                                                         </div>
                                                     </footer>
                                     }
@@ -682,7 +692,9 @@ Please switch to a different browser to proceed.
                                                                                 fontSize:'11px',
                                                                                 paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                                 fontFamily:'serif'}}>
-                                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                                    <div style={{display:'flex',
+                                                                                alignItems:'flex-end',
+                                                                                justifyContent:'space-between'}}>
                                                                         <div>
                                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                             or seafood may increase the risk of foodborne illnesses.<br/>
@@ -690,7 +702,7 @@ Please switch to a different browser to proceed.
                                                                             Please alert your server if you have special dietary requirements:<br/>
                                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                                         </div>
-                                                                        <img src='qr-specials.jpg' width='50px' />
+                                                                        <img src='qr-specials.jpg' width='50px' height='50px' />
                                                                     </div>
                                                                 </footer>
                                                 }
@@ -777,7 +789,9 @@ Please switch to a different browser to proceed.
                                                                     fontSize:'11px',
                                                                     paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                     fontFamily:'serif'}}>
-                                                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <div style={{display:'flex',
+                                                                    alignItems:'flex-end',
+                                                                    justifyContent:'space-between'}}>
                                                             <div>
                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                 or seafood may increase the risk of foodborne illnesses.<br/>
@@ -785,7 +799,7 @@ Please switch to a different browser to proceed.
                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
-                                                            <img src='qr-specials.jpg' width='50px' />
+                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
                                                         </div>
                                                     </footer>
                                     }
@@ -854,7 +868,9 @@ Please switch to a different browser to proceed.
                                                                                 fontSize:'11px',
                                                                                 paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                                 fontFamily:'serif'}}>
-                                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                                    <div style={{display:'flex',
+                                                                                alignItems:'flex-end',
+                                                                                justifyContent:'space-between'}}>
                                                                         <div>
                                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                             or seafood may increase the risk of foodborne illnesses.<br/>
@@ -862,7 +878,7 @@ Please switch to a different browser to proceed.
                                                                             Please alert your server if you have special dietary requirements:<br/>
                                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                                         </div>
-                                                                        <img src='qr-specials.jpg' width='50px' />
+                                                                        <img src='qr-specials.jpg' width='50px' height='50px' />
                                                                     </div>
                                                                 </footer>
                                                 }

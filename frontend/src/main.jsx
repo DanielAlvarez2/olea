@@ -31,6 +31,12 @@ import ValentinesDay from './Manager/ValentinesDay.jsx'
 import ValentinesDayScreenshot from './Manager/ValentinesDayScreenshot.jsx'
 import ValentinesDayScan from './Manager/ValentinesDayScan.jsx'
 
+import Commencement from './Manager/Commencement.jsx'
+import CommencementScreenshot from './Manager/CommencementScreenshot.jsx'
+
+import MothersDay from './Manager/MothersDay.jsx'
+import MothersDayScreenshot from './Manager/MothersDayScreenshot.jsx'
+
 import NYE from './Manager/NYE.jsx'
 import NYEscan from './Manager/NYEscan.jsx'
 import NYEscreenshot from './Manager/NYEscreenshot.jsx'
@@ -174,6 +180,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
         <Route path='anniversary-scan' element={<AnniversaryScan />} />
         <Route path='anniversary' element={<Anniversary />} />
+        
+        <Route path='commencement' element={<Commencement />} />
+        <Route path='commencement-screenshot' element={<CommencementScreenshot />} />
+        
+        <Route path='mothers-day' element={<MothersDay />} />
+        <Route path='mothers-day-screenshot' element={<MothersDayScreenshot />} />
         
         <Route path='valentines-day' element={<ValentinesDay />} />
         <Route path='valentines-day-screenshot' element={<ValentinesDayScreenshot />} />

@@ -23,8 +23,8 @@ export default function Events(){
                                 }}>
                         <Link to='/valentines-day'><li style={{flexGrow:'1'}}>valentine's day<br/>feb 14</li></Link>
                         <Link to='/restaurant-weeks-spring'><li style={{flexGrow:'1'}}>restaurant weeks<br/>late march</li></Link>
-                        <Link to='/events'><li style={{flexGrow:'1'}}>mother's day<br/>2nd sun may</li></Link>
-                        <Link to='/events'><li style={{flexGrow:'1'}}>graduation<br/>3rd sun may</li></Link>
+                        <Link to='/mothers-day'><li style={{flexGrow:'1'}}>mother's day<br/>2nd sun may</li></Link>
+                        <Link to='/commencement'><li style={{flexGrow:'1'}}>commencement<br/>3rd sun may</li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>graduation lunch<br/>3rd mon may</li></Link>
                         <Link to='/anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>aug 27</li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>parents weekend<br/>1st week oct</li></Link>
