@@ -104,6 +104,7 @@ export default function QRspecials(){
             <div style={{   width:'100%',
                             minHeight:'100vh',
                             display:'grid',
+                            padding:'10px 0',
                             background:'lightgrey',
                             placeContent:'center'}}
                  id='content-grid'

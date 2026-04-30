@@ -217,6 +217,7 @@ export default function QRdessert(){
             <div style={{   width:'100%',
                             minHeight:'100vh',
                             display:'grid',
+                            padding:'30px 0',
                             background:'lightgrey',
                             placeContent:'center'}}>
                 <QRnavbar />

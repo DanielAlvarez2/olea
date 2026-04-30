@@ -133,7 +133,7 @@ export default function Menu(){
                 </div>{/* .modal */}
 
 
-                    <div className='main-menu2' style={{paddingBottom:0,background:'lightgrey'}}>
+                    <div className='main-menu2' style={{padding:'10px 0',background:'lightgrey'}}>
                         <QRnavbar />
                         <QRfooter />
 
