@@ -103,7 +103,7 @@ export default function DinnerMenuFormat(){
     }
 
     function decreasePageMargin(){
-        if (pageMargin <= 0) return
+        if (pageMargin <= 25) return
         fetch(`${BASE_URL}/api/formats/dinner/decreasePageMargin`,{method:'PUT'})
         .then(()=>getDinnerFormatting())
         .catch(err=>console.log(err))
