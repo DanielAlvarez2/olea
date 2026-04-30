@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import {preload} from 'react-dom'
 
 export default function Home(){
-    preload('./assets/fonts/FuturaLight.otf',{as:'font',type:'font/otf',crossorigin:'anonymous'})
+    // preload('./assets/fonts/FuturaLight.otf',{as:'font',type:'font/otf',crossorigin:'anonymous'})
     useEffect(()=>window.scrollTo(0,0),[])
     useEffect(()=>{
         
@@ -38,7 +38,7 @@ export default function Home(){
             const picLarge25 = document.querySelector(`#pic-large-25`)
             const picLarge26 = document.querySelector(`#pic-large-26`)
             const picLarge27 = document.querySelector(`#pic-large-27`)
-            const picLarge28 = document.querySelector(`#pic-large-28`)
+            // const picLarge28 = document.querySelector(`#pic-large-28`)
 
             const rightArrow = document.querySelector('#right')
             const leftArrow = document.querySelector('#left')
@@ -51,7 +51,7 @@ export default function Home(){
             function moveRight(){
                 console.log('moveRight() picLargeCurrent starts: ' + picLargeCurrent)
                 document.querySelector('.pic-large-current').classList.toggle('pic-large-current')
-                if(picLargeCurrent == 28){
+                if(picLargeCurrent == 27){
                     picLargeCurrent = 0
                 }else{
                     picLargeCurrent++
@@ -66,7 +66,7 @@ export default function Home(){
             function moveLeft(){
                 document.querySelector('.pic-large-current').classList.toggle('pic-large-current')
                 if(picLargeCurrent == 0){
-                    picLargeCurrent = 28
+                    picLargeCurrent = 27
                 }else{
                     picLargeCurrent--
                 }
@@ -111,7 +111,7 @@ export default function Home(){
         'slideshow26.webp',
         'slideshow27.webp',
         'slideshow28.webp',
-        'slideshow29.webp',
+        // 'slideshow29.webp',
     ]
 
     let picsINITIALlength = pics.length
