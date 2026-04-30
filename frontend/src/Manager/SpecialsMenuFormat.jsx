@@ -158,13 +158,13 @@ export default function SpecialsMenuUpdate(){
                                             position:'relative',
                                             background:'white',
                                             border:'1px solid black'}}>
-                                <div>
+                                {/* <div> */}
                                     
                                     <div    className='specials-h1'
                                             style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >
                                         today's specials
                                     </div>
-                                </div>
+                                {/* </div> */}
 
 
 
@@ -308,7 +308,9 @@ export default function SpecialsMenuUpdate(){
                                                                 fontSize:'11px',
                                                                 paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                 fontFamily:'serif'}}>
-                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                    <div style={{   display:'flex',
+                                                                    alignItems:'flex-end',
+                                                                    justifyContent:'space-between'}}>
                                                         <div>
                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                             or seafood may increase the risk of foodborne illnesses.<br/>
@@ -316,7 +318,7 @@ export default function SpecialsMenuUpdate(){
                                                             Please alert your server if you have special dietary requirements:<br/>
                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                         </div>
-                                                        <img src='qr-specials.jpg' width='50px' />
+                                                        <img src='qr-specials.jpg' width='50px' height='50px' />
                                                     </div>
                                                 </footer>
                                 }
@@ -421,6 +423,8 @@ export default function SpecialsMenuUpdate(){
 
                         <div style={{   display:'flex',
                                         alignItems:'center',
+                                        background:'#eee',
+                                        zIndex:'1',
                                         gap:'10px',
                                         flexDirection:'column'}}>
                             <div style={{   textAlign:'center',
@@ -466,6 +470,25 @@ export default function SpecialsMenuUpdate(){
                                 </div> 
                             </div>  
 
+                            <div>
+                                <div style={{textAlign:'center'}}>paper size</div>
+                
+                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                    <span>letter</span>
+                                    <span>
+                                        {letterPaper ? 
+                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={togglePaperSize} />
+                                        : 
+                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={togglePaperSize} />
+                                        }
+                                        
+
+                                    </span>
+                                    <span>legal</span>
+                                </div> 
+                            </div>  
 
                             <div>
                 
@@ -486,25 +509,6 @@ export default function SpecialsMenuUpdate(){
                                 </div> 
                             </div>  
 
-                            <div>
-                                <div style={{textAlign:'center'}}>paper size</div>
-                
-                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
-                                    <span>letter</span>
-                                    <span>
-                                        {letterPaper ? 
-                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={togglePaperSize} />
-                                        : 
-                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={togglePaperSize} />
-                                        }
-                                        
-
-                                    </span>
-                                    <span>legal</span>
-                                </div> 
-                            </div>  
 
 
                         </div>
