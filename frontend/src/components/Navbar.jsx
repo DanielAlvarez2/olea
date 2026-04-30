@@ -117,7 +117,7 @@ export default function Navbar(){
                                 </ul>
                         </li>
                         <li><Link to='/press'>press</Link></li>
-                        <li><Link to='/giftcards'>gift cards</Link></li>
+                        {/* <li><Link to='/giftcards'>gift cards</Link></li> */}
                         <li><Link to='/newsletter'>newsletter</Link></li>
                         <li><a href='https://www.opentable.com/booking/restref/availability?rid=151186&correlationId=0c416533-c338-499b-a076-64c7c704137f&restRef=151186' target='_blank'>reservations</a></li>
                     </ul>
@@ -166,7 +166,7 @@ export default function Navbar(){
                         </ul>
                     }
                     <Link to='/press'><li><span>press</span></li></Link>
-                    <Link to='/giftcards'><li><span>gift cards</span></li></Link>
+                    {/* <Link to='/giftcards'><li><span>gift cards</span></li></Link> */}
                     <Link to='/newsletter'><li><span>newsletter</span></li></Link>
                     <a href='https://www.opentable.com/booking/restref/availability?rid=151186&correlationId=0c416533-c338-499b-a076-64c7c704137f&restRef=151186' target='_blank'><li><span>reservations</span></li></a>
                 </ul>
