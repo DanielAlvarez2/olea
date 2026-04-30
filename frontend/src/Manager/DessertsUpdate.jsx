@@ -378,7 +378,7 @@ export default function DessertsUpdate(){
                         </label>
                         <br/><br/>
                         <label>
-                            allergies - abbreviated<br/>
+                            allergies - abbreviated &nbsp;ex: gl.d.n<br/>
                             <input  type='text' 
                                     maxLength='100'
                                     name='allergies-abbreviated' 
@@ -387,12 +387,14 @@ export default function DessertsUpdate(){
                         </label>
                         <br/><br/>
                         <label>
-                            allergies - complete<br/>
+                            allergies - complete &nbsp;ex: gluten, DAIRY, nuts<br/>
                             <input  type='text'
                                     maxLength='100'
                                     id='allergies-complete'
                                     name='allergies-complete' 
-                                    style={{width:'100%'}} />
+                                    style={{width:'100%'}} /><br/>
+                            UPPER-CASE = CAN NOT BE REMOVED<br/>
+                            lower-case = can be omitted
                         </label>
                         <br/><br/>
                         <label>
