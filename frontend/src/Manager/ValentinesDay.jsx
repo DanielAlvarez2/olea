@@ -5,7 +5,7 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 export default function ValentinesDay(){
     return(
         <>
-            <div className='manager-page-wrapper' style={{border:'1px solid red'}}>
+            <div className='manager-page-wrapper'>
                 <ManagerNavbar page='events' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>events &gt; valentine's day</div>
