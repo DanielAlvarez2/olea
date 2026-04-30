@@ -132,96 +132,6 @@ export default function SpecialsMenuUpdate(){
                                 // border:'1px solid green'
                                 }}>
 
-                        <div style={{   display:'flex',
-                                        alignItems:'center',
-                                        gap:'10px',
-                                        flexDirection:'column'}}>
-                            <div style={{   textAlign:'center',
-                                            display:'flex',
-                                            gap:'10px',
-                                            alignItems:'center',
-                                            }}>
-                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                            onClick={decreasePageMarginsLeftRight} /></span>
-                                <span>page margins<br/>left & right &#8596;</span>
-                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                            onClick={increasePageMarginsLeftRight} /></span>
-                            </div>
-
-                            <div style={{   textAlign:'center',
-                                            display:'flex',
-                                            gap:'10px',
-                                            alignItems:'center'}}>
-                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                            onClick={decreaseMenuItemMarginsTopBottom} /></span>
-                                <span>menu item margins<br/>top & bottom &#8597;</span>
-                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                            onClick={increaseMenuItemMarginsTopBottom} /></span>
-                            </div>
-
-
-                            <div>
-                                <div style={{textAlign:'center'}}>paper size</div>
-                
-                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
-                                    <span>letter</span>
-                                    <span>
-                                        {letterPaper ? 
-                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={togglePaperSize} />
-                                        : 
-                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={togglePaperSize} />
-                                        }
-                                        
-
-                                    </span>
-                                    <span>legal</span>
-                                </div> 
-                            </div>  
-
-
-                            <div>
-                                <div style={{textAlign:'center'}}>legal text</div>
-                
-                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
-                                    <span>show</span>
-                                    <span>
-                                        {showLegalText ? 
-                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleLegalText} />
-                                        : 
-                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleLegalText} />
-                                        }
-                                        
-
-                                    </span>
-                                    <span>hide</span>
-                                </div> 
-                            </div>  
-
-
-                            <div>
-                
-                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
-                                    <span>1-sided</span>
-                                    <span>
-                                        {doubleSided ? 
-                                                        <FaToggleOn    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleDoubleSided} />
-                                        : 
-                                                        <FaToggleOff     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleDoubleSided} />
-                                        }
-                                        
-
-                                    </span>
-                                    <span>2-sided</span>
-                                </div> 
-                            </div>  
-
-                        </div>
 
 
 
@@ -247,7 +157,7 @@ export default function SpecialsMenuUpdate(){
                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                             position:'relative',
                                             background:'white',
-                                            border:'1px solid red'}}>
+                                            border:'1px solid black'}}>
                                 <div>
                                     
                                     <div    className='specials-h1'
@@ -429,7 +339,7 @@ export default function SpecialsMenuUpdate(){
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid red'}}>
+                                                            border:'1px solid black'}}>
                                                 <div>
                                                     
                                                     <div    className='specials-h1'
@@ -509,6 +419,95 @@ export default function SpecialsMenuUpdate(){
 
 
 
+                        <div style={{   display:'flex',
+                                        alignItems:'center',
+                                        gap:'10px',
+                                        flexDirection:'column'}}>
+                            <div style={{   textAlign:'center',
+                                            display:'flex',
+                                            gap:'10px',
+                                            alignItems:'center',
+                                            }}>
+                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                            onClick={decreasePageMarginsLeftRight} /></span>
+                                <span>page margins<br/>left & right &#8596;</span>
+                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                            onClick={increasePageMarginsLeftRight} /></span>
+                            </div>
+
+                            <div style={{   textAlign:'center',
+                                            display:'flex',
+                                            gap:'10px',
+                                            alignItems:'center'}}>
+                                <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                            onClick={decreaseMenuItemMarginsTopBottom} /></span>
+                                <span>menu item margins<br/>top & bottom &#8597;</span>
+                                <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                            onClick={increaseMenuItemMarginsTopBottom} /></span>
+                            </div>
+
+                            <div>
+                                <div style={{textAlign:'center'}}>legal text</div>
+                
+                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                    <span>show</span>
+                                    <span>
+                                        {showLegalText ? 
+                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleLegalText} />
+                                        : 
+                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleLegalText} />
+                                        }
+                                        
+
+                                    </span>
+                                    <span>hide</span>
+                                </div> 
+                            </div>  
+
+
+                            <div>
+                
+                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                    <span>1-sided</span>
+                                    <span>
+                                        {doubleSided ? 
+                                                        <FaToggleOn    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleDoubleSided} />
+                                        : 
+                                                        <FaToggleOff     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleDoubleSided} />
+                                        }
+                                        
+
+                                    </span>
+                                    <span>2-sided</span>
+                                </div> 
+                            </div>  
+
+                            <div>
+                                <div style={{textAlign:'center'}}>paper size</div>
+                
+                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                    <span>letter</span>
+                                    <span>
+                                        {letterPaper ? 
+                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={togglePaperSize} />
+                                        : 
+                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={togglePaperSize} />
+                                        }
+                                        
+
+                                    </span>
+                                    <span>legal</span>
+                                </div> 
+                            </div>  
+
+
+                        </div>
 
 
 
