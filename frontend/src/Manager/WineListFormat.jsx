@@ -267,7 +267,7 @@ export default function WineListFormat(){
                 <ManagerNavbar page='wine-list' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; format</div>
-                    <div className='main-menu'>
+                    <div className='main-menu' style={{paddingBottom:'0'}}>
 
 
 
@@ -345,7 +345,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                <br/><br/>
+                                                {/* <br/><br/> */}
                                             </div>
                                         )
                                     })}
@@ -366,7 +366,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                <br/><br/>
+                                                {/* <br/><br/> */}
                                             </div>
                                         )
                                     })}
@@ -387,7 +387,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                <br/><br/>
+                                                {/* <br/><br/> */}
                                             </div>
                                         )
                                     })}
@@ -408,7 +408,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                <br/><br/>
+                                                {/* <br/><br/> */}
                                             </div>
                                         )
                                     })}
@@ -449,7 +449,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
                                             </div>
                                         )
                                     })}
@@ -479,7 +479,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
                                             </div>
                                         )
                                     })}
@@ -516,7 +516,7 @@ export default function WineListFormat(){
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
                                                             </div>
                                                     )
                                                 })}
@@ -563,7 +563,7 @@ export default function WineListFormat(){
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
                                                             </div>
                                                     )
                                                 })}
@@ -627,7 +627,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                <br/><br/>
+                                                {/* <br/><br/> */}
                                             </div>
                                         )
                                     })}
@@ -648,7 +648,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                <br/><br/>
+                                                {/* <br/><br/> */}
                                             </div>
                                         )
                                     })}
@@ -669,7 +669,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                <br/><br/>
+                                                {/* <br/><br/> */}
                                             </div>
                                         )
                                     })}
@@ -690,7 +690,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                <br/><br/>
+                                                {/* <br/><br/> */}
                                             </div>
                                         )
                                     })}
@@ -731,7 +731,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
                                             </div>
                                         )
                                     })}
@@ -761,7 +761,7 @@ export default function WineListFormat(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
                                             </div>
                                         )
                                     })}
@@ -798,7 +798,7 @@ export default function WineListFormat(){
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
                                                             </div>
                                                     )
                                                 })}
@@ -845,7 +845,7 @@ export default function WineListFormat(){
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
                                                             </div>
                                                     )
                                                 })}
@@ -888,7 +888,7 @@ export default function WineListFormat(){
                                                                                     className='special'>
                                                                                 <span className='name'>{data.name}</span>
                                                                                 <span className='description'>, {data.description} (glass/pitcher) {data.glassPrice} / {data.pitcherPrice}</span>
-                                                                                <br/><br/>
+                                                                                {/* <br/><br/> */}
                                                                             </div>
                                                                         )
                                                                     })}
@@ -921,7 +921,7 @@ export default function WineListFormat(){
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            <br/><br/>                                        
+                                            {/* <br/><br/>                                         */}
                                         </div>
                                     )
                                 })}
@@ -963,7 +963,7 @@ export default function WineListFormat(){
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            <br/><br/>
+                                            {/* <br/><br/> */}
                                         </div>
                                     )
                                 })}
@@ -991,7 +991,7 @@ export default function WineListFormat(){
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            <br/><br/>
+                                            {/* <br/><br/> */}
                                         </div>
                                     )
                                 })}
@@ -1020,7 +1020,7 @@ export default function WineListFormat(){
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            <br/><br/>
+                                            {/* <br/><br/> */}
                                         </div>
                                     )
                                 })}
@@ -1056,7 +1056,7 @@ export default function WineListFormat(){
                                                 className='special'>
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description} / {data.price}</span>
-                                            <br/><br/>
+                                            {/* <br/><br/> */}
                                         </div>
                                     )
                                 })}
@@ -1093,7 +1093,7 @@ export default function WineListFormat(){
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            <br/><br/>
+                                            {/* <br/><br/> */}
                                         </div>
                                     )
                                 })}

@@ -232,67 +232,11 @@ export default function DessertMenuFormat(){
                 <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; format</div>
-                    <div className='main-menu'>
+                    <div className='main-menu' style={{paddingBottom:'0'}}>
 
 
 
 
-
-                            <div style={{   textAlign:'center',
-                                            display:'flex',
-                                            gap:'10px',
-                                            justifyContent:'center',
-                                            // border:'1px solid green',
-                                            alignItems:'center'}}>
-                                <span>front</span>
-                                    {frontView  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleFrontView}/></span> 
-                                                
-                                                : 
-                                                    <span><FaToggleOn   style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleFrontView}/></span>    
-                                    }  
-                                <span>back</span>
-                            </div>
-
-                                                       
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={frontView  ? decreaseDessertItemMarginsTopBottom
-                                                                                        : decreaseCategoriesMarginTop
-                                                                    } /></span>
-                                        {
-                                            frontView   ? <span>menu item margins<br/>top & bottom &#8597;</span>
-                                                        : <span>categories<br/>margin top &#8593;</span>
-                                        }
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={frontView  ? increaseDessertItemMarginsTopBottom
-                                                                                        : increaseCategoriesMarginTop
-                                                                    } /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-
-                                                        
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={frontView ? decreasePageMarginRight : decreasePageMarginRightBack} /></span>
-                                        <span>page margin: right &#8592;</span>
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={frontView ? increasePageMarginRight : increasePageMarginRightBack} /></span>
-                                    </div>
-                                
-                            <br/>
 
 
 
@@ -659,6 +603,69 @@ export default function DessertMenuFormat(){
 
 
                     </div>
+
+                            <div style={{   textAlign:'center',
+                                            display:'flex',
+                                            gap:'10px',
+                                            background:'#eee',
+                                            padding:'0 10px',
+                                            justifyContent:'center',
+                                            // border:'1px solid green',
+                                            alignItems:'center'}}>
+                                <span>front</span>
+                                    {frontView  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFrontView}/></span> 
+                                                
+                                                : 
+                                                    <span><FaToggleOn   style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFrontView}/></span>    
+                                    }  
+                                <span>back</span>
+                            </div>
+
+                                                       
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    padding:'0 10px',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={frontView  ? decreaseDessertItemMarginsTopBottom
+                                                                                        : decreaseCategoriesMarginTop
+                                                                    } /></span>
+                                        {
+                                            frontView   ? <span>menu item margins<br/>top & bottom &#8597;</span>
+                                                        : <span>categories<br/>margin top &#8593;</span>
+                                        }
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={frontView  ? increaseDessertItemMarginsTopBottom
+                                                                                        : increaseCategoriesMarginTop
+                                                                    } /></span>
+                                    </div>
+
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    padding:'0 10px',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+
+                                                        
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={frontView ? decreasePageMarginRight : decreasePageMarginRightBack} /></span>
+                                        <span>page margin: right &#8592;</span>
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={frontView ? increasePageMarginRight : increasePageMarginRightBack} /></span>
+                                    </div>
+                                
+                            <br/>
+
 
             
             </div>{/* .manager-page-wrapper */}
