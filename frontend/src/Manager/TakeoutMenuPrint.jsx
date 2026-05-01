@@ -472,7 +472,11 @@ Please switch to a different browser to proceed.
                                         
                                         
                                         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+
                                             <div className='chef name' style={{textDecoration:'underline'}}>manuel romero, chef</div>
+                                            
+                                            <img src='qr-dinner.png' height='60px' />
+                                            
                                             <div style={{width:'65%'}}>
                                                 <span style={{fontWeight:'100'}}>
                                                     consumer advisory: consumption of undercooked meat, poultry, 
@@ -485,6 +489,7 @@ Please switch to a different browser to proceed.
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
 
 
