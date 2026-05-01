@@ -972,7 +972,7 @@ export default function DinnerMenuUpdate(){
                                 <div style={{   padding:'10px',
                                                 borderRadius:'10px',
                                                 border:'2px solid black',
-                                                color:'white',
+                                                color:'#000000',
                                                 fontWeight:'900',
                                                 background:'darkgrey',
                                                 fontSize:'20px',
