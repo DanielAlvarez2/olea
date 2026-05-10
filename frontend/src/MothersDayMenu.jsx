@@ -1,0 +1,356 @@
+import './index.css'
+import './Dinner.css'
+import Navbar from './components/Navbar.jsx'
+import OpenTable from './components/OpenTable.jsx'
+import Footer from './components/Footer.jsx'
+import { useState, useEffect } from 'react'
+import { AiTwotoneCloseCircle } from "react-icons/ai";
+
+
+export default function Dinner(){
+    const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
+    const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
+
+    useEffect(()=>window.scrollTo(0,0),[])    
+    useEffect(()=>getDinnerMenuItems(),[])
+    useEffect(()=>getTastingMenuPrices(),[])
+
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'    
+
+    function getDinnerMenuItems(){
+        try{
+            fetch(`${BASE_URL}/api/dinner-menu-items`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setAllDinnerMenuItems(json)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getTastingMenuPrices(){
+        try{
+            fetch(`${BASE_URL}/api/tasting-menu-prices`)
+                .then(res=>res.json())
+                .then(json=>setTastingMenuPrices(json[0]))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function showModal(pic,name,price,descriptionIntro,description){
+        if(!pic) return
+        document.querySelector('.modal').style.display = 'grid'
+        document.querySelector('.modal-image').src = pic
+        document.querySelector('.modal-name').innerHTML = name
+        document.querySelector('.modal-price').innerHTML = price
+        if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
+        document.querySelector('.modal-description').innerHTML = description        
+    }
+
+    function closeModal(){
+        document.querySelector('.modal-image').src = ''
+        document.querySelector('.modal-name').innerHTML = ''
+        document.querySelector('.modal-price').innerHTML = ''
+        document.querySelector('.modal-description-intro').innerHTML = ''
+        document.querySelector('.modal-description').innerHTML = ''
+        document.querySelector('.modal').style.display = 'none'
+    }
+    
+    return(
+                <div className='page-wrapper webpage' style={{position:'relative'}}>
+                    <div className='modal' style={{ position:'fixed',
+                                                    inset:'0',
+                                                    height:'100vh',
+                                                    width:'100%',
+                                                    zIndex:'3000',
+                                                    background:'#888888ee',
+                                                    color:'black',
+                                                    display:'none',
+                                                    placeContent:'center'
+                    }}>
+                        <AiTwotoneCloseCircle   size='70' 
+                                                onClick={closeModal}
+                                                style={{position:'fixed',
+                                                        cursor:'pointer',
+                                                        top:'5px',
+                                                        right:'5px'}} />
+                        <div className='modal-content'>
+                            <figure style={{display:'table'}}>
+                                <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw',borderRadius:'25px'}} />
+                                <figcaption style={{display:'table-caption',padding:'10px',captionSide:'bottom',borderRadius:'25px',background:'#ccc'}}>
+                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                        <span className='modal-name' style={{fontWeight:'900'}}></span>
+                                        <span className='modal-price'></span>
+                                    </div>
+                                    <span className='modal-description-intro' style={{fontStyle:'italic'}}></span>
+                                    <span className='modal-description'></span>
+                                </figcaption>
+                            </figure>
+                        </div>{/* .modal-content */}
+                    </div>{/* .modal */}
+
+                    <div className='webpage-wrapper'>
+                        <Navbar />
+        
+                        <main>
+                            <div className='dinner-flexbox'>
+                                
+                                <div className='dinner-left'>
+                                    MOTHERS DAY MENU<br/><br/>
+                                    <span className='bold'>dinner hours</span><br/>
+                                    Tuesday — Saturday, 5 — 10 pm<br/>
+                                    last reservation is at 8:30 pm<br/>
+                                    closed Sunday and Monday<br/><br/>
+
+                                    <span className='bold'>takeout and curbside pickup</span><br/>
+                                    Our dinner menu below is available for takeout and curbside pickup. Please preorder if possible by phone (203.780.8925). During special days we can only take a limited amount of takeout orders due to volume.
+                                    <br/><br/>
+
+                                    <span className='bold'>CHEF’S TASTING MENU</span> 
+                                    {tastingMenuPrices.tastingMenuPrice != 0 ? ` $${tastingMenuPrices.tastingMenuPrice} / person` : ''} 
+                                    <br/>
+                                    <span className='bold'>no substitutions or modifications<br/>
+                                    A minimum of two days notice is required</span><br/>
+                                    six courses / reservations and full table participation required<br/>
+                                    optional wine pairing available 
+                                    {tastingMenuPrices.winePairingPrice != 0 ? ` $${tastingMenuPrices.winePairingPrice} / person` : ''}
+                                    <br/>
+                                    available Tuesday through Thursday<br/>
+                                    Please let us know in advance about any food restrictions or allergies.<br/>
+                                    Tax and gratuity not included.<br/><br/>
+
+                                    <h2>DINNER MENU</h2>
+
+                                    <div className='website-menu-section'>appetizers</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    {allDinnerMenuItems
+                                        .filter(item=>item.section == 'cured meats' && item.sequence)
+                                        .map(data=>{
+                                            return(
+                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
+                                                                                            
+                                                                                            )} >  
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <span>
+                                                            <span className='website-name'>{data.name}</span><br/>
+                                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span>}
+                                                            {data.description}
+                                                        </span>
+                                                        <span>{data.price.includes('/') ?   <div style={{textAlign:'right'}}>
+                                                                                                {data.price.split('/')[0].trim()}<br/>{data.price.split('/')[1].trim()}
+                                                                                            </div> 
+                                                                                        : data.price}</span>
+                                                    </div>
+                                                    <br/>
+                                                </div>
+                                            )
+                                        })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    {allDinnerMenuItems
+                                        .filter(item=>item.section == 'appetizers' && item.sequence)
+                                        .map(data=>{
+                                            return(
+                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
+                                                                                            
+                                                                                            )} >  
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <span>
+                                                            <span className='website-name'>{data.name}</span><br/>
+                                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span>}
+                                                            {data.description}
+                                                        </span>
+                                                        <span>{data.price}</span>
+                                                    </div>
+                                                    <br/>
+                                                </div>
+                                            )
+                                        })}
+
+
+
+
+
+
+
+                                    <div className='website-menu-section'>main courses</div>
+                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    {allDinnerMenuItems
+                                        .filter(item=>item.section == 'entrées' && item.sequence)
+                                        .map(data=>{
+                                            return(
+                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
+                                                                                            
+                                                                                            )} >  
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <span>
+                                                            <span className='website-name'>{data.name}</span><br/>
+                                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span>}
+                                                            {data.description}
+                                                        </span>
+                                                        <span>{data.price}</span>
+                                                    </div>
+                                                    <br/>
+                                                </div>
+                                            )
+                                        })}
+
+
+
+
+
+
+                                    <div className='website-menu-section'>sides</div>
+                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    {allDinnerMenuItems
+                                        .filter(item=>item.section == 'sides' && item.sequence)
+                                        .map(data=>{
+                                            return(
+                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.descriptionIntro}`,
+                                                                                            `${data.description}`
+                                                                                            
+                                                                                            )} >  
+                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                        <span>
+                                                            <span className='website-name'>{data.name}</span><br/>
+                                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span>}
+                                                            {data.description}
+                                                        </span>
+                                                        <span>{data.price}</span>
+                                                    </div>
+                                                    <br/>
+                                                </div>
+                                            )
+                                        })}
+
+
+
+
+
+
+
+
+
+
+                                    <br/><br/><br/><br/>
+                                    we do our best to keep this information accurate and up to date, but because we make frequent adjustments, based on season and availability, our menus are subject to change
+                      
+                                </div>{/* .dinner-left */}
+                                
+                                <div className='dinner-right'>
+                                    <OpenTable />
+                                </div>{/* .dinner-right */}
+                            </div>{/* .dinner-flexbox */}
+                        </main>
+        
+                        <Footer />            
+                    </div>{/* .webpage-wrapper */}
+                </div>/* .page-wrapper */
+    )
+}
