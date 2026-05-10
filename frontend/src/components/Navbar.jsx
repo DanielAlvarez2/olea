@@ -111,6 +111,7 @@ export default function Navbar(){
                                             background:'#262626',
                                             flexDirection:'column',
                                             left:'-20px'}}>
+                                    <li><Link to='/mothers-day-menu'>mother's day {new Date().getFullYear()}</Link></li>
                                     <li><Link to='/dinner'>dinner</Link></li>
                                     <li><Link to='/specials'>specials</Link></li>
                                     <li><Link to='/dessert'>dessert</Link></li>
@@ -160,6 +161,7 @@ export default function Navbar(){
                     </li>
                     {mobileMenusDropdown &&                    
                         <ul className='mobile-dropdown-menus'>
+                            <Link to='/mothers-day-menu'><li className='mobile-menu-dropdown'><span>mother's day {new Date().getFullYear()}</span></li></Link>
                             <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
                             <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>
                             <Link to='/dessert'><li className='mobile-menu-dropdown'><span>dessert</span></li></Link>
