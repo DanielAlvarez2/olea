@@ -113,7 +113,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='giftcards' element={<Giftcards />} />
         <Route path='press' element={<Press />} />
         <Route path='jobs' element={<Jobs />} />
-        <Route path='mothers-day-menu' element={<MothersDayMenu />} />
         
         {/* QR CODE MENUS */}
         <Route path='menu' element={<Menu />} />
@@ -189,6 +188,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='commencement' element={<Commencement />} />
         <Route path='commencement-screenshot' element={<CommencementScreenshot />} />
         
+        <Route path='mothers-day-menu' element={<MothersDayMenu />} />
         <Route path='mothers-day' element={<MothersDay />} />
         <Route path='mothers-day-screenshot' element={<MothersDayScreenshot />} />
         

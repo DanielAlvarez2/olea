@@ -1,5 +1,6 @@
 import './index.css'
 import './Dinner.css'
+import './MothersDayMenu.css'
 import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
@@ -7,41 +8,13 @@ import { useState, useEffect } from 'react'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
-export default function Dinner(){
-    const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
-    const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
-
+export default function MothersDayMenu(){
+ 
     useEffect(()=>window.scrollTo(0,0),[])    
-    useEffect(()=>getDinnerMenuItems(),[])
-    useEffect(()=>getTastingMenuPrices(),[])
-
+ 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'    
-
-    function getDinnerMenuItems(){
-        try{
-            fetch(`${BASE_URL}/api/dinner-menu-items`)
-                .then(res=>res.json())
-                .then(json=>{
-                    setAllDinnerMenuItems(json)
-                })
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
-
-    function getTastingMenuPrices(){
-        try{
-            fetch(`${BASE_URL}/api/tasting-menu-prices`)
-                .then(res=>res.json())
-                .then(json=>setTastingMenuPrices(json[0]))
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
 
     function showModal(pic,name,price,descriptionIntro,description){
         if(!pic) return
@@ -102,7 +75,10 @@ export default function Dinner(){
                             <div className='dinner-flexbox'>
                                 
                                 <div className='dinner-left'>
-                                    MOTHERS DAY MENU<br/><br/>
+                                    <img    src='mothers-day-website-image.png' 
+                                            style={{maxWidth:'100%'}}
+                                    />
+                                    <br/>
                                     <span className='bold'>dinner hours</span><br/>
                                     Tuesday — Saturday, 5 — 10 pm<br/>
                                     last reservation is at 8:30 pm<br/>
@@ -111,19 +87,6 @@ export default function Dinner(){
                                     <span className='bold'>takeout and curbside pickup</span><br/>
                                     Our dinner menu below is available for takeout and curbside pickup. Please preorder if possible by phone (203.780.8925). During special days we can only take a limited amount of takeout orders due to volume.
                                     <br/><br/>
-
-                                    <span className='bold'>CHEF’S TASTING MENU</span> 
-                                    {tastingMenuPrices.tastingMenuPrice != 0 ? ` $${tastingMenuPrices.tastingMenuPrice} / person` : ''} 
-                                    <br/>
-                                    <span className='bold'>no substitutions or modifications<br/>
-                                    A minimum of two days notice is required</span><br/>
-                                    six courses / reservations and full table participation required<br/>
-                                    optional wine pairing available 
-                                    {tastingMenuPrices.winePairingPrice != 0 ? ` $${tastingMenuPrices.winePairingPrice} / person` : ''}
-                                    <br/>
-                                    available Tuesday through Thursday<br/>
-                                    Please let us know in advance about any food restrictions or allergies.<br/>
-                                    Tax and gratuity not included.<br/><br/>
 
                                     <h2>DINNER MENU</h2>
 
@@ -148,186 +111,6 @@ export default function Dinner(){
 
 
 
-
-                                    {allDinnerMenuItems
-                                        .filter(item=>item.section == 'cured meats' && item.sequence)
-                                        .map(data=>{
-                                            return(
-                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
-                                                                                            `${data.name}`,
-                                                                                            `${data.price}`,
-                                                                                            `${data.descriptionIntro}`,
-                                                                                            `${data.description}`
-                                                                                            
-                                                                                            )} >  
-                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
-                                                        <span>
-                                                            <span className='website-name'>{data.name}</span><br/>
-                                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span>}
-                                                            {data.description}
-                                                        </span>
-                                                        <span>{data.price.includes('/') ?   <div style={{textAlign:'right'}}>
-                                                                                                {data.price.split('/')[0].trim()}<br/>{data.price.split('/')[1].trim()}
-                                                                                            </div> 
-                                                                                        : data.price}</span>
-                                                    </div>
-                                                    <br/>
-                                                </div>
-                                            )
-                                        })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    {allDinnerMenuItems
-                                        .filter(item=>item.section == 'appetizers' && item.sequence)
-                                        .map(data=>{
-                                            return(
-                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
-                                                                                            `${data.name}`,
-                                                                                            `${data.price}`,
-                                                                                            `${data.descriptionIntro}`,
-                                                                                            `${data.description}`
-                                                                                            
-                                                                                            )} >  
-                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
-                                                        <span>
-                                                            <span className='website-name'>{data.name}</span><br/>
-                                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span>}
-                                                            {data.description}
-                                                        </span>
-                                                        <span>{data.price}</span>
-                                                    </div>
-                                                    <br/>
-                                                </div>
-                                            )
-                                        })}
-
-
-
-
-
-
-
-                                    <div className='website-menu-section'>main courses</div>
-                                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    {allDinnerMenuItems
-                                        .filter(item=>item.section == 'entrées' && item.sequence)
-                                        .map(data=>{
-                                            return(
-                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
-                                                                                            `${data.name}`,
-                                                                                            `${data.price}`,
-                                                                                            `${data.descriptionIntro}`,
-                                                                                            `${data.description}`
-                                                                                            
-                                                                                            )} >  
-                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
-                                                        <span>
-                                                            <span className='website-name'>{data.name}</span><br/>
-                                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span>}
-                                                            {data.description}
-                                                        </span>
-                                                        <span>{data.price}</span>
-                                                    </div>
-                                                    <br/>
-                                                </div>
-                                            )
-                                        })}
-
-
-
-
-
-
-                                    <div className='website-menu-section'>sides</div>
-                                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    {allDinnerMenuItems
-                                        .filter(item=>item.section == 'sides' && item.sequence)
-                                        .map(data=>{
-                                            return(
-                                                <div key={data._id} onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
-                                                                                            `${data.name}`,
-                                                                                            `${data.price}`,
-                                                                                            `${data.descriptionIntro}`,
-                                                                                            `${data.description}`
-                                                                                            
-                                                                                            )} >  
-                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
-                                                        <span>
-                                                            <span className='website-name'>{data.name}</span><br/>
-                                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span>}
-                                                            {data.description}
-                                                        </span>
-                                                        <span>{data.price}</span>
-                                                    </div>
-                                                    <br/>
-                                                </div>
-                                            )
-                                        })}
 
 
 
