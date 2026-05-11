@@ -94,6 +94,8 @@ import QRdessert from './QR-dessert.jsx'
 
 import MothersDayMenu from './MothersDayMenu.jsx'
 
+import PageNotFound from './PageNotFound.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <StrictMode>
     <BrowserRouter>
@@ -197,6 +199,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='nye' element={<NYE />} />
         <Route path='nye-scan' element={<NYEscan />} />
         <Route path='nye-screenshot' element={<NYEscreenshot />} />
+        
+        <Route path='*' element={<PageNotFound />} />
 
 
       </Routes>
