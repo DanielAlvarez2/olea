@@ -9,12 +9,27 @@ import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
 export default function MothersDayMenu(){
- 
-    useEffect(()=>window.scrollTo(0,0),[])    
- 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'    
+ 
+    useEffect(()=>window.scrollTo(0,0),[]) 
+    useEffect(()=>getAnnualEvents(),[])   
+ 
+    const [annualEvents, setAnnualEvents] = useState([])
+    function getAnnualEvents(){
+        try{
+            fetch(`${BASE_URL}/api/annual-events`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setAnnualEvents(json)
+                })
+                .catch(err=>console.log(err))
+
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     function showModal(pic,name,price,descriptionIntro,description){
         if(!pic) return
