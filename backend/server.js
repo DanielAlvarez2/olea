@@ -47,13 +47,14 @@ console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
 const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
-app.get('/api/annual-events', async(req,res)=>{
-    try{
-        await 
-    }catch(err){
-        console.log(err)
-    }
-})
+// app.get('/api/annual-events', async(req,res)=>{
+//     try{
+//         await 
+//     }catch(err){
+//         console.log(err)
+//     }
+// })
+
 app.post('/api/dinner-menu-items', async(req,res)=>{
     let cloudinary_public_ID = ''
     let cloudinary_secure_URL = ''
