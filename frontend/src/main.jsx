@@ -200,6 +200,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='nye-scan' element={<NYEscan />} />
         <Route path='nye-screenshot' element={<NYEscreenshot />} />
         
+        <Route path='page-not-found' element={<PageNotFound />} />
         <Route path='*' element={<PageNotFound />} />
 
 
