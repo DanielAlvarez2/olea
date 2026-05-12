@@ -4,15 +4,37 @@ import { BiLogoFacebook } from "react-icons/bi"
 import { AiOutlineInstagram } from "react-icons/ai"
 import {Link} from 'react-router'
 import './Navbar.css'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 export default function Navbar(){
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'    
+
+    
+
+    useEffect(()=>getAnnualEvents(),[])
+
     const [mobileInfoDropdownOpen, setMobileInfoDropdown] = useState(false)
     const [mobileMenusDropdown, setMobileMenusDropdown] = useState(false)
+    const [mothersDay, setMothersDay] = useState(false)
+
+    function getAnnualEvents(){
+        console.log('getAnnualEvents()')
+        try{
+            fetch(`${BASE_URL}/api/annual-events`)
+                .then(res=>res.json())
+                .then(json=>setMothersDay(json[0].MothersDay))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     function showMenusDropdown(){
         document.querySelector('.menus-dropdown').style.display = 'flex'
     }
+
     function hideMenusDropdown(){
         document.querySelector('.menus-dropdown').style.display = 'none'
     }
@@ -111,7 +133,8 @@ export default function Navbar(){
                                             background:'#262626',
                                             flexDirection:'column',
                                             left:'-20px'}}>
-                                    <li><Link to='/mothers-day-menu'>mother's day {new Date().getFullYear()}</Link></li>
+                                    {mothersDay && <li><Link to='/mothers-day-menu'>mother's day {new Date().getFullYear()}</Link></li>}
+                                    
                                     <li><Link to='/dinner'>dinner</Link></li>
                                     <li><Link to='/specials'>specials</Link></li>
                                     <li><Link to='/dessert'>dessert</Link></li>
@@ -161,7 +184,8 @@ export default function Navbar(){
                     </li>
                     {mobileMenusDropdown &&                    
                         <ul className='mobile-dropdown-menus'>
-                            <Link to='/mothers-day-menu'><li className='mobile-menu-dropdown'><span>mother's day {new Date().getFullYear()}</span></li></Link>
+                            {mothersDay && <Link to='/mothers-day-menu'><li className='mobile-menu-dropdown'><span>mother's day {new Date().getFullYear()}</span></li></Link>}
+                            
                             <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
                             <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>
                             <Link to='/dessert'><li className='mobile-menu-dropdown'><span>dessert</span></li></Link>

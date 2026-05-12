@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const AnnualEventsSchema = new mongoose.Schema({
-    ValentinesDay:{type,Boolean},
+    ValentinesDay:{type:Boolean},
     RestaurantWeekSpring:{type:Boolean},
     MothersDay:{type:Boolean},
     Commencement:{type:Boolean},

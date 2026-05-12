@@ -93,8 +93,8 @@ export default function MothersDayMenu(){
                                     <img    src='mothers-day-website-image.png' 
                                             style={{maxWidth:'100%'}}
                                     />
-                                    <br/>
-                                    <span className='bold'>dinner hours</span><br/>
+                                    <br/><br/>
+                                    <div className='bold'>dinner hours</div><br/>
                                     Tuesday — Saturday, 5 — 10 pm<br/>
                                     last reservation is at 8:30 pm<br/>
                                     closed Sunday and Monday<br/><br/>

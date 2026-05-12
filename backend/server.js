@@ -26,6 +26,7 @@ const WinelistFormat = require('./models/WinelistFormat.js')
 const DinnerFormat = require('./models/DinnerFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
 const TastingMenuPricing = require('./models/TastingMenuPricing.js')
+const AnnualEvents = require('./models/AnnualEvents.js')
 
 const {cloudinary} = require('./middleware/cloudinary.js')
 
@@ -47,13 +48,30 @@ console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
 const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
-// app.get('/api/annual-events', async(req,res)=>{
-//     try{
-//         await 
-//     }catch(err){
-//         console.log(err)
-//     }
-// })
+app.get('/api/annual-events', async(req,res)=>{
+    try{
+        console.log('app.get /api/annual-events')
+        let Events = await AnnualEvents.find()
+        if (!Events.length){
+            await AnnualEvents.create({
+               ValentinesDay:false,
+               RestaurantWeekSpring:false,
+               MothersDay:false,
+               Commencement:false,
+               GraduationLunch:false,
+               OleaAnniversary:false,
+               ParentsWeekend:false,
+               RestaurantWeekFall:false,
+               NewYearsEve:false 
+            })
+            Events = await AnnualEvents.find()
+        }
+        console.log(Events)
+        res.json(Events)
+    }catch(err){
+        console.log(err)
+    }
+})
 
 app.post('/api/dinner-menu-items', async(req,res)=>{
     let cloudinary_public_ID = ''
