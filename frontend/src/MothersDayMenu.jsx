@@ -5,10 +5,12 @@ import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
 import { useState, useEffect } from 'react'
+import {useNavigate} from 'react-router'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
 export default function MothersDayMenu(){
+
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'    
@@ -17,12 +19,17 @@ export default function MothersDayMenu(){
     useEffect(()=>getAnnualEvents(),[])   
  
     const [annualEvents, setAnnualEvents] = useState([])
+
+    const navigate = useNavigate()
+
     function getAnnualEvents(){
         try{
             fetch(`${BASE_URL}/api/annual-events`)
                 .then(res=>res.json())
                 .then(json=>{
                     setAnnualEvents(json)
+                    if (!json[0].MothersDay) navigate('/page-not-found') 
+                    // alert(json[0].MothersDay)
                 })
                 .catch(err=>console.log(err))
 
@@ -51,7 +58,9 @@ export default function MothersDayMenu(){
     }
     
     return(
-                <div className='page-wrapper webpage' style={{position:'relative'}}>
+        
+        <div className='page-wrapper webpage' style={{position:'relative'}}>
+                   
                     <div className='modal' style={{ position:'fixed',
                                                     inset:'0',
                                                     height:'100vh',
