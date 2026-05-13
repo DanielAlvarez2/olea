@@ -5,7 +5,7 @@ import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
 import { useState, useEffect } from 'react'
-import {useNavigate} from 'react-router'
+import {useNavigate,Link} from 'react-router'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
@@ -103,50 +103,30 @@ export default function MothersDayMenu(){
                                             style={{maxWidth:'100%'}}
                                     />
                                     <br/><br/>
-                                    <div className='bold'>dinner hours</div><br/>
-                                    Tuesday — Saturday, 5 — 10 pm<br/>
-                                    last reservation is at 8:30 pm<br/>
-                                    closed Sunday and Monday<br/><br/>
-
-                                    <span className='bold'>takeout and curbside pickup</span><br/>
-                                    Our dinner menu below is available for takeout and curbside pickup. Please preorder if possible by phone (203.780.8925). During special days we can only take a limited amount of takeout orders due to volume.
-                                    <br/><br/>
-
-                                    <h2>DINNER MENU</h2>
-
-                                    <div className='website-menu-section'>appetizers</div>
-
-
-
-
+                                    <div className='bold'>Celebrate Mother's Day at Olea</div><br/>
+                                        
+                                        Join us Sunday, May 10! We'll be open for Mother's Day 
+                                        from 12:30pm to 6pm, serving a prix-fixe three-course 
+                                        menu with multiple choices designed especially to please 
+                                        Mom and the whole family. The cost is $85 per person 
+                                        (plus tax & gratuity). Beverages are not included. Kids 
+                                        menu will be available.
+                                        <br/><br/>
+                                        Reservations highly recommended:<br/>
+                                        203.780.8925 or <Link to='https://www.opentable.com/single.aspx?rid=151186&restref=151186'>Open Table</Link>
+                                        <br/><br/>
+                                        PLEASE NOTE: OUR REGULAR MENU WILL NOT BE AVAILABLE
+                                        <br/><br/>            
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <br/><br/><br/><br/>
-                                    we do our best to keep this information accurate and up to date, but because we make frequent adjustments, based on season and availability, our menus are subject to change.
+                                    <hr/>
+                                    <br/>
+                                    consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                    or seafood may increase the risk of food-borne illnesses.<br/>
+                                    all menu items are subject to change according to seasonality and availability.<br/>
+                                    please alert your server if you have special dietary requirements before ordering.<br/>
+                                    gl (gluten), d (dairy), n (nuts)
                       
                                 </div>{/* .dinner-left */}
                                 
