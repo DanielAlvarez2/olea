@@ -129,7 +129,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='wine-list' element={<WineList />} />
         <Route path='dessert-menu' element={<DessertMenu />} />
         <Route path='specials-menu' element={<SpecialsMenu />} />
-        <Route path='events' element={<Events />} />
+        <Route path='/manager/events' element={<Events />} />
         <Route path='printer-config' element={<PrinterConfig />} />
         
         <Route path='wine-red' element={<WineRed />} />

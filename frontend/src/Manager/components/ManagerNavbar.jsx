@@ -16,7 +16,7 @@ export default function ManagerNavbar(props){
                         <li className={props.page=='dessert' ? 'current-page' : ''}><Link to='/dessert-menu'>dessert</Link></li>
                         <li className={props.page=='wine-list' ? 'current-page' : ''}><Link to='/wine-list'>wine list</Link></li>
                         <li className={props.page=='takeout' ? 'current-page' : ''}><Link to='/takeout'>takeout</Link></li>
-                        <li className={props.page=='events' ? 'current-page' : ''}><Link to='/events'>events</Link></li>
+                        <li className={props.page=='events' ? 'current-page' : ''}><Link to='/manager/events'>events</Link></li>
                     </ul>
                 </div>
             </nav>        

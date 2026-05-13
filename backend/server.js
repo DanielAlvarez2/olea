@@ -48,9 +48,16 @@ console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
 const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
+app.get('/api/toggle-mothers-day', async(req,res)=>{
+    const Events = await AnnualEvents.find()
+    console.log(Events[0]._id)
+    console.log(Events[0].MothersDay)
+    await AnnualEvents.findByIdAndUpdate(Events[0]._id,{MothersDay:!Events[0].MothersDay})
+    res.json('Mothers Day Updated')
+})
+
 app.get('/api/annual-events', async(req,res)=>{
     try{
-        console.log('app.get /api/annual-events')
         let Events = await AnnualEvents.find()
         if (!Events.length){
             await AnnualEvents.create({
@@ -66,7 +73,6 @@ app.get('/api/annual-events', async(req,res)=>{
             })
             Events = await AnnualEvents.find()
         }
-        console.log(Events)
         res.json(Events)
     }catch(err){
         console.log(err)

@@ -20,7 +20,6 @@ export default function Navbar(){
     const [mothersDay, setMothersDay] = useState(false)
 
     function getAnnualEvents(){
-        console.log('getAnnualEvents()')
         try{
             fetch(`${BASE_URL}/api/annual-events`)
                 .then(res=>res.json())
