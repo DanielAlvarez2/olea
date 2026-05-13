@@ -118,7 +118,7 @@ export default function MothersDayMenu(){
                                         PLEASE NOTE: OUR REGULAR MENU WILL NOT BE AVAILABLE
                                         
                                         <br/><br/><span style={{fontWeight:'800'}}>APPETIZERS</span> (choose one)<br/><br/>
-                                        <br/><br/><span style={{fontWeight:'800'}}>ENTRÉES</span> (choose one)<br/><br/>
+                                        <br/><br/><span style={{fontWeight:'900'}}>ENTRÉES</span> (choose one)<br/><br/>
                                         <br/><br/><span style={{fontWeight:'bold'}}>DESSERTS</span> (choose one)<br/><br/>
 
 
