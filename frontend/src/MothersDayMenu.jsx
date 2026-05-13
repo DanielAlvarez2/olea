@@ -116,15 +116,18 @@ export default function MothersDayMenu(){
                                         203.780.8925 or <Link to='https://www.opentable.com/single.aspx?rid=151186&restref=151186'>Open Table</Link>
                                         <br/><br/>
                                         PLEASE NOTE: OUR REGULAR MENU WILL NOT BE AVAILABLE
-                                        <br/><br/>            
+                                        
+                                        <br/><br/><span style={{fontWeight:'bold'}}>APPETIZERS</span> (choose one)<br/><br/>
+                                        <br/><br/><span style={{fontWeight:'bold'}}>ENTRÉES</span> (choose one)<br/><br/>
+                                        <br/><br/><span style={{fontWeight:'bold'}}>DESSERTS</span> (choose one)<br/><br/>
 
 
 
                                     <hr/>
                                     <br/>
                                     consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                    or seafood may increase the risk of food-borne illnesses.<br/>
-                                    all menu items are subject to change according to seasonality and availability.<br/>
+                                    or seafood may increase the risk of food-borne illnesses. 
+                                    all menu items are subject to change according to seasonality and availability. 
                                     please alert your server if you have special dietary requirements before ordering.<br/>
                                     gl (gluten), d (dairy), n (nuts)
                       
