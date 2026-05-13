@@ -113,7 +113,7 @@ export default function MothersDayMenu(){
                                         menu will be available.
                                         <br/><br/>
                                         Reservations highly recommended:<br/>
-                                        203.780.8925 or <Link to='https://www.opentable.com/single.aspx?rid=151186&restref=151186'>Open Table</Link>
+                                        203.780.8925 or <Link className='bold' to='https://www.opentable.com/single.aspx?rid=151186&restref=151186'>Open Table</Link>
                                         <br/><br/>
                                         PLEASE NOTE: OUR REGULAR MENU WILL NOT BE AVAILABLE
                                         
