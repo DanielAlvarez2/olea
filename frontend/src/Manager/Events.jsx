@@ -80,7 +80,7 @@ export default function Events(){
                         <Link to='/anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>aug 27</li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>parents weekend<br/>1st week oct</li></Link>
                         <Link to='/restaurant-weeks'><li style={{flexGrow:'1'}}>restaurant weeks<br/>1st 2 weeks nov</li></Link>
-                        <Link to='/nye'><li style={{flexGrow:'1'}}>new year's eve</li></Link>
+                        <Link to='/nye'><li style={{flexGrow:'1'}}>new year's eve<br/>dec 31</li></Link>
                     </ul>
 
             
