@@ -146,7 +146,7 @@ export default function MothersDayMenu(){
 
 
                                     <br/><br/><br/><br/>
-                                    we do our best to keep this information accurate and up to date, but because we make frequent adjustments, based on season and availability, our menus are subject to change
+                                    we do our best to keep this information accurate and up to date, but because we make frequent adjustments, based on season and availability, our menus are subject to change.
                       
                                 </div>{/* .dinner-left */}
                                 
