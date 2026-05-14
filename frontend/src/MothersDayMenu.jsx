@@ -118,6 +118,8 @@ export default function MothersDayMenu(){
                                         PLEASE NOTE: OUR REGULAR MENU WILL NOT BE AVAILABLE
                                         
                                         <br/><br/><span className='bold'>APPETIZERS</span> (choose one)<br/><br/>
+
+                                        <div>charcuteria</div>
                                         <br/><br/><span className='bold'>ENTRÉES</span> (choose one)<br/><br/>
                                         <br/><br/><span className='bold'>DESSERTS</span> (choose one)<br/><br/>
 
