@@ -13,7 +13,7 @@ export default function MothersDayUpdate(){
     const [allDinnerItems, setAllDinnerItems] = useState([])
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])
     const [editMode, setEditMode] = useState(false)
-    const [displaySection, setDisplaySection] = useState('cured meats')
+    const [displaySection, setDisplaySection] = useState('appetizers')
     const [currentImage, setCurrentImage] = useState('')
     const [cloudinaryPublicID, setCloudinaryPublicID] = useState('')
     const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
@@ -264,24 +264,44 @@ export default function MothersDayUpdate(){
         document.querySelector('#do-not-circle').style.color = isChecked ? 'transparent' : 'red'
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return(
         <>
             <div className='manager-page-wrapper'>
                 <ManagerNavbar page='dinner' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>dinner &gt; update</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>mother's day &gt; update</div>
 
 
 
                         <div className='specials-update-menu' style={{minHeight:'auto'}}>
                             <div>
-                                <div className='specials-h1' style={{marginBottom:'0'}}>dinner menu</div>
+                                <div className='specials-h1' style={{marginBottom:'0'}}>mother's day menu</div>
                             </div>
 
                             <br/>
                             section &nbsp; 
                                 <select name='display-section' defaultValue={displaySection} onChange={handleChangeDisplaySection}>
-                                    <option value='cured meats'>cured meats</option>
                                     <option value='appetizers'>appetizers</option>
                                     <option value='entrées'>entrées</option>
                                     <option value='sides'>sides</option>
@@ -320,81 +340,6 @@ export default function MothersDayUpdate(){
 
 
 
-                            {displaySection == 'cured meats' && 
-                                <>
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').length == 1 && 
-                                    <div className='specials-h2 specials-update-heading'>cured meat</div>}
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').length > 1 && 
-                                    <div className='specials-h2 specials-update-heading'>cured meats</div>}
-
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
-                                    return(
-                                        <div key={data._id} className='special'>
-                                            {data.sequence != '1' && 
-                                                <FaCaretUp style={{ margin:'0 auto',
-                                                                    fontSize:'60px',
-                                                                    position:'relative',
-                                                                    top:'10px',
-                                                                    color:'grey',
-                                                                    cursor:'pointer',
-                                                                    width:'100%'}}
-                                                            onClick={(()=>moveUp(data._id))} />
-                                            }
-                                            
-                                            {/* {data.sequence}<br/> */}
-                                            <div>
-                                                <span className='name'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            </div>
-                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
-                                            <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
-                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
-                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
-                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
-                                                                            />}
-                                            <div style={{marginTop:'5px'}}>
-                                                <span   className='btn archive-btn'
-                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
-                                                <span   className='btn edit-btn'
-                                                        onClick={()=>editItem(  data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                data.descriptionIntro,
-                                                                                data.description,
-                                                                                data.postDescription,
-                                                                                data.price,
-                                                                                data.cloudinary_public_ID,
-                                                                                data.cloudinary_secure_URL)}>EDIT</span>                                                    
-                                                <span   className='btn delete-btn'
-                                                        onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
-
-                                            </div>
-
-                                            {data.sequence != allDinnerItems.filter(item=>item.section == 'cured meats' && item.sequence).length && 
-                                                <FaCaretUp style={{ margin:'0 auto',
-                                                                    fontSize:'60px',
-                                                                    position:'relative',
-                                                                    top:'0px',
-                                                                    color:'grey',
-                                                                    cursor:'pointer',
-                                                                    transform:'rotate(180deg',
-                                                                    width:'100%'}}
-                                                            onClick={(()=>moveDown(data._id))} />
-                                            }
-
-                                        </div>
-                                    )
-                                })}
-                                
-                                </>
-                            }
 
 
 
