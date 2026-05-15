@@ -19,6 +19,7 @@ export default function MothersDay(){
                                 height:'100%',
                                 // border:'1px solid green'
                                 }}>
+                        <Link to='/manager/mothers-day-update'><li style={{flexGrow:'1'}}>update</li></Link>
                         <Link to='/mothers-day-screenshot'><li style={{flexGrow:'1'}}>screenshot</li></Link>
                         <Link to='/mothers-day'><li style={{flexGrow:'1'}}>scan</li></Link>
                         

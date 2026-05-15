@@ -93,6 +93,7 @@ import QRspecials from './QR-specials.jsx'
 import QRdessert from './QR-dessert.jsx'
 
 import MothersDayMenu from './MothersDayMenu.jsx'
+import MothersDayUpdate from './Manager/MothersDayUpdate.jsx'
 
 import PageNotFound from './PageNotFound.jsx'
 
@@ -189,8 +190,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='commencement-screenshot' element={<CommencementScreenshot />} />
         
         <Route path='mothers-day-menu' element={<MothersDayMenu />} />
-        <Route path='mothers-day' element={<MothersDay />} />
+        <Route path='/manager/mothers-day' element={<MothersDay />} />
+        <Route path='/manager/mothers-day-update' element={<MothersDayUpdate />} />
         <Route path='mothers-day-screenshot' element={<MothersDayScreenshot />} />
+        <Route path='/manager/mothers-day-update' element={<MothersDayUpdate />} />
         
         <Route path='valentines-day' element={<ValentinesDay />} />
         <Route path='valentines-day-screenshot' element={<ValentinesDayScreenshot />} />

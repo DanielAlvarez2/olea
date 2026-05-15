@@ -57,7 +57,7 @@ export default function Events(){
                         <Link to='/restaurant-weeks-spring'><li style={{flexGrow:'1'}}>restaurant weeks<br/>late march</li></Link>
                         
                         <div style={{display:'flex',gap:'10px'}}>
-                            <Link to='/mothers-day'>
+                            <Link to='/manager/mothers-day'>
                                 <li style={{flexGrow:'1'}}>mother's day<br/>2nd sun may</li>
                             </Link>
                             <div style={{display:'flex',alignItems:'center',gap:'20px',border:'1px solid black',borderRadius:'10px',width:'150px',justifyContent:'center'}}>
