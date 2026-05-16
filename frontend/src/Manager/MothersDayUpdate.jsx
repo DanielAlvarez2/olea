@@ -10,6 +10,7 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 export default function MothersDayUpdate(){
     const [updatingMenu, setUpdatingMenu] = useState(false)
     const [allDinnerItems, setAllDinnerItems] = useState([])
+    const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])
     const [editMode, setEditMode] = useState(false)
     const [displaySection, setDisplaySection] = useState('appetizers')
@@ -19,6 +20,7 @@ export default function MothersDayUpdate(){
     const [isChecked, setIsChecked] = useState(false)
 
     useEffect(()=>getDinnerItems(),[])
+    useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getTastingMenuPrices(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -26,40 +28,11 @@ export default function MothersDayUpdate(){
 
     const event = "Mother's Day"
 
-    // async function createItem(formData){
-    //     setUpdatingMenu(true)
-    //     setTimeout(postItem,0)
-    //     async function postItem(){
-    //         await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
-    //                                                     headers:{'Content-Type':'application/json'},
-    //                                                     body: JSON.stringify({
-    //                                                         menu: formData.get('menu'),
-    //                                                         section: formData.get('section'),
-    //                                                         name: formData.get('name'),
-    //                                                         allergiesAbbreviated: formData.get('allergies-abbreviated'),
-    //                                                         allergiesComplete: formData.get('allergies-complete'),
-    //                                                         description: formData.get('description'),
-    //                                                         postDescription: formData.get('post-description'),
-    //                                                         descriptionIntro: formData.get('description-intro'),
-    //                                                         price: formData.get('price'),
-    //                                                         previewSource
-    //                                                     })
-    //         })
-    //         .then(setUpdatingMenu(true))
-    //         .then(()=>alert(`
-    //             New Dinner Item Created:
-    //             - ${formData.get('name')}`))
-    //         .then(()=>getDinnerItems())
-    //         .then(()=>setUpdatingMenu(false))
-    //         .catch(err=>console.log(err))
-    //     }
-    // }
-
     async function createItem(formData){
         setUpdatingMenu(true)
         setTimeout(postItem,0)
         async function postItem(){
-            await fetch(`${BASE_URL}/api/mothers-day-menu-items`,{method:'POST',
+            await fetch(`${BASE_URL}/api/annual-events-menu-items`,{method:'POST',
                                                         headers:{'Content-Type':'application/json'},
                                                         body: JSON.stringify({
                                                             event: formData.get('event'),
@@ -78,7 +51,7 @@ export default function MothersDayUpdate(){
                 ${event}
                 New Menu Item Created:
                 - ${formData.get('name')}`))
-            .then(()=>getDinnerItems())
+            .then(()=>getAnnualEventsMenuItems())
             .then(()=>setUpdatingMenu(false))
             .catch(err=>console.log(err))
         }
@@ -120,6 +93,18 @@ export default function MothersDayUpdate(){
             fetch(`${BASE_URL}/api/dinner-menu-items`)
                 .then(res=>res.json())
                 .then(json=>setAllDinnerItems(json))
+                .then(clearForm())
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getAnnualEventsMenuItems(){
+        try{
+            fetch(`${BASE_URL}/api/annual-events-menu-items`)
+                .then(res=>res.json())
+                .then(json=>setAllAnnualEventsMenuItems(json))
                 .then(clearForm())
                 .catch(err=>console.log(err))
         }catch(err){
@@ -334,7 +319,7 @@ export default function MothersDayUpdate(){
                                 <select name='display-section' defaultValue={displaySection} onChange={handleChangeDisplaySection}>
                                     <option value='appetizers'>appetizers</option>
                                     <option value='entrées'>entrées</option>
-                                    <option value='sides'>sides</option>
+                                    <option value='desserts'>desserts</option>
                                 </select>
 
 
@@ -400,12 +385,12 @@ export default function MothersDayUpdate(){
 
                             {displaySection == 'appetizers' && 
                                 <>
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).length == 1 && 
                                     <div className='specials-h2 specials-update-heading'>appetizer</div>}
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).length > 1 && 
                                     <div className='specials-h2 specials-update-heading'>appetizers</div>}
 
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
                                     return(
                                         <div key={data._id} className='special'>
                                             {data.sequence != '1' && 
@@ -427,9 +412,6 @@ export default function MothersDayUpdate(){
                                             </div>
                                             {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
                                             <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
@@ -456,7 +438,7 @@ export default function MothersDayUpdate(){
 
                                             </div>
 
-                                            {data.sequence != allDinnerItems.filter(item=>item.section == 'appetizers' && item.sequence).length && 
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'appetizers' && item.sequence && item.event == event).length && 
                                                 <FaCaretUp style={{ margin:'0 auto',
                                                                     fontSize:'60px',
                                                                     position:'relative',
@@ -526,12 +508,12 @@ export default function MothersDayUpdate(){
 
                             {displaySection == 'entrées' && 
                                 <>
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).length == 1 && 
                                     <div className='specials-h2 specials-update-heading'>entrée</div>}
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).length > 1 && 
                                     <div className='specials-h2 specials-update-heading'>entrées</div>}
 
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
                                     return(
                                         <div key={data._id} className='special'>
                                             {data.sequence != '1' && 
@@ -553,9 +535,6 @@ export default function MothersDayUpdate(){
                                             </div>
                                             {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
                                             <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
@@ -582,7 +561,7 @@ export default function MothersDayUpdate(){
 
                                             </div>
 
-                                            {data.sequence != allDinnerItems.filter(item=>item.section == 'entrées' && item.sequence).length && 
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'entrées' && item.sequence && item.event == event).length && 
                                                 <FaCaretUp style={{ margin:'0 auto',
                                                                     fontSize:'60px',
                                                                     position:'relative',
@@ -649,14 +628,14 @@ export default function MothersDayUpdate(){
 
 
 
-                            {displaySection == 'sides' && 
+                            {displaySection == 'desserts' && 
                                 <>
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'sides').length == 1 && 
-                                    <div className='specials-h2 specials-update-heading'>side</div>}
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'sides').length > 1 && 
-                                    <div className='specials-h2 specials-update-heading'>sides</div>}
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>dessert</div>}
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>desserts</div>}
 
-                                {allDinnerItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).map(data=>{
                                     return(
                                         <div key={data._id} className='special'>
                                             {data.sequence != '1' && 
@@ -678,9 +657,6 @@ export default function MothersDayUpdate(){
                                             </div>
                                             {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
                                             <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
@@ -707,7 +683,7 @@ export default function MothersDayUpdate(){
 
                                             </div>
 
-                                            {data.sequence != allDinnerItems.filter(item=>item.section == 'sides' && item.sequence).length && 
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'desserts' && item.sequence && item.event == event).length && 
                                                 <FaCaretUp style={{ margin:'0 auto',
                                                                     fontSize:'60px',
                                                                     position:'relative',
@@ -786,7 +762,7 @@ export default function MothersDayUpdate(){
                                                 <option disabled value=''>select...</option>
                                                 <option>appetizers</option>
                                                 <option>entrées</option>
-                                                <option>sides</option>
+                                                <option>desserts</option>
                                             </select>
                                              <span className='required-field'> *required</span>
                                             <br/><br/>

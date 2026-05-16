@@ -27,7 +27,7 @@ const DinnerFormat = require('./models/DinnerFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
 const TastingMenuPricing = require('./models/TastingMenuPricing.js')
 const AnnualEvents = require('./models/AnnualEvents.js')
-const AnnualEventMenuItem = require('./models/AnnualEventMenuItem.js')
+const AnnualEventsMenuItem = require('./models/AnnualEventsMenuItem.js')
 
 const {cloudinary} = require('./middleware/cloudinary.js')
 
@@ -121,7 +121,7 @@ app.post('/api/dinner-menu-items', async(req,res)=>{
     }
 })
 
-app.post('/api/mothers-day-menu-items', async(req,res)=>{
+app.post('/api/annual-events-menu-items', async(req,res)=>{
     let cloudinary_public_ID = ''
     let cloudinary_secure_URL = ''
     try{
@@ -136,8 +136,8 @@ app.post('/api/mothers-day-menu-items', async(req,res)=>{
                 console.log(err)
             }
         }
-        const maxSequence = await AnnualEventMenuItem.findOne({event:req.body.event,section:req.body.section}).sort({sequence:-1})
-        await AnnualEventMenuItem.create({
+        const maxSequence = await AnnualEventsMenuItem.findOne({event:req.body.event,section:req.body.section}).sort({sequence:-1})
+        await AnnualEventsMenuItem.create({
                                         event: req.body.event,
                                         section: req.body.section,
                                         name: req.body.name.trim(),
@@ -1529,6 +1529,14 @@ app.get('/api/dinner-menu-items', async(req,res)=>{
     }
 })
 
+app.get('/api/annual-events-menu-items', async(req,res)=>{
+    try{
+        const allAnnualEventsMenuItems = await AnnualEventsMenuItem.find().sort({sequence:1})
+        res.json(allAnnualEventsMenuItems)
+    }catch(err){
+        console.log(err)
+    }
+})
 
 app.get('/api/desserts', async(req,res)=>{
     try{

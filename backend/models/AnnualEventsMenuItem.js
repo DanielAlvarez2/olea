@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const AnnualEventMenuItemSchema = new mongoose.Schema({
+const AnnualEventsMenuItemSchema = new mongoose.Schema({
     event:{type:String},
     section:{type:String},
     name:{type:String},
@@ -11,4 +11,4 @@ const AnnualEventMenuItemSchema = new mongoose.Schema({
     cloudinary_public_ID:{type:String}
 },{timestamps:true})
 
-module.exports = mongoose.model('AnnualEventMenuItem',AnnualEventMenuItemSchema)
+module.exports = mongoose.model('AnnualEventsMenuItem',AnnualEventsMenuItemSchema)
