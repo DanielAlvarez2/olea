@@ -121,6 +121,46 @@ app.post('/api/dinner-menu-items', async(req,res)=>{
     }
 })
 
+app.post('/api/mothers-day-menu-items', async(req,res)=>{
+    let cloudinary_public_ID = ''
+    let cloudinary_secure_URL = ''
+    try{
+        if(req.body.previewSource){
+            try{
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource)
+                console.log('cloudinaryResponse:')
+                console.log(cloudinaryResponse)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+            }catch(err){
+                console.log(err)
+            }
+        }
+        const maxSequence = await AnnualEventMenuItem.findOne({event:req.body.event,section:req.body.section}).sort({sequence:-1})
+        await AnnualEventMenuItem.create({
+                                        event: req.body.event,
+                                        section: req.body.section,
+                                        name: req.body.name.trim(),
+                                        description: req.body.description.trim(),
+                                        descriptionIntro: req.body.descriptionIntro.trim(),
+                                        postDescription: req.body.postDescription.trim(),
+                                        allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
+                                        allergiesComplete: req.body.allergiesComplete.trim(),
+                                        sequence: maxSequence ? maxSequence.sequence + 1 : 1,
+                                        cloudinary_secure_URL,
+                                        cloudinary_public_ID
+                                    })
+        console.log(`
+            Added to Database: 
+             - ${req.body.name}`)
+        res.json(`
+            Added to Database: 
+             - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.post('/api/specials', async(req,res)=>{
     try{

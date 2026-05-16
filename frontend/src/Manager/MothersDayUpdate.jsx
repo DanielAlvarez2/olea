@@ -26,14 +26,43 @@ export default function MothersDayUpdate(){
 
     const event = "Mother's Day"
 
+    // async function createItem(formData){
+    //     setUpdatingMenu(true)
+    //     setTimeout(postItem,0)
+    //     async function postItem(){
+    //         await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
+    //                                                     headers:{'Content-Type':'application/json'},
+    //                                                     body: JSON.stringify({
+    //                                                         menu: formData.get('menu'),
+    //                                                         section: formData.get('section'),
+    //                                                         name: formData.get('name'),
+    //                                                         allergiesAbbreviated: formData.get('allergies-abbreviated'),
+    //                                                         allergiesComplete: formData.get('allergies-complete'),
+    //                                                         description: formData.get('description'),
+    //                                                         postDescription: formData.get('post-description'),
+    //                                                         descriptionIntro: formData.get('description-intro'),
+    //                                                         price: formData.get('price'),
+    //                                                         previewSource
+    //                                                     })
+    //         })
+    //         .then(setUpdatingMenu(true))
+    //         .then(()=>alert(`
+    //             New Dinner Item Created:
+    //             - ${formData.get('name')}`))
+    //         .then(()=>getDinnerItems())
+    //         .then(()=>setUpdatingMenu(false))
+    //         .catch(err=>console.log(err))
+    //     }
+    // }
+
     async function createItem(formData){
         setUpdatingMenu(true)
         setTimeout(postItem,0)
         async function postItem(){
-            await fetch(`${BASE_URL}/api/dinner-menu-items`,{method:'POST',
+            await fetch(`${BASE_URL}/api/mothers-day-menu-items`,{method:'POST',
                                                         headers:{'Content-Type':'application/json'},
                                                         body: JSON.stringify({
-                                                            menu: formData.get('menu'),
+                                                            event: formData.get('event'),
                                                             section: formData.get('section'),
                                                             name: formData.get('name'),
                                                             allergiesAbbreviated: formData.get('allergies-abbreviated'),
@@ -41,13 +70,13 @@ export default function MothersDayUpdate(){
                                                             description: formData.get('description'),
                                                             postDescription: formData.get('post-description'),
                                                             descriptionIntro: formData.get('description-intro'),
-                                                            price: formData.get('price'),
                                                             previewSource
                                                         })
             })
             .then(setUpdatingMenu(true))
             .then(()=>alert(`
-                New Dinner Item Created:
+                ${event}
+                New Menu Item Created:
                 - ${formData.get('name')}`))
             .then(()=>getDinnerItems())
             .then(()=>setUpdatingMenu(false))
@@ -68,7 +97,7 @@ export default function MothersDayUpdate(){
                                                                                         description: formData.get('description'),
                                                                                         postDescription: formData.get('post-description'),
                                                                                         descriptionIntro: formData.get('description-intro'),
-                                                                                        price: formData.get('price'),
+                                                                                        // price: formData.get('price'),
                                                                                         cloudinary_public_ID: formData.get('cloudinary_public_ID'),
                                                                                         cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
                                                                                         previewSource,
@@ -172,7 +201,7 @@ export default function MothersDayUpdate(){
             document.querySelector('#description').value = description
             document.querySelector('#description-intro').value = descriptionIntro
             document.querySelector('#post-description').value = postDescription
-            document.querySelector('#price').value = price
+            // document.querySelector('#price').value = price
         }catch(err){
             console.log(err)
         }
@@ -209,7 +238,7 @@ export default function MothersDayUpdate(){
             document.querySelector('#description').value = ''
             document.querySelector('#description-intro').value = ''
             document.querySelector('#post-description').value = ''
-            document.querySelector('#price').value = ''
+            // document.querySelector('#price').value = ''
             document.querySelector('#image-file').value = ''
             document.querySelector('#new-image-dropdown').style.visibility = 'visible'
 
@@ -738,8 +767,8 @@ export default function MothersDayUpdate(){
                                 id='item-id' />
 
                         <input  type='hidden'
-                                name='menu' 
-                                value='dinner' />
+                                name='event' 
+                                value={event} />
                         
                        
                             <div    style={{display:'none'}}
