@@ -123,12 +123,24 @@ export default function MothersDayUpdate(){
         }
     }
 
-    function deleteDinnerItem(id){
+    // function deleteDinnerItem(id){
+    //     try{
+    //         fetch(`${BASE_URL}/api/dinner-menu-items/delete/${id}`,{method:'DELETE'})
+    //             .then(res=>res.json())
+    //             .then(data=>alert(data))
+    //             .then(()=>getDinnerItems())
+    //             .catch(err=>console.log(err))
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // }
+
+    function deleteAnnualEventsMenuItem(id){
         try{
-            fetch(`${BASE_URL}/api/dinner-menu-items/delete/${id}`,{method:'DELETE'})
+            fetch(`${BASE_URL}/api/annual-events-menu-items/${id}`,{method:'DELETE'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getDinnerItems())
+                .then(()=>getAnnualEventsMenuItems())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -434,7 +446,7 @@ export default function MothersDayUpdate(){
                                                                                 data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
-                                                        onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
+                                                        onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
 
                                             </div>
 
@@ -557,7 +569,7 @@ export default function MothersDayUpdate(){
                                                                                 data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
-                                                        onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
+                                                        onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
 
                                             </div>
 
@@ -679,7 +691,7 @@ export default function MothersDayUpdate(){
                                                                                 data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
-                                                        onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
+                                                        onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
 
                                             </div>
 
@@ -1028,7 +1040,7 @@ export default function MothersDayUpdate(){
                                                             onClick={()=>unarchiveItem(data._id)}>
                                                         UNarchive</span>
                                                     <span   className='btn delete-btn'
-                                                            onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
+                                                            onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
                                                     <br/><br/><br/>
                                                 </div>
                                             </div>

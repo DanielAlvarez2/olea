@@ -669,6 +669,32 @@ app.delete('/api/dinner-menu-items/delete/:id', async(req,res)=>{
     }
 })
 
+app.delete('/api/annual-events-menu-items/:id', async(req,res)=>{
+    try{
+        const target = await AnnualEventsMenuItem.findById(req.params.id)
+        if (target.cloudinary_public_ID) cloudinary.uploader.destroy(target.cloudinary_public_ID)
+        const maxSequence = await AnnualEventsMenuItem.findOne({section: target.section}).sort({sequence:-1})
+        for (let i = target.sequence + 1; i <= maxSequence.sequence; i++){
+            await AnnualEventsMenuItem.findOneAndUpdate({
+                $and:[
+                    {event: target.event},
+                    {section: target.section},
+                    {sequence: i}
+                ]
+            },{sequence: i-1})
+        }
+        await AnnualEventsMenuItem.findByIdAndDelete(req.params.id)
+        console.log(`
+            Deleted from Database:
+             - ${target.name}`)
+        res.json(`
+            Deleted from Database:
+             - ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.delete('/api/desserts/delete/:id', async(req,res)=>{
     try{
