@@ -7,7 +7,6 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 
-
 export default function MothersDayUpdate(){
     const [updatingMenu, setUpdatingMenu] = useState(false)
     const [allDinnerItems, setAllDinnerItems] = useState([])
@@ -24,6 +23,8 @@ export default function MothersDayUpdate(){
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
+
+    const event = "Mother's Day"
 
     async function createItem(formData){
         setUpdatingMenu(true)
@@ -290,13 +291,13 @@ export default function MothersDayUpdate(){
             <div className='manager-page-wrapper'>
                 <ManagerNavbar page='dinner' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>mother's day &gt; update</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>{event.toLowerCase()} &gt; update</div>
 
 
 
                         <div className='specials-update-menu' style={{minHeight:'auto'}}>
                             <div>
-                                <div className='specials-h1' style={{marginBottom:'0'}}>mother's day menu</div>
+                                <div className='specials-h1' style={{marginBottom:'0'}}>{event.toLowerCase()} menu</div>
                             </div>
 
                             <br/>
@@ -724,8 +725,10 @@ export default function MothersDayUpdate(){
                             id='specials-item-form'
                             className='specials-form'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
+                        
+                        <h2 style={{textAlign:'center'}}>{event.toLowerCase()}</h2>
                         <h2 style={{textAlign:'center'}}>
-                            {editMode ? 'update dinner item' : 'create new dinner item'}
+                            {editMode ? 'update menu item' : 'create new menu item'}
 
                         </h2>
                         <br/>
@@ -752,7 +755,6 @@ export default function MothersDayUpdate(){
                                             &nbsp; 
                                             <select name='section' required defaultValue=''>
                                                 <option disabled value=''>select...</option>
-                                                <option>cured meats</option>
                                                 <option>appetizers</option>
                                                 <option>entrées</option>
                                                 <option>sides</option>
@@ -828,16 +830,6 @@ export default function MothersDayUpdate(){
                         </label>
                         <br/><br/>
                         
-                        <label>
-                            price <span className='required-field'> *required</span><br/>
-                            <input  type='text'
-                                    required 
-                                    maxLength='100'
-                                    id='price'
-                                    name='price' />
-                        </label>
-                        <br/><br/>
-
                         {editMode && currentImage && <>current image:<br/></>}
 
                         {currentImage &&    <>
@@ -911,7 +903,7 @@ export default function MothersDayUpdate(){
                                                 color:'black',
                                                 background:'lightgrey',
                                                 fontSize:'20px'}}
-                                        value = {editMode ? 'update dinner item' : 'create new dinner item'} />
+                                        value = {editMode ? 'update menu item' : 'create new menu item'} />
                             }
                             {updatingMenu &&                             
                                 <div style={{   padding:'10px',
@@ -954,11 +946,13 @@ export default function MothersDayUpdate(){
                             className='specials-form'
                             style={{background:`lightblue`}}>
                         <h2 style={{textAlign:'center'}}>
-                            tasting menu prices
+                            {event.toLowerCase()}
+                        </h2>
+                        <h2 style={{textAlign:'center'}}>
+                            prix-fix price
                         </h2>
                         <br/>
 
-                        tasting menu:<br/> 
                         ${tastingMenuPrices.tastingMenuPrice}/person &rarr; 
                         $<input type='number'
                                 min='1'
@@ -968,15 +962,7 @@ export default function MothersDayUpdate(){
                                 style={{width:'6ch'}} />/person
                         <br/><br/>
 
-                        wine pairing:<br/> 
-                        &nbsp; ${tastingMenuPrices.winePairingPrice}/person &rarr; 
-                        $<input type='number'
-                                min='1'
-                                max='999'
-                                maxLength='100'
-                                name='wine-pairing-price'
-                                style={{width:'6ch'}} />/person
-                        <br/><br/>
+
 
                         <div style={{display:'flex', justifyContent:'center'}}>
                             <input  type='submit' 

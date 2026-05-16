@@ -27,6 +27,7 @@ const DinnerFormat = require('./models/DinnerFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
 const TastingMenuPricing = require('./models/TastingMenuPricing.js')
 const AnnualEvents = require('./models/AnnualEvents.js')
+const AnnualEventMenuItem = require('./models/AnnualEventMenuItem.js')
 
 const {cloudinary} = require('./middleware/cloudinary.js')
 
