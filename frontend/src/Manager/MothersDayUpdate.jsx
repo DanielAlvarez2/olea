@@ -137,10 +137,10 @@ export default function MothersDayUpdate(){
 
     function archiveItem(id){
         try{
-            fetch(`${BASE_URL}/api/dinner-menu-items/archive/${id}`,{method:'PUT'})
+            fetch(`${BASE_URL}/api/annual-events-menu-items/archive/${id}`,{method:'PUT'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getDinnerItems())
+                .then(()=>getAnnualEventsMenuItems())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -149,10 +149,10 @@ export default function MothersDayUpdate(){
 
     function unarchiveItem(id){
         try{
-            fetch(`${BASE_URL}/api/dinner-menu-items/unarchive/${id}`,{method:'PUT'})
+            fetch(`${BASE_URL}/api/annual-events-menu-items/unarchive/${id}`,{method:'PUT'})
                 .then(res=>res.json())
                 .then(data=>alert(data))
-                .then(()=>getDinnerItems())
+                .then(()=>getAnnualEventsMenuItems())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -998,7 +998,7 @@ export default function MothersDayUpdate(){
 
 
 
-                        {allDinnerItems.filter(item=>item.sequence == 0).length != 0 &&
+                        {allAnnualEventsMenuItems.filter(item=>item.sequence == 0).length != 0 &&
                             <>
                                 <div className='specials-update-menu' style={{minHeight:'auto'}}>
                                     <div>
@@ -1007,7 +1007,7 @@ export default function MothersDayUpdate(){
 
                                     <br/><br/>
 
-                                    {allDinnerItems.filter(item=>item.sequence == 0).map(data=>{
+                                    {allAnnualEventsMenuItems.filter(item=>item.sequence == 0).map(data=>{
                                         return(
                                             <div key={data._id} className='special'>  
                                                 <div>section: {data.section}</div>                                    
@@ -1015,9 +1015,6 @@ export default function MothersDayUpdate(){
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
                                                 <div className='allergies-complete'>{data.allergiesComplete}</div> 
                                                 {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
