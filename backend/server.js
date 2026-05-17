@@ -1065,6 +1065,28 @@ app.put('/api/dinner-menu-items/move-up/:id', async(req,res)=>{
     }
 })
 
+app.put('/api/annual-events-menu-items/move-up/:id', async(req,res)=>{
+    try{
+        const target= await AnnualEventsMenuItem.findById(req.params.id)
+        await AnnualEventsMenuItem.findOneAndUpdate({
+            $and:[
+                {event: target.event},
+                {section: target.section},
+                {sequence: target.sequence - 1}
+            ]
+        },{sequence: target.sequence})
+        await AnnualEventsMenuItem.findByIdAndUpdate(req.params.id,{sequence: target.sequence - 1})
+        console.log(`
+            Moved Up:
+            ${target.name}`)
+        res.json(`
+            Moved Up:
+            ${target.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.put('/api/desserts/move-up/:id', async(req,res)=>{
     try{
