@@ -164,7 +164,7 @@ export default function MothersDayUpdate(){
                         name,
                         allergiesAbbreviated,
                         allergiesComplete,
-                        descriptionIntro,
+                        // descriptionIntro,
                         description,
                         postDescription,
                         // price,
