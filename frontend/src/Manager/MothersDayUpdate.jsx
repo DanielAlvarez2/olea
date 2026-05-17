@@ -549,10 +549,10 @@ export default function MothersDayUpdate(){
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
-                                                                                data.descriptionIntro,
+                                                                                // data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                data.price,
+                                                                                // data.price,
                                                                                 data.cloudinary_public_ID,
                                                                                 data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
@@ -671,10 +671,10 @@ export default function MothersDayUpdate(){
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
-                                                                                data.descriptionIntro,
+                                                                                // data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                data.price,
+                                                                                // data.price,
                                                                                 data.cloudinary_public_ID,
                                                                                 data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
