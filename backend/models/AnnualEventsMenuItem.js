@@ -6,6 +6,7 @@ const AnnualEventsMenuItemSchema = new mongoose.Schema({
     allergiesAbbreviated:{type:String},
     allergiesComplete:{type:String},
     description:{type:String},
+    postDescription:{type:String},
     sequence:{type:Number},
     cloudinary_secure_URL:{type:String},
     cloudinary_public_ID:{type:String}

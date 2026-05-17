@@ -61,7 +61,7 @@ export default function MothersDayUpdate(){
         setUpdatingMenu(true)
         setTimeout(putItem,0)
         async function putItem(){
-            await fetch(`${BASE_URL}/api/dinner-menu-items/${formData.get('id')}`,{ method:'PUT',
+            await fetch(`${BASE_URL}/api/annual-events-menu-items/${formData.get('id')}`,{ method:'PUT',
                                                                                     headers:{'Content-Type':'application/json'},
                                                                                     body: JSON.stringify({
                                                                                         name: formData.get('name'),
@@ -69,7 +69,7 @@ export default function MothersDayUpdate(){
                                                                                         allergiesComplete: formData.get('allergies-complete'),
                                                                                         description: formData.get('description'),
                                                                                         postDescription: formData.get('post-description'),
-                                                                                        descriptionIntro: formData.get('description-intro'),
+                                                                                        // descriptionIntro: formData.get('description-intro'),
                                                                                         // price: formData.get('price'),
                                                                                         cloudinary_public_ID: formData.get('cloudinary_public_ID'),
                                                                                         cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
@@ -78,11 +78,11 @@ export default function MothersDayUpdate(){
                                                                                     })
             })
             .then(()=>alert(`
-                Dinner Menu Item Updated:
+                Menu Item Updated:
                 - ${formData.get('name')}`))
             .then(()=>setEditMode(false))
             .then(document.querySelector('#section-wrapper').style.display = 'none')
-            .then(()=>getDinnerItems())
+            .then(()=>getAnnualEventsMenuItems())
             .then(()=>setUpdatingMenu(false))
             .catch(err=>console.log(err))
         }
@@ -122,18 +122,6 @@ export default function MothersDayUpdate(){
             console.log(err)
         }
     }
-
-    // function deleteDinnerItem(id){
-    //     try{
-    //         fetch(`${BASE_URL}/api/dinner-menu-items/delete/${id}`,{method:'DELETE'})
-    //             .then(res=>res.json())
-    //             .then(data=>alert(data))
-    //             .then(()=>getDinnerItems())
-    //             .catch(err=>console.log(err))
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // }
 
     function deleteAnnualEventsMenuItem(id){
         try{
@@ -179,7 +167,7 @@ export default function MothersDayUpdate(){
                         descriptionIntro,
                         description,
                         postDescription,
-                        price,
+                        // price,
                         cloudinary_public_ID,
                         cloudinary_secure_URL){
         try{
@@ -196,7 +184,7 @@ export default function MothersDayUpdate(){
             document.querySelector('#allergies-abbreviated').value = allergiesAbbreviated
             document.querySelector('#allergies-complete').value = allergiesComplete
             document.querySelector('#description').value = description
-            document.querySelector('#description-intro').value = descriptionIntro
+            // document.querySelector('#description-intro').value = descriptionIntro
             document.querySelector('#post-description').value = postDescription
             // document.querySelector('#price').value = price
         }catch(err){
@@ -233,7 +221,7 @@ export default function MothersDayUpdate(){
             document.querySelector('#allergies-abbreviated').value = ''
             document.querySelector('#allergies-complete').value = ''
             document.querySelector('#description').value = ''
-            document.querySelector('#description-intro').value = ''
+            // document.querySelector('#description-intro').value = ''
             document.querySelector('#post-description').value = ''
             // document.querySelector('#price').value = ''
             document.querySelector('#image-file').value = ''
@@ -438,10 +426,10 @@ export default function MothersDayUpdate(){
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
-                                                                                data.descriptionIntro,
+                                                                                // data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                data.price,
+                                                                                // data.price,
                                                                                 data.cloudinary_public_ID,
                                                                                 data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
@@ -815,7 +803,7 @@ export default function MothersDayUpdate(){
                         </label>
                         <br/><br/>
 
-                        <label>
+                        {/* <label>
                             description-intro<br/>
                             <input  type='text'
                                     name='description-intro'
@@ -823,7 +811,7 @@ export default function MothersDayUpdate(){
                                     id='description-intro'
                                     style={{width:'100%'}} />
                         </label>
-                        <br/><br/>
+                        <br/><br/> */}
 
                         <label>
                             description<br/>
