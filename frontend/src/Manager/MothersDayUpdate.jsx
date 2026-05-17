@@ -204,8 +204,8 @@ export default function MothersDayUpdate(){
 
     function moveDown(id){
         try{
-            fetch(`${BASE_URL}/api/dinner-menu-items/move-down/${id}`,{method:'PUT'})
-                .then(()=>getDinnerItems())
+            fetch(`${BASE_URL}/api/annual-events-menu-items/move-down/${id}`,{method:'PUT'})
+                .then(()=>getAnnualEventsMenuItems())
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
