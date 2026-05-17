@@ -243,19 +243,6 @@ export default function MothersDayUpdate(){
         .catch(err=>console.log(err))
     }
 
-    function updateTastingMenu(formData){
-        fetch(`${BASE_URL}/api/tasting-menu-prices/update`,{method:'PUT',
-                                                            headers:{'Content-Type':'application/json'},
-                                                            body: JSON.stringify({
-                                                                tastingMenuPrice:formData.get('tasting-menu-price'),
-                                                                winePairingPrice:formData.get('wine-pairing-price')
-                                                            })
-        })
-        .then(res=>res.json())
-        .then(json=>setTastingMenuPrices(json[0]))
-        .catch(err=>console.log(err))
-    }
-
     const [previewSource, setPreviewSource] = useState()
     function handleFileInputChange(e){
         const file = e.target.files[0]
