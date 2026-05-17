@@ -9,9 +9,9 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 
 export default function MothersDayUpdate(){
     const [updatingMenu, setUpdatingMenu] = useState(false)
-    const [allDinnerItems, setAllDinnerItems] = useState([])
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])
+    const [annualEventPrice, setAnnualEventPrice] = useState(0)
     const [editMode, setEditMode] = useState(false)
     const [displaySection, setDisplaySection] = useState('appetizers')
     const [currentImage, setCurrentImage] = useState('')
@@ -19,9 +19,8 @@ export default function MothersDayUpdate(){
     const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
     const [isChecked, setIsChecked] = useState(false)
 
-    useEffect(()=>getDinnerItems(),[])
     useEffect(()=>getAnnualEventsMenuItems(),[])
-    useEffect(()=>getTastingMenuPrices(),[])
+    useEffect(()=>getAnnualEventPrice(),[])
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
@@ -88,17 +87,6 @@ export default function MothersDayUpdate(){
         }
     }
 
-    function getDinnerItems(){
-        try{
-            fetch(`${BASE_URL}/api/dinner-menu-items`)
-                .then(res=>res.json())
-                .then(json=>setAllDinnerItems(json))
-                .then(clearForm())
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
 
     function getAnnualEventsMenuItems(){
         try{
@@ -112,11 +100,11 @@ export default function MothersDayUpdate(){
         }
     }
 
-    function getTastingMenuPrices(){
+    function getAnnualEventPrice(){
         try{
-            fetch(`${BASE_URL}/api/tasting-menu-prices`)
+            fetch(`${BASE_URL}/api/annual-event-prices`)
                 .then(res=>res.json())
-                .then(json=>setTastingMenuPrices(json[0]))
+                .then(json=>setAnnualEventPrice(json[0].MothersDay))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -240,6 +228,19 @@ export default function MothersDayUpdate(){
 
     function handleChangeDisplaySection(e){
         setDisplaySection(e.target.value)
+    }
+
+    function updateAnnualEventPrice(formData){
+        fetch(`${BASE_URL}/api/annual-events-prices`,{method:'PUT',
+                                                            headers:{'Content-Type':'application/json'},
+                                                            body: JSON.stringify({
+                                                                annualEventName:formData.get('annual-event-name'),
+                                                                annualEventPrice:formData.get('annual-event-price'),
+                                                            })
+        })
+        .then(res=>res.json())
+        .then(json=>setAnnualEventPrice(json[0].MothersDay))
+        .catch(err=>console.log(err))
     }
 
     function updateTastingMenu(formData){
@@ -946,7 +947,7 @@ export default function MothersDayUpdate(){
 
 
 
-                    <form   action={updateTastingMenu} 
+                    <form   action={updateAnnualEventPrice} 
                             id='tasting-menu-form'
                             className='specials-form'
                             style={{background:`lightblue`}}>
@@ -954,17 +955,23 @@ export default function MothersDayUpdate(){
                             {event.toLowerCase()}
                         </h2>
                         <h2 style={{textAlign:'center'}}>
-                            prix-fix price
+                            prix-fixe price
                         </h2>
-                        <br/>
-
-                        ${tastingMenuPrices.tastingMenuPrice}/person &rarr; 
-                        $<input type='number'
-                                min='1'
-                                max='999' 
-                                maxLength='100'
-                                name='tasting-menu-price'
-                                style={{width:'6ch'}} />/person
+                        <br/><br/>
+                        <input  type='hidden'
+                                name='annual-event-name'
+                                value='MothersDay'
+                        />
+                        
+                        <div style={{textAlign:'center'}}>
+                            ${annualEventPrice}/person &rarr; 
+                            $<input type='number'
+                                    min='1'
+                                    max='999' 
+                                    maxLength='100'
+                                    name='annual-event-price'
+                                    style={{width:'6ch'}} />/person
+                        </div>
                         <br/><br/>
 
 

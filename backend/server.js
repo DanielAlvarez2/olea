@@ -28,6 +28,7 @@ const TakeoutFormat = require('./models/TakeoutFormat.js')
 const TastingMenuPricing = require('./models/TastingMenuPricing.js')
 const AnnualEvents = require('./models/AnnualEvents.js')
 const AnnualEventsMenuItem = require('./models/AnnualEventsMenuItem.js')
+const AnnualEventsPrice = require('./models/AnnualEventsPrice.js')
 
 const {cloudinary} = require('./middleware/cloudinary.js')
 
@@ -2301,6 +2302,31 @@ app.get('/api/tasting-menu-prices', async(req,res)=>{
     }
 })
 
+app.get('/api/annual-event-prices', async(req,res)=>{ 
+    try{
+        let currentPrices = await AnnualEventsPrice.find()
+        // console.log('currentPrices = '+ currentPrices)
+        if (currentPrices.length == 0){
+            await AnnualEventsPrice.create({
+                ValentinesDay:0,
+                RestaurantWeekSpring:0,
+                MothersDay:0,
+                Commencement:0,
+                GraduationLunch:0,
+                OleaAnniversary:0,
+                ParentsWeekend:0,
+                RestaurantWeekFall:0,
+                NewYearsEve:0
+            })
+            currentPrices = await AnnualEventsPrice.find()
+        }        
+        console.log(currentPrices)
+        res.json(currentPrices)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/tasting-menu-prices/update', async(req,res)=>{
     try{
         let currentPrices = await TastingMenuPricing.find()
@@ -2313,6 +2339,19 @@ app.put('/api/tasting-menu-prices/update', async(req,res)=>{
                                                                             : currentPrices[0].winePairingPrice
         })
         currentPrices = await TastingMenuPricing.find()
+        res.json(currentPrices)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/annual-events-prices', async(req,res)=>{
+    try{
+        let currentPrices = await AnnualEventsPrice.find()
+        await AnnualEventsPrice.findByIdAndUpdate({_id:currentPrices[0]._id},{
+                                                                [req.body.annualEventName]: req.body.annualEventPrice
+        })
+        currentPrices = await AnnualEventsPrice.find()
         res.json(currentPrices)
     }catch(err){
         console.log(err)
