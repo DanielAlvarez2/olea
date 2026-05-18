@@ -3,6 +3,11 @@
 }
 .manager-navbar a{
     color:black;
+    color:#888;
+}
+.current-page a{
+    font-weight: 900;
+    color:black;
 }
 
 @media (max-width: 350px){

@@ -291,7 +291,7 @@ export default function MothersDayUpdate(){
     return(
         <>
             <div className='manager-page-wrapper'>
-                <ManagerNavbar page='dinner' />
+                <ManagerNavbar page='events' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>{event.toLowerCase()} &gt; update</div>
 
