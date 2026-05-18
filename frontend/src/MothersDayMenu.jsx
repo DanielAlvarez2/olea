@@ -11,32 +11,56 @@ import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 export default function MothersDayMenu(){
 
+    const event = "Mother's Day"
+
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'    
  
     useEffect(()=>window.scrollTo(0,0),[]) 
-    useEffect(()=>getAnnualEvents(),[])   
- 
-    const [annualEvents, setAnnualEvents] = useState([])
+    useEffect(()=>redirectIfEventDisabled(),[])   
+    useEffect(()=>getAnnualEventsMenuItems(),[])
+    useEffect(()=>getAnnualEventPrice(),[])
+
+    const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
+    const [annualEventPrice, setAnnualEventPrice] = useState(0)    
 
     const navigate = useNavigate()
 
-    function getAnnualEvents(){
+    function redirectIfEventDisabled(){
         try{
             fetch(`${BASE_URL}/api/annual-events`)
                 .then(res=>res.json())
-                .then(json=>{
-                    setAnnualEvents(json)
-                    if (!json[0].MothersDay) navigate('/page-not-found') 
-                    // alert(json[0].MothersDay)
-                })
+                .then(json=> !json[0].MothersDay && navigate('/page-not-found'))
                 .catch(err=>console.log(err))
 
         }catch(err){
             console.log(err)
         }
     }
+
+    function getAnnualEventsMenuItems(){
+        try{
+            fetch(`${BASE_URL}/api/annual-events-menu-items`)
+                .then(res=>res.json())
+                .then(json=>setAllAnnualEventsMenuItems(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getAnnualEventPrice(){
+        try{
+            fetch(`${BASE_URL}/api/annual-event-prices`)
+                .then(res=>res.json())
+                .then(json=>setAnnualEventPrice(json[0].MothersDay))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
 
     function showModal(pic,name,price,descriptionIntro,description){
         if(!pic) return
@@ -116,10 +140,96 @@ export default function MothersDayMenu(){
                                         203.780.8925 or <Link className='bold' to='https://www.opentable.com/single.aspx?rid=151186&restref=151186'>Open Table</Link>
                                         <br/><br/>
                                         PLEASE NOTE: OUR REGULAR MENU WILL NOT BE AVAILABLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         
                                         <br/><br/><span className='bold'>APPETIZERS</span> (choose one)<br/><br/>
 
-                                        <div>charcuteria</div>
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
+                                    return(
+                                        <div key={data._id} className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </div>
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            <span> {data.description}</span>
+                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                            
+                                            <div style={{marginTop:'5px'}}>
+                                                <span   className='btn archive-btn'
+                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
+                                                <span   className='btn edit-btn'
+                                                        onClick={()=>editItem(  data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                // data.descriptionIntro,
+                                                                                data.description,
+                                                                                data.postDescription,
+                                                                                // data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                
+                                                                                )}>EDIT</span>                                                    
+                                                <span   className='btn delete-btn'
+                                                        onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
+
+                                            </div>
+
+
+                                        </div>
+                                    )
+                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         <br/><br/><span className='bold'>ENTRÉES</span> (choose one)<br/><br/>
                                         <br/><br/><span className='bold'>DESSERTS</span> (choose one)<br/><br/>
 

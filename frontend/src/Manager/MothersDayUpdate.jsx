@@ -10,7 +10,6 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 export default function MothersDayUpdate(){
     const [updatingMenu, setUpdatingMenu] = useState(false)
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
-    const [tastingMenuPrices, setTastingMenuPrices] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)
     const [editMode, setEditMode] = useState(false)
     const [displaySection, setDisplaySection] = useState('appetizers')
@@ -21,6 +20,7 @@ export default function MothersDayUpdate(){
 
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
+
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
