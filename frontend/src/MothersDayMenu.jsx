@@ -184,26 +184,6 @@ export default function MothersDayMenu(){
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
                                                                             />}                                            
-                                            <div style={{marginTop:'5px'}}>
-                                                <span   className='btn archive-btn'
-                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
-                                                <span   className='btn edit-btn'
-                                                        onClick={()=>editItem(  data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                // data.descriptionIntro,
-                                                                                data.description,
-                                                                                data.postDescription,
-                                                                                // data.price,
-                                                                                data.cloudinary_public_ID,
-                                                                                data.cloudinary_secure_URL                                                                                
-                                                                                )}>EDIT</span>                                                    
-                                                <span   className='btn delete-btn'
-                                                        onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
-
-                                            </div>
 
 
                                         </div>
