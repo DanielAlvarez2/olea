@@ -120,18 +120,22 @@ export default function MothersDayMenu(){
                         <Navbar />
         
                         <main>
-                            <div className='dinner-flexbox' style={{backgroundImage:"url('mothers-day-screenshot.webp')",
-                                                                    backgroundSize:'1854px',
-                                                                    backgroundPosition:'-417px -156px'
-                            }}>
+                            <div className='dinner-flexbox' 
+                                    // style={{backgroundImage:"url('mothers-day-screenshot.webp')",
+                                    //                                 backgroundSize:'1854px',
+                                    //                                 backgroundPosition:'-417px -156px'
+                                    //         }}
+                            >
                                 
                                 <div className='dinner-left'>
                                     <img    src='mothers-day-website-image.png' 
                                             style={{maxWidth:'100%'}}
                                     />
                                     <br/><br/>
-                                    <div className='bold'>Celebrate Mother's Day at Olea</div><br/>
-                                        
+                                    <h2 style={{marginTop:'-10px'}}>Celebrate Mother's Day at Olea</h2>
+                                    <br/>
+                                    
+                                    <p>
                                         Join us Sunday, May 10! We'll be open for Mother's Day 
                                         from 12:30pm to 6pm, serving a prix-fixe three-course 
                                         menu with multiple choices designed especially to please 
@@ -140,10 +144,10 @@ export default function MothersDayMenu(){
                                         menu will be available.
                                         <br/><br/>
                                         Reservations highly recommended:<br/>
-                                        203.780.8925 or <Link className='bold' to='https://www.opentable.com/single.aspx?rid=151186&restref=151186'>Open Table</Link>
+                                        203.780.8925 or <Link style={{color:'#FAFAFA'}} to='https://www.opentable.com/single.aspx?rid=151186&restref=151186'>Open Table</Link>
                                         <br/><br/>
                                         PLEASE NOTE: OUR REGULAR MENU WILL NOT BE AVAILABLE
-
+                                    </p>
 
 
 
@@ -168,26 +172,27 @@ export default function MothersDayMenu(){
 
 
                                         
-                                        <br/><br/><span className='bold'>APPETIZERS</span> (choose one)<br/><br/>
+                                        <br/>
+                                        <h2>APPETIZERS <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
+                                        
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
                                     return(
                                         <div key={data._id} className='special'>
                                             
                                             {/* {data.sequence}<br/> */}
-                                            <div>
+                                            <span>
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            </div>
-                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
-                                            <span> {data.description}</span>
+                                            </span>
+                                            <span className='description'> &nbsp;{data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
                                                                             />}                                            
-
+                                            <br/>
 
                                         </div>
                                     )
@@ -213,8 +218,18 @@ export default function MothersDayMenu(){
 
 
 
-                                        <br/><br/><span className='bold'>ENTRÉES</span> (choose one)<br/><br/>
-                                        <br/><br/><span className='bold'>DESSERTS</span> (choose one)<br/><br/>
+                                        <h2>ENTRÉES <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
+                                        <br/>
+
+
+
+
+
+
+                                        <h2>DESSERTS <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
+                                        <br/>
+
+
 
 
 

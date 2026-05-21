@@ -1,6 +1,25 @@
 .name{
-    font-size: 20px;
-    color:red;
+    font-size: 19px;
+    /* color:red; */
+}
+.allergies-abbreviated{
+    font-family: FuturaLight;
+    font-style: normal;
+}
+.description, .allergies-abbreviated{
+    font-size: 17.5px;
+}
+main, .bold{
+    color: #C0BEBF !important;
+    /* color:red !important; */
+}
+.webpage h2{
+    font-family: FuturaRoundBold;
+    font-size: 18.75px;
+    /* color:blue; */
+}
+.webpage p{
+    font-size: 17.5px;
 }
 
 @media(max-width:860px){
