@@ -120,7 +120,10 @@ export default function MothersDayMenu(){
                         <Navbar />
         
                         <main>
-                            <div className='dinner-flexbox'>
+                            <div className='dinner-flexbox' style={{backgroundImage:"url('mothers-day-screenshot.webp')",
+                                                                    backgroundSize:'1854px',
+                                                                    backgroundPosition:'-417px -156px'
+                            }}>
                                 
                                 <div className='dinner-left'>
                                     <img    src='mothers-day-website-image.png' 
