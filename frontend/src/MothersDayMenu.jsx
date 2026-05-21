@@ -62,22 +62,24 @@ export default function MothersDayMenu(){
     }
 
 
-    function showModal(pic,name,price,descriptionIntro,description){
+    function showModal(pic,name,description,allergiesAbbreviated,allergiesComplete){
         if(!pic) return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
-        document.querySelector('.modal-price').innerHTML = price
-        if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
         document.querySelector('.modal-description').innerHTML = description        
+        document.querySelector('.modal-allergies-abbreviated').innerHTML = allergiesAbbreviated        
+        document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete        
     }
 
     function closeModal(){
         document.querySelector('.modal-image').src = ''
         document.querySelector('.modal-name').innerHTML = ''
-        document.querySelector('.modal-price').innerHTML = ''
-        document.querySelector('.modal-description-intro').innerHTML = ''
+        // document.querySelector('.modal-price').innerHTML = ''
+        // document.querySelector('.modal-description-intro').innerHTML = ''
         document.querySelector('.modal-description').innerHTML = ''
+        document.querySelector('.modal-allergies-abbreviated').innerHTML = ''
+        document.querySelector('.modal-allergies-complete').innerHTML = ''
         document.querySelector('.modal').style.display = 'none'
     }
     
@@ -107,10 +109,12 @@ export default function MothersDayMenu(){
                                 <figcaption style={{display:'table-caption',padding:'10px',captionSide:'bottom',borderRadius:'25px',background:'#ccc'}}>
                                     <div style={{display:'flex',justifyContent:'space-between'}}>
                                         <span className='modal-name' style={{fontWeight:'900'}}></span>
-                                        <span className='modal-price'></span>
+                                        
                                     </div>
-                                    <span className='modal-description-intro' style={{fontStyle:'italic'}}></span>
+                                    
+                                    <span className='modal-allergies-abbreviated'></span>
                                     <span className='modal-description'></span>
+                                    <div className='modal-allergies-complete'></div>
                                 </figcaption>
                             </figure>
                         </div>{/* .modal-content */}
@@ -172,13 +176,15 @@ export default function MothersDayMenu(){
 
 
                                         
-                                        <br/>
+                                        <br/><br/>
                                         <h2>APPETIZERS <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
-                                        
+                                        <br/>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
                                     return(
-                                        <div key={data._id} className='special'>
+                                        <div    key={data._id}
+                                                onClick={()=>showModal(data.cloudinary_secure_URL,data.name,data.description,data.allergiesAbbreviated,data.allergiesComplete)} 
+                                                className='special'>
                                             
                                             {/* {data.sequence}<br/> */}
                                             <span>
@@ -187,11 +193,9 @@ export default function MothersDayMenu(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             </span>
                                             <span className='description'> &nbsp;{data.description}</span>
-                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
-                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
-                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
-                                                                            />}                                            
+
                                             <br/>
 
                                         </div>
@@ -217,18 +221,60 @@ export default function MothersDayMenu(){
 
 
 
-
+                                        <br/><br/>
                                         <h2>ENTRÉES <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
                                         <br/>
 
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id}
+                                                onClick={()=>showModal(data.cloudinary_secure_URL,data.name,data.description,data.allergiesAbbreviated,data.allergiesComplete)} 
+                                                className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <span>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </span>
+                                            <span className='description'> &nbsp;{data.description}</span>
+                                            {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+
+                                            <br/>
+
+                                        </div>
+                                    )
+                                })}
 
 
 
 
-
+                                        <br/><br/>
                                         <h2>DESSERTS <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
                                         <br/>
 
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id}
+                                                onClick={()=>showModal(data.cloudinary_secure_URL,data.name,data.description,data.allergiesAbbreviated,data.allergiesComplete)} 
+                                                className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <span>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </span>
+                                            <span className='description'> &nbsp;{data.description}</span>
+                                            {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+
+                                            <br/>
+
+                                        </div>
+                                    )
+                                })}
 
 
 

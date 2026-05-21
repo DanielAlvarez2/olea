@@ -6,6 +6,11 @@
     font-family: FuturaLight;
     font-style: normal;
 }
+.post-description{
+    font-family: FuturaLight !important;
+    /* font-style: italic; */
+    /* color:red; */
+}
 .description, .allergies-abbreviated{
     font-size: 17.5px;
 }
