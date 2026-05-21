@@ -67,8 +67,8 @@ export default function MothersDayMenu(){
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
-        document.querySelector('.modal-description').innerHTML = description        
-        document.querySelector('.modal-allergies-abbreviated').innerHTML = allergiesAbbreviated        
+        document.querySelector('.modal-description').innerHTML = description    
+        if (allergiesAbbreviated) document.querySelector('.modal-allergies-abbreviated').innerHTML = ` (${allergiesAbbreviated})`        
         document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete        
     }
 
@@ -83,6 +83,28 @@ export default function MothersDayMenu(){
         document.querySelector('.modal').style.display = 'none'
     }
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return(
         
         <div className='page-wrapper webpage' style={{position:'relative'}}>
@@ -107,12 +129,12 @@ export default function MothersDayMenu(){
                             <figure style={{display:'table'}}>
                                 <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw',borderRadius:'25px'}} />
                                 <figcaption style={{display:'table-caption',padding:'10px',captionSide:'bottom',borderRadius:'25px',background:'#ccc'}}>
-                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                    <div>
                                         <span className='modal-name' style={{fontWeight:'900'}}></span>
+                                        <span className='modal-allergies-abbreviated'></span>
                                         
                                     </div>
                                     
-                                    <span className='modal-allergies-abbreviated'></span>
                                     <span className='modal-description'></span>
                                     <div className='modal-allergies-complete'></div>
                                 </figcaption>
@@ -194,9 +216,9 @@ export default function MothersDayMenu(){
                                             </span>
                                             <span className='description'> &nbsp;{data.description}</span>
                                             {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
-                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {/* <div className='allergies-complete'>{data.allergiesComplete}</div> */}
 
-                                            <br/>
+                                            <br/><br/>
 
                                         </div>
                                     )
@@ -239,9 +261,9 @@ export default function MothersDayMenu(){
                                             </span>
                                             <span className='description'> &nbsp;{data.description}</span>
                                             {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
-                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {/* <div className='allergies-complete'>{data.allergiesComplete}</div> */}
 
-                                            <br/>
+                                            <br/><br/>
 
                                         </div>
                                     )
@@ -268,9 +290,9 @@ export default function MothersDayMenu(){
                                             </span>
                                             <span className='description'> &nbsp;{data.description}</span>
                                             {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
-                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {/* <div className='allergies-complete'>{data.allergiesComplete}</div> */}
 
-                                            <br/>
+                                            <br/><br/>
 
                                         </div>
                                     )

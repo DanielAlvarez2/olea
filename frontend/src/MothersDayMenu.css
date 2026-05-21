@@ -1,5 +1,6 @@
-.name{
+.name, .modal-name{
     font-size: 19px;
+    font-family: FuturaRoundBold;
     /* color:red; */
 }
 .allergies-abbreviated{
@@ -25,6 +26,9 @@ main, .bold{
 }
 .webpage p{
     font-size: 17.5px;
+}
+.modal-allergies-complete{
+    color:red;
 }
 
 @media(max-width:860px){
