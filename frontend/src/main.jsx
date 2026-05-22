@@ -94,6 +94,7 @@ import QRdessert from './QR-dessert.jsx'
 
 import MothersDayMenu from './MothersDayMenu.jsx'
 import MothersDayUpdate from './Manager/MothersDayUpdate.jsx'
+import MothersDayFormat from './Manager/MothersDayFormat.jsx'
 
 import PageNotFound from './PageNotFound.jsx'
 
@@ -194,6 +195,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/manager/mothers-day-update' element={<MothersDayUpdate />} />
         <Route path='mothers-day-screenshot' element={<MothersDayScreenshot />} />
         <Route path='/manager/mothers-day-update' element={<MothersDayUpdate />} />
+        <Route path='/manager/mothers-day-format' element={<MothersDayFormat />} />
         
         <Route path='valentines-day' element={<ValentinesDay />} />
         <Route path='valentines-day-screenshot' element={<ValentinesDayScreenshot />} />
