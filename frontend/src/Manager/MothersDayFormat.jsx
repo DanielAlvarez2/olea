@@ -1,0 +1,525 @@
+import {Link} from 'react-router'
+import {useState,useEffect} from 'react'
+import './Manager.css'
+import './DessertMenuFormat.css'
+import './DessertDrinksUpdate.css'
+import './DessertDrinksUpdate.css'
+import './DinnerMenuFormat.css'
+import ManagerNavbar from './components/ManagerNavbar.jsx'
+import { PiPlusCircleDuotone } from "react-icons/pi";
+import { PiMinusCircleDuotone } from "react-icons/pi";
+import { FaToggleOff } from "react-icons/fa6";
+import { FaToggleOn } from "react-icons/fa6";
+
+
+
+export default function DinnerMenuFormat(){
+
+    const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
+    const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
+    const [dinnerFormatting, setDinnerFormatting] = useState([])
+    const [pageMargin, setPageMargin] = useState(0)
+    const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
+    const [dinnerItemMarginsLeftRight, setDinnerItemMarginsLeftRight] = useState(0)
+    useEffect(()=>{ 
+                getDinnerFormatting()
+                getDinnerMenuItems()
+    },[])
+    useEffect(()=>getTastingMenuPrices(),[])    
+    
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'
+
+
+
+    function getDinnerMenuItems(){
+        try{
+            fetch(`${BASE_URL}/api/dinner-menu-items`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setAllDinnerMenuItems(json)
+                    // console.log(json)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getTastingMenuPrices(){
+        try{
+            fetch(`${BASE_URL}/api/tasting-menu-prices`)
+                .then(res=>res.json())
+                .then(json=>setTastingMenuPrices(json[0]))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getDinnerFormatting(){
+        try{
+            fetch(`${BASE_URL}/api/formats/dinner`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setDinnerFormatting(json[0])
+                    setPageMargin(json[0].pageMargin)
+                    setDinnerItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
+                    setDinnerItemMarginsLeftRight(json[0].dinnerItemMarginsLeftRight)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function decreaseDinnerItemMarginsLeftRight(){
+        if (dinnerItemMarginsLeftRight <= 0) return
+        fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsLeftRight`, {method:'PUT'})
+            .then(()=>getDinnerFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function increaseDinnerItemMarginsLeftRight(){
+        fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsLeftRight`, {method:'PUT'})
+            .then(()=>getDinnerFormatting())
+            .catch(err=>console.log(err))
+    }
+
+
+
+    function decreaseDinnerItemMarginsTopBottom(){
+        if (dinnerItemMarginsTopBottom <= 0) return
+        fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getDinnerFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function increaseDinnerItemMarginsTopBottom(){
+        fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getDinnerFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function decreasePageMargin(){
+        if (pageMargin <= 25) return
+        fetch(`${BASE_URL}/api/formats/dinner/decreasePageMargin`,{method:'PUT'})
+        .then(()=>getDinnerFormatting())
+        .catch(err=>console.log(err))
+    }
+
+    
+    function increasePageMargin(){
+        fetch(`${BASE_URL}/api/formats/dinner/increasePageMargin`,{method:'PUT'})
+            .then(()=>getDinnerFormatting())
+            .catch(err=>console.log(err))
+    }
+
+
+
+    return(
+        <>
+            <div    className='manager-page-wrapper' 
+                    // style={{border:'1px solid red',
+                    //         color:'red'
+                    //         }}
+            >
+                <ManagerNavbar page='dinner' />
+                    <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}}>dinner &gt; format</div>
+                    <div className='main-menu'>
+
+
+
+
+
+
+                                
+                            <br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div    className='dinner-menu-format' 
+                                        style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`}} 
+                                >
+                                    <div id='footer-top'>
+                                        <span   className='logo dessert-menu-front-content' 
+                                                style={{
+                                                        // color:'red',
+                                                        padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                        display:'block',
+                                                        cursor:'default',
+                                                        fontSize:'57px'}}>olea</span>
+                                        <hr style={{marginBottom:`${dinnerItemMarginsTopBottom}px`}} />
+
+
+
+
+
+
+
+                                        <div className='dessert-menu-front-content'
+                                                style={{padding:`0px 0px 0px 0px`,
+                                                        display:'flex'}}
+                                                // style={{paddingRight:'83px'}}
+                                                >
+
+
+
+                                            <div    id='dinner-menu-left'
+                                                    style={{width:'50%'}}        
+                                            >
+                                                <div className='cured-meats' style={{border:'1px solid #888'}}>
+                                                    {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
+                                                        return(
+                                                            <div    key={data._id}
+                                                                    style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                            margin:`${dinnerItemMarginsTopBottom}px 0`
+                                                                    }}
+                                                                    // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                                    className='special'>
+                                                            
+                                                                <span className='name'>{data.name} </span>
+                                                                {data.allergiesAbbreviated &&   <>
+                                                                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                                </>
+                                                                }
+                                                                {data.description && <br/>}
+                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                {data.description && <span> {data.description}</span>}
+                                                                
+                                                                <span className='price'> &nbsp;{data.price}</span> 
+                                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+
+
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>{/* .cured-meats */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                                                    return(
+                                                        <div    key={data._id}
+                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                        margin:`${dinnerItemMarginsTopBottom}px 0`
+                                                                }}
+                                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                                className='special'>
+                                                        
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated &&   <>
+                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                            </>
+                                                            }
+                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                            {data.description && <span> {data.description}</span>}
+                                                            
+                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+
+
+                                                        </div>
+                                                    )
+                                                })}
+
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            <div    id='dinner-menu-right'
+                                                    style={{width:'50%'}}
+                                            >
+                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                                                    return(
+                                                        <div    key={data._id}
+                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                        margin:`${dinnerItemMarginsTopBottom}px 0`
+                                                                }}
+                                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                                className='special'>
+                                                        
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated &&   <>
+                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                            </>
+                                                            }
+                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                            {data.description && <span> {data.description}</span>}
+                                                            
+                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+
+
+                                                        </div>
+                                                    )
+                                                })}
+
+                                                <div    className='special' 
+                                                        style={{border:'1px solid #888',
+                                                                fontFamily:'serif',
+                                                                padding:`${dinnerItemMarginsTopBottom}px ${dinnerItemMarginsLeftRight}px`,
+                                                        }}
+                                                                >
+                                                    <span style={{fontFamily:'FuturaLight', fontSize:'20px'}}>
+                                                        chef's tasting menu &nbsp; 
+                                                    </span> 
+                                                    <span style={{fontStyle:'italic'}}>
+                                                        six courses 
+                                                        {tastingMenuPrices.tastingMenuPrice != 0 ? <>
+                                                                                                        <span style={{fontWeight:'900'}}> {tastingMenuPrices.tastingMenuPrice}</span> / person
+                                                                                                    </>
+                                                                                                 : ''}
+                                                    </span>
+                                                    <br/>
+                                                    <span style={{fontStyle:'italic', fontWeight:'900'}}>
+                                                        48-hours notice and reservation required<br/>
+                                                    </span>
+                                                    full table participation<br/>
+                                                    available tuesday through thursday<br/>
+                                                    <span style={{fontStyle:'italic'}}>
+                                                        optional wine pairing available 
+                                                        {tastingMenuPrices.winePairingPrice != 0 ? <>
+                                                                                                        <span style={{fontWeight:'900'}}> {tastingMenuPrices.winePairingPrice}</span> / person
+                                                                                                    </>
+                                                                                                 : ''}
+                                                    </span>
+                                                </div>
+                                            
+                                            </div>{/* id='dinner-menu-right' */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            
+                                            
+                                            
+
+
+
+                                            
+
+
+
+
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+
+
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div style={{   fontSize:'25px',
+                                                    padding:`0 ${dinnerItemMarginsLeftRight}px`}}
+                                    >
+
+                                        sides
+                                    </div>
+
+
+
+
+                                        <div style={{   display:'flex',
+                                                        flexWrap:'wrap',
+                                                        marginBottom:`${dinnerItemMarginsTopBottom}px`,
+                                                        border:'1px solid #888'}}>
+
+                                        
+                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'sides').map(data=>{
+                                                    return(
+                                                        <div    key={data._id}
+                                                                style={{flexBasis:'50%',
+                                                                        padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                        margin:`${dinnerItemMarginsTopBottom/2}px 0`
+                                                                }}
+                                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                                className='special'>
+                                                        
+                                                            <span className='name'>{data.name} </span>
+                                                            {data.allergiesAbbreviated &&   <>
+                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
+                                                                                            </>
+                                                            }
+                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                            {data.description && <span> {data.description}</span>}
+                                                            
+                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+
+
+                                                        </div>
+                                                    )
+                                                })}
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div className='dessert-footer'>
+                                        
+                                        
+                                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+
+                                            <div className='chef name' style={{textDecoration:'underline'}}>manuel romero, chef</div>
+                                            
+                                            <img src='qr-dinner.png' height='60px' />
+                                            
+                                            <div style={{width:'65%'}}>
+                                                <span style={{fontWeight:'100'}}>
+                                                    consumer advisory: consumption of undercooked meat, poultry, 
+                                                    eggs, or seafood may increase the risk of food-borne illnesses<br/>
+                                                    all menu items are subject to change according to seasonality and availability<br/>
+                                                </span>
+                                                
+                                                please alert your server if you have special dietary requirements before ordering<br/>
+                                                <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
+                                            </div>
+                                        </div>
+                                    </div>                                </div>
+
+
+
+                    </div>
+
+                                                       
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreaseDinnerItemMarginsTopBottom} /></span>
+                                        <span>menu item margins<br/>top & bottom &#8597;</span>
+                                        
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increaseDinnerItemMarginsTopBottom} /></span>
+                                    </div>
+
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreaseDinnerItemMarginsLeftRight} /></span>
+                                        <span>menu item margins<br/>left & right &#8596;</span>
+                                        
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increaseDinnerItemMarginsLeftRight} /></span>
+                                    </div>
+
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+
+                                                        
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreasePageMargin} /></span>
+                                        <span>page margin</span>
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increasePageMargin} /></span>
+                                    </div>
+                                    <br/><br/>
+
+
+            </div>{/* .manager-page-wrapper */}
+        </>
+    )
+}
