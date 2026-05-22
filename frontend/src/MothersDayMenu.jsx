@@ -69,7 +69,7 @@ export default function MothersDayMenu(){
         document.querySelector('.modal-name').innerHTML = name
         document.querySelector('.modal-description').innerHTML = description    
         if (allergiesAbbreviated) document.querySelector('.modal-allergies-abbreviated').innerHTML = ` (${allergiesAbbreviated})`        
-        document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete        
+        // document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete        
     }
 
     function closeModal(){
