@@ -158,6 +158,54 @@ export default function MothersDayFormat(){
 
 
 
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreaseMothersDayItemMarginsTopBottom} /></span>
+                                        <span>menu item margins<br/>top & bottom &#8597;</span>
+                                        
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increaseMothersDayItemMarginsTopBottom} /></span>
+                                    </div>
+
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreaseMothersDayItemMarginsLeftRight} /></span>
+                                        <span>menu item margins<br/>left & right &#8596;</span>
+                                        
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increaseMothersDayItemMarginsLeftRight} /></span>
+                                    </div>
+
+                                    <div style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+
+                                                        
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={decreasePageMargin} /></span>
+                                        <span>page margin</span>
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={increasePageMargin} /></span>
+                                    </div>
+                                    <br/><br/>
 
 
 
@@ -168,28 +216,37 @@ export default function MothersDayFormat(){
 
 
                                 <div    className='dinner-menu-format' 
-                                        style={{padding:`${mothersDayPageMargin/2}px ${mothersDayPageMargin}px 0px`}} 
+                                        style={{padding:`${mothersDayPageMargin/2}px ${mothersDayPageMargin}px 0px`,
+                                                backgroundImage:"url('/scan-mothers-day.png')",
+                                                backgroundSize:'8.5in',
+                                                color:'red'
+                                            }} 
                                 >
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
-                                                        // color:'red',
+                                                        color:'red',
                                                         padding:`0 ${mothersDayItemMarginsLeftRight}px`,
                                                         display:'block',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
-                                        <hr style={{marginBottom:`${mothersDayItemMarginsTopBottom}px`}} />
+                                        <hr 
+                                        // style={{marginBottom:`${mothersDayItemMarginsTopBottom}px`}} 
+                                        />
 
 
 
-                                        <div style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`}}>
-                                            <h2>happy mother's day!</h2>
-
-                                            <span>${annualEventPrice} per person; three courses</span>
+                                        <div style={{marginTop:'28px',padding:`0 ${mothersDayItemMarginsLeftRight}px`}}>
+                                            <h2 style={{fontSize:'29px'}}>happy mother's day!</h2>
                                             <br/>
-                                            <span>(excludes beverages, tax, and gratuity)</span>
+                                            <div style={{fontFamily:'serif'}}>
+                                                <span style={{fontSize:'20px',fontWeight:'900'}}>${annualEventPrice} per person; three courses</span>
+                                                <br/>
+                                                <span style={{fontSize:'15px'}}>(excludes beverages, tax, and gratuity)</span>
+                                            </div>
                                         </div>
 
+                                        <br/>
 
                                         <div className='dessert-menu-front-content'
                                                 style={{padding:`0px 0px 0px 0px`,
@@ -227,10 +284,9 @@ export default function MothersDayFormat(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span className='description'> {data.description}</span>
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             </div>
-                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
-                                            <span> {data.description}</span>
-                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
                                         </div>
@@ -276,10 +332,9 @@ export default function MothersDayFormat(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span className='description'> {data.description}</span>
+                                                {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
                                             </div>
-                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
-                                            <span> {data.description}</span>
-                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
                                         </div>
@@ -370,10 +425,9 @@ export default function MothersDayFormat(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span className='description'> {data.description}</span>
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             </div>
-                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
-                                            <span> {data.description}</span>
-                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
                                         </div>

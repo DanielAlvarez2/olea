@@ -1,7 +1,32 @@
 h2{
     font-family: FuturaRoundBold;
+    font-size: 21.4px;
 }
 h2 span{
     font-family: serif;
-    font-size: 15px;
+    font-size: 15.6px;
+    padding-left:5px;
+}
+.name{
+    /* color:blue; */
+    font-family: FuturaLight;
+    font-size: 16px;
+    font-weight: 900;
+}
+.allergies-abbreviated{
+    font-family: serif;
+    font-weight: 900;
+    font-size: 16.5px;
+    font-style: italic;
+}
+.description{
+    font-family:serif;
+    font-size:16.6px;
+}
+.post-description{
+    /* color:blue; */
+    font-style: italic;
+    font-family: serif !important;
+    font-weight: 900;
+    font-size: 15.8px;
 }
