@@ -24,6 +24,7 @@ const SpecialsFormat = require('./models/SpecialsFormat.js')
 const DessertsFormat = require('./models/DessertsFormat.js')
 const WinelistFormat = require('./models/WinelistFormat.js')
 const DinnerFormat = require('./models/DinnerFormat.js')
+const MothersDayFormat = require('./models/MothersDayFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
 const TastingMenuPricing = require('./models/TastingMenuPricing.js')
 const AnnualEvents = require('./models/AnnualEvents.js')
@@ -2540,7 +2541,7 @@ app.get('/api/formats/dinner', async(req,res)=>{
         let allFormats = await DinnerFormat.find()
         if (allFormats.length == 0){
             await DinnerFormat.create({
-                pageMargin: 0,
+                pageMargin: 25,
                 dinnerItemMarginsTopBottom: 0,
                 dinnerItemMarginsLeftRight: 0
             })

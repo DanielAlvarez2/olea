@@ -9,8 +9,6 @@ import './MothersDayFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
-import { FaToggleOff } from "react-icons/fa6";
-import { FaToggleOn } from "react-icons/fa6";
 
 
 
@@ -20,8 +18,12 @@ export default function MothersDayFormat(){
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
     const [dinnerFormatting, setDinnerFormatting] = useState([])
+    const [mothersDayFormatting, setMothersDayFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
+    const [mothersDayPageMargin, setMothersDayPageMargin] = useState(0)
     const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
+    const [mothersDayMarginsTopBottom, setMothersDayItemMarginsTopBottom] = useState(0)
+    const [mothersDayItemMarginsLeftRight, setMothersDayItemMarginsLeftRight] = useState(0)
     const [dinnerItemMarginsLeftRight, setDinnerItemMarginsLeftRight] = useState(0)
     useEffect(()=>{ 
                 getDinnerFormatting()
@@ -81,6 +83,22 @@ export default function MothersDayFormat(){
                     setPageMargin(json[0].pageMargin)
                     setDinnerItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
                     setDinnerItemMarginsLeftRight(json[0].dinnerItemMarginsLeftRight)
+                })
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getMothersDayFormatting(){
+        try{
+            fetch(`${BASE_URL}/api/formats/mothers-day`)
+                .then(res=>res.json())
+                .then(json=>{
+                    setMothersDayFormatting(json[0])
+                    setMothersDayPageMargin(json[0].pageMargin)
+                    setMothersDayItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
+                    setMothersDayItemMarginsLeftRight(json[0].dinnerItemMarginsLeftRight)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
