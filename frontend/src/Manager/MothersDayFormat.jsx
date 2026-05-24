@@ -16,7 +16,7 @@ import { FaToggleOn } from "react-icons/fa6";
 
 export default function MothersDayFormat(){
 
-    const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
+    const [annualEventPrice, setAnnualEventPrice] = useState(0)      
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
     const [dinnerFormatting, setDinnerFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
@@ -26,13 +26,23 @@ export default function MothersDayFormat(){
                 getDinnerFormatting()
                 getDinnerMenuItems()
     },[])
-    useEffect(()=>getTastingMenuPrices(),[])    
+    useEffect(()=>getAnnualEventPrice(),[])
     
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
 
+    function getAnnualEventPrice(){
+        try{
+            fetch(`${BASE_URL}/api/annual-event-prices`)
+                .then(res=>res.json())
+                .then(json=>setAnnualEventPrice(json[0].MothersDay))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     function getDinnerMenuItems(){
         try{
@@ -42,17 +52,6 @@ export default function MothersDayFormat(){
                     setAllDinnerMenuItems(json)
                     // console.log(json)
                 })
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
-
-    function getTastingMenuPrices(){
-        try{
-            fetch(`${BASE_URL}/api/tasting-menu-prices`)
-                .then(res=>res.json())
-                .then(json=>setTastingMenuPrices(json[0]))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -175,7 +174,7 @@ export default function MothersDayFormat(){
 
                                         <h2>happy mother's day!</h2>
 
-                                        <span>$85 per person; three courses</span>
+                                        <span>${annualEventPrice} per person; three courses</span>
                                         <br/>
                                         <span>(excludes beverages, tax, and gratuity)</span>
 
