@@ -2781,6 +2781,30 @@ app.put('/api/formats/dinner/decreaseDinnerItemMarginsLeftRight', async(req,res)
     }
 })
 
+app.put('/api/formats/mothers-day/decreaseItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await MothersDayFormat.find()
+        console.log(allFormats[0])
+        await MothersDayFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {mothersDayItemMarginsLeftRight: allFormats[0].mothersDayItemMarginsLeftRight - 1})
+        res.json("mother's day item margins left/right decreased")
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/mothers-day/increaseItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await MothersDayFormat.find()
+        console.log(allFormats[0])
+        await mothersDayFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {mothersDayItemMarginsLeftRight: allFormats[0].mothersDayItemMarginsLeftRight + 1})
+        res.json("mother's day item margins left/right increased")
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/dinner/increaseDinnerItemMarginsLeftRight', async(req,res)=>{
     try{
         const allFormats = await DinnerFormat.find()

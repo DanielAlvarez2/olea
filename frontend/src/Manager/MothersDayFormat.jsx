@@ -19,7 +19,6 @@ export default function MothersDayFormat(){
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
     const [dinnerFormatting, setDinnerFormatting] = useState([])
     const [mothersDayFormatting, setMothersDayFormatting] = useState([])
-    const [pageMargin, setPageMargin] = useState(0)
     const [mothersDayPageMargin, setMothersDayPageMargin] = useState(0)
     const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
     const [mothersDayMarginsTopBottom, setMothersDayItemMarginsTopBottom] = useState(0)
@@ -81,7 +80,6 @@ export default function MothersDayFormat(){
                 .then(res=>res.json())
                 .then(json=>{
                     setDinnerFormatting(json[0])
-                    setPageMargin(json[0].pageMargin)
                     setDinnerItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
                     setDinnerItemMarginsLeftRight(json[0].dinnerItemMarginsLeftRight)
                 })
@@ -481,12 +479,12 @@ export default function MothersDayFormat(){
                                                     // border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseDinnerItemMarginsTopBottom} /></span>
+                                                                    onClick={decreaseMothersDayItemMarginsTopBottom} /></span>
                                         <span>menu item margins<br/>top & bottom &#8597;</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseDinnerItemMarginsTopBottom} /></span>
+                                                                    onClick={increaseMothersDayItemMarginsTopBottom} /></span>
                                     </div>
 
                                     <div style={{   textAlign:'center',
