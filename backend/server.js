@@ -2554,6 +2554,24 @@ app.get('/api/formats/dinner', async(req,res)=>{
     }
 })
 
+app.get('/api/formats/mothers-day', async(req,res)=>{ 
+    try{
+        let allFormats = await MothersDayFormat.find()
+        if (allFormats.length == 0){
+            await MothersDayFormat.create({
+                pageMargin: 25,
+                mothersDayItemMarginsTopBottom: 0,
+                mothersDayItemMarginsLeftRight: 0
+            })
+            allFormats = await MothersDayFormat.find()
+        }
+        console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/formats/takeout', async(req,res)=>{ 
     try{
         let allFormats = await TakeoutFormat.find()

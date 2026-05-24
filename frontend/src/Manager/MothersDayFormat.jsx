@@ -29,6 +29,7 @@ export default function MothersDayFormat(){
                 getDinnerFormatting()
                 getDinnerMenuItems()
     },[])
+    useEffect(()=>getMothersDayFormatting())
     useEffect(()=>getAnnualEventPrice(),[])
     useEffect(()=>getAnnualEventsMenuItems(),[])
     
