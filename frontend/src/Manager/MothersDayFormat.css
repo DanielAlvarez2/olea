@@ -1,3 +1,7 @@
 h2{
     font-family: FuturaRoundBold;
 }
+h2 span{
+    font-family: serif;
+    font-size: 15px;
+}
