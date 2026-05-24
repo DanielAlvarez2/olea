@@ -18,6 +18,7 @@ export default function MothersDayFormat(){
 
     const [annualEventPrice, setAnnualEventPrice] = useState(0)      
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
+    const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
     const [dinnerFormatting, setDinnerFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
     const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
@@ -27,11 +28,13 @@ export default function MothersDayFormat(){
                 getDinnerMenuItems()
     },[])
     useEffect(()=>getAnnualEventPrice(),[])
+    useEffect(()=>getAnnualEventsMenuItems(),[])
     
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
+    const event = "Mother's Day"
 
     function getAnnualEventPrice(){
         try{
@@ -58,6 +61,17 @@ export default function MothersDayFormat(){
         }
     }
 
+    function getAnnualEventsMenuItems(){
+        try{
+            fetch(`${BASE_URL}/api/annual-events-menu-items`)
+                .then(res=>res.json())
+                .then(json=>setAllAnnualEventsMenuItems(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+    
     function getDinnerFormatting(){
         try{
             fetch(`${BASE_URL}/api/formats/dinner`)
@@ -204,30 +218,24 @@ export default function MothersDayFormat(){
 
                                                 <h2>appetizers <span>choose one</span></h2>
 
-                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
-                                                    return(
-                                                        <div    key={data._id}
-                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
-                                                                        margin:`${dinnerItemMarginsTopBottom}px 0`
-                                                                }}
-                                                                // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                className='special'>
-                                                        
-                                                            <span className='name'>{data.name} </span>
-                                                            {data.allergiesAbbreviated &&   <>
-                                                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>               
-                                                                                            </>
-                                                            }
-                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                            {data.description && <span> {data.description}</span>}
-                                                            
-                                                            <span className='price'> &nbsp;{data.price}</span> 
-                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
+                                    return(
+                                        <div key={data._id} className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </div>
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            <span> {data.description}</span>
+                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
-                                                        </div>
-                                                    )
-                                                })}
+                                        </div>
+                                    )
+                                })}
 
                                             </div>
 
