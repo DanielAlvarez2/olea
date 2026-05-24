@@ -276,7 +276,9 @@ export default function MothersDayFormat(){
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
-                                                style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`}}
+                                                style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`,
+                                                        margin:`${mothersDayItemMarginsTopBottom}px 0`,                                            
+                                                    }}
                                                 className='special'>
                                             
                                             {/* {data.sequence}<br/> */}
@@ -324,7 +326,9 @@ export default function MothersDayFormat(){
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
-                                                style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`}}
+                                                style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`,
+                                                        margin:`${mothersDayItemMarginsTopBottom}px 0`,
+                                                    }}
                                                 className='special'>
                                             
                                             {/* {data.sequence}<br/> */}
@@ -396,7 +400,7 @@ export default function MothersDayFormat(){
 
 
 
-                                    <div style={{   
+                                    <div style={{   marginTop:'83px',
                                                     padding:`0 ${mothersDayItemMarginsLeftRight}px`}}
                                     >
 
@@ -409,7 +413,7 @@ export default function MothersDayFormat(){
 
                                         <div style={{   display:'flex',
                                                         flexWrap:'wrap',
-                                                        marginBottom:`${mothersDayItemMarginsTopBottom}px`,
+                                                        // marginBottom:`${mothersDayItemMarginsTopBottom}px`,
                                                         // border:'1px solid #888'
                                                         }}>
 
@@ -417,7 +421,9 @@ export default function MothersDayFormat(){
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
-                                                style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`,width:'50%'}}
+                                                style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`,
+                                                        margin:`${mothersDayItemMarginsTopBottom}px 0`,
+                                                        width:'50%'}}
                                                 className='special'>
                                             
                                             {/* {data.sequence}<br/> */}
@@ -447,24 +453,31 @@ export default function MothersDayFormat(){
 
 
 
-                                    <div className='dessert-footer'>
-                                        
+                                    <div className='dessert-footer' style={{marginTop:'40px',marginLeft:'10px'}}>
+                                        <div style={{display:'flex',justifyContent:'space-between',paddingRight:'33px'}}>
+                                            <div className='chef-name'>manuel romero, chef</div>
+                                            <div className='allergy-explanations'>(gl) gluten, (n) nuts, (d) dairy</div>
+                                        </div>
+
+                                        <hr/>
                                         
                                         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
 
-                                            <div className='chef name' style={{textDecoration:'underline'}}>manuel romero, chef</div>
                                             
-                                            <img src='qr-dinner.png' height='60px' />
+                                            {/* <img src='qr-dinner.png' height='60px' /> */}
                                             
-                                            <div style={{width:'65%'}}>
-                                                <span style={{fontWeight:'100'}}>
+                                            <div>
+                                                <span style={{fontWeight:'100',fontSize:'13.2px'}}>
+                                                    <br/><br/>
                                                     consumer advisory: consumption of undercooked meat, poultry, 
-                                                    eggs, or seafood may increase the risk of food-borne illnesses<br/>
-                                                    all menu items are subject to change according to seasonality and availability<br/>
+                                                    eggs, or seafood may increase the risk of food-borne illnesses.
+                                                </span><br/>
+
+                                                
+                                                <span style={{fontWeight:'900',fontSize:'13px'}}>
+                                                    please alert your server if you have special dietary requirements.
                                                 </span>
                                                 
-                                                please alert your server if you have special dietary requirements before ordering<br/>
-                                                <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                             </div>
                                         </div>
                                     </div>                                </div>

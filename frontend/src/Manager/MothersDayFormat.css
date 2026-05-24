@@ -30,3 +30,14 @@ h2 span{
     font-weight: 900;
     font-size: 15.8px;
 }
+.chef-name{
+    /* color:transparent; */
+    font-size: 17px;
+    font-family: FuturaLight;
+}
+.allergy-explanations{
+    /* color:blue; */
+    font-style: italic;
+    font-size: 17px;
+
+}
