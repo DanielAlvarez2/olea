@@ -114,6 +114,19 @@ export default function MothersDayFormat(){
             .catch(err=>console.log(err))
     }
 
+    function decreaseMothersDayItemMarginsLeftRight(){
+        if (mothersDayItemMarginsLeftRight <= 0) return
+        fetch(`${BASE_URL}/api/formats/mothers-day/decreaseItemMarginsLeftRight`, {method:'PUT'})
+            .then(()=>getMothersDayFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function increaseMothersDayItemMarginsLeftRight(){
+        fetch(`${BASE_URL}/api/formats/mothers-day/increaseItemMarginsLeftRight`, {method:'PUT'})
+            .then(()=>getMothersDayFormatting())
+            .catch(err=>console.log(err))
+    }
+
     function increaseDinnerItemMarginsLeftRight(){
         fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsLeftRight`, {method:'PUT'})
             .then(()=>getDinnerFormatting())
@@ -129,6 +142,19 @@ export default function MothersDayFormat(){
             .catch(err=>console.log(err))
     }
 
+    function decreaseMothersDayItemMarginsTopBottom(){
+        if (mothersDayItemMarginsTopBottom <= 0) return
+        fetch(`${BASE_URL}/api/formats/mothers-day/decreaseItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getMothersDayFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function increaseMothersDayItemMarginsTopBottom(){
+        fetch(`${BASE_URL}/api/formats/mothers-day/increaseItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getMothersDayFormatting())
+            .catch(err=>console.log(err))
+    }
+
     function increaseDinnerItemMarginsTopBottom(){
         fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsTopBottom`, {method:'PUT'})
             .then(()=>getDinnerFormatting())
@@ -136,16 +162,16 @@ export default function MothersDayFormat(){
     }
 
     function decreasePageMargin(){
-        if (pageMargin <= 25) return
-        fetch(`${BASE_URL}/api/formats/dinner/decreasePageMargin`,{method:'PUT'})
-        .then(()=>getDinnerFormatting())
+        if (mothersDayPageMargin <= 25) return
+        fetch(`${BASE_URL}/api/formats/mothers-day/decreasePageMargin`,{method:'PUT'})
+        .then(()=>getMothersDayFormatting())
         .catch(err=>console.log(err))
     }
 
     
     function increasePageMargin(){
-        fetch(`${BASE_URL}/api/formats/dinner/increasePageMargin`,{method:'PUT'})
-            .then(()=>getDinnerFormatting())
+        fetch(`${BASE_URL}/api/formats/mothers-day/increasePageMargin`,{method:'PUT'})
+            .then(()=>getMothersDayFormatting())
             .catch(err=>console.log(err))
     }
 
@@ -190,7 +216,7 @@ export default function MothersDayFormat(){
 
 
                                 <div    className='dinner-menu-format' 
-                                        style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`}} 
+                                        style={{padding:`${mothersDayPageMargin/2}px ${mothersDayPageMargin}px 0px`}} 
                                 >
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 

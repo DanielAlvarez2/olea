@@ -2660,6 +2660,18 @@ app.put('/api/formats/dinner/decreasePageMargin', async(req,res)=>{
     }
 })
 
+app.put('/api/formats/mothers-day/decreasePageMargin', async(req,res)=>{
+    try{
+        const allFormats = await MothersDayFormat.find()
+        console.log(allFormats[0])
+        await MothersDayFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMargin: allFormats[0].pageMargin - 1})
+        res.json("Mother's Day page margin decreased")
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/dinner/increasePageMargin', async(req,res)=>{
     try{
         const allFormats = await DinnerFormat.find()
@@ -2667,6 +2679,18 @@ app.put('/api/formats/dinner/increasePageMargin', async(req,res)=>{
         await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {pageMargin: allFormats[0].pageMargin + 1})
         res.json('page margin increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/mothers-day/increasePageMargin', async(req,res)=>{
+    try{
+        const allFormats = await MothersDayFormat.find()
+        console.log(allFormats[0])
+        await MothersDayFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMargin: allFormats[0].pageMargin + 1})
+        res.json("Mother's Day page margin increased")
     }catch(err){
         console.log(err)
     }
