@@ -21,7 +21,7 @@ export default function MothersDayFormat(){
     const [mothersDayFormatting, setMothersDayFormatting] = useState([])
     const [mothersDayPageMargin, setMothersDayPageMargin] = useState(0)
     const [dinnerItemMarginsTopBottom, setDinnerItemMarginsTopBottom] = useState(0)
-    const [mothersDayMarginsTopBottom, setMothersDayItemMarginsTopBottom] = useState(0)
+    const [mothersDayItemMarginsTopBottom, setMothersDayItemMarginsTopBottom] = useState(0)
     const [mothersDayItemMarginsLeftRight, setMothersDayItemMarginsLeftRight] = useState(0)
     const [dinnerItemMarginsLeftRight, setDinnerItemMarginsLeftRight] = useState(0)
     useEffect(()=>{ 
@@ -96,8 +96,8 @@ export default function MothersDayFormat(){
                 .then(json=>{
                     setMothersDayFormatting(json[0])
                     setMothersDayPageMargin(json[0].pageMargin)
-                    setMothersDayItemMarginsTopBottom(json[0].dinnerItemMarginsTopBottom)
-                    setMothersDayItemMarginsLeftRight(json[0].dinnerItemMarginsLeftRight)
+                    setMothersDayItemMarginsTopBottom(json[0].mothersDayItemMarginsTopBottom)
+                    setMothersDayItemMarginsLeftRight(json[0].mothersDayItemMarginsLeftRight)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -311,8 +311,8 @@ export default function MothersDayFormat(){
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
-                                                                        margin:`${dinnerItemMarginsTopBottom}px 0`
+                                                                style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`,
+                                                                        margin:`${mothersDayItemMarginsTopBottom}px 0`
                                                                 }}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                                 className='special'>
