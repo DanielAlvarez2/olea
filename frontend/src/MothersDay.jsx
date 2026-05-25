@@ -206,6 +206,7 @@ export default function MothersDay(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span className='description'> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                {data.allergiesComplete && <div style={{color:'red'}}>{data.allergiesComplete}</div>}
                                             </div>
 
 
@@ -256,6 +257,7 @@ export default function MothersDay(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span className='description'> {data.description}</span>
                                                 {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
+                                                {data.allergiesComplete && <div style={{color:'red'}}>{data.allergiesComplete}</div>}
                                             </div>
 
 
@@ -353,6 +355,7 @@ export default function MothersDay(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span className='description'> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                {data.allergiesComplete && <div style={{color:'red'}}>{data.allergiesComplete}</div>}
                                             </div>
 
 
