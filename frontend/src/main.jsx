@@ -34,7 +34,7 @@ import ValentinesDayScan from './Manager/ValentinesDayScan.jsx'
 import Commencement from './Manager/Commencement.jsx'
 import CommencementScreenshot from './Manager/CommencementScreenshot.jsx'
 
-import MothersDay from './Manager/MothersDay.jsx'
+import MothersDayDashboard from './Manager/MothersDayDashboard.jsx'
 import MothersDayScreenshot from './Manager/MothersDayScreenshot.jsx'
 
 import NYE from './Manager/NYE.jsx'
@@ -93,6 +93,7 @@ import QRspecials from './QR-specials.jsx'
 import QRdessert from './QR-dessert.jsx'
 
 import MothersDayMenu from './MothersDayMenu.jsx'
+import MothersDay from './MothersDay.jsx'
 import MothersDayUpdate from './Manager/MothersDayUpdate.jsx'
 import MothersDayFormat from './Manager/MothersDayFormat.jsx'
 import MothersDayPrint from './Manager/MothersDayPrint.jsx'
@@ -192,12 +193,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='commencement-screenshot' element={<CommencementScreenshot />} />
         
         <Route path='mothers-day-menu' element={<MothersDayMenu />} />
-        <Route path='/manager/mothers-day' element={<MothersDay />} />
+        <Route path='/manager/mothers-day' element={<MothersDayDashboard />} />
         <Route path='/manager/mothers-day-update' element={<MothersDayUpdate />} />
         <Route path='mothers-day-screenshot' element={<MothersDayScreenshot />} />
         <Route path='/manager/mothers-day-update' element={<MothersDayUpdate />} />
         <Route path='/manager/mothers-day-format' element={<MothersDayFormat />} />
         <Route path='/manager/mothers-day-print' element={<MothersDayPrint />} />
+        <Route path='/mothers-day' element={<MothersDay />} />
         
         <Route path='valentines-day' element={<ValentinesDay />} />
         <Route path='valentines-day-screenshot' element={<ValentinesDayScreenshot />} />

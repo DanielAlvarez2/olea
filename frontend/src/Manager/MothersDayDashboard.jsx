@@ -2,7 +2,7 @@ import {Link} from 'react-router'
 import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
-export default function MothersDay(){
+export default function MothersDayDashboard(){
     return(
         <>
             <div className='manager-page-wrapper'>
