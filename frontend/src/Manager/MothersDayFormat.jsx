@@ -217,15 +217,15 @@ export default function MothersDayFormat(){
 
                                 <div    className='dinner-menu-format' 
                                         style={{padding:`${mothersDayPageMargin/2}px ${mothersDayPageMargin}px 0px`,
-                                                backgroundImage:"url('/scan-mothers-day.png')",
+                                                // backgroundImage:"url('/scan-mothers-day.png')",
                                                 backgroundSize:'8.5in',
-                                                color:'red'
+                                                // color:'red'
                                             }} 
                                 >
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
-                                                        color:'red',
+                                                        // color:'red',
                                                         padding:`0 ${mothersDayItemMarginsLeftRight}px`,
                                                         display:'block',
                                                         cursor:'default',
@@ -453,8 +453,9 @@ export default function MothersDayFormat(){
 
 
 
-                                    <div className='dessert-footer' style={{marginTop:'40px',marginLeft:'10px'}}>
-                                        <div style={{display:'flex',justifyContent:'space-between',paddingRight:'33px'}}>
+                                    <div className='dessert-footer' style={{marginTop:'40px'}}>
+
+                                        <div style={{display:'flex',justifyContent:'space-between',padding:`0 ${mothersDayItemMarginsLeftRight}px`}}>
                                             <div className='chef-name'>manuel romero, chef</div>
                                             <div className='allergy-explanations'>(gl) gluten, (n) nuts, (d) dairy</div>
                                         </div>
@@ -466,7 +467,7 @@ export default function MothersDayFormat(){
                                             
                                             {/* <img src='qr-dinner.png' height='60px' /> */}
                                             
-                                            <div>
+                                            <div style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`}}>
                                                 <span style={{fontWeight:'100',fontSize:'13.2px'}}>
                                                     <br/><br/>
                                                     consumer advisory: consumption of undercooked meat, poultry, 
