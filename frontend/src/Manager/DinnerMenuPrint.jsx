@@ -6,12 +6,6 @@ import './DessertDrinksUpdate.css'
 import './DessertDrinksUpdate.css'
 import './DinnerMenuFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
-import { PiPlusCircleDuotone } from "react-icons/pi";
-import { PiMinusCircleDuotone } from "react-icons/pi";
-import { FaToggleOff } from "react-icons/fa6";
-import { FaToggleOn } from "react-icons/fa6";
-
-
 
 export default function DinnerMenuPrint(){
 
@@ -30,8 +24,6 @@ export default function DinnerMenuPrint(){
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
-
-
 
     function getDinnerMenuItems(){
         try{
@@ -72,48 +64,6 @@ export default function DinnerMenuPrint(){
         }catch(err){
             console.log(err)
         }
-    }
-
-    function decreaseDinnerItemMarginsLeftRight(){
-        if (dinnerItemMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increaseDinnerItemMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
-    }
-
-
-
-    function decreaseDinnerItemMarginsTopBottom(){
-        if (dinnerItemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/dinner/decreaseDinnerItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increaseDinnerItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/dinner/increaseDinnerItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function decreasePageMargin(){
-        if (pageMargin <= 0) return
-        fetch(`${BASE_URL}/api/formats/dinner/decreasePageMargin`,{method:'PUT'})
-        .then(()=>getDinnerFormatting())
-        .catch(err=>console.log(err))
-    }
-
-    
-    function increasePageMargin(){
-        fetch(`${BASE_URL}/api/formats/dinner/increasePageMargin`,{method:'PUT'})
-            .then(()=>getDinnerFormatting())
-            .catch(err=>console.log(err))
     }
 
     function printPage(){

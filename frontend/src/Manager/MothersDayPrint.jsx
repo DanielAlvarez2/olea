@@ -7,12 +7,8 @@ import './DessertDrinksUpdate.css'
 import './DinnerMenuFormat.css'
 import './MothersDayFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
-import { PiPlusCircleDuotone } from "react-icons/pi";
-import { PiMinusCircleDuotone } from "react-icons/pi";
 
-
-
-export default function MothersDayFormat(){
+export default function MothersDayPrint(){
 
     const [annualEventPrice, setAnnualEventPrice] = useState(0)      
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
@@ -69,45 +65,22 @@ export default function MothersDayFormat(){
         }
     }
 
-    function decreaseMothersDayItemMarginsLeftRight(){
-        if (mothersDayItemMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/mothers-day/decreaseItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getMothersDayFormatting())
-            .catch(err=>console.log(err))
+    function printPage(){
+        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+            alert(`
+WARNING: 
+
+Printing from Safari Browser is not supported.
+Please switch to a different browser to proceed.
+`)
+            return
+        }else{
+            window.print()
+        }
     }
 
-    function increaseMothersDayItemMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/mothers-day/increaseItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getMothersDayFormatting())
-            .catch(err=>console.log(err))
-    }
 
-    function decreaseMothersDayItemMarginsTopBottom(){
-        if (mothersDayItemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/mothers-day/decreaseItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getMothersDayFormatting())
-            .catch(err=>console.log(err))
-    }
 
-    function increaseMothersDayItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/mothers-day/increaseItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getMothersDayFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function decreasePageMargin(){
-        if (mothersDayPageMargin <= 25) return
-        fetch(`${BASE_URL}/api/formats/mothers-day/decreasePageMargin`,{method:'PUT'})
-        .then(()=>getMothersDayFormatting())
-        .catch(err=>console.log(err))
-    }
-
-    
-    function increasePageMargin(){
-        fetch(`${BASE_URL}/api/formats/mothers-day/increasePageMargin`,{method:'PUT'})
-            .then(()=>getMothersDayFormatting())
-            .catch(err=>console.log(err))
-    }
 
 
 
@@ -118,10 +91,18 @@ export default function MothersDayFormat(){
                     //         color:'red'
                     //         }}
             >
+            <div style={{width:'100%'}} className='no-print'>
                 <ManagerNavbar page='events' />
-                    <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>mother's day &gt; format</div>
-                    <div className='main-menu'>
+            </div>
+                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>
+                        menu manager
+                    </div>
+                    
+                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>
+                        mother's day &gt; print
+                    </div>
+                    
+                    <div className='main-menu' style={{paddingBottom:0}}>
 
 
 
@@ -129,7 +110,6 @@ export default function MothersDayFormat(){
 
 
                                 
-                            <br/>
 
 
 
@@ -140,55 +120,25 @@ export default function MothersDayFormat(){
 
 
 
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseMothersDayItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom &#8597;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseMothersDayItemMarginsTopBottom} /></span>
-                                    </div>
+                        <br className='no-print'/>
+                                                       
+                            <div style={{   
+                                            // border:'1px solid green',
+                                            textAlign:'center',
+                                            display:'grid',
+                                            placeContent:'center',
+                                            width:'100%'}}>
 
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseMothersDayItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right &#8596;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseMothersDayItemMarginsLeftRight} /></span>
-                                    </div>
+                            
 
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
+                                <div    className='no-print print-btn' 
+                                        style={{marginTop:'10px'}}
+                                        onClick={()=>printPage()}>
+                                    print
+                                </div>
+                            </div>
 
-                                                        
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMargin} /></span>
-                                        <span>page margin</span>
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMargin} /></span>
-                                    </div>
-                                    <br/><br/>
-
+                            <br className='no-print'/>
 
 
 
@@ -470,54 +420,9 @@ export default function MothersDayFormat(){
                     </div>
 
                                                        
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseMothersDayItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom &#8597;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseMothersDayItemMarginsTopBottom} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseMothersDayItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right &#8596;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseMothersDayItemMarginsLeftRight} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-
-                                                        
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMargin} /></span>
-                                        <span>page margin</span>
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMargin} /></span>
-                                    </div>
-                                    <br/><br/>
+                                    <br className='no-print'/>
+                                    <br className='no-print'/>
+                                    
 
 
             </div>{/* .manager-page-wrapper */}
