@@ -1,6 +1,7 @@
 import {Link} from 'react-router'
 import {useState,useEffect} from 'react'
 import './Menu.css'
+import './MothersDay.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 import QRnavbar from './components/QR-navbar.jsx'
 import QRfooter from './components/QR-footer.jsx'
@@ -46,17 +47,11 @@ export default function MothersDay(){
 
 
 
-    function showModal(pic,name,price,descriptionIntro,description,allergiesComplete){
+    function showModal(pic,name,description,allergiesComplete){
         if(!pic) return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
-        if (price.includes('/')){
-            document.querySelector('.modal-price').innerHTML = `${price.split('/')[0].trim()}<br/>${price.split('/')[1].trim()}`
-        }else{
-            document.querySelector('.modal-price').innerHTML = price
-        }
-        if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
         document.querySelector('.modal-description').innerHTML = description   
         document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete    
     }
@@ -64,8 +59,6 @@ export default function MothersDay(){
     function closeModal(){
         document.querySelector('.modal-image').src = ''
         document.querySelector('.modal-name').innerHTML = ''
-        document.querySelector('.modal-price').innerHTML = ''
-        document.querySelector('.modal-description-intro').innerHTML = ''
         document.querySelector('.modal-description').innerHTML = ''
         document.querySelector('.modal').style.display = 'none'
         document.querySelector('.modal-allergies-complete').innerHTML = ''
@@ -99,6 +92,37 @@ export default function MothersDay(){
                     //         color:'red'
                     //         }}
             >
+
+                    <div className='modal' style={{ position:'fixed',
+                                                    inset:'0',
+                                                    height:'100vh',
+                                                    width:'100%',
+                                                    zIndex:'3000',
+                                                    background:'#888888ee',
+                                                    color:'black',
+                                                    display:'none',
+                                                    placeContent:'center'
+                    }}>
+                        <AiTwotoneCloseCircle   size='70' 
+                                                onClick={closeModal}
+                                                style={{position:'fixed',
+                                                        cursor:'pointer',
+                                                        top:'5px',
+                                                        right:'5px'}} />
+                        <div className='modal-content'>
+                            <figure style={{display:'table'}}>
+                                <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw',borderRadius:'25px'}} />
+                                <figcaption style={{display:'table-caption',padding:'10px',captionSide:'bottom',borderRadius:'25px',background:'#ccc'}}>
+                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                        <span className='modal-name' style={{fontWeight:'900'}}></span>
+                                    </div>
+                                    <span className='modal-description'></span>
+                                    <div className='modal-allergies-complete'></div>
+                                </figcaption>
+                            </figure>
+                        </div>{/* .modal-content */}
+                    </div>{/* .modal */}
+
                     
                     <div className='main-menu' style={{paddingBottom:0}}>
 
@@ -135,18 +159,22 @@ export default function MothersDay(){
                                             // padding:`${mothersDayPageMargin/2}px ${mothersDayPageMargin}px 0px`,
                                                 // backgroundImage:"url('/scan-mothers-day.png')",
                                                 backgroundSize:'8.5in',
-                                                // color:'red'
+                                                // color:'blue',
+                                                height:'auto',
+                                                
                                             }} 
                                 >
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
-                                                        // color:'red',
+                                                        // color:'blue',
                                                         // padding:`0 ${mothersDayItemMarginsLeftRight}px`,
                                                         display:'block',
+                                                        padding:'0',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
                                         <hr 
+                                            // style={{background:'blue',border:'none',height:'1px'}}
                                         // style={{marginBottom:`${mothersDayItemMarginsTopBottom}px`}} 
                                         />
 
@@ -194,6 +222,11 @@ export default function MothersDay(){
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
+                                                onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                    data.name,
+                                                                    data.description,
+                                                                    data.allergiesComplete)}
+                                                
                                                 // style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`,
                                                 //         margin:`${mothersDayItemMarginsTopBottom}px 0`,                                            
                                                 //     }}
@@ -245,6 +278,11 @@ export default function MothersDay(){
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
+                                                onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                    data.name,
+                                                                    data.description,
+                                                                    data.allergiesComplete)}
+                                                
                                                 // style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`,
                                                 //         margin:`${mothersDayItemMarginsTopBottom}px 0`,
                                                 //     }}
@@ -320,7 +358,7 @@ export default function MothersDay(){
 
 
 
-                                    <div style={{   marginTop:'83px',
+                                    <div style={{   marginTop:'0px',
                                                     // padding:`0 ${mothersDayItemMarginsLeftRight}px`
                                                     }}
                                     >
@@ -342,6 +380,11 @@ export default function MothersDay(){
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
+                                                onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                    data.name,
+                                                                    data.description,
+                                                                    data.allergiesComplete)}
+                                                
                                                 style={{
                                                         // padding:`0 ${mothersDayItemMarginsLeftRight}px`,
                                                         // margin:`${mothersDayItemMarginsTopBottom}px 0`,
@@ -376,14 +419,16 @@ export default function MothersDay(){
 
 
 
-                                    <div className='dessert-footer' style={{marginTop:'40px'}}>
+                                    <div className='dessert-footer'>
 
                                         <div style={{display:'flex',justifyContent:'space-between'}}>
                                             <div className='chef-name'>manuel romero, chef</div>
                                             <div className='allergy-explanations'>(gl) gluten, (n) nuts, (d) dairy</div>
                                         </div>
 
-                                        <hr/>
+                                        <hr
+                                            // style={{background:'blue',border:'none',height:'1px'}}
+                                        />
                                         
                                         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
 

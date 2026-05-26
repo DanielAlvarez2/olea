@@ -393,27 +393,34 @@ Please switch to a different browser to proceed.
                                         </div>
 
                                         <hr/>
-                                        
-                                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                                        <br/>
+                                        <div style={{   display:'flex',
+                                                        justifyContent:'space-between',
+                                                        padding:`0 ${mothersDayItemMarginsLeftRight}px`,
+                                                        alignItems:'center'}}>
 
                                             
-                                            {/* <img src='qr-dinner.png' height='60px' /> */}
                                             
-                                            <div style={{padding:`0 ${mothersDayItemMarginsLeftRight}px`}}>
+                                            <div style={{}}>
                                                 <span style={{fontWeight:'100',fontSize:'13.2px'}}>
-                                                    <br/><br/>
-                                                    consumer advisory: consumption of undercooked meat, poultry, 
+                                                    
+                                                    consumer advisory: consumption of undercooked meat, poultry,  
+                                                    <br/>
                                                     eggs, or seafood may increase the risk of food-borne illnesses.
                                                 </span><br/>
 
                                                 
                                                 <span style={{fontWeight:'900',fontSize:'13px'}}>
                                                     please alert your server if you have special dietary requirements.
-                                                </span>
-                                                
+                                                </span>                                                
                                             </div>
+
+                                            <img src='/qr-mothers-day.jpg' height='60px' />
+
                                         </div>
-                                    </div>                                </div>
+                                    </div>     
+                                
+                                </div>
 
 
 
