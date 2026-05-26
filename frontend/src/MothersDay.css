@@ -3,11 +3,13 @@
 .special{
     margin-bottom: 20px;
 }
-.dinner-menu-format{
+.event-menu-legal{
     padding:40px;
+    width:8.5in;
+    border:1px solid black;
 }
-/* @media (max-width:8.5in){
-    .dinner-menu-format{
+@media (max-width:8.5in){
+    .event-menu-legal{
         width:100%;
     }
-} */
+}

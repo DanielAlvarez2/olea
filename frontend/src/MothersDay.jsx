@@ -3,8 +3,6 @@ import {useState,useEffect} from 'react'
 import './Menu.css'
 import './MothersDay.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
-import QRnavbar from './components/QR-navbar.jsx'
-import QRfooter from './components/QR-footer.jsx'
 
 
 
@@ -124,7 +122,7 @@ export default function MothersDay(){
                     </div>{/* .modal */}
 
                     
-                    <div className='main-menu' style={{paddingBottom:0}}>
+                    <div className='main-menu-mothers-day' style={{paddingBottom:0}}>
 
 
 
@@ -154,7 +152,7 @@ export default function MothersDay(){
 
 
 
-                                <div    className='dinner-menu-format' 
+                                <div    className='event-menu-legal' 
                                         style={{
                                             // padding:`${mothersDayPageMargin/2}px ${mothersDayPageMargin}px 0px`,
                                                 // backgroundImage:"url('/scan-mothers-day.png')",
@@ -200,22 +198,12 @@ export default function MothersDay(){
                                                 // style={{paddingRight:'83px'}}
                                                 >
 
-
+                                        <div className='mothers-day-flexbox' style={{display:'flex',columnGap:'20px'}}>
+                                            
 
                                             <div    id='dinner-menu-left'
-                                                    style={{width:'50%'}}        
+                                                    style={{maxWidth:'50%'}}        
                                             >
-
-
-
-
-
-
-
-
-
-
-
 
                                                 <h2>appetizers <span>choose one</span></h2>
 
@@ -270,7 +258,7 @@ export default function MothersDay(){
 
 
                                             <div    id='dinner-menu-right'
-                                                    style={{width:'50%'}}
+                                                    style={{maxWidth:'50%'}}
                                             >
 
                                                 <h2>entrées <span>choose one</span></h2>
@@ -306,6 +294,7 @@ export default function MothersDay(){
                                             
                                             </div>{/* id='dinner-menu-right' */}
 
+                                        </div>{/* .mothers-day-flexbox */}
 
 
 
@@ -372,6 +361,10 @@ export default function MothersDay(){
 
                                         <div style={{   display:'flex',
                                                         flexWrap:'wrap',
+                                                        // background:'pink',
+                                                        justifyContent:'space-between',
+                                                        width:'100%',
+                                                        // columnGap:'20px',
                                                         // marginBottom:`${mothersDayItemMarginsTopBottom}px`,
                                                         // border:'1px solid #888'
                                                         }}>
@@ -386,9 +379,10 @@ export default function MothersDay(){
                                                                     data.allergiesComplete)}
                                                 
                                                 style={{
+                                                        // border:'1px solid blue',
                                                         // padding:`0 ${mothersDayItemMarginsLeftRight}px`,
                                                         // margin:`${mothersDayItemMarginsTopBottom}px 0`,
-                                                        width:'50%'}}
+                                                        maxWidth:'calc(50% - 20px)'}}
                                                 className='special'>
                                             
                                             {/* {data.sequence}<br/> */}
