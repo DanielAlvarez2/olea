@@ -13,3 +13,8 @@
         width:100%;
     }
 }
+@media (max-width:470px){
+    .event-menu-legal{
+        padding:10px;
+    }
+}
