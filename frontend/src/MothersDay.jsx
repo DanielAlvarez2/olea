@@ -415,7 +415,7 @@ export default function MothersDay(){
 
                                     <div className='dessert-footer'>
 
-                                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                                        <div id='chef-flexbox'>
                                             <div className='chef-name'>manuel romero, chef</div>
                                             <div className='allergy-explanations'>(gl) gluten, (n) nuts, (d) dairy</div>
                                         </div>

@@ -13,6 +13,15 @@
         width:100%;
     }
 }
+#chef-flexbox{
+    display:flex;
+    justify-content:space-between;
+}
+@media (max-width:400px){
+    #chef-flexbox{
+        flex-direction: column;
+    }
+}
 @media (max-width:470px){
     .event-menu-legal{
         padding:10px;
