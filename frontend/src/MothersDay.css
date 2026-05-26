@@ -17,4 +17,8 @@
     .event-menu-legal{
         padding:10px;
     }
+    h2 span{
+        /* color:blue; */
+        font-size: 13px !important;
+    }
 }
