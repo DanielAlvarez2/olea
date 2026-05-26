@@ -17,15 +17,28 @@ export default function MothersDayUpdate(){
     const [cloudinaryPublicID, setCloudinaryPublicID] = useState('')
     const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
     const [isChecked, setIsChecked] = useState(false)
+    const [websiteImageURL, setWebsiteImageURL] = useState('')
+    const [websiteImageID, setWebsiteImageID] = useState('')
 
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
+    useEffect(()=>getWebsiteImage(),[])
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
     const event = "Mother's Day"
+
+    function getWebsiteImage(){
+        fetch(`${BASE_URL}/api/website-image/mothers-day`)
+            .then(res=>res.json())
+            .then(data=>{
+                setWebsiteImageURL(data.cloudinary_secure_URL)
+                setWebsiteImageID(data.cloudinaryPublicID)
+            })
+            .catch(err=>console.log(err))
+    }
 
     async function createItem(formData){
         setUpdatingMenu(true)
@@ -981,6 +994,54 @@ export default function MothersDayUpdate(){
 
 
 
+
+
+
+
+
+
+
+
+
+                    <form   
+                            // action={updateAnnualEventPrice} 
+                            id='website-graphic'
+                            className='specials-form'
+                            style={{background:`orange`}}>
+                        <h2 style={{textAlign:'center'}}>
+                            {event.toLowerCase()}
+                        </h2>
+                        <h2 style={{textAlign:'center'}}>
+                            website image
+                        </h2>
+                        <br/><br/>
+                        <input  type='hidden'
+                                name='annual-event-name'
+                                value='MothersDay'
+                        />
+                        
+                        <img src={websiteImageURL ? websiteImageURL : '/no-image.jpg' } style={{maxWidth:'100%'}} />
+                        <br/>
+                        <div style={{textAlign:'center'}}>current image</div>
+                        <br/>
+                        {websiteImageURL ? <div>replace image (optional)</div> : <div>add image (optional)</div>}
+                        <input type='file' />
+
+                        <br/><br/>
+                        <div style={{display:'flex', justifyContent:'center'}}>
+                            <input  type='submit' 
+                                    style={{padding:'10px 10px',
+                                            cursor:'pointer',
+                                            borderRadius:'10px',
+                                            border:'2px solid black',
+                                            color:'black',
+                                            background:'lightgrey',
+                                            fontSize:'20px'}}
+                                    value = 'update' />                        
+                        </div>
+
+                                                
+                    </form>
 
 
 

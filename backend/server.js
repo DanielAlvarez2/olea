@@ -30,6 +30,7 @@ const TastingMenuPricing = require('./models/TastingMenuPricing.js')
 const AnnualEvents = require('./models/AnnualEvents.js')
 const AnnualEventsMenuItem = require('./models/AnnualEventsMenuItem.js')
 const AnnualEventsPrice = require('./models/AnnualEventsPrice.js')
+const AnnualEventsWebsiteImage = require('./models/AnnualEventsWebsiteImage.js')
 
 const {cloudinary} = require('./middleware/cloudinary.js')
 
@@ -486,6 +487,25 @@ app.post('/api/teas', async(req,res)=>{
         res.json(`
             Added to Database: 
              - ${req.body.name}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/website-image/:event', async(req,res)=>{
+    try{
+        let currentImage = await AnnualEventsWebsiteImage.findOne({event:req.params.event})
+        if (!currentImage){
+            await AnnualEventsWebsiteImage.create({
+                event:req.params.event,
+                cloudinary_secure_URL:'',
+                cloudinary_public_ID:''
+            })
+        }
+        currentImage = await AnnualEventsWebsiteImage.findOne({event:req.params.event})
+        console.log(currentImage)
+        console.log(currentImage.event)
+        res.json(currentImage)
     }catch(err){
         console.log(err)
     }
