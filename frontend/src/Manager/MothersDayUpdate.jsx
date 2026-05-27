@@ -280,9 +280,18 @@ export default function MothersDayUpdate(){
         document.querySelector('#do-not-circle').style.color = isChecked ? 'transparent' : 'red'
     }
 
-
-
-
+    const [previewSource2, setPreviewSource2] = useState()
+    function handleWebsiteImageFileInputChange(e){
+        const file = e.target.files[0]
+        previewFile2(file)
+    }
+    function previewFile2(file){
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = ()=>{
+            setPreviewSource2(reader.result)
+        }
+    }
 
 
 
@@ -985,7 +994,7 @@ export default function MothersDayUpdate(){
                                             color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
-                                    value = 'update' />                        
+                                    value = 'update price' />                        
                         </div>
                         
                     </form>
@@ -1025,9 +1034,17 @@ export default function MothersDayUpdate(){
                         <div style={{textAlign:'center'}}>current image</div>
                         <br/>
                         {websiteImageURL ? <div>replace image (optional)</div> : <div>add image (optional)</div>}
-                        <input type='file' />
+                        <input  name='website-image-file' 
+                                id='website-image-file'
+                                onChange={handleWebsiteImageFileInputChange}
+                                type='file' />
 
                         <br/><br/>
+                                                
+                        {previewSource2 &&  <>
+                                                <img src={previewSource2} style={{maxWidth:'300px',maxHeight:'300px'}} /><br/><br/>
+                                            </>}
+
                         <div style={{display:'flex', justifyContent:'center'}}>
                             <input  type='submit' 
                                     style={{padding:'10px 10px',
@@ -1037,7 +1054,7 @@ export default function MothersDayUpdate(){
                                             color:'black',
                                             background:'lightgrey',
                                             fontSize:'20px'}}
-                                    value = 'update' />                        
+                                    value = 'update image' />                        
                         </div>
 
                                                 
