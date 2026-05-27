@@ -18,6 +18,7 @@ export default function MothersDayUpdate(){
     const [cloudinaryPublicID, setCloudinaryPublicID] = useState('')
     const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
     const [isChecked, setIsChecked] = useState(false)
+    const [isNoWebsiteImageChecked, setIsNoWebsiteImageChecked] = useState(false)
     const [websiteImageURL, setWebsiteImageURL] = useState('')
     const [websiteImageID, setWebsiteImageID] = useState('')
 
@@ -313,6 +314,17 @@ export default function MothersDayUpdate(){
         .catch(err=>console.log(err))        
     }
 
+    function toggleNoWebsiteImage(){
+        !isNoWebsiteImageChecked && setPreviewSource2('')
+        if(!isNoWebsiteImageChecked){
+            document.querySelector('#website-image-file').value = ''
+            document.querySelector('#file-input-website-image').style.visibility = 'hidden'
+        }else{
+            document.querySelector('#file-input-website-image').style.visibility = 'visible'
+        }
+        setIsNoWebsiteImageChecked(!isNoWebsiteImageChecked)
+        document.querySelector('#do-not-circle2').style.color = isNoWebsiteImageChecked ? 'transparent' : 'red'
+    }    
 
 
 
@@ -1062,16 +1074,32 @@ export default function MothersDayUpdate(){
                                 name='cloudinary_public_ID' 
                                 id='cloudinary_public_ID' />
                         
-                        <img src={websiteImageURL ? websiteImageURL : '/no-image.jpg' } style={{maxWidth:'100%'}} />
+                        <div style={{position:'relative',display:'inline-block'}}>
+                            <div style={{
+                                            position:'absolute',
+                                            width:'100%',
+                                            height:'100%',
+                                            display:'grid',
+                                            placeContent:'center',
+                                            top:'0',
+                                            left:'0'
+                            }}>
+                                <MdDoNotDisturbAlt size='150' id='do-not-circle2' style={{color:'transparent'}} />
+                            </div>
+                            <img src={websiteImageURL ? websiteImageURL : '/no-image.jpg' } style={{maxWidth:'100%'}} />
+                        </div>
+                        
                         <br/>
                         <div style={{textAlign:'center'}}>current image</div>
                         <br/><br/>
-                        {websiteImageURL ? <div>replace image (optional)</div> : <div>add image (optional)</div>}
-                        <input  name='website-image-file' 
-                                id='website-image-file'
-                                onChange={handleWebsiteImageFileInputChange}
-                                type='file' />
-
+                        
+                        <div id='file-input-website-image'>
+                            {websiteImageURL ? <div>replace image (optional)</div> : <div>add image (optional)</div>}
+                            <input  name='website-image-file' 
+                                    id='website-image-file'
+                                    onChange={handleWebsiteImageFileInputChange}
+                                    type='file' />
+                        </div>
                         <br/><br/>
                                                 
                         {previewSource2 &&  <>
@@ -1083,6 +1111,8 @@ export default function MothersDayUpdate(){
                                                 <br/>
                                                 <input  type='checkbox' 
                                                         name='no-image'
+                                                        checked={isNoWebsiteImageChecked}
+                                                        onChange={toggleNoWebsiteImage}
                                                 /> &nbsp;remove image / display NO image
                                                 <br/>
                                             </>
