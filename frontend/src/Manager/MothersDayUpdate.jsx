@@ -1065,7 +1065,7 @@ export default function MothersDayUpdate(){
                         <img src={websiteImageURL ? websiteImageURL : '/no-image.jpg' } style={{maxWidth:'100%'}} />
                         <br/>
                         <div style={{textAlign:'center'}}>current image</div>
-                        <br/>
+                        <br/><br/>
                         {websiteImageURL ? <div>replace image (optional)</div> : <div>add image (optional)</div>}
                         <input  name='website-image-file' 
                                 id='website-image-file'
@@ -1078,6 +1078,11 @@ export default function MothersDayUpdate(){
                                                 <img src={previewSource2} style={{maxWidth:'300px',maxHeight:'300px'}} /><br/><br/>
                                             </>}
 
+                        
+                        <br/>
+                        <input type='checkbox' /> remove image / display NO image
+
+                        <br/><br/><br/>
                         <div style={{display:'flex', justifyContent:'center'}}>
                             {!updatingImage &&                             
                                 <input  type='submit' 
@@ -1107,6 +1112,8 @@ export default function MothersDayUpdate(){
 
                                                 
                     </form>
+
+                    <br/><br/><br/>
 
 
 
