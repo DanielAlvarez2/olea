@@ -12,6 +12,7 @@ import { AiTwotoneCloseCircle } from "react-icons/ai";
 export default function MothersDayMenu(){
 
     const event = "Mother's Day"
+    const event_url = 'mothers-day'
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -21,9 +22,21 @@ export default function MothersDayMenu(){
     useEffect(()=>redirectIfEventDisabled(),[])   
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
+    useEffect(()=>getWebsiteImage(),[])
 
+    const [websiteImageURL, setWebsiteImageURL] = useState('')
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)    
+
+    function getWebsiteImage(){
+        fetch(`${BASE_URL}/api/events/website-image/${event_url}`)
+            .then(res=>res.json())
+            .then(data=>{
+                setWebsiteImageURL(data.cloudinary_secure_URL)
+                setWebsiteImageID(data.cloudinaryPublicID)
+            })
+            .catch(err=>console.log(err))
+    }
 
     const navigate = useNavigate()
 
@@ -154,9 +167,11 @@ export default function MothersDayMenu(){
                             >
                                 
                                 <div className='dinner-left'>
-                                    <img    src='mothers-day-website-image.png' 
-                                            style={{maxWidth:'100%'}}
-                                    />
+                                    {websiteImageURL &&                                     
+                                        <img    src={websiteImageURL} 
+                                        style={{maxWidth:'100%'}}
+                                        />
+                                    }
                                     <br/><br/>
                                     <h2 style={{marginTop:'-10px'}}>Celebrate Mother's Day at Olea</h2>
                                     <br/>

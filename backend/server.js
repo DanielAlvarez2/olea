@@ -492,7 +492,36 @@ app.post('/api/teas', async(req,res)=>{
     }
 })
 
-app.get('/api/website-image/:event', async(req,res)=>{
+app.put('/api/events/website-image/:event',async(req,res)=>{
+    
+    let cloudinary_public_ID = ''
+    let cloudinary_secure_URL = ''
+    
+    const currentImage = await AnnualEventsWebsiteImage.findOne({event:req.params.event})
+    
+    // NO PIC -> NEW PIC
+    if(!currentImage.cloudinary_secure_URL && req.body.previewSource2){
+        try{
+            const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource2)
+            cloudinary_public_ID = cloudinaryResponse.public_id
+            cloudinary_secure_URL = cloudinaryResponse.secure_url
+        }catch(err){
+            console.log(err)
+        }
+    }
+    // OLD PIC -> NEW PIC
+
+    // OLD PIC -> NO PIC
+
+
+    await AnnualEventsWebsiteImage.findByIdAndUpdate({_id:currentImage._id},{
+                                                        cloudinary_public_ID,
+                                                        cloudinary_secure_URL
+                                                        })
+    res.json(`New Website Image For: ${req.params.event}`)
+})
+
+app.get('/api/events/website-image/:event', async(req,res)=>{
     try{
         let currentImage = await AnnualEventsWebsiteImage.findOne({event:req.params.event})
         if (!currentImage){

@@ -29,9 +29,10 @@ export default function MothersDayUpdate(){
                     'http://localhost:1436'
 
     const event = "Mother's Day"
+    const event_url = 'mothers-day'
 
     function getWebsiteImage(){
-        fetch(`${BASE_URL}/api/website-image/mothers-day`)
+        fetch(`${BASE_URL}/api/events/website-image/${event_url}`)
             .then(res=>res.json())
             .then(data=>{
                 setWebsiteImageURL(data.cloudinary_secure_URL)
@@ -291,6 +292,22 @@ export default function MothersDayUpdate(){
         reader.onloadend = ()=>{
             setPreviewSource2(reader.result)
         }
+    }
+
+    function updateWebsiteImage(formData){
+        fetch(`${BASE_URL}/api/events/website-image/${event_url}`,{  method:'PUT',
+                                                        headers:{'Content-Type':'application/json'},
+                                                        body: JSON.stringify({
+                                                            event:formData.get('annual-event-name'),
+                                                            cloudinary_public_ID:formData.get('cloudinary_public_ID'),
+                                                            cloudinary_secure_URL:formData.get('cloudinary_secure_URL'),
+                                                            previewSource2
+                                                        })
+        }) 
+        .then(res=>res.json())
+        .then(()=>getWebsiteImage())
+        .then(()=>setPreviewSource2(''))
+        .catch(err=>console.log(err))        
     }
 
 
@@ -1013,21 +1030,34 @@ export default function MothersDayUpdate(){
 
 
                     <form   
-                            // action={updateAnnualEventPrice} 
+                            action={updateWebsiteImage} 
                             id='website-graphic'
                             className='specials-form'
                             style={{background:`orange`}}>
+
                         <h2 style={{textAlign:'center'}}>
                             {event.toLowerCase()}
                         </h2>
                         <h2 style={{textAlign:'center'}}>
                             website image
                         </h2>
+                        
                         <br/><br/>
+                        
                         <input  type='hidden'
                                 name='annual-event-name'
-                                value='MothersDay'
+                                value='mothers-day'
                         />
+
+                        <input  type='hidden' 
+                                name='cloudinary_secure_URL' 
+                                value={websiteImageURL}
+                                id='cloudinary_secure_URL' />
+
+                        <input  type='hidden' 
+                                value={websiteImageID}
+                                name='cloudinary_public_ID' 
+                                id='cloudinary_public_ID' />
                         
                         <img src={websiteImageURL ? websiteImageURL : '/no-image.jpg' } style={{maxWidth:'100%'}} />
                         <br/>
