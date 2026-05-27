@@ -510,9 +510,21 @@ app.put('/api/events/website-image/:event',async(req,res)=>{
         }
     }
     // OLD PIC -> NEW PIC
+        if(currentImage.cloudinary_secure_URL && req.body.previewSource2){
+            try{
+                await cloudinary.uploader.destroy(currentImage.cloudinary_public_ID, {invalidate:true}, function(error,result){console.log(result,error)})
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource2)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+            }catch(err){
+                console.log(err)
+            }
+        }
+
 
     // OLD PIC -> NO PIC
 
+    // flashing button text while uploading image in ui
 
     await AnnualEventsWebsiteImage.findByIdAndUpdate({_id:currentImage._id},{
                                                         cloudinary_public_ID,
