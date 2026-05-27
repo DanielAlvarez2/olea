@@ -9,6 +9,7 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 
 export default function MothersDayUpdate(){
     const [updatingMenu, setUpdatingMenu] = useState(false)
+    const [updatingImage, setUpdatingImage] = useState(false)
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)
     const [editMode, setEditMode] = useState(false)
@@ -295,6 +296,7 @@ export default function MothersDayUpdate(){
     }
 
     function updateWebsiteImage(formData){
+        setUpdatingImage(true)
         fetch(`${BASE_URL}/api/events/website-image/${event_url}`,{  method:'PUT',
                                                         headers:{'Content-Type':'application/json'},
                                                         body: JSON.stringify({
@@ -307,6 +309,7 @@ export default function MothersDayUpdate(){
         .then(res=>res.json())
         .then(()=>getWebsiteImage())
         .then(()=>setPreviewSource2(''))
+        .then(()=>setUpdatingImage(false))
         .catch(err=>console.log(err))        
     }
 
@@ -1076,15 +1079,30 @@ export default function MothersDayUpdate(){
                                             </>}
 
                         <div style={{display:'flex', justifyContent:'center'}}>
-                            <input  type='submit' 
-                                    style={{padding:'10px 10px',
-                                            cursor:'pointer',
-                                            borderRadius:'10px',
-                                            border:'2px solid black',
-                                            color:'black',
-                                            background:'lightgrey',
-                                            fontSize:'20px'}}
-                                    value = 'update image' />                        
+                            {!updatingImage &&                             
+                                <input  type='submit' 
+                                        style={{padding:'10px 10px',
+                                                cursor:'pointer',
+                                                borderRadius:'10px',
+                                                border:'2px solid black',
+                                                color:'black',
+                                                background:'lightgrey',
+                                                fontSize:'20px'}}
+                                        value = 'update image'/>
+                            }
+                            {updatingImage &&                             
+                                <div style={{   padding:'10px',
+                                                borderRadius:'10px',
+                                                border:'2px solid black',
+                                                color:'#000000',
+                                                fontWeight:'900',
+                                                background:'darkgrey',
+                                                fontSize:'20px',
+                                                cursor:'wait'}}>
+                                                    <span className='flashing-text'>updating image</span>
+                                </div>
+                            }
+
                         </div>
 
                                                 
