@@ -1078,11 +1078,17 @@ export default function MothersDayUpdate(){
                                                 <img src={previewSource2} style={{maxWidth:'300px',maxHeight:'300px'}} /><br/><br/>
                                             </>}
 
+                        {websiteImageURL &&                         
+                                            <>                        
+                                                <br/>
+                                                <input  type='checkbox' 
+                                                        name='no-image'
+                                                /> &nbsp;remove image / display NO image
+                                                <br/>
+                                            </>
+                        }
                         
-                        <br/>
-                        <input type='checkbox' /> remove image / display NO image
-
-                        <br/><br/><br/>
+                        <br/><br/>
                         <div style={{display:'flex', justifyContent:'center'}}>
                             {!updatingImage &&                             
                                 <input  type='submit' 
