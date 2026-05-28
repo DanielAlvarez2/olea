@@ -1116,12 +1116,13 @@ export default function MothersDayUpdate(){
                         {websiteImageURL &&                         
                                             <>                        
                                                 <br/>
-                                                <label>
+                                                <label style={{display:'flex',alignItems:'center'}}>
                                                     <input  type='checkbox' 
                                                             name='no-image'
                                                             checked={isNoWebsiteImageChecked}
                                                             onChange={toggleNoWebsiteImage}
-                                                    /> &nbsp;remove image / display NO image
+                                                    /> 
+                                                    <span>&nbsp;&nbsp;remove image / display NO image</span>
                                                 </label>
                                                 <br/>
                                             </>
