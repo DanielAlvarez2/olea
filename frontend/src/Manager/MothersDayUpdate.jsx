@@ -308,6 +308,11 @@ export default function MothersDayUpdate(){
                                                         })
         }) 
         .then(res=>res.json())
+        .then(()=>{
+            document.querySelector('#do-not-circle2').style.color = 'transparent'
+            setIsNoWebsiteImageChecked(false)
+            document.querySelector('#file-input-website-image').style.visibility = 'visible'
+        })
         .then(()=>getWebsiteImage())
         .then(()=>setPreviewSource2(''))
         .then(()=>setUpdatingImage(false))
@@ -1061,7 +1066,7 @@ export default function MothersDayUpdate(){
                         
                         <input  type='hidden'
                                 name='annual-event-name'
-                                value='mothers-day'
+                                value={event_url}
                         />
 
                         <input  type='hidden' 
@@ -1094,11 +1099,13 @@ export default function MothersDayUpdate(){
                         <br/><br/>
                         
                         <div id='file-input-website-image'>
-                            {websiteImageURL ? <div>replace image (optional)</div> : <div>add image (optional)</div>}
-                            <input  name='website-image-file' 
-                                    id='website-image-file'
-                                    onChange={handleWebsiteImageFileInputChange}
-                                    type='file' />
+                            <label>
+                                {websiteImageURL ? <div>replace image (optional)</div> : <div>add image (optional)</div>}
+                                <input  name='website-image-file' 
+                                        id='website-image-file'
+                                        onChange={handleWebsiteImageFileInputChange}
+                                        type='file' />
+                            </label>
                         </div>
                         <br/><br/>
                                                 
@@ -1109,11 +1116,13 @@ export default function MothersDayUpdate(){
                         {websiteImageURL &&                         
                                             <>                        
                                                 <br/>
-                                                <input  type='checkbox' 
-                                                        name='no-image'
-                                                        checked={isNoWebsiteImageChecked}
-                                                        onChange={toggleNoWebsiteImage}
-                                                /> &nbsp;remove image / display NO image
+                                                <label>
+                                                    <input  type='checkbox' 
+                                                            name='no-image'
+                                                            checked={isNoWebsiteImageChecked}
+                                                            onChange={toggleNoWebsiteImage}
+                                                    /> &nbsp;remove image / display NO image
+                                                </label>
                                                 <br/>
                                             </>
                         }

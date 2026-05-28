@@ -523,8 +523,17 @@ app.put('/api/events/website-image/:event',async(req,res)=>{
 
 
     // OLD PIC -> NO PIC
+        if(currentImage.cloudinary_secure_URL && req.body.isNoWebsiteImageChecked){
+            try{
+                await cloudinary.uploader.destroy(currentImage.cloudinary_public_ID, {invalidate:true}, function(error,result){console.log(result,error)})                
+                cloudinary_public_ID = ''
+                cloudinary_secure_URL = ''
+            }catch(err){
+                console.log(err)
+            }
+        }
 
-    // flashing button text while uploading image in ui
+
 
     await AnnualEventsWebsiteImage.findByIdAndUpdate({_id:currentImage._id},{
                                                         cloudinary_public_ID,
