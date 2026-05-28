@@ -285,6 +285,7 @@ export default function MothersDayUpdate(){
 
     const [previewSource2, setPreviewSource2] = useState()
     function handleWebsiteImageFileInputChange(e){
+        alert(`File Size: ${(e.target.files[0].size * 0.000001).toFixed(1)} Mb`)
         const file = e.target.files[0]
         previewFile2(file)
     }
