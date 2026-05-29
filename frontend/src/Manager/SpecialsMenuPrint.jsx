@@ -170,7 +170,8 @@ Please switch to a different browser to proceed.
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 background:'white',
-                                                border:'1px solid lightgrey'}}>
+                                                // border:'1px solid lightgrey'
+                                                }}>
                                     <div>
                                         <div    className='specials-h1'
                                                 style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
@@ -254,7 +255,7 @@ Please switch to a different browser to proceed.
                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
-                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
+                                                            {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
                                                         </div>
                                                     </footer>
                                     }
@@ -278,11 +279,17 @@ Please switch to a different browser to proceed.
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid lightgrey'}}>
-                                                <div>
-                                                    
-                                                    <div    className='specials-h1'
-                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
+                                                            // border:'1px solid lightgrey'
+                                                            }}>
+                                                                                                <div>
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's special</div>}
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's specials</div>}
                                                 </div>
 
 
@@ -345,7 +352,7 @@ Please switch to a different browser to proceed.
                                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                                             </div>
-                                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
+                                                                            {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
                                                                         </div>
 
                                                                     </footer>
@@ -359,7 +366,8 @@ Please switch to a different browser to proceed.
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 background:'white',
-                                                border:'1px solid lightgrey'}}>
+                                                // border:'1px solid lightgrey'
+                                                }}>
                                     <div>
                                         <div    className='specials-h1'
                                                 style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
@@ -443,7 +451,7 @@ Please switch to a different browser to proceed.
                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
-                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
+                                                            {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
                                                         </div>
                                                     </footer>
                                     }
@@ -455,11 +463,17 @@ Please switch to a different browser to proceed.
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid lightgrey'}}>
+                                                            // border:'1px solid lightgrey'
+                                                            }}>
                                                 <div>
-                                                    
-                                                    <div    className='specials-h1'
-                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's special</div>}
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's specials</div>}
                                                 </div>
 
 
@@ -522,7 +536,7 @@ Please switch to a different browser to proceed.
                                                                             Please alert your server if you have special dietary requirements:<br/>
                                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                                         </div>
-                                                                        <img src='qr-specials.jpg' width='50px' height='50px' />
+                                                                        {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
                                                                     </div>
                                                                 </footer>
                                                 }
@@ -539,11 +553,13 @@ Please switch to a different browser to proceed.
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 background:'white',
-                                                border:'1px solid lightgrey'}}>
+                                                // border:'1px solid lightgrey'
+                                                }}>
                                     <div>
                                         <div    className='specials-h1'
                                                 style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                     </div>
+
                                     {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
                                         <div className='specials-h2'>appetizer</div>}
                                     {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
@@ -623,7 +639,7 @@ Please switch to a different browser to proceed.
                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
-                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
+                                                            {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
                                                         </div>
                                                     </footer>
                                     }
@@ -635,11 +651,17 @@ Please switch to a different browser to proceed.
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid lightgrey'}}>
+                                                            // border:'1px solid lightgrey'
+                                                            }}>
                                                 <div>
-                                                    
-                                                    <div    className='specials-h1'
-                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's special</div>}
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's specials</div>}
                                                 </div>
 
 
@@ -702,7 +724,7 @@ Please switch to a different browser to proceed.
                                                                             Please alert your server if you have special dietary requirements:<br/>
                                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                                         </div>
-                                                                        <img src='qr-specials.jpg' width='50px' height='50px' />
+                                                                        {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
                                                                     </div>
                                                                 </footer>
                                                 }
@@ -715,11 +737,13 @@ Please switch to a different browser to proceed.
                                                 padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 position:'relative',
                                                 background:'white',
-                                                border:'1px solid lightgrey'}}>
+                                                // border:'1px solid lightgrey'
+                                                }}>
                                     <div>
                                         <div    className='specials-h1'
                                                 style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
                                     </div>
+
                                     {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
                                         <div className='specials-h2'>appetizer</div>}
                                     {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
@@ -799,7 +823,7 @@ Please switch to a different browser to proceed.
                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
-                                                            <img src='qr-specials.jpg' width='50px' height='50px' />
+                                                            {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
                                                         </div>
                                                     </footer>
                                     }
@@ -811,11 +835,17 @@ Please switch to a different browser to proceed.
                                                             padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid lightgrey'}}>
+                                                            // border:'1px solid lightgrey'
+                                                            }}>
                                                 <div>
-                                                    
-                                                    <div    className='specials-h1'
-                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's special</div>}
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's specials</div>}
                                                 </div>
 
 
@@ -878,7 +908,7 @@ Please switch to a different browser to proceed.
                                                                             Please alert your server if you have special dietary requirements:<br/>
                                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                                         </div>
-                                                                        <img src='qr-specials.jpg' width='50px' height='50px' />
+                                                                        {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
                                                                     </div>
                                                                 </footer>
                                                 }

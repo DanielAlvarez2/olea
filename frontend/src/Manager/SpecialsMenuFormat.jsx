@@ -318,7 +318,7 @@ export default function SpecialsMenuUpdate(){
                                                             Please alert your server if you have special dietary requirements:<br/>
                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                         </div>
-                                                        <img src='qr-specials.jpg' width='50px' height='50px' />
+                                                        {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
                                                     </div>
                                                 </footer>
                                 }
@@ -342,14 +342,19 @@ export default function SpecialsMenuUpdate(){
                                                             position:'relative',
                                                             background:'white',
                                                             border:'1px solid black'}}>
+
+
+
                                                 <div>
-                                                    
-                                                    <div    className='specials-h1'
-                                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's special</div>}
+                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                                        <div className='specials-h1'
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        >today's specials</div>}
                                                 </div>
-
-
-
 
 
                                                 {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
@@ -406,7 +411,7 @@ export default function SpecialsMenuUpdate(){
                                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                                             </div>
-                                                                            <img src='qr-specials.jpg' width='50px' />
+                                                                            {/* <img src='qr-specials.jpg' width='50px' /> */}
                                                                         </div>
                                                                     </footer>
                                                 }
