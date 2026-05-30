@@ -318,7 +318,10 @@ export default function SpecialsMenuUpdate(){
                                                             Please alert your server if you have special dietary requirements:<br/>
                                                             gl (gluten), d (dairy), n (nuts)</span>
                                                         </div>
-                                                        {/* <img src='qr-specials.jpg' width='50px' height='50px' /> */}
+                                                        <img    src='qr-specials.jpg' 
+                                                                className='qr'
+                                                                width='50px' 
+                                                                height='50px' />
                                                     </div>
                                                 </footer>
                                 }
@@ -411,7 +414,9 @@ export default function SpecialsMenuUpdate(){
                                                                                 Please alert your server if you have special dietary requirements:<br/>
                                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                                             </div>
-                                                                            {/* <img src='qr-specials.jpg' width='50px' /> */}
+                                                                            <img    src='qr-specials.jpg' 
+                                                                                    className='qr'
+                                                                                    width='50px' />
                                                                         </div>
                                                                     </footer>
                                                 }

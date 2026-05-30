@@ -465,7 +465,9 @@ export default function MothersDayFormat(){
                                                 </span>                                                
                                             </div>
 
-                                            <img src='/qr-mothers-day.jpg' height='60px' />
+                                            <img    src='/qr-mothers-day.jpg' 
+                                                    className='qr'
+                                                    height='60px' />
 
                                         </div>
                                     </div>     

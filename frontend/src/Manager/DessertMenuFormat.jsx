@@ -480,7 +480,9 @@ export default function DessertMenuFormat(){
                                                     please alert your server if you have any special dietary requirements<br/>
                                                     <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                                 </div>
-                                                <img src='qr-dessert.png' width='40px' />
+                                                <img    src='qr-dessert.png' 
+                                                        className='qr'
+                                                        width='40px' />
                                             </div>
                                     </div>
                                 </div>

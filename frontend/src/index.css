@@ -20,6 +20,10 @@
   box-sizing: border-box;
 }
 
+.qr{
+  display:none;
+}
+
 .page-wrapper{
   width:100%;
 }

@@ -449,7 +449,9 @@ export default function DinnerMenuFormat(){
 
                                             <div className='chef name' style={{textDecoration:'underline'}}>manuel romero, chef</div>
                                             
-                                            <img src='qr-dinner.png' height='60px' />
+                                            <img    src='qr-dinner.png' 
+                                                    className='qr'
+                                                    height='60px' />
                                             
                                             <div style={{width:'65%'}}>
                                                 <span style={{fontWeight:'100'}}>
