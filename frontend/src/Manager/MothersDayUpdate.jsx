@@ -1021,6 +1021,7 @@ function clearWebsiteImageForm(){
                         <div style={{textAlign:'center'}}>
                             ${annualEventPrice}/person &rarr; 
                             $<input type='number'
+                                    required
                                     min='1'
                                     max='999' 
                                     maxLength='100'
