@@ -298,6 +298,7 @@ export default function MothersDayUpdate(){
     }
 
     function updateWebsiteImage(formData){
+        if (!previewSource2 && !isNoWebsiteImageChecked) return
         setUpdatingImage(true)
         fetch(`${BASE_URL}/api/events/website-image/${event_url}`,{  method:'PUT',
                                                         headers:{'Content-Type':'application/json'},
