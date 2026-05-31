@@ -333,7 +333,14 @@ export default function MothersDayUpdate(){
         document.querySelector('#do-not-circle2').style.color = isNoWebsiteImageChecked ? 'transparent' : 'red'
     }    
 
+function clearWebsiteImageForm(){
+    setPreviewSource2('')
+    document.querySelector('#website-image-file').value = ''
+    setIsNoWebsiteImageChecked(false)
+    document.querySelector('#do-not-circle2').style.color = 'transparent'
+    document.querySelector('#file-input-website-image').style.visibility = 'visible'
 
+}
 
 
 
@@ -1131,7 +1138,7 @@ export default function MothersDayUpdate(){
                         }
                         
                         <br/><br/>
-                        <div style={{display:'flex', justifyContent:'center'}}>
+                        <div style={{display:'flex',justifyContent:'space-around'}}>
                             {!updatingImage &&                             
                                 <input  type='submit' 
                                         style={{padding:'10px 10px',
@@ -1155,7 +1162,22 @@ export default function MothersDayUpdate(){
                                                     <span className='flashing-text'>updating image</span>
                                 </div>
                             }
-
+                            {!updatingMenu &&                            
+                                        <div onClick={clearWebsiteImageForm}
+                                             style={{   display:'grid',
+                                                        placeContent:'center',
+                                                        cursor:'pointer',
+                                                        borderRadius:'10px',
+                                                        border:'2px solid black',
+                                                        background:'rgb(255, 89, 118)',
+                                                        fontWeight:'900',
+                                                        color:'black',
+                                                        padding:'10px 10px',
+                                                        fontSize:'20px'
+                                                    }}>
+                                            cancel
+                                        </div>
+                            }
                         </div>
 
                                                 
