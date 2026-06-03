@@ -7,7 +7,8 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 
-export default function MothersDayUpdate(){
+export default function CommencemntUpdate(){
+
     const [updatingMenu, setUpdatingMenu] = useState(false)
     const [updatingImage, setUpdatingImage] = useState(false)
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
@@ -30,9 +31,9 @@ export default function MothersDayUpdate(){
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
-    const event = "Mother's Day"
-    const event_url = 'mothers-day'
-    const event_obj = 'MothersDay'
+    const event = "Commencement"
+    const event_url = 'commencement'
+    const event_obj = 'Commencement'
 
     function getWebsiteImage(){
         fetch(`${BASE_URL}/api/events/website-image/${event_url}`)

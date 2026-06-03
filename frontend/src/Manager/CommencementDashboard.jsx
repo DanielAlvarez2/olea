@@ -2,7 +2,7 @@ import {Link} from 'react-router'
 import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
-export default function Commencement(){
+export default function CommencementDashboard(){
     return(
         <>
             <div className='manager-page-wrapper'>
@@ -21,6 +21,7 @@ export default function Commencement(){
                                 }}>
                         <Link to='/commencement-screenshot'><li style={{flexGrow:'1'}}>screenshot</li></Link>
                         <Link to='/commencement'><li style={{flexGrow:'1'}}>scan</li></Link>
+                        <Link to='/manager/commencement-update'><li style={{flexGrow:'1'}}>update</li></Link>
                         
                     </ul>
 
