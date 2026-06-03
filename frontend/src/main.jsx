@@ -34,6 +34,7 @@ import ValentinesDayScan from './Manager/ValentinesDayScan.jsx'
 import CommencementDashboard from './Manager/CommencementDashboard.jsx'
 import CommencementScreenshot from './Manager/CommencementScreenshot.jsx'
 import CommencementUpdate from './Manager/CommencementUpdate.jsx'
+import CommencementFormat from './Manager/CommencementFormat.jsx'
 
 import MothersDayDashboard from './Manager/MothersDayDashboard.jsx'
 import MothersDayScreenshot from './Manager/MothersDayScreenshot.jsx'
@@ -191,6 +192,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='anniversary' element={<Anniversary />} />
         
         <Route path='/manager/commencement-update' element={<CommencementUpdate />} />
+        <Route path='/manager/commencement-format' element={<CommencementFormat />} />
         <Route path='/manager/commencement-dashboard' element={<CommencementDashboard />} />
         <Route path='commencement-screenshot' element={<CommencementScreenshot />} />
         

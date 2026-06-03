@@ -19,9 +19,11 @@ export default function CommencementDashboard(){
                                 height:'100%',
                                 // border:'1px solid green'
                                 }}>
+                        <Link to='/manager/commencement-update'><li style={{flexGrow:'1'}}>update</li></Link>
+                        <Link to='/manager/commencement-format'><li style={{flexGrow:'1'}}>format</li></Link>
+                        <Link to='/manager/commencement-print'><li style={{flexGrow:'1'}}>print</li></Link>
                         <Link to='/commencement-screenshot'><li style={{flexGrow:'1'}}>screenshot</li></Link>
                         <Link to='/commencement'><li style={{flexGrow:'1'}}>scan</li></Link>
-                        <Link to='/manager/commencement-update'><li style={{flexGrow:'1'}}>update</li></Link>
                         
                     </ul>
 

@@ -25,6 +25,7 @@ const DessertsFormat = require('./models/DessertsFormat.js')
 const WinelistFormat = require('./models/WinelistFormat.js')
 const DinnerFormat = require('./models/DinnerFormat.js')
 const MothersDayFormat = require('./models/MothersDayFormat.js')
+const CommencementFormat = require('./models/CommencementFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
 const TastingMenuPricing = require('./models/TastingMenuPricing.js')
 const AnnualEvents = require('./models/AnnualEvents.js')
@@ -2642,6 +2643,24 @@ app.get('/api/formats/mothers-day', async(req,res)=>{
     }
 })
 
+app.get('/api/formats/commencement', async(req,res)=>{ 
+    try{
+        let allFormats = await CommencementFormat.find()
+        if (allFormats.length == 0){
+            await CommencementFormat.create({
+                pageMargin: 25,
+                itemMarginsTopBottom: 0,
+                itemMarginsLeftRight: 0
+            })
+            allFormats = await CommencementFormat.find()
+        }
+        console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/formats/takeout', async(req,res)=>{ 
     try{
         let allFormats = await TakeoutFormat.find()
@@ -2730,13 +2749,13 @@ app.put('/api/formats/dinner/decreasePageMargin', async(req,res)=>{
     }
 })
 
-app.put('/api/formats/mothers-day/decreasePageMargin', async(req,res)=>{
+app.put('/api/formats/commencement/decreasePageMargin', async(req,res)=>{
     try{
-        const allFormats = await MothersDayFormat.find()
+        const allFormats = await CommencementFormat.find()
         console.log(allFormats[0])
-        await MothersDayFormat.findByIdAndUpdate( allFormats[0]._id,
+        await CommencementFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {pageMargin: allFormats[0].pageMargin - 1})
-        res.json("Mother's Day page margin decreased")
+        res.json("page margin decreased")
     }catch(err){
         console.log(err)
     }
@@ -2761,6 +2780,18 @@ app.put('/api/formats/mothers-day/increasePageMargin', async(req,res)=>{
         await MothersDayFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {pageMargin: allFormats[0].pageMargin + 1})
         res.json("Mother's Day page margin increased")
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/commencement/increasePageMargin', async(req,res)=>{
+    try{
+        const allFormats = await CommencementFormat.find()
+        console.log(allFormats[0])
+        await CommencementFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMargin: allFormats[0].pageMargin + 1})
+        res.json("page margin increased")
     }catch(err){
         console.log(err)
     }
@@ -2863,13 +2894,37 @@ app.put('/api/formats/mothers-day/decreaseItemMarginsLeftRight', async(req,res)=
     }
 })
 
+app.put('/api/formats/commencement/decreaseItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await CommencementFormat.find()
+        console.log(allFormats[0])
+        await CommencementFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsLeftRight: allFormats[0].itemMarginsLeftRight - 1})
+        res.json("item margins left/right decreased")
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/mothers-day/increaseItemMarginsLeftRight', async(req,res)=>{
     try{
         const allFormats = await MothersDayFormat.find()
         console.log(allFormats[0])
         await MothersDayFormat.findByIdAndUpdate( allFormats[0]._id,
-                                                {mothersDayItemMarginsLeftRight: allFormats[0].mothersDayItemMarginsLeftRight + 1})
+                                                {MothersDayItemMarginsLeftRight: allFormats[0].MothersDayItemMarginsLeftRight + 1})
         res.json("mother's day item margins left/right increased")
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/commencement/increaseItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await CommencementFormat.find()
+        console.log(allFormats[0])
+        await CommencementFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsLeftRight: allFormats[0].itemMarginsLeftRight + 1})
+        res.json("item margins left/right increased")
     }catch(err){
         console.log(err)
     }
@@ -2911,12 +2966,36 @@ app.put('/api/formats/mothers-day/decreaseItemMarginsTopBottom', async(req,res)=
     }
 })
 
+app.put('/api/formats/commencement/decreaseItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await CommencementFormat.find()
+        console.log(allFormats[0])
+        await CommencementFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsTopBottom: allFormats[0].itemMarginsTopBottom - 1})
+        res.json('item margins top/bottom decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/mothers-day/increaseItemMarginsTopBottom', async(req,res)=>{
     try{
         const allFormats = await MothersDayFormat.find()
         console.log(allFormats[0])
         await MothersDayFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {mothersDayItemMarginsTopBottom: allFormats[0].mothersDayItemMarginsTopBottom + 1})
+        res.json('item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/commencement/increaseItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await CommencementFormat.find()
+        console.log(allFormats[0])
+        await CommencementFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsTopBottom: allFormats[0].itemMarginsTopBottom + 1})
         res.json('item margins top/bottom increased')
     }catch(err){
         console.log(err)
