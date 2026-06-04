@@ -193,7 +193,7 @@ export default function CommencementFormat(){
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                                     onClick={increasePageMargin} /></span>
                                     </div>
-                                    <br/><br/>
+                                    
 
 
 
@@ -535,7 +535,13 @@ export default function CommencementFormat(){
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                                     onClick={increasePageMargin} /></span>
                                     </div>
-                                    <br/><br/>
+                                    
+
+
+                            <br className='no-print'/>
+                            <br className='no-print'/>
+                            <br className='no-print'/>
+                            <br className='no-print'/>
 
 
             </div>{/* .manager-page-wrapper */}
