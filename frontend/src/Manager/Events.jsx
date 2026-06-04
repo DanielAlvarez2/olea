@@ -14,12 +14,16 @@ export default function Events(){
     useEffect(()=>getAnnualEvents(),[])
 
     const [mothersDay, setMothersDay] = useState(false)
+    const [commencement, setCommencement] = useState(false)
 
     function getAnnualEvents(){
         try{
             fetch(`${BASE_URL}/api/annual-events`)
                 .then(res=>res.json())
-                .then(json=>setMothersDay(json[0].MothersDay))
+                .then(json=>{
+                    setMothersDay(json[0].MothersDay)
+                    setCommencement(json[0].Commencement)
+                })
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -35,6 +39,17 @@ export default function Events(){
             console.log(err)
         }
     }
+
+    function toggleAnnualEvent(annualEvent){
+        try{
+            fetch(`${BASE_URL}/api/toggle/${annualEvent}`)
+                .then(()=>getAnnualEvents())
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
     return(
         <>
             <div    className='manager-page-wrapper' 
@@ -70,6 +85,30 @@ export default function Events(){
                                             :
                                                 <div style={{display:'flex',alignItems:'center'}}>
                                                     <FaToggleOff size='30' style={{color:'red',cursor:'pointer'}} onClick={toggleMothersDay} /> &nbsp;OFF
+                                                </div>
+                                }
+                            </div>
+                        </div>
+
+
+
+
+
+                        
+                        <div style={{display:'flex',gap:'10px'}}>
+                            <Link to='/manager/commencement-dashboard'>
+                                <li style={{flexGrow:'1'}}>commencement<br/>3rd sun may</li>
+                            </Link>
+                            <div style={{display:'flex',alignItems:'center',gap:'20px',border:'1px solid black',borderRadius:'10px',width:'150px',justifyContent:'center'}}>
+                                <div style={{textAlign:'center'}}>website<br/>menu</div>
+                                {commencement ? 
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOn size='30' style={{color:'green',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('Commencement')} /> &nbsp;ON
+                                                </div>
+
+                                            :
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOff size='30' style={{color:'red',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('Commencement')} /> &nbsp;OFF
                                                 </div>
                                 }
                             </div>

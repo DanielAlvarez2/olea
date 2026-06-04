@@ -61,6 +61,14 @@ app.get('/api/toggle-mothers-day', async(req,res)=>{
     res.json('Mothers Day Updated')
 })
 
+app.get('/api/toggle/:annualEvent', async(req,res)=>{
+    const Events = await AnnualEvents.find()
+    console.log(Events[0]._id)
+    console.log(Events[0][req.params.annualEvent])
+    await AnnualEvents.findByIdAndUpdate(Events[0]._id,{[req.params.annualEvent]:!Events[0][req.params.annualEvent]})
+    res.json(`${req.params.annualEvent} updated`)
+})
+
 app.get('/api/annual-events', async(req,res)=>{
     try{
         let Events = await AnnualEvents.find()

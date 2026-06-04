@@ -1,6 +1,7 @@
 import './index.css'
 import './Dinner.css'
 import './MothersDayMenu.css'
+import './CommencementMenu.css'
 import Navbar from './components/Navbar.jsx'
 import OpenTable from './components/OpenTable.jsx'
 import Footer from './components/Footer.jsx'
@@ -45,7 +46,7 @@ export default function CommencementMenu(){
         try{
             fetch(`${BASE_URL}/api/annual-events`)
                 .then(res=>res.json())
-                .then(json=> !json[0].MothersDay && navigate('/page-not-found'))
+                .then(json=> !json[0][event_obj] && navigate('/page-not-found'))
                 .catch(err=>console.log(err))
 
         }catch(err){
@@ -121,7 +122,10 @@ export default function CommencementMenu(){
 
     return(
         
-        <div className='page-wrapper webpage' style={{position:'relative'}}>
+        <div className='page-wrapper webpage' style={{position:'relative',backgroundImage:"url('commencement-screenshot.webp')",
+                                                                    backgroundSize:'1680px',
+                                                                    backgroundPosition:'-34px 55px',
+                                                                    }}>
                    
                     <div className='modal' style={{ position:'fixed',
                                                     inset:'0',
@@ -161,9 +165,9 @@ export default function CommencementMenu(){
         
                         <main>
                             <div className='dinner-flexbox' 
-                                    // style={{backgroundImage:"url('mothers-day-screenshot.webp')",
-                                    //                                 backgroundSize:'1854px',
-                                    //                                 backgroundPosition:'-417px -156px'
+                                    // style={{backgroundImage:"url('commencement-screenshot.webp')",
+                                    //                                 backgroundSize:'1620px',
+                                    //                                 backgroundPosition:'-417px -286px',
                                     //         }}
                             >
                                 
@@ -174,7 +178,7 @@ export default function CommencementMenu(){
                                         />
                                     }
                                     <br/><br/>
-                                    <h2 style={{marginTop:'-10px'}}>Commencement (Prix-Fixe Menu)</h2>
+                                    <h2 style={{marginTop:'-10px'}}>COMMENCEMENT (Prix-Fixe Menu)</h2>
                                     <br/>
                                     
                                     <p>

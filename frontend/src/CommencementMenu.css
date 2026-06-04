@@ -1,0 +1,11 @@
+*{
+    color:red !important;
+}
+.webpage h2{
+    /* color:blue !important; */
+    font-size: 17.3px;
+}
+.webpage p{
+    line-height:27px;
+    font-size:15.6px;
+}
