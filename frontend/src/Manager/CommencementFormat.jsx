@@ -6,6 +6,7 @@ import './DessertDrinksUpdate.css'
 import './DessertDrinksUpdate.css'
 import './DinnerMenuFormat.css'
 import './MothersDayFormat.css'
+import './CommencementFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
@@ -202,7 +203,7 @@ export default function CommencementFormat(){
 
                                 <div    className='dinner-menu-format' 
                                         style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`,
-                                                // backgroundImage:"url('/scan-mothers-day.png')",
+                                                // backgroundImage:"url('/scan-graduation.jpg')",
                                                 backgroundSize:'8.5in',
                                                 // color:'red'
                                             }} 
@@ -222,12 +223,12 @@ export default function CommencementFormat(){
 
 
                                         <div style={{marginTop:'28px',padding:`0 ${itemMarginsLeftRight}px`}}>
-                                            <h2 style={{fontSize:'29px'}}>congratulations class of {new Date().getFullYear()}!</h2>
-                                            <br/>
+                                            <h2 style={{fontSize:'20.3px'}}>congratulations class of {new Date().getFullYear()}!</h2>
+                                            {/* <br/> */}
                                             <div style={{fontFamily:'serif'}}>
                                                 <span style={{fontSize:'20px',fontWeight:'900'}}>${annualEventPrice} per person; three courses</span>
                                                 <br/>
-                                                <span style={{fontSize:'15px'}}>(excludes beverages, tax, and gratuity)</span>
+                                                <span style={{fontSize:'15.1px'}}>(tax, gratuity and beverages are not included)</span>
                                             </div>
                                         </div>
 
@@ -271,6 +272,7 @@ export default function CommencementFormat(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <br/>
                                                 <span className='description'> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             </div>
@@ -321,6 +323,7 @@ export default function CommencementFormat(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <br/>
                                                 <span className='description'> {data.description}</span>
                                                 {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
                                             </div>
@@ -385,7 +388,7 @@ export default function CommencementFormat(){
 
 
 
-                                    <div style={{   marginTop:'83px',
+                                    <div style={{   marginTop:'45px',
                                                     padding:`0 ${itemMarginsLeftRight}px`}}
                                     >
 
@@ -416,6 +419,7 @@ export default function CommencementFormat(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <br/>
                                                 <span className='description'> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             </div>

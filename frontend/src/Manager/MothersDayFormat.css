@@ -9,19 +9,19 @@ h2 span{
 }
 .name{
     /* color:blue; */
-    font-family: FuturaLight;
-    font-size: 16px;
+    font-family: FuturaLight !important;
+    font-size: 15.5px !important;
     font-weight: 900;
 }
 .allergies-abbreviated{
-    font-family: serif;
-    font-weight: 900;
-    font-size: 16.5px;
-    font-style: italic;
+    font-family: serif !important;
+    /* font-weight: 900; */
+    font-size: 14.5px !important;
+    font-style: italic !important;
 }
 .description{
-    font-family:serif;
-    font-size:16.6px;
+    font-family:serif !important;
+    font-size:16.6px !important;
 }
 .post-description{
     /* color:blue; */

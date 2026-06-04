@@ -1,0 +1,10 @@
+*{
+    /* color:red; */
+}
+.description{
+    font-size:15.2px !important;
+}
+h2:has(span){
+    /* color:blue; */
+    margin-bottom: 10px !important;
+}
