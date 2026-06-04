@@ -13,7 +13,7 @@ import { PiMinusCircleDuotone } from "react-icons/pi";
 
 
 
-export default function CommencementFormat(){
+export default function CommencementPrint(){
 
     const [annualEventPrice, setAnnualEventPrice] = useState(0)      
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
@@ -73,45 +73,20 @@ export default function CommencementFormat(){
         }
     }
 
-    function decreaseItemMarginsLeftRight(){
-        if (itemMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/commencement/decreaseItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
+    function printPage(){
+        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+            alert(`
+WARNING: 
+
+Printing from Safari Browser is not supported.
+Please switch to a different browser to proceed.
+`)
+            return
+        }else{
+            window.print()
+        }
     }
 
-    function increaseItemMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/commencement/increaseItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function decreaseItemMarginsTopBottom(){
-        if (itemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/commencement/decreaseItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increaseItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/commencement/increaseItemMarginsTopBottom`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function decreasePageMargin(){
-        if (pageMargin <= 25) return
-        fetch(`${BASE_URL}/api/formats/commencement/decreasePageMargin`,{method:'PUT'})
-        .then(()=>getFormatting())
-        .catch(err=>console.log(err))
-    }
-
-    
-    function increasePageMargin(){
-        fetch(`${BASE_URL}/api/formats/commencement/increasePageMargin`,{method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
-    }
 
 
 
@@ -126,7 +101,7 @@ export default function CommencementFormat(){
                     <ManagerNavbar page='events' />
                 </div>
                     <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>commencement &gt; format</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>commencement &gt; print</div>
                     <div className='main-menu' style={{paddingBottom:0}}>
 
 
@@ -135,7 +110,21 @@ export default function CommencementFormat(){
 
 
                                 
-                            <br/>
+                            
+                            <br className='no-print'/>                        
+                            <div style={{   
+                                            // border:'1px solid green',
+                                            textAlign:'center',
+                                            display:'grid',
+                                            placeContent:'center',
+                                            width:'100%'}}>
+                                <div    className='no-print print-btn' 
+                                        style={{marginTop:'10px'}}
+                                        onClick={()=>printPage()}>
+                                    print
+                                </div>
+                            </div>
+                            <br className='no-print'/>
 
 
 
@@ -145,55 +134,6 @@ export default function CommencementFormat(){
 
 
 
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom &#8597;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseItemMarginsTopBottom} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right &#8596;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseItemMarginsLeftRight} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-
-                                                        
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMargin} /></span>
-                                        <span>page margin</span>
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMargin} /></span>
-                                    </div>
-                                    <br/><br/>
 
 
 
@@ -488,54 +428,6 @@ export default function CommencementFormat(){
                     </div>
 
                                                        
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom &#8597;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseItemMarginsTopBottom} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right &#8596;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseItemMarginsLeftRight} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-
-                                                        
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMargin} /></span>
-                                        <span>page margin</span>
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMargin} /></span>
-                                    </div>
-                                    <br/><br/>
 
 
             </div>{/* .manager-page-wrapper */}

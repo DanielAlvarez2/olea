@@ -120,24 +120,19 @@ Please switch to a different browser to proceed.
 
 
 
-                        <br className='no-print'/>
-                                                       
+                            <br className='no-print'/>                        
                             <div style={{   
                                             // border:'1px solid green',
                                             textAlign:'center',
                                             display:'grid',
                                             placeContent:'center',
                                             width:'100%'}}>
-
-                            
-
                                 <div    className='no-print print-btn' 
                                         style={{marginTop:'10px'}}
                                         onClick={()=>printPage()}>
                                     print
                                 </div>
                             </div>
-
                             <br className='no-print'/>
 
 
