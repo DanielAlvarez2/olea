@@ -9,10 +9,11 @@ import {useNavigate,Link} from 'react-router'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
-export default function MothersDayMenu(){
+export default function CommencementMenu(){
 
-    const event = "Mother's Day"
-    const event_url = 'mothers-day'
+    const event = "Commencement"
+    const event_url = 'commencement'
+    const event_obj = 'Commencement'
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -67,7 +68,7 @@ export default function MothersDayMenu(){
         try{
             fetch(`${BASE_URL}/api/annual-event-prices`)
                 .then(res=>res.json())
-                .then(json=>setAnnualEventPrice(json[0].MothersDay))
+                .then(json=>setAnnualEventPrice(json[0][event_obj]))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -173,21 +174,21 @@ export default function MothersDayMenu(){
                                         />
                                     }
                                     <br/><br/>
-                                    <h2 style={{marginTop:'-10px'}}>Celebrate Mother's Day at Olea</h2>
+                                    <h2 style={{marginTop:'-10px'}}>Commencement (Prix-Fixe Menu)</h2>
                                     <br/>
                                     
                                     <p>
-                                        Join us Sunday, May 10! We'll be open for Mother's Day 
-                                        from 12:30pm to 6pm, serving a prix-fixe three-course 
-                                        menu with multiple choices designed especially to please 
-                                        Mom and the whole family. The cost is ${annualEventPrice} per person 
-                                        (plus tax & gratuity). Beverages are not included. Kids 
-                                        menu will be available.
+                                        On Saturday, May 16; Sunday, May 17; and Monday, May 18, there will be 
+                                        a 3-course prix-fixe menu for Commencement. ${annualEventPrice} per 
+                                        person plus tax and gratuity. Beverages are not included.
                                         <br/><br/>
-                                        Reservations highly recommended:<br/>
-                                        203.780.8925 or <Link style={{color:'#FAFAFA'}} to='https://www.opentable.com/single.aspx?rid=151186&restref=151186'>Open Table</Link>
+                                        PLEASE NOTE: OUR À LA CARTE DINNER MENU IS NOT AVAILABLE.
                                         <br/><br/>
-                                        PLEASE NOTE: OUR REGULAR MENU WILL NOT BE AVAILABLE
+                                        Olea requires a credit card to secure this reservation. Canceling within 
+                                        one week of your reservation will incur a $25 per person charge. Please 
+                                        let us know in advance about any food restrictions or allergies.
+                                        <br/><br/>
+                                        Call 203.780.8925 to reserve a table.
                                     </p>
 
 

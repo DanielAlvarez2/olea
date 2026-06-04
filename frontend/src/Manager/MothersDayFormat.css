@@ -1,4 +1,4 @@
-h2{
+.paper-menu h2{
     font-family: FuturaRoundBold;
     font-size: 21.4px;
 }
@@ -7,35 +7,35 @@ h2 span{
     font-size: 15.6px;
     padding-left:5px;
 }
-.name{
+.paper-menu .name{
     /* color:blue; */
     font-family: FuturaLight !important;
     font-size: 15.5px !important;
     font-weight: 900;
 }
-.allergies-abbreviated{
+.paper-menu .allergies-abbreviated{
     font-family: serif !important;
     /* font-weight: 900; */
     font-size: 14.5px !important;
     font-style: italic !important;
 }
-.description{
+.paper-menu .description{
     font-family:serif !important;
     font-size:16.6px !important;
 }
-.post-description{
+.paper-menu .post-description{
     /* color:blue; */
     font-style: italic;
     font-family: serif !important;
     font-weight: 900;
     font-size: 15.8px;
 }
-.chef-name{
+.paper-menu .chef-name{
     /* color:transparent; */
     font-size: 17px;
     font-family: FuturaLight;
 }
-.allergy-explanations{
+.paper-menu .allergy-explanations{
     /* color:blue; */
     font-style: italic;
     font-size: 17px;
