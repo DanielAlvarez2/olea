@@ -1,5 +1,5 @@
 *{
-    color:red !important;
+    /* color:red !important; */
 }
 .webpage h2{
     /* color:blue !important; */
@@ -8,4 +8,16 @@
 .webpage p{
     line-height:27px;
     font-size:15.6px;
+}
+.webpage .name{
+    /* color:blue !important; */
+    font-size: 17px;
+}
+.webpage .allergies-abbreviated{
+    /* color:yellow !important; */
+    font-size: 16px;
+}
+.webpage .description{
+    /* color:green !important; */
+    font-size: 16px !important;
 }

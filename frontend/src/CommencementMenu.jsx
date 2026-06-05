@@ -122,9 +122,10 @@ export default function CommencementMenu(){
 
     return(
         
-        <div className='page-wrapper webpage' style={{position:'relative',backgroundImage:"url('commencement-screenshot.webp')",
+        <div className='page-wrapper webpage' style={{position:'relative',
+                                                                    // backgroundImage:"url('commencement-screenshot.webp')",
                                                                     backgroundSize:'1680px',
-                                                                    backgroundPosition:'-34px 55px',
+                                                                    backgroundPosition:'-34px 68px',
                                                                     }}>
                    
                     <div className='modal' style={{ position:'fixed',
@@ -220,7 +221,7 @@ export default function CommencementMenu(){
                                         
                                         <br/><br/>
                                         <h2>APPETIZERS <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
-                                        <br/>
+                                        {/* <br/> */}
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
                                     return(
@@ -233,12 +234,12 @@ export default function CommencementMenu(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            </span>
-                                            <span className='description'> &nbsp;{data.description}</span>
-                                            {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
+                                            </span><br/>
+                                            <span className='description'>{data.description}</span>
+                                            {data.postDescription && <span className='post-description'>&nbsp;{data.postDescription}</span>}
                                             {/* <div className='allergies-complete'>{data.allergiesComplete}</div> */}
 
-                                            <br/><br/>
+                                            <br/>
 
                                         </div>
                                     )
@@ -265,7 +266,7 @@ export default function CommencementMenu(){
 
                                         <br/><br/>
                                         <h2>ENTRÉES <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
-                                        <br/>
+                                        {/* <br/> */}
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
                                     return(
@@ -279,8 +280,9 @@ export default function CommencementMenu(){
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             </span>
-                                            <span className='description'> &nbsp;{data.description}</span>
-                                            {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
+                                            <br/>
+                                            <span className='description'>{data.description}</span>
+                                            {data.postDescription && <span className='post-description'>&nbsp;{data.postDescription}</span>}
                                             {/* <div className='allergies-complete'>{data.allergiesComplete}</div> */}
 
                                             <br/><br/>
@@ -294,7 +296,7 @@ export default function CommencementMenu(){
 
                                         <br/><br/>
                                         <h2>DESSERTS <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
-                                        <br/>
+                                        {/* <br/> */}
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).map(data=>{
                                     return(
@@ -308,8 +310,9 @@ export default function CommencementMenu(){
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             </span>
-                                            <span className='description'> &nbsp;{data.description}</span>
-                                            {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
+                                            <br/>
+                                            <span className='description'>{data.description}</span>
+                                            {data.postDescription && <span className='post-description'>&nbsp;{data.postDescription}</span>}
                                             {/* <div className='allergies-complete'>{data.allergiesComplete}</div> */}
 
                                             <br/><br/>
