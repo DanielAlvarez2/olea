@@ -414,7 +414,7 @@ Please switch to a different browser to proceed.
                                                 </span>                                                
                                             </div>
 
-                                            <img    src='/qr-mothers-day.jpg' 
+                                            <img    src='/qr-commencement.jpg' 
                                                     className='qr'
                                                     height='60px' />
 
