@@ -153,7 +153,7 @@ export default function Commencement(){
 
 
 
-                                <div    className='event-menu-legal' 
+                                <div    className='event-menu-legal paper-menu' 
                                         style={{
                                             // padding:`${mothersDayPageMargin/2}px ${mothersDayPageMargin}px 0px`,
                                                 // backgroundImage:"url('/scan-mothers-day.png')",
@@ -183,7 +183,7 @@ export default function Commencement(){
                                             // padding:`0 ${mothersDayItemMarginsLeftRight}px`
                                             }}>
                                             <h2 style={{fontSize:'29px'}}>congratulations class of {new Date().getFullYear()}!</h2>
-                                            <br/>
+                                            {/* <br/> */}
                                             <div style={{fontFamily:'serif'}}>
                                                 <span style={{fontSize:'20px',fontWeight:'900'}}>${annualEventPrice} per person; three courses</span>
                                                 <br/>
@@ -226,6 +226,7 @@ export default function Commencement(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <br/>
                                                 <span className='description'> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                                 {data.allergiesComplete && <div style={{color:'red'}}>{data.allergiesComplete}</div>}
@@ -282,6 +283,7 @@ export default function Commencement(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <br/>
                                                 <span className='description'> {data.description}</span>
                                                 {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
                                                 {data.allergiesComplete && <div style={{color:'red'}}>{data.allergiesComplete}</div>}
@@ -348,7 +350,7 @@ export default function Commencement(){
 
 
 
-                                    <div style={{   marginTop:'0px',
+                                    <div style={{   marginTop:'50px',
                                                     // padding:`0 ${mothersDayItemMarginsLeftRight}px`
                                                     }}
                                     >
@@ -391,6 +393,7 @@ export default function Commencement(){
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <br/>
                                                 <span className='description'> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                                 {data.allergiesComplete && <div style={{color:'red'}}>{data.allergiesComplete}</div>}
@@ -413,7 +416,7 @@ export default function Commencement(){
 
 
 
-
+                                    <br/><br/>
                                     <div className='dessert-footer'>
 
                                         <div id='chef-flexbox'>
