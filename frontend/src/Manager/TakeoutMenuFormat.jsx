@@ -190,7 +190,7 @@ export default function TakeoutMenuFormat(){
 
 
 
-                                <div    className='dinner-menu-format' 
+                                <div    className='dinner-menu-format paper-menu' 
                                         style={{width:'8.5in',
                                                 background:'white',
                                                 padding:`${pageMargin/2}px ${pageMargin}px 0px`,

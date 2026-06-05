@@ -121,7 +121,7 @@ export default function SpecialsMenuUpdate(){
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; format</div>
 
 
-                    <div className='main-menu' 
+                    <div className='main-menu paper-menu' 
                         style={{display:'flex',
                                 flex:'1',
                                 paddingBottom:'50px',

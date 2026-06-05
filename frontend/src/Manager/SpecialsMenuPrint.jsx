@@ -101,7 +101,7 @@ Please switch to a different browser to proceed.
                                     fontSize:'30px'}}>specials &gt; print</div>
 
 
-                    <div className='main-menu' 
+                    <div className='main-menu paper-menu' 
                         style={{display:'flex',
                                 flex:'1',
                                 flexDirection:'column',

@@ -203,7 +203,7 @@ export default function DinnerMenuFormat(){
 
 
 
-                                <div    className='dinner-menu-format' 
+                                <div    className='dinner-menu-format paper-menu' 
                                         style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`}} 
                                 >
                                     <div id='footer-top'>

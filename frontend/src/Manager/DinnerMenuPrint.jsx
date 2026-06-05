@@ -125,7 +125,7 @@ Please switch to a different browser to proceed.
 
 
 
-                                <div    className='dinner-menu-format' 
+                                <div    className='dinner-menu-format paper-menu' 
                                         style={{width:'8.5in',
                                                 background:'white',
                                                 padding:`${pageMargin/2}px ${pageMargin}px 0px`,
