@@ -143,7 +143,7 @@ Please switch to a different browser to proceed.
 
 
 
-                                <div    className='dinner-menu-format' 
+                                <div    className='dinner-menu-format paper-menu' 
                                         style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`,
                                                 // backgroundImage:"url('/scan-graduation.jpg')",
                                                 backgroundSize:'8.5in',

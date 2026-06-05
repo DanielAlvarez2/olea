@@ -142,7 +142,7 @@ Please switch to a different browser to proceed.
 
 
 
-                                <div    className='dinner-menu-format' 
+                                <div    className='dinner-menu-format paper-menu' 
                                         style={{padding:`${mothersDayPageMargin/2}px ${mothersDayPageMargin}px 0px`,
                                                 // backgroundImage:"url('/scan-mothers-day.png')",
                                                 backgroundSize:'8.5in',
