@@ -114,7 +114,6 @@ export default function Events(){
                             </div>
                         </div>
                         
-                        <Link to='/manager/commencement-dashboard'><li style={{flexGrow:'1'}}>commencement<br/>3rd sun may</li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>graduation lunch<br/>3rd mon may</li></Link>
                         <Link to='/anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>aug 27</li></Link>
                         <Link to='/events'><li style={{flexGrow:'1'}}>parents weekend<br/>1st week oct</li></Link>
