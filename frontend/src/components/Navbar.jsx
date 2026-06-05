@@ -18,12 +18,16 @@ export default function Navbar(){
     const [mobileInfoDropdownOpen, setMobileInfoDropdown] = useState(false)
     const [mobileMenusDropdown, setMobileMenusDropdown] = useState(false)
     const [mothersDay, setMothersDay] = useState(false)
+    const [commencement, setCommencement] = useState(false)
 
     function getAnnualEvents(){
         try{
             fetch(`${BASE_URL}/api/annual-events`)
                 .then(res=>res.json())
-                .then(json=>setMothersDay(json[0].MothersDay))
+                .then(json=>{
+                    setMothersDay(json[0].MothersDay)
+                    setCommencement(json[0].Commencement)
+                })
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -133,6 +137,7 @@ export default function Navbar(){
                                             flexDirection:'column',
                                             left:'-20px'}}>
                                     {mothersDay && <li><Link to='/mothers-day-menu'>mother's day {new Date().getFullYear()}</Link></li>}
+                                    {commencement && <li><Link to='/commencement-menu'>comencement {new Date().getFullYear()}</Link></li>}
                                     
                                     <li><Link to='/dinner'>dinner</Link></li>
                                     <li><Link to='/specials'>specials</Link></li>
@@ -184,6 +189,7 @@ export default function Navbar(){
                     {mobileMenusDropdown &&                    
                         <ul className='mobile-dropdown-menus'>
                             {mothersDay && <Link to='/mothers-day-menu'><li className='mobile-menu-dropdown'><span>mother's day {new Date().getFullYear()}</span></li></Link>}
+                            {commencement && <Link to='/commencement-menu'><li className='mobile-menu-dropdown'><span>commencement {new Date().getFullYear()}</span></li></Link>}
                             
                             <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
                             <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>
