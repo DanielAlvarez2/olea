@@ -37,6 +37,7 @@ import CommencementUpdate from './Manager/CommencementUpdate.jsx'
 import CommencementFormat from './Manager/CommencementFormat.jsx'
 import CommencementPrint from './Manager/CommencementPrint.jsx'
 import CommencementMenu from './CommencementMenu.jsx'
+import Commencement from './Commencement.jsx'
 
 import MothersDayDashboard from './Manager/MothersDayDashboard.jsx'
 import MothersDayScreenshot from './Manager/MothersDayScreenshot.jsx'
@@ -199,6 +200,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/manager/commencement-dashboard' element={<CommencementDashboard />} />
         <Route path='commencement-screenshot' element={<CommencementScreenshot />} />
         <Route path='commencement-menu' element={<CommencementMenu />} />
+        <Route path='commencement' element={<Commencement />} />
         
         <Route path='mothers-day-menu' element={<MothersDayMenu />} />
         <Route path='/manager/mothers-day' element={<MothersDayDashboard />} />
