@@ -101,7 +101,10 @@ export default function Home(){
                                                                                             `${data.description}`                            
                                                                                             )}                                            
                                             >  
-                                                <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                <div style={{   display:'flex',
+                                                                alignItems:'flex-end',
+                                                                justifyContent:'space-between',
+                                                                }}>
                                                     <span>
                                                         <span className='website-name'>{data.name}</span><br/>
                                                     </span>
