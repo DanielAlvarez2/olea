@@ -106,7 +106,11 @@ export default function Home(){
                                                         <span className='website-name'>{data.name}</span><br/>
                                                         {data.description}
                                                     </span>
-                                                    <span>{data.price}</span>
+                                                        <span>{data.price.includes('/') ?   <div style={{textAlign:'right'}}>
+                                                                                                {data.price.split('/')[0].trim()}<br/>{data.price.split('/')[1].trim()}
+                                                                                            </div> 
+                                                                                        : data.price}</span>
+
                                                 </div>
                                                 <br/>
                                             </div>
