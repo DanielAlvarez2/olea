@@ -32,7 +32,7 @@
     background: white;
     border: 1px solid black;
     position: relative;
-    overflow:hidden;
+    /* overflow:hidden; */
 }
 
 @media (max-width:1350px){

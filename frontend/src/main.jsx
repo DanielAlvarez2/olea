@@ -70,6 +70,7 @@ import WineSparkling from './Manager/WineSparkling.jsx'
 import WineBTB from './Manager/WineBTB.jsx'
 import WineListUpdate from './Manager/WineListUpdate.jsx'
 import WineListFormat from './Manager/WineListFormat.jsx'
+import WineListFormat2 from './Manager/WineListFormat2.jsx'
 import WineListPrint from './Manager/WineListPrint.jsx'
 import WineBTG from './Manager/WineBTG.jsx'
 import Beer from './Manager/Beer.jsx'
@@ -149,6 +150,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='wine-btb' element={<WineBTB />} />
         <Route path='wine-list-update' element={<WineListUpdate />} />
         <Route path='wine-list-format' element={<WineListFormat />} />
+        <Route path='wine-list-format2' element={<WineListFormat2 />} />
         <Route path='wine-list-print' element={<WineListPrint />} />
         <Route path='non-alcoholic' element={<NonAlcoholic />} />
         <Route path='sherries' element={<Sherries />} />
