@@ -1033,7 +1033,8 @@ export default function WineListFormat2(){
                             frontView ?  
                             
                                 <div 
-                                    className='winelist-format'            
+                                    className='winelist-format'      
+                                    style={{overflow:'hidden'}}      
                                 >
 
                                     <div style={{   width:'14in',
@@ -1082,7 +1083,9 @@ export default function WineListFormat2(){
                                     </div>
                                 </div>
                             :
-                                <div className='winelist-format'>
+                                <div className='winelist-format'
+                                        style={{overflow:'hidden'}}
+                                >
 
                                     <div style={{   width:'14in',
                                                     height:'8.5in',
