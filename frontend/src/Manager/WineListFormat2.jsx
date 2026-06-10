@@ -380,7 +380,7 @@ export default function WineListFormat2(){
                                             display:'flex',
                                             // backgroundImage:'url("scan-wine-list-p1-front.jpg")',
                                             // border:'1px solid black',
-                                            // overflow:'hidden',
+                                            overflow:'hidden',
                                             position:'relative'
                                     }}
                             >
@@ -859,6 +859,7 @@ export default function WineListFormat2(){
 
                                     <div    className='sherries' 
                                             style={{width:'3.5in',
+                                                    padding:`${pageMarginTopBottom}px 0`,
                                                     // border:'1px solid black',
                                                     height:'8.5in'}}>
                                 <div className='winelist-h1' style={{marginBottom:'0',paddingLeft:`${winelistItemMarginsLeftRight}px`}}>
@@ -883,6 +884,7 @@ export default function WineListFormat2(){
 
                                     <div    className='sangria' 
                                             style={{width:'3.5in',
+                                                    padding:`${pageMarginTopBottom}px 0`,
                                                     border:'1px solid black',
                                                     height:'8.5in'}}>
                                                                     <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
@@ -988,8 +990,13 @@ export default function WineListFormat2(){
 
                                     </div>{/* .sangria */}
 
-                                    <div className='craft-drinks' style={{width:'3.5in',height:'8.5in'}}>
-                                <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+                                    <div    className='craft-drinks' 
+                                            style={{width:'3.5in',
+                                                    padding:`${pageMarginTopBottom}px 0`,
+                                                    height:'8.5in'}}>
+                                
+                                <div className='winelist-h1' style={{marginBottom:'0',
+                                                                    padding:`0 ${winelistItemMarginsLeftRight}px`}}>
                                     craft drinks
                                 </div>
 
