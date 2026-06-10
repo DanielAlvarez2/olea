@@ -203,6 +203,7 @@ export default function WineWhite(){
                                         
                                         <span> {data.grapes}, </span>
                                         <span className='dessert-drink-name'>{data.name}</span>
+                                        <span>, {data.vintage}</span>
                                         <span>, {data.description} / {data.price}</span>
                                         <div style={{marginTop:'5px'}}>
                                             

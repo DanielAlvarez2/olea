@@ -204,6 +204,7 @@ export default function WineRed(){
                                         
                                         <span> {data.grapes}, </span>
                                         <span className='dessert-drink-name'>{data.name}</span>
+                                        <span>, {data.vintage}</span>
                                         <span>, {data.description} / {data.price}</span>
                                         {data.halfBottlePrice &&
                                                                 <div>1/2 btl. / {data.halfBottlePrice}</div>

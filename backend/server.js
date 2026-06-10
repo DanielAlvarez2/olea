@@ -2167,7 +2167,7 @@ app.put('/api/red/:id', async(req,res)=>{
             vintage: req.body.vintage.trim(),
             description: req.body.description.trim(),
             price: req.body.price.trim(),
-            halfBottlePrice: req.body.halfBottlePrice.trim(),
+            halfBottlePrice: req.body.halfBottlePrice ? req.body.halfBottlePrice.trim() : '',
         })
         console.log(`
             Updated to Database: 

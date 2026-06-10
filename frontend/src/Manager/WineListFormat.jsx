@@ -968,15 +968,6 @@ export default function WineListFormat(){
                                     )
                                 })}
 
-
-
-
-
-
-
-
-
-
                                 {beer.filter(item=>item.section == 'CAN').length != 0 && 
                                     <div className='winelist-h2'
                                             style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
@@ -995,16 +986,6 @@ export default function WineListFormat(){
                                         </div>
                                     )
                                 })}
-
-
-
-
-
-
-
-
-
-
 
                                 {beer.filter(item=>item.section == 'BOTTLE').length != 0 && 
                                     <div className='winelist-h2'
