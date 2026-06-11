@@ -4,15 +4,14 @@ import './Manager.css'
 import './DessertMenuFormat.css'
 import './DessertDrinksUpdate.css'
 import './WineListFormat.css'
+import './WineListPrint.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
-import { PiPlusCircleDuotone } from "react-icons/pi";
-import { PiMinusCircleDuotone } from "react-icons/pi";
 import { FaToggleOff } from "react-icons/fa6";
 import { FaToggleOn } from "react-icons/fa6";
 
 
 
-export default function WineListFormat2(){
+export default function WineListPrint2(){
 
     const [nonAlcoholicDrinks, setNonAlcoholicDrinks] = useState([])
     const [beer, setBeer] = useState([])
@@ -221,33 +220,6 @@ export default function WineListFormat2(){
         }
     }
 
-    function decreaseWinelistItemMarginsLeftRight(){
-        if (winelistItemMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/winelist/decreaseWinelistItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getWinelistFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increaseWinelistItemMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/winelist/increaseWinelistItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getWinelistFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function decreasePageMarginTopBottom(){
-        if (pageMarginTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/winelist/decreasePageMarginTopBottom`,{method:'PUT'})
-        .then(()=>getWinelistFormatting())
-        .catch(err=>console.log(err))
-    }
-
-    function increasePageMarginTopBottom(){
-        fetch(`${BASE_URL}/api/formats/winelist/increasePageMarginTopBottom`,{method:'PUT'})
-            .then(()=>getWinelistFormatting())
-            .catch(err=>console.log(err))
-    }
-
-
     function toggleFrontView(){
         setFrontView(prev=>!prev)
     }
@@ -256,25 +228,47 @@ export default function WineListFormat2(){
         setPage1(prev=>!prev)
     }
 
+    function printWineList(){
+        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+            alert(`
+WARNING: 
+
+Printing from Safari Browser is not supported.
+Please switch to a different browser to proceed.
+`)
+            return
+        }else{
+            window.print()
+        }
+    }
+
+
+
     return(
         <>
-            <div    className='manager-page-wrapper' 
-                    // style={{border:'1px solid red',
+            <div    className='manager-page-wrapper winelist-wrapper' 
+                    // style={{border:'1px solid red',            
                     //         // zoom:'0.75'
                     //         // color:'red'
                     //         }}
             >
-                <ManagerNavbar page='wine-list' />
-                    <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}}>wine list &gt; format</div>
-                    <div className='main-menu' style={{paddingBottom:'0'}}>
+                <div className='no-print' style={{width:'100%'}}>
+                    <ManagerNavbar page='wine-list' />
+                </div>
+                    <div    className='no-print'
+                            style={{textAlign:'center',fontSize:'30px'}}>
+                        menu manager
+                    </div>
+                    <div    className='no-print'
+                            style={{textAlign:'center',fontSize:'30px'}}>
+                        wine list &gt; print
+                    </div>
+
+                    
+                    <div className='main-menu'>
 
 
 
-
-
-                                
-                            <br/>
 
 
                             <div style={{   textAlign:'center',
@@ -283,7 +277,9 @@ export default function WineListFormat2(){
                                             fontFamily:'FuturaLight',
                                             justifyContent:'center',
                                             // border:'1px solid green',
-                                            alignItems:'center'}}>
+                                            alignItems:'center'}}
+                                    className='no-print'
+                            >
                                 <span>page 1</span>
                                     {page1  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
                                                                         onClick={togglePage1}/></span> 
@@ -300,7 +296,9 @@ export default function WineListFormat2(){
                                             gap:'10px',
                                             justifyContent:'center',
                                             // border:'1px solid green',
-                                            alignItems:'center'}}>
+                                            alignItems:'center'}}
+                                    className='no-print'
+                            >
                                 <span>front</span>
                                     {frontView  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
                                                                         onClick={toggleFrontView}/></span> 
@@ -319,32 +317,14 @@ export default function WineListFormat2(){
                                                     justifyContent:'center',
                                                     // border:'1px solid green',
                                                     alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseWinelistItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right &#8596;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseWinelistItemMarginsLeftRight} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-
                                                         
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMarginTopBottom} /></span>
-                                        <span>page margin<br/>top & bottom &#8597;</span>
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMarginTopBottom} /></span>
+                                                <div    className='no-print print-btn' 
+                                                        onClick={()=>printWineList()}>
+                                                    print
+                                                </div>
                                     </div>
-                                <br/>
-
-
+                                
+                            <br className='no-print'/>
 
 
 
@@ -371,157 +351,156 @@ export default function WineListFormat2(){
 
                         {page1 ? 
                                 <>
-                            {frontView ?  
-                            <div    className='wine-list-page'
-                                    style={{
-                                            background:'white',
-                                            width:'14in',
-                                            height:'8.5in',
-                                            display:'flex',
-                                            // backgroundImage:'url("scan-wine-list-p1-front.jpg")',
-                                            // border:'1px solid black',
-                                            overflow:'hidden',
-                                            position:'relative'
-                                    }}
-                            >
-                                <div    className='btg-column'
-                                        style={{width:'3.5in',
-                                                borderRight:'1px solid black',
-                                                // backgroundImage:'url("scan-wine-list-p1-front.jpg")',
-                                                backgroundSize:'14in',
-                                                // color:'red',
-                                                padding:`${pageMarginTopBottom}px 0`,
-                                                }}
-                                >
-                                    <div    className='winelist-h1'
-                                            style={{margin:'0',
-                                                    paddingLeft:`${winelistItemMarginsLeftRight}px`,
-                                                    fontSize:'27px'}}
+                            {frontView ?                            
+                                <div className='winelist-print-page' 
+                                    style={{   width:'14in',
+                                                height:'8.5in',
+                                                overflow:'hidden',
+                                                display:'flex',
+                                                // columns:'4 3in',
+                                                // columnRule:'1px solid black',
+                                                // columnGap:'0px',
+                                                // columnFill:'auto',
+                                                border:'1px solid black',
+                                                // padding:`${pageMarginTopBottom}px 0`,
+                                                background:'white',
+                                                }}>
+                                    <div    className='wines-btg'
+                                            style={{width:'3.5in',
+                                                    // background:'pink',
+                                                    padding:`${pageMarginTopBottom}px 0`,
+                                                    borderRight:'1px solid black',
+                                                    height:'8.5in'}}        
                                     >
-                                        wine by the glass
-                                    </div>
-                                   
-                                    <div    className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
-                                        Cava
-                                    </div>
+                                        <div    className='winelist-h1'
+                                                style={{margin:'0',
+                                                        paddingLeft:`${winelistItemMarginsLeftRight}px`,
+                                                        fontSize:'27px'}}
+                                        >
+                                            wine by the glass
+                                        </div>
+                                    
+                                        <div    className='winelist-h2'
+                                                style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+                                            Cava
+                                        </div>
 
-                                    {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
-                                                    className='special winelist-item'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                {/* <br/><br/> */}
-                                            </div>
-                                        )
-                                    })}
+                                        {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
+                                            return(
+                                                <div    key={data._id}
+                                                        style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
+                                                        className='special winelist-item'>                            
+                                                    <span className='grapes'>{data.grapes}, </span>
+                                                    <span className='name'>{data.name}</span>
+                                                    <span className='vintage'>, {data.vintage}, </span>
+                                                    <span className='description'> {data.description} /</span>
+                                                    <span className='price'> {data.price}</span>
+                                                    <br/><br/>
+                                                </div>
+                                            )
+                                        })}
 
-                                    <div className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                    >
-                                        White
-                                    </div>
+                                        <div className='winelist-h2'
+                                                style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                        >
+                                            White
+                                        </div>
 
-                                    {winesBTG.filter(item=>item.section == 'White').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
-                                                    className='special'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                {/* <br/><br/> */}
-                                            </div>
-                                        )
-                                    })}
+                                        {winesBTG.filter(item=>item.section == 'White').map(data=>{
+                                            return(
+                                                <div    key={data._id}
+                                                        style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
+                                                        className='special'>                            
+                                                    <span className='grapes'>{data.grapes}, </span>
+                                                    <span className='name'>{data.name}</span>
+                                                    <span className='vintage'>, {data.vintage}, </span>
+                                                    <span className='description'> {data.description} /</span>
+                                                    <span className='price'> {data.price}</span>
+                                                    <br/><br/>
+                                                </div>
+                                            )
+                                        })}
 
-                                    <div className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                    >
-                                        Rosé
-                                    </div>
+                                        <div className='winelist-h2'
+                                                style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                        >
+                                            Rosé
+                                        </div>
 
-                                    {winesBTG.filter(item=>item.section == 'Rosé').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                                    className='special'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                {/* <br/><br/> */}
-                                            </div>
-                                        )
-                                    })}
+                                        {winesBTG.filter(item=>item.section == 'Rosé').map(data=>{
+                                            return(
+                                                <div    key={data._id} 
+                                                        style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                                        className='special'>                            
+                                                    <span className='grapes'>{data.grapes}, </span>
+                                                    <span className='name'>{data.name}</span>
+                                                    <span className='vintage'>, {data.vintage}, </span>
+                                                    <span className='description'> {data.description} /</span>
+                                                    <span className='price'> {data.price}</span>
+                                                    <br/><br/>
+                                                </div>
+                                            )
+                                        })}
 
-                                    <div className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                    >
-                                        Red
-                                    </div>
+                                        <div className='winelist-h2'
+                                                style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                        >
+                                            Red
+                                        </div>
 
-                                    {winesBTG.filter(item=>item.section == 'Red').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                                    className='special'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                {/* <br/><br/> */}
-                                            </div>
-                                        )
-                                    })}
+                                        {winesBTG.filter(item=>item.section == 'Red').map(data=>{
+                                            return(
+                                                <div    key={data._id} 
+                                                        style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                                        className='special'>                            
+                                                    <span className='grapes'>{data.grapes}, </span>
+                                                    <span className='name'>{data.name}</span>
+                                                    <span className='vintage'>, {data.vintage}, </span>
+                                                    <span className='description'> {data.description} /</span>
+                                                    <span className='price'> {data.price}</span>
+                                                    <br/><br/>
+                                                </div>
+                                            )
+                                        })}
+
+                                    </div>{/* .wines-btg */}
 
 
                                     
-                                </div>{/* .btg-column */}
 
-                                <div style={{   
-                                                
-                                                columns:'3',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div className='wines-btb'
+                                        style={{
+                                                height:'8.5in',
                                                 width:'10.5in',
+                                                columns:'3',
                                                 columnRule:'1px solid black',
                                                 columnGap:'0px',
                                                 columnFill:'auto',
                                                 padding:`${pageMarginTopBottom}px 0`,
-                                                border:'none'
-                                                }}
-                                    className='winelist-format'
+                                        }}
                                 >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                    
+                                
                             
                                     <div className='winelist-h1' style={{paddingLeft:`${winelistItemMarginsLeftRight}px`}}>
                                         cava & champagne
@@ -537,7 +516,7 @@ export default function WineListFormat2(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
+                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
                                             </div>
                                         )
                                     })}
@@ -567,7 +546,7 @@ export default function WineListFormat2(){
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
+                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
                                             </div>
                                         )
                                     })}
@@ -604,7 +583,7 @@ export default function WineListFormat2(){
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
+                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
                                                             </div>
                                                     )
                                                 })}
@@ -651,7 +630,295 @@ export default function WineListFormat2(){
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
+                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                            </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        )
+                                    })}
+
+                                    </div>{/* .wines-btb */}
+
+                                </div>
+
+
+                            :
+                                
+                                
+                                <div className='winelist-print-page' 
+                                    style={{   width:'14in',
+                                                height:'8.5in',
+                                                background:'white',
+                                                overflow:'hidden',
+                                                border:'1px solid black',
+                                                position:'relative'}}>
+                                    
+
+
+
+
+                                <div style={{   width:'14in',
+                                                height:'8.5in',
+                                                position:'absolute',
+                                                top:'0',
+                                                right:'14in',
+                                                columns:'4 3in',
+                                                columnRule:'1px solid black',
+                                                columnGap:'0px',
+                                                columnFill:'auto',
+                                                border:'1px solid black',
+                                                padding:`${pageMarginTopBottom}px 0`,
+                                                background:'white',
+                                                // backgroundSize:'14in 8.5in',
+                                                // backgroundPosition:'-51px -54px',
+                                                // backgroundImage:'url("./scan-wine-list-p1-front.jpg")'
+                                                }}>
+
+
+                                    
+                                    <div    className='winelist-h1'
+                                            style={{margin:'0',
+                                                    paddingLeft:`${winelistItemMarginsLeftRight}px`,
+                                                    fontSize:'27px'}}
+                                    >
+                                        wine by the glass
+                                    </div>
+                                   
+                                    <div    className='winelist-h2'
+                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+                                        Cava
+                                    </div>
+
+                                    {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
+                                        return(
+                                            <div    key={data._id}
+                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
+                                                    className='special winelist-item'>                            
+                                                <span className='grapes'>{data.grapes}, </span>
+                                                <span className='name'>{data.name}</span>
+                                                <span className='vintage'>, {data.vintage}, </span>
+                                                <span className='description'> {data.description} /</span>
+                                                <span className='price'> {data.price}</span>
+                                                <br/><br/>
+                                            </div>
+                                        )
+                                    })}
+
+                                    <div className='winelist-h2'
+                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                    >
+                                        White
+                                    </div>
+
+                                    {winesBTG.filter(item=>item.section == 'White').map(data=>{
+                                        return(
+                                            <div    key={data._id}
+                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
+                                                    className='special'>                            
+                                                <span className='grapes'>{data.grapes}, </span>
+                                                <span className='name'>{data.name}</span>
+                                                <span className='vintage'>, {data.vintage}, </span>
+                                                <span className='description'> {data.description} /</span>
+                                                <span className='price'> {data.price}</span>
+                                                <br/><br/>
+                                            </div>
+                                        )
+                                    })}
+
+                                    <div className='winelist-h2'
+                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                    >
+                                        Rosé
+                                    </div>
+
+                                    {winesBTG.filter(item=>item.section == 'Rosé').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                                    className='special'>                            
+                                                <span className='grapes'>{data.grapes}, </span>
+                                                <span className='name'>{data.name}</span>
+                                                <span className='vintage'>, {data.vintage}, </span>
+                                                <span className='description'> {data.description} /</span>
+                                                <span className='price'> {data.price}</span>
+                                                <br/><br/>
+                                            </div>
+                                        )
+                                    })}
+
+                                    <div className='winelist-h2'
+                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                    >
+                                        Red
+                                    </div>
+
+                                    {winesBTG.filter(item=>item.section == 'Red').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                                    className='special'>                            
+                                                <span className='grapes'>{data.grapes}, </span>
+                                                <span className='name'>{data.name}</span>
+                                                <span className='vintage'>, {data.vintage}, </span>
+                                                <span className='description'> {data.description} /</span>
+                                                <span className='price'> {data.price}</span>
+                                                <br/><br/>
+                                            </div>
+                                        )
+                                    })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            
+                                    <div className='winelist-h1' style={{paddingLeft:`${winelistItemMarginsLeftRight}px`}}>
+                                        cava & champagne
+                                    </div>
+
+                                    {sparkling.map(data=>{
+                                        return(
+                                            <div    key={data._id}
+                                                    style={{breakInside:'avoid-column',padding:`0 ${winelistItemMarginsLeftRight}px`}} 
+                                                    className='special'>                            
+                                                <span className='grapes'>{data.grapes}, </span>
+                                                <span className='name'>{data.name}</span>
+                                                <span className='vintage'>, {data.vintage}, </span>
+                                                <span className='description'> {data.description} /</span>
+                                                <span className='price'> {data.price}</span>
+                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                            </div>
+                                        )
+                                    })}
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div className='winelist-h1' style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+                                        rosé
+                                    </div>
+
+                                    {rosé.map(data=>{
+                                        return(
+                                            <div    key={data._id}
+                                                    style={{breakInside:'avoid-column',padding:`0 ${winelistItemMarginsLeftRight}px`}} 
+                                                    className='special'>                            
+                                                <span className='grapes'>{data.grapes}, </span>
+                                                <span className='name'>{data.name}</span>
+                                                <span className='vintage'>, {data.vintage}, </span>
+                                                <span className='description'> {data.description} /</span>
+                                                <span className='price'> {data.price}</span>
+                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                            </div>
+                                        )
+                                    })}
+
+
+
+
+
+
+
+
+
+
+                                    <div className='winelist-h1' style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+                                        white
+                                    </div>
+
+
+                                    {whiteCategories.map(x=>{
+                                        return(
+                                            <div key={x} style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+                                                <div    className='winelist-h2'
+                                                        style={{margin:'0'}}>
+                                                    {x}
+                                                </div>
+                                                {white.filter(item=>item.category == x).map(data=>{
+                                                    return(
+                                                            <div    key={data._id}
+                                                                    style={{breakInside:'avoid-column'}}
+                                                                    className='special'>                            
+                                                                <span className='grapes'>{data.grapes}, </span>
+                                                                <span className='name'>{data.name}</span>
+                                                                <span className='vintage'>, {data.vintage}, </span>
+                                                                <span className='description'> {data.description} /</span>
+                                                                <span className='price'> {data.price}</span>
+                                                                {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
+                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                            </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        )
+                                    })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div className='winelist-h1' style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+                                        red
+                                    </div>
+
+
+                                    {redCategories.map(x=>{
+                                        return(
+                                            <div key={x} style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+                                                <div    className='winelist-h2'
+                                                        style={{margin:'0'}}>
+                                                    {x}
+                                                </div>
+                                                {red.filter(item=>item.category == x).map(data=>{
+                                                    return(
+                                                            <div    key={data._id}
+                                                                    style={{breakInside:'avoid-column'}}
+                                                                    className='special'>                            
+                                                                <span className='grapes'>{data.grapes}, </span>
+                                                                <span className='name'>{data.name}</span>
+                                                                <span className='vintage'>, {data.vintage}, </span>
+                                                                <span className='description'> {data.description} /</span>
+                                                                <span className='price'> {data.price}</span>
+                                                                {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
+                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
                                                             </div>
                                                     )
                                                 })}
@@ -661,232 +928,27 @@ export default function WineListFormat2(){
 
                                 </div>
 
-                            {/* .wine-list-page */}    
-                            </div>
-
-
-
-                            :
-                                
-                                
-                                <div 
-                                    className='winelist-format'   
-                                    style={{display:'flex',paddingLeft:'3.5in',overflow:'hidden'}}             
-                                >
-                                    
 
 
 
 
-                                    <div style={{   width:'14in',
+
+
+                                    <div style={{   width:'7in',
                                                     height:'8.5in',
                                                     position:'absolute',
+                                                    right:'0',
                                                     top:'0',
-                                                    right:'10.5in',
-                                                    columns:'4',
+                                                    columns:'4 3in',
+                                                    columnGap:'0',
                                                     columnRule:'1px solid black',
-                                                    columnGap:'0px',
                                                     columnFill:'auto',
-                                                    border:'1px solid black',
+                                                    background:'white',
                                                     padding:`${pageMarginTopBottom}px 0`,
-                                                    // background:'purple',
-                                                    // backgroundSize:'14in 8.5in',
-                                                    // backgroundPosition:'-51px -54px',
-                                                    // backgroundImage:'url("./scan-wine-list-p1-front.jpg")'
-                                                    }}>
+                                                    border:'1px solid black'}} >
+                                        
+                                        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                
-                                        <div className='winelist-h1' style={{paddingLeft:`${winelistItemMarginsLeftRight}px`}}>
-                                            cava & champagne
-                                        </div>
-
-                                        {sparkling.map(data=>{
-                                            return(
-                                                <div    key={data._id}
-                                                        style={{breakInside:'avoid-column',padding:`0 ${winelistItemMarginsLeftRight}px`}} 
-                                                        className='special'>                            
-                                                    <span className='grapes'>{data.grapes}, </span>
-                                                    <span className='name'>{data.name}</span>
-                                                    <span className='vintage'>, {data.vintage}, </span>
-                                                    <span className='description'> {data.description} /</span>
-                                                    <span className='price'> {data.price}</span>
-                                                    {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
-                                                </div>
-                                            )
-                                        })}
-
-
-
-
-
-
-
-
-
-
-
-
-                                        <div className='winelist-h1' style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
-                                            rosé
-                                        </div>
-
-                                        {rosé.map(data=>{
-                                            return(
-                                                <div    key={data._id}
-                                                        style={{breakInside:'avoid-column',padding:`0 ${winelistItemMarginsLeftRight}px`}} 
-                                                        className='special'>                            
-                                                    <span className='grapes'>{data.grapes}, </span>
-                                                    <span className='name'>{data.name}</span>
-                                                    <span className='vintage'>, {data.vintage}, </span>
-                                                    <span className='description'> {data.description} /</span>
-                                                    <span className='price'> {data.price}</span>
-                                                    {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
-                                                </div>
-                                            )
-                                        })}
-
-
-
-
-
-
-
-
-
-
-                                        <div className='winelist-h1' style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
-                                            white
-                                        </div>
-
-
-                                        {whiteCategories.map(x=>{
-                                            return(
-                                                <div key={x} style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
-                                                    <div    className='winelist-h2'
-                                                            style={{margin:'0'}}>
-                                                        {x}
-                                                    </div>
-                                                    {white.filter(item=>item.category == x).map(data=>{
-                                                        return(
-                                                                <div    key={data._id}
-                                                                        style={{breakInside:'avoid-column'}}
-                                                                        className='special'>                            
-                                                                    <span className='grapes'>{data.grapes}, </span>
-                                                                    <span className='name'>{data.name}</span>
-                                                                    <span className='vintage'>, {data.vintage}, </span>
-                                                                    <span className='description'> {data.description} /</span>
-                                                                    <span className='price'> {data.price}</span>
-                                                                    {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                    {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
-                                                                </div>
-                                                        )
-                                                    })}
-                                                </div>
-                                            )
-                                        })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                        <div className='winelist-h1' style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
-                                            red
-                                        </div>
-
-
-                                        {redCategories.map(x=>{
-                                            return(
-                                                <div key={x} style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}>
-                                                    <div    className='winelist-h2'
-                                                            style={{margin:'0'}}>
-                                                        {x}
-                                                    </div>
-                                                    {red.filter(item=>item.category == x).map(data=>{
-                                                        return(
-                                                                <div    key={data._id}
-                                                                        style={{breakInside:'avoid-column'}}
-                                                                        className='special'>                            
-                                                                    <span className='grapes'>{data.grapes}, </span>
-                                                                    <span className='name'>{data.name}</span>
-                                                                    <span className='vintage'>, {data.vintage}, </span>
-                                                                    <span className='description'> {data.description} /</span>
-                                                                    <span className='price'> {data.price}</span>
-                                                                    {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                    {/* {data.halfBottlePrice ? <><br/></> : <><br/><br/></>} */}
-                                                                </div>
-                                                        )
-                                                    })}
-                                                </div>
-                                            )
-                                        })}
-
-                                    </div>
-
-                                    <div    className='sherries' 
-                                            style={{width:'3.5in',
-                                                    padding:`${pageMarginTopBottom}px 0`,
-                                                    // border:'1px solid black',
-                                                    height:'8.5in'}}>
-                                <div className='winelist-h1' style={{marginBottom:'0',paddingLeft:`${winelistItemMarginsLeftRight}px`}}>
-                                    Jerez, Sanlúcar de Barrameda
-                                </div>
-                                
-                                {sherries.map(data=>{
-                                    return(
-                                        <div    key={data._id} 
-                                                style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                                className='special'>                                        
-                                            <span className='grapes'>{data.grapes}, </span>
-                                            <span className='name'>{data.name}</span>
-                                            <span className='description'>, {data.description}</span>
-                                            <span className='price'> / {data.price}</span> 
-                                            {/* <br/><br/> */}
-                                        </div>
-                                    )
-                                })}
-                                            
-                                    </div>{/* .sherries */}
-
-                                    <div    className='sangria' 
-                                            style={{width:'3.5in',
-                                                    padding:`${pageMarginTopBottom}px 0`,
-                                                    border:'1px solid black',
-                                                    height:'8.5in'}}>
                                                                     <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
                                                                         sangría
                                                                     </div>
@@ -899,11 +961,26 @@ export default function WineListFormat2(){
                                                                                     className='special'>
                                                                                 <span className='name'>{data.name}</span>
                                                                                 <span className='description'>, {data.description} (glass/pitcher) {data.glassPrice} / {data.pitcherPrice}</span>
-                                                                                {/* <br/><br/> */}
+                                                                                <br/><br/>
                                                                             </div>
                                                                         )
                                                                     })}
                                         
+                                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                 <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
                                     non-alcoholic
@@ -917,10 +994,25 @@ export default function WineListFormat2(){
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            {/* <br/><br/>                                         */}
+                                            <br/><br/>                                        
                                         </div>
                                     )
                                 })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -944,10 +1036,19 @@ export default function WineListFormat2(){
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            {/* <br/><br/> */}
+                                            <br/><br/>
                                         </div>
                                     )
                                 })}
+
+
+
+
+
+
+
+
+
 
                                 {beer.filter(item=>item.section == 'CAN').length != 0 && 
                                     <div className='winelist-h2'
@@ -963,10 +1064,20 @@ export default function WineListFormat2(){
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            {/* <br/><br/> */}
+                                            <br/><br/>
                                         </div>
                                     )
                                 })}
+
+
+
+
+
+
+
+
+
+
 
                                 {beer.filter(item=>item.section == 'BOTTLE').length != 0 && 
                                     <div className='winelist-h2'
@@ -982,21 +1093,32 @@ export default function WineListFormat2(){
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            {/* <br/><br/> */}
+                                            <br/><br/>
                                         </div>
                                     )
                                 })}
 
 
-                                    </div>{/* .sangria */}
 
-                                    <div    className='craft-drinks' 
-                                            style={{width:'3.5in',
-                                                    padding:`${pageMarginTopBottom}px 0`,
-                                                    height:'8.5in'}}>
-                                
-                                <div className='winelist-h1' style={{marginBottom:'0',
-                                                                    padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
                                     craft drinks
                                 </div>
 
@@ -1007,19 +1129,55 @@ export default function WineListFormat2(){
                                                 className='special'>
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description} / {data.price}</span>
-                                            {/* <br/><br/> */}
+                                            <br/><br/>
                                         </div>
                                     )
                                 })}
 
-                                        
-                                    </div>{/* .craft-drinks */}
 
 
 
 
 
-                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div className='winelist-h1' style={{marginBottom:'0',paddingLeft:`${winelistItemMarginsLeftRight}px`}}>
+                                    Jerez, Sanlúcar de Barrameda
+                                </div>
+                                
+                                {sherries.map(data=>{
+                                    return(
+                                        <div    key={data._id} 
+                                                style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                                className='special'>                                        
+                                            <span className='grapes'>{data.grapes}, </span>
+                                            <span className='name'>{data.name}</span>
+                                            <span className='description'>, {data.description}</span>
+                                            <span className='price'> / {data.price}</span> 
+                                            <br/><br/>
+                                        </div>
+                                    )
+                                })}
+
+
+
+
+
+
+
+                                    </div>
                                 </div>
                             }
                                 </>
@@ -1032,10 +1190,14 @@ export default function WineListFormat2(){
                                 {
                             frontView ?  
                             
-                                <div 
-                                    className='winelist-format'      
-                                    style={{overflow:'hidden'}}      
-                                >
+                                <div className='winelist-print-page' 
+                                    style={{   width: '14in',
+                                                height:'8.5in',
+                                                background:'white',
+                                                border:'1px solid black',
+                                                position:'relative',
+                                                overflow:'hidden'
+                                            }}>
 
                                     <div style={{   width:'14in',
                                                     height:'8.5in',
@@ -1070,7 +1232,9 @@ export default function WineListFormat2(){
                                                             <div    key={data.name}
                                                                     style={{paddingLeft:`${winelistItemMarginsLeftRight}px`}}    
                                                             >
-                                                                {data.name} / {data.price.toString().includes('.') ? data.price.toFixed(2) : data.price}
+                                                                <span className='description'>
+                                                                    {data.name} / {data.price.toString().includes('.') ? data.price.toFixed(2) : data.price}
+                                                                </span>
                                                             </div>
                                                         )
                                                     })}
@@ -1083,8 +1247,13 @@ export default function WineListFormat2(){
                                     </div>
                                 </div>
                             :
-                                <div className='winelist-format'
-                                        style={{overflow:'hidden'}}
+                                <div className='winelist-print-page' 
+                                    style={{   width:'14in',
+                                                height:'8.5in',
+                                                background:'white',
+                                                position:'relative',
+                                                overflow:'hidden',
+                                                border:'1px solid black'}}           
                                 >
 
                                     <div style={{   width:'14in',
@@ -1120,7 +1289,9 @@ export default function WineListFormat2(){
                                                             <div    key={data.name}
                                                                     style={{paddingLeft:`${winelistItemMarginsLeftRight}px`}}    
                                                             >
-                                                                {data.name} / {data.price.toString().includes('.') ? data.price.toFixed(2) : data.price}
+                                                                <span className='description'>
+                                                                    {data.name} / {data.price.toString().includes('.') ? data.price.toFixed(2) : data.price}
+                                                                </span>
                                                             </div>
                                                         )
                                                     })}
@@ -1168,82 +1339,6 @@ export default function WineListFormat2(){
 
                     </div>
 
-
-
-
-
-
-
-
-
-
-
-                            <div style={{   textAlign:'center',
-                                            display:'flex',
-                                            gap:'10px',
-                                            fontFamily:'FuturaLight',
-                                            justifyContent:'center',
-                                            // border:'1px solid green',
-                                            alignItems:'center'}}>
-                                <span>page 1</span>
-                                    {page1  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={togglePage1}/></span> 
-                                                
-                                                : 
-                                                    <span><FaToggleOn   style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={togglePage1}/></span>    
-                                    }  
-                                <span>page 2</span>
-                            </div>
-
-                            <div style={{   textAlign:'center',
-                                            display:'flex',
-                                            gap:'10px',
-                                            justifyContent:'center',
-                                            // border:'1px solid green',
-                                            alignItems:'center'}}>
-                                <span>front</span>
-                                    {frontView  ?   <span><FaToggleOff  style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleFrontView}/></span> 
-                                                
-                                                : 
-                                                    <span><FaToggleOn   style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleFrontView}/></span>    
-                                    }  
-                                <span>back</span>
-                            </div>
-
-                                                       
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseWinelistItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right &#8596;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseWinelistItemMarginsLeftRight} /></span>
-                                    </div>
-
-                                    <div style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-
-                                                        
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreasePageMarginTopBottom} /></span>
-                                        <span>page margin<br/>top & bottom &#8597;</span>
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increasePageMarginTopBottom} /></span>
-                                    </div>
-                                <br/><br/>
             
             </div>{/* .manager-page-wrapper */}
         </>

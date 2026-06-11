@@ -222,33 +222,6 @@ export default function WineListPrint(){
         }
     }
 
-    function decreaseWinelistItemMarginsLeftRight(){
-        if (winelistItemMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/winelist/decreaseWinelistItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getWinelistFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increaseWinelistItemMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/winelist/increaseWinelistItemMarginsLeftRight`, {method:'PUT'})
-            .then(()=>getWinelistFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function decreasePageMarginTopBottom(){
-        if (pageMarginTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/winelist/decreasePageMarginTopBottom`,{method:'PUT'})
-        .then(()=>getWinelistFormatting())
-        .catch(err=>console.log(err))
-    }
-
-    function increasePageMarginTopBottom(){
-        fetch(`${BASE_URL}/api/formats/winelist/increasePageMarginTopBottom`,{method:'PUT'})
-            .then(()=>getWinelistFormatting())
-            .catch(err=>console.log(err))
-    }
-
-
     function toggleFrontView(){
         setFrontView(prev=>!prev)
     }
@@ -292,6 +265,8 @@ Please switch to a different browser to proceed.
                             style={{textAlign:'center',fontSize:'30px'}}>
                         wine list &gt; print
                     </div>
+
+                    
                     <div className='main-menu'>
 
 
