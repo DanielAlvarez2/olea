@@ -1,3 +1,7 @@
+@font-face {
+    font-family: MidcenturySansBold;
+    src: url(./assets/fonts/MidcentruySansBold.otf);
+}
 .paper-menu h2{
     font-family: FuturaRoundBold;
     font-size: 21.4px;

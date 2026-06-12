@@ -185,7 +185,9 @@ Please switch to a different browser to proceed.
                                             <div    key={data._id}
                                                     style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                     className='special'>
-                                                <span className='name'>{data.name} </span>
+                                                <span className='name'
+                                                        style={{fontFamily:'FuturaExtraBold',fontSize:'50px !important',color:'blue'}}
+                                                >{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>

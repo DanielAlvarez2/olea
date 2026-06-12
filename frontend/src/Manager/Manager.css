@@ -2,6 +2,10 @@
     font-family: FuturaLight;
     src: url(./assets/fonts/FuturaLight.otf);
 }
+@font-face {
+    font-family: MidcenturySansBold;
+    src: url(./assets/fonts/MidcentruySansBold.otf);
+}
 *{
     margin:0;
     padding:0;
@@ -50,6 +54,7 @@ html{
 .name{
     /* color:blue; */
     font-family: FuturaLight;
+    font-family: MidcenturySansBold;
     font-weight: 900;
     font-size: 14px;
 }

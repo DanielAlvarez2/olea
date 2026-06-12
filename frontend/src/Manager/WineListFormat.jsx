@@ -379,7 +379,7 @@ export default function WineListFormat(){
                                             height:'8.5in',
                                             display:'flex',
                                             // backgroundImage:'url("scan-wine-list-p1-front.jpg")',
-                                            // border:'1px solid black',
+                                            border:'1px solid black',
                                             overflow:'hidden',
                                             position:'relative'
                                     }}
@@ -687,7 +687,7 @@ export default function WineListFormat(){
                                                     columnRule:'1px solid black',
                                                     columnGap:'0px',
                                                     columnFill:'auto',
-                                                    border:'1px solid black',
+                                                    borderRight:'1px solid black',
                                                     padding:`${pageMarginTopBottom}px 0`,
                                                     // background:'purple',
                                                     // backgroundSize:'14in 8.5in',
@@ -885,7 +885,8 @@ export default function WineListFormat(){
                                     <div    className='sangria' 
                                             style={{width:'3.5in',
                                                     padding:`${pageMarginTopBottom}px 0`,
-                                                    border:'1px solid black',
+                                                    borderLeft:'1px solid black',
+                                                    // borderRight:'1px solid black',
                                                     height:'8.5in'}}>
                                                                     <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
                                                                         sangría
@@ -992,6 +993,7 @@ export default function WineListFormat(){
 
                                     <div    className='craft-drinks' 
                                             style={{width:'3.5in',
+                                                    borderLeft:'1px solid black',
                                                     padding:`${pageMarginTopBottom}px 0`,
                                                     height:'8.5in'}}>
                                 
@@ -1047,7 +1049,7 @@ export default function WineListFormat(){
                                                     columnRule:'1px solid black',
                                                     columnFill:'auto',
                                                     padding:`${pageMarginTopBottom}px 0`,
-                                                    border:'1px solid black',
+                                                    borderLeft:'1px solid black',
                                                     background:'white'}}>
 
 
@@ -1097,7 +1099,7 @@ export default function WineListFormat(){
                                                     columnRule:'1px solid black',
                                                     columnFill:'auto',
                                                     padding:`${pageMarginTopBottom}px 0`,
-                                                    border:'1px solid black',
+                                                    borderRight:'1px solid black',
                                                     background:'white'}}>
 
 
@@ -1135,7 +1137,7 @@ export default function WineListFormat(){
                                     <div style={{   background:'white',
                                                     width:'3.5in',
                                                     height:'8.5in',
-                                                    border:'1px solid black',
+                                                    borderLeft:'1px solid black',
                                                     position:'absolute',
                                                     top:'0',
                                                     right:'0',

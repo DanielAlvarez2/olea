@@ -6,14 +6,12 @@ import './DessertDrinksUpdate.css'
 import './WineListFormat.css'
 import './WineListPrint.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
-import { PiPlusCircleDuotone } from "react-icons/pi";
-import { PiMinusCircleDuotone } from "react-icons/pi";
 import { FaToggleOff } from "react-icons/fa6";
 import { FaToggleOn } from "react-icons/fa6";
 
 
 
-export default function WineListPrint(){
+export default function WineListPrint2(){
 
     const [nonAlcoholicDrinks, setNonAlcoholicDrinks] = useState([])
     const [beer, setBeer] = useState([])
@@ -358,107 +356,117 @@ Please switch to a different browser to proceed.
                                     style={{   width:'14in',
                                                 height:'8.5in',
                                                 overflow:'hidden',
-                                                columns:'4 3in',
-                                                columnRule:'1px solid black',
-                                                columnGap:'0px',
-                                                columnFill:'auto',
+                                                display:'flex',
+                                                // columns:'4 3in',
+                                                // columnRule:'1px solid black',
+                                                // columnGap:'0px',
+                                                // columnFill:'auto',
                                                 border:'1px solid black',
-                                                padding:`${pageMarginTopBottom}px 0`,
+                                                // padding:`${pageMarginTopBottom}px 0`,
                                                 background:'white',
                                                 }}>
+                                    <div    className='wines-btg'
+                                            style={{width:'3.5in',
+                                                    // background:'pink',
+                                                    padding:`${pageMarginTopBottom}px 0`,
+                                                    borderRight:'1px solid black',
+                                                    height:'8.5in'}}        
+                                    >
+                                        <div    className='winelist-h1'
+                                                style={{margin:'0',
+                                                        paddingLeft:`${winelistItemMarginsLeftRight}px`,
+                                                        fontSize:'27px'}}
+                                        >
+                                            wine by the glass
+                                        </div>
+                                    
+                                        <div    className='winelist-h2'
+                                                style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
+                                            Cava
+                                        </div>
+
+                                        {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
+                                            return(
+                                                <div    key={data._id}
+                                                        style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
+                                                        className='special winelist-item'>                            
+                                                    <span className='grapes'>{data.grapes}, </span>
+                                                    <span className='name'>{data.name}</span>
+                                                    <span className='vintage'>, {data.vintage}, </span>
+                                                    <span className='description'> {data.description} /</span>
+                                                    <span className='price'> {data.price}</span>
+                                                    <br/>
+                                                </div>
+                                            )
+                                        })}
+
+                                        <div className='winelist-h2'
+                                                style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                        >
+                                            White
+                                        </div>
+
+                                        {winesBTG.filter(item=>item.section == 'White').map(data=>{
+                                            return(
+                                                <div    key={data._id}
+                                                        style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
+                                                        className='special'>                            
+                                                    <span className='grapes'>{data.grapes}, </span>
+                                                    <span className='name'>{data.name}</span>
+                                                    <span className='vintage'>, {data.vintage}, </span>
+                                                    <span className='description'> {data.description} /</span>
+                                                    <span className='price'> {data.price}</span>
+                                                    <br/>
+                                                </div>
+                                            )
+                                        })}
+
+                                        <div className='winelist-h2'
+                                                style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                        >
+                                            Rosé
+                                        </div>
+
+                                        {winesBTG.filter(item=>item.section == 'Rosé').map(data=>{
+                                            return(
+                                                <div    key={data._id} 
+                                                        style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                                        className='special'>                            
+                                                    <span className='grapes'>{data.grapes}, </span>
+                                                    <span className='name'>{data.name}</span>
+                                                    <span className='vintage'>, {data.vintage}, </span>
+                                                    <span className='description'> {data.description} /</span>
+                                                    <span className='price'> {data.price}</span>
+                                                    <br/>
+                                                </div>
+                                            )
+                                        })}
+
+                                        <div className='winelist-h2'
+                                                style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                        >
+                                            Red
+                                        </div>
+
+                                        {winesBTG.filter(item=>item.section == 'Red').map(data=>{
+                                            return(
+                                                <div    key={data._id} 
+                                                        style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                                        className='special'>                            
+                                                    <span className='grapes'>{data.grapes}, </span>
+                                                    <span className='name'>{data.name}</span>
+                                                    <span className='vintage'>, {data.vintage}, </span>
+                                                    <span className='description'> {data.description} /</span>
+                                                    <span className='price'> {data.price}</span>
+                                                    <br/>
+                                                </div>
+                                            )
+                                        })}
+
+                                    </div>{/* .wines-btg */}
 
 
                                     
-                                    <div    className='winelist-h1'
-                                            style={{margin:'0',
-                                                    paddingLeft:`${winelistItemMarginsLeftRight}px`,
-                                                    fontSize:'27px'}}
-                                    >
-                                        wine by the glass
-                                    </div>
-                                   
-                                    <div    className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
-                                        Cava
-                                    </div>
-
-                                    {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
-                                                    className='special winelist-item'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                <br/><br/>
-                                            </div>
-                                        )
-                                    })}
-
-                                    <div className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                    >
-                                        White
-                                    </div>
-
-                                    {winesBTG.filter(item=>item.section == 'White').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
-                                                    className='special'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                <br/><br/>
-                                            </div>
-                                        )
-                                    })}
-
-                                    <div className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                    >
-                                        Rosé
-                                    </div>
-
-                                    {winesBTG.filter(item=>item.section == 'Rosé').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                                    className='special'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                <br/><br/>
-                                            </div>
-                                        )
-                                    })}
-
-                                    <div className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                    >
-                                        Red
-                                    </div>
-
-                                    {winesBTG.filter(item=>item.section == 'Red').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                                    className='special'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                <br/><br/>
-                                            </div>
-                                        )
-                                    })}
 
 
 
@@ -480,7 +488,19 @@ Please switch to a different browser to proceed.
 
 
 
-
+                                <div className='wines-btb'
+                                        style={{
+                                                height:'8.5in',
+                                                width:'10.5in',
+                                                columns:'3',
+                                                columnRule:'1px solid black',
+                                                columnGap:'0px',
+                                                columnFill:'auto',
+                                                padding:`${pageMarginTopBottom}px 0`,
+                                        }}
+                                >
+                                    
+                                
                             
                                     <div className='winelist-h1' style={{paddingLeft:`${winelistItemMarginsLeftRight}px`}}>
                                         cava & champagne
@@ -496,7 +516,7 @@ Please switch to a different browser to proceed.
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                {data.halfBottlePrice ? <></> : <><br/></>}
                                             </div>
                                         )
                                     })}
@@ -526,7 +546,7 @@ Please switch to a different browser to proceed.
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                {data.halfBottlePrice ? <></> : <><br/></>}
                                             </div>
                                         )
                                     })}
@@ -563,7 +583,7 @@ Please switch to a different browser to proceed.
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                                {data.halfBottlePrice ? <></> : <><br/></>}
                                                             </div>
                                                     )
                                                 })}
@@ -610,13 +630,15 @@ Please switch to a different browser to proceed.
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                                {data.halfBottlePrice ? <></> : <><br/></>}
                                                             </div>
                                                     )
                                                 })}
                                             </div>
                                         )
                                     })}
+
+                                    </div>{/* .wines-btb */}
 
                                 </div>
 
@@ -640,12 +662,12 @@ Please switch to a different browser to proceed.
                                                 height:'8.5in',
                                                 position:'absolute',
                                                 top:'0',
-                                                right:'14in',
+                                                right:'10.5in',
                                                 columns:'4 3in',
                                                 columnRule:'1px solid black',
                                                 columnGap:'0px',
                                                 columnFill:'auto',
-                                                border:'1px solid black',
+                                                // border:'1px solid black',
                                                 padding:`${pageMarginTopBottom}px 0`,
                                                 background:'white',
                                                 // backgroundSize:'14in 8.5in',
@@ -653,98 +675,6 @@ Please switch to a different browser to proceed.
                                                 // backgroundImage:'url("./scan-wine-list-p1-front.jpg")'
                                                 }}>
 
-
-                                    
-                                    <div    className='winelist-h1'
-                                            style={{margin:'0',
-                                                    paddingLeft:`${winelistItemMarginsLeftRight}px`,
-                                                    fontSize:'27px'}}
-                                    >
-                                        wine by the glass
-                                    </div>
-                                   
-                                    <div    className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
-                                        Cava
-                                    </div>
-
-                                    {winesBTG.filter(item=>item.section == 'Cava').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
-                                                    className='special winelist-item'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                <br/><br/>
-                                            </div>
-                                        )
-                                    })}
-
-                                    <div className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                    >
-                                        White
-                                    </div>
-
-                                    {winesBTG.filter(item=>item.section == 'White').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}} 
-                                                    className='special'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                <br/><br/>
-                                            </div>
-                                        )
-                                    })}
-
-                                    <div className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                    >
-                                        Rosé
-                                    </div>
-
-                                    {winesBTG.filter(item=>item.section == 'Rosé').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                                    className='special'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                <br/><br/>
-                                            </div>
-                                        )
-                                    })}
-
-                                    <div className='winelist-h2'
-                                            style={{margin:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                    >
-                                        Red
-                                    </div>
-
-                                    {winesBTG.filter(item=>item.section == 'Red').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                                    className='special'>                            
-                                                <span className='grapes'>{data.grapes}, </span>
-                                                <span className='name'>{data.name}</span>
-                                                <span className='vintage'>, {data.vintage}, </span>
-                                                <span className='description'> {data.description} /</span>
-                                                <span className='price'> {data.price}</span>
-                                                <br/><br/>
-                                            </div>
-                                        )
-                                    })}
 
 
 
@@ -782,7 +712,7 @@ Please switch to a different browser to proceed.
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                {data.halfBottlePrice ? <></> : <><br/></>}
                                             </div>
                                         )
                                     })}
@@ -812,7 +742,7 @@ Please switch to a different browser to proceed.
                                                 <span className='vintage'>, {data.vintage}, </span>
                                                 <span className='description'> {data.description} /</span>
                                                 <span className='price'> {data.price}</span>
-                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                {data.halfBottlePrice ? <></> : <><br/></>}
                                             </div>
                                         )
                                     })}
@@ -849,7 +779,7 @@ Please switch to a different browser to proceed.
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                                {data.halfBottlePrice ? <></> : <><br/></>}
                                                             </div>
                                                     )
                                                 })}
@@ -896,7 +826,7 @@ Please switch to a different browser to proceed.
                                                                 <span className='description'> {data.description} /</span>
                                                                 <span className='price'> {data.price}</span>
                                                                 {data.halfBottlePrice && <div className='half-bottle'>1/2 btl. / {data.halfBottlePrice}</div>}
-                                                                {data.halfBottlePrice ? <><br/></> : <><br/><br/></>}
+                                                                {data.halfBottlePrice ? <></> : <><br/></>}
                                                             </div>
                                                     )
                                                 })}
@@ -912,21 +842,46 @@ Please switch to a different browser to proceed.
 
 
 
-                                    <div style={{   width:'7in',
+                                    <div style={{   width:'10.5in',
                                                     height:'8.5in',
                                                     position:'absolute',
                                                     right:'0',
                                                     top:'0',
-                                                    columns:'4 3in',
-                                                    columnGap:'0',
-                                                    columnRule:'1px solid black',
-                                                    columnFill:'auto',
+                                                    display:'flex',
+                                                    // columns:'4 3in',
+                                                    // columnGap:'0',
+                                                    // columnRule:'1px solid black',
+                                                    // columnFill:'auto',
                                                     background:'white',
-                                                    padding:`${pageMarginTopBottom}px 0`,
-                                                    border:'1px solid black'}} >
+                                                    borderLeft:'1px solid black'
+                                                    }} >
+                                        <div    className='sherries' 
+                                                style={{width:'3.5in',
+                                                        height:'8.5in',
+                                                        padding:`${pageMarginTopBottom}px 0`,
+                                                        borderRight:'1px solid black'}}>
+                                            <div className='winelist-h1' style={{marginBottom:'0',paddingLeft:`${winelistItemMarginsLeftRight}px`}}>
+                                                Jerez, Sanlúcar de Barrameda
+                                            </div>
+                                            
+                                            {sherries.map(data=>{
+                                                return(
+                                                    <div    key={data._id} 
+                                                            style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
+                                                            className='special'>                                        
+                                                        <span className='grapes'>{data.grapes}, </span>
+                                                        <span className='name'>{data.name}</span>
+                                                        <span className='description'>, {data.description}</span>
+                                                        <span className='price'> / {data.price}</span> 
+                                                        <br/>
+                                                    </div>
+                                                )
+                                            })}
                                         
+                                        </div>{/* .sherries */}
                                         
-
+                                        <div className='sangria' style={{width:'3.5in',height:'8.5in',padding:`${pageMarginTopBottom}px 0`,
+                                                        borderRight:'1px solid black'}}>
                                                                     <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
                                                                         sangría
                                                                     </div>
@@ -939,25 +894,10 @@ Please switch to a different browser to proceed.
                                                                                     className='special'>
                                                                                 <span className='name'>{data.name}</span>
                                                                                 <span className='description'>, {data.description} (glass/pitcher) {data.glassPrice} / {data.pitcherPrice}</span>
-                                                                                <br/><br/>
+                                                                                <br/>
                                                                             </div>
                                                                         )
                                                                     })}
-                                        
-                                        
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                                 <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
@@ -972,28 +912,10 @@ Please switch to a different browser to proceed.
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            <br/><br/>                                        
+                                            <br/>                                    
                                         </div>
                                     )
                                 })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                             <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
@@ -1014,7 +936,7 @@ Please switch to a different browser to proceed.
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            <br/><br/>
+                                            <br/>
                                         </div>
                                     )
                                 })}
@@ -1042,7 +964,7 @@ Please switch to a different browser to proceed.
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            <br/><br/>
+                                            <br/>
                                         </div>
                                     )
                                 })}
@@ -1071,31 +993,15 @@ Please switch to a different browser to proceed.
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description}</span>
                                             <span className='price'> / {data.price}</span> 
-                                            <br/><br/>
+                                            <br/>
                                         </div>
                                     )
                                 })}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                        
+                                        </div>{/* .sangria */}
+                                        
+                                        <div className='craft-drinks' style={{width:'3.5in',height:'8.5in',padding:`${pageMarginTopBottom}px 0`}}>
                                 <div className='winelist-h1' style={{marginBottom:'0',padding:`0 ${winelistItemMarginsLeftRight}px`}}>
                                     craft drinks
                                 </div>
@@ -1107,11 +1013,18 @@ Please switch to a different browser to proceed.
                                                 className='special'>
                                             <span className='name'>{data.name}</span>
                                             <span className='description'>, {data.description} / {data.price}</span>
-                                            <br/><br/>
+                                            <br/>
                                         </div>
                                     )
                                 })}
 
+                                        
+                                        </div>{/* .craft-drinks */}
+                                        
+                                        
+
+                                        
+                                        
 
 
 
@@ -1131,23 +1044,60 @@ Please switch to a different browser to proceed.
 
 
 
-                                <div className='winelist-h1' style={{marginBottom:'0',paddingLeft:`${winelistItemMarginsLeftRight}px`}}>
-                                    Jerez, Sanlúcar de Barrameda
-                                </div>
-                                
-                                {sherries.map(data=>{
-                                    return(
-                                        <div    key={data._id} 
-                                                style={{padding:`0 ${winelistItemMarginsLeftRight}px`}}
-                                                className='special'>                                        
-                                            <span className='grapes'>{data.grapes}, </span>
-                                            <span className='name'>{data.name}</span>
-                                            <span className='description'>, {data.description}</span>
-                                            <span className='price'> / {data.price}</span> 
-                                            <br/><br/>
-                                        </div>
-                                    )
-                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1187,7 +1137,7 @@ Please switch to a different browser to proceed.
                                                     columnRule:'1px solid black',
                                                     columnFill:'auto',
                                                     padding:`${pageMarginTopBottom}px 0`,
-                                                    border:'1px solid black',
+                                                    borderLeft:'1px solid black',
                                                     background:'white'}}>
 
 
@@ -1231,7 +1181,8 @@ Please switch to a different browser to proceed.
                                                 background:'white',
                                                 position:'relative',
                                                 overflow:'hidden',
-                                                border:'1px solid black'}}           
+                                                border:'1px solid black'
+                                            }}           
                                 >
 
                                     <div style={{   width:'14in',
@@ -1244,7 +1195,7 @@ Please switch to a different browser to proceed.
                                                     columnRule:'1px solid black',
                                                     columnFill:'auto',
                                                     padding:`${pageMarginTopBottom}px 0`,
-                                                    border:'1px solid black',
+                                                    borderRight:'1px solid black',
                                                     background:'white'}}>
 
 
@@ -1284,7 +1235,7 @@ Please switch to a different browser to proceed.
                                     <div style={{   background:'white',
                                                     width:'3.5in',
                                                     height:'8.5in',
-                                                    border:'1px solid black',
+                                                    borderLeft:'1px solid black',
                                                     position:'absolute',
                                                     top:'0',
                                                     right:'0',
