@@ -2,6 +2,11 @@ import './Auth.css'
 import {Link} from 'react-router'
 
 export default function Login(){
+
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'    
+
     return(
         <div className='auth-wrapper'>
             <form>
@@ -11,7 +16,8 @@ export default function Login(){
                 <label>    
                     Email:<br />
                     <input  type='email' 
-                            name='email'
+                            id='login-email'
+                            name='login-email'
                             required
                             placeholder='name@website.com' />
                 </label>
@@ -20,12 +26,14 @@ export default function Login(){
                 <label>
                     Password:<br/>
                     <input  type='password'
+                            id='login-password'
                             required
                             placeholder='*****'
-                            name='password' />
+                            name='login-password' />
                 </label>    
                 <br/><br/>
 
+                <br/><br/>
                 <button>LOG IN</button>
                 <br/>
                 <div>Don't have an account? <Link to='/register'>Register</Link></div>

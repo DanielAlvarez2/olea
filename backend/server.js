@@ -32,6 +32,7 @@ const AnnualEvents = require('./models/AnnualEvents.js')
 const AnnualEventsMenuItem = require('./models/AnnualEventsMenuItem.js')
 const AnnualEventsPrice = require('./models/AnnualEventsPrice.js')
 const AnnualEventsWebsiteImage = require('./models/AnnualEventsWebsiteImage.js')
+const User = require('./models/User.js')
 
 const {cloudinary} = require('./middleware/cloudinary.js')
 
@@ -52,6 +53,28 @@ console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
 
 const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
+
+app.post('/api/users/create', async(req,res)=>{
+    try{
+        console.log(req.body)
+        await User.create({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+        })
+        console.log(`
+            New User Created: 
+             - ${req.body.username}`)
+        res.json(`
+            New User Created:: 
+             - ${req.body.username}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+
+
 
 app.get('/api/toggle-mothers-day', async(req,res)=>{
     const Events = await AnnualEvents.find()

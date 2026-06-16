@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+
 const TeaSchema = new mongoose.Schema({
     menu:{type:String},
     section:{type:String},
