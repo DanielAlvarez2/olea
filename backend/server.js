@@ -78,8 +78,8 @@ app.post('/api/users/create', async(req,res)=>{
 app.post('/api/users/new-email', async(req,res)=>{
     try{
         const existingEmail = await User.find({email:req.body.email})
-        console.log(existingEmail)
-        res.json(existingEmail)
+        console.log('existingEmail: ',existingEmail[0])
+        res.json(existingEmail[0])
     }catch(err){
         console.log(err)
     }

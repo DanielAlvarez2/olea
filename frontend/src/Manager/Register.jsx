@@ -5,8 +5,8 @@ export default function Register(){
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
-                    'http://localhost:5173'    
-    
+                    'http://localhost:1436'
+
     async function createUser(formData){
 
         let duplicateUser = false
@@ -25,10 +25,16 @@ export default function Register(){
                         }
                         )
                         .then(res=>res.json())
-                        .then(data=>{
+                        .then(data=>
+                            {
                                     if(data){
-                                        alert('An account with that email address already exists')
-                                        window.location.replace(`${BASE_URL}/login`)
+                                        alert(`
+A user account with this email address already exists.
+If that account belongs to you, log in using your 
+password in the Login Page. You will automatically
+be redirected there after closing this screen.                                            
+                                            `)
+                                        window.location.replace('/login')
                                         duplicateUser = true
                             }
                         })
@@ -43,7 +49,11 @@ export default function Register(){
                                     password: formData.get('register-password'),
                                 }) 
                             })
-                            .then(alert('Account Created'))
+                            .then(alert(`
+Your user account has been created successfully.
+You will now be redirected to the login page.                                
+                                `))
+                            .then(window.location.replace('/login'))
                             .catch(err=>console.log(err))
             }
         }
