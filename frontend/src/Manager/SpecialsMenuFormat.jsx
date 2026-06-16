@@ -189,7 +189,7 @@ export default function SpecialsMenuUpdate(){
                                                 style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
                                                 className='special'>
                                         
-                                            <span className='name'>{data.name} </span>
+                                            <span className='name-specials'>{data.name} </span>
                                             {data.allergiesAbbreviated && 
                                                 <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             <span> {data.description}</span>
@@ -232,7 +232,7 @@ export default function SpecialsMenuUpdate(){
                                                 className='special'>
                                             
                                     
-                                            <span className='name'>{data.name} </span>
+                                            <span className='name-specials'>{data.name} </span>
                                             {data.allergiesAbbreviated && 
                                                 <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             <span> {data.description}</span>
@@ -274,7 +274,7 @@ export default function SpecialsMenuUpdate(){
                                                 className='special'>
                                             
                                     
-                                            <span className='name'>{data.name} </span>
+                                            <span className='name-specials'>{data.name} </span>
                                             {data.allergiesAbbreviated && 
                                                 <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             <span> {data.description}</span>
@@ -372,7 +372,7 @@ export default function SpecialsMenuUpdate(){
                                                                 className='special'>
                                                             
                                                     
-                                                            <span className='name'>{data.name} </span>
+                                                            <span className='name-specials'>{data.name} </span>
                                                             {data.allergiesAbbreviated && 
                                                                 <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                             <span> {data.description}</span>

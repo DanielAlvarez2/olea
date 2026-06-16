@@ -15,8 +15,8 @@
   src: url(./assets/fonts/FuturaExtraBold.otf)
 } */
 @font-face{
-  font-family: 'MidcenturySansBold';
-  src: url(./assets/fonts/MidcentruySansBold.otf)
+  font-family: 'FuturaBold';
+  src: url(./assets/fonts/FuturaBold.otf)
 }
 *{
   margin:0;

@@ -2,12 +2,10 @@
     width:auto;
     padding-bottom:0;
 }
-@font-face {
-    font-family: "MidcenturySansBold";
-    src: url(./assets/fonts/MidcentruySansBold.otf);
-}
-.name{
-    font-family: "MidcenturySansBold" !important;
+
+.name-specials{
+    font-family: "FuturaBold" !important;
+    /* color:green !important; */
 }
 @media screen and (max-width:850px){
     .main-menu{
