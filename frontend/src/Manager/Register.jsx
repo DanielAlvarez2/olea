@@ -5,26 +5,47 @@ export default function Register(){
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
-                    'http://localhost:1436'    
+                    'http://localhost:5173'    
     
     async function createUser(formData){
+
+        let duplicateUser = false
+
         if (formData.get('register-password') != formData.get('register-confirm-password')){
             alert('Passwords do not match')
             setTimeout(()=>document.querySelector('#register-email').value = formData.get('register-email'),10)
             setTimeout(()=>document.querySelector('#register-username').value = formData.get('register-username'),10)
         }else{
-            await fetch(`${BASE_URL}/api/users/create`,
+            await fetch(`${BASE_URL}/api/users/new-email`,
                         {   method:'POST',
                             headers:{'Content-Type':'application/json'},
                             body: JSON.stringify({
-                                username: formData.get('register-username').trim(),
-                                email: formData.get('register-email').trim(),
-                                password: formData.get('register-password'),
-                            }) 
+                                email: formData.get('register-email').trim().toLowerCase()
+                            })
+                        }
+                        )
+                        .then(res=>res.json())
+                        .then(data=>{
+                                    if(data){
+                                        alert('An account with that email address already exists')
+                                        window.location.replace(`${BASE_URL}/login`)
+                                        duplicateUser = true
+                            }
                         })
-                        .then(alert('Account Created'))
                         .catch(err=>console.log(err))
-            
+            if (!duplicateUser){
+                await fetch(`${BASE_URL}/api/users/create`,
+                            {   method:'POST',
+                                headers:{'Content-Type':'application/json'},
+                                body: JSON.stringify({
+                                    username: formData.get('register-username').trim(),
+                                    email: formData.get('register-email').trim().toLowerCase(),
+                                    password: formData.get('register-password'),
+                                }) 
+                            })
+                            .then(alert('Account Created'))
+                            .catch(err=>console.log(err))
+            }
         }
         // alert(`
         //         ${formData.get('register-email')}

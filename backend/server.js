@@ -61,6 +61,8 @@ app.post('/api/users/create', async(req,res)=>{
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
+            role: 'guest',
+            accountCreated: Date.now()
         })
         console.log(`
             New User Created: 
@@ -68,6 +70,16 @@ app.post('/api/users/create', async(req,res)=>{
         res.json(`
             New User Created:: 
              - ${req.body.username}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/users/new-email', async(req,res)=>{
+    try{
+        const existingEmail = await User.find({email:req.body.email})
+        console.log(existingEmail)
+        res.json(existingEmail)
     }catch(err){
         console.log(err)
     }
