@@ -271,7 +271,7 @@ export default function SpecialsMenuUpdate(){
                                         }
                                         
                                         {/* {data.sequence}<br/> */}
-                                        <span className='name'>{data.name} </span>
+                                        <span className='name-specials'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                         <span> {data.description}</span>
@@ -354,7 +354,7 @@ export default function SpecialsMenuUpdate(){
                                                         onClick={(()=>moveUp(data._id))} />
                                         }
                                         {/* {data.sequence}<br/> */}
-                                        <span className='name'>{data.name} </span>
+                                        <span className='name-specials'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                         <span> {data.description}</span>
@@ -436,7 +436,7 @@ export default function SpecialsMenuUpdate(){
 
                                         }
                                         {/* {data.sequence}<br/> */}
-                                        <span className='name'>{data.name} </span>
+                                        <span className='name-specials'>{data.name} </span>
                                         {data.allergiesAbbreviated && 
                                             <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                         <span> {data.description}</span>
@@ -735,7 +735,7 @@ export default function SpecialsMenuUpdate(){
                                         return(
                                             <div key={data._id} className='special'>  
                                                 <div>section: {data.section}</div>                                    
-                                                <span className='name'>{data.name} </span>
+                                                <span className='name-specials'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
