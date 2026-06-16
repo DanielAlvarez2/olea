@@ -68,8 +68,23 @@ app.post('/api/users/create', async(req,res)=>{
             New User Created: 
              - ${req.body.username}`)
         res.json(`
-            New User Created:: 
+            New User Created:
              - ${req.body.username}`)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.post('/api/users/login', async(req,res)=>{
+    try{
+        console.log(req.body)
+        let unknownUser = await User.find({email: req.body.email})
+        if (unknownUser[0]){
+            console.log('User Exists: ' + unknownUser[0].username)
+        }else{
+            console.log('User Email Not Found in Database')
+        }
+        res.json(unknownUser[0])
     }catch(err){
         console.log(err)
     }

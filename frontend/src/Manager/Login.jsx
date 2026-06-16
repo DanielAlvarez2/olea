@@ -7,9 +7,23 @@ export default function Login(){
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'    
 
+    async function loginUser(formData){
+        await fetch(`${BASE_URL}/api/users/login`,{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({
+                email: formData.get('login-email').trim().toLowerCase(),
+                password: formData.get('login-password').trim().toLowerCase()
+            })
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(res))
+        .catch(err=>console.log(err))
+    }
+
     return(
         <div className='auth-wrapper'>
-            <form>
+            <form action={loginUser}>
                 <h2>Staff Login</h2>
                 <br/>
 
