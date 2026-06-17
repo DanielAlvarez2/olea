@@ -5,6 +5,7 @@
 
 .name-specials{
     font-family: "FuturaBold" !important;
+    font-size: 13px;
     /* color:green !important; */
 }
 @media screen and (max-width:850px){
