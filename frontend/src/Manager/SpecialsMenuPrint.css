@@ -5,7 +5,8 @@
 
 .name-specials{
     font-family: "FuturaHeavy" !important;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 100;
     letter-spacing: 0.3px;
     /* color:green !important; */
 }
