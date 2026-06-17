@@ -4,8 +4,9 @@
 }
 
 .name-specials{
-    font-family: "FuturaBold" !important;
-    font-size: 13px;
+    font-family: "FuturaHeavy" !important;
+    font-size: 15px;
+    letter-spacing: 0.3px;
     /* color:green !important; */
 }
 @media screen and (max-width:850px){

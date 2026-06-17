@@ -18,6 +18,10 @@
   font-family: 'FuturaBold';
   src: url(./assets/fonts/FuturaBold.otf)
 }
+@font-face{
+  font-family: 'FuturaHeavy';
+  src: url(./assets/fonts/FuturaHeavy.otf)
+}
 *{
   margin:0;
   padding:0;
