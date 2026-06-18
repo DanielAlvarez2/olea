@@ -1,5 +1,6 @@
 import './Auth.css'
 import {Link} from 'react-router'
+import { RiShieldKeyholeFill } from "react-icons/ri";
 
 export default function Login(){
 
@@ -24,7 +25,15 @@ export default function Login(){
     return(
         <div className='auth-wrapper'>
             <form action={loginUser}>
-                <h2>Staff Login</h2>
+                <div style={{   display:'flex',
+                                // background:'pink',
+                     alignItems:'center',
+                     gap:'10px',
+                     justifyContent:'center',           
+                            }}>
+                    <h2>Staff Login</h2>
+                    <RiShieldKeyholeFill size='25' />
+                </div>
                 <br/>
 
                 <label>    

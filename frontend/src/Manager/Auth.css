@@ -1,9 +1,11 @@
+
 .auth-wrapper{
     width:100%;
     min-height:100vh;
     min-height:100svh;
     display:grid;
     place-content: center;
+    font-family: sans-serif;
 }
 .auth-wrapper form{
     background:#ccc;
@@ -33,4 +35,7 @@
 .auth-wrapper div{
     width:100%;
     text-align: center;
+}
+.auth-wrapper button{
+    padding:0.5em 1.5em;
 }

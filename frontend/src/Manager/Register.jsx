@@ -1,5 +1,6 @@
 import './Auth.css'
 import {Link} from 'react-router'
+import { FaUserPlus } from "react-icons/fa";
 
 export default function Register(){
 
@@ -67,7 +68,16 @@ You will now be redirected to the login page.
     return(
         <div className='auth-wrapper'>
             <form action={createUser}>
-                <h2>Register</h2>
+                <div style={{   display:'flex',
+                                // background:'pink',
+                     alignItems:'center',
+                     gap:'10px',
+                     justifyContent:'center',           
+                            }}>
+                    <h2>Register</h2> 
+                    <FaUserPlus size='25' />
+                </div>
+                
                 <br/>
 
                 <label>
