@@ -23,11 +23,14 @@ export default function Login(){
             })
         })
         .then(res=>res.json())
-        .then(validUser=>{
-            if(validUser){
-                window.location.replace('/dashboard')
-            }else{
+        .then(unknownUser=>{
+            console.log(unknownUser[0])
+            if(!unknownUser[0]){
                 alert('Incorrect Email or Password.')
+                return
+            }else{
+                if(unknownUser[0].role == 'guest') window.location.replace('/guest-user')
+                if(unknownUser[0].role == 'manager') window.location.replace('/dashboard')
             }
         })
         .catch(err=>console.log(err))
