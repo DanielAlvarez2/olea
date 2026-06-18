@@ -9,16 +9,27 @@ export default function Login(){
                     'http://localhost:1436'    
 
     async function loginUser(formData){
+        if(formData.get('login-password').trim() == ''){
+            alert(`Password cannot be empty.`)
+            setTimeout(()=> document.querySelector('#login-email').value = formData.get('login-email'),10)
+            return
+        }
         await fetch(`${BASE_URL}/api/users/login`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({
                 email: formData.get('login-email').trim().toLowerCase(),
-                password: formData.get('login-password').trim().toLowerCase()
+                formSubmittedPassword: formData.get('login-password').trim().toLowerCase()
             })
         })
         .then(res=>res.json())
-        .then(data=>console.log(data))
+        .then(validUser=>{
+            if(validUser){
+                window.location.replace('/dashboard')
+            }else{
+                alert('Incorrect Email or Password.')
+            }
+        })
         .catch(err=>console.log(err))
     }
 

@@ -77,14 +77,17 @@ app.post('/api/users/create', async(req,res)=>{
 
 app.post('/api/users/login', async(req,res)=>{
     try{
-        console.log(req.body)
+        let isPasswordCorrect = false
         let unknownUser = await User.find({email: req.body.email})
         if (unknownUser[0]){
             console.log('User Exists: ' + unknownUser[0].username)
+            isPasswordCorrect = await bcrypt.compare(req.body.formSubmittedPassword, unknownUser[0].password)
+            console.log('isPasswordCorrect: ')
+            console.log(isPasswordCorrect)
         }else{
             console.log('User Email Not Found in Database')
         }
-        res.json(unknownUser[0])
+        res.json(isPasswordCorrect)
     }catch(err){
         console.log(err)
     }

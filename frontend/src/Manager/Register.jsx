@@ -12,6 +12,21 @@ export default function Register(){
 
         let duplicateUser = false
 
+        if(formData.get('register-password').trim() == ''){
+            alert(`Password cannot be empty.`)
+            setTimeout(()=> document.querySelector('#register-email').value = formData.get('register-email'),10)
+            setTimeout(()=> document.querySelector('#register-username').value = formData.get('register-username'),10)
+            return
+        }
+
+        if(formData.get('register-username').trim() == ''){
+            alert(`User Name cannot be empty.`)
+            setTimeout(()=> document.querySelector('#register-email').value = formData.get('register-email'),10)
+            setTimeout(()=> document.querySelector('#register-username').value = formData.get('register-username'),10)
+            return
+        }
+
+
         if (formData.get('register-password') != formData.get('register-confirm-password')){
             alert('Passwords do not match')
             setTimeout(()=>document.querySelector('#register-email').value = formData.get('register-email'),10)
