@@ -33,6 +33,7 @@ const AnnualEventsMenuItem = require('./models/AnnualEventsMenuItem.js')
 const AnnualEventsPrice = require('./models/AnnualEventsPrice.js')
 const AnnualEventsWebsiteImage = require('./models/AnnualEventsWebsiteImage.js')
 const User = require('./models/User.js')
+const bcrypt = require('bcryptjs')
 
 const {cloudinary} = require('./middleware/cloudinary.js')
 
@@ -56,11 +57,10 @@ app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
 app.post('/api/users/create', async(req,res)=>{
     try{
-        console.log(req.body)
         await User.create({
             username: req.body.username,
             email: req.body.email,
-            password: req.body.password,
+            password: await bcrypt.hash(req.body.password,10),
             role: 'guest',
             accountCreated: Date.now()
         })

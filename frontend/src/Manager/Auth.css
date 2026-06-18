@@ -31,6 +31,8 @@
 }
 .auth-wrapper input{
     width:250px;
+    padding:5px;
+    font-size: 16px;
 }
 .auth-wrapper div{
     width:100%;
