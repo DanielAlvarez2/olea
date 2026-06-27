@@ -176,7 +176,7 @@ export default function SpecialsMenuPrint(){
                                                 padding:`   0in
                                                             calc(0.125in + ${pageMarginsLeftRight}px)
                                                             0.125in 
-                                                            calc(0in + ${pageMarginsLeftRight}px)
+                                                            calc(3px + ${pageMarginsLeftRight}px)
                                                             `,
                                                 position:'relative',
                                                 background:'white',
@@ -602,7 +602,7 @@ export default function SpecialsMenuPrint(){
                                                             0.3in 
                                                             calc(0.125in + ${pageMarginsLeftRight}px)
                                                             0in 
-                                                            calc(0in + ${pageMarginsLeftRight}px)
+                                                            calc(3px + ${pageMarginsLeftRight}px)
                                                         `,
                                                 position:'relative',
                                                 background:'white',
