@@ -152,9 +152,10 @@ export default function SpecialsMenuUpdate(){
 
                         <div id='specials-double-sided-flexbox'>
 
-                            <div style={{   width:'4.25in',
-                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                            <div style={{   width:'3.76in',
+                                            // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                            height:'4.85in',
+                                            padding:`0.125in calc(0.125in + ${pageMarginsLeftRight}px)`,
                                             position:'relative',
                                             background:'white',
                                             border:'1px solid black'}}>
@@ -306,7 +307,7 @@ export default function SpecialsMenuUpdate(){
                                                                 // marginTop:'auto',
                                                                 textAlign:'left',
                                                                 fontSize:'11px',
-                                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
                                                                 fontFamily:'serif'}}>
                                                     <div style={{   display:'flex',
                                                                     alignItems:'flex-end',
@@ -321,7 +322,8 @@ export default function SpecialsMenuUpdate(){
                                                         <img    src='qr-specials.jpg' 
                                                                 className='qr'
                                                                 width='50px' 
-                                                                height='50px' />
+                                                                height='50px'
+                                                                 />
                                                     </div>
                                                 </footer>
                                 }
@@ -339,9 +341,10 @@ export default function SpecialsMenuUpdate(){
 
 
                             {doubleSided && 
-                                            <div style={{   width:'4.25in',
-                                                            height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            padding:`6mm calc(6mm + ${pageMarginsLeftRight}px)`,
+                                            <div style={{   width:'3.76in',
+                                                            // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                            height:'4.85in',
+                                                            padding:`0.125in calc(0.125in + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
                                                             border:'1px solid black'}}>
@@ -404,9 +407,11 @@ export default function SpecialsMenuUpdate(){
                                                                                     // marginTop:'auto',
                                                                                     textAlign:'left',
                                                                                     fontSize:'11px',
-                                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                                                    paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
                                                                                     fontFamily:'serif'}}>
-                                                                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                                        <div style={{   display:'flex',
+                                                                                        alignItems:'flex-end',
+                                                                                        justifyContent:'space-between'}}>
                                                                             <div>
                                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                                 or seafood may increase the risk of foodborne illnesses.<br/>
@@ -416,7 +421,8 @@ export default function SpecialsMenuUpdate(){
                                                                             </div>
                                                                             <img    src='qr-specials.jpg' 
                                                                                     className='qr'
-                                                                                    width='50px' />
+                                                                                    width='50px'
+                                                                                    height='50px' />
                                                                         </div>
                                                                     </footer>
                                                 }
@@ -480,7 +486,7 @@ export default function SpecialsMenuUpdate(){
                                 </div> 
                             </div>  
 
-                            <div>
+                            {/* <div>
                                 <div style={{textAlign:'center'}}>paper size</div>
                 
                                 <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
@@ -498,7 +504,7 @@ export default function SpecialsMenuUpdate(){
                                     </span>
                                     <span>legal</span>
                                 </div> 
-                            </div>  
+                            </div>   */}
 
                             <div>
                 
