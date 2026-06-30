@@ -248,7 +248,7 @@ export default function QRspecials(){
                                                             Please alert your server if you have special dietary requirements:<br/>
                                                             gl (gluten), d (dairy), n (nuts)</span>   
                                                         </div>
-                                                        <img src='qr-specials.jpg' width='50px' />
+                                                        <img src='qr-specials.jpg' width='50px' height='50px' />
                                                     </footer>                    
                 </div>
             </div>{/* #content-grid */}
