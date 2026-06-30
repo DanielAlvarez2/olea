@@ -67,17 +67,18 @@ export default function DinnerMenuPrint(){
     }
 
     function printPage(){
-        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
-            alert(`
-WARNING: 
+//         if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+//             alert(`
+// WARNING: 
 
-Printing from Safari Browser is not supported.
-Please switch to a different browser to proceed.
-`)
-            return
-        }else{
-            window.print()
-        }
+// Printing from Safari Browser is not supported.
+// Please switch to a different browser to proceed.
+// `)
+//             return
+//         }else{
+//             window.print()
+//         }
+        window.print()
     }
 
 
@@ -124,17 +125,40 @@ Please switch to a different browser to proceed.
 
 
 
+                                <div style={{   height:'7mm',
+                                                position:'relative',
+                                                right:'7mm',
+                                                width:'204mm',
+                                                background:'white'}} className='no-print'></div>
 
                                 <div    className='dinner-menu-format paper-menu' 
-                                        style={{width:'8.5in',
+                                        style={{
+                                                // width:'8.5in',
+                                                width:'190mm',
+                                                position:'relative',
                                                 background:'white',
                                                 padding:`${pageMargin/2}px ${pageMargin}px 0px`,
                                                 // backgroundImage:'url(scan-dinner-menu.jpg)',
                                                 backgroundSize:'8.5in 14in',
                                                 // color:'red',
-                                                height:'13.95in',
-                                                border:'1px solid black'}} 
+                                                // height:'13.95in',
+                                                height:'313mm',
+                                                border:'none'
+                                            }} 
                                 >
+                                    <div style={{   height:'313mm',
+                                                    position:'absolute',
+                                                    top:'0',
+                                                    left:'-7mm',
+                                                    width:'7mm',
+                                                    background:'white'}}></div>
+                                    <div style={{   height:'313mm',
+                                                    position:'absolute',
+                                                    top:'0',
+                                                    right:'-7mm',
+                                                    width:'7mm',
+                                                    background:'white'}}></div>
+
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
@@ -286,7 +310,7 @@ Please switch to a different browser to proceed.
                                                                 >
                                                     <span style={{fontFamily:'FuturaLight', fontSize:'20px'}}>
                                                         chef's tasting menu &nbsp; 
-                                                    </span> 
+                                                    </span> <br/>
                                                     <span style={{fontStyle:'italic'}}>
                                                         six courses 
                                                         {tastingMenuPrices.tastingMenuPrice != 0 ? <>
@@ -444,6 +468,12 @@ Please switch to a different browser to proceed.
                                     </div>
                                     
                                 </div>
+                                <div style={{   height:'15mm',
+                                                position:'relative',
+                                                right:'7mm',
+                                                width:'204mm',
+                                                background:'white'}} className='no-print'></div>
+                                <br className='no-print' />
 
 
 

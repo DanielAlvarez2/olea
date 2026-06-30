@@ -242,17 +242,37 @@ export default function DessertMenuFormat(){
 
 
                         {
-                            frontView ?                            
-                                <div    className='dessert-menu-format-front' 
+                            frontView ?  
+                            <>
+                                <div style={{width:'131mm',height:'6mm',background:'#f5f5dc',position:'relative',right:'6mm'}}></div>                
+                                <div    className='dessert-menu-format-front'
+                                        style={{width:'119mm',
+                                                position:'relative',
+                                                height:'182mm',
+                                                border:'none',
+                                                padding:'0'}} 
                                         // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                                 >
+                                    <div style={{   height:'182mm',
+                                                    background:'#f5f5dc',
+                                                    position:'absolute',
+                                                    left:'-6mm',
+                                                    top:'0',
+                                                    width:'6mm'}}></div>
+                                    <div style={{   height:'182mm',
+                                                    background:'#f5f5dc',
+                                                    position:'absolute',
+                                                    right:'-6mm',
+                                                    top:'0',
+                                                    width:'6mm'}}></div>
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
                                                     // color:'red',
                                                         display:'block',
+                                                        paddingLeft:'0',
                                                         cursor:'default',
-                                                        fontSize:'57px'}}>olea</span>
+                                                        fontSize:'45px'}}>olea</span>
                                         <hr/>
 
 
@@ -262,7 +282,8 @@ export default function DessertMenuFormat(){
 
 
                                         <div className='dessert-menu-front-content'
-                                                style={{paddingRight:`${pageMarginRight + 20}px`}}
+                                                style={{paddingRight:`${pageMarginRight + 0}px`,
+                                                        paddingLeft:'0'}}
                                                 // style={{paddingRight:'83px'}}
                                                 >
 
@@ -351,7 +372,6 @@ export default function DessertMenuFormat(){
 
 
 
-                                            <br/>
 
                                             <div className='dessert-item'>                                    
                                                 <span className='dessert-menu-heading'>
@@ -470,13 +490,13 @@ export default function DessertMenuFormat(){
 
 
                                     <div className='dessert-footer'>
-                                        <div className='dessert-menu-front-content'>
+                                        <div className='dessert-menu-front-content' style={{paddingLeft:'0'}}>
                                             jessica delgado, pastry chef
                                         </div>
                                         <hr style={{marginTop:'5px'}}/>
                                             <div style={{display:'flex',justifyContent:'space-between'}}>
 
-                                                <div className='dessert-menu-front-content'>
+                                                <div className='dessert-menu-front-content' style={{paddingLeft:'0'}}>
                                                     please alert your server if you have any special dietary requirements<br/>
                                                     <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                                 </div>
@@ -486,18 +506,43 @@ export default function DessertMenuFormat(){
                                             </div>
                                     </div>
                                 </div>
+                                <div style={{width:'131mm',height:'15mm',background:'#f5f5dc',position:'relative',right:'6mm'}}></div>                
+                                
+                            </>
                             :
+                            <>
+                                <div style={{width:'131mm',height:'6mm',background:'#f5f5dc',position:'relative',right:'6mm'}}></div>                
+                            
                                 <div    className='dessert-menu-format-front' 
+                                        style={{width:'119mm',
+                                                position:'relative',
+                                                border:'none',
+                                                height:'182mm',
+                                                padding:'0'}}
                                         // style={{backgroundImage:'url("scan-dessert-menu-back.jpg"),',color:'red',backgroundSize:'5.5in 8.5in'}}
                                         
                                 >
+                                    <div style={{   height:'182mm',
+                                                    background:'#f5f5dc',
+                                                    position:'absolute',
+                                                    left:'-6mm',
+                                                    top:'0',
+                                                    width:'6mm'}}></div>
+                                    <div style={{   height:'182mm',
+                                                    background:'#f5f5dc',
+                                                    position:'absolute',
+                                                    right:'-6mm',
+                                                    top:'0',
+                                                    width:'6mm'}}></div>
+
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
                                                     // color:'red',
                                                         display:'block',
+                                                        paddingLeft:'0',
                                                         cursor:'default',
-                                                        fontSize:'57px'}}>olea</span>
+                                                        fontSize:'45px'}}>olea</span>
                                         <hr/>
 
 
@@ -507,7 +552,8 @@ export default function DessertMenuFormat(){
 
 
                                         <div className='dessert-menu-front-content'
-                                                style={{paddingRight:`${pageMarginRightBack + 20}px`,
+                                                style={{paddingRight:`${pageMarginRightBack + 0}px`,
+                                                        paddingLeft:'0'
                                                         // color:'red',
                                                         
                                                     }}
@@ -600,6 +646,9 @@ export default function DessertMenuFormat(){
                                         <hr />
                                     </div>
                                 </div>
+                                <div style={{width:'131mm',height:'15mm',background:'#f5f5dc',position:'relative',right:'6mm'}}></div>                
+                            
+                            </>
                         }
 
 

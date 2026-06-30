@@ -2895,6 +2895,18 @@ app.put('/api/formats/desserts/decreasePageMarginRightBack', async(req,res)=>{
     }
 })
 
+app.put('/api/formats/desserts/decreasePageMarginRight', async(req,res)=>{
+    try{
+        const allFormats = await DessertsFormat.find()
+        console.log(allFormats[0])
+        await DessertsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMarginRight: allFormats[0].pageMarginRight - 1})
+        res.json('page margin back decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/desserts/increasePageMarginRight', async(req,res)=>{
     try{
         const allFormats = await DessertsFormat.find()

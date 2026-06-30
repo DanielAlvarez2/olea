@@ -197,17 +197,18 @@ export default function DessertMenuPrint(){
 
 
     function printPage(){
-        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
-            alert(`
-WARNING: 
+//         if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+//             alert(`
+// WARNING: 
 
-Printing from Safari Browser is not supported.
-Please switch to a different browser to proceed.
-`)
-            return
-        }else{
-            window.print()
-        }
+// Printing from Safari Browser is not supported.
+// Please switch to a different browser to proceed.
+// `)
+//             return
+//         }else{
+//             window.print()
+//         }
+        window.print()
     }
 
 
@@ -276,12 +277,41 @@ Please switch to a different browser to proceed.
 
 
                             {front  ? 
-                                    <div className='dessert-menu-print-wrapper'>
-                                        <div style={{display:'flex'}}>
+                                <>
+                                    <div    className='no-print' 
+                                            style={{background:'white',
+                                                    height:'6mm',
+                                                    position:'relative',
+                                                    right:'6mm',
+                                                    width:'262mm'
+                                            }}></div>
+                                    <div    className='dessert-menu-print-wrapper' 
+                                            style={{width:'250mm'}}
+                                    >
+                                        <div style={{   display:'flex',
+                                                        background:'white',
+                                                        position:'relative',
+                                                        gap:'12mm'}}>
+                                            <div style={{   position:'absolute',
+                                                            height:'182mm',
+                                                            top:'0',
+                                                            left:'-6mm',
+                                                            width:'6mm',
+                                                            background:'white'}}></div>
+                                            <div style={{   position:'absolute',
+                                                            height:'182mm',
+                                                            top:'0',
+                                                            right:'-6mm',
+                                                            width:'6mm',
+                                                            background:'white'}}></div>
 
                                         
                                             <div    className='dessert-menu-format-front' 
-                                                    style={{background:'white'}}
+                                                    style={{background:'white',
+                                                            width:'119mm',
+                                                            height:'182mm',
+                                                            border:'none',
+                                                            padding:'0'}}
                                                     // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                                             >
                                                 <div id='footer-top'>
@@ -289,7 +319,8 @@ Please switch to a different browser to proceed.
                                                             style={{
                                                                 // color:'red',
                                                                     display:'block',
-                                                                    fontSize:'57px'}}>olea</span>
+                                                                    paddingLeft:'0',
+                                                                    fontSize:'45px'}}>olea</span>
                                                     <hr/>
 
 
@@ -299,7 +330,13 @@ Please switch to a different browser to proceed.
 
 
                                                     <div className='dessert-menu-front-content'
-                                                            style={{paddingRight:`${pageMarginRight + 20}px`}}
+                                                            style={{
+                                                                    // padding:'0 !important',
+                                                                    // background:'blue',
+                                                                    paddingLeft:'0',
+                                                                    paddingRight:`${pageMarginRight + 0}px`,
+                                                                    
+                                                                }}
                                                             // style={{paddingRight:'83px'}}
                                                             >
 
@@ -388,7 +425,7 @@ Please switch to a different browser to proceed.
 
 
 
-                                                        <br/>
+                                                        
 
                                                         <div className='dessert-item'>                                    
                                                             <span className='dessert-menu-heading'>
@@ -507,12 +544,16 @@ Please switch to a different browser to proceed.
 
 
                                                 <div className='dessert-footer'>
-                                                    <div className='dessert-menu-front-content'>
+                                                    <div className='dessert-menu-front-content'
+                                                            style={{paddingLeft:'0'}}
+                                                            >
                                                         jessica delgado, pastry chef
                                                     </div>
                                                     <hr style={{marginTop:'5px'}}/>
                                                         <div style={{display:'flex',justifyContent:'space-between'}}>
-                                                            <div className='dessert-menu-front-content'>
+                                                            <div className='dessert-menu-front-content'
+                                                                style={{paddingLeft:'0'}}
+                                                            >
                                                                 please alert your server if you have any special dietary requirements<br/>
                                                                 <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
@@ -525,7 +566,11 @@ Please switch to a different browser to proceed.
 
 
                                             <div    className='dessert-menu-format-front' 
-                                                    style={{background:'white'}}
+                                                    style={{background:'white',
+                                                            width:'119mm',
+                                                            height:'182mm',
+                                                            border:'none',
+                                                            padding:'0'}}
                                                     // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                                             >
                                                 <div id='footer-top'>
@@ -533,7 +578,8 @@ Please switch to a different browser to proceed.
                                                             style={{
                                                                 // color:'red',
                                                                     display:'block',
-                                                                    fontSize:'57px'}}>olea</span>
+                                                                    paddingLeft:'0',
+                                                                    fontSize:'45px'}}>olea</span>
                                                     <hr/>
 
 
@@ -543,7 +589,13 @@ Please switch to a different browser to proceed.
 
 
                                                     <div className='dessert-menu-front-content'
-                                                            style={{paddingRight:`${pageMarginRight + 20}px`}}
+                                                            style={{
+                                                                    // padding:'0 !important',
+                                                                    // background:'blue',
+                                                                    paddingLeft:'0',
+                                                                    paddingRight:`${pageMarginRight + 0}px`,
+                                                                    
+                                                                }}
                                                             // style={{paddingRight:'83px'}}
                                                             >
 
@@ -632,7 +684,7 @@ Please switch to a different browser to proceed.
 
 
 
-                                                        <br/>
+                                                        
 
                                                         <div className='dessert-item'>                                    
                                                             <span className='dessert-menu-heading'>
@@ -751,29 +803,72 @@ Please switch to a different browser to proceed.
 
 
                                                 <div className='dessert-footer'>
-                                                    <div className='dessert-menu-front-content'>
+                                                    <div className='dessert-menu-front-content'
+                                                            style={{paddingLeft:'0'}}
+                                                            >
                                                         jessica delgado, pastry chef
                                                     </div>
                                                     <hr style={{marginTop:'5px'}}/>
-                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
-                                                            <div className='dessert-menu-front-content'>
+                                                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                            <div className='dessert-menu-front-content'
+                                                                style={{paddingLeft:'0'}}
+                                                            >
                                                                 please alert your server if you have any special dietary requirements<br/>
                                                                 <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
                                                             <img    src='qr-dessert.png' 
                                                                     className='qr'
                                                                     width='40px' />
-                                                    </div>
+                                                        </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                            
-                                    :    
-                                    <div className='dessert-menu-print-wrapper'>
-                                        <div style={{display:'flex'}}>
+                                    <div    className='no-print' 
+                                            style={{background:'white',
+                                                    height:'16mm',
+                                                    position:'relative',
+                                                    right:'6mm',
+                                                    width:'262mm'
+                                            }}></div>
+
+                                </>
+                                    :  
+                                <>
+                                    <div    className='no-print' 
+                                            style={{background:'white',
+                                                    height:'6mm',
+                                                    position:'relative',
+                                                    right:'6mm',
+                                                    width:'262mm'
+                                            }}></div>
+                                  
+                                    <div    className='dessert-menu-print-wrapper'
+                                            style={{width:'250mm'}}
+                                    >
+                                        <div style={{display:'flex',
+                                                        background:'white',
+                                                        position:'relative',
+                                                        gap:'12mm'}}>
+                                            <div style={{   position:'absolute',
+                                                            height:'182mm',
+                                                            top:'0',
+                                                            left:'-6mm',
+                                                            width:'6mm',
+                                                            background:'white'}}></div>
+                                            <div style={{   position:'absolute',
+                                                            height:'182mm',
+                                                            top:'0',
+                                                            right:'-6mm',
+                                                            width:'6mm',
+                                                            background:'white'}}></div>
+
                                             <div    className='dessert-menu-format-front' 
-                                                    style={{background:'white'}}
+                                                    style={{background:'white',
+                                                            width:'119mm',
+                                                            height:'182mm',
+                                                            border:'none',
+                                                            padding:'0'}}
                                                     // style={{backgroundImage:'url("scan-dessert-menu-back.jpg")',backgroundSize:'5.5in 8.5in'}}
                                                     
                                             >
@@ -783,7 +878,8 @@ Please switch to a different browser to proceed.
                                                                 // color:'red',
                                                                     display:'block',
                                                                     cursor:'default',
-                                                                    fontSize:'57px'}}>olea</span>
+                                                                    paddingLeft:'0',
+                                                                    fontSize:'45px'}}>olea</span>
                                                     <hr/>
 
 
@@ -793,8 +889,8 @@ Please switch to a different browser to proceed.
 
 
                                                     <div className='dessert-menu-front-content'
-                                                            style={{paddingRight:`${pageMarginRightBack + 20}px`,
-                                                                    
+                                                            style={{paddingRight:`${pageMarginRightBack + 0}px`,
+                                                                    paddingLeft:'0'
                                                                     // color:'red',
                                                                     
                                                                 }}
@@ -889,7 +985,11 @@ Please switch to a different browser to proceed.
                                             </div>
 
                                             <div    className='dessert-menu-format-front' 
-                                                    style={{background:'white'}}
+                                                    style={{background:'white',
+                                                            width:'119mm',
+                                                            height:'182mm',
+                                                            border:'none',
+                                                            padding:'0'}}
                                                     // style={{backgroundImage:'url("scan-dessert-menu-back.jpg")',backgroundSize:'5.5in 8.5in'}}
                                                     
                                             >
@@ -898,8 +998,9 @@ Please switch to a different browser to proceed.
                                                             style={{
                                                                 // color:'red',
                                                                     display:'block',
+                                                                    paddingLeft:'0',
                                                                     cursor:'default',
-                                                                    fontSize:'57px'}}>olea</span>
+                                                                    fontSize:'45px'}}>olea</span>
                                                     <hr/>
 
 
@@ -909,8 +1010,8 @@ Please switch to a different browser to proceed.
 
 
                                                     <div className='dessert-menu-front-content'
-                                                            style={{paddingRight:`${pageMarginRightBack + 20}px`,
-                                                                    
+                                                            style={{paddingRight:`${pageMarginRightBack + 0}px`,
+                                                                    paddingLeft:'0'
                                                                     // color:'red',
                                                                     
                                                                 }}
@@ -1005,6 +1106,15 @@ Please switch to a different browser to proceed.
                                             </div>
                                         </div>
                                     </div>
+                                    <div    className='no-print' 
+                                            style={{background:'white',
+                                                    height:'16mm',
+                                                    position:'relative',
+                                                    right:'6mm',
+                                                    width:'262mm'
+                                            }}></div>
+
+                                </>
                             }
 
 

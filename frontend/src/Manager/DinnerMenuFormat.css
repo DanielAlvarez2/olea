@@ -4,10 +4,13 @@
     font-size:17px;
 }
 .dinner-menu-format{
-    width: 8.5in;
-    height: 13.95in;
+    /* width: 8.5in; */
+    width:190mm;
+    /* height: 13.95in; */
+    height:313mm;
     border: 1px solid black;
     background:white;
+    /* overflow-x:hidden; */
 }
 
 @media (max-width: 615px){

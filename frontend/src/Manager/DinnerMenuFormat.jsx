@@ -103,7 +103,7 @@ export default function DinnerMenuFormat(){
     }
 
     function decreasePageMargin(){
-        if (pageMargin <= 25) return
+        if (pageMargin <= 1) return
         fetch(`${BASE_URL}/api/formats/dinner/decreasePageMargin`,{method:'PUT'})
         .then(()=>getDinnerFormatting())
         .catch(err=>console.log(err))
@@ -203,9 +203,43 @@ export default function DinnerMenuFormat(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            
+                                <div style={{   height:'7mm',
+                                                position:'relative',
+                                                right:'7mm',
+                                                width:'204mm',
+                                                background:'white'}} className='no-print'></div>
                                 <div    className='dinner-menu-format paper-menu' 
-                                        style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`}} 
+                                        style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`,
+                                                border:'none',
+                                                position:'relative'}} 
                                 >
+                                    <div style={{   height:'313mm',
+                                                    position:'absolute',
+                                                    top:'0',
+                                                    left:'-7mm',
+                                                    width:'7mm',
+                                                    background:'white'}}></div>
+                                    <div style={{   height:'313mm',
+                                                    position:'absolute',
+                                                    top:'0',
+                                                    right:'-7mm',
+                                                    width:'7mm',
+                                                    background:'white'}}></div>
+                                    
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
@@ -357,7 +391,7 @@ export default function DinnerMenuFormat(){
                                                                 >
                                                     <span style={{fontFamily:'FuturaLight', fontSize:'20px'}}>
                                                         chef's tasting menu &nbsp; 
-                                                    </span> 
+                                                    </span> <br/>
                                                     <span style={{fontStyle:'italic'}}>
                                                         six courses 
                                                         {tastingMenuPrices.tastingMenuPrice != 0 ? <>
@@ -511,9 +545,14 @@ export default function DinnerMenuFormat(){
                                                 <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                             </div>
                                         </div>
-                                    </div>                                </div>
-
-
+                                </div>                                
+                                </div>
+                                <div style={{   height:'15mm',
+                                                position:'relative',
+                                                right:'7mm',
+                                                width:'204mm',
+                                                background:'white'}} className='no-print'></div>
+                                <br className='no-print' />
 
                     </div>
 
@@ -522,6 +561,7 @@ export default function DinnerMenuFormat(){
                                                     display:'flex',
                                                     gap:'10px',
                                                     background:'#eee',
+                                                    zIndex:'100',
                                                     justifyContent:'center',
                                                     // border:'1px solid green',
                                                     alignItems:'center'}}>
