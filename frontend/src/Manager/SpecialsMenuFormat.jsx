@@ -152,56 +152,43 @@ export default function SpecialsMenuUpdate(){
 
                         <div id='specials-double-sided-flexbox'>
 
-                            <div style={{   width:'3.76in',
-                                            // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                            height:'4.85in',
-                                            padding:`0.125in calc(0.125in + ${pageMarginsLeftRight}px)`,
-                                            position:'relative',
-                                            background:'white',
-                                            border:'1px solid black'}}>
-                                {/* <div> */}
-                                    
-                                    <div    className='specials-h1'
-                                            style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >
-                                        today's specials
-                                    </div>
-                                {/* </div> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
-                                    <div className='specials-h2'>appetizer</div>}
-                                {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
-                                    <div className='specials-h2'>appetizers</div>}
-
-                                {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
-                                    return(
-                                        <div    key={data._id}
-                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                className='special'>
+                            <div>
+                                <div style={{   background:'white',
+                                                width:'101mm',
+                                                height:'6mm',
+                                                position:'relative',
+                                                right:'6mm'
+                                }}></div>
+                                <div style={{   width:'89mm',
+                                                // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
+                                                height:'121mm',
+                                                padding:`0 ${pageMarginsLeftRight}px`,
+                                                position:'relative',
+                                                background:'white',
+                                                border:'1px solid black',
+                                                border:'none'
+                                                }}>
+                                    {/* <div> */}
+                                <div style={{   background:'white',
+                                                position:'absolute',
+                                                height:'121mm',
+                                                width:'6mm',
+                                                top:'0',
+                                                left:'-6mm'
+                                }}></div>
+                                <div style={{   background:'white',
+                                                position:'absolute',
+                                                height:'121mm',
+                                                width:'6mm',
+                                                top:'0',
+                                                right:'-6mm'
+                                }}></div>
                                         
-                                            <span className='name-specials'>{data.name} </span>
-                                            {data.allergiesAbbreviated && 
-                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
-
-
+                                        <div    className='specials-h1'
+                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >
+                                            today's specials
                                         </div>
-                                    )
-                                })}
+                                    {/* </div> */}
 
 
 
@@ -215,38 +202,29 @@ export default function SpecialsMenuUpdate(){
 
 
 
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
+                                        <div className='specials-h2'>appetizer</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
+                                        <div className='specials-h2'>appetizers</div>}
 
-
-
-
-
-
-                                {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                    <div className='specials-h2'>entrée</div>}
-                                {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                    <div className='specials-h2'>entrées</div>}
-
-                                {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                    return(
-                                        <div    key={data._id} 
-                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                className='special'>
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
+                                        return(
+                                            <div    key={data._id}
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
                                             
-                                    
-                                            <span className='name-specials'>{data.name} </span>
-                                            {data.allergiesAbbreviated && 
-                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
+                                                <span className='name-specials'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
 
 
-                                        </div>
-                                    )
-                                })}
-
-
+                                            </div>
+                                        )
+                                    })}
 
 
 
@@ -263,35 +241,33 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                                {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                    <div className='specials-h2'>dessert</div>}
-                                {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                    <div className='specials-h2'>desserts</div>}
-
-                                {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                    return(
-                                        <div    key={data._id} 
-                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                className='special'>
-                                            
-                                    
-                                            <span className='name-specials'>{data.name} </span>
-                                            {data.allergiesAbbreviated && 
-                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            <span> {data.description}</span>
-                                            {data.price.length < 3 ? 
-                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                <div className='price'>{data.price}</div> }
-
-
-                                        </div>
-                                    )
-                                })}
 
 
 
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
+                                        <div className='specials-h2'>entrée</div>}
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
+                                        <div className='specials-h2'>entrées</div>}
+
+                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                
+                                        
+                                                <span className='name-specials'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
 
 
+                                            </div>
+                                        )
+                                    })}
 
 
 
@@ -301,34 +277,82 @@ export default function SpecialsMenuUpdate(){
 
 
 
-                                {showLegalText && 
-                                                <footer style={{position:'absolute',
-                                                                bottom:'6mm',
-                                                                // marginTop:'auto',
-                                                                textAlign:'left',
-                                                                fontSize:'11px',
-                                                                paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
-                                                                fontFamily:'serif'}}>
-                                                    <div style={{   display:'flex',
-                                                                    alignItems:'flex-end',
-                                                                    justifyContent:'space-between'}}>
-                                                        <div>
-                                                            Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                            or seafood may increase the risk of foodborne illnesses.<br/>
-                                                            <span style={{fontWeight:'900'}}>
-                                                            Please alert your server if you have special dietary requirements:<br/>
-                                                            gl (gluten), d (dairy), n (nuts)</span>
+
+
+
+
+
+
+
+
+
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                        <div className='specials-h2'>dessert</div>}
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                        <div className='specials-h2'>desserts</div>}
+
+                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                        return(
+                                            <div    key={data._id} 
+                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    className='special'>
+                                                
+                                        
+                                                <span className='name-specials'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <span> {data.description}</span>
+                                                {data.price.length < 3 ? 
+                                                    <span className='price'> &nbsp;{data.price}</span> : 
+                                                    <div className='price'>{data.price}</div> }
+
+
+                                            </div>
+                                        )
+                                    })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    {showLegalText && 
+                                                    <footer style={{position:'absolute',
+                                                                    bottom:'5mm',
+                                                                    // marginTop:'auto',
+                                                                    textAlign:'left',
+                                                                    fontSize:'11px',
+                                                                    paddingRight:`${pageMarginsLeftRight}px`,
+                                                                    fontFamily:'serif'}}>
+                                                        <div style={{   display:'flex',
+                                                                        alignItems:'flex-end',
+                                                                        justifyContent:'space-between'}}>
+                                                            <div>
+                                                                Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                                                                or seafood may increase the risk of foodborne illnesses.<br/>
+                                                                <span style={{fontWeight:'900'}}>
+                                                                Please alert your server if you have special dietary requirements:<br/>
+                                                                gl (gluten), d (dairy), n (nuts)</span>
+                                                            </div>
+                                                            <img    src='qr-specials.jpg' 
+                                                                    className='qr'
+                                                                    width='50px' 
+                                                                    height='50px'
+                                                                    />
                                                         </div>
-                                                        <img    src='qr-specials.jpg' 
-                                                                className='qr'
-                                                                width='50px' 
-                                                                height='50px'
-                                                                 />
-                                                    </div>
-                                                </footer>
-                                }
-                            </div>
+                                                    </footer>
+                                    }
+                                </div>
                             
+                            </div>
 
 
 
@@ -341,13 +365,37 @@ export default function SpecialsMenuUpdate(){
 
 
                             {doubleSided && 
-                                            <div style={{   width:'3.76in',
+                                    <div>
+                                        <div style={{   background:'white',
+                                                        width:'101mm',
+                                                        height:'6mm',
+                                                        position:'relative',
+                                                        right:'6mm'
+                                        }}></div>
+                                    
+                                            <div style={{   width:'89mm',
                                                             // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            height:'4.85in',
-                                                            padding:`0.125in calc(0.125in + ${pageMarginsLeftRight}px)`,
+                                                            height:'121mm',
+                                                            padding:`0 ${pageMarginsLeftRight}px`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid black'}}>
+                                                            border:'1px solid black',
+                                                            border:'none',
+                                                            }}>
+                                <div style={{   background:'white',
+                                                position:'absolute',
+                                                height:'121mm',
+                                                width:'6mm',
+                                                top:'0',
+                                                left:'-6mm'
+                                }}></div>
+                                <div style={{   background:'white',
+                                                position:'absolute',
+                                                height:'121mm',
+                                                width:'6mm',
+                                                top:'0',
+                                                right:'-6mm'
+                                }}></div>
 
 
 
@@ -403,11 +451,11 @@ export default function SpecialsMenuUpdate(){
 
                                                 {showLegalText && 
                                                                     <footer style={{position:'absolute',
-                                                                                    bottom:'6mm',
+                                                                                    bottom:'5mm',
                                                                                     // marginTop:'auto',
                                                                                     textAlign:'left',
                                                                                     fontSize:'11px',
-                                                                                    paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
+                                                                                    paddingRight:`${pageMarginsLeftRight}px`,
                                                                                     fontFamily:'serif'}}>
                                                                         <div style={{   display:'flex',
                                                                                         alignItems:'flex-end',
@@ -427,7 +475,7 @@ export default function SpecialsMenuUpdate(){
                                                                     </footer>
                                                 }
                                             </div>
-
+                                    </div>
                             }
 
                         </div>

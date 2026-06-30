@@ -4,7 +4,7 @@
 }
 #specials-double-sided-flexbox{
     display:flex;
-    gap:20px;
+    gap:40px;
 }
 .main-menu{
     width:100%;

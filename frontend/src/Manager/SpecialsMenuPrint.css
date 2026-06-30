@@ -20,3 +20,6 @@
         maxHeight:8.5in !important;
     }
 }
+.no-print-border{
+    /* display:none; */
+}

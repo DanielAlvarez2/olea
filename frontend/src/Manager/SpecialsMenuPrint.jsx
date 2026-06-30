@@ -157,8 +157,38 @@ export default function SpecialsMenuPrint(){
 
 
 
+                        <div style={{background:'white',
+                                    width:'202mm',
+                                    // position:'relative',
+                                    // right:'6mm',
+                                    height:'6mm'
+                        }}
+                        className='no-print no-print-border'
+                        ></div>
 
-                        <div style={{display:'flex'}}>
+                        <div style={{   display:'flex',
+                                        position:'relative',
+                        }}>
+                            <div style={{position:'absolute',
+                                            width:'6mm',
+                                            background:'white',
+                                            height:'121mm',
+                                            top:'0',
+                                            left:'-6mm',
+                                            zIndex:'100'
+                                        }}
+                                        className='no-print no-print-border'
+                            ></div>
+                            <div style={{position:'absolute',
+                                            width:'6mm',
+                                            background:'white',
+                                            height:'121mm',
+                                            top:'0',
+                                            right:'-6mm',
+                                            zIndex:'100'
+                                        }}
+                                        className='no-print no-print-border'
+                            ></div>
 
 
 
@@ -169,15 +199,16 @@ export default function SpecialsMenuPrint(){
                             {front && 
                             
 
-                            
-                                <span style={{  width:'3.77in',
+                          
+                                <span style={{  width:'95mm',
                                                 // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                height:'4.85in',
-                                                padding:`   0in
-                                                            calc(0.125in + ${pageMarginsLeftRight}px)
-                                                            0.125in 
-                                                            calc(3px + ${pageMarginsLeftRight}px)
-                                                            `,
+                                                height:'121mm',
+                                                paddingTop:`0`,
+                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`, 
+                                                paddingBottom:'0',          
+                                                paddingLeft:`${pageMarginsLeftRight}px`,
+                                                         
+                                                        
                                                 position:'relative',
                                                 background:'white',
                                                 // border:'1px solid lightgrey'
@@ -251,12 +282,12 @@ export default function SpecialsMenuPrint(){
                                     })}
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'10mm',
+                                                                    bottom:'5mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     // background:'grey',
                                                                     fontSize:'11px',
-                                                                    paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
+                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                     fontFamily:'serif'}}>
                                                         <div style={{   display:'flex',
                                                                         alignItems:'flex-end',
@@ -291,9 +322,9 @@ export default function SpecialsMenuPrint(){
 
                             
                             {doubleSided && !front &&
-                                            <span style={{  width:'3.77in',
+                                            <span style={{  width:'95mm',
                                                             // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            height:'4.85in',
+                                                            height:'121mm',
                                                             padding:`
                                                                         0in 
                                                                         calc(0.125in + ${pageMarginsLeftRight}px)
@@ -388,15 +419,14 @@ export default function SpecialsMenuPrint(){
                             }
                         
                             {front && 
-                                <span style={{  width:'3.77in',
+                                <span style={{  width:'95mm',
                                                 // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                height:'4.85in',
-                                                padding:`
-                                                            0in 
-                                                            calc(0in + ${pageMarginsLeftRight}px)
-                                                            0.125in 
-                                                            calc(0.125in + ${pageMarginsLeftRight}px)
-                                                        `,
+                                                height:'121mm',
+                                                paddingTop:`0`,
+                                                paddingRight: `${pageMarginsLeftRight}px`, 
+                                                paddingBottom:`0`, 
+                                                paddingLeft:`calc(6mm + ${pageMarginsLeftRight}px`,
+                                                        
                                                 position:'relative',
                                                 background:'white',
                                                 // border:'1px solid lightgrey'
@@ -468,12 +498,12 @@ export default function SpecialsMenuPrint(){
                                     })}
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'10mm',
+                                                                    bottom:'5mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     // background:'beige',
                                                                     fontSize:'11px',
-                                                                    paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
+                                                                    paddingRight:`${pageMarginsLeftRight}px`,
                                                                     fontFamily:'serif'}}>
                                                         <div style={{display:'flex',
                                                                     alignItems:'flex-end',
@@ -495,9 +525,9 @@ export default function SpecialsMenuPrint(){
                                 </span>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'3.77in',
+                                            <span style={{  width:'95mm',
                                                             // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            height:'4.85in',
+                                                            height:'121mm',
                                                             padding:`
                                                                         0in 
                                                                         calc(0in + ${pageMarginsLeftRight}px)
@@ -592,17 +622,38 @@ export default function SpecialsMenuPrint(){
                         
                         </div>
 
-                        <div style={{display:'flex'}}>
+                        <div style={{display:'flex',position:'relative'}}>
+                            <div style={{position:'absolute',
+                                            width:'6mm',
+                                            background:'white',
+                                            height:'121mm',
+                                            top:'0',
+                                            left:'-6mm',
+                                            zIndex:'100'
+                                        }}
+                                        className='no-print no-print-border'
+                            ></div>
+                            <div style={{position:'absolute',
+                                            width:'6mm',
+                                            background:'white',
+                                            height:'121mm',
+                                            top:'0',
+                                            right:'-6mm',
+                                            zIndex:'100'
+                                        }}
+                                        className='no-print no-print-border'
+                            ></div>
+                            
 
                             {front && 
-                                <span style={{  width:'3.77in',
+                                <span style={{  width:'95mm',
                                                 // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                height:'4.85in',
+                                                height:'121mm',
                                                 padding:`
-                                                            0.3in 
-                                                            calc(0.125in + ${pageMarginsLeftRight}px)
-                                                            0in 
-                                                            calc(3px + ${pageMarginsLeftRight}px)
+                                                            6mm 
+                                                            calc(6mm + ${pageMarginsLeftRight}px)
+                                                            0mm 
+                                                            ${pageMarginsLeftRight}px
                                                         `,
                                                 position:'relative',
                                                 background:'white',
@@ -676,11 +727,11 @@ export default function SpecialsMenuPrint(){
                                     })}
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'3mm',
+                                                                    bottom:'0mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     fontSize:'11px',
-                                                                    paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
+                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                     fontFamily:'serif'}}>
                                                         <div style={{display:'flex',
                                                                     alignItems:'flex-end',
@@ -702,9 +753,9 @@ export default function SpecialsMenuPrint(){
                                 </span>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'3.77in',
+                                            <span style={{  width:'95mm',
                                                             // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            height:'4.85in',
+                                                            height:'121mm',
                                                             padding:`
                                                                         0.25in 
                                                                         calc(0.125in + ${pageMarginsLeftRight}px)
@@ -798,15 +849,15 @@ export default function SpecialsMenuPrint(){
                             }
                         
                             {front && 
-                                <span style={{  width:'3.77in',
+                                <span style={{  width:'95mm',
                                                 // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                height:'4.85in',
-                                                padding:`
-                                                            0.3in 
-                                                            calc(0in + ${pageMarginsLeftRight}px)
-                                                            0in 
-                                                            calc(0.125in + ${pageMarginsLeftRight}px)
-                                                        `,
+                                                height:'121mm',
+                                                paddingTop:`6mm`,
+                                                paddingRight:`${pageMarginsLeftRight}px`, 
+                                                paddingBottom:'0',
+                                                paddingLeft:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                            
+                                                        
                                                 position:'relative',
                                                 background:'white',
                                                 // border:'1px solid lightgrey'
@@ -879,12 +930,12 @@ export default function SpecialsMenuPrint(){
                                     })}
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'3mm',
+                                                                    bottom:'0mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     // background:'blue',
                                                                     fontSize:'11px',
-                                                                    paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
+                                                                    paddingRight:`${pageMarginsLeftRight}px`,
                                                                     fontFamily:'serif'}}>
                                                         <div style={{display:'flex',
                                                                     alignItems:'flex-end',
@@ -906,9 +957,9 @@ export default function SpecialsMenuPrint(){
                                 </span>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'3.77in',
+                                            <span style={{  width:'95mm',
                                                             // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            height:'4.85in',
+                                                            height:'121mm',
                                                             padding:`
                                                                         0.25in 
                                                                         calc(0in + ${pageMarginsLeftRight}px)
@@ -1002,6 +1053,15 @@ export default function SpecialsMenuPrint(){
                             }
                         
                         </div>
+                        <div style={{background:'white',
+                                    width:'202mm',
+                                    // position:'relative',
+                                    // right:'6mm',
+                                    height:'13mm'
+                        }}
+                        className='no-print no-print-border'
+                        ></div>
+
 
 
 
