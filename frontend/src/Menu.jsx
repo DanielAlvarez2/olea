@@ -465,7 +465,7 @@ export default function Menu(){
 
                                             <img src='qr-dinner.png' height='60px' />                                            
                                             
-                                            <div style={{width:'65%'}}>
+                                            <div id='qr-dinner-legal'>
                                                 <span style={{fontWeight:'100'}}>
                                                     consumer advisory: consumption of undercooked meat, poultry, 
                                                     eggs, or seafood may increase the risk of food-borne illnesses<br/>

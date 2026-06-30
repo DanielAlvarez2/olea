@@ -21,6 +21,10 @@
     padding:10px 5px;
 }
 
+#qr-dinner-legal{
+    width:65%;
+}
+
 @media (max-width: 615px){
     .allergies-menu-dinner{
         width:100% !important;
@@ -31,6 +35,9 @@
     .chef-legal-flexbox{
         flex-direction: column;
         gap:30px;
+    }
+    #qr-dinner-legal{
+        width:95%;
     }
 }
 @media(max-width:820px){
