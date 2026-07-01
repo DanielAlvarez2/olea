@@ -120,6 +120,7 @@ export default function SpecialsMenuUpdate(){
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; format</div>
 
+                    <br/>
 
                     <div className='main-menu paper-menu' 
                         style={{display:'flex',
@@ -165,8 +166,12 @@ export default function SpecialsMenuUpdate(){
                                                 padding:`0 ${pageMarginsLeftRight}px`,
                                                 position:'relative',
                                                 background:'white',
+                                                // backgroundImage:'url("scan-specials.jpg")',
+                                                backgroundSize:'10.9cm',
+                                                backgroundPosition:'-56px -14px',
                                                 border:'1px solid black',
-                                                border:'none'
+                                                border:'none',
+                                                // color:'red',
                                                 }}>
                                     {/* <div> */}
                                 <div style={{   background:'white',
@@ -335,12 +340,12 @@ export default function SpecialsMenuUpdate(){
                                                         <div style={{   display:'flex',
                                                                         alignItems:'flex-end',
                                                                         justifyContent:'space-between'}}>
-                                                            <div>
+                                                            <div className='specials-legal'>
                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                or seafood may increase the risk of foodborne illnesses.<br/>
-                                                                <span style={{fontWeight:'900'}}>
-                                                                Please alert your server if you have special dietary requirements:<br/>
-                                                                gl (gluten), d (dairy), n (nuts)</span>
+                                                                or seafood may increase the risk of foodborne illnesses. 
+                                                                Please alert your server if you have special dietary requirements:
+                                                                <div style={{fontWeight:'900'}}>
+                                                                gl (gluten), d (dairy), n (nuts)</div>
                                                             </div>
                                                             <img    src='qr-specials.jpg' 
                                                                     className='qr'
@@ -460,12 +465,12 @@ export default function SpecialsMenuUpdate(){
                                                                         <div style={{   display:'flex',
                                                                                         alignItems:'flex-end',
                                                                                         justifyContent:'space-between'}}>
-                                                                            <div>
+                                                                            <div className='specials-legal'>
                                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                                or seafood may increase the risk of foodborne illnesses.<br/>
-                                                                                <span style={{fontWeight:'900'}}>
-                                                                                Please alert your server if you have special dietary requirements:<br/>
-                                                                                gl (gluten), d (dairy), n (nuts)</span>
+                                                                                or seafood may increase the risk of foodborne illnesses. 
+                                                                                Please alert your server if you have special dietary requirements:
+                                                                                <div style={{fontWeight:'900'}}>
+                                                                                gl (gluten), d (dairy), n (nuts)</div>
                                                                             </div>
                                                                             <img    src='qr-specials.jpg' 
                                                                                     className='qr'

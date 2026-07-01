@@ -7,8 +7,14 @@
     font-family: "FuturaHeavy" !important;
     font-size: 14px;
     font-weight: 100;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.05px;
     /* color:green !important; */
+}
+.specials-legal{
+    /* color:blue; */
+    font-style: italic;
+    font-size:10px;
+    font-family: MinionProBold;
 }
 @media screen and (max-width:850px){
     .main-menu{
