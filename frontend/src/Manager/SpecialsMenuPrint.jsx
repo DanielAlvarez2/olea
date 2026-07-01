@@ -233,8 +233,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
                                             </div>
                                         )
                                     })}
@@ -252,8 +252,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
                                             </div>
                                         )
                                     })}
@@ -273,8 +273,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
 
 
                                             </div>
@@ -367,8 +367,8 @@ export default function SpecialsMenuPrint(){
                                                                 <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                             <span> {data.description}</span>
                                                             {data.price.length < 3 ? 
-                                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                                <div className='price'>{data.price}</div> }
+                                                                <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                                <div className='price-specials'>{data.price}</div> }
 
 
                                                         </div>
@@ -449,8 +449,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
                                             </div>
                                         )
                                     })}
@@ -468,8 +468,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
                                             </div>
                                         )
                                     })}
@@ -489,8 +489,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
 
 
                                             </div>
@@ -570,8 +570,8 @@ export default function SpecialsMenuPrint(){
                                                                 <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                             <span> {data.description}</span>
                                                             {data.price.length < 3 ? 
-                                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                                <div className='price'>{data.price}</div> }
+                                                                <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                                <div className='price-specials'>{data.price}</div> }
 
 
                                                         </div>
@@ -678,8 +678,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
                                             </div>
                                         )
                                     })}
@@ -697,8 +697,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
                                             </div>
                                         )
                                     })}
@@ -718,8 +718,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
 
 
                                             </div>
@@ -798,8 +798,8 @@ export default function SpecialsMenuPrint(){
                                                                 <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                             <span> {data.description}</span>
                                                             {data.price.length < 3 ? 
-                                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                                <div className='price'>{data.price}</div> }
+                                                                <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                                <div className='price-specials'>{data.price}</div> }
 
 
                                                         </div>
@@ -881,8 +881,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
                                             </div>
                                         )
                                     })}
@@ -900,8 +900,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
                                             </div>
                                         )
                                     })}
@@ -921,8 +921,8 @@ export default function SpecialsMenuPrint(){
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 <span> {data.description}</span>
                                                 {data.price.length < 3 ? 
-                                                    <span className='price'> &nbsp;{data.price}</span> : 
-                                                    <div className='price'>{data.price}</div> }
+                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                    <div className='price-specials'>{data.price}</div> }
 
 
                                             </div>
@@ -1002,8 +1002,8 @@ export default function SpecialsMenuPrint(){
                                                                 <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                             <span> {data.description}</span>
                                                             {data.price.length < 3 ? 
-                                                                <span className='price'> &nbsp;{data.price}</span> : 
-                                                                <div className='price'>{data.price}</div> }
+                                                                <span className='price-specials'> &nbsp;{data.price}</span> : 
+                                                                <div className='price-specials'>{data.price}</div> }
 
 
                                                         </div>

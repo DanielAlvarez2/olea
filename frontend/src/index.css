@@ -19,6 +19,10 @@
   src: url(./assets/fonts/FuturaBold.otf)
 }
 @font-face{
+  font-family: 'MinionProBold';
+  src: url(./assets/fonts/MinionProBold.otf)
+}
+@font-face{
   font-family: 'FuturaHeavy';
   src: url(./assets/fonts/FuturaHeavy.otf)
 }
@@ -27,6 +31,19 @@
   margin:0;
   padding:0;
   box-sizing: border-box;
+}
+
+.price-specials{
+  /* color:red; */
+  font-weight: 900;
+  /* font-style: italic; */
+  font-family: MinionProBold;
+}
+.allergies-abbreviated{
+  font-family: MinionProBold;
+  font-weight: 900;
+  font-style: italic;
+  /* color:red; */
 }
 
 .qr{

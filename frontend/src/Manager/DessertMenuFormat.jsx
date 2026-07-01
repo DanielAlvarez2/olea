@@ -244,7 +244,7 @@ export default function DessertMenuFormat(){
                         {
                             frontView ?  
                             <>
-                                <div style={{width:'131mm',height:'6mm',background:'#f5f5dc',position:'relative',right:'6mm'}}></div>                
+                                <div style={{width:'131mm',height:'6mm',background:'white',position:'relative',right:'6mm'}}></div>                
                                 <div    className='dessert-menu-format-front'
                                         style={{width:'119mm',
                                                 position:'relative',
@@ -254,13 +254,13 @@ export default function DessertMenuFormat(){
                                         // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                                 >
                                     <div style={{   height:'182mm',
-                                                    background:'#f5f5dc',
+                                                    background:'white',
                                                     position:'absolute',
                                                     left:'-6mm',
                                                     top:'0',
                                                     width:'6mm'}}></div>
                                     <div style={{   height:'182mm',
-                                                    background:'#f5f5dc',
+                                                    background:'white',
                                                     position:'absolute',
                                                     right:'-6mm',
                                                     top:'0',
@@ -506,12 +506,12 @@ export default function DessertMenuFormat(){
                                             </div>
                                     </div>
                                 </div>
-                                <div style={{width:'131mm',height:'15mm',background:'#f5f5dc',position:'relative',right:'6mm'}}></div>                
+                                <div style={{width:'131mm',height:'15mm',background:'white',position:'relative',right:'6mm'}}></div>                
                                 
                             </>
                             :
                             <>
-                                <div style={{width:'131mm',height:'6mm',background:'#f5f5dc',position:'relative',right:'6mm'}}></div>                
+                                <div style={{width:'131mm',height:'6mm',background:'white',position:'relative',right:'6mm'}}></div>                
                             
                                 <div    className='dessert-menu-format-front' 
                                         style={{width:'119mm',
@@ -523,13 +523,13 @@ export default function DessertMenuFormat(){
                                         
                                 >
                                     <div style={{   height:'182mm',
-                                                    background:'#f5f5dc',
+                                                    background:'white',
                                                     position:'absolute',
                                                     left:'-6mm',
                                                     top:'0',
                                                     width:'6mm'}}></div>
                                     <div style={{   height:'182mm',
-                                                    background:'#f5f5dc',
+                                                    background:'white',
                                                     position:'absolute',
                                                     right:'-6mm',
                                                     top:'0',
@@ -646,7 +646,7 @@ export default function DessertMenuFormat(){
                                         <hr />
                                     </div>
                                 </div>
-                                <div style={{width:'131mm',height:'15mm',background:'#f5f5dc',position:'relative',right:'6mm'}}></div>                
+                                <div style={{width:'131mm',height:'15mm',background:'white',position:'relative',right:'6mm'}}></div>                
                             
                             </>
                         }
