@@ -338,6 +338,7 @@ export default function SpecialsMenuUpdate(){
                                                                     paddingRight:`${pageMarginsLeftRight}px`,
                                                                     fontFamily:'serif'}}>
                                                         <div style={{   display:'flex',
+                                                                        gap:'9px',
                                                                         alignItems:'flex-end',
                                                                         justifyContent:'space-between'}}>
                                                             <div className='specials-legal'>
@@ -463,6 +464,7 @@ export default function SpecialsMenuUpdate(){
                                                                                     paddingRight:`${pageMarginsLeftRight}px`,
                                                                                     fontFamily:'serif'}}>
                                                                         <div style={{   display:'flex',
+                                                                                        gap:'9px',
                                                                                         alignItems:'flex-end',
                                                                                         justifyContent:'space-between'}}>
                                                                             <div className='specials-legal'>

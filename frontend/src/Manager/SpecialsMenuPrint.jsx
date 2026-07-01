@@ -290,6 +290,7 @@ export default function SpecialsMenuPrint(){
                                                                     paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                     fontFamily:'serif'}}>
                                                         <div style={{   display:'flex',
+                                                                        gap:'9px',
                                                                         alignItems:'flex-end',
                                                                         justifyContent:'space-between'}}>
                                                             <div className='specials-legal'>
@@ -327,8 +328,8 @@ export default function SpecialsMenuPrint(){
                                                             height:'121mm',
                                                             padding:`
                                                                         0in 
-                                                                        calc(0.125in + ${pageMarginsLeftRight}px)
-                                                                        0.125in 
+                                                                        calc(6mmin + ${pageMarginsLeftRight}px)
+                                                                        6mm 
                                                                         calc(0in + ${pageMarginsLeftRight}px)
                                                                     `,
                                                             position:'relative',
@@ -395,9 +396,10 @@ export default function SpecialsMenuPrint(){
                                                                                 textAlign:'left',
                                                                                 // background:'green',
                                                                                 fontSize:'11px',
-                                                                                paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
+                                                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                                 fontFamily:'serif'}}>
                                                                         <div style={{   display:'flex',
+                                                                                        gap:'9px',
                                                                                         alignItems:'flex-end',
                                                                                         justifyContent:'space-between'}}>
                                                                             <div className='specials-legal'>
@@ -506,6 +508,7 @@ export default function SpecialsMenuPrint(){
                                                                     paddingRight:`${pageMarginsLeftRight}px`,
                                                                     fontFamily:'serif'}}>
                                                         <div style={{display:'flex',
+                                                                    gap:'9px',
                                                                     alignItems:'flex-end',
                                                                     justifyContent:'space-between'}}>
                                                             <div className='specials-legal'>
@@ -531,8 +534,8 @@ export default function SpecialsMenuPrint(){
                                                             padding:`
                                                                         0in 
                                                                         calc(0in + ${pageMarginsLeftRight}px)
-                                                                        0.125in 
-                                                                        calc(0.125in + ${pageMarginsLeftRight}px)
+                                                                        6mm 
+                                                                        calc(6mm + ${pageMarginsLeftRight}px)
                                                                     `,
                                                             position:'relative',
                                                             background:'white',
@@ -602,6 +605,7 @@ export default function SpecialsMenuPrint(){
                                                                                 fontFamily:'serif'}}>
                                                                     <div style={{display:'flex',
                                                                                 alignItems:'flex-end',
+                                                                                gap:'9px',
                                                                                 justifyContent:'space-between'}}>
                                                                         <div className='specials-legal'>
                                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
@@ -735,6 +739,7 @@ export default function SpecialsMenuPrint(){
                                                                     fontFamily:'serif'}}>
                                                         <div style={{display:'flex',
                                                                     alignItems:'flex-end',
+                                                                    gap:'9px',
                                                                     justifyContent:'space-between'}}>
                                                             <div className='specials-legal'>
                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
@@ -758,7 +763,7 @@ export default function SpecialsMenuPrint(){
                                                             height:'121mm',
                                                             padding:`
                                                                         0.25in 
-                                                                        calc(0.125in + ${pageMarginsLeftRight}px)
+                                                                        calc(6mm + ${pageMarginsLeftRight}px)
                                                                         0in 
                                                                         calc(0in + ${pageMarginsLeftRight}px)
                                                                     `,
@@ -826,10 +831,11 @@ export default function SpecialsMenuPrint(){
                                                                                 // background:'yellow',
                                                                                 textAlign:'left',
                                                                                 fontSize:'11px',
-                                                                                paddingRight:`calc(0.125in + ${pageMarginsLeftRight}px)`,
+                                                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                                 fontFamily:'serif'}}>
                                                                     <div style={{display:'flex',
                                                                                 alignItems:'flex-end',
+                                                                                gap:'9px',
                                                                                 justifyContent:'space-between'}}>
                                                                         <div className='specials-legal'>
                                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
@@ -939,6 +945,7 @@ export default function SpecialsMenuPrint(){
                                                                     fontFamily:'serif'}}>
                                                         <div style={{display:'flex',
                                                                     alignItems:'flex-end',
+                                                                    gap:'9px',
                                                                     justifyContent:'space-between'}}>
                                                             <div className='specials-legal'>
                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
@@ -961,10 +968,10 @@ export default function SpecialsMenuPrint(){
                                                             // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
                                                             height:'121mm',
                                                             padding:`
-                                                                        0.25in 
+                                                                        6mm 
                                                                         calc(0in + ${pageMarginsLeftRight}px)
-                                                                        0.125in 
-                                                                        calc(0.125in + ${pageMarginsLeftRight}px)
+                                                                        6mm 
+                                                                        calc(6mm + ${pageMarginsLeftRight}px)
                                                                     `,
                                                             position:'relative',
                                                             background:'white',
@@ -1034,6 +1041,7 @@ export default function SpecialsMenuPrint(){
                                                                                 fontFamily:'serif'}}>
                                                                     <div style={{display:'flex',
                                                                                 alignItems:'flex-end',
+                                                                                gap:'9px',
                                                                                 justifyContent:'space-between'}}>
                                                                         <div className='specials-legal'>
                                                                             Consumer advisory: consumption of undercooked meat, poultry, eggs, 
