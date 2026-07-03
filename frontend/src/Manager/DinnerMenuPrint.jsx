@@ -205,7 +205,7 @@ export default function DinnerMenuPrint(){
                                                                 {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
                                                                 {data.description && <span> {data.description}</span>}
                                                                 
-                                                                <span className='price'> &nbsp;{data.price}</span> 
+                                                                <span className='price-specials'> &nbsp;{data.price}</span> 
                                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
@@ -244,7 +244,7 @@ export default function DinnerMenuPrint(){
                                                             {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
                                                             {data.description && <span> {data.description}</span>}
                                                             
-                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            <span className='price-specials'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
@@ -294,7 +294,7 @@ export default function DinnerMenuPrint(){
                                                             {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
                                                             {data.description && <span> {data.description}</span>}
                                                             
-                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            <span className='price-specials'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
@@ -422,7 +422,7 @@ export default function DinnerMenuPrint(){
                                                             {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
                                                             {data.description && <span> {data.description}</span>}
                                                             
-                                                            <span className='price'> &nbsp;{data.price}</span> 
+                                                            <span className='price-specials'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
