@@ -227,7 +227,8 @@ export default function DinnerMenuFormat(){
                                                 border:'none',
                                                 position:'relative'}} 
                                 >
-                                    <div style={{   height:'313mm',
+                                    <div style={{   
+                                                    height:'313mm',
                                                     position:'absolute',
                                                     top:'0',
                                                     left:'-7mm',
