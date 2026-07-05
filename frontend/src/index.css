@@ -2,18 +2,20 @@
   font-family: 'FuturaRoundBold';
   src: url(./assets/fonts/FuturaRoundBold.ttf)
 }
+
+
 @font-face{
-  font-family: 'FuturaLight';
-  src: url(./assets/fonts/FuturaLight.otf)
-}
+  font-family: 'FuturaExtraBold';
+  src: url(./assets/fonts/FuturaExtraBold.otf)
+} */
 @font-face{
   font-family: 'FuturaMedium';
   src: url(./assets/fonts/FuturaMedium.otf)
 }
 @font-face{
-  font-family: 'FuturaExtraBold';
-  src: url(./assets/fonts/FuturaExtraBold.otf)
-} */
+  font-family: 'FuturaLight';
+  src: url(./assets/fonts/FuturaLight.otf)
+} 
 @font-face{
   font-family: 'FuturaBold';
   src: url(./assets/fonts/FuturaBold.otf)
@@ -191,10 +193,27 @@ input[type="file"]::file-selector-button{
   font-size: 20px;
   margin: 10px 0px;
 }
+.safari-print-height-legal{
+  height:313mm;
+}
 @media print{
   .no-print{
     display: none !important;
     height:0 !important;
     width:0 !important;
   }
+}
+.name-dinner{
+  font-family: FuturaLight;
+  font-weight: 100;
+  font-size: 17px;
+}
+.allergies-dinner-print{
+  font-style: normal;
+  font-weight: 100;
+  font-size: 12px;
+}
+.chef-name-dinner{
+  font-family: FuturaLight;
+  font-size: 16px;
 }

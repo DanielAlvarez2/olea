@@ -4,6 +4,7 @@ import './Manager.css'
 import './DessertMenuFormat.css'
 import './DessertDrinksUpdate.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
+
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
 import { FaToggleOff } from "react-icons/fa6";

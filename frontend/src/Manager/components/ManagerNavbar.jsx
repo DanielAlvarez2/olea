@@ -4,7 +4,7 @@ import './ManagerNavbar.css'
 export default function ManagerNavbar(props){
     return(
         <>
-            <nav    className='manager-navbar' 
+            <nav    className='manager-navbar no-print' 
                     style={{display:'flex',width:'100%',alignItems:'center'}}>
                 <Link to='/manager'><div className='logo' style={{paddingRight:'0'}}>
                     olea
@@ -20,7 +20,7 @@ export default function ManagerNavbar(props){
                     </ul>
                 </div>
             </nav>        
-                <hr style={{width:'100%'}}/>
+                <hr className='no-print' style={{width:'100%'}}/>
         </>
     )
 }
