@@ -65,7 +65,9 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
     }
 
     return(
-        <>
+        <div className='dinner-menu-print-area-wrapper'
+                style={{display:'flex',flexDirection:'column',alignItems:'center'}}
+        >
             <div className='no-print' style={{background:'white',width:'204mm',height:'7mm'}}></div>
             <div    className="safari-print-area-legal safari-print-height-legal paper-menu"
                     style={{
@@ -82,10 +84,11 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                         style={{width:'7mm',background:'white',position:'absolute',top:'0',left:'-7mm'}}></div>
                 <div    className='no-print safari-print-height-legal' 
                         style={{width:'7mm',background:'white',position:'absolute',top:'0',right:'-7mm'}}></div>
-                <div className="logo" style={{  fontSize:'50px',
+                <div className="" style={{  fontSize:'50px',
                                                 // color:'red',
                                                 lineHeight:'1.2',
                                                 marginBottom:'-10px',
+                                                display:'block !important',
                                                 paddingLeft:`${dinnerItemMarginsLeftRight}px`}}>
                     olea
                 </div>
@@ -287,15 +290,16 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
 
 
 
-                <footer style={{position:'absolute',
+                <div style={{position:'absolute',
                                 bottom:'0',
                                 justifyContent:'space-between',
                                 alignItems:'center',
                                 width:'100%',
+                                zoom:'inherit',
                                 display:'flex'}}>
                     <div    className='chef-name-dinner'
                             style={{textDecoration:'underline',textUnderlineOffset:'5px'}}>manuel romero, chef</div>
-                    <div style={{fontSize:'11px',width:'480px'}}>
+                    <div className='dinner-menu-print-area-legal' style={{fontSize:'11px',width:'66%'}}>
                         consumer advisory: consumption of undercooked meat, poultry, 
                         eggs, or seafood may increase the risk of food-borne illnesses
                         all menu items are subject to change according to seasonality 
@@ -306,9 +310,10 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                         </span>
                     </div>
                     <img src='qr-dinner.png' height='60px' width='60px' />
-                </footer>
+                </div>
             </div>{/* .safari-print-area-legal */}
             <div className='no-print' style={{background:'white',height:'16mm',width:'204mm'}}></div>
-        </>
+        {/* .dinner-menu-print-area-wrapper */}
+        </div>
     )
 }

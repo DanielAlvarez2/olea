@@ -217,3 +217,16 @@ input[type="file"]::file-selector-button{
   font-family: FuturaLight;
   font-size: 16px;
 }
+@media(max-width:800px){
+  .dinner-menu-print-area-wrapper{
+    zoom:0.75;
+  }
+  .dinner-menu-print-area-legal{
+    font-size:8.9px !important;
+  }
+}
+@media(max-width:600px){
+  .dinner-menu-print-area-wrapper{
+    zoom:0.6;
+  }
+}
