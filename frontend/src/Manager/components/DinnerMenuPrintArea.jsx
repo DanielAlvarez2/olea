@@ -74,8 +74,8 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                             // border:'1px solid red',
                             width:'190mm',
                             backgroundSize:'204mm',
-                            backgroundPosition:'-50px -37px',
-                            backgroundImage:'url("scan-dinner-menu.jpg")',
+                            backgroundPosition:'-37px -38px',
+                            // backgroundImage:'url("scan-dinner-menu.jpg")',
                             background:'white',
                             position:'relative',
                             // color:'red'
@@ -87,7 +87,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                 <div className="" style={{  fontSize:'50px',
                                                 // color:'red',
                                                 lineHeight:'1.2',
-                                                marginBottom:'-10px',
+                                                marginBottom:'-5px',
                                                 display:'block !important',
                                                 paddingLeft:`${dinnerItemMarginsLeftRight}px`}}>
                     olea
@@ -114,8 +114,10 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                                 </>
                                                                 }
                                                                 {data.description && <br/>}
-                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                                {data.description && <span> {data.description}</span>}
+                                                                <span className='dinner-print-description'>
+                                                                    {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                    {data.description && <span> {data.description}</span>}
+                                                                </span>{/* .dinner-print-description */}
                                                                 
                                                                 <span className='price-specials'> &nbsp;{data.price}</span> 
                                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
@@ -140,8 +142,10 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                                 <span className='allergies-dinner-print'> ({data.allergiesAbbreviated})</span>               
                                                                                             </>
                                                             }
-                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                            {data.description && <span> {data.description}</span>}
+                                                            <span className='dinner-print-description'>
+                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                {data.description && <span> {data.description}</span>}
+                                                            </span>{/* .dinner-print-description */}
                                                             
                                                             <span className='price-specials'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
@@ -170,11 +174,15 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                                 <span className='allergies-dinner-print'> ({data.allergiesAbbreviated})</span>               
                                                                                             </>
                                                             }
-                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                            {data.description && <span> {data.description}</span>}
+                                                            <span className='dinner-print-description'>
+                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                {data.description && <span> {data.description}</span>}
+                                                            </span>{/* .dinner-print-description */}
                                                             
                                                             <span className='price-specials'> &nbsp;{data.price}</span> 
-                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                            <span className='dinner-print-description'>
+                                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                            </span>{/* .dinner-print-description */}
 
 
                                                         </div>
@@ -274,8 +282,10 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                                 <span className='allergies-dinner-print'> ({data.allergiesAbbreviated})</span>               
                                                                                             </>
                                                             }
-                                                            {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
-                                                            {data.description && <span> {data.description}</span>}
+                                                            <span className='dinner-print-description'>
+                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                {data.description && <span> {data.description}</span>}
+                                                            </span>{/* .dinner-print-description */}
                                                             
                                                             <span className='price-specials'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
@@ -301,7 +311,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                             style={{textDecoration:'underline',textUnderlineOffset:'5px'}}>manuel romero, chef</div>
                     <div className='dinner-menu-print-area-legal' style={{fontSize:'11px',width:'66%'}}>
                         consumer advisory: consumption of undercooked meat, poultry, 
-                        eggs, or seafood may increase the risk of food-borne illnesses
+                        eggs, or seafood may increase the risk of food-borne illnesses. 
                         all menu items are subject to change according to seasonality 
                         and availability<br/>
                         <span style={{fontWeight:'900'}}>
