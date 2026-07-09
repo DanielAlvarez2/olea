@@ -42,6 +42,7 @@
 .dessert-menu-heading{
     /* color:blue; */
     font-family: FuturaExtraBold;
+    font-weight:100;
 }
 .coffee-tea-heading-italics{
     font-family:serif;
