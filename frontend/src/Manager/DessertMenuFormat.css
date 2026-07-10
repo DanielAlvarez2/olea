@@ -9,41 +9,49 @@
     padding-top:10px;
     font-size:15px;
 }
+.dessert-drinks-default-font-print{
+    /* color:red; */
+    font-family: MinionProRegular;
+    font-size:11.5pt;
+}
 .dessert-menu-front-content{
     padding-left: 20px;
     /* padding-right: 83px; */
 }
-.dessert-name{
-    font-family: FuturaLight;
-    font-size:15px;
-    font-weight:600;
+.dessert-name-print{
+    font-family: FuturaMedium;
+    font-size:11.5pt;
+    /* font-weight:600; */
 }
-.dessert-allergies{
-    font-family: serif;
+.dessert-allergies-print{
+    font-family: MinionProBold;
+    font-size: 11.5pt;
     font-style: italic;
     font-weight: 900;
 }
-.dessert-description{
-    font-family:serif;
-    font-size: 15px;
+.dessert-description-print{
+    font-family:MinionProRegular;
+    font-size: 11.5pt;
 }
-.dessert-price{
-    font-family:serif;
+.dessert-price-print{
+    font-size:11.5pt;
+    font-family:MinionProBold;
     font-weight:600;
-    font-style: italic;
+    /* font-style: italic; */
 }
-.dessert-footer{
+.dessert-footer-print{
     margin-top:auto;
-    font-family: serif;
+    font-family: MinionProBold;
     font-weight: 700;
-    font-size:12px;
+    font-size:10pt;
     text-align: left;
 }
 
-.dessert-menu-heading{
+.dessert-menu-heading-print{
     /* color:blue; */
-    font-family: FuturaExtraBold;
-    font-weight:100;
+    font-size:12pt;
+    font-family: FuturaBold;
+    font-weight:900;
 }
 .coffee-tea-heading-italics{
     font-family:serif;
@@ -51,4 +59,8 @@
 }
 .tea-name{
     font-family: serif;
+}
+.dessert-drink-name-print{
+    font-family:MinionProBold;
+    font-weight:700;
 }
