@@ -193,7 +193,7 @@ export default function DinnerMenuFormat(){
     dinnerItemMarginsLeftRight={dinnerItemMarginsLeftRight}
 />
 
-                                <div className='no-print'>
+                                <div className='no-print' style={{background:'#EEE',zIndex:'100'}}>
 
                                     <br/>
                                     <div style={{   textAlign:'center',

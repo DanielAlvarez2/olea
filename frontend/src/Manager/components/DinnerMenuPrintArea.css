@@ -1,0 +1,44 @@
+.name-dinner{
+    /* color:red; */
+    font-family: FuturaMedium;
+    font-size:calc(13.5pt * 0.9);
+}
+.allergies-dinner-print{
+    /* color:red; */
+    font-family: MinionProRegular;
+    font-size:calc(10pt * 0.9);
+}
+.dinner-print-description{
+    /* color:red; */
+    font-family: MinionProRegular;
+    font-size:calc(11.25pt * 0.9);
+}
+.price-dinner-print{
+    /* color:red; */
+    font-family: MinionProBold;
+    font-size:calc(11.25pt * 0.9);
+    font-weight: 900;
+}
+.sides-heading{
+    /* color:red; */
+    font-family: FuturaMedium;
+    font-size:calc(19pt * 0.9);
+    /* font-weight: 900; */
+}
+.chef-name-dinner{
+    /* color:red; */
+    font-family: FuturaMedium;
+    font-size:calc(13.5pt * 0.8);
+    /* font-weight: 900; */
+}
+.dinner-menu-print-area-legal{
+    /* color:red; */
+    font-family: MinionProRegular;
+    font-size:calc(10pt * 0.8);
+}
+.dinner-print-chefs-tasting-menu{
+    /* color:red; */
+    font-family: FuturaMedium;
+    font-size:calc(13.5pt * 0.9);
+    /* font-weight: 900; */
+}

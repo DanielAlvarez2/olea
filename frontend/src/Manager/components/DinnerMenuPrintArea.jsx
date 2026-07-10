@@ -1,5 +1,5 @@
 import {useState,useEffect} from 'react'
-
+import './DinnerMenuPrintArea.css'
 
 export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerItemMarginsLeftRight}){
 
@@ -119,7 +119,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                     {data.description && <span> {data.description}</span>}
                                                                 </span>{/* .dinner-print-description */}
                                                                 
-                                                                <span className='price-specials'> &nbsp;{data.price}</span> 
+                                                                <span className='price-dinner-print'> &nbsp;{data.price}</span> 
                                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
@@ -147,7 +147,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                 {data.description && <span> {data.description}</span>}
                                                             </span>{/* .dinner-print-description */}
                                                             
-                                                            <span className='price-specials'> &nbsp;{data.price}</span> 
+                                                            <span className='price-dinner-print'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
@@ -179,7 +179,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                 {data.description && <span> {data.description}</span>}
                                                             </span>{/* .dinner-print-description */}
                                                             
-                                                            <span className='price-specials'> &nbsp;{data.price}</span> 
+                                                            <span className='price-dinner-print'> &nbsp;{data.price}</span> 
                                                             <span className='dinner-print-description'>
                                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                                             </span>{/* .dinner-print-description */}
@@ -203,29 +203,31 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                 paddingLeft:`${dinnerItemMarginsLeftRight}px`,
                                                         }}
                                                                 >
-                                                    <span style={{fontFamily:'FuturaLight', fontSize:'20px'}}>
+                                                    <span className='dinner-print-chefs-tasting-menu'>
                                                         chef's tasting menu &nbsp; 
                                                     </span> <br/>
-                                                    <span style={{fontStyle:'italic'}}>
-                                                        six courses 
-                                                        {tastingMenuPrices.tastingMenuPrice != 0 ? <>
-                                                                                                        <span style={{fontWeight:'900'}}> {tastingMenuPrices.tastingMenuPrice}</span> / person
-                                                                                                    </>
-                                                                                                 : ''}
-                                                    </span>
-                                                    <br/>
-                                                    <span style={{fontStyle:'italic', fontWeight:'900'}}>
-                                                        48-hours notice and reservation required<br/>
-                                                    </span>
-                                                    full table participation<br/>
-                                                    available tuesday through thursday<br/>
-                                                    <span style={{fontStyle:'italic'}}>
-                                                        optional wine pairing available 
-                                                        {tastingMenuPrices.winePairingPrice != 0 ? <>
-                                                                                                        <span style={{fontWeight:'900'}}> {tastingMenuPrices.winePairingPrice}</span> / person
-                                                                                                    </>
-                                                                                                 : ''}
-                                                    </span>
+                                                    <span className='dinner-print-description'>
+                                                        <span style={{fontStyle:'italic'}}>
+                                                            six courses 
+                                                            {tastingMenuPrices.tastingMenuPrice != 0 ? <>
+                                                                                                            <span style={{fontWeight:'900'}}> {tastingMenuPrices.tastingMenuPrice}</span> / person
+                                                                                                        </>
+                                                                                                    : ''}
+                                                        </span>
+                                                        <br/>
+                                                        <span style={{fontStyle:'italic', fontWeight:'900'}}>
+                                                            48-hours notice and reservation required<br/>
+                                                        </span>
+                                                        full table participation<br/>
+                                                        available tuesday through thursday<br/>
+                                                        <span style={{fontStyle:'italic'}}>
+                                                            optional wine pairing available 
+                                                            {tastingMenuPrices.winePairingPrice != 0 ? <>
+                                                                                                            <span style={{fontWeight:'900'}}> {tastingMenuPrices.winePairingPrice}</span> / person
+                                                                                                        </>
+                                                                                                    : ''}
+                                                        </span>
+                                                    </span>{/* .dinner-print-description */}
                                                 </div>
 
 
@@ -255,8 +257,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                 
                 <div className='sides-heading'
                         style={{paddingLeft:`${dinnerItemMarginsLeftRight}px`,
-                                fontWeight:'100',
-                                fontSize:'25px'}}
+                            }}
                 >
                     sides
                 </div>
@@ -287,7 +288,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                 {data.description && <span> {data.description}</span>}
                                                             </span>{/* .dinner-print-description */}
                                                             
-                                                            <span className='price-specials'> &nbsp;{data.price}</span> 
+                                                            <span className='price-dinner-print'> &nbsp;{data.price}</span> 
                                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
 
 
@@ -309,7 +310,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                 display:'flex'}}>
                     <div    className='chef-name-dinner'
                             style={{textDecoration:'underline',textUnderlineOffset:'5px'}}>manuel romero, chef</div>
-                    <div className='dinner-menu-print-area-legal' style={{fontSize:'11px',width:'66%'}}>
+                    <div className='dinner-menu-print-area-legal' style={{width:'61%'}}>
                         consumer advisory: consumption of undercooked meat, poultry, 
                         eggs, or seafood may increase the risk of food-borne illnesses. 
                         all menu items are subject to change according to seasonality 
@@ -319,7 +320,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                         <span>gl (gluten), d (dairy), n (nuts)</span>
                         </span>
                     </div>
-                    <img src='qr-dinner.png' height='60px' width='60px' />
+                    <img src='qr-dinner.png' height='50px' width='50px' />
                 </div>
             </div>{/* .safari-print-area-legal */}
             <div className='no-print' style={{background:'white',height:'16mm',width:'204mm'}}></div>

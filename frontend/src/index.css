@@ -25,6 +25,10 @@
   src: url(./assets/fonts/MinionProBold.otf)
 }
 @font-face{
+  font-family: 'MinionProRegular';
+  src: url(./assets/fonts/MinionProRegular.ttf)
+}
+@font-face{
   font-family: 'FuturaHeavy';
   src: url(./assets/fonts/FuturaHeavy.otf)
 }
