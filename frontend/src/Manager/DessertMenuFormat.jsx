@@ -245,12 +245,15 @@ export default function DessertMenuFormat(){
                         {
                             frontView ?  
                             <>
+                            <div className='printarea-flexbox-wrapper' style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
+                            
                                 <div style={{width:'131mm',height:'6mm',background:'white',position:'relative',right:'6mm'}}></div>                
                                 <div    className='dessert-menu-format-front'
                                         style={{width:'119mm',
                                                 position:'relative',
                                                 height:'182mm',
                                                 border:'none',
+                                                marginRight:'0',
                                                 padding:'0'}} 
                                         // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                                 >
@@ -274,7 +277,8 @@ export default function DessertMenuFormat(){
                                                         paddingLeft:'0',
                                                         cursor:'default',
                                                         fontSize:'45px'}}>olea</span>
-                                        <hr/>
+                                        
+                                        <div style={{borderTop:'1px solid #888'}} />
 
 
 
@@ -320,7 +324,7 @@ export default function DessertMenuFormat(){
                                                             coffee
                                                         </span>
                                                         &nbsp;
-                                                        <span className='dessert-price-print'>
+                                                        <span className='dessert-price-print' style={{fontStyle:'italic'}}>
                                                             (decaffeinated available)
                                                         </span><br/>
 
@@ -379,7 +383,7 @@ export default function DessertMenuFormat(){
                                                     organic-artisan whole leaf tea
                                                 </span>
                                                 &nbsp;
-                                                <span className='dessert-price-print'>
+                                                <span className='dessert-price-print' style={{fontStyle:'italic'}}>
                                                     (pouch)
                                                 </span>
                                                 <span className='dessert-price-print'>
@@ -450,7 +454,7 @@ export default function DessertMenuFormat(){
                                             
                                             <span className='dessert-price-print'>
                                                 <span style={{fontStyle:'normal'}}>herbal</span>
-                                                <span> (caffeine free)</span>
+                                                <span style={{fontStyle:'italic'}}> (caffeine free)</span>
                                                 &nbsp;
                                             </span>
                                                                         {allTeas.filter(item=>item.type == 'herbal').map(data=>{
@@ -490,11 +494,11 @@ export default function DessertMenuFormat(){
 
 
 
-                                    <div className='dessert-footer-print'>
+                                    <div className='dessert-footer-print' style={{positon:'absolute',bottom:'0'}}>
                                         <div className='dessert-menu-front-content' style={{paddingLeft:'0'}}>
                                             jessica delgado, pastry chef
                                         </div>
-                                        <hr style={{marginTop:'5px'}}/>
+                                        <div style={{borderTop:'1px solid #888',marginTop:'3px'}} />
                                             <div style={{display:'flex',justifyContent:'space-between'}}>
 
                                                 <div className='dessert-menu-front-content' style={{paddingLeft:'0'}}>
@@ -503,12 +507,12 @@ export default function DessertMenuFormat(){
                                                 </div>
                                                 <img    src='qr-dessert.png' 
                                                         className='qr'
-                                                        width='40px' />
+                                                        width='30px' />
                                             </div>
                                     </div>
                                 </div>
                                 <div style={{width:'131mm',height:'15mm',background:'white',position:'relative',right:'6mm'}}></div>                
-                                
+                            </div>{/* .printarea-flexbox-wrapper */}
                             </>
                             :
                             <>
@@ -544,7 +548,7 @@ export default function DessertMenuFormat(){
                                                         paddingLeft:'0',
                                                         cursor:'default',
                                                         fontSize:'45px'}}>olea</span>
-                                        <hr/>
+                                        <div style={{borderTop:'1px solid #888'}} />
 
 
 
@@ -591,7 +595,9 @@ export default function DessertMenuFormat(){
                                                                                         <span>{drink.postDescription}</span>                                                                                    
                                                                                     </div>                                                                                    
                                                                                     <div    className='dessert-drink-right dessert-price-print'
-                                                                                            // style={{textAlign:'left',fontWeight:'900',width:'15px'}}
+                                                                                            style={{textAlign:'left',
+                                                                                                    // fontWeight:'900',
+                                                                                                    width:'15px'}}
                                                                                     >
                                                                                         {drink.price}
                                                                                     </div>                                                                                    
@@ -651,7 +657,7 @@ export default function DessertMenuFormat(){
 
 
                                     <div className='dessert-footer'>
-                                        <hr />
+                                        <div style={{borderTop:'1px solid #888'}} />
                                     </div>
                                 </div>
                                 <div style={{width:'131mm',height:'15mm',background:'white',position:'relative',right:'6mm'}}></div>                

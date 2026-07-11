@@ -321,7 +321,7 @@ export default function DessertMenuPrint(){
                                                                     display:'block',
                                                                     paddingLeft:'0',
                                                                     fontSize:'45px'}}>olea</span>
-                                                    <hr/>
+                                                    <div style={{borderTop:'1px solid #888'}} />
 
 
 
@@ -352,12 +352,12 @@ export default function DessertMenuPrint(){
                                                                 <div    key={data._id}
                                                                         style={{margin:`${dessertItemMarginsTopBottom}px 0`}} 
                                                                         className='dessert dessert-item'>
-                                                                    <span className='dessert-name'>{data.name}</span>
-                                                                    {data.allergiesAbbreviated &&   <span className='dessert-allergies'>
+                                                                    <span className='dessert-name-print'>{data.name}</span>
+                                                                    {data.allergiesAbbreviated &&   <span className='dessert-allergies-print'>
                                                                                                         &nbsp;({data.allergiesAbbreviated})
                                                                                                     </span>}
-                                                                    <span className='dessert-description'>&nbsp;{data.description}</span>
-                                                                    <span className='dessert-price'>&nbsp; &nbsp; {data.price}</span>
+                                                                    <span className='dessert-description-print'>&nbsp;{data.description}</span>
+                                                                    <span className='dessert-price-print'>&nbsp; &nbsp; {data.price}</span>
                                                                     
                                                                 </div>
                                                             )
@@ -368,11 +368,11 @@ export default function DessertMenuPrint(){
                                                         {
                                                             (allCoffees.length > 0) && <>
                                                                 <div className='dessert-item'>                                    
-                                                                    <span className='dessert-menu-heading'>
+                                                                    <span className='dessert-menu-heading-print'>
                                                                         coffee
                                                                     </span>
                                                                     &nbsp;
-                                                                    <span className='dessert-price'>
+                                                                    <span className='dessert-price-print' style={{fontStyle:'italic'}}>
                                                                         (decaffeinated available)
                                                                     </span><br/>
 
@@ -383,8 +383,8 @@ export default function DessertMenuPrint(){
                                                                                                             {data.sequence <= lastCoffeeSequenceLine1 && 
                                                                                                             
                                                                                                             <span>
-                                                                                                                <span className='dessert-description'>{data.name} </span> 
-                                                                                                                <span className='dessert-price'>{data.price}</span> 
+                                                                                                                <span className='dessert-description-print'>{data.name} </span> 
+                                                                                                                <span className='dessert-price-print'>{data.price}</span> 
                                                                                                                     {data.sequence != allCoffees.length
                                                                                                                         && ' / '
                                                                                                                     }
@@ -400,8 +400,8 @@ export default function DessertMenuPrint(){
                                                                                                             {data.sequence > lastCoffeeSequenceLine1 && 
                                                                                                             
                                                                                                             <span>
-                                                                                                                <span className='dessert-description'>{data.name} </span> 
-                                                                                                                <span className='dessert-price'>{data.price}</span> 
+                                                                                                                <span className='dessert-description-print'>{data.name} </span> 
+                                                                                                                <span className='dessert-price-print'>{data.price}</span> 
                                                                                                                     {data.sequence != allCoffees.length
                                                                                                                         && ' / '
                                                                                                                     }
@@ -428,14 +428,14 @@ export default function DessertMenuPrint(){
                                                         
 
                                                         <div className='dessert-item'>                                    
-                                                            <span className='dessert-menu-heading'>
+                                                            <span className='dessert-menu-heading-print'>
                                                                 organic-artisan whole leaf tea
                                                             </span>
                                                             &nbsp;
-                                                            <span className='dessert-price'>
+                                                            <span className='dessert-price-print' style={{fontStyle:'italic'}}>
                                                                 (pouch)
                                                             </span>
-                                                            <span className='dessert-price'>
+                                                            <span className='dessert-price-print'>
                                                                 {teaPrice ? ` ${teaPrice}` : ''}
                                                             </span>
 
@@ -445,14 +445,14 @@ export default function DessertMenuPrint(){
                                                         
                                                         
                                                             
-                                                            <span   className='dessert-price'
+                                                            <span   className='dessert-price-print'
                                                                     style={{fontStyle:'normal'}}>
                                                                 black &nbsp;
                                                             </span>
                                                                                         {allTeas.filter(item=>item.type == 'black').map(data=>{
                                                                                             return(
                                                                                                 <span key={data._id}>
-                                                                                                    <span className='tea-name'>{data.name} 
+                                                                                                    <span className='dessert-description-print'>{data.name} 
                                                                                                         {data.sequence != allTeas.filter(item=>item.type == 'black').length
                                                                                                             && ', '
                                                                                                         }
@@ -471,14 +471,14 @@ export default function DessertMenuPrint(){
                                                         
                                                         
                                                         
-                                                            <span   className='dessert-price'
+                                                            <span   className='dessert-price-print'
                                                                     style={{fontStyle:'normal'}}>
                                                                 green &nbsp;
                                                             </span>
                                                                                         {allTeas.filter(item=>item.type == 'green').map(data=>{
                                                                                             return(
                                                                                                 <span key={data._id}>
-                                                                                                    <span className='tea-name'>{data.name} 
+                                                                                                    <span className='dessert-description-print'>{data.name} 
                                                                                                         {data.sequence != allTeas.filter(item=>item.type == 'green').length
                                                                                                             && ', '
                                                                                                         }
@@ -501,15 +501,15 @@ export default function DessertMenuPrint(){
                                                         
                                                         
                                                         
-                                                        <span className='dessert-price'>
+                                                        <span className='dessert-price-print'>
                                                             <span style={{fontStyle:'normal'}}>herbal</span>
-                                                            <span>(caffeine free)</span>
+                                                            <span style={{fontStyle:'italic'}}> (caffeine free)</span>
                                                             &nbsp;
                                                         </span>
                                                                                     {allTeas.filter(item=>item.type == 'herbal').map(data=>{
                                                                                         return(
                                                                                             <span key={data._id}>
-                                                                                                <span className='tea-name'>{data.name} 
+                                                                                                <span className='dessert-description-print'>{data.name} 
                                                                                                     {data.sequence != allTeas.filter(item=>item.type == 'herbal').length
                                                                                                         && ', '
                                                                                                     }
@@ -543,13 +543,13 @@ export default function DessertMenuPrint(){
 
 
 
-                                                <div className='dessert-footer'>
+                                                <div className='dessert-footer-print' style={{position:'absolute',bottom:'0',width:'119mm'}}>
                                                     <div className='dessert-menu-front-content'
                                                             style={{paddingLeft:'0'}}
                                                             >
                                                         jessica delgado, pastry chef
                                                     </div>
-                                                    <hr style={{marginTop:'5px'}}/>
+                                                    <div style={{borderTop:'1px solid #888',marginTop:'3px'}} />
                                                         <div style={{display:'flex',justifyContent:'space-between'}}>
                                                             <div className='dessert-menu-front-content'
                                                                 style={{paddingLeft:'0'}}
@@ -559,7 +559,7 @@ export default function DessertMenuPrint(){
                                                             </div>
                                                             <img    src='qr-dessert.png' 
                                                                     className='qr'
-                                                                    width='40px' />
+                                                                    width='30px' />
                                                         </div>
                                                 </div>
                                             </div>
@@ -580,7 +580,7 @@ export default function DessertMenuPrint(){
                                                                     display:'block',
                                                                     paddingLeft:'0',
                                                                     fontSize:'45px'}}>olea</span>
-                                                    <hr/>
+                                                    <div style={{borderTop:'1px solid #888'}} />
 
 
 
@@ -611,12 +611,12 @@ export default function DessertMenuPrint(){
                                                                 <div    key={data._id}
                                                                         style={{margin:`${dessertItemMarginsTopBottom}px 0`}} 
                                                                         className='dessert dessert-item'>
-                                                                    <span className='dessert-name'>{data.name}</span>
-                                                                    {data.allergiesAbbreviated &&   <span className='dessert-allergies'>
+                                                                    <span className='dessert-name-print'>{data.name}</span>
+                                                                    {data.allergiesAbbreviated &&   <span className='dessert-allergies-print'>
                                                                                                         &nbsp;({data.allergiesAbbreviated})
                                                                                                     </span>}
-                                                                    <span className='dessert-description'>&nbsp;{data.description}</span>
-                                                                    <span className='dessert-price'>&nbsp; &nbsp; {data.price}</span>
+                                                                    <span className='dessert-description-print'>&nbsp;{data.description}</span>
+                                                                    <span className='dessert-price-print'>&nbsp; &nbsp; {data.price}</span>
                                                                     
                                                                 </div>
                                                             )
@@ -627,11 +627,11 @@ export default function DessertMenuPrint(){
                                                         {
                                                             (allCoffees.length > 0) && <>
                                                                 <div className='dessert-item'>                                    
-                                                                    <span className='dessert-menu-heading'>
+                                                                    <span className='dessert-menu-heading-print'>
                                                                         coffee
                                                                     </span>
                                                                     &nbsp;
-                                                                    <span className='dessert-price'>
+                                                                    <span className='dessert-price-print' style={{fontStyle:'italic'}}>
                                                                         (decaffeinated available)
                                                                     </span><br/>
 
@@ -642,8 +642,8 @@ export default function DessertMenuPrint(){
                                                                                                             {data.sequence <= lastCoffeeSequenceLine1 && 
                                                                                                             
                                                                                                             <span>
-                                                                                                                <span className='dessert-description'>{data.name} </span> 
-                                                                                                                <span className='dessert-price'>{data.price}</span> 
+                                                                                                                <span className='dessert-description-print'>{data.name} </span> 
+                                                                                                                <span className='dessert-price-print'>{data.price}</span> 
                                                                                                                     {data.sequence != allCoffees.length
                                                                                                                         && ' / '
                                                                                                                     }
@@ -659,8 +659,8 @@ export default function DessertMenuPrint(){
                                                                                                             {data.sequence > lastCoffeeSequenceLine1 && 
                                                                                                             
                                                                                                             <span>
-                                                                                                                <span className='dessert-description'>{data.name} </span> 
-                                                                                                                <span className='dessert-price'>{data.price}</span> 
+                                                                                                                <span className='dessert-description-print'>{data.name} </span> 
+                                                                                                                <span className='dessert-price-print'>{data.price}</span> 
                                                                                                                     {data.sequence != allCoffees.length
                                                                                                                         && ' / '
                                                                                                                     }
@@ -687,14 +687,14 @@ export default function DessertMenuPrint(){
                                                         
 
                                                         <div className='dessert-item'>                                    
-                                                            <span className='dessert-menu-heading'>
+                                                            <span className='dessert-menu-heading-print'>
                                                                 organic-artisan whole leaf tea
                                                             </span>
                                                             &nbsp;
-                                                            <span className='dessert-price'>
+                                                            <span className='dessert-price-print' style={{fontStyle:'italic'}}>
                                                                 (pouch)
                                                             </span>
-                                                            <span className='dessert-price'>
+                                                            <span className='dessert-price-print'>
                                                                 {teaPrice ? ` ${teaPrice}` : ''}
                                                             </span>
 
@@ -704,14 +704,14 @@ export default function DessertMenuPrint(){
                                                         
                                                         
                                                             
-                                                            <span   className='dessert-price'
+                                                            <span   className='dessert-price-print'
                                                                     style={{fontStyle:'normal'}}>
                                                                 black &nbsp;
                                                             </span>
                                                                                         {allTeas.filter(item=>item.type == 'black').map(data=>{
                                                                                             return(
                                                                                                 <span key={data._id}>
-                                                                                                    <span className='tea-name'>{data.name} 
+                                                                                                    <span className='dessert-description-print'>{data.name} 
                                                                                                         {data.sequence != allTeas.filter(item=>item.type == 'black').length
                                                                                                             && ', '
                                                                                                         }
@@ -730,14 +730,14 @@ export default function DessertMenuPrint(){
                                                         
                                                         
                                                         
-                                                            <span   className='dessert-price'
+                                                            <span   className='dessert-price-print'
                                                                     style={{fontStyle:'normal'}}>
                                                                 green &nbsp;
                                                             </span>
                                                                                         {allTeas.filter(item=>item.type == 'green').map(data=>{
                                                                                             return(
                                                                                                 <span key={data._id}>
-                                                                                                    <span className='tea-name'>{data.name} 
+                                                                                                    <span className='dessert-description-print'>{data.name} 
                                                                                                         {data.sequence != allTeas.filter(item=>item.type == 'green').length
                                                                                                             && ', '
                                                                                                         }
@@ -760,15 +760,15 @@ export default function DessertMenuPrint(){
                                                         
                                                         
                                                         
-                                                        <span className='dessert-price'>
+                                                        <span className='dessert-price-print'>
                                                             <span style={{fontStyle:'normal'}}>herbal</span>
-                                                            <span>(caffeine free)</span>
+                                                            <span style={{fontStyle:'italic'}}> (caffeine free)</span>
                                                             &nbsp;
                                                         </span>
                                                                                     {allTeas.filter(item=>item.type == 'herbal').map(data=>{
                                                                                         return(
                                                                                             <span key={data._id}>
-                                                                                                <span className='tea-name'>{data.name} 
+                                                                                                <span className='dessert-description-print'>{data.name} 
                                                                                                     {data.sequence != allTeas.filter(item=>item.type == 'herbal').length
                                                                                                         && ', '
                                                                                                     }
@@ -802,13 +802,13 @@ export default function DessertMenuPrint(){
 
 
 
-                                                <div className='dessert-footer'>
+                                                <div className='dessert-footer-print' style={{position:'absolute',bottom:'0',width:'119mm'}}>
                                                     <div className='dessert-menu-front-content'
                                                             style={{paddingLeft:'0'}}
                                                             >
                                                         jessica delgado, pastry chef
                                                     </div>
-                                                    <hr style={{marginTop:'5px'}}/>
+                                                    <div style={{borderTop:'1px solid #888',marginTop:'3px'}} />
                                                         <div style={{display:'flex',justifyContent:'space-between'}}>
                                                             <div className='dessert-menu-front-content'
                                                                 style={{paddingLeft:'0'}}
@@ -818,7 +818,7 @@ export default function DessertMenuPrint(){
                                                             </div>
                                                             <img    src='qr-dessert.png' 
                                                                     className='qr'
-                                                                    width='40px' />
+                                                                    width='30px' />
                                                         </div>
                                                 </div>
                                             </div>
@@ -880,7 +880,7 @@ export default function DessertMenuPrint(){
                                                                     cursor:'default',
                                                                     paddingLeft:'0',
                                                                     fontSize:'45px'}}>olea</span>
-                                                    <hr/>
+                                                    <div style={{borderTop:'1px solid #888'}} />
 
 
 
@@ -888,9 +888,11 @@ export default function DessertMenuPrint(){
 
 
 
-                                                    <div className='dessert-menu-front-content'
+                                                    <div className='dessert-menu-front-content 
+                                                                    
+                                                                    '
                                                             style={{paddingRight:`${pageMarginRightBack + 0}px`,
-                                                                    paddingLeft:'0'
+                                                                    paddingLeft:'0',
                                                                     // color:'red',
                                                                     
                                                                 }}
@@ -909,19 +911,23 @@ export default function DessertMenuPrint(){
                                                                         return (
                                                                                 <div key={drink._id}>
                                                                                     {drink.category == data && 
-                                                                                        <div style={{fontFamily:'serif'}}>
-                                                                                            {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading'>{drink.category}</div>}
+                                                                                        <div className='dessert-drinks-default-font-print'
+                                                                                        // style={{fontFamily:'serif'}}
+                                                                                        >
+                                                                                            {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading-print'>{drink.category}</div>}
                                                                                             <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                                 <div className='dessert-drink-left'>
                                                                                                     {drink.category == 'dessert cocktails' && 
                                                                                                         <span style={{marginRight:'3px',fontSize:'10px',position:'relative',bottom:'1px'}}>&#9679;</span> 
                                                                                                     }
                                                                                                     {drink.preDescription && <span>{drink.preDescription} </span>}
-                                                                                                    <span style={{fontWeight:'900'}}>{drink.name} </span>
+                                                                                                    <span className='dessert-drink-name-print'>{drink.name} </span>
                                                                                                     <span>{drink.postDescription}</span>                                                                                    
                                                                                                 </div>                                                                                    
-                                                                                                <div    className='dessert-drink-right'
-                                                                                                        style={{textAlign:'left',fontWeight:'900',width:'15px'}}>
+                                                                                                <div    className='dessert-drink-right dessert-price-print'
+                                                                                                        style={{textAlign:'left',
+                                                                                                                // fontWeight:'900',
+                                                                                                                width:'15px'}}>
                                                                                                     {drink.price}
                                                                                                 </div>                                                                                    
                                                                                             </div>
@@ -980,7 +986,7 @@ export default function DessertMenuPrint(){
 
 
                                                 <div className='dessert-footer'>
-                                                    <hr />
+                                                    <div style={{borderTop:'1px solid #888'}} />
                                                 </div>
                                             </div>
 
@@ -1001,7 +1007,7 @@ export default function DessertMenuPrint(){
                                                                     paddingLeft:'0',
                                                                     cursor:'default',
                                                                     fontSize:'45px'}}>olea</span>
-                                                    <hr/>
+                                                    <div style={{borderTop:'1px solid #888'}} />
 
 
 
@@ -1030,19 +1036,23 @@ export default function DessertMenuPrint(){
                                                                         return (
                                                                                 <div key={drink._id}>
                                                                                     {drink.category == data && 
-                                                                                        <div style={{fontFamily:'serif'}}>
-                                                                                            {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading'>{drink.category}</div>}
+                                                                                        <div className='dessert-drinks-default-font-print'
+                                                                                        // style={{fontFamily:'serif'}}
+                                                                                        >
+                                                                                            {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading-print'>{drink.category}</div>}
                                                                                             <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
                                                                                                 <div className='dessert-drink-left'>
                                                                                                     {drink.category == 'dessert cocktails' && 
                                                                                                         <span style={{marginRight:'3px',fontSize:'10px',position:'relative',bottom:'1px'}}>&#9679;</span> 
                                                                                                     }
                                                                                                     {drink.preDescription && <span>{drink.preDescription} </span>}
-                                                                                                    <span style={{fontWeight:'900'}}>{drink.name} </span>
+                                                                                                    <span className='dessert-drink-name-print'>{drink.name} </span>
                                                                                                     <span>{drink.postDescription}</span>                                                                                    
                                                                                                 </div>                                                                                    
-                                                                                                <div    className='dessert-drink-right'
-                                                                                                        style={{textAlign:'left',fontWeight:'900',width:'15px'}}>
+                                                                                                <div    className='dessert-drink-right dessert-price-print'
+                                                                                                        style={{textAlign:'left',
+                                                                                                                // fontWeight:'900',
+                                                                                                                width:'15px'}}>
                                                                                                     {drink.price}
                                                                                                 </div>                                                                                    
                                                                                             </div>
@@ -1101,7 +1111,7 @@ export default function DessertMenuPrint(){
 
 
                                                 <div className='dessert-footer'>
-                                                    <hr />
+                                                    <div style={{borderTop:'1px solid #888'}} />
                                                 </div>
                                             </div>
                                         </div>
