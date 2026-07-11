@@ -272,7 +272,8 @@ export default function DessertMenuFormat(){
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
-                                                    // color:'red',
+                                                        // color:'red',
+                                                        lineHeight:'1',
                                                         display:'block',
                                                         paddingLeft:'0',
                                                         cursor:'default',
@@ -543,7 +544,8 @@ export default function DessertMenuFormat(){
                                     <div id='footer-top'>
                                         <span   className='logo dessert-menu-front-content' 
                                                 style={{
-                                                    // color:'red',
+                                                        // color:'red',
+                                                        lineHeight:'1',
                                                         display:'block',
                                                         paddingLeft:'0',
                                                         cursor:'default',

@@ -318,7 +318,8 @@ export default function DessertMenuPrint(){
                                                 <div id='footer-top'>
                                                     <span   className='logo dessert-menu-front-content' 
                                                             style={{
-                                                                // color:'red',
+                                                                    // color:'red',
+                                                                    lineHeight:'1',
                                                                     display:'block',
                                                                     paddingLeft:'0',
                                                                     fontSize:'45px'}}>olea</span>
@@ -577,7 +578,8 @@ export default function DessertMenuPrint(){
                                                 <div id='footer-top'>
                                                     <span   className='logo dessert-menu-front-content' 
                                                             style={{
-                                                                // color:'red',
+                                                                    // color:'red',
+                                                                    lineHeight:'1',
                                                                     display:'block',
                                                                     paddingLeft:'0',
                                                                     fontSize:'45px'}}>olea</span>
@@ -877,10 +879,11 @@ export default function DessertMenuPrint(){
                                                 <div id='footer-top'>
                                                     <span   className='logo dessert-menu-front-content' 
                                                             style={{
-                                                                // color:'red',
+                                                                    // color:'red',
                                                                     display:'block',
                                                                     cursor:'default',
                                                                     paddingLeft:'0',
+                                                                    lineHeight:'1',
                                                                     fontSize:'45px'}}>olea</span>
                                                     <div style={{borderTop:'1px solid #888'}} />
 
@@ -1004,7 +1007,8 @@ export default function DessertMenuPrint(){
                                                 <div id='footer-top'>
                                                     <span   className='logo dessert-menu-front-content' 
                                                             style={{
-                                                                // color:'red',
+                                                                    // color:'red',
+                                                                    lineHeight:'1',
                                                                     display:'block',
                                                                     paddingLeft:'0',
                                                                     cursor:'default',
