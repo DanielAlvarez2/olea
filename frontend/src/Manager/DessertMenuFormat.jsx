@@ -310,7 +310,7 @@ export default function DessertMenuFormat(){
                                                                                             &nbsp;({data.allergiesAbbreviated})
                                                                                         </span>}
                                                         <span className='dessert-description-print'>&nbsp;{data.description}</span>
-                                                        <span className='dessert-price-print'>&nbsp; &nbsp; {data.price}</span>
+                                                        <span className='dessert-price-print'>&nbsp;{data.price}</span>
                                                         
                                                     </div>
                                                 )
