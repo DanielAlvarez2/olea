@@ -277,7 +277,7 @@ export default function DessertMenuPrint(){
 
 
                             {front  ? 
-                                <>
+                                <div className='dessert-menu-print-wrapper'>
                                     <div    className='no-print' 
                                             style={{background:'white',
                                                     height:'6mm',
@@ -285,7 +285,8 @@ export default function DessertMenuPrint(){
                                                     right:'6mm',
                                                     width:'262mm'
                                             }}></div>
-                                    <div    className='dessert-menu-print-wrapper' 
+                                    <div    
+                                            // className='dessert-menu-print-wrapper' 
                                             style={{width:'250mm'}}
                                     >
                                         <div style={{   display:'flex',
@@ -832,9 +833,9 @@ export default function DessertMenuPrint(){
                                                     width:'262mm'
                                             }}></div>
 
-                                </>
+                                </div>
                                     :  
-                                <>
+                                <div className='dessert-menu-print-wrapper'>
                                     <div    className='no-print' 
                                             style={{background:'white',
                                                     height:'6mm',
@@ -843,7 +844,8 @@ export default function DessertMenuPrint(){
                                                     width:'262mm'
                                             }}></div>
                                   
-                                    <div    className='dessert-menu-print-wrapper'
+                                    <div    
+                                            
                                             style={{width:'250mm'}}
                                     >
                                         <div style={{display:'flex',
@@ -1124,7 +1126,7 @@ export default function DessertMenuPrint(){
                                                     width:'262mm'
                                             }}></div>
 
-                                </>
+                                </div>
                             }
 
 
