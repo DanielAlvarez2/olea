@@ -366,6 +366,7 @@ export default function DessertMenuPrint(){
                                                         })}
                                                         
                                                         
+                                                        <br/>
                                                         
                                                         {
                                                             (allCoffees.length > 0) && <>
@@ -625,7 +626,7 @@ export default function DessertMenuPrint(){
                                                             )
                                                         })}
                                                         
-                                                        
+                                                        <br/>
                                                         
                                                         {
                                                             (allCoffees.length > 0) && <>
