@@ -25,12 +25,20 @@
   src: url(./assets/fonts/MinionProBold.otf)
 }
 @font-face{
+  font-family: 'MinionBoldItalic';
+  src: url(./assets/fonts/MinionBoldItalic.otf)
+}
+@font-face{
   font-family: 'MinionProRegular';
   src: url(./assets/fonts/MinionProRegular.ttf)
 }
 @font-face{
   font-family: 'MinionProMediumItalic';
   src: url(./assets/fonts/MinionProMediumItalic.ttf)
+}
+@font-face{
+  font-family: 'MinionProMediumCondCaption';
+  src: url(./assets/fonts/MinionProMediumCondCaption.otf)
 }
 @font-face{
   font-family: 'FuturaHeavy';

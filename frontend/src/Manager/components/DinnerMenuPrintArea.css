@@ -17,8 +17,8 @@
     font-weight:100;
 }
 .dinner-print-description{
-    /* color:red; */
-    font-family: MinionProRegular;
+    /* color:blue; */
+    font-family: MinionProMediumCondCaption;
     font-size:11.25pt;
     font-weight: 100;
 }
@@ -45,11 +45,19 @@
     /* color:red; */
     font-family: MinionProRegular;
     /* font-size:calc(10pt * 0.8); */
-    font-size:10pt;
+    /* font-size:10pt; */
+    /* andrea  */
+
+    font-size:8.6pt;
+    width:65%;
+
 }
 .dinner-print-chefs-tasting-menu{
     /* color:red; */
     font-family: FuturaMedium;
     font-size:13.5pt;
     /* font-weight: 900; */
+}
+.minion-bold-italic{
+    font-family: MinionBoldItalic;
 }

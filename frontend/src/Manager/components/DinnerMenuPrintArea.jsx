@@ -115,13 +115,13 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                                 </>
                                                                 }
                                                                 {data.description && <br/>}
-                                                                <span className='dinner-print-description'>
+                                                                <span>
                                                                     {data.descriptionIntro && <><br/><span className='dinner-print-description-intro'>{data.descriptionIntro}; </span></>}
-                                                                    {data.description && <span> {data.description}</span>}
-                                                                </span>{/* .dinner-print-description */}
+                                                                    {data.description && <span className='dinner-print-description'> {data.description}</span>}
+                                                                </span>
                                                                 
                                                                 <span className='price-dinner-print'> &nbsp;{data.price}</span> 
-                                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                                {data.postDescription && <div className='dinner-print-description-intro'>{data.postDescription}</div>}
 
 
                                                             </div>
@@ -143,13 +143,13 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                                 <span className='allergies-dinner-print'> ({data.allergiesAbbreviated})</span>               
                                                                                             </>
                                                             }
-                                                            <span className='dinner-print-description'>
+                                                            <span>
                                                                 {data.descriptionIntro && <><br/><span className='dinner-print-description-intro'>{data.descriptionIntro}; </span></>}
-                                                                {data.description && <span> {data.description}</span>}
-                                                            </span>{/* .dinner-print-description */}
+                                                                {data.description && <span className='dinner-print-description'> {data.description}</span>}
+                                                            </span>
                                                             
                                                             <span className='price-dinner-print'> &nbsp;{data.price}</span> 
-                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                            {data.postDescription && <div className='dinner-print-description-intro'>{data.postDescription}</div>}
 
 
                                                         </div>
@@ -176,14 +176,14 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                                 <span className='allergies-dinner-print'> ({data.allergiesAbbreviated})</span>               
                                                                                             </>
                                                             }
-                                                            <span className='dinner-print-description'>
+                                                            <span>
                                                                 {data.descriptionIntro && <><br/><span className='dinner-print-description-intro'>{data.descriptionIntro}; </span></>}
-                                                                {data.description && <span> {data.description}</span>}
-                                                            </span>{/* .dinner-print-description */}
+                                                                {data.description && <span className='dinner-print-description'> {data.description}</span>}
+                                                            </span>
                                                             
                                                             <span className='price-dinner-print'> &nbsp;{data.price}</span> 
                                                             <span className='dinner-print-description'>
-                                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                                {data.postDescription && <div className='dinner-print-description-intro'>{data.postDescription}</div>}
                                                             </span>{/* .dinner-print-description */}
 
 
@@ -207,17 +207,18 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                 >
                                                     <span className='dinner-print-chefs-tasting-menu'>
                                                         chef's tasting menu &nbsp; 
-                                                    </span> <br/>
+                                                    </span> 
+                                                    {/* <br/> */}
                                                     <span className='dinner-print-description'>
                                                         <span style={{fontStyle:'italic'}}>
                                                             six courses 
                                                             {tastingMenuPrices.tastingMenuPrice != 0 ? <>
-                                                                                                            <span style={{fontWeight:'900'}}> {tastingMenuPrices.tastingMenuPrice}</span> / person
+                                                                                                            <span className='price-dinner-print'> {tastingMenuPrices.tastingMenuPrice}</span> / person
                                                                                                         </>
                                                                                                     : ''}
                                                         </span>
                                                         <br/>
-                                                        <span style={{fontStyle:'italic', fontWeight:'900'}}>
+                                                        <span className='minion-bold-italic'>
                                                             48-hours notice and reservation required<br/>
                                                         </span>
                                                         full table participation<br/>
@@ -225,7 +226,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                         <span style={{fontStyle:'italic'}}>
                                                             optional wine pairing available 
                                                             {tastingMenuPrices.winePairingPrice != 0 ? <>
-                                                                                                            <span style={{fontWeight:'900'}}> {tastingMenuPrices.winePairingPrice}</span> / person
+                                                                                                            <span className='price-dinner-print'> {tastingMenuPrices.winePairingPrice}</span> / person
                                                                                                         </>
                                                                                                     : ''}
                                                         </span>
@@ -259,7 +260,9 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                 
                 <div className='sides-heading'
                         style={{paddingLeft:`${dinnerItemMarginsLeftRight}px`,
-                                marginBottom:'10px'
+                                // marginBottom:'10px'
+                                position:'relative',
+                                bottom:'10px'
                             }}
                 >
                     sides
@@ -286,13 +289,13 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                                 <span className='allergies-dinner-print'> ({data.allergiesAbbreviated})</span>               
                                                                                             </>
                                                             }
-                                                            <span className='dinner-print-description'>
+                                                            <span>
                                                                 {data.descriptionIntro && <><br/><span className='dinner-print-description-intro'>{data.descriptionIntro}; </span></>}
-                                                                {data.description && <span> {data.description}</span>}
-                                                            </span>{/* .dinner-print-description */}
+                                                                {data.description && <span className='dinner-print-description'> {data.description}</span>}
+                                                            </span>
                                                             
                                                             <span className='price-dinner-print'> &nbsp;{data.price}</span> 
-                                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                            {data.postDescription && <div className='dinner-print-description-intro'>{data.postDescription}</div>}
 
 
                                                         </div>
@@ -316,7 +319,9 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                 display:'flex'}}>
                     <div    className='chef-name-dinner'
                             style={{textDecoration:'underline',textUnderlineOffset:'5px'}}>manuel romero, chef</div>
-                    <div className='dinner-menu-print-area-legal' style={{width:'61%'}}>
+                    <div className='dinner-menu-print-area-legal' 
+                    // style={{width:'61%'}}
+                    >
                         consumer advisory: consumption of undercooked meat, poultry, 
                         eggs, or seafood may increase the risk of food-borne illnesses. 
                         all menu items are subject to change according to seasonality 
