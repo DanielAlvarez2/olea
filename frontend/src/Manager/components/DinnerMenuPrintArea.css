@@ -1,45 +1,55 @@
 .name-dinner{
     /* color:red; */
     font-family: FuturaMedium;
-    font-size:calc(13.5pt * 0.9);
+    font-size:13.5pt;
 }
 .allergies-dinner-print{
     /* color:red; */
     font-family: MinionProRegular;
-    font-size:calc(10pt * 0.9);
+    font-size:10pt;
+    font-weight: 900;
+    font-style: italic;
+}
+.dinner-print-description-intro{
+    /* color:red; */
+    font-family: MinionProMediumItalic;
+    font-size:11.25pt;
+    font-weight:100;
 }
 .dinner-print-description{
     /* color:red; */
     font-family: MinionProRegular;
-    font-size:calc(11.25pt * 0.9);
+    font-size:11.25pt;
     font-weight: 100;
 }
 .price-dinner-print{
     /* color:red; */
     font-family: MinionProBold;
-    font-size:calc(11.25pt * 0.9);
+    font-size:11.25pt;
     font-weight: 900;
 }
 .sides-heading{
     /* color:red; */
     font-family: FuturaMedium;
-    font-size:calc(19pt * 0.9);
+    font-size:19pt;
     /* font-weight: 900; */
 }
 .chef-name-dinner{
     /* color:red; */
     font-family: FuturaMedium;
-    font-size:calc(13.5pt * 0.8);
+    /* font-size:calc(13.5pt * 0.8); */
+    font-size:13.5pt;
     /* font-weight: 900; */
 }
 .dinner-menu-print-area-legal{
     /* color:red; */
     font-family: MinionProRegular;
-    font-size:calc(10pt * 0.8);
+    /* font-size:calc(10pt * 0.8); */
+    font-size:10pt;
 }
 .dinner-print-chefs-tasting-menu{
     /* color:red; */
     font-family: FuturaMedium;
-    font-size:calc(11.25pt * 0.9);
+    font-size:13.5pt;
     /* font-weight: 900; */
 }

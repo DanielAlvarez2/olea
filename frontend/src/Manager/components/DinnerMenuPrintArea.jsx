@@ -66,25 +66,25 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
 
     return(
         <div className='dinner-menu-print-area-wrapper'
-                style={{display:'flex',flexDirection:'column',alignItems:'center'}}
+                // style={{display:'flex',flexDirection:'column',alignItems:'center'}}
         >
-            <div className='no-print' style={{background:'white',width:'204mm',height:'7mm'}}></div>
-            <div    className="safari-print-area-legal safari-print-height-legal paper-menu"
+            <div    
+                    // className="safari-print-area-legal safari-print-height-legal paper-menu"
                     style={{
                             // border:'1px solid red',
-                            width:'190mm',
-                            backgroundSize:'204mm',
-                            backgroundPosition:'-37px -38px',
+                            height:'14in',
+                            width:'8.5in',
+                            paddingLeft:'11mm',
+                            paddingRight:'11mm',
+                            paddingTop:'10mm',
+                            backgroundSize:'8.5in',
+                            backgroundPosition:'5px -32px',
                             // backgroundImage:'url("scan-dinner-menu.jpg")',
                             background:'white',
                             position:'relative',
                             // color:'red'
                             }}>
-                <div    className='no-print safari-print-height-legal' 
-                        style={{width:'7mm',background:'white',position:'absolute',top:'0',left:'-7mm'}}></div>
-                <div    className='no-print safari-print-height-legal' 
-                        style={{width:'7mm',background:'white',position:'absolute',top:'0',right:'-7mm'}}></div>
-                <div className="" style={{  fontSize:'50px',
+                <div className="" style={{  fontSize:'53px',
                                                 // color:'red',
                                                 lineHeight:'1.2',
                                                 marginBottom:'-5px',
@@ -98,6 +98,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                 <div    style={{display:'flex'}}
                         className="dinner-menu-flexbox-top">
                     <div className="dinner-flexbox-top-left" style={{width:'50%'}}>
+                                                
                                                 <div className='cured-meats' style={{border:'1px solid #888'}}>
                                                     {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
                                                         return(
@@ -115,7 +116,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                 }
                                                                 {data.description && <br/>}
                                                                 <span className='dinner-print-description'>
-                                                                    {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                    {data.descriptionIntro && <><br/><span className='dinner-print-description-intro'>{data.descriptionIntro}; </span></>}
                                                                     {data.description && <span> {data.description}</span>}
                                                                 </span>{/* .dinner-print-description */}
                                                                 
@@ -143,7 +144,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                             </>
                                                             }
                                                             <span className='dinner-print-description'>
-                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                {data.descriptionIntro && <><br/><span className='dinner-print-description-intro'>{data.descriptionIntro}; </span></>}
                                                                 {data.description && <span> {data.description}</span>}
                                                             </span>{/* .dinner-print-description */}
                                                             
@@ -160,7 +161,8 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                     </div>{/* .dinner-flexbox-top-left */}
                     
                     <div className="dinner-flexbox-top-right" style={{width:'50%'}}>
-                                                                        {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
+                                                
+                                                {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                                     return(
                                                         <div    key={data._id}
                                                                 style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
@@ -175,7 +177,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                             </>
                                                             }
                                                             <span className='dinner-print-description'>
-                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                {data.descriptionIntro && <><br/><span className='dinner-print-description-intro'>{data.descriptionIntro}; </span></>}
                                                                 {data.description && <span> {data.description}</span>}
                                                             </span>{/* .dinner-print-description */}
                                                             
@@ -285,7 +287,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                                             </>
                                                             }
                                                             <span className='dinner-print-description'>
-                                                                {data.descriptionIntro && <><br/><span style={{fontStyle:'italic'}}>{data.descriptionIntro}; </span></>}
+                                                                {data.descriptionIntro && <><br/><span className='dinner-print-description-intro'>{data.descriptionIntro}; </span></>}
                                                                 {data.description && <span> {data.description}</span>}
                                                             </span>{/* .dinner-print-description */}
                                                             
@@ -303,7 +305,10 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
 
 
                 <div style={{position:'absolute',
-                                bottom:'0',
+                                bottom:'4mm',
+                                left:'0',
+                                paddingLeft:'11mm',
+                                paddingRight:'11mm',
                                 justifyContent:'space-between',
                                 alignItems:'center',
                                 width:'100%',
@@ -324,7 +329,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                     <img src='qr-dinner.png' height='50px' width='50px' />
                 </div>
             </div>{/* .safari-print-area-legal */}
-            <div className='no-print' style={{background:'white',height:'16mm',width:'204mm'}}></div>
+            
         {/* .dinner-menu-print-area-wrapper */}
         </div>
     )

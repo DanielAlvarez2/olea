@@ -169,7 +169,7 @@ export default function SpecialsMenuUpdate(){
                                                 // backgroundImage:'url("scan-specials.jpg")',
                                                 backgroundSize:'10.9cm',
                                                 backgroundPosition:'-56px -14px',
-                                                border:'1px solid black',
+                                                // border:'1px solid black',
                                                 border:'none',
                                                 // color:'red',
                                                 }}>
@@ -385,7 +385,7 @@ export default function SpecialsMenuUpdate(){
                                                             padding:`0 ${pageMarginsLeftRight}px`,
                                                             position:'relative',
                                                             background:'white',
-                                                            border:'1px solid black',
+                                                            // border:'1px solid black',
                                                             border:'none',
                                                             }}>
                                 <div style={{   background:'white',
