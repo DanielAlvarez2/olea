@@ -4,6 +4,7 @@ import './Manager.css'
 import './Specials.css'
 import './SpecialsMenuFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
+import SpecialsPrintAreaFront from './components/SpecialsPrintAreaFront.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
@@ -11,7 +12,7 @@ import { FaToggleOff } from "react-icons/fa6";
 import { FaToggleOn } from "react-icons/fa6";
 
 
-export default function SpecialsMenuUpdate(){
+export default function SpecialsMenuFormat(){
     const [allSpecials, setAllSpecials] = useState([])
     const [specialsFormatting, setSpecialsFormatting] = useState([])
     const [pageMarginsLeftRight, setPageMarginsLeftRight] = useState(0)
@@ -153,16 +154,16 @@ export default function SpecialsMenuUpdate(){
 
                         <div id='specials-double-sided-flexbox'>
 
-                            <div>
-                                <div style={{   background:'white',
-                                                width:'101mm',
-                                                height:'6mm',
-                                                position:'relative',
-                                                right:'6mm'
-                                }}></div>
-                                <div style={{   width:'89mm',
+<SpecialsPrintAreaFront 
+                        pageMarginsLeftRight={pageMarginsLeftRight}
+                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                        showLegalText={showLegalText}
+                        doubleSided={doubleSided}
+/>
+
+                                <div style={{   width:'4.25in',
                                                 // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                height:'121mm',
+                                                height:'5.5in',
                                                 padding:`0 ${pageMarginsLeftRight}px`,
                                                 position:'relative',
                                                 background:'white',
@@ -174,20 +175,6 @@ export default function SpecialsMenuUpdate(){
                                                 // color:'red',
                                                 }}>
                                     {/* <div> */}
-                                <div style={{   background:'white',
-                                                position:'absolute',
-                                                height:'121mm',
-                                                width:'6mm',
-                                                top:'0',
-                                                left:'-6mm'
-                                }}></div>
-                                <div style={{   background:'white',
-                                                position:'absolute',
-                                                height:'121mm',
-                                                width:'6mm',
-                                                top:'0',
-                                                right:'-6mm'
-                                }}></div>
                                         
                                         <div    className='specials-h1'
                                                 style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >
@@ -358,7 +345,6 @@ export default function SpecialsMenuUpdate(){
                                     }
                                 </div>
                             
-                            </div>
 
 
 
@@ -371,37 +357,17 @@ export default function SpecialsMenuUpdate(){
 
 
                             {doubleSided && 
-                                    <div>
-                                        <div style={{   background:'white',
-                                                        width:'101mm',
-                                                        height:'6mm',
-                                                        position:'relative',
-                                                        right:'6mm'
-                                        }}></div>
                                     
-                                            <div style={{   width:'89mm',
+                                    
+                                            <div style={{   width:'4.25in',
                                                             // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
-                                                            height:'121mm',
+                                                            height:'5.5in',
                                                             padding:`0 ${pageMarginsLeftRight}px`,
                                                             position:'relative',
                                                             background:'white',
                                                             // border:'1px solid black',
                                                             border:'none',
                                                             }}>
-                                <div style={{   background:'white',
-                                                position:'absolute',
-                                                height:'121mm',
-                                                width:'6mm',
-                                                top:'0',
-                                                left:'-6mm'
-                                }}></div>
-                                <div style={{   background:'white',
-                                                position:'absolute',
-                                                height:'121mm',
-                                                width:'6mm',
-                                                top:'0',
-                                                right:'-6mm'
-                                }}></div>
 
 
 
@@ -482,7 +448,7 @@ export default function SpecialsMenuUpdate(){
                                                                     </footer>
                                                 }
                                             </div>
-                                    </div>
+                                    
                             }
 
                         </div>
