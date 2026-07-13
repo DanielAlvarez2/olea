@@ -5,13 +5,13 @@
     background:white;
     display:flex;
     flex-direction: column;
-    padding:8mm;
+    /* padding:8mm; */
     padding-top:10px;
     font-size:15px;
 }
 .dessert-drinks-default-font-print{
     font-family: MinionProRegular;
-    font-size:calc(0.9 * 11.5pt);
+    font-size:11.5pt;
 }
 .dessert-menu-front-content{
     padding-left: 20px;
@@ -19,21 +19,21 @@
 }
 .dessert-name-print{
     font-family: FuturaMedium;
-    font-size:calc(0.95 * 11.5pt);
+    font-size:11.5pt;
     /* font-weight:600; */
 }
 .dessert-allergies-print{
     font-family: MinionProBold;
-    font-size: calc(0.95 * 11.5pt);
+    font-size:11.5pt;
     font-style: italic;
     font-weight: 900;
 }
 .dessert-description-print{
     font-family:MinionProRegular;
-    font-size: calc(0.95 * 11.5pt);
+    font-size:11.5pt;
 }
 .dessert-price-print{
-    font-size:calc(0.95 * 11.5pt);
+    font-size:11.5pt;
     font-family:MinionProBold;
     font-weight:600;
     /* font-style: italic; */
@@ -42,12 +42,12 @@
     margin-top:auto;
     font-family: MinionProBold;
     font-weight: 700;
-    font-size:calc(0.95 * 10pt);
+    font-size:10pt;
     text-align: left;
 }
 .dessert-menu-heading-print{
     /* color:blue; */
-    font-size:calc(0.95 * 12pt);
+    font-size:12pt;
     font-family: FuturaBold;
     /* font-weight:900; */
     /* color:red; */
@@ -56,5 +56,5 @@
     /* color:blue; */
     font-family:MinionProBold;
     font-weight:700;
-    font-size: calc(0.95 * 11.5pt);
+    font-size:11.5pt;
 }

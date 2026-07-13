@@ -76,7 +76,17 @@ export default function DinnerMenuFormat(){
     }
 
     function printPage(){
-        window.print()
+        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+            alert(`
+WARNING: 
+
+Printing from Safari Browser is not supported.
+Please switch to a different browser to proceed.
+`)
+            return
+        }else{
+            window.print()
+        }
     }
 
     return(
