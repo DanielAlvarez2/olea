@@ -1,9 +1,9 @@
 import {Link} from 'react-router'
 import {useState, useEffect} from 'react'
-import './Manager.css'
-import './Specials.css'
-import './SpecialsMenuFormat.css'
-import ManagerNavbar from './components/ManagerNavbar.jsx'
+import '../Manager.css'
+import '../Specials.css'
+import '../SpecialsMenuFormat.css'
+// import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
@@ -11,13 +11,13 @@ import { FaToggleOff } from "react-icons/fa6";
 import { FaToggleOn } from "react-icons/fa6";
 
 
-export default function SpecialsPrintAreaBack(){
+export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarginsTopBottom,showLegalText}){
     const [allSpecials, setAllSpecials] = useState([])
     const [specialsFormatting, setSpecialsFormatting] = useState([])
-    const [pageMarginsLeftRight, setPageMarginsLeftRight] = useState(0)
-    const [menuItemMarginsTopBottom, setMenuItemMarginsTopBottom] = useState(0)
+    // const [pageMarginsLeftRight, setPageMarginsLeftRight] = useState(0)
+    // const [menuItemMarginsTopBottom, setMenuItemMarginsTopBottom] = useState(0)
     const [letterPaper, setLetterPaper] = useState(true)
-    const [showLegalText, setShowLegalText] = useState(true)
+    // const [showLegalText, setShowLegalText] = useState(true)
     const [doubleSided, setDoubleSided] = useState(false)
     
     useEffect(()=>getSpecials(),[])
@@ -92,7 +92,7 @@ export default function SpecialsPrintAreaBack(){
 
 
                                                 <div>
-                                                    COMPONENT
+                                                
                                                     {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
                                                         <div className='specials-h1'
                                                         style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
