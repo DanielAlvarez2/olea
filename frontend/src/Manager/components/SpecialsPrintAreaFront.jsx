@@ -226,7 +226,7 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
 
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'3mm',
+                                                                    bottom:'6mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     fontSize:'11px',
