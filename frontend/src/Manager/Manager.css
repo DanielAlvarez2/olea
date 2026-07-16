@@ -75,14 +75,15 @@ html{
 }
 .specials-h1,
 .desserts-h1{
-  font-size: 21px;
+  font-size: 21.5px;
   font-family: FuturaExtraBold;
   font-weight: 100;
 }
 .specials-h2{
   margin-top: 0px;
   padding-bottom:10px;
-  font-size: 15px;
+  /* color:red; */
+  font-size: 15px !important;
   font-family: FuturaExtraBold;
   font-weight: 100;
 }

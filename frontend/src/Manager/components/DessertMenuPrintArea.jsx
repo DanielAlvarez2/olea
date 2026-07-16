@@ -182,7 +182,7 @@ export default function DessertMenuPrintArea({  frontView,
                                                         display:'block',
                                                         paddingLeft:'0',
                                                         cursor:'default',
-                                                        fontSize:'45px'}}>olea</span>
+                                                        fontSize:'55px'}}>olea</span>
                                         
                                         <div style={{borderTop:'1px solid #888'}} />
 
@@ -447,7 +447,7 @@ export default function DessertMenuPrintArea({  frontView,
                                                         display:'block',
                                                         paddingLeft:'0',
                                                         cursor:'default',
-                                                        fontSize:'45px'}}>olea</span>
+                                                        fontSize:'55px'}}>olea</span>
                                         <div style={{borderTop:'1px solid #888'}} />
 
 

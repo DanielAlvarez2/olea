@@ -68,12 +68,15 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                 <div style={{   width:'4.25in',
                                                 // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 height:'5.5in',
-                                                padding:`0 ${pageMarginsLeftRight}px`,
+                                                paddingTop:'3mm',
+                                                paddingLeft:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                overflow:'hidden',
                                                 position:'relative',
                                                 background:'white',
                                                 // backgroundImage:'url("scan-specials.jpg")',
-                                                backgroundSize:'10.9cm',
-                                                backgroundPosition:'-56px -14px',
+                                                backgroundSize:'4.25in',
+                                                backgroundPosition:'-36px -9px',
                                                 // border:'1px solid black',
                                                 border:'none',
                                                 // color:'red',
@@ -81,7 +84,8 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                     {/* <div> */}
                                         
                                         <div    className='specials-h1'
-                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >
+                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`,
+                                                marginTop:'20px'}} >
                                             today's specials
                                         </div>
                                     {/* </div> */}
@@ -222,11 +226,12 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
 
                                     {showLegalText && 
                                                     <footer style={{position:'absolute',
-                                                                    bottom:'5mm',
+                                                                    bottom:'3mm',
                                                                     // marginTop:'auto',
                                                                     textAlign:'left',
                                                                     fontSize:'11px',
-                                                                    paddingRight:`${pageMarginsLeftRight}px`,
+                                                                    // paddingLeft:`${pageMarginsLeftRight}px`,
+                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                     fontFamily:'serif'}}>
                                                         <div style={{   display:'flex',
                                                                         gap:'9px',
@@ -241,8 +246,8 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                                             </div>
                                                             <img    src='qr-specials.jpg' 
                                                                     className='qr'
-                                                                    width='50px' 
-                                                                    height='50px'
+                                                                    height='45px'
+                                                                    width='45px' 
                                                                     />
                                                         </div>
                                                     </footer>

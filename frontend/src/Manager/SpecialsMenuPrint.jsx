@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react'
 import './Manager.css'
 import './SpecialsMenuPrint.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
+import SpecialsPrintAreaFront from './components/SpecialsPrintAreaFront.jsx'
+import SpecialsPrintAreaBack from './components/SpecialsPrintAreaBack.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
@@ -63,18 +65,17 @@ export default function SpecialsMenuPrint(){
     }
 
     function printSpecials(){
-//         if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
-//             alert(`
-// WARNING: 
+        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+            alert(`
+WARNING: 
 
-// Printing from Safari Browser is not supported.
-// Please switch to a different browser to proceed.
-// `)
-//             return
-//         }else{
-//             window.print()
-//         }
-                window.print()
+Printing from Safari Browser is not supported.
+Please switch to a different browser to proceed.
+`)
+            return
+        }else{
+            window.print()
+        }
     }
 
 
@@ -157,38 +158,10 @@ export default function SpecialsMenuPrint(){
 
 
 
-                        <div style={{background:'white',
-                                    width:'202mm',
-                                    // position:'relative',
-                                    // right:'6mm',
-                                    height:'6mm'
-                        }}
-                        className='no-print no-print-border'
-                        ></div>
 
                         <div style={{   display:'flex',
                                         position:'relative',
                         }}>
-                            <div style={{position:'absolute',
-                                            width:'6mm',
-                                            background:'white',
-                                            height:'121mm',
-                                            top:'0',
-                                            left:'-6mm',
-                                            zIndex:'100'
-                                        }}
-                                        className='no-print no-print-border'
-                            ></div>
-                            <div style={{position:'absolute',
-                                            width:'6mm',
-                                            background:'white',
-                                            height:'121mm',
-                                            top:'0',
-                                            right:'-6mm',
-                                            zIndex:'100'
-                                        }}
-                                        className='no-print no-print-border'
-                            ></div>
 
 
 
@@ -200,114 +173,12 @@ export default function SpecialsMenuPrint(){
                             
 
                           
-                                <span style={{  width:'95mm',
-                                                // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                height:'121mm',
-                                                paddingTop:`0`,
-                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`, 
-                                                paddingBottom:'0',          
-                                                paddingLeft:`${pageMarginsLeftRight}px`,
-                                                         
-                                                        
-                                                position:'relative',
-                                                background:'white',
-                                                // border:'1px solid lightgrey'
-                                                }}>
-                                    <div>
-                                        <div    className='specials-h1'
-                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
-                                    </div>
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
-                                        <div className='specials-h2'>appetizer</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
-                                        <div className='specials-h2'>appetizers</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                <span className='name-specials'>
-                                                    {data.name} 
-                                                </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-                                            </div>
-                                        )
-                                    })}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                        <div className='specials-h2'>entrée</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                        <div className='specials-h2'>entrées</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-                                            </div>
-                                        )
-                                    })}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                        <div className='specials-h2'>dessert</div>}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                        <div className='specials-h2'>desserts</div>}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                
-                                        
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-
-
-                                            </div>
-                                        )
-                                    })}
-                                    {showLegalText && 
-                                                    <footer style={{position:'absolute',
-                                                                    bottom:'5mm',
-                                                                    // marginTop:'auto',
-                                                                    textAlign:'left',
-                                                                    // background:'grey',
-                                                                    fontSize:'11px',
-                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                                    fontFamily:'serif'}}>
-                                                        <div style={{   display:'flex',
-                                                                        gap:'9px',
-                                                                        alignItems:'flex-end',
-                                                                        justifyContent:'space-between'}}>
-                                                            <div className='specials-legal'>
-                                                                Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                or seafood may increase the risk of foodborne illnesses. 
-                                                                Please alert your server if you have special dietary requirements:
-                                                                <div style={{fontWeight:'900'}}>
-                                                                gl (gluten), d (dairy), n (nuts)</div>
-                                                            </div>
-                                                            <img    src='qr-specials.jpg' 
-                                                                    className='qr'
-                                                                    width='50px' 
-                                                                    height='50px' />
-                                                        </div>
-                                                    </footer>
-                                    }
-                                </span>
+<SpecialsPrintAreaFront 
+                        pageMarginsLeftRight={pageMarginsLeftRight}
+                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                        showLegalText={showLegalText}
+                        doubleSided={doubleSided}
+/>
                             
                             }
 
@@ -323,752 +194,72 @@ export default function SpecialsMenuPrint(){
 
                             
                             {doubleSided && !front &&
-                                            <span style={{  width:'95mm',
-                                                            // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            height:'121mm',
-                                                            padding:`
-                                                                        0in 
-                                                                        calc(6mmin + ${pageMarginsLeftRight}px)
-                                                                        6mm 
-                                                                        calc(0in + ${pageMarginsLeftRight}px)
-                                                                    `,
-                                                            position:'relative',
-                                                            background:'white',
-                                                            // border:'1px solid lightgrey'
-                                                            }}>
-                                                                                                <div>
-                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                                        <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
-                                                        >today's special</div>}
-                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                                        <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
-                                                        >today's specials</div>}
-                                                </div>
-
-
-
-
-
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                                    <div className='specials-h2'>dessert</div>}
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                                    <div className='specials-h2'>desserts</div>}
-
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                                    return(
-                                                        <div    key={data._id} 
-                                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                className='special'>
-                                                            
-                                                    
-                                                            <span className='name-specials'>{data.name} </span>
-                                                            {data.allergiesAbbreviated && 
-                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                            <span> {data.description}</span>
-                                                            {data.price.length < 3 ? 
-                                                                <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                                <div className='price-specials'>{data.price}</div> }
-
-
-                                                        </div>
-                                                    )
-                                                })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                {showLegalText && 
-                                                                <footer style={{position:'absolute',
-                                                                                bottom:'10mm',
-                                                                                // marginTop:'auto',
-                                                                                textAlign:'left',
-                                                                                // background:'green',
-                                                                                fontSize:'11px',
-                                                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                                                fontFamily:'serif'}}>
-                                                                        <div style={{   display:'flex',
-                                                                                        gap:'9px',
-                                                                                        alignItems:'flex-end',
-                                                                                        justifyContent:'space-between'}}>
-                                                                            <div className='specials-legal'>
-                                                                                Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                                or seafood may increase the risk of foodborne illnesses. 
-                                                                                Please alert your server if you have special dietary requirements:
-                                                                                <div style={{fontWeight:'900'}}>
-                                                                                gl (gluten), d (dairy), n (nuts)</div>
-                                                                            </div>
-                                                                            <img    src='qr-specials.jpg' 
-                                                                                    className='qr'
-                                                                                    width='50px' 
-                                                                                    height='50px' />
-                                                                        </div>
-
-                                                                    </footer>
-                                                }
-                                            </span>
+<SpecialsPrintAreaBack 
+                        pageMarginsLeftRight={pageMarginsLeftRight}
+                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                        showLegalText={showLegalText}
+                        // doubleSided={doubleSided}
+/>
                             }
                         
                             {front && 
-                                <span style={{  width:'95mm',
-                                                // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                height:'121mm',
-                                                paddingTop:`0`,
-                                                paddingRight: `${pageMarginsLeftRight}px`, 
-                                                paddingBottom:`0`, 
-                                                paddingLeft:`calc(6mm + ${pageMarginsLeftRight}px`,
-                                                        
-                                                position:'relative',
-                                                background:'white',
-                                                // border:'1px solid lightgrey'
-                                                }}>
-                                    <div>
-                                        <div    className='specials-h1'
-                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
-                                    </div>
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
-                                        <div className='specials-h2'>appetizer</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
-                                        <div className='specials-h2'>appetizers</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-                                            </div>
-                                        )
-                                    })}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                        <div className='specials-h2'>entrée</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                        <div className='specials-h2'>entrées</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-                                            </div>
-                                        )
-                                    })}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                        <div className='specials-h2'>dessert</div>}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                        <div className='specials-h2'>desserts</div>}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                
-                                        
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-
-
-                                            </div>
-                                        )
-                                    })}
-                                    {showLegalText && 
-                                                    <footer style={{position:'absolute',
-                                                                    bottom:'5mm',
-                                                                    // marginTop:'auto',
-                                                                    textAlign:'left',
-                                                                    // background:'beige',
-                                                                    fontSize:'11px',
-                                                                    paddingRight:`${pageMarginsLeftRight}px`,
-                                                                    fontFamily:'serif'}}>
-                                                        <div style={{display:'flex',
-                                                                    gap:'9px',
-                                                                    alignItems:'flex-end',
-                                                                    justifyContent:'space-between'}}>
-                                                            <div className='specials-legal'>
-                                                                Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                or seafood may increase the risk of foodborne illnesses. 
-                                                                Please alert your server if you have special dietary requirements:
-                                                                <div style={{fontWeight:'900'}}>
-                                                                gl (gluten), d (dairy), n (nuts)</div>
-                                                            </div>
-                                                            <img    src='qr-specials.jpg' 
-                                                                    width='50px' 
-                                                                    className='qr'
-                                                                    height='50px' />
-                                                        </div>
-                                                    </footer>
-                                    }
-                                </span>
+<SpecialsPrintAreaFront 
+                        pageMarginsLeftRight={pageMarginsLeftRight}
+                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                        showLegalText={showLegalText}
+                        doubleSided={doubleSided}
+/>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'95mm',
-                                                            // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            height:'121mm',
-                                                            padding:`
-                                                                        0in 
-                                                                        calc(0in + ${pageMarginsLeftRight}px)
-                                                                        6mm 
-                                                                        calc(6mm + ${pageMarginsLeftRight}px)
-                                                                    `,
-                                                            position:'relative',
-                                                            background:'white',
-                                                            // border:'1px solid lightgrey'
-                                                            }}>
-                                                <div>
-                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                                        <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
-                                                        >today's special</div>}
-                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                                        <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
-                                                        >today's specials</div>}
-                                                </div>
-
-
-
-
-
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                                    <div className='specials-h2'>dessert</div>}
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                                    <div className='specials-h2'>desserts</div>}
-
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                                    return(
-                                                        <div    key={data._id} 
-                                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                className='special'>
-                                                            
-                                                    
-                                                            <span className='name-specials'>{data.name} </span>
-                                                            {data.allergiesAbbreviated && 
-                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                            <span> {data.description}</span>
-                                                            {data.price.length < 3 ? 
-                                                                <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                                <div className='price-specials'>{data.price}</div> }
-
-
-                                                        </div>
-                                                    )
-                                                })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                {showLegalText && 
-                                                                <footer style={{position:'absolute',
-                                                                                bottom:'10mm',
-                                                                                // marginTop:'auto',
-                                                                                textAlign:'left',
-                                                                                // background:'purple',
-                                                                                fontSize:'11px',
-                                                                                paddingRight:`calc(0in + ${pageMarginsLeftRight}px)`,
-                                                                                fontFamily:'serif'}}>
-                                                                    <div style={{display:'flex',
-                                                                                alignItems:'flex-end',
-                                                                                gap:'9px',
-                                                                                justifyContent:'space-between'}}>
-                                                                        <div className='specials-legal'>
-                                                                            Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                            or seafood may increase the risk of foodborne illnesses. 
-                                                                            Please alert your server if you have special dietary requirements:
-                                                                            <div style={{fontWeight:'900'}}>
-                                                                            gl (gluten), d (dairy), n (nuts)</div>
-                                                                        </div>
-                                                                        <img    src='qr-specials.jpg' 
-                                                                                className='qr'
-                                                                                width='50px' 
-                                                                                height='50px' />
-                                                                    </div>
-                                                                </footer>
-                                                }
-                                            </span>
+<SpecialsPrintAreaBack 
+                        pageMarginsLeftRight={pageMarginsLeftRight}
+                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                        showLegalText={showLegalText}
+                        // doubleSided={doubleSided}
+/>
                             }
                         
                         </div>
 
                         <div style={{display:'flex',position:'relative'}}>
-                            <div style={{position:'absolute',
-                                            width:'6mm',
-                                            background:'white',
-                                            height:'121mm',
-                                            top:'0',
-                                            left:'-6mm',
-                                            zIndex:'100'
-                                        }}
-                                        className='no-print no-print-border'
-                            ></div>
-                            <div style={{position:'absolute',
-                                            width:'6mm',
-                                            background:'white',
-                                            height:'121mm',
-                                            top:'0',
-                                            right:'-6mm',
-                                            zIndex:'100'
-                                        }}
-                                        className='no-print no-print-border'
-                            ></div>
+
                             
 
                             {front && 
-                                <span style={{  width:'95mm',
-                                                // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                height:'121mm',
-                                                padding:`
-                                                            6mm 
-                                                            calc(6mm + ${pageMarginsLeftRight}px)
-                                                            0mm 
-                                                            ${pageMarginsLeftRight}px
-                                                        `,
-                                                position:'relative',
-                                                background:'white',
-                                                // border:'1px solid lightgrey'
-                                                }}>
-                                    <div>
-                                        <div    className='specials-h1'
-                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
-                                    </div>
-
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
-                                        <div className='specials-h2'>appetizer</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
-                                        <div className='specials-h2'>appetizers</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-                                            </div>
-                                        )
-                                    })}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                        <div className='specials-h2'>entrée</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                        <div className='specials-h2'>entrées</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-                                            </div>
-                                        )
-                                    })}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                        <div className='specials-h2'>dessert</div>}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                        <div className='specials-h2'>desserts</div>}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                
-                                        
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-
-
-                                            </div>
-                                        )
-                                    })}
-                                    {showLegalText && 
-                                                    <footer style={{position:'absolute',
-                                                                    bottom:'0mm',
-                                                                    // marginTop:'auto',
-                                                                    textAlign:'left',
-                                                                    fontSize:'11px',
-                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                                    fontFamily:'serif'}}>
-                                                        <div style={{display:'flex',
-                                                                    alignItems:'flex-end',
-                                                                    gap:'9px',
-                                                                    justifyContent:'space-between'}}>
-                                                            <div className='specials-legal'>
-                                                                Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                or seafood may increase the risk of foodborne illnesses. 
-                                                                Please alert your server if you have special dietary requirements:
-                                                                <div style={{fontWeight:'900'}}>
-                                                                gl (gluten), d (dairy), n (nuts)</div>
-                                                            </div>
-                                                            <img    src='qr-specials.jpg' 
-                                                                    className='qr'
-                                                                    width='50px' 
-                                                                    height='50px' />
-                                                        </div>
-                                                    </footer>
-                                    }
-                                </span>
+<SpecialsPrintAreaFront 
+                        pageMarginsLeftRight={pageMarginsLeftRight}
+                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                        showLegalText={showLegalText}
+                        doubleSided={doubleSided}
+/>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'95mm',
-                                                            // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            height:'121mm',
-                                                            padding:`
-                                                                        0.25in 
-                                                                        calc(6mm + ${pageMarginsLeftRight}px)
-                                                                        0in 
-                                                                        calc(0in + ${pageMarginsLeftRight}px)
-                                                                    `,
-                                                            position:'relative',
-                                                            background:'white',
-                                                            // border:'1px solid lightgrey'
-                                                            }}>
-                                                <div>
-                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                                        <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
-                                                        >today's special</div>}
-                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                                        <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
-                                                        >today's specials</div>}
-                                                </div>
-
-
-
-
-
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                                    <div className='specials-h2'>dessert</div>}
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                                    <div className='specials-h2'>desserts</div>}
-
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                                    return(
-                                                        <div    key={data._id} 
-                                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                className='special'>
-                                                            
-                                                    
-                                                            <span className='name-specials'>{data.name} </span>
-                                                            {data.allergiesAbbreviated && 
-                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                            <span> {data.description}</span>
-                                                            {data.price.length < 3 ? 
-                                                                <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                                <div className='price-specials'>{data.price}</div> }
-
-
-                                                        </div>
-                                                    )
-                                                })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                {showLegalText && 
-                                                                <footer style={{position:'absolute',
-                                                                                bottom:'3mm',
-                                                                                // marginTop:'auto',
-                                                                                // background:'yellow',
-                                                                                textAlign:'left',
-                                                                                fontSize:'11px',
-                                                                                paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                                                fontFamily:'serif'}}>
-                                                                    <div style={{display:'flex',
-                                                                                alignItems:'flex-end',
-                                                                                gap:'9px',
-                                                                                justifyContent:'space-between'}}>
-                                                                        <div className='specials-legal'>
-                                                                            Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                            or seafood may increase the risk of foodborne illnesses. 
-                                                                            Please alert your server if you have special dietary requirements:
-                                                                            <div style={{fontWeight:'900'}}>
-                                                                            gl (gluten), d (dairy), n (nuts)</div>
-                                                                        </div>
-                                                                        <img    src='qr-specials.jpg' 
-                                                                                className='qr'
-                                                                                width='50px' 
-                                                                                height='50px' />
-                                                                    </div>
-                                                                </footer>
-                                                }
-                                            </span>
+<SpecialsPrintAreaBack 
+                        pageMarginsLeftRight={pageMarginsLeftRight}
+                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                        showLegalText={showLegalText}
+                        // doubleSided={doubleSided}
+/>
                             }
                         
                             {front && 
-                                <span style={{  width:'95mm',
-                                                // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                height:'121mm',
-                                                paddingTop:`6mm`,
-                                                paddingRight:`${pageMarginsLeftRight}px`, 
-                                                paddingBottom:'0',
-                                                paddingLeft:`calc(6mm + ${pageMarginsLeftRight}px)`,
-                                                            
-                                                        
-                                                position:'relative',
-                                                background:'white',
-                                                // border:'1px solid lightgrey'
-                                                }}>
-                                    <div>
-                                        <div    className='specials-h1'
-                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`}} >today's specials</div>
-                                    </div>
-
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length == 1 && 
-                                        <div className='specials-h2'>appetizer</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').length > 1 && 
-                                        <div className='specials-h2'>appetizers</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
-                                        return(
-                                            <div    key={data._id}
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-                                            </div>
-                                        )
-                                    })}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length == 1 && 
-                                        <div className='specials-h2'>entrée</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').length > 1 && 
-                                        <div className='specials-h2'>entrées</div>}
-                                    {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-                                            </div>
-                                        )
-                                    })}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                        <div className='specials-h2'>dessert</div>}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                        <div className='specials-h2'>desserts</div>}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                
-                                        
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-
-
-                                            </div>
-                                        )
-                                    })}
-                                    {showLegalText && 
-                                                    <footer style={{position:'absolute',
-                                                                    bottom:'0mm',
-                                                                    // marginTop:'auto',
-                                                                    textAlign:'left',
-                                                                    // background:'blue',
-                                                                    fontSize:'11px',
-                                                                    paddingRight:`${pageMarginsLeftRight}px`,
-                                                                    fontFamily:'serif'}}>
-                                                        <div style={{display:'flex',
-                                                                    alignItems:'flex-end',
-                                                                    gap:'9px',
-                                                                    justifyContent:'space-between'}}>
-                                                            <div className='specials-legal'>
-                                                                Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                or seafood may increase the risk of foodborne illnesses. 
-                                                                Please alert your server if you have special dietary requirements:
-                                                                <div style={{fontWeight:'900'}}>
-                                                                gl (gluten), d (dairy), n (nuts)</div>
-                                                            </div>
-                                                            <img    src='qr-specials.jpg' 
-                                                                    className='qr'
-                                                                    width='50px' 
-                                                                    height='50px' />
-                                                        </div>
-                                                    </footer>
-                                    }
-                                </span>
+<SpecialsPrintAreaFront 
+                        pageMarginsLeftRight={pageMarginsLeftRight}
+                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                        showLegalText={showLegalText}
+                        doubleSided={doubleSided}
+/>
                             }
                             {doubleSided && !front &&
-                                            <span style={{  width:'95mm',
-                                                            // height: letterPaper ? 'calc(5.5in - 2px)' : 'calc(7in - 2px)',
-                                                            height:'121mm',
-                                                            padding:`
-                                                                        6mm 
-                                                                        calc(0in + ${pageMarginsLeftRight}px)
-                                                                        6mm 
-                                                                        calc(6mm + ${pageMarginsLeftRight}px)
-                                                                    `,
-                                                            position:'relative',
-                                                            background:'white',
-                                                            // border:'1px solid lightgrey'
-                                                            }}>
-                                                <div>
-                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                                        <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
-                                                        >today's special</div>}
-                                                    {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                                        <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
-                                                        >today's specials</div>}
-                                                </div>
-
-
-
-
-
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                                    <div className='specials-h2'>dessert</div>}
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                                    <div className='specials-h2'>desserts</div>}
-
-                                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                                    return(
-                                                        <div    key={data._id} 
-                                                                style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                                className='special'>
-                                                            
-                                                    
-                                                            <span className='name-specials'>{data.name} </span>
-                                                            {data.allergiesAbbreviated && 
-                                                                <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                            <span> {data.description}</span>
-                                                            {data.price.length < 3 ? 
-                                                                <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                                <div className='price-specials'>{data.price}</div> }
-
-
-                                                        </div>
-                                                    )
-                                                })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                {showLegalText && 
-                                                                <footer style={{position:'absolute',
-                                                                                bottom:'3mm',
-                                                                                // marginTop:'auto',
-                                                                                textAlign:'left',
-                                                                                // background:'pink',
-                                                                                fontSize:'11px',
-                                                                                paddingRight:`calc(0in + ${pageMarginsLeftRight}px)`,
-                                                                                fontFamily:'serif'}}>
-                                                                    <div style={{display:'flex',
-                                                                                alignItems:'flex-end',
-                                                                                gap:'9px',
-                                                                                justifyContent:'space-between'}}>
-                                                                        <div className='specials-legal'>
-                                                                            Consumer advisory: consumption of undercooked meat, poultry, eggs, 
-                                                                            or seafood may increase the risk of foodborne illnesses. 
-                                                                            Please alert your server if you have special dietary requirements:
-                                                                            <div style={{fontWeight:'900'}}>
-                                                                            gl (gluten), d (dairy), n (nuts)</div>
-                                                                        </div>
-                                                                        <img    src='qr-specials.jpg' 
-                                                                                className='qr'
-                                                                                width='50px' 
-                                                                                height='50px' />
-                                                                    </div>
-                                                                </footer>
-                                                }
-                                            </span>
+<SpecialsPrintAreaBack 
+                        pageMarginsLeftRight={pageMarginsLeftRight}
+                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                        showLegalText={showLegalText}
+                        // doubleSided={doubleSided}
+/>
                             }
                         
                         </div>
-                        <div style={{background:'white',
-                                    width:'202mm',
-                                    // position:'relative',
-                                    // right:'6mm',
-                                    height:'13mm'
-                        }}
-                        className='no-print no-print-border'
-                        ></div>
 
 
 
@@ -1089,6 +280,33 @@ export default function SpecialsMenuPrint(){
 
 
             
+                        <div>
+                            
+                            <br className='no-print' />
+                            {doubleSided &&                             
+                                <div    className='no-print' 
+                                        style={{display:'flex',
+                                                gap:'10px',
+                                                alignItems:'center'}}>
+                                    <span>front</span>
+                                    <span>
+                                        {front ? 
+                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFront} />
+                                        : 
+                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFront} />
+                                        }
+                                    </span>
+                                    <span>back</span>
+                                </div> 
+                            }
+                        </div>  
+
+                        <div    className='no-print print-btn' 
+                                onClick={()=>printSpecials()}>
+                            print
+                        </div>
 
 
 

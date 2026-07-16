@@ -223,7 +223,7 @@ export default function SpecialsMenuFormat(){
                                                             onClick={increaseMenuItemMarginsTopBottom} /></span>
                             </div>
 
-                            <div>
+                            {/* <div>
                                 <div style={{textAlign:'center'}}>legal text</div>
                 
                                 <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
@@ -241,7 +241,7 @@ export default function SpecialsMenuFormat(){
                                     </span>
                                     <span>hide</span>
                                 </div> 
-                            </div>  
+                            </div>   */}
 
                             {/* <div>
                                 <div style={{textAlign:'center'}}>paper size</div>

@@ -82,9 +82,12 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
                                             <div style={{   width:'4.25in',
                                                             // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                             height:'5.5in',
-                                                            padding:`0 ${pageMarginsLeftRight}px`,
+                                                            paddingTop:'3mm',
+                                                            paddingLeft:`calc(6mm + ${pageMarginsLeftRight}px)`,
+                                                            paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                             position:'relative',
                                                             background:'white',
+                                                            overflow:'hidden',
                                                             // border:'1px solid black',
                                                             border:'none',
                                                             }}>
@@ -144,11 +147,11 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
 
                                                 {showLegalText && 
                                                                     <footer style={{position:'absolute',
-                                                                                    bottom:'5mm',
+                                                                                    bottom:'3mm',
                                                                                     // marginTop:'auto',
                                                                                     textAlign:'left',
                                                                                     fontSize:'11px',
-                                                                                    paddingRight:`${pageMarginsLeftRight}px`,
+                                                                                    paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                                                     fontFamily:'serif'}}>
                                                                         <div style={{   display:'flex',
                                                                                         gap:'9px',
@@ -163,8 +166,8 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
                                                                             </div>
                                                                             <img    src='qr-specials.jpg' 
                                                                                     className='qr'
-                                                                                    width='50px'
-                                                                                    height='50px' />
+                                                                                    width='45px'
+                                                                                    height='45px' />
                                                                         </div>
                                                                     </footer>
                                                 }

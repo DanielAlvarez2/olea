@@ -199,19 +199,20 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
 
                                                 <div    className='special' 
                                                         style={{border:'1px solid #888',
-                                                                fontFamily:'serif',
+                                                            // color:'red',
+                                                                fontFamily:'MinionProMediumItalic',
                                                                 paddingTop:`${dinnerItemMarginsTopBottom}px`, 
                                                                 paddingBottom:`${dinnerItemMarginsTopBottom}px`, 
                                                                 paddingLeft:`${dinnerItemMarginsLeftRight}px`,
                                                         }}
                                                                 >
                                                     <span className='dinner-print-chefs-tasting-menu'>
-                                                        chef's tasting menu &nbsp; 
+                                                        chef&lsquo;s tasting menu &nbsp; 
                                                     </span> 
                                                     {/* <br/> */}
-                                                    <span className='dinner-print-description'>
+                                                    <span className='dinner-print-description-intro'>
                                                         <span style={{fontStyle:'italic'}}>
-                                                            six courses 
+                                                            six courses
                                                             {tastingMenuPrices.tastingMenuPrice != 0 ? <>
                                                                                                             <span className='price-dinner-print'> {tastingMenuPrices.tastingMenuPrice}</span> / person
                                                                                                         </>
@@ -221,8 +222,10 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                         <span className='minion-bold-italic'>
                                                             48-hours notice and reservation required<br/>
                                                         </span>
+                                                        <span className='dinner-print-description'>
                                                         full table participation<br/>
                                                         available tuesday through thursday<br/>
+                                                        </span>
                                                         <span style={{fontStyle:'italic'}}>
                                                             optional wine pairing available 
                                                             {tastingMenuPrices.winePairingPrice != 0 ? <>
