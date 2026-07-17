@@ -98,7 +98,8 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
                                                 
                                                     {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
                                                         <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`,
+                                                                marginTop:'20px'}}
                                                         >today's special</div>}
                                                     {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
                                                         <div className='specials-h1'
@@ -147,7 +148,7 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
 
                                                 {showLegalText && 
                                                                     <footer style={{position:'absolute',
-                                                                                    bottom:'3mm',
+                                                                                    bottom:'6mm',
                                                                                     // marginTop:'auto',
                                                                                     textAlign:'left',
                                                                                     fontSize:'11px',
