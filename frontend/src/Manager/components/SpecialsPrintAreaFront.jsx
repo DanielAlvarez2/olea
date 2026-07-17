@@ -241,8 +241,8 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                 or seafood may increase the risk of foodborne illnesses. 
                                                                 Please alert your server if you have special dietary requirements:
-                                                                <div style={{fontWeight:'900'}}>
-                                                                gl (gluten), d (dairy), n (nuts)</div>
+                                                                <span style={{fontWeight:'900'}}>
+                                                                gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
                                                             <img    src='qr-specials.jpg' 
                                                                     className='qr'

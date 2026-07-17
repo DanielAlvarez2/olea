@@ -148,7 +148,7 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
 
                                                 {showLegalText && 
                                                                     <footer style={{position:'absolute',
-                                                                                    bottom:'6mm',
+                                                                                    bottom:'15mm',
                                                                                     // marginTop:'auto',
                                                                                     textAlign:'left',
                                                                                     fontSize:'11px',
@@ -162,8 +162,8 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
                                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                                 or seafood may increase the risk of foodborne illnesses. 
                                                                                 Please alert your server if you have special dietary requirements:
-                                                                                <div style={{fontWeight:'900'}}>
-                                                                                gl (gluten), d (dairy), n (nuts)</div>
+                                                                                <span style={{fontWeight:'900'}}>
+                                                                                gl (gluten), d (dairy), n (nuts)</span>
                                                                             </div>
                                                                             <img    src='qr-specials.jpg' 
                                                                                     className='qr'
