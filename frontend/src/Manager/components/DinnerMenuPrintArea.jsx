@@ -89,7 +89,9 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                 lineHeight:'1.2',
                                                 marginBottom:'-5px',
                                                 display:'block !important',
-                                                paddingLeft:`${dinnerItemMarginsLeftRight}px`}}>
+                                                paddingLeft:'5mm',
+                                                // paddingLeft:`${dinnerItemMarginsLeftRight}px`
+                                                }}>
                     olea
                 </div>
                 <div style={{width:'100%',borderTop:'1px solid #888'}}></div>
@@ -103,7 +105,9 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                     {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'cured meats').map(data=>{
                                                         return(
                                                             <div    key={data._id}
-                                                                    style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                    style={{
+                                                                            paddingLeft:`5mm`,
+                                                                            paddingRight:`${dinnerItemMarginsLeftRight}px`,
                                                                             margin:`${dinnerItemMarginsTopBottom}px 0`
                                                                     }}
                                                                     // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
@@ -132,7 +136,9 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                style={{
+                                                                        paddingLeft:`5mm`,
+                                                                        paddingRight:`${dinnerItemMarginsLeftRight}px`,
                                                                         margin:`${dinnerItemMarginsTopBottom}px 0`
                                                                 }}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
@@ -165,7 +171,9 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                 {allDinnerMenuItems.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                                     return(
                                                         <div    key={data._id}
-                                                                style={{padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                style={{
+                                                                        paddingLeft:`5mm`,
+                                                                        paddingRight:`${dinnerItemMarginsLeftRight}px`,
                                                                         margin:`${dinnerItemMarginsTopBottom}px 0`
                                                                 }}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
@@ -203,7 +211,8 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                 fontFamily:'MinionProMediumItalic',
                                                                 paddingTop:`${dinnerItemMarginsTopBottom}px`, 
                                                                 paddingBottom:`${dinnerItemMarginsTopBottom}px`, 
-                                                                paddingLeft:`${dinnerItemMarginsLeftRight}px`,
+                                                                // paddingLeft:`${dinnerItemMarginsLeftRight}px`,
+                                                                paddingLeft:'5mm'
                                                         }}
                                                                 >
                                                     <span className='dinner-print-chefs-tasting-menu'>
@@ -262,7 +271,9 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
 
                 
                 <div className='sides-heading'
-                        style={{paddingLeft:`${dinnerItemMarginsLeftRight}px`,
+                        style={{
+                                paddingLeft:`${dinnerItemMarginsLeftRight}px`,
+                                paddingLeft:'5mm',
                                 // marginBottom:'10px'
                                 position:'relative',
                                 bottom:'10px'
@@ -281,7 +292,8 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                     return(
                                                         <div    key={data._id}
                                                                 style={{flexBasis:'50%',
-                                                                        padding:`0 ${dinnerItemMarginsLeftRight}px`,
+                                                                        paddingLeft:`5mm`,
+                                                                        paddingRight:`${dinnerItemMarginsLeftRight}px`,
                                                                         margin:`${dinnerItemMarginsTopBottom/2}px 0`
                                                                 }}
                                                                 // style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
