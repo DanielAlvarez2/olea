@@ -74,8 +74,8 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                             // border:'1px solid red',
                             height:'14in',
                             width:'8.5in',
-                            paddingLeft:'11mm',
-                            paddingRight:'11mm',
+                            paddingLeft:'8mm',
+                            paddingRight:'8mm',
                             paddingTop:'10mm',
                             backgroundSize:'8.5in',
                             backgroundPosition:'5px -32px',
@@ -89,7 +89,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                 lineHeight:'1.2',
                                                 marginBottom:'-5px',
                                                 display:'block !important',
-                                                paddingLeft:'5mm',
+                                                paddingLeft:'4mm',
                                                 // paddingLeft:`${dinnerItemMarginsLeftRight}px`
                                                 }}>
                     olea
@@ -106,7 +106,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                         return(
                                                             <div    key={data._id}
                                                                     style={{
-                                                                            paddingLeft:`5mm`,
+                                                                            paddingLeft:`4mm`,
                                                                             paddingRight:`${dinnerItemMarginsLeftRight}px`,
                                                                             margin:`${dinnerItemMarginsTopBottom}px 0`
                                                                     }}
@@ -137,7 +137,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                     return(
                                                         <div    key={data._id}
                                                                 style={{
-                                                                        paddingLeft:`5mm`,
+                                                                        paddingLeft:`4mm`,
                                                                         paddingRight:`${dinnerItemMarginsLeftRight}px`,
                                                                         margin:`${dinnerItemMarginsTopBottom}px 0`
                                                                 }}
@@ -172,7 +172,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                     return(
                                                         <div    key={data._id}
                                                                 style={{
-                                                                        paddingLeft:`5mm`,
+                                                                        paddingLeft:`4mm`,
                                                                         paddingRight:`${dinnerItemMarginsLeftRight}px`,
                                                                         margin:`${dinnerItemMarginsTopBottom}px 0`
                                                                 }}
@@ -212,7 +212,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                                 paddingTop:`${dinnerItemMarginsTopBottom}px`, 
                                                                 paddingBottom:`${dinnerItemMarginsTopBottom}px`, 
                                                                 // paddingLeft:`${dinnerItemMarginsLeftRight}px`,
-                                                                paddingLeft:'5mm'
+                                                                paddingLeft:'4mm'
                                                         }}
                                                                 >
                                                     <span className='dinner-print-chefs-tasting-menu'>
@@ -273,7 +273,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                 <div className='sides-heading'
                         style={{
                                 paddingLeft:`${dinnerItemMarginsLeftRight}px`,
-                                paddingLeft:'5mm',
+                                paddingLeft:'4mm',
                                 // marginBottom:'10px'
                                 position:'relative',
                                 bottom:'10px'
@@ -292,7 +292,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                                     return(
                                                         <div    key={data._id}
                                                                 style={{flexBasis:'50%',
-                                                                        paddingLeft:`5mm`,
+                                                                        paddingLeft:`4mm`,
                                                                         paddingRight:`${dinnerItemMarginsLeftRight}px`,
                                                                         margin:`${dinnerItemMarginsTopBottom/2}px 0`
                                                                 }}
@@ -325,8 +325,10 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                 <div style={{position:'absolute',
                                 bottom:'4mm',
                                 left:'0',
-                                paddingLeft:'11mm',
-                                paddingRight:'11mm',
+                                
+                                paddingLeft:'8mm',
+                                
+                                paddingRight:'8mm',
                                 justifyContent:'space-between',
                                 alignItems:'center',
                                 width:'100%',
