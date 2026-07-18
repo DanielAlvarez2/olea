@@ -115,7 +115,7 @@ export default function Home(){
                                                                                         : data.price}</span>
                                                 </div>
                                                     {data.description}
-                                                <br/>
+                                                <br/><br/>
                                             </div>
                                         )
                                     })}
