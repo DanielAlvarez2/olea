@@ -18,7 +18,7 @@ export default function MothersDayMenu(){
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'    
  
-    useEffect(()=>window.scrollTo(0,0),[]) 
+    // useEffect(()=>window.scrollTo(0,0),[]) 
     useEffect(()=>redirectIfEventDisabled(),[])   
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])

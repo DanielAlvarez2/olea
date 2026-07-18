@@ -7,7 +7,7 @@ import {preload} from 'react-dom'
 
 export default function Home(){
     // preload('./assets/fonts/FuturaLight.otf',{as:'font',type:'font/otf',crossorigin:'anonymous'})
-    useEffect(()=>window.scrollTo(0,0),[])
+    // useEffect(()=>window.scrollTo(0,0),[])
     useEffect(()=>{
         
             const picLarge0 = document.querySelector(`#pic-large-0`)

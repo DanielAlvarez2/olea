@@ -6,7 +6,7 @@ import Footer from './components/Footer.jsx'
 import { useEffect,useState } from 'react'
 
 export default function Jobs(){
-    useEffect(()=>window.scrollTo(0,0),[])
+    // useEffect(()=>window.scrollTo(0,0),[])
     const [conviction, setConviction] = useState(false)
 
     function convictionNo(){

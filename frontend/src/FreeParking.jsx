@@ -6,7 +6,7 @@ import OpenTable from './components/OpenTable.jsx'
 import { useEffect } from 'react'
 
 export default function FreeParking(){
-    useEffect(()=>window.scrollTo(0,0),[])
+    // useEffect(()=>window.scrollTo(0,0),[])
     return (
         <div className='page-wrapper webpage' 
             //  style={{backgroundImage:'url("./olea-free-parking.jpg")',backgroundSize:'90%'}}

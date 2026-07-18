@@ -11,7 +11,7 @@ export default function Dinner(){
     const [tastingMenuPrices, setTastingMenuPrices] = useState([])    
     const [allDinnerMenuItems, setAllDinnerMenuItems] = useState([])
 
-    useEffect(()=>window.scrollTo(0,0),[])    
+    // useEffect(()=>window.scrollTo(0,0),[])    
     useEffect(()=>getDinnerMenuItems(),[])
     useEffect(()=>getTastingMenuPrices(),[])
 

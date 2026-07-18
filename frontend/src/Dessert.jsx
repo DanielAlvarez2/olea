@@ -7,7 +7,7 @@ import { useState,useEffect } from 'react'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 export default function Dessert(){
-    useEffect(()=>window.scrollTo(0,0),[])
+    // useEffect(()=>window.scrollTo(0,0),[])
     const [allDesserts, setAllDesserts] = useState([])
     useEffect(()=>getDesserts(),[])
 

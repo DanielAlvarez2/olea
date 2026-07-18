@@ -14,7 +14,7 @@ export default function Home(){
 
     const [allSpecials, setAllSpecials] = useState([])
     useEffect(()=>getSpecials(),[])
-    useEffect(()=>window.scrollTo(0,0),[])
+    // useEffect(()=>window.scrollTo(0,0),[])
     function getSpecials(){
         fetch(`${BASE_URL}/api/specials`)
             .then(res=>res.json())

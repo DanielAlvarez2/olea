@@ -9,7 +9,7 @@ import {Link} from 'react-router'
 
 
 export default function BlankPage(){
-    useEffect(()=>window.scrollTo(0,0),[])    
+    // useEffect(()=>window.scrollTo(0,0),[])    
  
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 

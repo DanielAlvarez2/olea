@@ -10,7 +10,7 @@ import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 export default function PageNotFound(){
 
-    useEffect(()=>window.scrollTo(0,0),[])    
+    // useEffect(()=>window.scrollTo(0,0),[])    
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
