@@ -6,7 +6,7 @@ import Footer from './components/Footer.jsx'
 import { useEffect } from 'react'
 
 export default function Newsletter(){
-    useEffect(()=>window.scrollTo(0,0),[])
+    useEffect(()=>globalThis.scrollTo(0,0),[])
     return (
         <div className='page-wrapper webpage'>
             <div className='webpage-wrapper'>
