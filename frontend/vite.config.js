@@ -8,5 +8,8 @@ export default defineConfig({
     proxy:{
       '/api':'http://localhost:1436'
     }
+  },
+  build:{
+    sourcemap:true
   }
 })
