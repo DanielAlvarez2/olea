@@ -272,7 +272,7 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                 
                 <div className='sides-heading'
                         style={{
-                                paddingLeft:`${dinnerItemMarginsLeftRight}px`,
+                                // paddingLeft:`${dinnerItemMarginsLeftRight}px`,`
                                 paddingLeft:'4mm',
                                 // marginBottom:'10px'
                                 position:'relative',
