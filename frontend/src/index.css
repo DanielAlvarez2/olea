@@ -254,4 +254,5 @@ input[type="file"]::file-selector-button{
 }
 .dessert-name{
   font-family: FuturaMedium;
+  font-size: 11.5pt;
 }
