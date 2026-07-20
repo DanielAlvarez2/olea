@@ -427,7 +427,7 @@ export default function QRdessert(){
                                                         please alert your server if you have any special dietary requirements<br/>
                                                         <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                                     </div>
-                                                    <img src='qr-dessert.jpg' width='40px' />
+                                                    <img src='qr-dessert.jpg' width='40px' height='40px' />
                                                 </div>
                                         </div>
 
