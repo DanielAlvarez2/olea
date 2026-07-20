@@ -252,3 +252,6 @@ input[type="file"]::file-selector-button{
   font-size: 13.4px;
   /* font-weight: 100 !important; */
 }
+.dessert-name{
+  font-family: FuturaMedium;
+}
