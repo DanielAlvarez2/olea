@@ -26,30 +26,30 @@ export default function Dessert(){
         }
     }
 
-    function showModal(pic,name,price,description){
-        if(pic == 'undefined') return
-        document.querySelector('.modal').style.display = 'grid'
-        document.querySelector('.modal-image').src = pic
-        document.querySelector('.modal-name').innerHTML = name
-        document.querySelector('.modal-price').innerHTML = price
-        document.querySelector('.modal-description').innerHTML = description        
-    }
+    // function showModal(pic,name,price,description){
+    //     if(pic == 'undefined') return
+    //     document.querySelector('.modal').style.display = 'grid'
+    //     document.querySelector('.modal-image').src = pic
+    //     document.querySelector('.modal-name').innerHTML = name
+    //     document.querySelector('.modal-price').innerHTML = price.includes('/') ? `${price.split('/').map(item=>item.trim()).join('<br/>')}` : price
+    //     document.querySelector('.modal-description').innerHTML = description        
+    // }
 
-    function closeModal(){
-        document.querySelector('.modal-image').src = ''
-        document.querySelector('.modal-name').innerHTML = ''
-        document.querySelector('.modal-price').innerHTML = ''
-        document.querySelector('.modal-description').innerHTML = ''
-        document.querySelector('.modal').style.display = 'none'
-        document.querySelector('.modal').style.display = 'none'
-    }
+    // function closeModal(){
+    //     document.querySelector('.modal-image').src = ''
+    //     document.querySelector('.modal-name').innerHTML = ''
+    //     document.querySelector('.modal-price').innerHTML = ''
+    //     document.querySelector('.modal-description').innerHTML = ''
+    //     document.querySelector('.modal').style.display = 'none'
+    //     document.querySelector('.modal').style.display = 'none'
+    // }
     
     function showModal(pic,name,price,description){
         if(pic == 'undefined') return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
-        document.querySelector('.modal-price').innerHTML = price
+        document.querySelector('.modal-price').innerHTML = price.includes('/') ? `${price.split('/').map(item=>item.trim()).join('<br/>')}` : price
         document.querySelector('.modal-description').innerHTML = description        
     }
 
@@ -105,6 +105,7 @@ export default function Dessert(){
                             <h2>DESSERT MENU</h2><br/><br/>
 
                                 {allDesserts.map(data=>{
+                                    
                                     return(
                                             <div    key={data._id}
                                                     onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
@@ -113,14 +114,17 @@ export default function Dessert(){
                                                                                             `${data.description}`
                                                     )}   
                                             >  
-                                                    <div style={{display:'flex',justifyContent:'space-between'}}>
-                                                    <span>
-                                                        <span className='website-name'>{data.name}</span><br/>
-                                                        {data.description}
-                                                    </span>
-                                                    <span>{data.price}</span>
+                                                    <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
+                                                        <span>
+                                                            <span className='website-name'>{data.name}</span><br/>
+                                                        </span>
+                                                        <span>{data.price.includes('/') ?   <div style={{textAlign:'right'}}>
+                                                                                                {data.price.split('/')[0].trim()}<br/>{data.price.split('/')[1].trim()}
+                                                                                            </div> 
+                                                                                        : data.price}</span>
                                                 </div>
-                                                <br/>
+                                                        {data.description}
+                                                <br/><br/>
                                             </div>
                                     )
                                 })}
