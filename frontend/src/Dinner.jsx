@@ -48,7 +48,7 @@ export default function Dinner(){
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
-        document.querySelector('.modal-price').innerHTML = price
+        document.querySelector('.modal-price').innerHTML = price.includes('/') ? `${price.split('/').map(item=>item.trim()).join('<br/>')}` : price
         if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `
         document.querySelector('.modal-description').innerHTML = description        
     }

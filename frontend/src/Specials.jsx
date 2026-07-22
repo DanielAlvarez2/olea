@@ -27,7 +27,7 @@ export default function Home(){
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
-        document.querySelector('.modal-price').innerHTML = price
+        document.querySelector('.modal-price').innerHTML = price.includes('/') ? `${price.split('/').map(item=>item.trim()).join('<br/>')}` : price
         document.querySelector('.modal-description').innerHTML = description        
     }
 
