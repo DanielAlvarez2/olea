@@ -143,8 +143,6 @@ have been changed.
             .then(()=>getDinnerFormatting())
             .catch(err=>console.log(err))
 
-            }else{
-                alert('cancelled')
             }
     }
 
