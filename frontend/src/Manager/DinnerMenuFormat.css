@@ -26,7 +26,7 @@
 }
 #dinner-menu-print-area{
     border:1px solid black;
-    zoom:0.75;
+    zoom:0.7;
 }
 @media print{
     #dinner-menu-print-area{
