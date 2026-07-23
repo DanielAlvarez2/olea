@@ -131,6 +131,22 @@ Please switch to a different browser to proceed.
         }
     }
 
+    function resetFormatting(){
+       if( confirm(`
+WARNING:
+
+You are about to reset all the dinner menu formatting 
+to ZERO(0). This should only be done when menu items 
+have been changed. 
+            `)){
+            fetch(`${BASE_URL}/api/formats/dinner/reset`,{method:'PUT'})
+            .then(()=>getDinnerFormatting())
+            .catch(err=>console.log(err))
+
+            }else{
+                alert('cancelled')
+            }
+    }
 
     return(
         <>
@@ -149,6 +165,11 @@ Please switch to a different browser to proceed.
                     <div className='no-print'>
 
                         
+                                        <div    className='no-print print-btn' 
+                                                style={{margin:'0 auto',marginBottom:'30px',background:'red'}}
+                                                onClick={()=>resetFormatting()}>
+                                            reset
+                                        </div>
                         
 
                                                         

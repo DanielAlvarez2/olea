@@ -2811,6 +2811,31 @@ app.put('/api/formats/dinner/decreasePageMargin', async(req,res)=>{
     }
 })
 
+app.put('/api/formats/dinner/reset', async(req,res)=>{
+    try{
+        const allFormats = await DinnerFormat.find()
+        console.log(allFormats[0])
+        await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {   dinnerItemMarginsTopBottom:0,
+                                                    dinnerItemMarginsLeftRight:0
+                                                })
+        res.json('dinner formatting reset')
+    }catch(err){
+        console.log(err)
+    }
+})
+app.put('/api/formats/dinner/decreasePageMargin', async(req,res)=>{
+    try{
+        const allFormats = await DinnerFormat.find()
+        console.log(allFormats[0])
+        await DinnerFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMargin: allFormats[0].pageMargin - 1})
+        res.json('page margin decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/commencement/decreasePageMargin', async(req,res)=>{
     try{
         const allFormats = await CommencementFormat.find()
