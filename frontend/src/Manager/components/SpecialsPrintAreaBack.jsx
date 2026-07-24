@@ -105,6 +105,8 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
                                                         <div className='specials-h1'
                                                         style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
                                                         >today's specials</div>}
+                                                        <br/>
+                                                        <br/>
                                                 </div>
 
 
