@@ -234,7 +234,11 @@ export default function DessertMenuFormat(){
                 <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; format</div>
-                    <div className='main-menu' style={{paddingBottom:'0',display:'flex',flexDirection:'row-reverse',alignItems:'center'}}>
+                    <div className='main-menu' style={{ paddingBottom:'0',
+                                                        display:'flex',
+                                                        // background:'pink',
+                                                        flexDirection:'row-reverse',
+                                                        alignItems:'center'}}>
 
 
 

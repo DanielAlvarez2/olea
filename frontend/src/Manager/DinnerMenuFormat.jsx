@@ -158,7 +158,10 @@ have been changed.
                         <div className='no-print' style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                         <div className='no-print' style={{textAlign:'center',fontSize:'30px'}}>dinner &gt; format / print</div>
 
-                <div style={{display:'flex',alignItems:'center',gap:'30px'}}>
+                <div style={{   display:'flex',
+                                // flexDirection:'row-reverse',
+                                alignItems:'center',
+                                gap:'30px'}}>
 
                     <div className='no-print'>
 
