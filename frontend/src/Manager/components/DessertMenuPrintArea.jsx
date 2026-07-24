@@ -408,7 +408,7 @@ export default function DessertMenuPrintArea({  frontView,
 
 
 
-                                    <div className='dessert-footer-print' style={{position:'absolute',bottom:'6mm',width:'calc(5.5in - 12mm)'}}>
+                                    <div className='dessert-footer-print' style={{position:'absolute',bottom:'6mm',width:'calc(5.5in - 24mm)'}}>
                                         <div className='dessert-menu-front-content' style={{paddingLeft:'0'}}>
                                             jessica delgado, pastry chef
                                         </div>
