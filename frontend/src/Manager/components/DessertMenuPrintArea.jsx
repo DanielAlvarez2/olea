@@ -175,12 +175,13 @@ export default function DessertMenuPrintArea({  frontView,
                                         // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                                 >
                                     <div id='footer-top'>
-                                        <span   className='logo dessert-menu-front-content' 
+                                        <span   
+                                        // className='logo dessert-menu-front-content' 
                                                 style={{
                                                         // color:'red',
                                                         lineHeight:'1',
                                                         display:'block',
-                                                        // paddingLeft:'0.25in',
+                                                        paddingLeft:'0.25in',
                                                         cursor:'default',
                                                         fontSize:'55px'}}>olea</span>
                                         
@@ -458,7 +459,7 @@ export default function DessertMenuPrintArea({  frontView,
                                                         paddingLeft:'150px !important',
                                                         cursor:'default',
                                                         fontSize:'55px'}}>
-                                                            <span style={{paddingLeft:'0.25in'}}>olea</span>
+                                                            <span>olea</span>
                                                             </span>
                                         <div style={{borderTop:'1px solid #888',width:'11cm'}} />
 

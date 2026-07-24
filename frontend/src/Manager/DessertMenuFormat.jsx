@@ -256,7 +256,7 @@ export default function DessertMenuFormat(){
 />
 
 
-<div>
+<div style={{width:'400px'}}>
 
                             <br className='no-print'/>
                                                   
