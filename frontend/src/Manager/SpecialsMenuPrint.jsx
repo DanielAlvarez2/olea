@@ -119,6 +119,19 @@ Please switch to a different browser to proceed.
                                 }}>
 
 
+
+                        <div    className='no-print print-btn' 
+                                style={{background:'#999',width:'100px'}}
+                                onClick={()=>navigate('/specials-menu-format')}>
+                            format
+                        </div>
+
+                        <div    className='no-print print-btn' 
+                                style={{background:'limegreen',width:'100px'}}
+                                onClick={()=>printSpecials()}>
+                            print
+                        </div>
+
                         <div>
                             
                             {doubleSided &&                             
@@ -140,19 +153,6 @@ Please switch to a different browser to proceed.
                                 </div> 
                             }
                         </div>  
-
-                        <div    className='no-print print-btn' 
-                                style={{background:'#999',width:'100px'}}
-                                onClick={()=>navigate('/specials-menu-format')}>
-                            format
-                        </div>
-
-                        <div    className='no-print print-btn' 
-                                style={{background:'limegreen',width:'100px'}}
-                                onClick={()=>printSpecials()}>
-                            print
-                        </div>
-
 
 
 

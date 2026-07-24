@@ -221,6 +221,20 @@ Please switch to a different browser to proceed.
                                             width:'100%'}}>
 
                             
+
+                                <div    className='no-print print-btn'
+                                        style={{background:'#999',width:'100px'}} 
+                                        onClick={()=>navigate('/dessert-menu-format')}>
+                                    format
+                                </div>
+                                <div    className='no-print print-btn'
+                                        style={{background:'limegreen',width:'100px'}} 
+                                        onClick={()=>printPage()}>
+                                    print
+                                </div>
+
+
+
                                 <div>
                                     
                                     {                            
@@ -243,17 +257,9 @@ Please switch to a different browser to proceed.
                                     }
                                 </div>  
 
-                                <div    className='no-print print-btn'
-                                        style={{background:'#999',width:'100px'}} 
-                                        onClick={()=>navigate('/dessert-menu-format')}>
-                                    format
-                                </div>
-                                <div    className='no-print print-btn'
-                                        style={{background:'limegreen',width:'100px'}} 
-                                        onClick={()=>printPage()}>
-                                    print
-                                </div>
                             </div>
+
+
 
                             <br className='no-print'/>
 
@@ -306,16 +312,21 @@ Please switch to a different browser to proceed.
                                     }
                                 </div>  
 
-                                <div    className='no-print print-btn'
-                                        style={{background:'#999',width:'100px'}} 
-                                        onClick={()=>navigate('/dessert-menu-format')}>
-                                    format
-                                </div>
+                                
                                 <div    className='no-print print-btn'
                                         style={{background:'limegreen',width:'100px'}} 
                                         onClick={()=>printPage()}>
                                     print
                                 </div>
+
+
+                                <div    className='no-print print-btn'
+                                        style={{background:'#999',width:'100px'}} 
+                                        onClick={()=>navigate('/dessert-menu-format')}>
+                                    format
+                                </div>
+
+
                             </div>
 
                             <br className='no-print'/>
