@@ -1,4 +1,5 @@
 import {Link} from 'react-router'
+import {useNavigate} from 'react-router'
 import {useState,useEffect} from 'react'
 import './Manager.css'
 import './DessertMenuFormat.css'
@@ -14,7 +15,7 @@ import { FaToggleOn } from "react-icons/fa6";
 
 
 export default function DessertMenuFormat(){
-
+    const navigate = useNavigate()
     const [frontView, setFrontView] = useState(true)
     const [allDesserts, setAllDesserts] = useState([])
     const [allDessertDrinks, setAllDessertDrinks] = useState([])
@@ -237,7 +238,7 @@ export default function DessertMenuFormat(){
                     <div className='main-menu' style={{ paddingBottom:'0',
                                                         display:'flex',
                                                         // background:'pink',
-                                                        flexDirection:'row-reverse',
+                                                        // flexDirection:'row-reverse',
                                                         alignItems:'center'}}>
 
 
@@ -312,16 +313,26 @@ export default function DessertMenuFormat(){
                                                         
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                                     onClick={frontView ? decreasePageMarginRight : decreasePageMarginRightBack} /></span>
-                                        <span>page margin: right &#8592;</span>
+                                        <span>menu item margin<br/>right &#8592;</span>
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                                     onClick={frontView ? increasePageMarginRight : increasePageMarginRightBack} /></span>
                                     </div>
+
+                                        <div    className='no-print print-btn' 
+                                        style={{margin:'30px auto',background:'limegreen',width:'210px'}}
+                                        onClick={()=>navigate('/dessert-menu-print')}>
+                                    print preview
+                                </div>
+
                                 
-                            <br className='no-print'/>
 </div>
 
 
                     </div>
+                            <br className='no-print'/>
+                            <br className='no-print'/>
+                            <br className='no-print'/>
+                            <br className='no-print'/>
 
 
 

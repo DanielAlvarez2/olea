@@ -1,4 +1,5 @@
 import {Link} from 'react-router'
+import {useNavigate} from 'react-router'
 import {useState,useEffect} from 'react'
 import './Manager.css'
 import './DessertMenuFormat.css'
@@ -10,7 +11,7 @@ import { FaToggleOn } from "react-icons/fa6";
 
 
 export default function DessertMenuPrint(){
-
+    const navigate = useNavigate()
     const [front, setFront] = useState(true)    
     const [allDesserts, setAllDesserts] = useState([])
     const [allDessertDrinks, setAllDessertDrinks] = useState([])
@@ -243,7 +244,12 @@ Please switch to a different browser to proceed.
                                 </div>  
 
                                 <div    className='no-print print-btn'
-                                        style={{background:'limegreen'}} 
+                                        style={{background:'#999',width:'100px'}} 
+                                        onClick={()=>navigate('/dessert-menu-format')}>
+                                    format
+                                </div>
+                                <div    className='no-print print-btn'
+                                        style={{background:'limegreen',width:'100px'}} 
                                         onClick={()=>printPage()}>
                                     print
                                 </div>
@@ -300,8 +306,13 @@ Please switch to a different browser to proceed.
                                     }
                                 </div>  
 
-                                <div    className='no-print print-btn' 
-                                        style={{background:'limegreen'}}
+                                <div    className='no-print print-btn'
+                                        style={{background:'#999',width:'100px'}} 
+                                        onClick={()=>navigate('/dessert-menu-format')}>
+                                    format
+                                </div>
+                                <div    className='no-print print-btn'
+                                        style={{background:'limegreen',width:'100px'}} 
                                         onClick={()=>printPage()}>
                                     print
                                 </div>
