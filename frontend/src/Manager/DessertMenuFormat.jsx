@@ -237,6 +237,7 @@ export default function DessertMenuFormat(){
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; format</div>
                     <div className='main-menu' style={{ paddingBottom:'0',
                                                         display:'flex',
+                                                        gap:'50px',
                                                         // background:'pink',
                                                         // flexDirection:'row-reverse',
                                                         alignItems:'center'}}>

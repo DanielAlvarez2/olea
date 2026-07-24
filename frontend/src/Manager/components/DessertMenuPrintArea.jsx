@@ -168,9 +168,9 @@ export default function DessertMenuPrintArea({  frontView,
                                                 position:'relative',
                                                 height:'8.5in',
                                                 border:'none',
-                                                paddingLeft:'12mm',
-                                                paddingRight:'12mm',
-                                                paddingTop:'6mm',
+                                                paddingLeft:'0.5in',
+                                                paddingRight:'1in',
+                                                paddingTop:'1cm',
                                                 }} 
                                         // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
                                 >
@@ -180,11 +180,11 @@ export default function DessertMenuPrintArea({  frontView,
                                                         // color:'red',
                                                         lineHeight:'1',
                                                         display:'block',
-                                                        paddingLeft:'0',
+                                                        // paddingLeft:'0.25in',
                                                         cursor:'default',
                                                         fontSize:'55px'}}>olea</span>
                                         
-                                        <div style={{borderTop:'1px solid #888'}} />
+                                        <div style={{borderTop:'1px solid #888',width:'11cm'}} />
 
 
 
@@ -194,7 +194,7 @@ export default function DessertMenuPrintArea({  frontView,
 
                                         <div className='dessert-menu-front-content'
                                                 style={{paddingRight:`${pageMarginRight + 0}px`,
-                                                        paddingLeft:'0'}}
+                                                        paddingLeft:'0.25in'}}
                                                 // style={{paddingRight:'83px'}}
                                                 >
 
@@ -409,21 +409,24 @@ export default function DessertMenuPrintArea({  frontView,
 
 
                                     <div className='dessert-footer-print' style={{position:'absolute',bottom:'6mm',width:'calc(5.5in - 24mm)'}}>
-                                        <div className='dessert-menu-front-content' style={{paddingLeft:'0'}}>
-                                            jessica delgado, pastry chef
-                                        </div>
-                                        <div style={{borderTop:'1px solid #888',marginTop:'3px'}} />
-                                            <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
-
-                                                <div className='dessert-menu-front-content' style={{paddingLeft:'0'}}>
-                                                    please alert your server if you have any special dietary requirements<br/>
-                                                    <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
-                                                </div>
-                                                <img    src='qr-dessert.png' 
+                                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',maxWidth:'11cm'}}>
+                                            <div className='dessert-menu-front-content' style={{paddingLeft:'0.25in'}}>
+                                                jessica delgado, pastry chef
+                                            </div>
+                                            <img    src='qr-dessert.png' 
                                                         className='qr'
                                                         width='29px' 
                                                         height='29px' 
                                                 />
+                                        </div>
+                                        <div style={{borderTop:'1px solid #888',marginTop:'3px',width:'11cm'}} />
+                                            <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
+
+                                                <div className='dessert-menu-front-content' style={{paddingLeft:'0.25in'}}>
+                                                    please alert your server if you have any special dietary requirements<br/>
+                                                    <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
+                                                </div>
+                                              
                                             </div>
                                     </div>
                                 </div>
@@ -436,9 +439,9 @@ export default function DessertMenuPrintArea({  frontView,
                                                 position:'relative',
                                                 border:'none',
                                                 height:'8.5in',
-                                                paddingTop:'6mm',
-                                                paddingLeft:'12mm',
-                                                paddingRight:'12mm',
+                                                paddingTop:'1cm',
+                                                paddingLeft:'0.5in',
+                                                paddingRight:'1in',
                                                 
                                                 }}
                                         // style={{backgroundImage:'url("scan-dessert-menu-back.jpg"),',color:'red',backgroundSize:'5.5in 8.5in'}}
@@ -446,15 +449,18 @@ export default function DessertMenuPrintArea({  frontView,
                                 >
 
                                     <div id='footer-top'>
-                                        <span   className='logo dessert-menu-front-content' 
+                                        <span   
+                                        // className='logo dessert-menu-front-content' 
                                                 style={{
                                                         // color:'red',
                                                         lineHeight:'1',
                                                         display:'block',
-                                                        paddingLeft:'0',
+                                                        paddingLeft:'150px !important',
                                                         cursor:'default',
-                                                        fontSize:'55px'}}>olea</span>
-                                        <div style={{borderTop:'1px solid #888'}} />
+                                                        fontSize:'55px'}}>
+                                                            <span style={{paddingLeft:'0.25in'}}>olea</span>
+                                                            </span>
+                                        <div style={{borderTop:'1px solid #888',width:'11cm'}} />
 
 
 
@@ -478,7 +484,7 @@ export default function DessertMenuPrintArea({  frontView,
 
                                             {dessertDrinkCategories.map(data=>{
                                                 return (
-                                                    <div key={data} style={{lineHeight:'1.4'}}>
+                                                    <div key={data} style={{lineHeight:'1.4',paddingLeft:'0.25in'}}>
                                                         {allDessertDrinks.map(drink=>{
                                                             return (
                                                                     <div key={drink._id}>

@@ -84,7 +84,8 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                             position:'relative',
                             // color:'red'
                             }}>
-                <div className="" style={{  fontSize:'53px',
+                <div className="" 
+                                        style={{  fontSize:'53px',
                                                 // color:'red',
                                                 lineHeight:'1.2',
                                                 marginBottom:'-5px',

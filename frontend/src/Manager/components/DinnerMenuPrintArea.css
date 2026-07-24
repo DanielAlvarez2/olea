@@ -63,3 +63,6 @@
 .minion-bold-italic{
     font-family: MinionBoldItalic;
 }
+.indented-dessert-menu-print{
+    padding-left:0.25in !important;
+}
