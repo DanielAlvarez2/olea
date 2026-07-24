@@ -215,7 +215,7 @@ export default function DessertMenuPrintArea({  frontView,
                                                                                             &nbsp;({data.allergiesAbbreviated})
                                                                                         </span>}
                                                         <span className='dessert-description-print'>&nbsp;{data.description}</span>
-                                                        <span className='dessert-price-print'>&nbsp;{data.price}</span>
+                                                        <span className='dessert-price-print'>&nbsp;&nbsp;{data.price}</span>
                                                         
                                                     </div>
                                                 )
@@ -231,7 +231,9 @@ export default function DessertMenuPrintArea({  frontView,
                                                             coffee
                                                         </span>
                                                         &nbsp;
-                                                        <span className='dessert-price-print' style={{fontStyle:'italic'}}>
+                                                        <span className='dessert-price-print' 
+                                                        // style={{fontStyle:'italic'}}
+                                                        >
                                                             (decaffeinated available)
                                                         </span><br/>
 
@@ -291,7 +293,9 @@ export default function DessertMenuPrintArea({  frontView,
                                                     organic-artisan whole leaf tea
                                                 </span>
                                                 &nbsp;
-                                                <span className='dessert-price-print' style={{fontStyle:'italic'}}>
+                                                <span className='dessert-price-print' 
+                                                // style={{fontStyle:'italic'}}
+                                                >
                                                     (pouch)
                                                 </span>
                                                 <span className='dessert-price-print'>
@@ -362,7 +366,9 @@ export default function DessertMenuPrintArea({  frontView,
                                             
                                             <span className='dessert-price-print'>
                                                 <span style={{fontStyle:'normal'}}>herbal</span>
-                                                <span style={{fontStyle:'italic'}}> (caffeine free)</span>
+                                                <span 
+                                                // style={{fontStyle:'italic'}}
+                                                > (caffeine free)</span>
                                                 &nbsp;
                                             </span>
                                                                         {allTeas.filter(item=>item.type == 'herbal').map(data=>{
@@ -556,11 +562,11 @@ export default function DessertMenuPrintArea({  frontView,
 
 
 
-                                    <div className='dessert-footer' style={{position:'absolute',
+                                    {/* <div className='dessert-footer' style={{position:'absolute',
                                                                             bottom:'6mm',
                                                                             left:'6mm'}}>
                                         <div style={{borderTop:'1px solid #888',width:'calc(5.5in - 12mm)'}} />
-                                    </div>
+                                    </div> */}
                                 </div>
                             
                             </>

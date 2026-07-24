@@ -234,7 +234,7 @@ export default function DessertMenuFormat(){
                 <ManagerNavbar page='dessert' />
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>dessert &gt; format</div>
-                    <div className='main-menu' style={{paddingBottom:'0'}}>
+                    <div className='main-menu' style={{paddingBottom:'0',display:'flex',flexDirection:'row-reverse',alignItems:'center'}}>
 
 
 
@@ -250,12 +250,9 @@ export default function DessertMenuFormat(){
 />
 
 
+<div>
 
-
-                    </div>
-
-
-                            <br/>
+                            <br className='no-print'/>
                                                   
                             <div style={{   textAlign:'center',
                                             display:'flex',
@@ -316,7 +313,12 @@ export default function DessertMenuFormat(){
                                                                     onClick={frontView ? increasePageMarginRight : increasePageMarginRightBack} /></span>
                                     </div>
                                 
-                            <br/>
+                            <br className='no-print'/>
+</div>
+
+
+                    </div>
+
 
 
             

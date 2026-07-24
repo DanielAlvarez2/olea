@@ -30,10 +30,10 @@
 }
 .dessert-description-print{
     font-family:MinionProRegular;
-    font-size:11.5pt;
+    font-size:11.25pt;
 }
 .dessert-price-print{
-    font-size:11.5pt;
+    font-size:11.25pt;
     font-family:MinionProBold;
     font-weight:600;
     /* font-style: italic; */
