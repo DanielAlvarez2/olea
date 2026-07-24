@@ -23,8 +23,8 @@ export default function SpecialsMenu(){
                                 // border:'1px solid green'
                                 }}>
                         <Link to='/specials-menu-update'><li style={{flexGrow:'1'}}>update</li></Link>
-                        <Link to='/specials-menu-format'><li style={{flexGrow:'1'}}>format</li></Link>
-                        <Link to='/specials-menu-print'><li style={{flexGrow:'1'}}>print</li></Link>
+                        <Link to='/specials-menu-format'><li style={{flexGrow:'1'}}>format / print</li></Link>
+                        {/* <Link to='/specials-menu-print'><li style={{flexGrow:'1'}}>print</li></Link> */}
                     </ul>
 
             

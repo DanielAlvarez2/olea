@@ -242,7 +242,8 @@ Please switch to a different browser to proceed.
                                     }
                                 </div>  
 
-                                <div    className='no-print print-btn' 
+                                <div    className='no-print print-btn'
+                                        style={{background:'limegreen'}} 
                                         onClick={()=>printPage()}>
                                     print
                                 </div>
@@ -300,6 +301,7 @@ Please switch to a different browser to proceed.
                                 </div>  
 
                                 <div    className='no-print print-btn' 
+                                        style={{background:'limegreen'}}
                                         onClick={()=>printPage()}>
                                     print
                                 </div>

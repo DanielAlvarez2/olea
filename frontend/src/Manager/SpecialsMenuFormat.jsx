@@ -1,4 +1,4 @@
-import {Link} from 'react-router'
+import {useNavigate} from 'react-router'
 import {useState, useEffect} from 'react'
 import './Manager.css'
 import './Specials.css'
@@ -14,6 +14,7 @@ import { FaToggleOn } from "react-icons/fa6";
 
 
 export default function SpecialsMenuFormat(){
+    const navigate = useNavigate()
     const [allSpecials, setAllSpecials] = useState([])
     const [specialsFormatting, setSpecialsFormatting] = useState([])
     const [pageMarginsLeftRight, setPageMarginsLeftRight] = useState(0)
@@ -123,6 +124,11 @@ export default function SpecialsMenuFormat(){
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; format</div>
 
                     <br/>
+                                <div    className='no-print print-btn' 
+                                        style={{background:'limegreen',width:'210px'}}
+                                        onClick={()=>navigate('/specials-menu-print')}>
+                                    print preview
+                                </div>
 
                     <div className='main-menu paper-menu' 
                         style={{display:'flex',
@@ -264,8 +270,13 @@ export default function SpecialsMenuFormat(){
                             </div>   */}
 
                             <div>
-                
-                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
+                                <div    className='no-print print-btn' 
+                                        style={{background:'limegreen',width:'210px'}}
+                                        onClick={()=>navigate('/specials-menu-print')}>
+                                    print preview
+                                </div>
+
+                                {/* <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
                                     <span>1-sided</span>
                                     <span>
                                         {doubleSided ? 
@@ -279,7 +290,7 @@ export default function SpecialsMenuFormat(){
 
                                     </span>
                                     <span>2-sided</span>
-                                </div> 
+                                </div>  */}
                             </div>  
 
 

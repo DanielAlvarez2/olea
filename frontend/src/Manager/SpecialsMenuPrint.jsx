@@ -1,4 +1,5 @@
 import {Link} from 'react-router'
+import {useNavigate} from 'react-router'
 import {useState, useEffect} from 'react'
 import './Manager.css'
 import './SpecialsMenuPrint.css'
@@ -13,6 +14,7 @@ import { FaToggleOn } from "react-icons/fa6";
 
 
 export default function SpecialsMenuPrint(){
+    const navigate = useNavigate()
     const offset = '20px'
     const [allSpecials, setAllSpecials] = useState([])
     const [specialsFormatting, setSpecialsFormatting] = useState([])
@@ -140,6 +142,13 @@ Please switch to a different browser to proceed.
                         </div>  
 
                         <div    className='no-print print-btn' 
+                                style={{background:'#999',width:'100px'}}
+                                onClick={()=>navigate('/specials-menu-format')}>
+                            format
+                        </div>
+
+                        <div    className='no-print print-btn' 
+                                style={{background:'limegreen',width:'100px'}}
                                 onClick={()=>printSpecials()}>
                             print
                         </div>
@@ -304,8 +313,15 @@ Please switch to a different browser to proceed.
                         </div>  
 
                         <div    className='no-print print-btn' 
+                                style={{background:'limegreen',width:'100px'}}
                                 onClick={()=>printSpecials()}>
                             print
+                        </div>
+
+                        <div    className='no-print print-btn' 
+                                style={{background:'#999',width:'100px'}}
+                                onClick={()=>navigate('/specials-menu-format')}>
+                            format
                         </div>
 
 
