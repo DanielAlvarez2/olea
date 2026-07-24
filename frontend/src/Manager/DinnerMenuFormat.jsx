@@ -159,7 +159,7 @@ have been changed.
                         <div className='no-print' style={{textAlign:'center',fontSize:'30px'}}>dinner &gt; format / print</div>
 
                 <div style={{   display:'flex',
-                                // flexDirection:'row-reverse',
+                                flexDirection:'row-reverse',
                                 alignItems:'center',
                                 gap:'30px'}}>
 
