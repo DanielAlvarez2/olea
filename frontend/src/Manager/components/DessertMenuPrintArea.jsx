@@ -168,8 +168,8 @@ export default function DessertMenuPrintArea({  frontView,
                                                 position:'relative',
                                                 height:'8.5in',
                                                 border:'none',
-                                                paddingLeft:'6mm',
-                                                paddingRight:'6mm',
+                                                paddingLeft:'12mm',
+                                                paddingRight:'12mm',
                                                 paddingTop:'6mm',
                                                 }} 
                                         // style={{backgroundImage:'url("scan-dessert-menu-front.jpg")',backgroundSize:'5.5in 8.5in'}}
@@ -437,8 +437,8 @@ export default function DessertMenuPrintArea({  frontView,
                                                 border:'none',
                                                 height:'8.5in',
                                                 paddingTop:'6mm',
-                                                paddingLeft:'6mm',
-                                                paddingRight:'6mm',
+                                                paddingLeft:'12mm',
+                                                paddingRight:'12mm',
                                                 
                                                 }}
                                         // style={{backgroundImage:'url("scan-dessert-menu-back.jpg"),',color:'red',backgroundSize:'5.5in 8.5in'}}
