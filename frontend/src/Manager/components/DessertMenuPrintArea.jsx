@@ -409,7 +409,7 @@ export default function DessertMenuPrintArea({  frontView,
 
 
 
-                                    <div className='dessert-footer-print' style={{position:'absolute',bottom:'6mm',width:'calc(5.5in - 24mm)'}}>
+                                    <div className='dessert-footer-print' style={{position:'absolute',bottom:'6mm',width:'calc(5.5in - 24mm)',fontSize:'9.5pt'}}>
                                         <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',maxWidth:'11cm'}}>
                                             <div className='dessert-menu-front-content' style={{paddingLeft:'0.25in'}}>
                                                 jessica delgado, pastry chef
@@ -427,7 +427,9 @@ export default function DessertMenuPrintArea({  frontView,
                                                     please alert your server if you have any special dietary requirements<br/>
                                                     <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                                 </div>
-                                              
+
+
+
                                             </div>
                                     </div>
                                 </div>
@@ -463,7 +465,7 @@ export default function DessertMenuPrintArea({  frontView,
                                                             </span>
                                         <div style={{borderTop:'1px solid #888',width:'11cm'}} />
 
-<br className='no-print'/>
+<br />
 
 
 
@@ -495,7 +497,12 @@ export default function DessertMenuPrintArea({  frontView,
                                                                             
                                                                             >
                                                                                 {drink.sequence == 1 && <div style={{marginTop:categoriesMarginTop}} className='dessert-menu-heading-print'>{drink.category}</div>}
-                                                                                <div style={{display:'flex',width:'100%',paddingRight:'2ch',gap:'10px',justifyContent:'space-between'}}>
+                                                                                <div style={{   display:'flex',
+                                                                                                width:'100%',
+                                                                                                paddingRight:'2ch',
+                                                                                                gap:'10px',
+                                                                                                alignItems:'flex-end',
+                                                                                                justifyContent:'space-between'}}>
                                                                                     <div className='dessert-drink-left'>
                                                                                         {drink.category == 'dessert cocktails' && 
                                                                                             <span style={{marginRight:'3px',fontSize:'10px',position:'relative',bottom:'1px'}}>&#9679;</span> 
