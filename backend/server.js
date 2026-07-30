@@ -57,6 +57,8 @@ const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
 app.post('/api/job-application', async(req,res)=>{
+    console.log('process.env.PASSWORD:')
+    console.log(process.env.PASSWORD)
     try{
         console.log('JOB APPLICATION:')
         console.log(req.body.firstName)
