@@ -75,7 +75,7 @@ app.post('/api/job-application', async(req,res)=>{
             from: 'Daniel Alvarez <daniel.alvarez@togglesoftware.com>',
             to: 'daniel.yllanes@hotmail.com',
             subject: 'Testing NodeMailer',
-            html: 'test email body'
+            html: req.body.firstName
         })
         console.log('Message Sent:' + info.messageId)   
         res.json('Job Application Submitted')     
