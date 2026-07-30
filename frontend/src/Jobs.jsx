@@ -22,11 +22,70 @@ export default function Jobs(){
         setConviction(true)
     }
     async function submitJobApplication(formData){
+        setConviction(false)
         try{
             await fetch(`${BASE_URL}/api/job-application`,{method:'POST',
                                                             headers:{'Content-Type':'application/json'},
                                                             body:JSON.stringify({
-                                                                firstName: formData.get('first-name')
+                                                                firstName: formData.get('first-name'),
+                                                                lastName: formData.get('last-name'),
+                                                                address: formData.get('address'),
+                                                                cityState: formData.get('city-state'),
+                                                                zipCode: formData.get('zip-code'),
+                                                                phone: formData.get('phone'),
+                                                                email: formData.get('email'),
+                                                                position: formData.get('position'),
+                                                                availability: formData.get('availability'),
+                                                                dateAvailable: formData.get('date-available'),
+                                                                salaryDesired: formData.get('salary-desired'),
+                                                                adult: formData.get('adult'),
+                                                                legal: formData.get('legal'),
+                                                                hsYears: formData.get('hs-years'),
+                                                                hsDiploma: formData.get('hs-diploma'),
+                                                                GED: formData.get('GED'),
+                                                                hsName: formData.get('hs-name'),
+                                                                hsCityState: formData.get('hs-city-state'),
+                                                                collegeYears: formData.get('college-years'),
+                                                                collegeName: formData.get('college-name'),
+                                                                collegeCityState: formData.get('college-city-state'),
+                                                                conviction: formData.get('conviction'),
+                                                                convictionExplanation: formData.get('conviction-explanation') ? formData.get('conviction-explanation') : null,
+                                                                contactEmployer: formData.get('contact-employer'),
+
+                                                                employer1: formData.get('employer1'),
+                                                                employer1Address: formData.get('employer1-address'),
+                                                                employer1Position: formData.get('employer1-position'),
+                                                                employer1CityState: formData.get('employer1-city-state'),
+                                                                employer1Phone: formData.get('employer1-phone'),
+                                                                employer1StartDate: formData.get('employer1-start-date'),
+                                                                employer1EndDate: formData.get('employer1-end-date'),
+                                                                
+                                                                employer2: formData.get('employer2'),
+                                                                employer2Address: formData.get('employer2-address'),
+                                                                employer2Position: formData.get('employer2-position'),
+                                                                employer2CityState: formData.get('employer2-city-state'),
+                                                                employer2Phone: formData.get('employer2-phone'),
+                                                                employer2StartDate: formData.get('employer2-start-date'),
+                                                                employer2EndDate: formData.get('employer2-end-date'),
+                                                                
+                                                                employer3: formData.get('employer3'),
+                                                                employer3Address: formData.get('employer3-address'),
+                                                                employer3Position: formData.get('employer3-position'),
+                                                                employer3CityState: formData.get('employer3-city-state'),
+                                                                employer3Phone: formData.get('employer3-phone'),
+                                                                employer3StartDate: formData.get('employer3-start-date'),
+                                                                employer3EndDate: formData.get('employer3-end-date'),
+                                                                
+                                                                employer4: formData.get('employer4'),
+                                                                employer4Address: formData.get('employer4-address'),
+                                                                employer4Position: formData.get('employer4-position'),
+                                                                employer4CityState: formData.get('employer4-city-state'),
+                                                                employer4Phone: formData.get('employer4-phone'),
+                                                                employer4StartDate: formData.get('employer4-start-date'),
+                                                                employer4EndDate: formData.get('employer4-end-date'),
+
+                                                                comments: formData.get('comments')
+                                                                
                                                             })
                                                         })
                     .then(res=>res.json())
@@ -69,12 +128,12 @@ export default function Jobs(){
                                 <div className='job-flexbox'>
                                     <label>
                                         First Name:<br/>
-                                        <input type='text' name='first-name' />
+                                        <input type='text' name='first-name' required />
                                     </label>
 
                                     <label>
                                         Last Name:<br/>
-                                        <input type='text' name='last-name' />
+                                        <input type='text' name='last-name' required />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 
@@ -83,49 +142,58 @@ export default function Jobs(){
                                 <div className='job-flexbox'>
                                     <label>
                                         Street Address:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='address' />
                                     </label>
                                     
                                     <label>
                                         City/State:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='city-state' />
                                     </label>
                                 </div>{/* .job-flexbox */}
 
                                 <br/>                        
-                                <label>
-                                    Zip Code:<br/>
-                                    <input  type='text'
-                                            size='5'
-                                            maxLength='5' />
-                                </label>
+
+                                <div className='job-flexbox' style={{justifyContent:'space-between',maxWidth:'305px'}}>
+
+                                    <label>
+                                        Zip Code:<br/>
+                                        <input  type='text'
+                                                size='5'
+                                                name='zip-code'
+                                                maxLength='5' />
+                                    </label>
+                                
+                                
+
+                                    <label>
+                                        Phone Number:<br/>
+                                        <input type='text' name='phone' placeholder='(###) ### - ####' />
+                                    </label>
+
+                                </div>
+
+                                    <br/>
+
+                                    <label>
+                                        Email Address:<br/>
+                                        <input  type='email' 
+                                                style={{width:'305px'}}
+                                                name='email' 
+                                                placeholder='name@website.com' />
+                                    </label>
+
                                 
                                 <br/><br/>
 
                                 <div className='job-flexbox'>
                                     <label>
-                                        Phone Number:<br/>
-                                        <input type='text' placeholder='(###) ### - ####' />
-                                    </label>
-
-                                    <label>
-                                        Email Address:<br/>
-                                        <input type='email' placeholder='name@website.com' />
-                                    </label>
-
-                                </div>{/* .job-flexbox */}
-                                
-                                <br/>
-
-                                <div className='job-flexbox'>
-                                    <label>
                                         Position Sought:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='position' />
                                     </label>
                                     
                                     <label>
                                         Availability:<br/>
-                                        <select required defaultValue=''>
+                                        <select required name='availability' defaultValue=''>
                                             <option disabled value=''>Select One...&nbsp;&nbsp;&nbsp;</option>
                                             <option>Part-Time</option>
                                             <option>Full-Time</option>
@@ -138,12 +206,12 @@ export default function Jobs(){
                                 <div className='job-flexbox'>
                                     <label>
                                         Date Available:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='date-available' />
                                     </label>
 
                                     <label>
                                         Salary Desired:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='salary-desired' />
                                     </label>
                                 </div>{/* .job-flexbox */}
 
@@ -151,13 +219,13 @@ export default function Jobs(){
 
                                 <label>
                                     Are you over 18 years old?<br/>
-                                    <input type='radio' name='adult' required /> Yes<br/>
+                                    <input type='radio' name='adult' value='yes' required /> Yes<br/>
                                     <input type='radio' name='adult' /> No
                                 </label><br/><br/>
 
                                 <label>
                                     Are you legally eligible for employment in the United States? <br/>
-                                    <input type='radio' name='legal' required /> Yes<br/>
+                                    <input type='radio' name='legal' value='yes' required /> Yes<br/>
                                     <input type='radio' name='legal' /> No
                                 </label>
 
@@ -166,7 +234,8 @@ export default function Jobs(){
                                 <br/>
                                 EDUCATION<br/><br/>
                                 <div className='maxwidth'>
-                                    Please indicate education or training which you believe qualifies you for the position you are seeking.<br/>
+                                    Please indicate education or training which you 
+                                    believe qualifies you for the position you are seeking.<br/>
                                 </div>{/* .maxwidth */}
                                 <br/>
                                 <label>
@@ -174,19 +243,19 @@ export default function Jobs(){
                                 <div className='high-school'>
                                     <div className='years'>
                                         <div>1</div>
-                                        <div><input type='radio' name='hs-years' /></div>
+                                        <div><input type='radio' name='hs-years' value='1' /></div>
                                     </div>
                                     <div className='years'>
                                         <div>2</div>
-                                        <div><input type='radio' name='hs-years' /></div>
+                                        <div><input type='radio' name='hs-years' value='2' /></div>
                                     </div>
                                     <div className='years'>
                                         <div>3</div>
-                                        <div><input type='radio' name='hs-years' /></div>
+                                        <div><input type='radio' name='hs-years' value='3' /></div>
                                     </div>
                                     <div className='years'>
                                         <div>4</div>
-                                        <div><input type='radio' name='hs-years' /></div>
+                                        <div><input type='radio' name='hs-years' value='4' /></div>
                                     </div>
                                 </div>
                                 </label>
@@ -194,25 +263,25 @@ export default function Jobs(){
 
                                 <label>
                                     High School Diploma?<br/>
-                                    <input type='radio' name='hs-diploma' /> Yes<br/>
+                                    <input type='radio' name='hs-diploma' value='yes' /> Yes<br/>
                                     <input type='radio' name='hs-diploma' /> No                                    
                                 </label><br/><br/>
 
                                 <label>
                                     G.E.D.?<br/>
-                                    <input type='radio' name='GED' /> Yes<br/>
+                                    <input type='radio' name='GED' value='yes' /> Yes<br/>
                                     <input type='radio' name='GED' /> No
                                 </label><br/><br/>
 
                                 <div className='job-flexbox'>
                                     <label>
                                         Name of School:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='hs-name' />
                                     </label>
 
                                     <label>
                                         City/State:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='hs-city-state' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 
@@ -223,23 +292,23 @@ export default function Jobs(){
                                     COLLEGE<br/>
                                     and/or<br/>
                                     VOCATIONAL SCHOOL
-                                    </span>
+                                    </span><br/><br/>
                                     <div className='college'>
                                         <div className='years'>
                                             <div>1</div>
-                                            <div><input type='radio' name='college-years' /></div>
+                                            <div><input type='radio' name='college-years' value='1' /></div>
                                         </div>
                                         <div className='years'>
                                             <div>2</div>
-                                            <div><input type='radio' name='college-years' /></div>
+                                            <div><input type='radio' name='college-years' value='2' /></div>
                                         </div>
                                         <div className='years'>
                                             <div>3</div>
-                                            <div><input type='radio' name='college-years' /></div>
+                                            <div><input type='radio' name='college-years' value='3' /></div>
                                         </div>
                                         <div className='years'>
                                             <div>4</div>
-                                            <div><input type='radio' name='college-years' /></div>
+                                            <div><input type='radio' name='college-years' value='4' /></div>
                                         </div>
                                     </div>
                                 </label>
@@ -248,12 +317,12 @@ export default function Jobs(){
                                 <div className='job-flexbox'>
                                     <label>
                                         Name of School:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='college-name' />
                                     </label>
 
                                     <label>
                                         City/State:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='college-city-state' />
                                     </label>
                                 </div>{/* .job-flexbox */}
 
@@ -276,13 +345,13 @@ export default function Jobs(){
                                     <input  type='radio'
                                             id='conviction-no' 
                                             name='conviction' 
-                                            value='no'
+                                            value='No'
                                             required 
                                             onChange={convictionNo} /> No<br/>
                                     <input  type='radio' 
                                             id='conviction-yes'
                                             name='conviction' 
-                                            value='yes' 
+                                            value='Yes' 
                                             onChange={convictionYes} /> Yes<br/>
                                     </label>
                                     {
@@ -290,7 +359,7 @@ export default function Jobs(){
                                         <>
                                             <label>
                                                 Explain:<br/>
-                                                <textarea rows='5' required></textarea>
+                                                <textarea rows='5' name='conviction-explanation' required></textarea>
                                             </label>
                                         </>
                                     }
@@ -300,12 +369,17 @@ export default function Jobs(){
                                 </div>{/* .maxwidth */}
                                 <hr/>
                                 <br/>
+
+
+
+
+
                                 EMPLOYMENT<br/><br/>
                                 List most recent employer first, including U.S. Military Service.<br/><br/>
 
                                 May we contact your present employer?<br/>
                                 <label>
-                                    <input type='radio' name='contact-employer' /> Yes<br/>
+                                    <input type='radio' name='contact-employer' value='yes' /> Yes<br/>
                                     <input type='radio' name='contact-employer' /> No<br/>
                                 </label><br/>
 
@@ -316,27 +390,27 @@ export default function Jobs(){
 
                                 <label>
                                     Employer:<br/>
-                                    <input type='text' />
+                                    <input type='text' name='employer1' />
                                 </label><br/><br/>
                                 <div className='job-flexbox'>
                                     <label>
                                         Street Address:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer1-address' />
                                     </label>
                                     <label>
                                         City/State:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer1-city-state' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 <br/>
                                 <div className='job-flexbox'>
                                     <label>
                                         Phone Number:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer1-phone' />
                                     </label>
                                     <label>
                                         Position:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer1-position' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 <br/>
@@ -344,11 +418,11 @@ export default function Jobs(){
                                 <div className='job-flexbox'>
                                     <label>
                                         From:<br/>
-                                        <input type='text' placeholder='Month/Year' />
+                                        <input type='text' placeholder='Month/Year' name='employer1-start-date' />
                                     </label>
                                     <label>
                                         To:<br/>
-                                        <input type='text' placeholder='Month/Year' />
+                                        <input type='text' placeholder='Month/Year' name='employer1-end-date' />
                                     </label>
                                 </div>{/* .job-flexbox */}
 
@@ -362,27 +436,27 @@ export default function Jobs(){
                                 <br/><br/><br/>
                                 <label>
                                     Employer:<br/>
-                                    <input type='text' />
+                                    <input type='text' name='employer2' />
                                 </label><br/><br/>
                                 <div className='job-flexbox'>
                                     <label>
                                         Street Address:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer2-address' />
                                     </label>
                                     <label>
                                         City/State:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer2-city-state' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 <br/>
                                 <div className='job-flexbox'>
                                     <label>
                                         Phone Number:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer2-phone'/>
                                     </label>
                                     <label>
                                         Position:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer2-position' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 <br/>
@@ -390,11 +464,11 @@ export default function Jobs(){
                                 <div className='job-flexbox'>
                                     <label>
                                         From:<br/>
-                                        <input type='text' placeholder='Month/Year' />
+                                        <input type='text' placeholder='Month/Year' name='employer2-start-date' />
                                     </label>
                                     <label>
                                         To:<br/>
-                                        <input type='text' placeholder='Month/Year' />
+                                        <input type='text' placeholder='Month/Year' name='employer2-end-date' />
                                     </label>
                                 </div>{/* .job-flexbox */}
 
@@ -408,27 +482,27 @@ export default function Jobs(){
                                 <br/><br/><br/>
                                 <label>
                                     Employer:<br/>
-                                    <input type='text' />
+                                    <input type='text' name='employer3' />
                                 </label><br/><br/>
                                 <div className='job-flexbox'>
                                     <label>
                                         Street Address:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer3-address' />
                                     </label>
                                     <label>
                                         City/State:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer3-city-state' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 <br/>
                                 <div className='job-flexbox'>
                                     <label>
                                         Phone Number:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer3-phone' />
                                     </label>
                                     <label>
                                         Position:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer3-position' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 <br/>
@@ -436,11 +510,11 @@ export default function Jobs(){
                                 <div className='job-flexbox'>
                                     <label>
                                         From:<br/>
-                                        <input type='text' placeholder='Month/Year' />
+                                        <input type='text' placeholder='Month/Year' name='employer3-start-date' />
                                     </label>
                                     <label>
                                         To:<br/>
-                                        <input type='text' placeholder='Month/Year' />
+                                        <input type='text' placeholder='Month/Year' name='employer3-end-date' />
                                     </label>
                                 </div>{/* .job-flexbox */}
 
@@ -454,27 +528,27 @@ export default function Jobs(){
                                 <br/><br/><br/>
                                 <label>
                                     Employer:<br/>
-                                    <input type='text' />
+                                    <input type='text' name='employer4' />
                                 </label><br/><br/>
                                 <div className='job-flexbox'>
                                     <label>
                                         Street Address:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer4-address' />
                                     </label>
                                     <label>
                                         City/State:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer4-city-state' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 <br/>
                                 <div className='job-flexbox'>
                                     <label>
                                         Phone Number:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer4-phone' />
                                     </label>
                                     <label>
                                         Position:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='employer4-position' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 <br/>
@@ -482,11 +556,11 @@ export default function Jobs(){
                                 <div className='job-flexbox'>
                                     <label>
                                         From:<br/>
-                                        <input type='text' placeholder='Month/Year' />
+                                        <input type='text' placeholder='Month/Year' name='employer4-start-date' />
                                     </label>
                                     <label>
                                         To:<br/>
-                                        <input type='text' placeholder='Month/Year' />
+                                        <input type='text' placeholder='Month/Year' name='employer4-end-date' />
                                     </label>
                                 </div>{/* .job-flexbox */}
 
@@ -502,7 +576,7 @@ export default function Jobs(){
 
                                 <label>
                                     Additional Comments (optional)<br/>
-                                    <textarea rows='5'></textarea>
+                                    <textarea rows='5' name='comments'></textarea>
                                 </label><br/>
 
                                 <br/><br/>

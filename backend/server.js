@@ -57,8 +57,6 @@ const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
 
 app.post('/api/job-application', async(req,res)=>{
-    console.log('process.env.PASSWORD:')
-    console.log(process.env.PASSWORD)
     try{
         console.log('JOB APPLICATION:')
         console.log(req.body.firstName)
@@ -74,8 +72,78 @@ app.post('/api/job-application', async(req,res)=>{
         const info = await transporter.sendMail({
             from: 'Daniel Alvarez <daniel.alvarez@togglesoftware.com>',
             to: 'daniel.yllanes@hotmail.com',
-            subject: 'Testing NodeMailer',
-            html: req.body.firstName
+            subject: 'OLEA ONLINE JOB APPLICATION',
+            html:`
+<h1>OLEA ONLINE JOB APPLICATION</h1>
+
+First Name: ${req.body.firstName}<br/>
+Last Name: ${req.body.lastName}<br/>
+<br/>
+Street Address: ${req.body.address}<br/>
+City/State: ${req.body.cityState}<br/>
+Zip Code: ${req.body.zipCode}<br/>
+Phone Number: ${req.body.phone}<br/>
+Email Address: ${req.body.email}<br/><br/>
+
+Position Sought: ${req.body.position}<br/>
+Availability: ${req.body.availability}<br/>
+Date Available: ${req.body.dateAvailable}<br/>
+Salary Desired: ${req.body.salaryDesired}<br/>
+Over 18: ${req.body.adult == 'yes' ? 'Yes' : 'No'}<br/>
+Eligible for U.S. Employment: ${req.body.legal == 'yes' ? 'Yes' : 'No'}<br/><br/>
+
+Years of High School: ${req.body.hsYears}<br/>
+High School Diploma: ${req.body.adult == 'yes' ? 'Yes' : 'No'}<br/>
+G.E.D.: ${req.body.adult == 'yes' ? 'Yes' : 'No'}<br/>
+High School Name: ${req.body.hsName}<br/>
+High School City/State: ${req.body.hsCityState}<br/><br/>
+
+Years of College: ${req.body.collegeYears}<br/>
+College Name: ${req.body.collegeName}<br/>
+College City/State: ${req.body.collegeCityState}<br/><br/>
+
+Criminal Conviction: ${req.body.conviction}<br/>
+Explanation:<br/> 
+${req.body.convictionExplanation}<br/><br/>
+
+OK to Contact Current Employer: ${req.body.contactEmployer == 'yes' ? 'Yes' : 'No'}<br/><br/>
+
+Employer: ${req.body.employer1}<br/>
+Address: ${req.body.employer1Address}<br/>
+City/State: ${req.body.employer1CityState}<br/>
+Phone: ${req.body.employer1Phone}<br/>
+Position: ${req.body.employer1Position}<br/>
+From: ${req.body.employer1StartDate}<br/>
+To: ${req.body.employer1EndDate}<br/><br/>
+
+Employer: ${req.body.employer2}<br/>
+Address: ${req.body.employer2Address}<br/>
+City/State: ${req.body.employer2CityState}<br/>
+Phone: ${req.body.employer2Phone}<br/>
+Position: ${req.body.employer2Position}<br/>
+From: ${req.body.employer2StartDate}<br/>
+To: ${req.body.employer2EndDate}<br/><br/>
+
+Employer: ${req.body.employer3}<br/>
+Address: ${req.body.employer3Address}<br/>
+City/State: ${req.body.employer3CityState}<br/>
+Phone: ${req.body.employer3Phone}<br/>
+Position: ${req.body.employer3Position}<br/>
+From: ${req.body.employer3StartDate}<br/>
+To: ${req.body.employer3EndDate}<br/><br/>
+
+Employer: ${req.body.employer4}<br/>
+Address: ${req.body.employer4Address}<br/>
+City/State: ${req.body.employer4CityState}<br/>
+Phone: ${req.body.employer4Phone}<br/>
+Position: ${req.body.employer4Position}<br/>
+From: ${req.body.employer4StartDate}<br/>
+To: ${req.body.employer4EndDate}<br/><br/>
+
+Comments: <br/>
+${req.body.comments}
+
+`
         })
         console.log('Message Sent:' + info.messageId)   
         res.json('Job Application Submitted')     
