@@ -75,7 +75,8 @@ app.post('/api/job-application', async(req,res)=>{
             subject: 'Testing NodeMailer',
             html: 'test email body'
         })
-        console.log('Message Sent:' + info.messageId)        
+        console.log('Message Sent:' + info.messageId)   
+        res.json('Job Application Submitted')     
     }catch(err){
         console.log(err)
     }
