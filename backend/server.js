@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const nodeMailer = require('nodemailer')
 const cors = require('cors')
 const Special = require('./models/Special.js')
 const WineBTG = require('./models/WineBTG.js')
@@ -54,6 +55,31 @@ console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
 
 const PORT = process.env.PORT || 1436
 app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
+
+app.post('/api/job-application', async(req,res)=>{
+    try{
+        console.log('JOB APPLICATION:')
+        console.log(req.body.firstName)
+        const transporter = nodeMailer.createTransport({
+            host:'smtp.ionos.com',
+            port:465,
+            secure:true,
+            auth:{
+                user: 'daniel.alvarez@togglesoftware.com',
+                pass: process.env.PASSWORD
+            }
+        })
+        const info = await transporter.sendMail({
+            from: 'Daniel Alvarez <daniel.alvarez@togglesoftware.com>',
+            to: 'daniel.yllanes@hotmail.com',
+            subject: 'Testing NodeMailer',
+            html: 'test email body'
+        })
+        console.log('Message Sent:' + info.messageId)        
+    }catch(err){
+        console.log(err)
+    }
+})
 
 app.post('/api/users/create', async(req,res)=>{
     try{

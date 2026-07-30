@@ -187,7 +187,7 @@ export default function DessertMenuPrintArea({  frontView,
                                         
                                         <div style={{borderTop:'1px solid #888',width:'11cm'}} />
 
-
+                                        <br/>
 
 
 

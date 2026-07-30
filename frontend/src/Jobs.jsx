@@ -6,6 +6,12 @@ import Footer from './components/Footer.jsx'
 import { useEffect,useState } from 'react'
 
 export default function Jobs(){
+
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'
+
+    
     // useEffect(()=>window.scrollTo(0,0),[])
     const [conviction, setConviction] = useState(false)
 
@@ -15,9 +21,26 @@ export default function Jobs(){
     function convictionYes(){
         setConviction(true)
     }
-    function submitJobApplication(){
+    async function submitJobApplication(formData){
+        try{
+            await fetch(`${BASE_URL}/api/job-application`,{method:'POST',
+                                                            headers:{'Content-Type':'application/json'},
+                                                            body:JSON.stringify({
+                                                                firstName: formData.get('first-name')
+                                                            })
+                                                        })
+                    .then(res=>res.json())
+                    .then(json=>{
+                        console.log(json)
+                    })
+                    .catch(err=>console.log(err))
+
+        }catch(err){
+            console.log(err)
+        }
         alert('Your job application has been received. We will notify you if we have any job openings.')
     }
+
     return(
         
         <div className='page-wrapper webpage'>
@@ -46,12 +69,12 @@ export default function Jobs(){
                                 <div className='job-flexbox'>
                                     <label>
                                         First Name:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='first-name' />
                                     </label>
 
                                     <label>
                                         Last Name:<br/>
-                                        <input type='text' />
+                                        <input type='text' name='last-name' />
                                     </label>
                                 </div>{/* .job-flexbox */}
                                 

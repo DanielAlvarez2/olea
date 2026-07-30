@@ -33,11 +33,6 @@ export default function Home(){
                             
                             <br/><br/><br/>
 
-                            <h1>gift cards</h1>
-
-                            Gift cards are available. Purchase one <Link to='/giftcards'>online here</Link> or give us a call at 203.780.8925.
-                            
-                            <br/><br/><br/>
 
                             <h1>hours</h1>
 
