@@ -15,6 +15,8 @@ export default function Events(){
 
     const [mothersDay, setMothersDay] = useState(false)
     const [commencement, setCommencement] = useState(false)
+    const [oleaAnniversary, setOleaAnniversary] = useState(false)
+    const [graduationLunch, setGraduationLunch] = useState(false)
 
     function getAnnualEvents(){
         try{
@@ -23,6 +25,8 @@ export default function Events(){
                 .then(json=>{
                     setMothersDay(json[0].MothersDay)
                     setCommencement(json[0].Commencement)
+                    setOleaAnniversary(json[0].OleaAnniversary)
+                    setGraduationLunch(json[0].GraduationLunch)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -41,6 +45,7 @@ export default function Events(){
     }
 
     function toggleAnnualEvent(annualEvent){
+        // alert(annualEvent)
         try{
             fetch(`${BASE_URL}/api/toggle/${annualEvent}`)
                 .then(()=>getAnnualEvents())
@@ -114,8 +119,51 @@ export default function Events(){
                             </div>
                         </div>
                         
-                        <Link to='/events'><li style={{flexGrow:'1'}}>graduation lunch<br/>3rd mon may</li></Link>
-                        <Link to='/anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>aug 27</li></Link>
+                        {/* <Link to='/events'><li style={{flexGrow:'1'}}>graduation lunch<br/>3rd mon may</li></Link> */}
+
+                        <div style={{display:'flex',gap:'10px'}}>
+                            <Link to='/events-anniversary'>
+                                <li style={{flexGrow:'1'}}>graduation lunch<br/>3rd mon may</li>
+                            </Link>
+
+                            <div style={{display:'flex',alignItems:'center',gap:'20px',border:'1px solid black',borderRadius:'10px',width:'150px',justifyContent:'center'}}>
+                                <div style={{textAlign:'center'}}>website<br/>menu</div>
+                                {graduationLunch ? 
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOn size='30' style={{color:'green',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('GraduationLunch')} /> &nbsp;ON
+                                                </div>
+
+                                            :
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOff size='30' style={{color:'red',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('GraduationLunch')} /> &nbsp;OFF
+                                                </div>
+                                }
+                            </div>
+                        </div>
+
+                        {/* <Link to='/events-anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>aug 27</li></Link> */}
+
+                        <div style={{display:'flex',gap:'10px'}}>
+                            <Link to='/events-anniversary'>
+                                <li style={{flexGrow:'1'}}>anniversary<br/>august 27</li>
+                            </Link>
+
+                            <div style={{display:'flex',alignItems:'center',gap:'20px',border:'1px solid black',borderRadius:'10px',width:'150px',justifyContent:'center'}}>
+                                <div style={{textAlign:'center'}}>website<br/>menu</div>
+                                {oleaAnniversary ? 
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOn size='30' style={{color:'green',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('OleaAnniversary')} /> &nbsp;ON
+                                                </div>
+
+                                            :
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOff size='30' style={{color:'red',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('OleaAnniversary')} /> &nbsp;OFF
+                                                </div>
+                                }
+                            </div>
+                        </div>
+                        
+
                         <Link to='/events'><li style={{flexGrow:'1'}}>parents weekend<br/>1st week oct</li></Link>
                         <Link to='/restaurant-weeks'><li style={{flexGrow:'1'}}>restaurant weeks<br/>1st 2 weeks nov</li></Link>
                         <Link to='/nye'><li style={{flexGrow:'1'}}>new year's eve<br/>dec 31</li></Link>

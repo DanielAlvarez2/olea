@@ -25,7 +25,7 @@ import TakeoutMenuPrint from './Manager/TakeoutMenuPrint.jsx'
 import TakeoutScan from './Manager/TakeoutMenuScan.jsx'
 
 import AnniversaryScan from './Manager/AnniversaryScan.jsx'
-import Anniversary from './Manager/Anniversary.jsx'
+import EventsAnniversary from './Manager/EventsAnniversary.jsx'
 
 import ValentinesDay from './Manager/ValentinesDay.jsx'
 import ValentinesDayScreenshot from './Manager/ValentinesDayScreenshot.jsx'
@@ -200,7 +200,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='takeout-menu-print' element={<TakeoutMenuPrint />} />
 
         <Route path='anniversary-scan' element={<AnniversaryScan />} />
-        <Route path='anniversary' element={<Anniversary />} />
+        <Route path='events-anniversary' element={<EventsAnniversary />} />
         
         <Route path='/manager/commencement-update' element={<CommencementUpdate />} />
         <Route path='/manager/commencement-format' element={<CommencementFormat />} />

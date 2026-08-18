@@ -2,7 +2,7 @@ import {Link} from 'react-router'
 import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
-export default function Annivaersary(){
+export default function EventsAnniversary(){
     return(
         <>
             <div className='manager-page-wrapper'>
@@ -19,7 +19,7 @@ export default function Annivaersary(){
                                 height:'100%',
                                 // border:'1px solid green'
                                 }}>
-                        <Link to='/anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>screenshot</li></Link>
+                        <Link to='/events-anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>screenshot</li></Link>
                         <Link to='/anniversary-scan'><li style={{flexGrow:'1'}}>anniversary<br/>menu scan</li></Link>
                     </ul>
 
