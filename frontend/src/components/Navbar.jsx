@@ -19,6 +19,7 @@ export default function Navbar(){
     const [mobileMenusDropdown, setMobileMenusDropdown] = useState(false)
     const [mothersDay, setMothersDay] = useState(false)
     const [commencement, setCommencement] = useState(false)
+    const [oleaAnniversary, setOleaAnniversary] = useState(false)
 
     function getAnnualEvents(){
         try{
@@ -27,6 +28,7 @@ export default function Navbar(){
                 .then(json=>{
                     setMothersDay(json[0].MothersDay)
                     setCommencement(json[0].Commencement)
+                    setOleaAnniversary(json[0].OleaAnniversary)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -140,7 +142,8 @@ export default function Navbar(){
                                     {commencement && <li><Link to='/commencement-menu'>comencement {new Date().getFullYear()}</Link></li>}
                                     
                                     <li><Link to='/dinner'>dinner</Link></li>
-                                    <li><Link to='/specials'>specials</Link></li>
+                                    {oleaAnniversary && <li><Link to='/commencement-menu'>{new Date().getFullYear() - 2014} year anniversary</Link></li>}
+                                    {!oleaAnniversary && <li><Link to='/specials'>specials</Link></li>}
                                     <li><Link to='/dessert'>dessert</Link></li>
                                 </ul>
                         </li>
@@ -192,7 +195,8 @@ export default function Navbar(){
                             {commencement && <Link to='/commencement-menu'><li className='mobile-menu-dropdown'><span>commencement {new Date().getFullYear()}</span></li></Link>}
                             
                             <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
-                            <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>
+                            {oleaAnniversary && <Link to='/commencement-menu'><li className='mobile-menu-dropdown'><span>{new Date().getFullYear() - 2014} year anniversary</span></li></Link>}
+                            {!oleaAnniversary && <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>}
                             <Link to='/dessert'><li className='mobile-menu-dropdown'><span>dessert</span></li></Link>
                         </ul>
                     }
