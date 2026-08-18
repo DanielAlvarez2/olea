@@ -51,7 +51,9 @@
   padding:0;
   box-sizing: border-box;
 }
-
+input[type='text'],textarea{
+  padding-left:5px;
+}
 .price-specials{
   /* color:red; */
   font-weight: 900;

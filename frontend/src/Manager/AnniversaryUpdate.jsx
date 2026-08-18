@@ -7,7 +7,7 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 
-export default function MothersDayUpdate(){
+export default function AnniversaryUpdate(){
     const [updatingMenu, setUpdatingMenu] = useState(false)
     const [updatingImage, setUpdatingImage] = useState(false)
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
@@ -785,6 +785,7 @@ export default function MothersDayUpdate(){
                     <form   action={editMode ? updateItem : createItem} 
                             id='specials-item-form'
                             className='specials-form'
+                            autocomplete='off'
                             style={{background:`${editMode ? 'lightblue' : 'lightgreen'}`}}>
                         
                         <h2 style={{textAlign:'center'}}>{event.toLowerCase()}</h2>
@@ -859,7 +860,7 @@ export default function MothersDayUpdate(){
                         </label>
                         <br/><br/>
 
-                        {/* <label>
+                        <label>
                             description-intro<br/>
                             <input  type='text'
                                     name='description-intro'
@@ -867,7 +868,7 @@ export default function MothersDayUpdate(){
                                     id='description-intro'
                                     style={{width:'100%'}} />
                         </label>
-                        <br/><br/> */}
+                        <br/><br/>
 
                         <label>
                             description<br/>
@@ -888,6 +889,16 @@ export default function MothersDayUpdate(){
                                     style={{width:'100%'}}
                                     name='post-description' />
                         
+                        </label>
+                        <br/><br/>
+
+                        <label>
+                            price <span className='required-field'> *required</span><br/>
+                            <input  type='text'
+                                    id='price'
+                                    maxLength='100'
+                                    style={{width:'50%'}}
+                                    name='price' />
                         </label>
                         <br/><br/>
                         
