@@ -5,8 +5,10 @@ const AnnualEventsMenuItemSchema = new mongoose.Schema({
     name:{type:String},
     allergiesAbbreviated:{type:String},
     allergiesComplete:{type:String},
+    descriptionIntro:{type:String},
     description:{type:String},
     postDescription:{type:String},
+    price:{type:String},
     sequence:{type:Number},
     cloudinary_secure_URL:{type:String},
     cloudinary_public_ID:{type:String}

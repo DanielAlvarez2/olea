@@ -56,9 +56,10 @@ export default function AnniversaryUpdate(){
                                                             name: formData.get('name'),
                                                             allergiesAbbreviated: formData.get('allergies-abbreviated'),
                                                             allergiesComplete: formData.get('allergies-complete'),
+                                                            descriptionIntro: formData.get('description-intro'),
                                                             description: formData.get('description'),
                                                             postDescription: formData.get('post-description'),
-                                                            descriptionIntro: formData.get('description-intro'),
+                                                            price: formData.get('price'),
                                                             previewSource
                                                         })
             })
@@ -226,9 +227,9 @@ export default function AnniversaryUpdate(){
             document.querySelector('#allergies-abbreviated').value = ''
             document.querySelector('#allergies-complete').value = ''
             document.querySelector('#description').value = ''
-            // document.querySelector('#description-intro').value = ''
+            document.querySelector('#description-intro').value = ''
             document.querySelector('#post-description').value = ''
-            // document.querySelector('#price').value = ''
+            document.querySelector('#price').value = ''
             document.querySelector('#image-file').value = ''
             document.querySelector('#new-image-dropdown').style.visibility = 'visible'
 
@@ -469,6 +470,7 @@ export default function AnniversaryUpdate(){
                                             {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div style={{fontWeight:'900'}}>{data.price}</div>
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
@@ -592,6 +594,7 @@ export default function AnniversaryUpdate(){
                                             {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div>{data.price}</div>
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
@@ -714,6 +717,7 @@ export default function AnniversaryUpdate(){
                                             {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div>{data.price}</div>
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
@@ -861,7 +865,7 @@ export default function AnniversaryUpdate(){
                         <br/><br/>
 
                         <label>
-                            description-intro<br/>
+                            description intro<br/>
                             <input  type='text'
                                     name='description-intro'
                                     maxLength='100'
@@ -896,6 +900,7 @@ export default function AnniversaryUpdate(){
                             price <span className='required-field'> *required</span><br/>
                             <input  type='text'
                                     id='price'
+                                    required
                                     maxLength='100'
                                     style={{width:'50%'}}
                                     name='price' />
