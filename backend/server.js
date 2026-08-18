@@ -2497,10 +2497,10 @@ app.put('/api/annual-events-menu-items/:id', async(req,res)=>{
             name: req.body.name.trim(),
             allergiesAbbreviated: req.body.allergiesAbbreviated.trim(),
             allergiesComplete: req.body.allergiesComplete.trim(),
-            // descriptionIntro: req.body.descriptionIntro.trim(),
+            descriptionIntro: req.body.descriptionIntro.trim(),
             description: req.body.description.trim(),
             postDescription: req.body.postDescription.trim(),
-            // price: req.body.price.trim(),
+            price: req.body.price.trim(),
             cloudinary_public_ID,
             cloudinary_secure_URL
         })

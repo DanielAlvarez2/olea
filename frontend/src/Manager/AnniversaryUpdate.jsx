@@ -78,20 +78,20 @@ export default function AnniversaryUpdate(){
         setUpdatingMenu(true)
         setTimeout(putItem,0)
         async function putItem(){
-            await fetch(`${BASE_URL}/api/annual-events-menu-items/${formData.get('id')}`,{ method:'PUT',
-                                                                                    headers:{'Content-Type':'application/json'},
-                                                                                    body: JSON.stringify({
-                                                                                        name: formData.get('name'),
-                                                                                        allergiesAbbreviated: formData.get('allergies-abbreviated'),
-                                                                                        allergiesComplete: formData.get('allergies-complete'),
-                                                                                        description: formData.get('description'),
-                                                                                        postDescription: formData.get('post-description'),
-                                                                                        // descriptionIntro: formData.get('description-intro'),
-                                                                                        // price: formData.get('price'),
-                                                                                        cloudinary_public_ID: formData.get('cloudinary_public_ID'),
-                                                                                        cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
-                                                                                        previewSource,
-                                                                                        isChecked
+            await fetch(`${BASE_URL}/api/annual-events-menu-items/${formData.get('id')}`,{  method:'PUT',
+                                                                                            headers:{'Content-Type':'application/json'},
+                                                                                            body: JSON.stringify({
+                                                                                                        name: formData.get('name'),
+                                                                                                        allergiesAbbreviated: formData.get('allergies-abbreviated'),
+                                                                                                        allergiesComplete: formData.get('allergies-complete'),
+                                                                                                        description: formData.get('description'),
+                                                                                                        postDescription: formData.get('post-description'),
+                                                                                                        descriptionIntro: formData.get('description-intro'),
+                                                                                                        price: formData.get('price'),
+                                                                                                        cloudinary_public_ID: formData.get('cloudinary_public_ID'),
+                                                                                                        cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
+                                                                                                        previewSource,
+                                                                                                        isChecked
                                                                                     })
             })
             .then(()=>alert(`
@@ -170,10 +170,10 @@ export default function AnniversaryUpdate(){
                         name,
                         allergiesAbbreviated,
                         allergiesComplete,
-                        // descriptionIntro,
+                        descriptionIntro,
                         description,
                         postDescription,
-                        // price,
+                        price,
                         cloudinary_public_ID,
                         cloudinary_secure_URL){
         try{
@@ -190,9 +190,9 @@ export default function AnniversaryUpdate(){
             document.querySelector('#allergies-abbreviated').value = allergiesAbbreviated
             document.querySelector('#allergies-complete').value = allergiesComplete
             document.querySelector('#description').value = description
-            // document.querySelector('#description-intro').value = descriptionIntro
+            document.querySelector('#description-intro').value = descriptionIntro
             document.querySelector('#post-description').value = postDescription
-            // document.querySelector('#price').value = price
+            document.querySelector('#price').value = price
         }catch(err){
             console.log(err)
         }
@@ -467,7 +467,7 @@ export default function AnniversaryUpdate(){
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             </div>
-                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic',fontWeight:'900'}}>{data.descriptionIntro};</span>}
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div style={{fontWeight:'900'}}>{data.price}</div>
@@ -484,10 +484,10 @@ export default function AnniversaryUpdate(){
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
-                                                                                // data.descriptionIntro,
+                                                                                data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                // data.price,
+                                                                                data.price,
                                                                                 data.cloudinary_public_ID,
                                                                                 data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
@@ -591,7 +591,7 @@ export default function AnniversaryUpdate(){
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             </div>
-                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic',fontWeight:'900'}}>{data.descriptionIntro};</span>}
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div style={{fontWeight:'900'}}>{data.price}</div>
@@ -608,10 +608,10 @@ export default function AnniversaryUpdate(){
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
-                                                                                // data.descriptionIntro,
+                                                                                data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                // data.price,
+                                                                                data.price,
                                                                                 data.cloudinary_public_ID,
                                                                                 data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
@@ -714,7 +714,7 @@ export default function AnniversaryUpdate(){
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             </div>
-                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic',fontWeight:'900'}}>{data.descriptionIntro};</span>}
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div style={{fontWeight:'900'}}>{data.price}</div>
@@ -731,10 +731,10 @@ export default function AnniversaryUpdate(){
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
-                                                                                // data.descriptionIntro,
+                                                                                data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
-                                                                                // data.price,
+                                                                                data.price,
                                                                                 data.cloudinary_public_ID,
                                                                                 data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
