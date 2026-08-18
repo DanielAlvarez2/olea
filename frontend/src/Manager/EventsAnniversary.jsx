@@ -19,6 +19,8 @@ export default function EventsAnniversary(){
                                 height:'100%',
                                 // border:'1px solid green'
                                 }}>
+                        <Link to='/anniversary-update'><li style={{flexGrow:'1'}}>update</li></Link>
+                        <Link to='/events-anniversary'><li style={{flexGrow:'1'}}>format/print</li></Link>
                         <Link to='/events-anniversary'><li style={{flexGrow:'1'}}>anniversary<br/>screenshot</li></Link>
                         <Link to='/anniversary-scan'><li style={{flexGrow:'1'}}>anniversary<br/>menu scan</li></Link>
                     </ul>
