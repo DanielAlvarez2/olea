@@ -127,7 +127,7 @@ export default function AnniversaryFormatPrint(){
                 </div>
                     <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>{event.toLocaleLowerCase()} &gt; format / print</div>
-                    
+                    <br className='no-print' />
                     <div  className='main-menu' 
                           style={{paddingBottom:0,gap:'10px',display:'flex',flexDirection:'row-reverse',alignItems:'center'}}>
 
@@ -206,6 +206,321 @@ export default function AnniversaryFormatPrint(){
 
 
 
+                              <div className='anniversary-format-print-flexbox' style={{display:'flex'}}>
+                              
+                              
+                                <div    className='dinner-menu-format paper-menu anniversary-paper-menu' 
+                                        style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`,
+                                                // backgroundImage:"url('/scan-anniversary.jpg')",
+                                                backgroundSize:'5.5in',
+                                                width:'5.5in',
+                                                height:'8.5in',
+                                                // color:'red'
+                                            }} 
+                                >
+                                    <div id='footer-top'>
+                                        <span   className='logo dessert-menu-front-content' 
+                                                style={{
+                                                        // color:'red',
+                                                        marginTop:'10px',
+                                                        marginBottom:'-10px',
+                                                        padding:`0 ${itemMarginsLeftRight}px`,
+                                                        display:'block',
+                                                        cursor:'default',
+                                                        fontSize:'57px'}}>olea</span>
+                                        <hr 
+                                        style={{
+                                          // border:'1px solid red',
+                                          marginBottom:'-20px'}}
+                                        // style={{marginBottom:`${mothersDayItemMarginsTopBottom}px`}} 
+                                        />
+
+
+                                        <div style={{marginTop:'28px',marginBottom:'-15px',padding:`0 ${itemMarginsLeftRight}px`}}>
+                                            <h2 style={{fontSize:'22px'}}>{new Date().getFullYear() - 2014} Year Anniversary Specials <span style={{fontSize:'30px'}}>🥂</span></h2>
+                                            {/* <br/> */}
+                                        </div>
+
+                                        <br/>
+
+                                        <div 
+                                        // className='dessert-menu-front-content'
+                                                style={{padding:`0px 0px 0px 0px`,
+                                                        display:'flex'}}
+                                                // style={{paddingRight:'83px'}}
+                                                >
+
+
+
+                                            <div    
+                                            // id='dinner-menu-left'
+                                                    // style={{width:'50%'}}        
+                                            >
+
+
+
+
+
+
+
+
+
+
+
+
+                                <h3 style={{padding:`0 ${itemMarginsLeftRight}px`}}>appetizers</h3>
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id} 
+                                                style={{padding:`0 ${itemMarginsLeftRight}px`,
+                                                        margin:`${itemMarginsTopBottom}px 0`,                                            
+                                                    }}
+                                                className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name-anniversary'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated-anniversary'> ({data.allergiesAbbreviated})</span>}
+                                                
+                                                {data.descriptionIntro && <span className='description-intro-anniversary'> {data.descriptionIntro};</span>}
+                                                <span className='description-anniversary'> {data.description}</span>
+                                                {data.price.includes('/') ? <div className='price-anniversary'> {data.price}</div>
+                                                                          : <span className='price-anniversary'> {data.price}</span>
+                                                
+                                                }
+                                                
+                                                
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            </div>
+
+
+                                        </div>
+                                    )
+                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <h3 style={{padding:`0 ${itemMarginsLeftRight}px`}}>entrées</h3>
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id} 
+                                                style={{padding:`0 ${itemMarginsLeftRight}px`,
+                                                        margin:`${itemMarginsTopBottom}px 0`,                                            
+                                                    }}
+                                                className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name-anniversary'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated-anniversary'> ({data.allergiesAbbreviated})</span>}
+                                                
+                                                {data.descriptionIntro && <span className='description-intro-anniversary'> {data.descriptionIntro};</span>}
+                                                <span className='description-anniversary'> {data.description}</span>
+                                                <span className='price-anniversary'> {data.price}</span>
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            </div>
+
+
+                                        </div>
+                                    )
+
+                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <h3 style={{padding:`0 ${itemMarginsLeftRight}px`}}>dessert</h3>
+                                        
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id} 
+                                                style={{padding:`0 ${itemMarginsLeftRight}px`,
+                                                        margin:`${itemMarginsTopBottom}px 0`,                                            
+                                                    }}
+                                                className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name-anniversary'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated-anniversary'> ({data.allergiesAbbreviated})</span>}
+                                                
+                                                {data.descriptionIntro && <span className='description-intro-anniversary'> {data.descriptionIntro};</span>}
+                                                <span className='description-anniversary'> {data.description}</span>
+                                                <span className='price-anniversary'> {data.price}</span>
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            </div>
+
+
+                                        </div>
+                                    )
+
+                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            
+                                            
+                                            
+
+
+
+                                            
+
+
+
+
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+
+
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div className='dessert-footer-anniversary' 
+                                    style={{marginTop:'15px'}}
+                                    >
+
+                                        <div style={{display:'flex',justifyContent:'space-between',padding:`0 ${itemMarginsLeftRight}px`}}>
+                                            <div className='chef-name-anniversary'>Manuel Romero, chef</div>
+                                            <div className='allergy-explanations'>(gl) gluten, (n) nuts, (d) dairy</div>
+                                        </div>
+
+                                        <hr/>
+                                        
+                                        <div style={{   display:'flex',
+                                                        justifyContent:'space-between',
+                                                        padding:`0 ${itemMarginsLeftRight}px`,
+                                                        alignItems:'center'}}>
+
+                                            
+                                            
+                                            <div style={{}}>
+                                                <span className='legal-anniversary' style={{fontWeight:'100'}}>
+                                                    
+                                                    Consumer advisory: consumption of undercooked meat, poultry,  
+                                                    
+                                                    eggs, or seafood may increase the risk of foo
+                                                    Please alert your server if you have special dietary requirements.
+                                                </span>                                                
+                                            </div>
+
+                                            <img    src='/qr-anniversary.jpg' 
+                                                    className='qr'
+                                                    // style={{border:'3px solid red'}}
+                                                    height='60px' />
+
+                                        </div>
+                                    </div>     
+                                                               
+                                </div>
 
                                 <div    className='dinner-menu-format paper-menu anniversary-paper-menu' 
                                         style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`,
@@ -520,7 +835,7 @@ export default function AnniversaryFormatPrint(){
                                                                
                                 </div>
 
-
+                              </div>{/* .anniversary-format-print-flexbox */}
 
                     </div>
 
