@@ -2,6 +2,7 @@ import {Link} from 'react-router'
 import {useState,useEffect} from 'react'
 import './Menu.css'
 import './MothersDay.css'
+import './index.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
