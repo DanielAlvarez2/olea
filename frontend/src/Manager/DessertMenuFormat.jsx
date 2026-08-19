@@ -322,8 +322,8 @@ export default function DessertMenuFormat(){
                                         <div    className='no-print print-btn' 
                                         style={{margin:'30px auto',background:'limegreen',width:'220px'}}
                                         onClick={()=>navigate('/dessert-menu-print')}>
-                                    print preview
-                                </div>
+                                        print preview
+                                        </div>
 
                                 
 </div>

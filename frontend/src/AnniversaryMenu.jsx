@@ -82,24 +82,24 @@ export default function AnniversaryMenu(){
     }
 
 
-    function showModal(pic,name,description,allergiesAbbreviated,allergiesComplete){
+    function showModal(pic,name,price,descriptionIntro,description){
         if(!pic) return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
-        document.querySelector('.modal-description').innerHTML = description    
-        if (allergiesAbbreviated) document.querySelector('.modal-allergies-abbreviated').innerHTML = ` (${allergiesAbbreviated})`        
-        // document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete        
+        document.querySelector('.modal-price').innerHTML = price.includes('/') ? `${price.split('/').map(item=>item.trim()).join('<br/>')}` : price
+        document.querySelector('.modal-description').innerHTML = description        
+        if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `        
     }
 
     function closeModal(){
         document.querySelector('.modal-image').src = ''
         document.querySelector('.modal-name').innerHTML = ''
-        // document.querySelector('.modal-price').innerHTML = ''
-        // document.querySelector('.modal-description-intro').innerHTML = ''
+        document.querySelector('.modal-price').innerHTML = ''
+        document.querySelector('.modal-description-intro').innerHTML = ''
         document.querySelector('.modal-description').innerHTML = ''
-        document.querySelector('.modal-allergies-abbreviated').innerHTML = ''
-        document.querySelector('.modal-allergies-complete').innerHTML = ''
+        // document.querySelector('.modal-allergies-abbreviated').innerHTML = ''
+        // document.querySelector('.modal-allergies-complete').innerHTML = ''
         document.querySelector('.modal').style.display = 'none'
     }
     
@@ -153,14 +153,12 @@ export default function AnniversaryMenu(){
                             <figure style={{display:'table'}}>
                                 <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw',borderRadius:'25px'}} />
                                 <figcaption style={{display:'table-caption',padding:'10px',captionSide:'bottom',borderRadius:'25px',background:'#ccc'}}>
-                                    <div>
+                                    <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
                                         <span className='modal-name' style={{fontWeight:'900'}}></span>
-                                        <span className='modal-allergies-abbreviated'></span>
-                                        
+                                        <span className='modal-price' style={{textAlign:'right'}}></span>
                                     </div>
-                                    
+                                    <span className='modal-description-intro'></span>
                                     <span className='modal-description'></span>
-                                    <div className='modal-allergies-complete'></div>
                                 </figcaption>
                             </figure>
                         </div>{/* .modal-content */}
@@ -224,7 +222,8 @@ export default function AnniversaryMenu(){
                                                     onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
                                                                                             `${data.name}`,
                                                                                             `${data.price}`,
-                                                                                            `${data.description}`                            
+                                                                                            `${data.descriptionIntro}`,                            
+                                                                                            `${data.description}`,                            
                                                                                             )}                                            
                                             >  
                                                 <div style={{   display:'flex',
@@ -276,7 +275,8 @@ export default function AnniversaryMenu(){
                                                     onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
                                                                                             `${data.name}`,
                                                                                             `${data.price}`,
-                                                                                            `${data.description}`                            
+                                                                                            `${data.descriptionIntro}`,                            
+                                                                                            `${data.description}`,                            
                                                                                             )}                                            
                                             >  
                                                 <div style={{   display:'flex',
@@ -312,7 +312,8 @@ export default function AnniversaryMenu(){
                                                     onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
                                                                                             `${data.name}`,
                                                                                             `${data.price}`,
-                                                                                            `${data.description}`                            
+                                                                                            `${data.descriptionIntro}`,                            
+                                                                                            `${data.description}`,                            
                                                                                             )}                                            
                                             >  
                                                 <div style={{   display:'flex',

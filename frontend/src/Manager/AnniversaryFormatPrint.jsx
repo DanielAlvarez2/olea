@@ -21,6 +21,7 @@ export default function AnniversaryFormatPrint(){
     const [pageMargin, setPageMargin] = useState(0)
     const [itemMarginsTopBottom, setItemMarginsTopBottom] = useState(0)
     const [itemMarginsLeftRight, setItemMarginsLeftRight] = useState(0)
+    const [printMode, setPrintMode] = useState(false)
 
     useEffect(()=>getFormatting())
     useEffect(()=>getAnnualEventPrice(),[])
@@ -113,6 +114,20 @@ export default function AnniversaryFormatPrint(){
             .catch(err=>console.log(err))
     }
 
+    function printPage(){
+        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
+            alert(`
+WARNING: 
+
+Printing from Safari Browser is not supported.
+Please switch to a different browser to proceed.
+`)
+            return
+        }else{
+            window.print()
+        }
+    }
+
 
 
     return(
@@ -146,8 +161,8 @@ export default function AnniversaryFormatPrint(){
 
 
 
-
-                            <div>
+                            {!printMode &&
+                            <div className='control-panel'>
 
                                     <div style={{   textAlign:'center',
                                                     display:'flex',
@@ -196,7 +211,34 @@ export default function AnniversaryFormatPrint(){
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                                     onClick={increasePageMargin} /></span>
                                     </div>
+
+                                                                            <div    className='no-print print-btn' 
+                                        style={{margin:'30px auto',background:'limegreen',width:'220px'}}
+                                        onClick={()=>setPrintMode(true)}>
+                                        print preview
+                                        </div>
+                            {/* .control-panel */}
                             </div>
+                            
+                            }
+
+                            {printMode &&
+
+                            <div>
+                                <div    className='no-print print-btn'
+                                        style={{background:'#999',width:'100px'}} 
+                                        onClick={()=>setPrintMode(false)}>
+                                    format
+                                </div>
+                                <div    className='no-print print-btn'
+                                        style={{background:'limegreen',width:'100px'}} 
+                                        onClick={()=>printPage()}>
+                                    print
+                                </div>
+                            
+                            </div>
+
+                            }
                                     
 
 
@@ -208,12 +250,13 @@ export default function AnniversaryFormatPrint(){
 
                               <div className='anniversary-format-print-flexbox' style={{display:'flex'}}>
                               
-                              
+                              {printMode &&
                                 <div    className='dinner-menu-format paper-menu anniversary-paper-menu' 
                                         style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`,
                                                 // backgroundImage:"url('/scan-anniversary.jpg')",
                                                 backgroundSize:'5.5in',
                                                 width:'5.5in',
+                                                border:'none',
                                                 height:'8.5in',
                                                 // color:'red'
                                             }} 
@@ -522,12 +565,15 @@ export default function AnniversaryFormatPrint(){
                                                                
                                 </div>
 
+                              }
+
                                 <div    className='dinner-menu-format paper-menu anniversary-paper-menu' 
                                         style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`,
                                                 // backgroundImage:"url('/scan-anniversary.jpg')",
                                                 backgroundSize:'5.5in',
                                                 width:'5.5in',
                                                 height:'8.5in',
+                                                border:'none',
                                                 // color:'red'
                                             }} 
                                 >
