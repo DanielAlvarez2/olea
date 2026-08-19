@@ -182,7 +182,7 @@ export default function AnniversaryMenu(){
                                         />
                                     }
                                     <br/><br/>
-                                    <h2 style={{marginTop:'-10px'}}>OLEA's {new Date().getFullYear() - 2014} YEAR ANNIVERSARY</h2>
+                                    <h2 style={{marginTop:'-10px'}}>OLEA's {new Date().getFullYear() - 2014} YEAR ANNIVERSARY SPECIALS</h2>
                                     <br/>
                                     
                                     <p>
