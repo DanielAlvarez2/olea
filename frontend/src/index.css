@@ -22,7 +22,7 @@
 }
 @font-face{
   font-family: 'MinionProBold';
-  src: url('./assets/fonts/MinionProBold.otf')
+  src: url('./assets/fonts/MinionProBold.ttf')
 }
 @font-face{
   font-family: 'MinionBoldItalic';
