@@ -284,7 +284,12 @@ export default function AnniversaryFormatPrint(){
                                                 
                                                 {data.descriptionIntro && <span className='description-intro-anniversary'> {data.descriptionIntro};</span>}
                                                 <span className='description-anniversary'> {data.description}</span>
-                                                <span className='price-anniversary'> {data.price}</span>
+                                                {data.price.includes('/') ? <div className='price-anniversary'> {data.price}</div>
+                                                                          : <span className='price-anniversary'> {data.price}</span>
+                                                
+                                                }
+                                                
+                                                
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             </div>
 
@@ -505,9 +510,9 @@ export default function AnniversaryFormatPrint(){
                                                 </span>                                                
                                             </div>
 
-                                            <img    src='/qr-commencement.jpg' 
+                                            <img    src='/qr-anniversary.jpg' 
                                                     className='qr'
-                                                    style={{border:'3px solid red'}}
+                                                    // style={{border:'3px solid red'}}
                                                     height='60px' />
 
                                         </div>

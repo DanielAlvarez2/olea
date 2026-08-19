@@ -221,13 +221,19 @@ export default function Commencement(){
                                             
                                             {/* {data.sequence}<br/> */}
                                             <div>
-                                                <span className='name'>{data.name} </span>
+                                                <span className='name-anniversary'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <br/>
-                                                <span className='description'> {data.description}</span>
+                                                    <span className='allergies-abbreviated-anniversary'> ({data.allergiesAbbreviated})</span>}
+                                                
+                                                {data.descriptionIntro && <span className='description-intro-anniversary'> {data.descriptionIntro};</span>}
+                                                <span className='description-anniversary'> {data.description}</span>
+                                                {data.price.includes('/') ? <div className='price-anniversary'> {data.price}</div>
+                                                                          : <span className='price-anniversary'> {data.price}</span>
+                                                
+                                                }
+                                                
+                                                
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-                                                {data.allergiesComplete && <div style={{color:'red'}}>{data.allergiesComplete}</div>}
                                             </div>
 
 
@@ -264,13 +270,19 @@ export default function Commencement(){
                                             
                                             {/* {data.sequence}<br/> */}
                                             <div>
-                                                <span className='name'>{data.name} </span>
+                                                <span className='name-anniversary'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <br/>
-                                                <span className='description'> {data.description}</span>
-                                                {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
-                                                {data.allergiesComplete && <div style={{color:'red'}}>{data.allergiesComplete}</div>}
+                                                    <span className='allergies-abbreviated-anniversary'> ({data.allergiesAbbreviated})</span>}
+                                                
+                                                {data.descriptionIntro && <span className='description-intro-anniversary'> {data.descriptionIntro};</span>}
+                                                <span className='description-anniversary'> {data.description}</span>
+                                                {data.price.includes('/') ? <div className='price-anniversary'> {data.price}</div>
+                                                                          : <span className='price-anniversary'> {data.price}</span>
+                                                
+                                                }
+                                                
+                                                
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             </div>
 
 
@@ -310,13 +322,19 @@ export default function Commencement(){
                                             
                                             {/* {data.sequence}<br/> */}
                                             <div>
-                                                <span className='name'>{data.name} </span>
+                                                <span className='name-anniversary'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <br/>
-                                                <span className='description'> {data.description}</span>
+                                                    <span className='allergies-abbreviated-anniversary'> ({data.allergiesAbbreviated})</span>}
+                                                
+                                                {data.descriptionIntro && <span className='description-intro-anniversary'> {data.descriptionIntro};</span>}
+                                                <span className='description-anniversary'> {data.description}</span>
+                                                {data.price.includes('/') ? <div className='price-anniversary'> {data.price}</div>
+                                                                          : <span className='price-anniversary'> {data.price}</span>
+                                                
+                                                }
+                                                
+                                                
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-                                                {data.allergiesComplete && <div style={{color:'red'}}>{data.allergiesComplete}</div>}
                                             </div>
 
 
@@ -444,38 +462,45 @@ export default function Commencement(){
 
 
 
-                                    <br/><br/>
-                                    <div className='dessert-footer'>
+                                
 
-                                        <div id='chef-flexbox'>
-                                            <div className='chef-name'>manuel romero, chef</div>
+                                    <div className='dessert-footer-anniversary' 
+                                    // style={{marginTop:'15px'}}
+                                    >
+
+                                        <div style={{display:'flex',justifyContent:'space-between',padding:`0` }}>
+                                            <div className='chef-name-anniversary'>Manuel Romero, chef</div>
                                             <div className='allergy-explanations'>(gl) gluten, (n) nuts, (d) dairy</div>
                                         </div>
 
-                                        <hr
-                                            // style={{background:'blue',border:'none',height:'1px'}}
-                                        />
+                                        <hr/>
                                         
-                                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                                        <div style={{   display:'flex',
+                                                        justifyContent:'space-between',
+                                                        // padding:`0 ${itemMarginsLeftRight}px`,
+                                                        alignItems:'center'}}>
 
                                             
-                                            {/* <img src='qr-dinner.png' height='60px' /> */}
                                             
-                                            <div>
-                                                <span style={{fontWeight:'100',fontSize:'13.2px'}}>
-                                                    <br/><br/>
-                                                    consumer advisory: consumption of undercooked meat, poultry, 
-                                                    eggs, or seafood may increase the risk of food-borne illnesses.
-                                                </span><br/>
-
-                                                
-                                                <span style={{fontWeight:'900',fontSize:'13px'}}>
-                                                    please alert your server if you have special dietary requirements.
-                                                </span>
-                                                
+                                            <div style={{}}>
+                                                <span className='legal-anniversary' style={{fontWeight:'100'}}>
+                                                    
+                                                    Consumer advisory: consumption of undercooked meat, poultry,  
+                                                    
+                                                    eggs, or seafood may increase the risk of foo
+                                                    Please alert your server if you have special dietary requirements.
+                                                </span>                                                
                                             </div>
+
+                                            <img    src='/qr-anniversary.jpg' 
+                                                    className='qr'
+                                                    // style={{border:'3px solid red'}}
+                                                    height='60px' />
+
                                         </div>
-                                    </div>                                </div>
+                                    </div>     
+                                                                    
+                                    </div>
 
 
 
