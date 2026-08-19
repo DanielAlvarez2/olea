@@ -24,20 +24,20 @@ export default function AnniversaryMenu(){
     useEffect(()=>redirectIfEventDisabled(),[])   
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
-    // useEffect(()=>getWebsiteImage(),[])
+    useEffect(()=>getWebsiteImage(),[])
 
     const [websiteImageURL, setWebsiteImageURL] = useState('')
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)    
 
     function getWebsiteImage(){
-        // fetch(`${BASE_URL}/api/events/website-image/${event_url}`)
-        //     .then(res=>res.json())
-        //     .then(data=>{
-        //         setWebsiteImageURL(data.cloudinary_secure_URL)
-        //         setWebsiteImageID(data.cloudinaryPublicID)
-        //     })
-        //     .catch(err=>console.log(err))
+        fetch(`${BASE_URL}/api/events/website-image/${event_url}`)
+            .then(res=>res.json())
+            .then(data=>{
+                setWebsiteImageURL(data.cloudinary_secure_URL)
+                setWebsiteImageID(data.cloudinaryPublicID)
+            })
+            .catch(err=>console.log(err))
     }
 
     const navigate = useNavigate()
@@ -176,11 +176,11 @@ export default function AnniversaryMenu(){
                             >
                                 
                                 <div className='dinner-left'>
-                                    {/* {websiteImageURL &&                                     
+                                    {websiteImageURL &&                                     
                                         <img    src={websiteImageURL} 
                                         style={{maxWidth:'100%'}}
                                         />
-                                    } */}
+                                    }
                                     <br/><br/>
                                     <h2 style={{marginTop:'-10px'}}>OLEA's {new Date().getFullYear() - 2014} YEAR ANNIVERSARY</h2>
                                     <br/>
