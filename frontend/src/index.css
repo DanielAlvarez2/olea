@@ -262,3 +262,42 @@ input[type="file"]::file-selector-button{
   font-family: FuturaBold;
   font-size: 18px;
 }
+.anniversary-paper-menu{
+  /* color:blue !important; */
+}
+.anniversary-paper-menu h3{
+  /* color:blue !important; */
+  font-size:17.6px;
+  font-family: FuturaRoundBold;
+}
+.name-anniversary{
+  font-family:FuturaMedium;
+  font-size:17px;
+  /* font-weight: 900; */
+}
+.description-intro-anniversary{
+  font-family:MinionBoldItalic;
+}
+.description-anniversary{
+  font-family:MinionProRegular;
+  font-size:15px;
+}
+.price-anniversary{
+  font-family:MinionProBold;
+  /* color:blue !important; */
+  font-weight: 900;
+}
+.allergies-abbreviated-anniversary{
+  font-family: MinionProBold;
+  /* color:orange; */
+}
+.chef-name-anniversary{
+  font-family: MinionProBold;
+  font-weight: 900;
+  font-size:15.5px;
+}
+.legal-anniversary{
+  font-family: MinionProRegular;
+  font-size: 12.65px;
+  /* color:red; */
+}

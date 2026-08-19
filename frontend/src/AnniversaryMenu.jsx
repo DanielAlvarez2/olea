@@ -10,11 +10,11 @@ import {useNavigate,Link} from 'react-router'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
-export default function CommencementMenu(){
+export default function AnniversaryMenu(){
 
-    const event = "Commencement"
-    const event_url = 'commencement'
-    const event_obj = 'Commencement'
+    const event = "Olea Anniversary"
+    const event_url = 'olea-anniversary'
+    const event_obj = 'OleaAnniversary'
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -24,21 +24,20 @@ export default function CommencementMenu(){
     useEffect(()=>redirectIfEventDisabled(),[])   
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
-    useEffect(()=>getWebsiteImage(),[])
+    // useEffect(()=>getWebsiteImage(),[])
 
     const [websiteImageURL, setWebsiteImageURL] = useState('')
-    const [websiteImageID, setWebsiteImageID] = useState('')
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)    
 
     function getWebsiteImage(){
-        fetch(`${BASE_URL}/api/events/website-image/${event_url}`)
-            .then(res=>res.json())
-            .then(data=>{
-                setWebsiteImageURL(data.cloudinary_secure_URL)
-                setWebsiteImageID(data.cloudinaryPublicID)
-            })
-            .catch(err=>console.log(err))
+        // fetch(`${BASE_URL}/api/events/website-image/${event_url}`)
+        //     .then(res=>res.json())
+        //     .then(data=>{
+        //         setWebsiteImageURL(data.cloudinary_secure_URL)
+        //         setWebsiteImageID(data.cloudinaryPublicID)
+        //     })
+        //     .catch(err=>console.log(err))
     }
 
     const navigate = useNavigate()
@@ -47,7 +46,12 @@ export default function CommencementMenu(){
         try{
             fetch(`${BASE_URL}/api/annual-events`)
                 .then(res=>res.json())
-                .then(json=> !json[0][event_obj] && navigate('/page-not-found'))
+                .then(json=> {
+                    console.log(json)
+                    console.log(json[0])
+                    console.log(json[0][event_obj])
+                    !json[0][event_obj] && navigate('/page-not-found')
+                })
                 .catch(err=>console.log(err))
 
         }catch(err){
@@ -174,27 +178,17 @@ export default function CommencementMenu(){
                             >
                                 
                                 <div className='dinner-left'>
-                                    {websiteImageURL &&                                     
+                                    {/* {websiteImageURL &&                                     
                                         <img    src={websiteImageURL} 
                                         style={{maxWidth:'100%'}}
                                         />
-                                    }
+                                    } */}
                                     <br/><br/>
-                                    <h2 style={{marginTop:'-10px'}}>COMMENCEMENT (Prix-Fixe Menu)</h2>
+                                    <h2 style={{marginTop:'-10px'}}>OLEA's {new Date().getFullYear() - 2014} YEAR ANNIVERSARY</h2>
                                     <br/>
                                     
                                     <p>
-                                        On Saturday, May 16; Sunday, May 17; and Monday, May 18, there will be 
-                                        a 3-course prix-fixe menu for Commencement. ${annualEventPrice} per 
-                                        person plus tax and gratuity. Beverages are not included.
-                                        <br/><br/>
-                                        PLEASE NOTE: OUR À LA CARTE DINNER MENU IS NOT AVAILABLE.
-                                        <br/><br/>
-                                        Olea requires a credit card to secure this reservation. Canceling within 
-                                        one week of your reservation will incur a $25 per person charge. Please 
-                                        let us know in advance about any food restrictions or allergies.
-                                        <br/><br/>
-                                        Call 203.780.8925 to reserve a table.
+                                        
                                     </p>
 
 
@@ -221,30 +215,37 @@ export default function CommencementMenu(){
 
                                         
                                         <br/><br/>
-                                        <h2>APPETIZERS <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
+                                        <h2>APPETIZERS</h2>
                                         {/* <br/> */}
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
-                                    return(
-                                        <div    key={data._id}
-                                                onClick={()=>showModal(data.cloudinary_secure_URL,data.name,data.description,data.allergiesAbbreviated,data.allergiesComplete)} 
-                                                className='special'>
-                                            
-                                            {/* {data.sequence}<br/> */}
-                                            <span>
-                                                <span className='name'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            </span><br/>
-                                            <span className='description'>{data.description}</span>
-                                            {data.postDescription && <span className='post-description'>&nbsp;{data.postDescription}</span>}
-                                            {/* <div className='allergies-complete'>{data.allergiesComplete}</div> */}
-
-                                            <br/>
-
-                                        </div>
-                                    )
-                                })}
+                                        return(
+                                            <div    key={data._id}
+                                                    onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.description}`                            
+                                                                                            )}                                            
+                                            >  
+                                                <div style={{   display:'flex',
+                                                                alignItems:'flex-end',
+                                                                justifyContent:'space-between',
+                                                                }}>
+                                                    <span>
+                                                        <span className='website-name'>{data.name}</span><br/>
+                                                    </span>
+                                                        <span>{data.price.includes('/') ?   <div style={{textAlign:'right'}}>
+                                                                                                {data.price.split('/')[0].trim()}<br/>
+                                                                                                {data.price.split('/')[1].trim()}
+                                                                                            </div> 
+                                                                                        : data.price}</span>
+                                                </div>
+                                                    {data.descriptionIntro && <span>{data.descriptionIntro};&nbsp;</span>}
+                                                    {data.description}
+                                                <br/><br/>
+                                            </div>
+                                        )                                            
+                                            })}
 
 
 
@@ -266,60 +267,72 @@ export default function CommencementMenu(){
 
 
                                         <br/><br/>
-                                        <h2>ENTRÉES <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
+                                        <h2>ENTRÉES</h2>
                                         {/* <br/> */}
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
-                                    return(
-                                        <div    key={data._id}
-                                                onClick={()=>showModal(data.cloudinary_secure_URL,data.name,data.description,data.allergiesAbbreviated,data.allergiesComplete)} 
-                                                className='special'>
-                                            
-                                            {/* {data.sequence}<br/> */}
-                                            <span>
-                                                <span className='name'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            </span>
-                                            <br/>
-                                            <span className='description'>{data.description}</span>
-                                            {data.postDescription && <span className='post-description'>&nbsp;{data.postDescription}</span>}
-                                            {/* <div className='allergies-complete'>{data.allergiesComplete}</div> */}
-
-                                            <br/><br/>
-
-                                        </div>
-                                    )
+                                        return(
+                                            <div    key={data._id}
+                                                    onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.description}`                            
+                                                                                            )}                                            
+                                            >  
+                                                <div style={{   display:'flex',
+                                                                alignItems:'flex-end',
+                                                                justifyContent:'space-between',
+                                                                }}>
+                                                    <span>
+                                                        <span className='website-name'>{data.name}</span><br/>
+                                                    </span>
+                                                        <span>{data.price.includes('/') ?   <div style={{textAlign:'right'}}>
+                                                                                                {data.price.split('/')[0].trim()}<br/>
+                                                                                                {data.price.split('/')[1].trim()}
+                                                                                            </div> 
+                                                                                        : data.price}</span>
+                                                </div>
+                                                    {data.descriptionIntro && <span>{data.descriptionIntro};&nbsp;</span>}
+                                                    {data.description}
+                                                <br/><br/>
+                                            </div>
+                                        )                                            
                                 })}
 
 
 
 
                                         <br/><br/>
-                                        <h2>DESSERTS <span style={{fontFamily:'FuturaLight'}}>(choose one)</span></h2>
+                                        <h2>DESSERT</h2>
                                         {/* <br/> */}
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).map(data=>{
-                                    return(
-                                        <div    key={data._id}
-                                                onClick={()=>showModal(data.cloudinary_secure_URL,data.name,data.description,data.allergiesAbbreviated,data.allergiesComplete)} 
-                                                className='special'>
-                                            
-                                            {/* {data.sequence}<br/> */}
-                                            <span>
-                                                <span className='name'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                            </span>
-                                            <br/>
-                                            <span className='description'>{data.description}</span>
-                                            {data.postDescription && <span className='post-description'>&nbsp;{data.postDescription}</span>}
-                                            {/* <div className='allergies-complete'>{data.allergiesComplete}</div> */}
-
-                                            <br/><br/>
-
-                                        </div>
-                                    )
+                                        return(
+                                            <div    key={data._id}
+                                                    onClick={()=>showModal( `${data.cloudinary_secure_URL}`,
+                                                                                            `${data.name}`,
+                                                                                            `${data.price}`,
+                                                                                            `${data.description}`                            
+                                                                                            )}                                            
+                                            >  
+                                                <div style={{   display:'flex',
+                                                                alignItems:'flex-end',
+                                                                justifyContent:'space-between',
+                                                                }}>
+                                                    <span>
+                                                        <span className='website-name'>{data.name}</span><br/>
+                                                    </span>
+                                                        <span>{data.price.includes('/') ?   <div style={{textAlign:'right'}}>
+                                                                                                {data.price.split('/')[0].trim()}<br/>
+                                                                                                {data.price.split('/')[1].trim()}
+                                                                                            </div> 
+                                                                                        : data.price}</span>
+                                                </div>
+                                                    {data.descriptionIntro && <span>{data.descriptionIntro};&nbsp;</span>}
+                                                    {data.description}
+                                                <br/><br/>
+                                            </div>
+                                        )                                            
                                 })}
 
 
