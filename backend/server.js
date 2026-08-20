@@ -27,6 +27,7 @@ const WinelistFormat = require('./models/WinelistFormat.js')
 const DinnerFormat = require('./models/DinnerFormat.js')
 const MothersDayFormat = require('./models/MothersDayFormat.js')
 const CommencementFormat = require('./models/CommencementFormat.js')
+const AnniversaryFormat = require('./models/AnniversaryFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
 const TastingMenuPricing = require('./models/TastingMenuPricing.js')
 const AnnualEvents = require('./models/AnnualEvents.js')
@@ -2821,6 +2822,24 @@ app.get('/api/formats/commencement', async(req,res)=>{
     }
 })
 
+app.get('/api/formats/anniversary', async(req,res)=>{ 
+    try{
+        let allFormats = await AnniversaryFormat.find()
+        if (allFormats.length == 0){
+            await AnniversaryFormat.create({
+                // pageMargin: 25,
+                itemMarginsTopBottom: 0,
+                itemMarginsLeftRight: 0
+            })
+            allFormats = await AnniversaryFormat.find()
+        }
+        console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/formats/takeout', async(req,res)=>{ 
     try{
         let allFormats = await TakeoutFormat.find()
@@ -3103,6 +3122,18 @@ app.put('/api/formats/commencement/decreaseItemMarginsLeftRight', async(req,res)
     }
 })
 
+app.put('/api/formats/anniversary/decreaseItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await AnniversaryFormat.find()
+        console.log(allFormats[0])
+        await AnniversaryFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsLeftRight: allFormats[0].itemMarginsLeftRight - 1})
+        res.json("item margins left/right decreased")
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/mothers-day/increaseItemMarginsLeftRight', async(req,res)=>{
     try{
         const allFormats = await MothersDayFormat.find()
@@ -3120,6 +3151,18 @@ app.put('/api/formats/commencement/increaseItemMarginsLeftRight', async(req,res)
         const allFormats = await CommencementFormat.find()
         console.log(allFormats[0])
         await CommencementFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsLeftRight: allFormats[0].itemMarginsLeftRight + 1})
+        res.json("item margins left/right increased")
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/anniversary/increaseItemMarginsLeftRight', async(req,res)=>{
+    try{
+        const allFormats = await AnniversaryFormat.find()
+        console.log(allFormats[0])
+        await AnniversaryFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {itemMarginsLeftRight: allFormats[0].itemMarginsLeftRight + 1})
         res.json("item margins left/right increased")
     }catch(err){
@@ -3175,6 +3218,18 @@ app.put('/api/formats/commencement/decreaseItemMarginsTopBottom', async(req,res)
     }
 })
 
+app.put('/api/formats/anniversary/decreaseItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await AnniversaryFormat.find()
+        console.log(allFormats[0])
+        await AnniversaryFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsTopBottom: allFormats[0].itemMarginsTopBottom - 1})
+        res.json('item margins top/bottom decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/mothers-day/increaseItemMarginsTopBottom', async(req,res)=>{
     try{
         const allFormats = await MothersDayFormat.find()
@@ -3192,6 +3247,18 @@ app.put('/api/formats/commencement/increaseItemMarginsTopBottom', async(req,res)
         const allFormats = await CommencementFormat.find()
         console.log(allFormats[0])
         await CommencementFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsTopBottom: allFormats[0].itemMarginsTopBottom + 1})
+        res.json('item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/anniversary/increaseItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await AnniversaryFormat.find()
+        console.log(allFormats[0])
+        await AnniversaryFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {itemMarginsTopBottom: allFormats[0].itemMarginsTopBottom + 1})
         res.json('item margins top/bottom increased')
     }catch(err){

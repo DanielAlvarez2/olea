@@ -18,13 +18,13 @@ export default function AnniversaryFormatPrint(){
     const [annualEventPrice, setAnnualEventPrice] = useState(0)      
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
     const [formatting, setFormatting] = useState([])
-    const [pageMargin, setPageMargin] = useState(0)
+    // const [pageMargin, setPageMargin] = useState(0)
     const [itemMarginsTopBottom, setItemMarginsTopBottom] = useState(0)
     const [itemMarginsLeftRight, setItemMarginsLeftRight] = useState(0)
     const [printMode, setPrintMode] = useState(false)
 
     useEffect(()=>getFormatting())
-    useEffect(()=>getAnnualEventPrice(),[])
+    // useEffect(()=>getAnnualEventPrice(),[])
     useEffect(()=>getAnnualEventsMenuItems(),[])
     
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -60,11 +60,11 @@ export default function AnniversaryFormatPrint(){
     
     function getFormatting(){
         try{
-            fetch(`${BASE_URL}/api/formats/commencement`)
+            fetch(`${BASE_URL}/api/formats/anniversary`)
                 .then(res=>res.json())
                 .then(json=>{
                     setFormatting(json[0])
-                    setPageMargin(json[0].pageMargin)
+                    // setPageMargin(json[0].pageMargin)
                     setItemMarginsTopBottom(json[0].itemMarginsTopBottom)
                     setItemMarginsLeftRight(json[0].itemMarginsLeftRight)
                 })
@@ -76,26 +76,26 @@ export default function AnniversaryFormatPrint(){
 
     function decreaseItemMarginsLeftRight(){
         if (itemMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/commencement/decreaseItemMarginsLeftRight`, {method:'PUT'})
+        fetch(`${BASE_URL}/api/formats/anniversary/decreaseItemMarginsLeftRight`, {method:'PUT'})
             .then(()=>getFormatting())
             .catch(err=>console.log(err))
     }
 
     function increaseItemMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/commencement/increaseItemMarginsLeftRight`, {method:'PUT'})
+        fetch(`${BASE_URL}/api/formats/anniversary/increaseItemMarginsLeftRight`, {method:'PUT'})
             .then(()=>getFormatting())
             .catch(err=>console.log(err))
     }
 
     function decreaseItemMarginsTopBottom(){
         if (itemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/commencement/decreaseItemMarginsTopBottom`, {method:'PUT'})
+        fetch(`${BASE_URL}/api/formats/anniversary/decreaseItemMarginsTopBottom`, {method:'PUT'})
             .then(()=>getFormatting())
             .catch(err=>console.log(err))
     }
 
     function increaseItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/commencement/increaseItemMarginsTopBottom`, {method:'PUT'})
+        fetch(`${BASE_URL}/api/formats/anniversary/increaseItemMarginsTopBottom`, {method:'PUT'})
             .then(()=>getFormatting())
             .catch(err=>console.log(err))
     }
@@ -196,7 +196,7 @@ Please switch to a different browser to proceed.
                                                                     onClick={increaseItemMarginsLeftRight} /></span>
                                     </div>
 
-                                    <div style={{   textAlign:'center',
+                                    {/* <div style={{   textAlign:'center',
                                                     display:'flex',
                                                     gap:'10px',
                                                     background:'#eee',
@@ -210,7 +210,7 @@ Please switch to a different browser to proceed.
                                         <span>page margin</span>
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                                     onClick={increasePageMargin} /></span>
-                                    </div>
+                                    </div> */}
 
                                                                             <div    className='no-print print-btn' 
                                         style={{margin:'30px auto',background:'limegreen',width:'220px'}}
@@ -252,9 +252,11 @@ Please switch to a different browser to proceed.
                               
                               {printMode &&
                                 <div    className='dinner-menu-format paper-menu anniversary-paper-menu' 
-                                        style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`,
+                                        style={{
+                                                // padding:`${pageMargin/2}px ${pageMargin}px 0px`,
                                                 // backgroundImage:"url('/scan-anniversary.jpg')",
                                                 backgroundSize:'5.5in',
+                                                padding: '0 30px',
                                                 width:'5.5in',
                                                 border:'none',
                                                 height:'8.5in',
@@ -568,7 +570,9 @@ Please switch to a different browser to proceed.
                               }
 
                                 <div    className='dinner-menu-format paper-menu anniversary-paper-menu' 
-                                        style={{padding:`${pageMargin/2}px ${pageMargin}px 0px`,
+                                        style={{
+                                                // padding:`${pageMargin/2}px ${pageMargin}px 0px`,
+                                                padding: '0 30px',
                                                 // backgroundImage:"url('/scan-anniversary.jpg')",
                                                 backgroundSize:'5.5in',
                                                 width:'5.5in',

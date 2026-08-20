@@ -48,12 +48,14 @@ export default function Commencement(){
 
 
 
-    function showModal(pic,name,description,allergiesComplete){
+    function showModal(pic,name,price,descriptionIntro,description,allergiesComplete){
         if(!pic) return
         document.querySelector('.modal').style.display = 'grid'
         document.querySelector('.modal-image').src = pic
         document.querySelector('.modal-name').innerHTML = name
+        document.querySelector('.modal-price').innerHTML = price.includes('/') ? `${price.split('/').map(item=>item.trim()).join('<br/>')}` : price
         document.querySelector('.modal-description').innerHTML = description   
+        if(descriptionIntro) document.querySelector('.modal-description-intro').innerHTML = `${descriptionIntro}; `   
         document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete    
     }
 
@@ -61,6 +63,7 @@ export default function Commencement(){
         document.querySelector('.modal-image').src = ''
         document.querySelector('.modal-name').innerHTML = ''
         document.querySelector('.modal-description').innerHTML = ''
+        document.querySelector('.modal-description-intro').innerHTML = ''
         document.querySelector('.modal').style.display = 'none'
         document.querySelector('.modal-allergies-complete').innerHTML = ''
     }
@@ -114,9 +117,11 @@ export default function Commencement(){
                             <figure style={{display:'table'}}>
                                 <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw',borderRadius:'25px'}} />
                                 <figcaption style={{display:'table-caption',padding:'10px',captionSide:'bottom',borderRadius:'25px',background:'#ccc'}}>
-                                    <div style={{display:'flex',justifyContent:'space-between'}}>
+                                    <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
                                         <span className='modal-name' style={{fontWeight:'900'}}></span>
+                                        <span className='modal-price' style={{textAlign:'right'}}></span>
                                     </div>
+                                    <span className='modal-description-intro'></span>
                                     <span className='modal-description'></span>
                                     <div className='modal-allergies-complete'></div>
                                 </figcaption>
@@ -212,6 +217,8 @@ export default function Commencement(){
                                         <div    key={data._id} 
                                                 onClick={()=>showModal( data.cloudinary_secure_URL,
                                                                     data.name,
+                                                                    data.price,
+                                                                    data.descriptionIntro,
                                                                     data.description,
                                                                     data.allergiesComplete)}
                                                 
@@ -261,6 +268,8 @@ export default function Commencement(){
                                         <div    key={data._id} 
                                                 onClick={()=>showModal( data.cloudinary_secure_URL,
                                                                     data.name,
+                                                                    data.price,
+                                                                    data.descriptionIntro,
                                                                     data.description,
                                                                     data.allergiesComplete)}
                                                 
@@ -310,6 +319,8 @@ export default function Commencement(){
                                         <div    key={data._id} 
                                                 onClick={()=>showModal( data.cloudinary_secure_URL,
                                                                     data.name,
+                                                                    data.price,
+                                                                    data.descriptionIntro,
                                                                     data.description,
                                                                     data.allergiesComplete)}
                                                 
