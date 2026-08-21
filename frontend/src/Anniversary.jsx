@@ -10,7 +10,7 @@ import {useNavigate,Link} from 'react-router'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 
-export default function AnniversaryMenu(){
+export default function Anniversary(){
 
     const event = "Olea Anniversary"
     const event_url = 'olea-anniversary'

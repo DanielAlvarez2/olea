@@ -27,7 +27,7 @@ import TakeoutScan from './Manager/TakeoutMenuScan.jsx'
 import AnniversaryQR from './AnniversaryQR.jsx'
 import AnniversaryScan from './Manager/AnniversaryScan.jsx'
 import AnniversaryUpdate from './Manager/AnniversaryUpdate.jsx'
-import AnniversaryMenu from './AnniversaryMenu.jsx'
+import Anniversary from './Anniversary.jsx'
 import AnniversaryFormatPrint from './Manager/AnniversaryFormatPrint.jsx'
 import EventsAnniversary from './Manager/EventsAnniversary.jsx'
 
@@ -206,7 +206,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='anniversary-qr' element={<AnniversaryQR />} />
         <Route path='anniversary-scan' element={<AnniversaryScan />} />
         <Route path='anniversary-update' element={<AnniversaryUpdate />} />
-        <Route path='anniversary-menu' element={<AnniversaryMenu />} />
+        <Route path='anniversary' element={<Anniversary />} />
         <Route path='anniversary-format-print' element={<AnniversaryFormatPrint />} />
         <Route path='events-anniversary' element={<EventsAnniversary />} />
         
