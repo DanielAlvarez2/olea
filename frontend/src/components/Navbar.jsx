@@ -142,7 +142,7 @@ export default function Navbar(){
                                     {commencement && <li><Link to='/commencement-menu'>comencement {new Date().getFullYear()}</Link></li>}
                                     
                                     <li><Link to='/dinner'>dinner</Link></li>
-                                    {oleaAnniversary && <li><Link to='/anniversary-menu'>{new Date().getFullYear() - 2014}yr anniversary</Link></li>}
+                                    {oleaAnniversary && <li><Link to='/anniversary'>{new Date().getFullYear() - 2014}yr anniversary</Link></li>}
                                     {!oleaAnniversary && <li><Link to='/specials'>specials</Link></li>}
                                     <li><Link to='/dessert'>dessert</Link></li>
                                 </ul>
@@ -195,7 +195,7 @@ export default function Navbar(){
                             {commencement && <Link to='/commencement-menu'><li className='mobile-menu-dropdown'><span>commencement {new Date().getFullYear()}</span></li></Link>}
                             
                             <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
-                            {oleaAnniversary && <Link to='/anniversary-menu'><li className='mobile-menu-dropdown'><span>{new Date().getFullYear() - 2014}yr anniversary</span></li></Link>}
+                            {oleaAnniversary && <Link to='/anniversary'><li className='mobile-menu-dropdown'><span>{new Date().getFullYear() - 2014}yr anniversary</span></li></Link>}
                             {!oleaAnniversary && <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>}
                             <Link to='/dessert'><li className='mobile-menu-dropdown'><span>dessert</span></li></Link>
                         </ul>
