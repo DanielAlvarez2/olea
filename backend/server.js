@@ -153,6 +153,15 @@ ${req.body.comments}
     }
 })
 
+app.get('/api/users', async(req,res)=>{
+    try{
+        const allUsers = await User.find()
+        // console.log(allUsers.forEach(user=>user.accountCreated))
+        res.json(allUsers)
+    }catch(err){
+        console.log(err)
+    }
+})
 app.post('/api/users/create', async(req,res)=>{
     try{
         await User.create({

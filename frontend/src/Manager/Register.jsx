@@ -102,6 +102,7 @@ Enter your Email & Password there to continue.
                             name='register-email' 
                             id='register-email' 
                             required
+                            autocomplete='off'
                             placeholder='name@website.com' />
                 </label>
                 <br/><br/>
