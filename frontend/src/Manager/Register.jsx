@@ -67,7 +67,8 @@ be redirected there after closing this screen.
                             })
                             .then(alert(`
 Your user account has been created successfully.
-You will now be redirected to the login page.                                
+You will now be redirected to the login page.  
+Enter your Email & Password there to continue.                              
                                 `))
                             .then(window.location.replace('/login'))
                             .catch(err=>console.log(err))
@@ -130,6 +131,7 @@ You will now be redirected to the login page.
                     <input  type='text' 
                             name='register-username'
                             id='register-username'
+                            autocomplete='off'
                             required
                             placeholder='John S' />
                 </label>

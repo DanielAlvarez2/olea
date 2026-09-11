@@ -55,7 +55,7 @@ console.log(''); //SEMICOLON REQUIRED BEFORE IIFE!!!
 })()
 
 const PORT = process.env.PORT || 1436
-app.listen(PORT, ()=> console.log(`Server Listening on Port: ${PORT}`))
+app.listen(PORT, '0.0.0.0', ()=> console.log(`Server Listening on Port: ${PORT}`))
 
 app.post('/api/job-application', async(req,res)=>{
     try{
