@@ -30,12 +30,15 @@ export default function UsersControlPanel(){
       </div>
 
       {users.map(user=>
-        <div key={user._id}>
-          {user.username}
+        <div key={user._id} style={{border:'1px solid grey',maxWidth:'300px',margin:'0 auto 5px',padding:'5px',borderRadius:'10px',background:'#eee'}}>
+          {user.username}<br/>
           {user.email}<br/>
           {Date.now() - user.accountCreated < 3600000 && `${((Date.now() - user.accountCreated)/60000).toFixed(0)} minutes ago`}
           {Date.now() - user.accountCreated < 86400000 && Date.now() - user.accountCreated >= 3600000 && `${((Date.now() - user.accountCreated)/3600000).toFixed(0)} hours ago`}
           {Date.now() - user.accountCreated >= 86400000 && `${((Date.now() - user.accountCreated)/86400000).toFixed(0)} days ago`}
+           <br/><br/>
+           <span style={{fontSize:'12px',background:'#20aa20ff',color:'white',padding:'5px',borderRadius:'5px',marginRight:'5px',cursor:'pointer'}}>APPROVE</span>
+           <span style={{fontSize:'12px',background:'red',color:'white',padding:'5px',borderRadius:'5px',cursor:'pointer'}}>DELETE</span>
            <br/><br/>
         </div>)}
     </div>
