@@ -192,6 +192,7 @@ app.post('/api/users/login', async(req,res)=>{
             isPasswordCorrect = await bcrypt.compare(req.body.formSubmittedPassword, unknownUser[0].password)
             console.log('isPasswordCorrect: ')
             console.log(isPasswordCorrect)
+            if (!isPasswordCorrect) unknownUser = []
         }else{
             console.log('User Email Not Found in Database')
         }
