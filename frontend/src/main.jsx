@@ -187,9 +187,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
         <Route path='protected-route' element={<ProtectedRoute />} />
-        <Route path='dashboard' element={<Dashboard />} />
+        <Route path='manager/dashboard' element={<Dashboard />} />
         <Route path='guest-user' element={<GuestUser />} />
-        <Route path='users-control-panel' element={<UsersControlPanel />} />
+        <Route path='manager/users-control-panel' element={<UsersControlPanel />} />
 
 
 

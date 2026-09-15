@@ -4,9 +4,37 @@ import { RiShieldKeyholeFill } from "react-icons/ri";
 
 export default function Login(){
 
+
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'    
+    
+    let allCookiesArray = []
+    let currentSessionCookie = ''
+    let allCookies = ''
+    let oleaCookie
+    allCookies = document.cookie ? document.cookie : ''
+    if (allCookies) allCookiesArray = allCookies.split('; ')
+    if(allCookiesArray) oleaCookie = allCookiesArray.filter(cookie=>cookie.startsWith('olea-session'))
+    if(oleaCookie.length > 0) currentSessionCookie = oleaCookie[0].split('=')[1]
+    if (currentSessionCookie){
+        fetch(`${BASE_URL}/api/sessions/compare/${currentSessionCookie}`)
+            .then(res=>res.json())
+            .then(data=>data ? window.location.replace('/manager/dashboard') : console.log('User is not logged in yet'))
+            .catch(err=>console.log(err))
+    }
+
+
+    async function createSession(id){
+        fetch(`${BASE_URL}/api/sessions/create`, {method:'POST',
+                                                        headers:{'Content-Type':'application/json'},
+                                                        body: JSON.stringify({id})
+        })
+        .then(res=>res.json())
+        .then(data=>document.cookie = `olea-session=${data};max-age=86400;path=/`)
+        .then(alert('Session Created'))
+        .catch(err=>console.log(err))
+    }
 
     async function loginUser(formData){
         if(formData.get('login-password').trim() == ''){
@@ -14,7 +42,7 @@ export default function Login(){
             setTimeout(()=> document.querySelector('#login-email').value = formData.get('login-email'),10)
             return
         }
-        await fetch(`${BASE_URL}/api/users/login`,{
+        fetch(`${BASE_URL}/api/users/login`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({
@@ -24,13 +52,16 @@ export default function Login(){
         })
         .then(res=>res.json())
         .then(unknownUser=>{
-            console.log(unknownUser[0])
+            // console.log(unknownUser[0])
             if(!unknownUser[0]){
                 alert('Incorrect Email or Password.')
                 return
             }else{
                 if(unknownUser[0].role == 'guest') window.location.replace('/guest-user')
-                if(unknownUser[0].role == 'manager') window.location.replace('/dashboard')
+                if(unknownUser[0].role == 'manager'){
+                    createSession(unknownUser[0]._id)
+                    // window.location.replace('/manager/dashboard')
+                } 
             }
         })
         .catch(err=>console.log(err))

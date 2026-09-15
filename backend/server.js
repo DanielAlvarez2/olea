@@ -35,6 +35,7 @@ const AnnualEventsMenuItem = require('./models/AnnualEventsMenuItem.js')
 const AnnualEventsPrice = require('./models/AnnualEventsPrice.js')
 const AnnualEventsWebsiteImage = require('./models/AnnualEventsWebsiteImage.js')
 const User = require('./models/User.js')
+const Session = require('./models/Session.js')
 const bcrypt = require('bcryptjs')
 
 const {cloudinary} = require('./middleware/cloudinary.js')
@@ -153,15 +154,55 @@ ${req.body.comments}
     }
 })
 
+app.post('/api/sessions/create', async(req,res)=>{
+    const now = Date.now()
+    const sessionID = `${req.body.id}${now}`
+    await Session.create({
+        userID:req.body.id,
+        createdAt: now,
+        sessionID
+    })
+    res.json(sessionID)
+})
+
+app.get('/api/sessions/compare/:cookie', async(req,res)=>{
+    const validCookie = await Session.find({sessionID:req.params.cookie})
+    res.json(validCookie)
+})
+
 app.get('/api/users', async(req,res)=>{
     try{
-        const allUsers = await User.find()
+        async function deleteUser(id){
+            await User.findByIdAndDelete(id)
+        }
+        let allUsers = await User.find().sort({accountCreated:-1})
+        allUsers.forEach(user=> user.role == 'guest' && Date.now() - user.accountCreated >= 3600000 && deleteUser(user._id))
         // console.log(allUsers.forEach(user=>user.accountCreated))
+        allUsers = await User.find().sort({accountCreated:-1})
         res.json(allUsers)
     }catch(err){
         console.log(err)
     }
 })
+
+app.delete('/api/users/delete/:id', async(req,res)=>{
+    try{
+        await User.findByIdAndDelete(req.params.id)
+        res.json('User Deleted')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/users/approve/:id', async(req,res)=>{
+    try{
+        await User.findByIdAndUpdate(req.params.id, {role:'manager'})
+        res.json('User Approved')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.post('/api/users/create', async(req,res)=>{
     try{
         await User.create({
