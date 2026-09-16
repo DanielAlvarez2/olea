@@ -98,6 +98,7 @@ import PrinterConfig from './Manager/PrinterConfig.jsx'
 import Login from './Manager/Login.jsx'
 import Register from './Manager/Register.jsx'
 import Dashboard from './Manager/Dashboard.jsx'
+import Dashboard2 from './Manager/Dashboard2.jsx'
 import GuestUser from './Manager/GuestUser.jsx'
 import UsersControlPanel from './Manager/UsersControlPanel.jsx'
 import ProtectedRoute from './Manager/ProtectedRoute.jsx'
@@ -188,6 +189,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='register' element={<Register />} />
         <Route path='protected-route' element={<ProtectedRoute />} />
         <Route path='manager/dashboard' element={<Dashboard />} />
+        <Route path='manager/dashboard2' element={<Dashboard2 />} />
         <Route path='guest-user' element={<GuestUser />} />
         <Route path='manager/users-control-panel' element={<UsersControlPanel />} />
 

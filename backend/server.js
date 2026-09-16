@@ -166,8 +166,22 @@ app.post('/api/sessions/create', async(req,res)=>{
 })
 
 app.get('/api/sessions/compare/:cookie', async(req,res)=>{
-    const validCookie = await Session.find({sessionID:req.params.cookie})
-    res.json(validCookie)
+    let allSessions = await Session.find()
+    async function deleteOldSessions(allSessions){
+        for (const session of allSessions){
+            if(Date.now() - session.createdAt > 60000) await Session.findByIdAndDelete(session._id)
+        }
+    }
+    deleteOldSessions(allSessions)
+    setTimeout(async()=>{
+        let session = await Session.findOne({sessionID:req.params.cookie})
+        res.json(session)    
+    },100)
+})
+
+app.get('/api/sessions/logout/:session', async (req,res)=>{
+    await Session.findOneAndDelete({sessionID:req.params.session})
+    res.json('Session Ended')
 })
 
 app.get('/api/users', async(req,res)=>{

@@ -1,15 +1,13 @@
 
-export default function Dashboard(){
+export default function Dashboard2(){
 
       const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'    
 
     function approveAccess(){
-      console.log('document.cookie:')
-      console.log(document.cookie)
       let currentSession 
-      if (document.cookie != '') currentSession = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
+      if(document.cookie) currentSession = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
       if(currentSession){
         fetch(`${BASE_URL}/api/sessions/compare/${currentSession}`)
           .then(res=>res.json())
@@ -19,7 +17,7 @@ export default function Dashboard(){
         window.location.replace('/login')
       }
     }        
-  
+    
     approveAccess()
 
     function logout(){
@@ -36,7 +34,7 @@ export default function Dashboard(){
     return(
         <div style={{width:'100%'}}>
             <br/>
-            <h1 style={{textAlign:'center'}}>Dashboard</h1>
+            <h1 style={{textAlign:'center'}}>Dashboard TWO</h1>
             <h2 style={{textAlign:'center'}}>Protected Route</h2>
             <span onClick={()=>logout()} style={{background:'red',color:'white',padding:'5px 10px',borderRadius:'5px',cursor:'pointer'}}>Logout</span>
         </div>

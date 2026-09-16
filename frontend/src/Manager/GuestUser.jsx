@@ -1,6 +1,23 @@
 import { FaUserCheck } from "react-icons/fa";
 
 export default function GuestUser(){
+
+      const BASE_URL = (process.env.NODE_ENV == 'production') ?
+                    'https://olea-iwpz.onrender.com' : 
+                    'http://localhost:1436'    
+
+    function deleteSession(){
+      let currentSession
+      if(document.cookie) currentSession = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
+      if(currentSession){
+        fetch(`${BASE_URL}/api/sessions/logout/${currentSession}`)
+          .then(alert('Sessions Cleared'))
+          .catch(err=>console.log(err))      
+      }
+  }
+  
+  deleteSession()                    
+
     return(
             <div style={{ width:'100%',
                           minHeight:'100vh',

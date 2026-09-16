@@ -8,6 +8,22 @@ export default function Register(){
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
+    let allCookiesArray = []
+    let currentSessionCookie = ''
+    let allCookies = ''
+    let oleaCookie
+    allCookies = document.cookie ? document.cookie : ''
+    if (allCookies) allCookiesArray = allCookies.split('; ')
+    if(allCookiesArray) oleaCookie = allCookiesArray.filter(cookie=>cookie.startsWith('olea-session'))
+    if(oleaCookie.length > 0) currentSessionCookie = oleaCookie[0].split('=')[1]
+    if (currentSessionCookie){
+        fetch(`${BASE_URL}/api/sessions/compare/${currentSessionCookie}`)
+            .then(res=>res.json())
+            .then(data=>data ? window.location.replace('/manager/dashboard') : console.log('User is not logged in yet'))
+            .catch(err=>console.log(err))
+    }
+
+
     async function createUser(formData){
 
         let duplicateUser = false
@@ -102,7 +118,7 @@ Enter your Email & Password there to continue.
                             name='register-email' 
                             id='register-email' 
                             required
-                            autocomplete='off'
+                            autoComplete='off'
                             placeholder='name@website.com' />
                 </label>
                 <br/><br/>
@@ -132,7 +148,7 @@ Enter your Email & Password there to continue.
                     <input  type='text' 
                             name='register-username'
                             id='register-username'
-                            autocomplete='off'
+                            autoComplete='off'
                             required
                             placeholder='John S' />
                 </label>

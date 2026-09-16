@@ -25,7 +25,7 @@ export default function Login(){
     }
 
 
-    async function createSession(id){
+    function createSession(id){
         fetch(`${BASE_URL}/api/sessions/create`, {method:'POST',
                                                         headers:{'Content-Type':'application/json'},
                                                         body: JSON.stringify({id})
@@ -35,6 +35,18 @@ export default function Login(){
         .then(alert('Session Created'))
         .catch(err=>console.log(err))
     }
+
+  function deleteSession(){
+    let currentSession
+      if(document.cookie) currentSession = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
+      if(currentSession){
+        fetch(`${BASE_URL}/api/sessions/logout/${currentSession}`)
+          .then(alert('Sessions Cleared'))
+          .catch(err=>console.log(err))      
+      }
+  }
+  
+
 
     async function loginUser(formData){
         if(formData.get('login-password').trim() == ''){
@@ -57,10 +69,13 @@ export default function Login(){
                 alert('Incorrect Email or Password.')
                 return
             }else{
-                if(unknownUser[0].role == 'guest') window.location.replace('/guest-user')
+                if(unknownUser[0].role == 'guest'){
+                    deleteSession()
+                    window.location.replace('/guest-user')
+                } 
                 if(unknownUser[0].role == 'manager'){
                     createSession(unknownUser[0]._id)
-                    // window.location.replace('/manager/dashboard')
+                    window.location.replace('/manager/dashboard')
                 } 
             }
         })
@@ -87,6 +102,7 @@ export default function Login(){
                             id='login-email'
                             name='login-email'
                             required
+                            autoComplete='off'
                             placeholder='name@website.com' />
                 </label>
                 <br/><br/>
