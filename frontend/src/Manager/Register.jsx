@@ -19,7 +19,7 @@ export default function Register(){
     if (currentSessionCookie){
         fetch(`${BASE_URL}/api/sessions/compare/${currentSessionCookie}`)
             .then(res=>res.json())
-            .then(data=>data ? window.location.replace('/manager/dashboard') : console.log('User is not logged in yet'))
+            .then(data=>data ? window.location.replace('/manager') : console.log('User is not logged in yet'))
             .catch(err=>console.log(err))
     }
 

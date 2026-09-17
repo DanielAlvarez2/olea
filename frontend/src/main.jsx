@@ -101,6 +101,7 @@ import Dashboard from './Manager/Dashboard.jsx'
 import Dashboard2 from './Manager/Dashboard2.jsx'
 import GuestUser from './Manager/GuestUser.jsx'
 import UsersControlPanel from './Manager/UsersControlPanel.jsx'
+import ManageUsers from './Manager/ManageUsers.jsx'
 import ProtectedRoute from './Manager/ProtectedRoute.jsx'
 
 import Menu from './Menu.jsx'
@@ -192,6 +193,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='manager/dashboard2' element={<Dashboard2 />} />
         <Route path='guest-user' element={<GuestUser />} />
         <Route path='manager/users-control-panel' element={<UsersControlPanel />} />
+        <Route path='manage-users' element={<ManageUsers />} />
 
 
 

@@ -155,8 +155,10 @@ ${req.body.comments}
 })
 
 app.post('/api/sessions/create', async(req,res)=>{
+    console.log('/api/sessions/create')
+    console.log(`req.body.id: ${req.body.id}`)
     const now = Date.now()
-    const sessionID = `${req.body.id}${now}`
+    const sessionID = `${req.body.id}~${now}`
     await Session.create({
         userID:req.body.id,
         createdAt: now,
@@ -169,7 +171,19 @@ app.get('/api/sessions/compare/:cookie', async(req,res)=>{
     let allSessions = await Session.find()
     async function deleteOldSessions(allSessions){
         for (const session of allSessions){
-            if(Date.now() - session.createdAt > 60000) await Session.findByIdAndDelete(session._id)
+
+            // 24 hours
+            if(Date.now() - session.createdAt > 86400000) await Session.findByIdAndDelete(session._id)
+
+            // 1 hour
+            // if(Date.now() - session.createdAt > 3600000) await Session.findByIdAndDelete(session._id)
+
+            // 5 minutes
+            // if(Date.now() - session.createdAt > 300000) await Session.findByIdAndDelete(session._id)
+
+            // 1 minute
+            // if(Date.now() - session.createdAt > 60000) await Session.findByIdAndDelete(session._id)
+
         }
     }
     deleteOldSessions(allSessions)
@@ -190,7 +204,12 @@ app.get('/api/users', async(req,res)=>{
             await User.findByIdAndDelete(id)
         }
         let allUsers = await User.find().sort({accountCreated:-1})
-        allUsers.forEach(user=> user.role == 'guest' && Date.now() - user.accountCreated >= 3600000 && deleteUser(user._id))
+        allUsers.forEach(user=> user.role == 'guest' && Date.now() - user.accountCreated >= 604800000 && deleteUser(user._id)) 
+        // 604800000 ms = 1 week
+        // 3600000 ms = 1 hour
+        // 300000 ms = 5 minutes
+        // 60000 ms = 1 minute
+        
         // console.log(allUsers.forEach(user=>user.accountCreated))
         allUsers = await User.find().sort({accountCreated:-1})
         res.json(allUsers)

@@ -20,19 +20,20 @@ export default function Login(){
     if (currentSessionCookie){
         fetch(`${BASE_URL}/api/sessions/compare/${currentSessionCookie}`)
             .then(res=>res.json())
-            .then(data=>data ? window.location.replace('/manager/dashboard') : console.log('User is not logged in yet'))
+            .then(data=>data ? window.location.replace('/manager') : console.log('User is not logged in yet'))
             .catch(err=>console.log(err))
     }
 
 
-    function createSession(id){
-        fetch(`${BASE_URL}/api/sessions/create`, {method:'POST',
+    async function createSession(id){
+        await fetch(`${BASE_URL}/api/sessions/create`, {method:'POST',
                                                         headers:{'Content-Type':'application/json'},
                                                         body: JSON.stringify({id})
         })
         .then(res=>res.json())
+        // .then(data=>console.log(`data: ${data}`))
         .then(data=>document.cookie = `olea-session=${data};max-age=86400;path=/`)
-        .then(alert('Session Created'))
+        // .then(alert('Session Created'))
         .catch(err=>console.log(err))
     }
 
@@ -41,7 +42,7 @@ export default function Login(){
       if(document.cookie) currentSession = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
       if(currentSession){
         fetch(`${BASE_URL}/api/sessions/logout/${currentSession}`)
-          .then(alert('Sessions Cleared'))
+        //   .then(alert('Sessions Cleared'))
           .catch(err=>console.log(err))      
       }
   }
@@ -64,18 +65,21 @@ export default function Login(){
         })
         .then(res=>res.json())
         .then(unknownUser=>{
-            // console.log(unknownUser[0])
-            if(!unknownUser[0]){
+            // console.log(`unknownUser[0]._id: ${unknownUser[0]._id}`)
+             if(!unknownUser[0]){
                 alert('Incorrect Email or Password.')
                 return
             }else{
                 if(unknownUser[0].role == 'guest'){
                     deleteSession()
-                    window.location.replace('/guest-user')
+                    setTimeout(()=>window.location.replace('/guest-user'),500)
+                    // window.location.replace('/guest-user')
                 } 
                 if(unknownUser[0].role == 'manager'){
                     createSession(unknownUser[0]._id)
-                    window.location.replace('/manager/dashboard')
+                    setTimeout(()=>window.location.replace('/manager'),500)
+                    // window.location.replace('/manager')
+                    
                 } 
             }
         })
@@ -113,6 +117,7 @@ export default function Login(){
                             id='login-password'
                             required
                             placeholder='*****'
+                            autoComplete='off'
                             name='login-password' />
                 </label>    
                 <br/><br/>

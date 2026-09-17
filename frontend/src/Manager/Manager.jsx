@@ -3,12 +3,18 @@ import './Manager.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 
 export default function Manager(){
+
+    let session = ''
+    // console.log(document.cookie)
+    if(document.cookie) session = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
+
     return(
         <>
             <div    className='manager-page-wrapper' 
                     // style={{border:'1px solid red'}}
             >
-                <ManagerNavbar />
+                <ManagerNavbar session={session} />
+
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>main menu</div>
                     <ul className='main-menu' 

@@ -11,7 +11,7 @@ export default function GuestUser(){
       if(document.cookie) currentSession = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
       if(currentSession){
         fetch(`${BASE_URL}/api/sessions/logout/${currentSession}`)
-          .then(alert('Sessions Cleared'))
+          // .then(alert('Sessions Cleared'))
           .catch(err=>console.log(err))      
       }
   }
@@ -23,16 +23,16 @@ export default function GuestUser(){
                           minHeight:'100vh',
                           display:'grid',
                           placeContent:'center'}}>
-                <div style={{background:'#ccc',padding:'30px',borderRadius:'10px'}}>
-                  <div style={{display:'flex',alignItems:'center',gap:'20px'}}>
+                <div style={{background:'#ccc',padding:'30px',borderRadius:'10px',maxWidth:'375px'}}>
+                  <div style={{display:'flex',width:'100%',alignItems:'center',justifyContent:'center',gap:'20px'}}>
                     <h1 style={{textAlign:'center'}}>Account Created</h1> 
                     <FaUserCheck size="35" />
                   </div>
                   <br/>
                   <hr/>
                   <br/>
-                  Your account has been created successfully.<br/>
-                  Notify your admin to upgrade your account from<br/>
+                  Your account has been created successfully.
+                  Notify your admin to upgrade your account from
                   temporary "Guest" status to "Approved" status.
                 </div>
             </div>
