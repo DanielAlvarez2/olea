@@ -737,7 +737,7 @@ Maximum Recommended Dimensions:
                             <>
                                 <div className='specials-update-menu'>
                                     <div>
-                                        <div className='specials-h1'>archives</div>
+                                        <div className='specials-h1'>archives - specials</div>
                                     </div>
 
                                     <br/><br/>
