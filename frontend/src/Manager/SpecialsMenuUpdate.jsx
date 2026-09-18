@@ -761,6 +761,17 @@ Maximum Recommended Dimensions:
                                                     <span   className='btn unarchive-btn'
                                                             onClick={()=>unarchiveSpecial(data._id)}>
                                                         UNarchive</span>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editSpecial(   data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.description,
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                                                                                                
+                                                                                )}>EDIT</span>                                                                                                            
                                                     <span   className='btn delete-btn'
                                                             onClick={()=>deleteSpecial(data._id)}>DELETE</span>
                                                     <br/><br/><br/>

@@ -1077,7 +1077,7 @@ Maximum Recommended Dimensions:
                             <>
                                 <div className='specials-update-menu' style={{minHeight:'auto'}}>
                                     <div>
-                                        <div className='specials-h1'>archives</div>
+                                        <div className='specials-h1'>archives - dinner menu</div>
                                     </div>
 
                                     <br/><br/>
@@ -1102,6 +1102,18 @@ Maximum Recommended Dimensions:
                                                     <span   className='btn unarchive-btn'
                                                             onClick={()=>unarchiveItem(data._id)}>
                                                         UNarchive</span>
+                                                <span   className='btn edit-btn'
+                                                        onClick={()=>editItem(  data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.descriptionIntro,
+                                                                                data.description,
+                                                                                data.postDescription,
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL)}>EDIT</span>                                                                                                            
                                                     <span   className='btn delete-btn'
                                                             onClick={()=>deleteDinnerItem(data._id)}>DELETE</span>
                                                     <br/><br/><br/>

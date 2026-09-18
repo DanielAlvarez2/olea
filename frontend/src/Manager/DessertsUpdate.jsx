@@ -559,7 +559,7 @@ Maximum Recommended Dimensions:
                             <>
                                 <div className='desserts-update-menu'>
                                     <div>
-                                        <div className='desserts-h1'>archives</div>
+                                        <div className='desserts-h1'>archives - desserts</div>
                                     </div>
 
                                     <br/><br/>
@@ -567,7 +567,7 @@ Maximum Recommended Dimensions:
                                     {allDesserts.filter(item=>item.sequence == 0).map(data=>{
                                         return(
                                             <div key={data._id} className='dessert'>  
-                                                <div>section: {data.section}</div>                                    
+                                                {/* <div>section: {data.section}</div>                                     */}
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
@@ -583,6 +583,17 @@ Maximum Recommended Dimensions:
                                                     <span   className='btn unarchive-btn'
                                                             onClick={()=>unarchiveDessert(data._id)}>
                                                         UNarchive</span>
+                                            <span   className='btn edit-btn'
+                                                    onClick={()=>editDessert(   data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                data.description,
+                                                                                data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL
+                                                                                )}>EDIT</span>                                                                                                            
                                                     <span   className='btn delete-btn'
                                                             onClick={()=>deleteDessert(data._id)}>DELETE</span>
                                                     <br/><br/><br/>
