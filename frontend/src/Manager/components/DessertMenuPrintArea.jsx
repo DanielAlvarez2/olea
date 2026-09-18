@@ -206,7 +206,7 @@ export default function DessertMenuPrintArea({  frontView,
 
 
 
-                                            {allDesserts.map(data=>{
+                                            {allDesserts.filter(item=>item.sequence > 0).map(data=>{
                                                 return (
                                                     <div    key={data._id}
                                                             style={{margin:`${dessertItemMarginsTopBottom}px 0`}} 
