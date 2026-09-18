@@ -46,10 +46,15 @@ export default function Login(){
           .catch(err=>console.log(err))      
       }
   }
+
+  function deleteCookie(){
+    document.cookie = 'olea-session=; max-age=0; path=/'
+  }
   
 
 
     async function loginUser(formData){
+        deleteCookie()
         if(formData.get('login-password').trim() == ''){
             alert(`Password cannot be empty.`)
             setTimeout(()=> document.querySelector('#login-email').value = formData.get('login-email'),10)
