@@ -49,6 +49,7 @@ export default function ParentsWeekendUpdate(){
         setUpdatingMenu(true)
         setTimeout(postItem,0)
         async function postItem(){
+          console.log('postItem()')
             await fetch(`${BASE_URL}/api/annual-events-menu-items`,{method:'POST',
                                                         headers:{'Content-Type':'application/json'},
                                                         body: JSON.stringify({
@@ -844,6 +845,7 @@ Maximum Recommended Dimensions:
                             name <span className='required-field'> *required</span><br/>
                             <input  type='text' 
                                     name='name' 
+                                    autoComplete='off'
                                     id='name'
                                     maxLength='100'
                                     required
@@ -855,6 +857,7 @@ Maximum Recommended Dimensions:
                             <input  type='text' 
                                     name='allergies-abbreviated' 
                                     id='allergies-abbreviated'
+                                    autoComplete='off'
                                     maxLength='100'
                                     style={{width:'100%'}} />
                         </label>
@@ -864,8 +867,9 @@ Maximum Recommended Dimensions:
                             <input  type='text'
                                     id='allergies-complete'
                                     maxLength='100'
+                                    autoComplete='off'
                                     name='allergies-complete' 
-                                    style={{width:'100%'}} /><br/>
+                                    style={{width:'100%',color:'red'}} /><br/>
                             UPPER-CASE = CAN NOT BE REMOVED<br/>
                             lower-case = can be omitted
                         </label>
@@ -893,10 +897,11 @@ Maximum Recommended Dimensions:
 
                         <label>
                             extra description<br/>
+                            ex: (please allow 40 minutes cooking time)
                             <input  type='text'
                                     id='post-description'
                                     maxLength='100'
-                                    placeholder='(please allow 40 minutes cooking time)'
+                                    // placeholder='(please allow 40 minutes cooking time)'
                                     style={{width:'100%'}}
                                     name='post-description' />
                         
