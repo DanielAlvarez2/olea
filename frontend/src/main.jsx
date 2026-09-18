@@ -35,6 +35,11 @@ import ValentinesDay from './Manager/ValentinesDay.jsx'
 import ValentinesDayScreenshot from './Manager/ValentinesDayScreenshot.jsx'
 import ValentinesDayScan from './Manager/ValentinesDayScan.jsx'
 
+import ParentsWeekend from './Manager/ParentsWeekend.jsx'
+import ParentsWeekendUpdate from './Manager/ParentsWeekendUpdate.jsx'
+import ParentsWeekendScan from './Manager/ParentsWeekendScan.jsx'
+import ParentsWeekendScreenshot from './Manager/ParentsWeekendScreenshot.jsx'
+
 import CommencementDashboard from './Manager/CommencementDashboard.jsx'
 import CommencementScreenshot from './Manager/CommencementScreenshot.jsx'
 import CommencementUpdate from './Manager/CommencementUpdate.jsx'
@@ -237,6 +242,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='valentines-day' element={<ValentinesDay />} />
         <Route path='valentines-day-screenshot' element={<ValentinesDayScreenshot />} />
         <Route path='valentines-day-scan' element={<ValentinesDayScan />} />
+
+        <Route path='parents-weekend' element={<ParentsWeekend />} />
+        <Route path='parents-weekend-update' element={<ParentsWeekendUpdate />} />
+        <Route path='parents-weekend-scan' element={<ParentsWeekendScan />} />
+        <Route path='parents-weekend-screenshot' element={<ParentsWeekendScreenshot />} />
 
         <Route path='nye' element={<NYE />} />
         <Route path='nye-scan' element={<NYEscan />} />
