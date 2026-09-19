@@ -20,6 +20,7 @@ export default function ParentsWeekend(){
                                 // border:'1px solid green'
                                 }}>
                         <Link to='/parents-weekend-update'><li style={{flexGrow:'1'}}>update</li></Link>
+                        <Link to='/parents-weekend-format-print'><li style={{flexGrow:'1'}}>format/print</li></Link>
                         <Link to='/parents-weekend-screenshot'><li style={{flexGrow:'1'}}>screenshot</li></Link>
                         <Link to='/parents-weekend-scan'><li style={{flexGrow:'1'}}>scan</li></Link>
                         

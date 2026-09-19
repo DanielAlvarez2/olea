@@ -61,7 +61,7 @@ export default function ManagerNavbar(props){
             </nav>        
                 <hr className='no-print' style={{width:'100%'}}/>
 
-                  <div style={{width:'100%',textAlign:'right',marginTop:'10px'}}>
+                  <div className='no-print' style={{width:'100%',textAlign:'right',marginTop:'10px'}}>
                     <span onClick={logoutUser} style={{border:'1px solid black',borderRadius:'5px',marginRight:'15px',background:'yellow',padding:'5px 10px',cursor:'pointer'}}>logout</span>
                     <span onClick={()=>window.location.replace('/manage-users')} style={{borderRadius:'5px',marginRight:'15px',border:'1px solid black',background:'yellow',padding:'5px 10px',cursor:'pointer'}}>users</span>
                   </div>

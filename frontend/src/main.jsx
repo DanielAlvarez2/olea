@@ -36,6 +36,7 @@ import ValentinesDayScreenshot from './Manager/ValentinesDayScreenshot.jsx'
 import ValentinesDayScan from './Manager/ValentinesDayScan.jsx'
 
 import ParentsWeekend from './Manager/ParentsWeekend.jsx'
+import ParentsWeekendFormatPrint from './Manager/ParentsWeekendFormatPrint.jsx'
 import ParentsWeekendUpdate from './Manager/ParentsWeekendUpdate.jsx'
 import ParentsWeekendScan from './Manager/ParentsWeekendScan.jsx'
 import ParentsWeekendScreenshot from './Manager/ParentsWeekendScreenshot.jsx'
@@ -244,6 +245,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='valentines-day-scan' element={<ValentinesDayScan />} />
 
         <Route path='parents-weekend' element={<ParentsWeekend />} />
+        <Route path='parents-weekend-format-print' element={<ParentsWeekendFormatPrint />} />
         <Route path='parents-weekend-update' element={<ParentsWeekendUpdate />} />
         <Route path='parents-weekend-scan' element={<ParentsWeekendScan />} />
         <Route path='parents-weekend-screenshot' element={<ParentsWeekendScreenshot />} />
