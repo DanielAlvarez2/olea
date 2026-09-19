@@ -104,7 +104,7 @@ export default function Dessert(){
                                                 
                             <h2>DESSERT MENU</h2><br/><br/>
 
-                                {allDesserts.map(data=>{
+                                {allDesserts.filter(item=>item.sequence > 0).map(data=>{
                                     
                                     return(
                                             <div    key={data._id}

@@ -243,7 +243,7 @@ export default function QRdessert(){
 
 
 
-                                                            {allDesserts.map(data=>{
+                                                            {allDesserts.filter(item=>item.sequence > 0).map(data=>{
                                                                 return (
                                                                     <div    key={data._id}
                                                                             onClick={()=>showModal( data.cloudinary_secure_URL,
