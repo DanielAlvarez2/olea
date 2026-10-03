@@ -7,14 +7,15 @@ export default function ManagerNavbar(props){
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'    
 
-    // if (!props.session) window.location.replace('/login')
-    // alert(props.session)
-
     function approveAccess(){
-    //   console.log('document.cookie:')
-    //   console.log(document.cookie)
       let currentSession 
-      if (document.cookie != '') currentSession = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
+      if (document.cookie != '') {
+        if(document.cookie.includes(';')){
+          currentSession = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
+        }else{
+          if(document.cookie.startsWith('olea-session')) currentSession = document.cookie.split('=')[1]
+        }
+      }
       if(currentSession){
         fetch(`${BASE_URL}/api/sessions/compare/${currentSession}`)
           .then(res=>res.json())

@@ -212,11 +212,11 @@ Please switch to a different browser to proceed.
                                                                     onClick={increasePageMargin} /></span>
                                     </div> */}
 
-                                                                            <div    className='no-print print-btn' 
+                                    <div    className='no-print print-btn' 
                                         style={{margin:'30px auto',background:'limegreen',width:'220px'}}
                                         onClick={()=>setPrintMode(true)}>
                                         print preview
-                                        </div>
+                                    </div>
                             {/* .control-panel */}
                             </div>
                             

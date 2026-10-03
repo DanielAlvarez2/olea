@@ -4,16 +4,27 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 
 export default function Manager(){
 
-    let session = ''
+    // let session = ''
     // console.log(document.cookie)
-    if(document.cookie) session = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
+    // if(document.cookie) {
+    //     if(document.cookie.includes(';')){
+    //         alert(';')
+    //         session = document.cookie.split('; ').filter(cookie=>cookie.startsWith('olea-session'))[0].split('=')[1]
+    //     }else{
+    //         if (document.cookie.startsWith('olea-session')) 
+    //             session = document.cookie.startsWith('olea-session')[0].split('=')[1]
+    //             alert(document.cookie)
+    //     }
+    // }
 
     return(
         <>
             <div    className='manager-page-wrapper' 
                     // style={{border:'1px solid red'}}
             >
-                <ManagerNavbar session={session} />
+                <ManagerNavbar 
+                // session={session} 
+                />
 
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>main menu</div>

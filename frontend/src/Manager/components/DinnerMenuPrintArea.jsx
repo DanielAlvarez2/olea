@@ -342,12 +342,17 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                     >
                         consumer advisory: consumption of undercooked meat, poultry, 
                         eggs, or seafood may increase the risk of food-borne illnesses. 
-                        all menu items are subject to change according to seasonality 
-                        and availability<br/>
+
+                        
                         <span style={{fontWeight:'900'}}>
-                        please alert your server if you have special dietary requirements before ordering<br/>
-                        <span>gl (gluten), d (dairy), n (nuts)</span>
+                            please alert your server if you have special dietary requirements before ordering<br/>
+                            <span>gl (gluten), d (dairy), n (nuts)</span>
                         </span>
+
+                        all menu items are subject to change according to seasonality and availability<br/>
+
+                        to help us serve you better, we limit check splitting to a maximum of three per table. thank you.
+
                     </div>
                     <img src='qr-dinner.png' height='50px' width='50px' />
                 </div>

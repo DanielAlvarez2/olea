@@ -87,7 +87,7 @@ export default function ParentsWeekendUpdate(){
                                                                                         allergiesComplete: formData.get('allergies-complete'),
                                                                                         description: formData.get('description'),
                                                                                         postDescription: formData.get('post-description'),
-                                                                                        // descriptionIntro: formData.get('description-intro'),
+                                                                                        descriptionIntro: formData.get('description-intro'),
                                                                                         // price: formData.get('price'),
                                                                                         cloudinary_public_ID: formData.get('cloudinary_public_ID'),
                                                                                         cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
@@ -171,7 +171,7 @@ export default function ParentsWeekendUpdate(){
                         name,
                         allergiesAbbreviated,
                         allergiesComplete,
-                        // descriptionIntro,
+                        descriptionIntro,
                         description,
                         postDescription,
                         // price,
@@ -191,7 +191,7 @@ export default function ParentsWeekendUpdate(){
             document.querySelector('#allergies-abbreviated').value = allergiesAbbreviated
             document.querySelector('#allergies-complete').value = allergiesComplete
             document.querySelector('#description').value = description
-            // document.querySelector('#description-intro').value = descriptionIntro
+            document.querySelector('#description-intro').value = descriptionIntro
             document.querySelector('#post-description').value = postDescription
             // document.querySelector('#price').value = price
         }catch(err){
@@ -228,7 +228,7 @@ export default function ParentsWeekendUpdate(){
             document.querySelector('#allergies-abbreviated').value = ''
             document.querySelector('#allergies-complete').value = ''
             document.querySelector('#description').value = ''
-            // document.querySelector('#description-intro').value = ''
+            document.querySelector('#description-intro').value = ''
             document.querySelector('#post-description').value = ''
             // document.querySelector('#price').value = ''
             document.querySelector('#image-file').value = ''
@@ -495,7 +495,7 @@ Maximum Recommended Dimensions:
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
-                                                                                // data.descriptionIntro,
+                                                                                data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
                                                                                 // data.price,
@@ -618,7 +618,7 @@ Maximum Recommended Dimensions:
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
-                                                                                // data.descriptionIntro,
+                                                                                data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
                                                                                 // data.price,
@@ -740,7 +740,7 @@ Maximum Recommended Dimensions:
                                                                                 data.name,
                                                                                 data.allergiesAbbreviated,
                                                                                 data.allergiesComplete,
-                                                                                // data.descriptionIntro,
+                                                                                data.descriptionIntro,
                                                                                 data.description,
                                                                                 data.postDescription,
                                                                                 // data.price,
@@ -875,7 +875,7 @@ Maximum Recommended Dimensions:
                         </label>
                         <br/><br/>
 
-                        {/* <label>
+                        <label>
                             description-intro<br/>
                             <input  type='text'
                                     name='description-intro'
@@ -883,7 +883,7 @@ Maximum Recommended Dimensions:
                                     id='description-intro'
                                     style={{width:'100%'}} />
                         </label>
-                        <br/><br/> */}
+                        <br/><br/>
 
                         <label>
                             description<br/>
@@ -1076,7 +1076,7 @@ Maximum Recommended Dimensions:
 
 
 
-                    <form   
+                    {/* <form   
                             action={updateWebsiteImage} 
                             id='website-graphic'
                             className='specials-form'
@@ -1199,7 +1199,7 @@ Maximum Recommended Dimensions:
                         </div>
 
                                                 
-                    </form>
+                    </form> */}
 
                     <br/><br/><br/>
 

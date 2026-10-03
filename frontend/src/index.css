@@ -301,3 +301,9 @@ input[type="file"]::file-selector-button{
   font-size: 12.65px;
   /* color:red; */
 }
+@media (max-width: 8.5in){
+  #qr-parents-weekend{
+    width:100% !important;
+    padding:10px 5px !important;
+  }
+}

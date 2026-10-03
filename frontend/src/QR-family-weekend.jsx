@@ -1,15 +1,15 @@
 import {Link} from 'react-router'
 import {useState,useEffect} from 'react'
-import './Manager.css'
-import './DessertMenuFormat.css'
-import './DessertDrinksUpdate.css'
-import './DessertDrinksUpdate.css'
-import './DinnerMenuFormat.css'
-import './MothersDayFormat.css'
-import './CommencementFormat.css'
-import ManagerNavbar from './components/ManagerNavbar.jsx'
-import { PiPlusCircleDuotone } from "react-icons/pi";
-import { PiMinusCircleDuotone } from "react-icons/pi";
+// import './Manager.css'
+import './Manager/DessertMenuFormat.css'
+import './Manager/DessertDrinksUpdate.css'
+import './Manager/DessertDrinksUpdate.css'
+import './Manager/DinnerMenuFormat.css'
+import './Manager/MothersDayFormat.css'
+import './Manager/CommencementFormat.css'
+// import ManagerNavbar from './components/ManagerNavbar.jsx'
+import { AiTwotoneCloseCircle } from "react-icons/ai";
+import QRfooter from './components/QR-footer.jsx'
 
 
 
@@ -73,65 +73,82 @@ export default function ParentsWeekendFormatPrint(){
         }
     }
 
-    function decreaseItemMarginsLeftRight(){
-        if (itemMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/decreaseItemMarginsLeftRight/${event_url}`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increaseItemMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/increaseItemMarginsLeftRight/${event_url}`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function decreaseItemMarginsTopBottom(){
-        if (itemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/decreaseItemMarginsTopBottom/${event_url}`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function increaseItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/increaseItemMarginsTopBottom/${event_url}`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function printPage(){
-        if(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")){
-            alert(`
-WARNING: 
-
-Printing from Safari Browser is not supported.
-Please switch to a different browser to proceed.
-`)
-            return
+    function showModal(pic,name,price,description,allergiesComplete){
+        if(!pic) return
+        document.querySelector('.modal').style.display = 'grid'
+        document.querySelector('.modal-image').src = pic
+        document.querySelector('.modal-name').innerHTML = name
+        if (price.includes('/')){
+            document.querySelector('.modal-price').innerHTML = `${price.split('/')[0].trim()}<br/>${price.split('/')[1].trim()}`
         }else{
-            window.print()
+            document.querySelector('.modal-price').innerHTML = price
         }
+        document.querySelector('.modal-description').innerHTML = description   
+        document.querySelector('.modal-allergies-complete').innerHTML = allergiesComplete    
     }
 
+    function closeModal(){
+        document.querySelector('.modal-image').src = ''
+        document.querySelector('.modal-name').innerHTML = ''
+        document.querySelector('.modal-price').innerHTML = ''
+        document.querySelector('.modal-description').innerHTML = ''
+        document.querySelector('.modal').style.display = 'none'
+        document.querySelector('.modal-allergies-complete').innerHTML = ''
+    }
 
 
 
     return(
         <>
             <div    className='manager-page-wrapper' 
+                  style={{background:'lightgrey',position:'relative'}}
                     // style={{border:'1px solid red',
                     //         color:'red'
                     //         }}
             >
+                              <div className='modal' style={{ position:'fixed',
+                                                                  inset:'0',
+                                                                  height:'100vh',
+                                                                  width:'100%',
+                                                                  fontFamily:'FuturaLight',
+                                                                  zIndex:'3000',
+                                                                  background:'#888888ee',
+                                                                  color:'black',
+                                                                  display:'none',
+                                                                  placeContent:'center'
+                              }}>
+                                      <AiTwotoneCloseCircle   size='70' 
+                                                              onClick={closeModal}
+                                                              style={{position:'fixed',
+                                                                      cursor:'pointer',
+                                                                      top:'5px',
+                                                                      right:'5px'}} />
+                                      <div className='modal-content'>
+                                          <figure style={{display:'table'}}>
+                                              <img className='modal-image' style={{maxHeight:'50vh',maxWidth:'90vw',borderRadius:'25px'}} />
+                                              <figcaption style={{display:'table-caption',padding:'10px',captionSide:'bottom',borderRadius:'25px',background:'#ccc'}}>
+                                                  <div style={{display:'flex',justifyContent:'space-between'}}>
+                                                      <span className='modal-name' style={{fontWeight:'900'}}></span>
+                                                      <span className='modal-price'></span>
+                                                  </div>
+                                                  <span className='modal-description'></span>
+                                                  <div className='modal-allergies-complete' style={{color:'red'}}></div>
+                                              </figcaption>
+                                          </figure>
+                                      </div>{/* .modal-content */}
+                              </div>{/* .modal */}
+              
                 <div style={{width:'100%'}} className='no-print'>
-                    <ManagerNavbar page='events' />
+                    {/* <ManagerNavbar page='events' /> */}
                 </div>
-                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>parents weekend &gt; format/print</div>
+                    <br/>
+                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>yale family weekend {new Date().getFullYear()}</div>
                     
                     <br className='no-print'/>
 
-                    <div className='main-menu' style={{paddingBottom:0,display:'flex',alignItems:'center'}}>
+                    <div 
+                    // className='main-menu' 
+                    style={{paddingBottom:0,display:'flex',alignItems:'center'}}>
 
 
 
@@ -159,10 +176,13 @@ Please switch to a different browser to proceed.
 
 
 
-                                <div    className='dinner-menu-format paper-menu' 
+                                <div 
+                                      id='qr-parents-weekend'
                                         style={{
                                                 width:'8.5in',
-                                                height:'14in',
+                                                height:'auto',
+                                                background:'white',
+                                                border:'1px solid black',
                                                 padding:'27px 65px',
                                                 // color:'red',
                                                 // padding:`${pageMargin/2}px ${pageMargin}px 0px`,
@@ -187,9 +207,9 @@ Please switch to a different browser to proceed.
 
 
                                         <div style={{marginTop:'28px',
-                                            // padding:`0 ${itemMarginsLeftRight}px`
-                                            }}>
-                                            <h2 style={{fontSize:'23px'}}>prix fixe dinner menu</h2>
+                                          // padding:`0 ${itemMarginsLeftRight}px`
+                                          }}>
+                                            <h2 style={{fontSize:'23px',fontFamily:'FuturaRoundBold'}}>prix fixe dinner menu</h2>
                                             {/* <br/> */}
                                             <div style={{fontFamily:'serif'}}>
                                                 <span style={{fontSize:'18.7px',fontWeight:'900'}}>${annualEventPrice} per person; three courses</span>
@@ -223,8 +243,8 @@ Please switch to a different browser to proceed.
 
 
                                                 <h2 style={{
-                                                    // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px'}}>appetizers <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                                  // padding:`0 ${itemMarginsLeftRight}px`,
+                                                  fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>appetizers <span style={{marginLeft:'5px'}}>choose one</span></h2>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
                                     return(
@@ -232,6 +252,12 @@ Please switch to a different browser to proceed.
                                                 style={{paddingRight:`${itemMarginsLeftRight}px`,
                                                         margin:`${itemMarginsTopBottom}px 0`,                                            
                                                     }}
+                                                onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                        data.name,
+                                                                        data.price,
+                                                                        data.description,
+                                                                        data.allergiesComplete
+                                                                        )}                                                                                                                        
                                                 className='special'>
                                             
                                             {/* {data.sequence}<br/> */}
@@ -245,6 +271,7 @@ Please switch to a different browser to proceed.
                                                 }
                                                 <span style={{fontSize:'15.3px'}}> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                <div style={{color:'red'}}>{data.allergiesComplete}</div>
                                             </div>
 
 
@@ -279,8 +306,8 @@ Please switch to a different browser to proceed.
                                             >
 
                                                 <h2 style={{
-                                                    // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px'}}>entrées <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                                  // padding:`0 ${itemMarginsLeftRight}px`,
+                                                  fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>entrées <span style={{marginLeft:'5px'}}>choose one</span></h2>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
                                     return(
@@ -288,6 +315,12 @@ Please switch to a different browser to proceed.
                                                 style={{paddingRight:`${itemMarginsLeftRight}px`,
                                                         margin:`${itemMarginsTopBottom}px 0`,
                                                     }}
+                                                onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                        data.name,
+                                                                        data.price,
+                                                                        data.description,
+                                                                        data.allergiesComplete
+                                                                        )}                                                                                                                        
                                                 className='special'>
                                             
                                             {/* {data.sequence}<br/> */}
@@ -301,6 +334,7 @@ Please switch to a different browser to proceed.
                                                 }
                                                 <span style={{fontSize:'15.3px'}}> {data.description}</span>
                                                 {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
+                                                <div style={{color:'red'}}>{data.allergiesComplete}</div>
                                             </div>
 
 
@@ -363,12 +397,12 @@ Please switch to a different browser to proceed.
 
 
 
-                                    <div style={{   marginTop:'0px',
+                                    <div style={{   marginTop:'45px',
                                                     // padding:`0 ${itemMarginsLeftRight}px`
-                                                }}
+                                                  }}
                                     >
 
-                                                <h2 style={{fontSize:'22.2px'}}>desserts <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                                <h2 style={{fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>desserts <span style={{marginLeft:'5px'}}>choose one</span></h2>
                                         
                                     </div>
 
@@ -388,6 +422,12 @@ Please switch to a different browser to proceed.
                                                 style={{paddingRight:`${itemMarginsLeftRight}px`,
                                                         margin:`${itemMarginsTopBottom}px 0`,
                                                         width:'50%'}}
+                                                onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                        data.name,
+                                                                        data.price,
+                                                                        data.description,
+                                                                        data.allergiesComplete
+                                                                        )}                                                                                                                            
                                                 className='special'>
                                             
                                             {/* {data.sequence}<br/> */}
@@ -401,6 +441,7 @@ Please switch to a different browser to proceed.
                                                 }
                                                 <span style={{fontSize:'15.3px'}}> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                <div style={{color:'red'}}>{data.allergiesComplete}</div>
                                             </div>
 
 
@@ -421,7 +462,7 @@ Please switch to a different browser to proceed.
 
 
 
-                                    <div className='dessert-footer' style={{marginTop:'20px'}}>
+                                    <div className='dessert-footer' style={{marginTop:'0px'}}>
 
                                         <div style={{   display:'flex',
                                                         alignItems:'flex-end',
@@ -483,48 +524,6 @@ Please switch to a different browser to proceed.
 
                     
 
-                                <div className='no-print' style={{paddingLeft:'10px'}}>
-                                                                  
-                                    <div  className='no-print'
-                                          style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseItemMarginsTopBottom} /></span>
-                                        <span>menu item margins<br/>top & bottom &#8597;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseItemMarginsTopBottom} /></span>
-                                    </div>
-
-                                    <div  className='no-print'
-                                          style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right &#8596;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseItemMarginsLeftRight} /></span>
-                                    </div>
-
-                                    <div    className='no-print print-btn' 
-                                        style={{margin:'30px auto',background:'limegreen',width:'220px'}}
-                                        onClick={printPage}>
-                                        print
-                                    </div>                                    
-                                </div>
 
                     </div>                
 
@@ -533,7 +532,7 @@ Please switch to a different browser to proceed.
                             <br className='no-print'/>
                             <br className='no-print'/>
                             <br className='no-print'/>
-
+                <QRfooter />
 
             </div>{/* .manager-page-wrapper */}
         </>

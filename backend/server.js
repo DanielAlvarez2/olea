@@ -26,6 +26,7 @@ const DessertsFormat = require('./models/DessertsFormat.js')
 const WinelistFormat = require('./models/WinelistFormat.js')
 const DinnerFormat = require('./models/DinnerFormat.js')
 const MothersDayFormat = require('./models/MothersDayFormat.js')
+const ParentsWeekendFormat = require('./models/ParentsWeekendFormat.js')
 const CommencementFormat = require('./models/CommencementFormat.js')
 const AnniversaryFormat = require('./models/AnniversaryFormat.js')
 const TakeoutFormat = require('./models/TakeoutFormat.js')
@@ -3514,6 +3515,71 @@ app.put('/api/formats/specials/toggleDoubleSided', async(req,res)=>{
                                                 {doubleSided: !allFormats[0].doubleSided}
         )
         res.json('double sided changed')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/formats/parents-weekend', async(req,res)=>{ 
+    try{
+        let allFormats = await ParentsWeekendFormat.find()
+        if (allFormats.length == 0){
+            await ParentsWeekendFormat.create({
+                itemMarginsTopBottom: 0,
+                itemMarginsLeftRight: 0
+            })
+            allFormats = await ParentsWeekendFormat.find()
+        }
+        // console.log(allFormats)
+        res.json(allFormats)
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/increaseItemMarginsTopBottom/parents-weekend', async(req,res)=>{
+    try{
+        const allFormats = await ParentsWeekendFormat.find()
+        console.log(allFormats[0])
+        await ParentsWeekendFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsTopBottom: allFormats[0].itemMarginsTopBottom + 1})
+        res.json('item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/decreaseItemMarginsTopBottom/parents-weekend', async(req,res)=>{
+    try{
+        const allFormats = await ParentsWeekendFormat.find()
+        console.log(allFormats[0])
+        await ParentsWeekendFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsTopBottom: allFormats[0].itemMarginsTopBottom - 1})
+        res.json('item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/increaseItemMarginsLeftRight/parents-weekend', async(req,res)=>{
+    try{
+        const allFormats = await ParentsWeekendFormat.find()
+        console.log(allFormats[0])
+        await ParentsWeekendFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsLeftRight: allFormats[0].itemMarginsLeftRight + 1})
+        res.json("item margins left/right increased")
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/decreaseItemMarginsLeftRight/parents-weekend', async(req,res)=>{
+    try{
+        const allFormats = await ParentsWeekendFormat.find()
+        console.log(allFormats[0])
+        await ParentsWeekendFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {itemMarginsLeftRight: allFormats[0].itemMarginsLeftRight - 1})
+        res.json("item margins left/right decreased")
     }catch(err){
         console.log(err)
     }

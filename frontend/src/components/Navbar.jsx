@@ -18,6 +18,7 @@ export default function Navbar(){
     const [mobileInfoDropdownOpen, setMobileInfoDropdown] = useState(false)
     const [mobileMenusDropdown, setMobileMenusDropdown] = useState(false)
     const [mothersDay, setMothersDay] = useState(false)
+    const [parentsWeekend, setParentsWeekend] = useState(false)
     const [commencement, setCommencement] = useState(false)
     const [oleaAnniversary, setOleaAnniversary] = useState(false)
 
@@ -27,6 +28,7 @@ export default function Navbar(){
                 .then(res=>res.json())
                 .then(json=>{
                     setMothersDay(json[0].MothersDay)
+                    setParentsWeekend(json[0].ParentsWeekend)
                     setCommencement(json[0].Commencement)
                     setOleaAnniversary(json[0].OleaAnniversary)
                 })
@@ -140,6 +142,7 @@ export default function Navbar(){
                                             left:'-20px'}}>
                                     {mothersDay && <li><Link to='/mothers-day-menu'>mother's day {new Date().getFullYear()}</Link></li>}
                                     {commencement && <li><Link to='/commencement-menu'>comencement {new Date().getFullYear()}</Link></li>}
+                                    {parentsWeekend && <li><Link to='/yale-family-weekend'>yale family weekend {new Date().getFullYear()}</Link></li>}
                                     
                                     <li><Link to='/dinner'>dinner</Link></li>
                                     {oleaAnniversary && <li><Link to='/anniversary'>{new Date().getFullYear() - 2014}yr anniversary</Link></li>}
@@ -193,6 +196,7 @@ export default function Navbar(){
                         <ul className='mobile-dropdown-menus'>
                             {mothersDay && <Link to='/mothers-day-menu'><li className='mobile-menu-dropdown'><span>mother's day {new Date().getFullYear()}</span></li></Link>}
                             {commencement && <Link to='/commencement-menu'><li className='mobile-menu-dropdown'><span>commencement {new Date().getFullYear()}</span></li></Link>}
+                            {parentsWeekend && <li><Link to='/yale-family-weekend'>yale family weekend {new Date().getFullYear()}</Link></li>}
                             
                             <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
                             {oleaAnniversary && <Link to='/anniversary'><li className='mobile-menu-dropdown'><span>{new Date().getFullYear() - 2014}yr anniversary</span></li></Link>}
