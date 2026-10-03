@@ -420,7 +420,7 @@ export default function ParentsWeekendFormatPrint(){
                                     return(
                                         <div    key={data._id} 
                                                 style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${itemMarginsTopBottom}px 0`,
+                                                        margin:`${itemMarginsTopBottom/2}px 0`,
                                                         width:'50%'}}
                                                 onClick={()=>showModal( data.cloudinary_secure_URL,
                                                                         data.name,

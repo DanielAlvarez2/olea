@@ -180,12 +180,9 @@ Please switch to a different browser to proceed.
                                                         display:'block',
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
-                                        <hr 
-                                        // style={{marginBottom:`${mothersDayItemMarginsTopBottom}px`}} 
-                                        />
 
-
-
+                                        <div style={{borderTop:'1px solid black',margin:'5px 0'}}></div>
+{/* <hr style={{borderTop:'1px solid grey !important'}} /> */}
                                         <div style={{marginTop:'28px',
                                             // padding:`0 ${itemMarginsLeftRight}px`
                                             }}>
@@ -386,7 +383,7 @@ Please switch to a different browser to proceed.
                                     return(
                                         <div    key={data._id} 
                                                 style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${itemMarginsTopBottom}px 0`,
+                                                        margin:`${itemMarginsTopBottom/2}px 0`,
                                                         width:'50%'}}
                                                 className='special'>
                                             
@@ -435,7 +432,8 @@ Please switch to a different browser to proceed.
                                             </div>
                                         </div>
 
-                                        <hr style={{marginTop:'5px',marginBottom:'5px'}}/>
+                                        <div style={{borderTop:'1px solid black',margin:'5px 0'}}></div>
+                                        {/* <hr style={{marginTop:'5px',marginBottom:'5px'}}/> */}
                                         {/* <br/> */}
                                         <div style={{   display:'flex',
                                                         justifyContent:'space-between',
