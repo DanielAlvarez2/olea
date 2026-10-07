@@ -311,6 +311,7 @@ app.get('/api/annual-events', async(req,res)=>{
         let Events = await AnnualEvents.find()
         if (!Events.length){
             await AnnualEvents.create({
+                DailySpecials:true,
                ValentinesDay:false,
                RestaurantWeekSpring:false,
                MothersDay:false,
@@ -2803,10 +2804,9 @@ app.get('/api/formats/specials', async(req,res)=>{
         if (allFormats.length == 0){
             await SpecialsFormat.create({
                 pageMarginsLeftRight: 0,
+                pageMarginsLeftRightDessert: 0,
+                menuItemMarginsTopBottomDessert: 0,
                 menuItemMarginsTopBottom: 0,
-                doubleSided: false,
-                letterPaper: true,
-                showLegalText: true
             })
             allFormats = await SpecialsFormat.find()
         }
@@ -2949,6 +2949,18 @@ app.put('/api/formats/specials/increasePageMargins', async(req,res)=>{
         console.log(allFormats[0])
         await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {pageMarginsLeftRight: allFormats[0].pageMarginsLeftRight + 1})
+        res.json('page margins increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/specials/increasePageMarginsDessert', async(req,res)=>{
+    try{
+        const allFormats = await SpecialsFormat.find()
+        console.log(allFormats[0])
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMarginsLeftRightDessert: allFormats[0].pageMarginsLeftRightDessert + 1})
         res.json('page margins increased')
     }catch(err){
         console.log(err)
@@ -3460,6 +3472,18 @@ app.put('/api/formats/specials/decreasePageMargins', async(req,res)=>{
     }
 })
 
+app.put('/api/formats/specials/decreasePageMarginsDessert', async(req,res)=>{
+    try{
+        const allFormats = await SpecialsFormat.find()
+        console.log(allFormats[0])
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {pageMarginsLeftRightDessert: allFormats[0].pageMarginsLeftRightDessert - 1})
+        res.json('page margins decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/specials/increaseMenuItemMargins', async(req,res)=>{
     try{
         const allFormats = await SpecialsFormat.find()
@@ -3472,13 +3496,37 @@ app.put('/api/formats/specials/increaseMenuItemMargins', async(req,res)=>{
     }
 })
 
+app.put('/api/formats/specials/increaseMenuItemMarginsDessert', async(req,res)=>{
+    try{
+        const allFormats = await SpecialsFormat.find()
+        console.log(allFormats[0])
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {menuItemMarginsTopBottomDessert: allFormats[0].menuItemMarginsTopBottomDessert + 1})
+        res.json('menu item margins increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/specials/decreaseMenuItemMargins', async(req,res)=>{
     try{
         const allFormats = await SpecialsFormat.find()
         console.log(allFormats[0])
         await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {menuItemMarginsTopBottom: allFormats[0].menuItemMarginsTopBottom - 1})
-        res.json('menu item margins increased')
+        res.json('menu item margins decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/specials/decreaseMenuItemMarginsDessert', async(req,res)=>{
+    try{
+        const allFormats = await SpecialsFormat.find()
+        console.log(allFormats[0])
+        await SpecialsFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {menuItemMarginsTopBottomDessert: allFormats[0].menuItemMarginsTopBottomDessert - 1})
+        res.json('menu item margins decreased')
     }catch(err){
         console.log(err)
     }

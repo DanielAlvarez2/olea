@@ -181,7 +181,7 @@ Please switch to a different browser to proceed.
                                                         cursor:'default',
                                                         fontSize:'57px'}}>olea</span>
 
-                                        <div style={{borderTop:'1px solid black',margin:'5px 0'}}></div>
+                                        <div style={{borderTop:'1px solid #888',margin:'5px 0'}}></div>
 {/* <hr style={{borderTop:'1px solid grey !important'}} /> */}
                                         <div style={{marginTop:'28px',
                                             // padding:`0 ${itemMarginsLeftRight}px`
@@ -432,7 +432,7 @@ Please switch to a different browser to proceed.
                                             </div>
                                         </div>
 
-                                        <div style={{borderTop:'1px solid black',margin:'5px 0'}}></div>
+                                        <div style={{borderTop:'1px solid #888',margin:'5px 0'}}></div>
                                         {/* <hr style={{marginTop:'5px',marginBottom:'5px'}}/> */}
                                         {/* <br/> */}
                                         <div style={{   display:'flex',

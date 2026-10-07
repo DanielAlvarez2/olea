@@ -84,8 +84,8 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                     {/* <div> */}
                                         
                                         <div    className='specials-h1'
-                                                style={{marginBottom:`${menuItemMarginsTopBottom}px`,
-                                                marginTop:'20px'}} >
+                                                style={{marginBottom:`${menuItemMarginsTopBottom/2}px`,
+                                                        marginTop:`${menuItemMarginsTopBottom/2}px`}} >
                                             today's specials
                                         </div>
                                     {/* </div> */}
@@ -110,7 +110,7 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                     {allSpecials.filter(item=>item.sequence && item.section == 'appetizers').map(data=>{
                                         return(
                                             <div    key={data._id}
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    style={{margin:`${menuItemMarginsTopBottom/2}px 0`}} 
                                                     className='special'>
                                             
                                                 <span className='name-specials'>{data.name} </span>
@@ -152,7 +152,7 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                     {allSpecials.filter(item=>item.sequence && item.section == 'entrées').map(data=>{
                                         return(
                                             <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
+                                                    style={{margin:`${menuItemMarginsTopBottom/2}px 0`}} 
                                                     className='special'>
                                                 
                                         
@@ -186,30 +186,6 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
 
 
 
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                        <div className='specials-h2'>dessert</div>}
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
-                                        <div className='specials-h2'>desserts</div>}
-
-                                    {!doubleSided && allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
-                                        return(
-                                            <div    key={data._id} 
-                                                    style={{margin:`${menuItemMarginsTopBottom}px 0`}} 
-                                                    className='special'>
-                                                
-                                        
-                                                <span className='name-specials'>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <span> {data.description}</span>
-                                                {data.price.length < 3 ? 
-                                                    <span className='price-specials'> &nbsp;{data.price}</span> : 
-                                                    <div className='price-specials'>{data.price}</div> }
-
-
-                                            </div>
-                                        )
-                                    })}
 
 
 
@@ -224,7 +200,6 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
 
 
 
-                                    {showLegalText && 
                                                     <footer style={{position:'absolute',
                                                                     bottom:'6mm',
                                                                     // marginTop:'auto',
@@ -240,7 +215,7 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                                             <div className='specials-legal'>
                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                 or seafood may increase the risk of foodborne illnesses. 
-                                                                Please alert your server if you have special dietary requirements:
+                                                                Please alert your server if you have special dietary requirements:<br/>
                                                                 <span style={{fontWeight:'900'}}>
                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                             </div>
@@ -251,7 +226,7 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                                                     />
                                                         </div>
                                                     </footer>
-                                    }
+                                    
                                 </div>
                             
 

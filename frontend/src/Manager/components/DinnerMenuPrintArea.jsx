@@ -337,23 +337,29 @@ export default function DinnerMenuPrintArea({dinnerItemMarginsTopBottom,dinnerIt
                                 display:'flex'}}>
                     <div    className='chef-name-dinner'
                             style={{textDecoration:'underline',textUnderlineOffset:'5px'}}>manuel romero, chef</div>
-                    <div className='dinner-menu-print-area-legal' 
-                    // style={{width:'61%'}}
-                    >
-                        consumer advisory: consumption of undercooked meat, poultry, 
-                        eggs, or seafood may increase the risk of food-borne illnesses. 
+                                            <div style={{lineHeight:'15px',fontSize:'10.4px'}}>
+                                                <span style={{fontWeight:'100'}}>    
+                                                    consumer advisory: consumption of undercooked meat, poultry, eggs, or seafood may increase the risk of food-borne illnesses.
+                                                </span>
+                                                <br/>
 
-                        
-                        <span style={{fontWeight:'900'}}>
-                            please alert your server if you have special dietary requirements before ordering<br/>
-                            <span>gl (gluten), d (dairy), n (nuts)</span>
-                        </span>
+                                                
+                                                <span style={{fontFamily:'FuturaMedium'}}>
+                                                    please alert your server if you have special dietary requirements before ordering: gl (gluten), d (dairy), n (nuts)
+                                                </span>                                              
+                                                <br/>
 
-                        all menu items are subject to change according to seasonality and availability<br/>
+                                                <span style={{fontWeight:'100'}}>    
+                                                    all menu items are subject to change according to seasonality and avilability
+                                                </span>
+                                                <br/>
 
-                        to help us serve you better, we limit check splitting to a maximum of three per table. thank you.
+                                                <span style={{fontWeight:'100'}}>    
+                                                    to help us serve you better, we limit check spilitting to a maximum of three per table, thank you.
+                                                </span>
+                                                <br/>
 
-                    </div>
+                                            </div>
                     <img src='qr-dinner.png' height='50px' width='50px' />
                 </div>
             </div>{/* .safari-print-area-legal */}

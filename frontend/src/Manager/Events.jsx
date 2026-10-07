@@ -13,6 +13,7 @@ export default function Events(){
 
     useEffect(()=>getAnnualEvents(),[])
 
+    const [dailySpecials, setDailySpecials] = useState(true)
     const [mothersDay, setMothersDay] = useState(false)
     const [commencement, setCommencement] = useState(false)
     const [oleaAnniversary, setOleaAnniversary] = useState(false)
@@ -24,6 +25,7 @@ export default function Events(){
             fetch(`${BASE_URL}/api/annual-events`)
                 .then(res=>res.json())
                 .then(json=>{
+                    setDailySpecials(json[0].DailySpecials)
                     setMothersDay(json[0].MothersDay)
                     setCommencement(json[0].Commencement)
                     setOleaAnniversary(json[0].OleaAnniversary)
@@ -75,6 +77,29 @@ export default function Events(){
                                 height:'100%',
                                 // border:'1px solid green'
                                 }}>
+
+                        <div style={{display:'flex',gap:'10px'}}>
+                            
+                                <li style={{flexGrow:'1'}}>daily<br/>specials</li>
+                            
+
+                            <div style={{display:'flex',alignItems:'center',gap:'20px',border:'1px solid black',borderRadius:'10px',width:'150px',justifyContent:'center'}}>
+                                <div style={{textAlign:'center'}}>website<br/>menu</div>
+                                {dailySpecials ? 
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOn size='30' style={{color:'green',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('DailySpecials')} /> &nbsp;ON
+                                                </div>
+
+                                            :
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOff size='30' style={{color:'red',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('DailySpecials')} /> &nbsp;OFF
+                                                </div>
+                                }
+                            </div>
+                        </div>
+
+
+
                         <Link to='/valentines-day'><li style={{flexGrow:'1'}}>valentine's day<br/>feb 14</li></Link>
                         <Link to='/restaurant-weeks-spring'><li style={{flexGrow:'1'}}>restaurant weeks<br/>late march</li></Link>
                         
@@ -167,7 +192,7 @@ export default function Events(){
                         
                         <div style={{display:'flex',gap:'10px'}}>
                             <Link to='/parents-weekend'>
-                                <li style={{flexGrow:'1'}}>parents weekend<br/>1st week oct</li>
+                                <li style={{flexGrow:'1'}}>parents weekend<br/>1st sat oct</li>
                             </Link>
 
                             <div style={{display:'flex',alignItems:'center',gap:'20px',border:'1px solid black',borderRadius:'10px',width:'150px',justifyContent:'center'}}>
@@ -184,6 +209,7 @@ export default function Events(){
                                 }
                             </div>
                         </div>
+                        
                         
 
                         <Link to='/restaurant-weeks'><li style={{flexGrow:'1'}}>restaurant weeks<br/>1st 2 weeks nov</li></Link>

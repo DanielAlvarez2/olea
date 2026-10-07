@@ -99,22 +99,23 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
                                                     {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
                                                         <div className='specials-h1'
                                                         style={{marginBottom:`${menuItemMarginsTopBottom}px`,
-                                                                marginTop:'20px'}}
+                                                                marginTop:`calc(20px + ${menuItemMarginsTopBottom}px)`}}
                                                         >today's special</div>}
                                                     {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
                                                         <div className='specials-h1'
-                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`}}
+                                                        style={{marginBottom:`${menuItemMarginsTopBottom}px`,
+                                                                marginTop:`calc(20px + ${menuItemMarginsTopBottom}px)`}}
                                                         >today's specials</div>}
-                                                        <br/>
-                                                        <br/>
+                                                        {/* <br/> */}
+                                                        {/* <br/> */}
                                                 </div>
 
 
                                                 {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
-                                                    <div className='specials-h2'>dessert</div>}
+                                                    <div className='specials-h2' style={{margin:`${menuItemMarginsTopBottom}px 0`}}>dessert</div>}
                                                 {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
                                                     <div className='specials-h2'>desserts</div>}
-
+                                                {/* <br/> */}
                                                 {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
                                                     return(
                                                         <div    key={data._id} 
@@ -148,9 +149,8 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
 
 
 
-                                                {showLegalText && 
                                                                     <footer style={{position:'absolute',
-                                                                                    bottom:'15mm',
+                                                                                    bottom:'6mm',
                                                                                     // marginTop:'auto',
                                                                                     textAlign:'left',
                                                                                     fontSize:'11px',
@@ -163,7 +163,7 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
                                                                             <div className='specials-legal'>
                                                                                 Consumer advisory: consumption of undercooked meat, poultry, eggs, 
                                                                                 or seafood may increase the risk of foodborne illnesses. 
-                                                                                Please alert your server if you have special dietary requirements:
+                                                                                Please alert your server if you have special dietary requirements:<br/>
                                                                                 <span style={{fontWeight:'900'}}>
                                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                                             </div>
@@ -173,7 +173,7 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
                                                                                     height='45px' />
                                                                         </div>
                                                                     </footer>
-                                                }
+                                                
                                             </div>
                                     
                             

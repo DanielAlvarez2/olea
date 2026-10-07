@@ -21,12 +21,14 @@ export default function Navbar(){
     const [parentsWeekend, setParentsWeekend] = useState(false)
     const [commencement, setCommencement] = useState(false)
     const [oleaAnniversary, setOleaAnniversary] = useState(false)
+    const [dailySpecials, setDailySpecials] = useState(true)
 
     function getAnnualEvents(){
         try{
             fetch(`${BASE_URL}/api/annual-events`)
                 .then(res=>res.json())
                 .then(json=>{
+                    setDailySpecials(json[0].DailySpecials)
                     setMothersDay(json[0].MothersDay)
                     setParentsWeekend(json[0].ParentsWeekend)
                     setCommencement(json[0].Commencement)
@@ -146,7 +148,7 @@ export default function Navbar(){
                                     
                                     <li><Link to='/dinner'>dinner</Link></li>
                                     {oleaAnniversary && <li><Link to='/anniversary'>{new Date().getFullYear() - 2014}yr anniversary</Link></li>}
-                                    {!oleaAnniversary && <li><Link to='/specials'>specials</Link></li>}
+                                    {dailySpecials && <li><Link to='/specials'>specials</Link></li>}
                                     <li><Link to='/dessert'>dessert</Link></li>
                                 </ul>
                         </li>
@@ -196,11 +198,11 @@ export default function Navbar(){
                         <ul className='mobile-dropdown-menus'>
                             {mothersDay && <Link to='/mothers-day-menu'><li className='mobile-menu-dropdown'><span>mother's day {new Date().getFullYear()}</span></li></Link>}
                             {commencement && <Link to='/commencement-menu'><li className='mobile-menu-dropdown'><span>commencement {new Date().getFullYear()}</span></li></Link>}
-                            {parentsWeekend && <li><Link to='/yale-family-weekend'>yale family weekend {new Date().getFullYear()}</Link></li>}
+                            {parentsWeekend && <Link to='/yale-family-weekend'><li className="mobile-menu-dropdown"><span>yale family weekend {new Date().getFullYear()}</span></li></Link>}
                             
                             <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
                             {oleaAnniversary && <Link to='/anniversary'><li className='mobile-menu-dropdown'><span>{new Date().getFullYear() - 2014}yr anniversary</span></li></Link>}
-                            {!oleaAnniversary && <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>}
+                            {dailySpecials && <Link to='/specials'><li className='mobile-menu-dropdown'><span>specials</span></li></Link>}
                             <Link to='/dessert'><li className='mobile-menu-dropdown'><span>dessert</span></li></Link>
                         </ul>
                     }

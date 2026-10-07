@@ -19,6 +19,8 @@ export default function SpecialsMenuPrint(){
     const [allSpecials, setAllSpecials] = useState([])
     const [specialsFormatting, setSpecialsFormatting] = useState([])
     const [pageMarginsLeftRight, setPageMarginsLeftRight] = useState(0)
+    const [pageMarginsLeftRightDessert, setPageMarginsLeftRightDessert] = useState(0)
+    const [menuItemMarginsTopBottomDessert, setMenuItemMarginsTopBottomDessert] = useState(0)
     const [menuItemMarginsTopBottom, setMenuItemMarginsTopBottom] = useState(0)
     const [letterPaper, setLetterPaper] = useState(true)
     const [showLegalText, setShowLegalText] = useState(true)
@@ -50,6 +52,8 @@ export default function SpecialsMenuPrint(){
                     console.log(json[0])
                     setSpecialsFormatting(json[0])
                     setPageMarginsLeftRight(json[0].pageMarginsLeftRight)
+                    setPageMarginsLeftRightDessert(json[0].pageMarginsLeftRightDessert)
+                    setMenuItemMarginsTopBottomDessert(json[0].menuItemMarginsTopBottomDessert)
                     setMenuItemMarginsTopBottom(json[0].menuItemMarginsTopBottom)
                     setLetterPaper(json[0].letterPaper)
                     setShowLegalText(json[0].showLegalText)
@@ -106,6 +110,58 @@ Please switch to a different browser to proceed.
                                     fontSize:'30px'}}>specials &gt; print</div>
 
 
+
+
+
+
+
+
+
+
+
+<div style={{display:'flex',flexDirection:'row-reverse',alignItems:'center'}}>
+
+
+
+                    <div className='no-print' style={{textAlign:'center',marginLeft:'20px'}}>
+                                <div    className='no-print' 
+                                        style={{display:'flex',
+                                                gap:'10px',
+                                                alignItems:'center'}}>
+                                    <span>dinner</span>
+                                    <span>
+                                        {front ? 
+                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFront} />
+                                        : 
+                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFront} />
+                                        }
+                                    </span>
+                                    <span>dessert</span>
+                                </div> 
+                        <div    className='no-print print-btn' 
+                                style={{background:'limegreen',width:'100px',margin:'0 auto'}}
+                                onClick={()=>printSpecials()}>
+                            print
+                        </div><br/>
+
+                        <div    className='no-print print-btn' 
+                                style={{background:'#999',width:'100px',margin:'0 auto'}}
+                                onClick={()=>navigate('/specials-menu-format')}>
+                            format
+                        </div><br/>
+
+
+                        <div>
+                                                   
+                            
+                        </div>  
+                    </div>
+
+
+
+
                     <div className='main-menu paper-menu' 
                         style={{display:'flex',
                                 flex:'1',
@@ -118,41 +174,6 @@ Please switch to a different browser to proceed.
                                 paddingBottom:'0'
                                 }}>
 
-
-
-                        <div    className='no-print print-btn' 
-                                style={{background:'#999',width:'100px'}}
-                                onClick={()=>navigate('/specials-menu-format')}>
-                            format
-                        </div>
-
-                        <div    className='no-print print-btn' 
-                                style={{background:'limegreen',width:'100px'}}
-                                onClick={()=>printSpecials()}>
-                            print
-                        </div>
-
-                        <div>
-                            
-                            {doubleSided &&                             
-                                <div    className='no-print' 
-                                        style={{display:'flex',
-                                                gap:'10px',
-                                                alignItems:'center'}}>
-                                    <span>front</span>
-                                    <span>
-                                        {front ? 
-                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleFront} />
-                                        : 
-                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleFront} />
-                                        }
-                                    </span>
-                                    <span>back</span>
-                                </div> 
-                            }
-                        </div>  
 
 
 
@@ -202,14 +223,13 @@ Please switch to a different browser to proceed.
 
 
                             
-                            {doubleSided && !front &&
-<SpecialsPrintAreaBack 
-                        pageMarginsLeftRight={pageMarginsLeftRight}
-                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
-                        showLegalText={showLegalText}
-                        // doubleSided={doubleSided}
-/>
-                            }
+                            {!front &&
+            <SpecialsPrintAreaBack 
+                                    pageMarginsLeftRight={pageMarginsLeftRightDessert}
+                                    menuItemMarginsTopBottom={menuItemMarginsTopBottomDessert}
+                                    showLegalText={showLegalText}
+                                    // doubleSided={doubleSided}
+            />                            }
                         
                             {front && 
 <SpecialsPrintAreaFront 
@@ -219,14 +239,13 @@ Please switch to a different browser to proceed.
                         doubleSided={doubleSided}
 />
                             }
-                            {doubleSided && !front &&
-<SpecialsPrintAreaBack 
-                        pageMarginsLeftRight={pageMarginsLeftRight}
-                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
-                        showLegalText={showLegalText}
-                        // doubleSided={doubleSided}
-/>
-                            }
+                            {!front &&
+            <SpecialsPrintAreaBack 
+                                    pageMarginsLeftRight={pageMarginsLeftRightDessert}
+                                    menuItemMarginsTopBottom={menuItemMarginsTopBottomDessert}
+                                    showLegalText={showLegalText}
+                                    // doubleSided={doubleSided}
+            />                            }
                         
                         </div>
 
@@ -242,14 +261,13 @@ Please switch to a different browser to proceed.
                         doubleSided={doubleSided}
 />
                             }
-                            {doubleSided && !front &&
-<SpecialsPrintAreaBack 
-                        pageMarginsLeftRight={pageMarginsLeftRight}
-                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
-                        showLegalText={showLegalText}
-                        // doubleSided={doubleSided}
-/>
-                            }
+                            {!front &&
+            <SpecialsPrintAreaBack 
+                                    pageMarginsLeftRight={pageMarginsLeftRightDessert}
+                                    menuItemMarginsTopBottom={menuItemMarginsTopBottomDessert}
+                                    showLegalText={showLegalText}
+                                    // doubleSided={doubleSided}
+            />                            }
                         
                             {front && 
 <SpecialsPrintAreaFront 
@@ -259,14 +277,13 @@ Please switch to a different browser to proceed.
                         doubleSided={doubleSided}
 />
                             }
-                            {doubleSided && !front &&
-<SpecialsPrintAreaBack 
-                        pageMarginsLeftRight={pageMarginsLeftRight}
-                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
-                        showLegalText={showLegalText}
-                        // doubleSided={doubleSided}
-/>
-                            }
+                            {!front &&
+            <SpecialsPrintAreaBack 
+                                    pageMarginsLeftRight={pageMarginsLeftRightDessert}
+                                    menuItemMarginsTopBottom={menuItemMarginsTopBottomDessert}
+                                    showLegalText={showLegalText}
+                                    // doubleSided={doubleSided}
+            />                            }
                         
                         </div>
 
@@ -286,43 +303,9 @@ Please switch to a different browser to proceed.
 
                     </div>         
 
-
+</div>
 
             
-                        <div>
-                            
-                            <br className='no-print' />
-                            {doubleSided &&                             
-                                <div    className='no-print' 
-                                        style={{display:'flex',
-                                                gap:'10px',
-                                                alignItems:'center'}}>
-                                    <span>front</span>
-                                    <span>
-                                        {front ? 
-                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleFront} />
-                                        : 
-                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleFront} />
-                                        }
-                                    </span>
-                                    <span>back</span>
-                                </div> 
-                            }
-                        </div>  
-
-                        <div    className='no-print print-btn' 
-                                style={{background:'limegreen',width:'100px'}}
-                                onClick={()=>printSpecials()}>
-                            print
-                        </div>
-
-                        <div    className='no-print print-btn' 
-                                style={{background:'#999',width:'100px'}}
-                                onClick={()=>navigate('/specials-menu-format')}>
-                            format
-                        </div>
 
 
 

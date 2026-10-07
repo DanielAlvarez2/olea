@@ -15,10 +15,13 @@ import { FaToggleOn } from "react-icons/fa6";
 
 export default function SpecialsMenuFormat(){
     const navigate = useNavigate()
+    const [front, setFront] = useState(true)
     const [allSpecials, setAllSpecials] = useState([])
     const [specialsFormatting, setSpecialsFormatting] = useState([])
     const [pageMarginsLeftRight, setPageMarginsLeftRight] = useState(0)
     const [menuItemMarginsTopBottom, setMenuItemMarginsTopBottom] = useState(0)
+    const [pageMarginsLeftRightDessert, setPageMarginsLeftRightDessert] = useState(0)
+    const [menuItemMarginsTopBottomDessert, setMenuItemMarginsTopBottomDessert] = useState(0)
     const [letterPaper, setLetterPaper] = useState(true)
     const [showLegalText, setShowLegalText] = useState(true)
     const [doubleSided, setDoubleSided] = useState(false)
@@ -49,9 +52,8 @@ export default function SpecialsMenuFormat(){
                     setSpecialsFormatting(json[0])
                     setPageMarginsLeftRight(json[0].pageMarginsLeftRight)
                     setMenuItemMarginsTopBottom(json[0].menuItemMarginsTopBottom)
-                    setLetterPaper(json[0].letterPaper)
-                    setShowLegalText(json[0].showLegalText)
-                    setDoubleSided(json[0].doubleSided)
+                    setPageMarginsLeftRightDessert(json[0].pageMarginsLeftRightDessert)
+                    setMenuItemMarginsTopBottomDessert(json[0].menuItemMarginsTopBottomDessert)
                 })
                 .catch(err=>console.log(err))
             
@@ -61,47 +63,58 @@ export default function SpecialsMenuFormat(){
     }
 
     function increasePageMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/specials/increasePageMargins`, {method:'PUT'})
-            .then(()=>getSpecialsFormatting())
-            .catch(err=>console.log(err))
+        if(front){
+            fetch(`${BASE_URL}/api/formats/specials/increasePageMargins`, {method:'PUT'})
+                .then(()=>getSpecialsFormatting())
+                .catch(err=>console.log(err))
+        }else{
+            fetch(`${BASE_URL}/api/formats/specials/increasePageMarginsDessert`, {method:'PUT'})
+                .then(()=>getSpecialsFormatting())
+                .catch(err=>console.log(err))
+        }
+
     }
 
     function decreasePageMarginsLeftRight(){
-        if (pageMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/specials/decreasePageMargins`, {method:'PUT'})
-            .then(()=>getSpecialsFormatting())
-            .catch(err=>console.log(err))
+        if (front){
+            if (pageMarginsLeftRight <= 0) return
+            fetch(`${BASE_URL}/api/formats/specials/decreasePageMargins`, {method:'PUT'})
+                .then(()=>getSpecialsFormatting())
+                .catch(err=>console.log(err))
+        }else{
+            if (pageMarginsLeftRightDessert <= 0) return
+            fetch(`${BASE_URL}/api/formats/specials/decreasePageMarginsDessert`, {method:'PUT'})
+                .then(()=>getSpecialsFormatting())
+                .catch(err=>console.log(err))
+        }
     }
 
     function increaseMenuItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/specials/increaseMenuItemMargins`, {method:'PUT'})
-            .then(()=>getSpecialsFormatting())
-            .catch(err=>console.log(err))
+        if(front){
+            fetch(`${BASE_URL}/api/formats/specials/increaseMenuItemMargins`, {method:'PUT'})
+                .then(()=>getSpecialsFormatting())
+                .catch(err=>console.log(err))
+        }else{
+            fetch(`${BASE_URL}/api/formats/specials/increaseMenuItemMarginsDessert`, {method:'PUT'})
+                .then(()=>getSpecialsFormatting())
+                .catch(err=>console.log(err))
+        }
+
     }
 
     function decreaseMenuItemMarginsTopBottom(){
-        if (menuItemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/specials/decreaseMenuItemMargins`, {method:'PUT'})
-            .then(()=>getSpecialsFormatting())
-            .catch(err=>console.log(err))
-    }
+        if(front){
+            if (menuItemMarginsTopBottom <= 0) return
+            fetch(`${BASE_URL}/api/formats/specials/decreaseMenuItemMargins`, {method:'PUT'})
+                .then(()=>getSpecialsFormatting())
+                .catch(err=>console.log(err))
+        }else{
+            if (menuItemMarginsTopBottomDessert <= 0) return
+            fetch(`${BASE_URL}/api/formats/specials/decreaseMenuItemMarginsDessert`, {method:'PUT'})
+                .then(()=>getSpecialsFormatting())
+                .catch(err=>console.log(err))
+        }
 
-    function togglePaperSize(){
-        fetch(`${BASE_URL}/api/formats/specials/togglePaperSize`, {method:'PUT'})
-            .then(()=>getSpecialsFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function toggleLegalText(){
-        fetch(`${BASE_URL}/api/formats/specials/toggleLegalText`, {method:'PUT'})
-            .then(()=>getSpecialsFormatting())
-            .catch(err=>console.log(err))
-    }
-
-    function toggleDoubleSided(){
-        fetch(`${BASE_URL}/api/formats/specials/toggleDoubleSided`, {method:'PUT'})
-            .then(()=>getSpecialsFormatting())
-            .catch(err=>console.log(err))
     }
 
 
@@ -110,6 +123,10 @@ export default function SpecialsMenuFormat(){
 
 
 
+
+    function toggleFront(){
+        setFront(prev=>!prev)
+    }
 
 
 
@@ -123,12 +140,8 @@ export default function SpecialsMenuFormat(){
                     <div style={{textAlign:'center',fontSize:'30px'}}>menu manager</div>
                     <div style={{textAlign:'center',fontSize:'30px'}}>specials &gt; format</div>
 
-                    <br/>
-                                <div    className='no-print print-btn' 
-                                        style={{background:'limegreen',width:'210px'}}
-                                        onClick={()=>navigate('/specials-menu-print')}>
-                                    print preview
-                                </div>
+
+                    {/* <br/> */}
 
                     <div className='main-menu paper-menu' 
                         style={{display:'flex',
@@ -159,18 +172,29 @@ export default function SpecialsMenuFormat(){
 
 
 
-                        <div id='specials-double-sided-flexbox'>
+                        <div id='specials-double-sided-flexbox' style={{flexDirection:'row',alignItems:'center'}}>
 
-<SpecialsPrintAreaFront 
-                        pageMarginsLeftRight={pageMarginsLeftRight}
-                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
-                        showLegalText={showLegalText}
-                        doubleSided={doubleSided}
-/>
+{front &&
+
+        <SpecialsPrintAreaFront 
+                                pageMarginsLeftRight={pageMarginsLeftRight}
+                                menuItemMarginsTopBottom={menuItemMarginsTopBottom}
+                                showLegalText={showLegalText}
+                                doubleSided={doubleSided}
+        />
+}
 
                             
 
 
+{!front && 
+            <SpecialsPrintAreaBack 
+                                    pageMarginsLeftRight={pageMarginsLeftRightDessert}
+                                    menuItemMarginsTopBottom={menuItemMarginsTopBottomDessert}
+                                    showLegalText={showLegalText}
+                                    // doubleSided={doubleSided}
+            />
+}
 
 
 
@@ -179,21 +203,12 @@ export default function SpecialsMenuFormat(){
 
 
 
-
-                            {doubleSided && 
                                     
 
                                     
-<SpecialsPrintAreaBack 
-                        pageMarginsLeftRight={pageMarginsLeftRight}
-                        menuItemMarginsTopBottom={menuItemMarginsTopBottom}
-                        showLegalText={showLegalText}
-                        // doubleSided={doubleSided}
-/>
                                     
-                            }
+                            
 
-                        </div>
 
 
 
@@ -206,6 +221,26 @@ export default function SpecialsMenuFormat(){
                                         zIndex:'1',
                                         gap:'10px',
                                         flexDirection:'column'}}>
+                                <div    className='no-print' 
+                                        style={{display:'flex',
+                                                width:'100%',
+                                                gap:'10px',
+                                                // background:'pink',
+                                                justifyContent:'center',
+                                                alignItems:'center'}}>
+                                    <span>dinner</span>
+                                    <span>
+                                        {front ? 
+                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFront} />
+                                        : 
+                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
+                                                                        onClick={toggleFront} />
+                                        }
+                                    </span>
+                                    <span>dessert</span>
+                                </div> 
+                                            
                             <div style={{   textAlign:'center',
                                             display:'flex',
                                             gap:'10px',
@@ -229,47 +264,12 @@ export default function SpecialsMenuFormat(){
                                                             onClick={increaseMenuItemMarginsTopBottom} /></span>
                             </div>
 
-                            {/* <div>
-                                <div style={{textAlign:'center'}}>legal text</div>
-                
-                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
-                                    <span>show</span>
-                                    <span>
-                                        {showLegalText ? 
-                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleLegalText} />
-                                        : 
-                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={toggleLegalText} />
-                                        }
-                                        
-
-                                    </span>
-                                    <span>hide</span>
-                                </div> 
-                            </div>   */}
-
-                            {/* <div>
-                                <div style={{textAlign:'center'}}>paper size</div>
-                
-                                <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
-                                    <span>letter</span>
-                                    <span>
-                                        {letterPaper ? 
-                                                        <FaToggleOff    style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={togglePaperSize} />
-                                        : 
-                                                        <FaToggleOn     style={{cursor:'pointer',fontSize:'30px'}}
-                                                                        onClick={togglePaperSize} />
-                                        }
-                                        
-
-                                    </span>
-                                    <span>legal</span>
-                                </div> 
-                            </div>   */}
-
+ 
                             <div>
+
+
+
+
                                 <div    className='no-print print-btn' 
                                         style={{background:'limegreen',width:'210px'}}
                                         onClick={()=>navigate('/specials-menu-print')}>
@@ -299,6 +299,7 @@ export default function SpecialsMenuFormat(){
 
 
 
+                        </div>
 
 
 
