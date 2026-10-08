@@ -7,7 +7,7 @@ import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { FaCaretUp } from "react-icons/fa";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 
-export default function MothersDayUpdate(){
+export default function RestaurantWeeksFallUpdate(){
     const [updatingMenu, setUpdatingMenu] = useState(false)
     const [updatingImage, setUpdatingImage] = useState(false)
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
@@ -21,6 +21,7 @@ export default function MothersDayUpdate(){
     const [isNoWebsiteImageChecked, setIsNoWebsiteImageChecked] = useState(false)
     const [websiteImageURL, setWebsiteImageURL] = useState('')
     const [websiteImageID, setWebsiteImageID] = useState('')
+    const [section, setSection] = useState('')
 
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
@@ -30,9 +31,9 @@ export default function MothersDayUpdate(){
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
 
-    const event = "Mother's Day"
-    const event_url = 'mothers-day'
-    const event_obj = 'MothersDay'
+    const event = "Restaurant Weeks: Fall"
+    const event_url = 'restaurant-weeks-fall'
+    const event_obj = 'RestaurantWeeksFall'
 
     function getWebsiteImage(){
         fetch(`${BASE_URL}/api/events/website-image/${event_url}`)
@@ -59,6 +60,10 @@ export default function MothersDayUpdate(){
                                                             description: formData.get('description'),
                                                             postDescription: formData.get('post-description'),
                                                             descriptionIntro: formData.get('description-intro'),
+                                                            wineGrapes: formData.get('wine-grapes'),
+                                                            wineName: formData.get('wine-name'),
+                                                            wineVintage: formData.get('wine-vintage'),
+                                                            wineDescription: formData.get('wine-description'),
                                                             previewSource
                                                         })
             })
@@ -69,6 +74,7 @@ export default function MothersDayUpdate(){
                 - ${formData.get('name')}`))
             .then(()=>getAnnualEventsMenuItems())
             .then(()=>setUpdatingMenu(false))
+            .then(()=>setSection(''))
             .catch(err=>console.log(err))
         }
     }
@@ -85,8 +91,8 @@ export default function MothersDayUpdate(){
                                                                                         allergiesComplete: formData.get('allergies-complete'),
                                                                                         description: formData.get('description'),
                                                                                         postDescription: formData.get('post-description'),
-                                                                                        // descriptionIntro: formData.get('description-intro'),
-                                                                                        // price: formData.get('price'),
+                                                                                        descriptionIntro: formData.get('description-intro'),
+                                                                                        price: formData.get('price'),
                                                                                         cloudinary_public_ID: formData.get('cloudinary_public_ID'),
                                                                                         cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
                                                                                         previewSource,
@@ -100,6 +106,7 @@ export default function MothersDayUpdate(){
             .then(document.querySelector('#section-wrapper').style.display = 'none')
             .then(()=>getAnnualEventsMenuItems())
             .then(()=>setUpdatingMenu(false))
+            .then(()=>setSection(''))            
             .catch(err=>console.log(err))
         }
     }
@@ -189,9 +196,9 @@ export default function MothersDayUpdate(){
             document.querySelector('#allergies-abbreviated').value = allergiesAbbreviated
             document.querySelector('#allergies-complete').value = allergiesComplete
             document.querySelector('#description').value = description
-            // document.querySelector('#description-intro').value = descriptionIntro
+            document.querySelector('#description-intro').value = descriptionIntro
             document.querySelector('#post-description').value = postDescription
-            // document.querySelector('#price').value = price
+            document.querySelector('#price').value = price
         }catch(err){
             console.log(err)
         }
@@ -226,9 +233,9 @@ export default function MothersDayUpdate(){
             document.querySelector('#allergies-abbreviated').value = ''
             document.querySelector('#allergies-complete').value = ''
             document.querySelector('#description').value = ''
-            // document.querySelector('#description-intro').value = ''
+            document.querySelector('#description-intro').value = ''
             document.querySelector('#post-description').value = ''
-            // document.querySelector('#price').value = ''
+            document.querySelector('#price').value = ''
             document.querySelector('#image-file').value = ''
             document.querySelector('#new-image-dropdown').style.visibility = 'visible'
 
@@ -353,7 +360,9 @@ Maximum Recommended Dimensions:
         document.querySelector('#file-input-website-image').style.visibility = 'visible'
     }
 
-
+    function handleSectionChange(e){
+      setSection(e.target.value)
+    }
 
 
 
@@ -378,15 +387,20 @@ Maximum Recommended Dimensions:
 
                         <div className='specials-update-menu' style={{minHeight:'auto'}}>
                             <div>
-                                <div className='specials-h1' style={{marginBottom:'0'}}>{event.toLowerCase()} menu</div>
+                                <div className='specials-h1' style={{fontSize:'18px',marginBottom:'0'}}>{event.toLowerCase()} menu</div>
                             </div>
 
                             <br/>
                             section &nbsp; 
                                 <select name='display-section' defaultValue={displaySection} onChange={handleChangeDisplaySection}>
-                                    <option value='appetizers'>appetizers</option>
-                                    <option value='entrées'>entrées</option>
-                                    <option value='desserts'>desserts</option>
+                                                <option disabled value=''>select...</option>
+                                                <option value='prix fixe - appetizers'>prix fixe - appetizers</option>
+                                                <option value='prix fixe - entrées'>prix fixe - entrées</option>
+                                                <option value='prix fixe - desserts'>prix fixe - desserts</option>
+                                                <option value='à la carte - appetizers'>à la carte - appetizers</option>
+                                                <option value='à la carte - entrées'>à la carte - entrées</option>
+                                                <option value='à la carte - sides'>à la carte - sides</option>
+
                                 </select>
 
 
@@ -450,14 +464,15 @@ Maximum Recommended Dimensions:
 
 
 
-                            {displaySection == 'appetizers' && 
+                            {displaySection == 'prix fixe - appetizers' && 
                                 <>
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).length == 1 && 
-                                    <div className='specials-h2 specials-update-heading'>appetizer</div>}
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).length > 1 && 
-                                    <div className='specials-h2 specials-update-heading'>appetizers</div>}
+                                <br/><br/>
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - appetizers' && item.event == event).length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>prix fixe - appetizer</div>}
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - appetizers' && item.event == event).length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>prix fixe - appetizers</div>}
 
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - appetizers' && item.event == event).map(data=>{
                                     return(
                                         <div key={data._id} className='special'>
                                             {data.sequence != '1' && 
@@ -573,14 +588,15 @@ Maximum Recommended Dimensions:
 
 
 
-                            {displaySection == 'entrées' && 
+                            {displaySection == 'prix fixe - entrées' && 
                                 <>
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).length == 1 && 
-                                    <div className='specials-h2 specials-update-heading'>entrée</div>}
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).length > 1 && 
-                                    <div className='specials-h2 specials-update-heading'>entrées</div>}
+                                <br/><br/>
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - entrées' && item.event == event).length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>prix fixe - entrée</div>}
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - entrées' && item.event == event).length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>prix fixe - entrées</div>}
 
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - entrées' && item.event == event).map(data=>{
                                     return(
                                         <div key={data._id} className='special'>
                                             {data.sequence != '1' && 
@@ -695,14 +711,293 @@ Maximum Recommended Dimensions:
 
 
 
-                            {displaySection == 'desserts' && 
+                            {displaySection == 'prix fixe - desserts' && 
                                 <>
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).length == 1 && 
-                                    <div className='specials-h2 specials-update-heading'>dessert</div>}
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).length > 1 && 
-                                    <div className='specials-h2 specials-update-heading'>desserts</div>}
 
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).map(data=>{
+                                <br/><br/>
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - desserts' && item.event == event).length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>prix fixe - dessert</div>}
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - desserts' && item.event == event).length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>prix fixe - desserts</div>}
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - desserts' && item.event == event).map(data=>{
+                                    return(
+                                        <div key={data._id} className='special'>
+                                            {data.sequence != '1' && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'10px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveUp(data._id))} />
+                                            }
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </div>
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            <span> {data.description}</span>
+                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                            
+                                            <div style={{marginTop:'5px'}}>
+                                                <span   className='btn archive-btn'
+                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
+                                                <span   className='btn edit-btn'
+                                                        onClick={()=>editItem(  data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                // data.descriptionIntro,
+                                                                                data.description,
+                                                                                data.postDescription,
+                                                                                // data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                
+                                                                                )}>EDIT</span>                                                    
+                                                <span   className='btn delete-btn'
+                                                        onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
+
+                                            </div>
+
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'desserts' && item.sequence && item.event == event).length && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'0px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    transform:'rotate(180deg',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveDown(data._id))} />
+                                            }
+
+                                        </div>
+                                    )
+                                })}
+                                
+                                </>
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {displaySection == 'à la carte - appetizers' && 
+                                <>
+
+                                <br/><br/>
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - appetizers' && item.event == event).length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>à la carte - appetizer</div>}
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - appetizers' && item.event == event).length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>à la carte - appetizers</div>}
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - appetizers' && item.event == event).map(data=>{
+                                    return(
+                                        <div key={data._id} className='special'>
+                                            {data.sequence != '1' && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'10px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveUp(data._id))} />
+                                            }
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </div>
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            <span> {data.description}</span>
+                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                            
+                                            <div style={{marginTop:'5px'}}>
+                                                <span   className='btn archive-btn'
+                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
+                                                <span   className='btn edit-btn'
+                                                        onClick={()=>editItem(  data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                // data.descriptionIntro,
+                                                                                data.description,
+                                                                                data.postDescription,
+                                                                                // data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                
+                                                                                )}>EDIT</span>                                                    
+                                                <span   className='btn delete-btn'
+                                                        onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
+
+                                            </div>
+
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'desserts' && item.sequence && item.event == event).length && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'0px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    transform:'rotate(180deg',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveDown(data._id))} />
+                                            }
+
+                                        </div>
+                                    )
+                                })}
+                                
+                                </>
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {displaySection == 'à la carte - entrées' && 
+                                <>
+
+                                <br/><br/>
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - entrées' && item.event == event).length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>à la carte - entrée</div>}
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - entrées' && item.event == event).length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>à la carte - entrées</div>}
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - entrées' && item.event == event).map(data=>{
+                                    return(
+                                        <div key={data._id} className='special'>
+                                            {data.sequence != '1' && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'10px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveUp(data._id))} />
+                                            }
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span className='name'>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                            </div>
+                                            {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
+                                            <span> {data.description}</span>
+                                            {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
+                                                                                style={{maxWidth:'100px',maxHeight:'100px'}}    
+                                                                            />}                                            
+                                            <div style={{marginTop:'5px'}}>
+                                                <span   className='btn archive-btn'
+                                                        onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
+                                                <span   className='btn edit-btn'
+                                                        onClick={()=>editItem(  data._id,
+                                                                                data.section,
+                                                                                data.name,
+                                                                                data.allergiesAbbreviated,
+                                                                                data.allergiesComplete,
+                                                                                // data.descriptionIntro,
+                                                                                data.description,
+                                                                                data.postDescription,
+                                                                                // data.price,
+                                                                                data.cloudinary_public_ID,
+                                                                                data.cloudinary_secure_URL                                                                                
+                                                                                )}>EDIT</span>                                                    
+                                                <span   className='btn delete-btn'
+                                                        onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
+
+                                            </div>
+
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'desserts' && item.sequence && item.event == event).length && 
+                                                <FaCaretUp style={{ margin:'0 auto',
+                                                                    fontSize:'60px',
+                                                                    position:'relative',
+                                                                    top:'0px',
+                                                                    color:'grey',
+                                                                    cursor:'pointer',
+                                                                    transform:'rotate(180deg',
+                                                                    width:'100%'}}
+                                                            onClick={(()=>moveDown(data._id))} />
+                                            }
+
+                                        </div>
+                                    )
+                                })}
+                                
+                                </>
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {displaySection == 'à la carte - sides' && 
+                                <>
+
+                                <br/><br/>
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - sides' && item.event == event).length == 1 && 
+                                    <div className='specials-h2 specials-update-heading'>à la carte - side</div>}
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - sides' && item.event == event).length > 1 && 
+                                    <div className='specials-h2 specials-update-heading'>à la carte - sides</div>}
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - sides' && item.event == event).map(data=>{
                                     return(
                                         <div key={data._id} className='special'>
                                             {data.sequence != '1' && 
@@ -825,11 +1120,14 @@ Maximum Recommended Dimensions:
                                         <label>
                                             section    
                                             &nbsp; 
-                                            <select name='section' required defaultValue=''>
+                                            <select name='section' required value={section} onChange={handleSectionChange} defaultValue=''>
                                                 <option disabled value=''>select...</option>
-                                                <option>appetizers</option>
-                                                <option>entrées</option>
-                                                <option>desserts</option>
+                                                <option value='prix fixe - appetizers'>prix fixe - appetizers</option>
+                                                <option value='prix fixe - entrées'>prix fixe - entrées</option>
+                                                <option value='prix fixe - desserts'>prix fixe - desserts</option>
+                                                <option value='à la carte - appetizers'>à la carte - appetizers</option>
+                                                <option value='à la carte - entrées'>à la carte - entrées</option>
+                                                <option value='à la carte - sides'>à la carte - sides</option>
                                             </select>
                                              <span className='required-field'> *required</span>
                                             <br/><br/>
@@ -864,21 +1162,24 @@ Maximum Recommended Dimensions:
                                     id='allergies-complete'
                                     maxLength='100'
                                     name='allergies-complete' 
-                                    style={{width:'100%'}} /><br/>
+                                    style={{width:'100%',color:'red'}} /><br/>
                             UPPER-CASE = CAN NOT BE REMOVED<br/>
                             lower-case = can be omitted
                         </label>
                         <br/><br/>
 
-                        {/* <label>
-                            description-intro<br/>
-                            <input  type='text'
-                                    name='description-intro'
-                                    maxLength='100'
-                                    id='description-intro'
-                                    style={{width:'100%'}} />
-                        </label>
-                        <br/><br/> */}
+                        {
+                          section.startsWith('à la carte') && 
+                                                              <label>
+                                                                  description intro<br/>
+                                                                  <input  type='text'
+                                                                          name='description-intro'
+                                                                          maxLength='100'
+                                                                          id='description-intro'
+                                                                          style={{width:'100%'}} />
+                                                              <br/><br/>
+                                                              </label>
+                        }
 
                         <label>
                             description<br/>
@@ -901,6 +1202,54 @@ Maximum Recommended Dimensions:
                         
                         </label>
                         <br/><br/>
+
+                        {section.startsWith('à la carte') &&
+                                                              <label>
+                                                                price<br/>
+                                                                <input type='text' 
+                                                                        id='price'
+                                                                        maxLength='100'
+                                                                        required
+                                                                        autoComplete='off'
+                                                                        style={{width:'40%'}}
+                                                                        name='price'
+                                                                        />
+                                                              <br/><br/>
+                                                              </label>
+                        }
+
+                        {section.startsWith('prix fixe') &&
+                         <>
+                          <br/>
+                          <div style={{textAlign:'center',fontWeight:'900'}}>WINE PAIRING</div>
+
+                          <label>
+                            wine varietal(s)<br/>
+                            <input type='text' style={{width:'100%'}} required id='wine-grapes' name='wine-grapes' />
+                            <br/><br/>
+                          </label>
+
+                          <label>
+                            wine name<br/>
+                            <input type='text' style={{width:'100%'}} required id='wine-name' name='wine-name' />
+                            <br/><br/>
+                          </label>
+
+                          <label>
+                            wine vintage<br/>
+                            <input type='text' style={{width:'30%'}} required id='wine-vintage' name='wine-vintage' />
+                            <br/><br/>
+                          </label>
+
+                          <label>
+                            wine description<br/>
+                            <input type='text' style={{width:'100%'}} required id='wine-description' name='wine-description' />
+                            <br/><br/>
+                          </label>
+
+                         </>
+                        
+                        }
                         
                         {editMode && currentImage && <>current image:<br/></>}
 
@@ -1219,7 +1568,6 @@ Maximum Recommended Dimensions:
                                     {allAnnualEventsMenuItems.filter(item=>(item.sequence == 0) && (item.event == event)).map(data=>{
                                         return(
                                             <div key={data._id} className='special'>  
-                                                <div>event: {data.event}</div>                                    
                                                 <div>section: {data.section}</div>                                    
                                                 <span className='name'>{data.name} </span>
                                                 {data.allergiesAbbreviated && 

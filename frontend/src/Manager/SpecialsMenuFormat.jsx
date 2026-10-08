@@ -271,7 +271,7 @@ export default function SpecialsMenuFormat(){
 
 
                                 <div    className='no-print print-btn' 
-                                        style={{background:'limegreen',width:'210px'}}
+                                        style={{background:'limegreen',width:'220px'}}
                                         onClick={()=>navigate('/specials-menu-print')}>
                                     print preview
                                 </div>

@@ -10,6 +10,10 @@ const AnnualEventsMenuItemSchema = new mongoose.Schema({
     postDescription:{type:String},
     price:{type:String},
     sequence:{type:Number},
+    wineGrapes:{type:String},
+    wineName:{type:String},
+    wineVintage:{type:String},
+    wineDescription:{type:String},
     cloudinary_secure_URL:{type:String},
     cloudinary_public_ID:{type:String}
 },{timestamps:true})

@@ -19,6 +19,8 @@ export default function RestaurantWeeks(){
                                 height:'100%',
                                 // border:'1px solid green'
                                 }}>
+                        <Link to='/restaurant-weeks-fall-update'><li style={{flexGrow:'1'}}>update</li></Link>
+                        <Link to='/restaurant-weeks-screenshot'><li style={{flexGrow:'1'}}>format/print</li></Link>
                         <Link to='/restaurant-weeks-screenshot'><li style={{flexGrow:'1'}}>restaurant weeks<br/>screenshot</li></Link>
                         <Link to='/restaurant-weeks-scan'><li style={{flexGrow:'1'}}>restaurant weeks<br/>menu scan</li></Link>
                     </ul>

@@ -397,6 +397,10 @@ app.post('/api/annual-events-menu-items', async(req,res)=>{
                                         price: req.body.price ? req.body.price.trim() : '',
                                         allergiesAbbreviated: req.body.allergiesAbbreviated ? req.body.allergiesAbbreviated.trim() : '',
                                         allergiesComplete: req.body.allergiesComplete ? req.body.allergiesComplete.trim() : '',
+                                        wineGrapes: req.body.wineGrapes ? req.body.wineGrapes.trim() : '',
+                                        wineName: req.body.wineName ? req.body.wineName.trim() : '',
+                                        wineVintage: req.body.wineVintage ? req.body.wineVintage.trim() : '',
+                                        wineDescription: req.body.wineDescription ? req.body.wineDescription.trim() : '',
                                         sequence: maxSequence ? maxSequence.sequence + 1 : 1,
                                         cloudinary_secure_URL,
                                         cloudinary_public_ID

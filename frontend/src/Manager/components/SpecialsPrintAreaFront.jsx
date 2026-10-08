@@ -68,7 +68,7 @@ export default function SpecialsPrintAreaFront({pageMarginsLeftRight,menuItemMar
                                 <div style={{   width:'4.25in',
                                                 // height: letterPaper ? 'calc(5.5in - 2px)' : '7in',
                                                 height:'5.5in',
-                                                paddingTop:'3mm',
+                                                paddingTop:'5mm',
                                                 paddingLeft:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 paddingRight:`calc(6mm + ${pageMarginsLeftRight}px)`,
                                                 overflow:'hidden',
