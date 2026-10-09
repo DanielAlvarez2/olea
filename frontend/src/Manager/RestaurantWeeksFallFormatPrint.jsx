@@ -13,7 +13,7 @@ import { PiMinusCircleDuotone } from "react-icons/pi";
 
 
 
-export default function ParentsWeekendFormatPrint(){
+export default function RestaurantWeeksFallFormatPrint(){
 
     const [annualEventPrice, setAnnualEventPrice] = useState(0)      
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
@@ -31,9 +31,9 @@ export default function ParentsWeekendFormatPrint(){
                     'http://localhost:1436'
 
     // const event = "Mother's Day"
-    const event = "Parents Weekend"
-    const event_url = 'parents-weekend'
-    const event_obj = 'ParentsWeekend'
+    const event = "Restaurant Weeks: Fall"
+    const event_url = 'restaurant-weeks-fall'
+    const event_obj = 'RestaurantWeeksFall'
 
     function getAnnualEventPrice(){
         try{
@@ -127,7 +127,7 @@ Please switch to a different browser to proceed.
                     <ManagerNavbar page='events' />
                 </div>
                     <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>menu manager</div>
-                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>parents weekend &gt; format/print</div>
+                    <div style={{textAlign:'center',fontSize:'30px'}} className='no-print'>restaurant weeks: fall &gt; format/print</div>
                     
                     <br className='no-print'/>
 
@@ -182,20 +182,20 @@ Please switch to a different browser to proceed.
                                                         fontSize:'57px'}}>olea</span>
 
                                         <div style={{borderTop:'1px solid #888',margin:'5px 0'}}></div>
-{/* <hr style={{borderTop:'1px solid grey !important'}} /> */}
-                                        <div style={{marginTop:'28px',
-                                            // padding:`0 ${itemMarginsLeftRight}px`
-                                            }}>
-                                            <h2 style={{fontSize:'23px'}}>prix fixe dinner menu</h2>
-                                            {/* <br/> */}
-                                            <div style={{fontFamily:'serif'}}>
-                                                <span style={{fontSize:'18.7px',fontWeight:'900'}}>${annualEventPrice} per person; three courses</span>
-                                                <br />
-                                                October 10, 2026
-                                                <br/>
-                                                <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(tax, gratuity and beverages are not included)</span>
-                                            </div>
-                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                                         <div className='dessert-menu-front-content'
@@ -206,26 +206,35 @@ Please switch to a different browser to proceed.
 
 
 
+
+
+
+
                                             <div    id='dinner-menu-left'
-                                                    style={{width:'50%'}}        
+                                                    style={{width:'50%',border:'1px solid black'}}        
                                             >
 
-
-
-
-
-
-
-
-
-
+                                        <div style={{marginTop:'28px',
+                                            // padding:`0 ${itemMarginsLeftRight}px`
+                                            }}>
+                                            <h2 style={{fontSize:'23px'}}>New Haven Restaurant Week</h2>
+                                            November 1-14, 2026
+                                            <br/>
+                                            <div style={{fontFamily:'serif'}}>
+                                                <span style={{fontSize:'18.7px',fontWeight:'900'}}>${annualEventPrice} per person; three courses</span>
+                                                <br />
+                                                October 10, 2026
+                                                <br/>
+                                                <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(tax, gratuity and beverages are not included)</span>
+                                            </div>
+                                        </div>
 
 
                                                 <h2 style={{
                                                     // padding:`0 ${itemMarginsLeftRight}px`,
                                                     fontSize:'22.2px'}}>appetizers <span style={{marginLeft:'5px'}}>choose one</span></h2>
 
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - appetizers' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
                                                 style={{paddingRight:`${itemMarginsLeftRight}px`,
@@ -250,6 +259,85 @@ Please switch to a different browser to proceed.
                                         </div>
                                     )
                                 })}
+
+
+
+
+
+
+                                                <h2 style={{
+                                                    // padding:`0 ${itemMarginsLeftRight}px`,
+                                                    fontSize:'22.2px'}}>entrées <span style={{marginLeft:'5px'}}>choose one</span></h2>
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - entrées' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id} 
+                                                style={{paddingRight:`${itemMarginsLeftRight}px`,
+                                                        margin:`${itemMarginsTopBottom}px 0`,
+                                                    }}
+                                                className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <br/>
+                                                {data.descriptionIntro && 
+                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                }
+                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
+                                                {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
+                                            </div>
+
+
+                                        </div>
+                                    )
+                                })}
+
+
+
+
+
+
+
+                                    <div style={{   marginTop:'0px',
+                                                    // padding:`0 ${itemMarginsLeftRight}px`
+                                                }}
+                                    >
+
+                                                <h2 style={{fontSize:'22.2px'}}>desserts <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                        
+                                    </div>
+
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - desserts' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id} 
+                                                style={{paddingRight:`${itemMarginsLeftRight}px`,
+                                                        margin:`${itemMarginsTopBottom/2}px 0`,
+                                                      }}
+                                                className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                <br/>
+                                                {data.descriptionIntro && 
+                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                }
+                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            </div>
+
+
+                                        </div>
+                                    )
+                                })}
+
+
 
                                             </div>
 
@@ -277,35 +365,6 @@ Please switch to a different browser to proceed.
                                                     style={{width:'50%'}}
                                             >
 
-                                                <h2 style={{
-                                                    // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px'}}>entrées <span style={{marginLeft:'5px'}}>choose one</span></h2>
-
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
-                                    return(
-                                        <div    key={data._id} 
-                                                style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${itemMarginsTopBottom}px 0`,
-                                                    }}
-                                                className='special'>
-                                            
-                                            {/* {data.sequence}<br/> */}
-                                            <div>
-                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <br/>
-                                                {data.descriptionIntro && 
-                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
-                                                }
-                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
-                                                {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
-                                            </div>
-
-
-                                        </div>
-                                    )
-                                })}
 
                                             
                                             </div>{/* id='dinner-menu-right' */}
@@ -362,14 +421,6 @@ Please switch to a different browser to proceed.
 
 
 
-                                    <div style={{   marginTop:'0px',
-                                                    // padding:`0 ${itemMarginsLeftRight}px`
-                                                }}
-                                    >
-
-                                                <h2 style={{fontSize:'22.2px'}}>desserts <span style={{marginLeft:'5px'}}>choose one</span></h2>
-                                        
-                                    </div>
 
 
 
@@ -381,31 +432,6 @@ Please switch to a different browser to proceed.
                                                         }}>
 
                                         
-                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'desserts' && item.event == event).map(data=>{
-                                    return(
-                                        <div    key={data._id} 
-                                                style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${itemMarginsTopBottom/2}px 0`,
-                                                        width:'50%'}}
-                                                className='special'>
-                                            
-                                            {/* {data.sequence}<br/> */}
-                                            <div>
-                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
-                                                {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <br/>
-                                                {data.descriptionIntro && 
-                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
-                                                }
-                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
-                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-                                            </div>
-
-
-                                        </div>
-                                    )
-                                })}
 
                                         </div>
 

@@ -13,7 +13,7 @@ export default function RestaurantWeeksFallUpdate(){
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)
     const [editMode, setEditMode] = useState(false)
-    const [displaySection, setDisplaySection] = useState('appetizers')
+    const [displaySection, setDisplaySection] = useState('prix fixe - appetizers')
     const [currentImage, setCurrentImage] = useState('')
     const [cloudinaryPublicID, setCloudinaryPublicID] = useState('')
     const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
@@ -55,6 +55,7 @@ export default function RestaurantWeeksFallUpdate(){
                                                             event: formData.get('event'),
                                                             section: formData.get('section'),
                                                             name: formData.get('name'),
+                                                            price: formData.get('price'),
                                                             allergiesAbbreviated: formData.get('allergies-abbreviated'),
                                                             allergiesComplete: formData.get('allergies-complete'),
                                                             description: formData.get('description'),
@@ -106,7 +107,8 @@ export default function RestaurantWeeksFallUpdate(){
             .then(document.querySelector('#section-wrapper').style.display = 'none')
             .then(()=>getAnnualEventsMenuItems())
             .then(()=>setUpdatingMenu(false))
-            .then(()=>setSection(''))            
+            .then(()=>setSection(''))         
+            // .then(()=>clearForm())   
             .catch(err=>console.log(err))
         }
     }
@@ -233,10 +235,16 @@ export default function RestaurantWeeksFallUpdate(){
             document.querySelector('#allergies-abbreviated').value = ''
             document.querySelector('#allergies-complete').value = ''
             document.querySelector('#description').value = ''
-            document.querySelector('#description-intro').value = ''
+            if(document.querySelector('#description-intro')){
+              document.querySelector('#description-intro').value = ''
+            }
             document.querySelector('#post-description').value = ''
-            document.querySelector('#price').value = ''
+            if(document.querySelector('#price')){
+              document.querySelector('#price').value = ''
+            }
             document.querySelector('#image-file').value = ''
+            // document.querySelector('#preview-source').src = ''
+            console.log(document.querySelector('#preview-source'))
             document.querySelector('#new-image-dropdown').style.visibility = 'visible'
 
             setEditMode(false)
@@ -392,8 +400,8 @@ Maximum Recommended Dimensions:
 
                             <br/>
                             section &nbsp; 
-                                <select name='display-section' defaultValue={displaySection} onChange={handleChangeDisplaySection}>
-                                                <option disabled value=''>select...</option>
+                                <select name='display-section' value={displaySection} onChange={handleChangeDisplaySection}>
+                                                {/* <option disabled value=''>select...</option> */}
                                                 <option value='prix fixe - appetizers'>prix fixe - appetizers</option>
                                                 <option value='prix fixe - entrées'>prix fixe - entrées</option>
                                                 <option value='prix fixe - desserts'>prix fixe - desserts</option>
@@ -496,6 +504,11 @@ Maximum Recommended Dimensions:
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            <div>
+                                              <span style={{fontWeight:'900'}}>wine: </span>
+                                              {data.wineGrapes},
+                                              <span style={{fontWeight:'900'}}> {data.wineName}</span>, {data.wineVintage}, {data.wineDescription}
+                                            </div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
                                                                             />}                                            
@@ -520,7 +533,7 @@ Maximum Recommended Dimensions:
 
                                             </div>
 
-                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'appetizers' && item.sequence && item.event == event).length && 
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'prix fixe - appetizers' && item.sequence && item.event == event).length && 
                                                 <FaCaretUp style={{ margin:'0 auto',
                                                                     fontSize:'60px',
                                                                     position:'relative',
@@ -620,6 +633,12 @@ Maximum Recommended Dimensions:
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            <div>
+                                              <span style={{fontWeight:'900'}}>wine: </span>
+                                              {data.wineGrapes},
+                                              <span style={{fontWeight:'900'}}> {data.wineName}</span>, {data.wineVintage}, {data.wineDescription}
+                                            </div>
+
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
                                                                             />}                                            
@@ -644,7 +663,7 @@ Maximum Recommended Dimensions:
 
                                             </div>
 
-                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'entrées' && item.sequence && item.event == event).length && 
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'prix fixe - entrées' && item.sequence && item.event == event).length && 
                                                 <FaCaretUp style={{ margin:'0 auto',
                                                                     fontSize:'60px',
                                                                     position:'relative',
@@ -744,6 +763,12 @@ Maximum Recommended Dimensions:
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
+                                            <div>
+                                              <span style={{fontWeight:'900'}}>wine: </span>
+                                              {data.wineGrapes},
+                                              <span style={{fontWeight:'900'}}> {data.wineName}</span>, {data.wineVintage}, {data.wineDescription}
+                                            </div>
+
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
                                                                             />}                                            
@@ -768,7 +793,7 @@ Maximum Recommended Dimensions:
 
                                             </div>
 
-                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'desserts' && item.sequence && item.event == event).length && 
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'prix fixe - desserts' && item.sequence && item.event == event).length && 
                                                 <FaCaretUp style={{ margin:'0 auto',
                                                                     fontSize:'60px',
                                                                     position:'relative',
@@ -832,7 +857,7 @@ Maximum Recommended Dimensions:
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             </div>
                                             {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
-                                            <span> {data.description}</span>
+                                            <span> {data.description}</span> <span style={{fontWeight:'900'}}>{data.price}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
@@ -859,7 +884,7 @@ Maximum Recommended Dimensions:
 
                                             </div>
 
-                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'desserts' && item.sequence && item.event == event).length && 
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'à la carte - appetizers' && item.sequence && item.event == event).length && 
                                                 <FaCaretUp style={{ margin:'0 auto',
                                                                     fontSize:'60px',
                                                                     position:'relative',
@@ -925,7 +950,7 @@ Maximum Recommended Dimensions:
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             </div>
                                             {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
-                                            <span> {data.description}</span>
+                                            <span> {data.description}</span> <span style={{fontWeight:'900'}}>{data.price}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
@@ -952,7 +977,7 @@ Maximum Recommended Dimensions:
 
                                             </div>
 
-                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'desserts' && item.sequence && item.event == event).length && 
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'à la carte - entrées' && item.sequence && item.event == event).length && 
                                                 <FaCaretUp style={{ margin:'0 auto',
                                                                     fontSize:'60px',
                                                                     position:'relative',
@@ -1018,7 +1043,7 @@ Maximum Recommended Dimensions:
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                             </div>
                                             {data.descriptionIntro && <span style={{fontStyle:'italic'}}>{data.descriptionIntro};</span>}
-                                            <span> {data.description}</span>
+                                            <span> {data.description}</span> <span style={{fontWeight:'900'}}>{data.price}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
@@ -1045,7 +1070,7 @@ Maximum Recommended Dimensions:
 
                                             </div>
 
-                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'desserts' && item.sequence && item.event == event).length && 
+                                            {data.sequence != allAnnualEventsMenuItems.filter(item=>item.section == 'à la carte - sides' && item.sequence && item.event == event).length && 
                                                 <FaCaretUp style={{ margin:'0 auto',
                                                                     fontSize:'60px',
                                                                     position:'relative',
@@ -1120,7 +1145,7 @@ Maximum Recommended Dimensions:
                                         <label>
                                             section    
                                             &nbsp; 
-                                            <select name='section' required value={section} onChange={handleSectionChange} defaultValue=''>
+                                            <select name='section' required value={section} onChange={handleSectionChange} >
                                                 <option disabled value=''>select...</option>
                                                 <option value='prix fixe - appetizers'>prix fixe - appetizers</option>
                                                 <option value='prix fixe - entrées'>prix fixe - entrées</option>
@@ -1220,29 +1245,29 @@ Maximum Recommended Dimensions:
 
                         {section.startsWith('prix fixe') &&
                          <>
-                          <br/>
-                          <div style={{textAlign:'center',fontWeight:'900'}}>WINE PAIRING</div>
+                          <br/><br/>
+                          <div style={{textAlign:'center',fontWeight:'900'}}>WINE PAIRING</div><br/>
 
                           <label>
-                            wine varietal(s)<br/>
+                            wine varietal(s)<span className='required-field'> *required</span><br/>
                             <input type='text' style={{width:'100%'}} required id='wine-grapes' name='wine-grapes' />
                             <br/><br/>
                           </label>
 
                           <label>
-                            wine name<br/>
+                            wine name<span className='required-field'> *required</span><br/>
                             <input type='text' style={{width:'100%'}} required id='wine-name' name='wine-name' />
                             <br/><br/>
                           </label>
 
                           <label>
-                            wine vintage<br/>
+                            wine vintage<span className='required-field'> *required</span><br/>
                             <input type='text' style={{width:'30%'}} required id='wine-vintage' name='wine-vintage' />
                             <br/><br/>
                           </label>
 
                           <label>
-                            wine description<br/>
+                            wine description<span className='required-field'> *required</span><br/>
                             <input type='text' style={{width:'100%'}} required id='wine-description' name='wine-description' />
                             <br/><br/>
                           </label>
@@ -1310,7 +1335,7 @@ Maximum Recommended Dimensions:
                             
                         </label>
 
-                        {previewSource && <img src={previewSource} style={{maxWidth:'300px',maxHeight:'300px'}} />}
+                        {previewSource && <img src={previewSource} id='preview-source' style={{maxWidth:'300px',maxHeight:'300px'}} />}
 
 
                         <br/><br/>

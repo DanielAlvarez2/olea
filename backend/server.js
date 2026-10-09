@@ -2228,7 +2228,7 @@ app.put('/api/specials/:id', async(req,res)=>{
         }
 
         //OLD PIC -> SAME PIC
-        if(req.body.cloudinary_secure_URL && !req.body.previewSource){
+        if(req.body.cloudinary_secure_URL && !req.body.previewSource && !req.body.isChecked){
             cloudinary_public_ID = req.body.cloudinary_public_ID
             cloudinary_secure_URL = req.body.cloudinary_secure_URL
         }
@@ -2508,7 +2508,7 @@ app.put('/api/dinner-menu-items/:id', async(req,res)=>{
         }
 
         //OLD PIC -> SAME PIC
-        if(req.body.cloudinary_secure_URL && !req.body.previewSource){
+        if(req.body.cloudinary_secure_URL && !req.body.previewSource && !req.body.isChecked){
             cloudinary_public_ID = req.body.cloudinary_public_ID
             cloudinary_secure_URL = req.body.cloudinary_secure_URL
         }
@@ -2572,13 +2572,15 @@ app.put('/api/annual-events-menu-items/:id', async(req,res)=>{
                 await cloudinary.uploader.destroy(req.body.cloudinary_public_ID, {invalidate:true}, function(error,result){console.log(result,error)})                
                 cloudinary_public_ID = ''
                 cloudinary_secure_URL = ''
+                console.log('cloudinary_public_ID: '+cloudinary_public_ID)
+                console.log('cloudinary_secure_URL: '+cloudinary_secure_URL)
             }catch(err){
                 console.log(err)
             }
         }
 
         //OLD PIC -> SAME PIC
-        if(req.body.cloudinary_secure_URL && !req.body.previewSource){
+        if(req.body.cloudinary_secure_URL && !req.body.previewSource && !req.body.isChecked){
             cloudinary_public_ID = req.body.cloudinary_public_ID
             cloudinary_secure_URL = req.body.cloudinary_secure_URL
         }
@@ -2723,7 +2725,7 @@ app.put('/api/desserts/:id', async(req,res)=>{
         }
 
         //OLD PIC -> SAME PIC
-        if(req.body.cloudinary_secure_URL && !req.body.previewSource){
+        if(req.body.cloudinary_secure_URL && !req.body.previewSource && !req.body.isChecked){
             cloudinary_public_ID = req.body.cloudinary_public_ID
             cloudinary_secure_URL = req.body.cloudinary_secure_URL
         }
