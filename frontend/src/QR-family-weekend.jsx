@@ -214,11 +214,12 @@ export default function ParentsWeekendFormatPrint(){
                                             <div style={{fontFamily:'serif'}}>
                                                 <span style={{fontSize:'18.7px',fontWeight:'900'}}>${annualEventPrice} per person; three courses</span>
                                                 <br />
-                                                <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'30px'}}>(tax, gratuity and beverages are not included)</span>
+                                                October 10, 2026<br/>
+                                                <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(tax, gratuity and beverages are not included)</span>
                                             </div>
                                         </div>
 
-
+                                          <br/>
                                         <div className='dessert-menu-front-content'
                                                 style={{padding:`10px 0px 0px 0px`,
                                                         display:'flex'}}
@@ -244,7 +245,7 @@ export default function ParentsWeekendFormatPrint(){
 
                                                 <h2 style={{
                                                   // padding:`0 ${itemMarginsLeftRight}px`,
-                                                  fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>appetizers <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                                  fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>appetizers <span style={{marginLeft:'0px'}}>choose one</span></h2>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'appetizers' && item.event == event).map(data=>{
                                     return(
@@ -262,9 +263,9 @@ export default function ParentsWeekendFormatPrint(){
                                             
                                             {/* {data.sequence}<br/> */}
                                             <div>
-                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'17px'}}>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                    <span className='allergies-abbreviated' style={{fontSize:'13px'}}> ({data.allergiesAbbreviated})</span>}
                                                 <br/>
                                                 {data.descriptionIntro && 
                                                     <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
@@ -307,7 +308,7 @@ export default function ParentsWeekendFormatPrint(){
 
                                                 <h2 style={{
                                                   // padding:`0 ${itemMarginsLeftRight}px`,
-                                                  fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>entrées <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                                  fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>entrées <span style={{marginLeft:'0px'}}>choose one</span></h2>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'entrées' && item.event == event).map(data=>{
                                     return(
@@ -325,9 +326,9 @@ export default function ParentsWeekendFormatPrint(){
                                             
                                             {/* {data.sequence}<br/> */}
                                             <div>
-                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'17px'}}>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                    <span className='allergies-abbreviated' style={{fontSize:'13px'}}> ({data.allergiesAbbreviated})</span>}
                                                 <br/>
                                                 {data.descriptionIntro && 
                                                     <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
@@ -402,7 +403,7 @@ export default function ParentsWeekendFormatPrint(){
                                                   }}
                                     >
 
-                                                <h2 style={{fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>desserts <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                                <h2 style={{fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>desserts <span style={{marginLeft:'0px'}}>choose one</span></h2>
                                         
                                     </div>
 
@@ -432,9 +433,9 @@ export default function ParentsWeekendFormatPrint(){
                                             
                                             {/* {data.sequence}<br/> */}
                                             <div>
-                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'17px'}}>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                    <span className='allergies-abbreviated' style={{fontSize:'13px'}}> ({data.allergiesAbbreviated})</span>}
                                                 <br/>
                                                 {data.descriptionIntro && 
                                                     <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
@@ -462,7 +463,7 @@ export default function ParentsWeekendFormatPrint(){
 
 
 
-                                    <div className='dessert-footer' style={{marginTop:'0px'}}>
+                                    <div className='dessert-footer' style={{marginTop:'40px'}}>
 
                                         <div style={{   display:'flex',
                                                         alignItems:'flex-end',
