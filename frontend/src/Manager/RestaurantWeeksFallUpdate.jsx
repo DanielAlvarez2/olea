@@ -8,6 +8,8 @@ import { FaCaretUp } from "react-icons/fa";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 
 export default function RestaurantWeeksFallUpdate(){
+
+    const [prixFixe, setPrixFixe] = useState(false)
     const [updatingMenu, setUpdatingMenu] = useState(false)
     const [updatingImage, setUpdatingImage] = useState(false)
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
@@ -87,13 +89,18 @@ export default function RestaurantWeeksFallUpdate(){
             await fetch(`${BASE_URL}/api/annual-events-menu-items/${formData.get('id')}`,{ method:'PUT',
                                                                                     headers:{'Content-Type':'application/json'},
                                                                                     body: JSON.stringify({
+                                                                                      
                                                                                         name: formData.get('name'),
                                                                                         allergiesAbbreviated: formData.get('allergies-abbreviated'),
                                                                                         allergiesComplete: formData.get('allergies-complete'),
+                                                                                        descriptionIntro: formData.get('description-intro'),
                                                                                         description: formData.get('description'),
                                                                                         postDescription: formData.get('post-description'),
-                                                                                        descriptionIntro: formData.get('description-intro'),
                                                                                         price: formData.get('price'),
+                                                                                        wineGrapes: formData.get('wine-grapes'),
+                                                                                        wineName: formData.get('wine-name'),
+                                                                                        wineVintage: formData.get('wine-vintage'),
+                                                                                        wineDescription: formData.get('wine-description'),
                                                                                         cloudinary_public_ID: formData.get('cloudinary_public_ID'),
                                                                                         cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
                                                                                         previewSource,
@@ -173,34 +180,44 @@ export default function RestaurantWeeksFallUpdate(){
         }
     }
 
-    function editItem(  id,
-                        section,
-                        name,
-                        allergiesAbbreviated,
-                        allergiesComplete,
-                        // descriptionIntro,
-                        description,
-                        postDescription,
-                        // price,
-                        cloudinary_public_ID,
-                        cloudinary_secure_URL){
+    function populateForm(id,
+                          section,
+                          name,
+                          allergiesAbbreviated,
+                          allergiesComplete,
+                          descriptionIntro,
+                          description,
+                          postDescription,
+                          price,
+                          wineGrapes,
+                          wineName,
+                          wineVintage,
+                          wineDescription,
+                          cloudinary_public_ID,
+                          cloudinary_secure_URL){
         try{
             setEditMode(true)
+            setSection(section)
             setIsChecked(false)
             setCurrentImage(cloudinary_secure_URL ? cloudinary_secure_URL : '')
             setCloudinaryPublicID(cloudinary_public_ID ? cloudinary_public_ID : '')
             setCloudinarySecureURL(cloudinary_secure_URL ? cloudinary_secure_URL : '')
             document.querySelector('.specials-form').scrollIntoView({behavior:'smooth'})
+
             document.querySelector('#item-id').value = id
             document.querySelector('#section').innerHTML = section
             document.querySelector('#section-wrapper').style.display = 'block'
             document.querySelector('#name').value = name
             document.querySelector('#allergies-abbreviated').value = allergiesAbbreviated
             document.querySelector('#allergies-complete').value = allergiesComplete
+            if(section.startsWith('à la carte')) setTimeout(()=>document.querySelector('#description-intro').value = descriptionIntro,100) 
             document.querySelector('#description').value = description
-            document.querySelector('#description-intro').value = descriptionIntro
             document.querySelector('#post-description').value = postDescription
-            document.querySelector('#price').value = price
+            if(section.startsWith('à la carte')) setTimeout(()=>document.querySelector('#price').value = price,100) 
+            if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-grapes').value = wineGrapes,100) 
+            if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-name').value = wineName,100) 
+            if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-vintage').value = wineVintage,100) 
+            if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-description').value = wineDescription,100) 
         }catch(err){
             console.log(err)
         }
@@ -228,26 +245,30 @@ export default function RestaurantWeeksFallUpdate(){
 
     function clearForm(){
         try{
+            // alert('clearForm()')
             document.querySelector('#item-id').value = ''
             document.querySelector('#section').innerHTML = ''
             document.querySelector('#section-wrapper').style.display = 'none'
             document.querySelector('#name').value = ''
             document.querySelector('#allergies-abbreviated').value = ''
             document.querySelector('#allergies-complete').value = ''
+            if(document.querySelector('#description-intro')) document.querySelector('#description-intro').value = ''
             document.querySelector('#description').value = ''
-            if(document.querySelector('#description-intro')){
-              document.querySelector('#description-intro').value = ''
-            }
             document.querySelector('#post-description').value = ''
-            if(document.querySelector('#price')){
-              document.querySelector('#price').value = ''
-            }
+            if(document.querySelector('#price')) document.querySelector('#price').value = ''
+            if(document.querySelector('#wine-grapes')) document.querySelector('#wine-grapes').value = ''
+            if(document.querySelector('#wine-name')) document.querySelector('#wine-name').value = ''
+            if(document.querySelector('#wine-vintage')) document.querySelector('#wine-vintage').value = ''
+            if(document.querySelector('#wine-description')) document.querySelector('#wine-description').value = ''
             document.querySelector('#image-file').value = ''
+            
+            // document.querySelector('#current-image').src = ''
             // document.querySelector('#preview-source').src = ''
             console.log(document.querySelector('#preview-source'))
             document.querySelector('#new-image-dropdown').style.visibility = 'visible'
 
             setEditMode(false)
+            setSection('')
             setIsChecked(false)
             setCurrentImage('')
             setCloudinaryPublicID('')
@@ -516,17 +537,21 @@ Maximum Recommended Dimensions:
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editItem(  data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                // data.descriptionIntro,
-                                                                                data.description,
-                                                                                data.postDescription,
-                                                                                // data.price,
-                                                                                data.cloudinary_public_ID,
-                                                                                data.cloudinary_secure_URL                                                                                
+                                                        onClick={()=>populateForm(data._id,
+                                                                                  data.section,
+                                                                                  data.name,
+                                                                                  data.allergiesAbbreviated,
+                                                                                  data.allergiesComplete,
+                                                                                  data.descriptionIntro,
+                                                                                  data.description,
+                                                                                  data.postDescription,
+                                                                                  data.price,
+                                                                                  data.wineGrapes,
+                                                                                  data.wineName,
+                                                                                  data.wineVintage,
+                                                                                  data.wineDescription,
+                                                                                  data.cloudinary_public_ID,
+                                                                                  data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
@@ -646,18 +671,21 @@ Maximum Recommended Dimensions:
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editItem(  data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                // data.descriptionIntro,
-                                                                                data.description,
-                                                                                data.postDescription,
-                                                                                // data.price,
-                                                                                data.cloudinary_public_ID,
-                                                                                data.cloudinary_secure_URL                                                                                
-                                                                                )}>EDIT</span>                                                    
+                                                        onClick={()=>populateForm(data._id,
+                                                                                  data.section,
+                                                                                  data.name,
+                                                                                  data.allergiesAbbreviated,
+                                                                                  data.allergiesComplete,
+                                                                                  data.descriptionIntro,
+                                                                                  data.description,
+                                                                                  data.postDescription,
+                                                                                  data.price,
+                                                                                  data.wineGrapes,
+                                                                                  data.wineName,
+                                                                                  data.wineVintage,
+                                                                                  data.wineDescription,
+                                                                                  data.cloudinary_public_ID,
+                                                                                  data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
 
@@ -776,18 +804,21 @@ Maximum Recommended Dimensions:
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editItem(  data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                // data.descriptionIntro,
-                                                                                data.description,
-                                                                                data.postDescription,
-                                                                                // data.price,
-                                                                                data.cloudinary_public_ID,
-                                                                                data.cloudinary_secure_URL                                                                                
-                                                                                )}>EDIT</span>                                                    
+                                                        onClick={()=>populateForm(data._id,
+                                                                                  data.section,
+                                                                                  data.name,
+                                                                                  data.allergiesAbbreviated,
+                                                                                  data.allergiesComplete,
+                                                                                  data.descriptionIntro,
+                                                                                  data.description,
+                                                                                  data.postDescription,
+                                                                                  data.price,
+                                                                                  data.wineGrapes,
+                                                                                  data.wineName,
+                                                                                  data.wineVintage,
+                                                                                  data.wineDescription,
+                                                                                  data.cloudinary_public_ID,
+                                                                                  data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
 
@@ -867,18 +898,21 @@ Maximum Recommended Dimensions:
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editItem(  data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                // data.descriptionIntro,
-                                                                                data.description,
-                                                                                data.postDescription,
-                                                                                // data.price,
-                                                                                data.cloudinary_public_ID,
-                                                                                data.cloudinary_secure_URL                                                                                
-                                                                                )}>EDIT</span>                                                    
+                                                        onClick={()=>populateForm(data._id,
+                                                                                  data.section,
+                                                                                  data.name,
+                                                                                  data.allergiesAbbreviated,
+                                                                                  data.allergiesComplete,
+                                                                                  data.descriptionIntro,
+                                                                                  data.description,
+                                                                                  data.postDescription,
+                                                                                  data.price,
+                                                                                  data.wineGrapes,
+                                                                                  data.wineName,
+                                                                                  data.wineVintage,
+                                                                                  data.wineDescription,
+                                                                                  data.cloudinary_public_ID,
+                                                                                  data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
 
@@ -960,18 +994,21 @@ Maximum Recommended Dimensions:
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editItem(  data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                // data.descriptionIntro,
-                                                                                data.description,
-                                                                                data.postDescription,
-                                                                                // data.price,
-                                                                                data.cloudinary_public_ID,
-                                                                                data.cloudinary_secure_URL                                                                                
-                                                                                )}>EDIT</span>                                                    
+                                                        onClick={()=>populateForm(data._id,
+                                                                                  data.section,
+                                                                                  data.name,
+                                                                                  data.allergiesAbbreviated,
+                                                                                  data.allergiesComplete,
+                                                                                  data.descriptionIntro,
+                                                                                  data.description,
+                                                                                  data.postDescription,
+                                                                                  data.price,
+                                                                                  data.wineGrapes,
+                                                                                  data.wineName,
+                                                                                  data.wineVintage,
+                                                                                  data.wineDescription,
+                                                                                  data.cloudinary_public_ID,
+                                                                                  data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
 
@@ -1053,18 +1090,21 @@ Maximum Recommended Dimensions:
                                                 <span   className='btn archive-btn'
                                                         onClick={()=>archiveItem(data._id)}>ARCHIVE</span>
                                                 <span   className='btn edit-btn'
-                                                        onClick={()=>editItem(  data._id,
-                                                                                data.section,
-                                                                                data.name,
-                                                                                data.allergiesAbbreviated,
-                                                                                data.allergiesComplete,
-                                                                                // data.descriptionIntro,
-                                                                                data.description,
-                                                                                data.postDescription,
-                                                                                // data.price,
-                                                                                data.cloudinary_public_ID,
-                                                                                data.cloudinary_secure_URL                                                                                
-                                                                                )}>EDIT</span>                                                    
+                                                        onClick={()=>populateForm(data._id,
+                                                                                  data.section,
+                                                                                  data.name,
+                                                                                  data.allergiesAbbreviated,
+                                                                                  data.allergiesComplete,
+                                                                                  data.descriptionIntro,
+                                                                                  data.description,
+                                                                                  data.postDescription,
+                                                                                  data.price,
+                                                                                  data.wineGrapes,
+                                                                                  data.wineName,
+                                                                                  data.wineVintage,
+                                                                                  data.wineDescription,
+                                                                                  data.cloudinary_public_ID,
+                                                                                  data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
                                                         onClick={()=>deleteAnnualEventsMenuItem(data._id)}>DELETE</span>
 

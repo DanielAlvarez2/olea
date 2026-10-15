@@ -19,7 +19,7 @@ export default function RestaurantWeeksFallFormatPrint(){
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
     const [formatting, setFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
-    const [itemMarginsTopBottom, setItemMarginsTopBottom] = useState(0)
+    const [RightMenuItemMarginsTopBottom, setRightMenuItemMarginsTopBottom] = useState(0)
     const [itemMarginsLeftRight, setItemMarginsLeftRight] = useState(0)
 
     useEffect(()=>getFormatting())
@@ -64,8 +64,8 @@ export default function RestaurantWeeksFallFormatPrint(){
                 .then(json=>{
                     // setFormatting(json[0])
                     // setPageMargin(json[0].pageMargin)
-                    setItemMarginsTopBottom(json[0].itemMarginsTopBottom)
-                    setItemMarginsLeftRight(json[0].itemMarginsLeftRight)
+                    setRightMenuItemMarginsTopBottom(json[0].RightMenuItemMarginsTopBottom)
+                    setRightMenuItemMarginRight(json[0].RightMenuItemMarginRight)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -86,15 +86,15 @@ export default function RestaurantWeeksFallFormatPrint(){
             .catch(err=>console.log(err))
     }
 
-    function decreaseItemMarginsTopBottom(){
-        if (itemMarginsTopBottom <= 0) return
-        fetch(`${BASE_URL}/api/formats/decreaseItemMarginsTopBottom/${event_url}`, {method:'PUT'})
+    function RightMenuDecreaseItemMarginsTopBottom(){
+        if (RightMenuItemMarginsTopBottom <= 0) return
+        fetch(`${BASE_URL}/api/formats/${event_url}/RightMenuDecreaseItemMarginsTopBottom`, {method:'PUT'})
             .then(()=>getFormatting())
             .catch(err=>console.log(err))
     }
 
-    function increaseItemMarginsTopBottom(){
-        fetch(`${BASE_URL}/api/formats/increaseItemMarginsTopBottom/${event_url}`, {method:'PUT'})
+    function RightMenuIncreaseItemMarginsTopBottom(){
+        fetch(`${BASE_URL}/api/formats/${event_url}/RightMenuIncreaseItemMarginsTopBottom`, {method:'PUT'})
             .then(()=>getFormatting())
             .catch(err=>console.log(err))
     }
@@ -139,6 +139,37 @@ Please switch to a different browser to proceed.
 
 
                                 
+                                <div className='no-print' style={{paddingRight:'10px'}}>
+
+                                    <h2 style={{fontSize:'23px',fontFamily:'FuturaRoundBold',width:'100%',textAlign:'center'}}>
+                                    prix fixe</h2><br/>
+                                                                  
+                                    <div  className='no-print'
+                                          style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    // onClick={decreaseItemMarginsTopBottom} 
+                                                                    /></span>
+                                        <span>menu item margins<br/>top & bottom &#8597;</span>
+                                        
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    // onClick={increaseItemMarginsTopBottom} 
+                                                                    /></span>
+                                    </div>
+
+
+                                    <div    className='no-print print-btn' 
+                                        style={{margin:'30px auto',background:'limegreen',width:'220px'}}
+                                        onClick={printPage}>
+                                        print
+                                    </div>                                    
+                                </div>
 
 
 
@@ -211,34 +242,31 @@ Please switch to a different browser to proceed.
 
 
                                             <div    id='dinner-menu-left'
-                                                    style={{width:'50%',border:'1px solid black'}}        
+                                                    style={{width:'50%',border:'1px solid black',padding:'5px'}}        
                                             >
 
-                                        <div style={{marginTop:'28px',
-                                            // padding:`0 ${itemMarginsLeftRight}px`
-                                            }}>
-                                            <h2 style={{fontSize:'23px'}}>New Haven Restaurant Week</h2>
+                                        <div >
+                                            <h2 style={{fontSize:'22px'}}>New Haven Restaurant Week</h2>
                                             November 1-14, 2026
                                             <br/>
                                             <div style={{fontFamily:'serif'}}>
                                                 <span style={{fontSize:'18.7px',fontWeight:'900'}}>${annualEventPrice} per person; three courses</span>
                                                 <br />
-                                                October 10, 2026
-                                                <br/>
                                                 <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(tax, gratuity and beverages are not included)</span>
                                             </div>
                                         </div>
 
 
-                                                <h2 style={{
+                                                <div style={{
                                                     // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px'}}>appetizers <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                                    fontSize:'22.2px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>appetizers <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
+                                                        choose one</span></div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - appetizers' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
                                                 style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${itemMarginsTopBottom}px 0`,                                            
+                                                        // margin:`${itemMarginsTopBottom}px 0`,                                            
                                                     }}
                                                 className='special'>
                                             
@@ -265,15 +293,16 @@ Please switch to a different browser to proceed.
 
 
 
-                                                <h2 style={{
+                                                <div style={{
                                                     // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px'}}>entrées <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                                    fontSize:'22.2px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>entrées <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
+                                                        choose one</span></div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - entrées' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
                                                 style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${itemMarginsTopBottom}px 0`,
+                                                        // margin:`${itemMarginsTopBottom}px 0`,
                                                     }}
                                                 className='special'>
                                             
@@ -306,7 +335,10 @@ Please switch to a different browser to proceed.
                                                 }}
                                     >
 
-                                                <h2 style={{fontSize:'22.2px'}}>desserts <span style={{marginLeft:'5px'}}>choose one</span></h2>
+                                                <div style={{
+                                                    // padding:`0 ${itemMarginsLeftRight}px`,
+                                                    fontSize:'22.2px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>desserts <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
+                                                        choose one</span></div>
                                         
                                     </div>
 
@@ -315,7 +347,7 @@ Please switch to a different browser to proceed.
                                     return(
                                         <div    key={data._id} 
                                                 style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${itemMarginsTopBottom/2}px 0`,
+                                                        // margin:`${itemMarginsTopBottom/2}px 0`,
                                                       }}
                                                 className='special'>
                                             
@@ -362,11 +394,153 @@ Please switch to a different browser to proceed.
 
 
                                             <div    id='dinner-menu-right'
-                                                    style={{width:'50%'}}
+                                                    style={{width:'50%',paddingTop:'5px'}}
                                             >
 
 
+
+
+
+
+
+                                            <h2 style={{fontSize:'23px'}}>dinner menu</h2>
+                                                <h2 style={{
+                                                    // padding:`0 ${itemMarginsLeftRight}px`,
+                                                    fontSize:'22.2px',
+                                                    fontFamily:'FuturaMedium'
+                                                    }}>appetizers</h2>
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - appetizers' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id} 
+                                                style={{
+                                                        // paddingRight:`${itemMarginsLeftRight}px`,
+                                                        margin:`${RightMenuItemMarginsTopBottom}px 0`,                                            
+                                                    }}
+                                                className='special'>
                                             
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                
+                                                {data.descriptionIntro && 
+                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                }
+                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
+                                                <span style={{fontWeight:'900'}}> &nbsp;{data.price}</span>
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            </div>
+
+
+                                        </div>
+                                    )
+                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                <h2 style={{
+                                                    // padding:`0 ${itemMarginsLeftRight}px`,
+                                                    fontSize:'22.2px',
+                                                    fontFamily:'FuturaMedium'
+                                                    }}>entrées</h2>
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - entrées' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id} 
+                                                style={{
+                                                        // paddingRight:`${itemMarginsLeftRight}px`,
+                                                        margin:`${RightMenuItemMarginsTopBottom}px 0`,                                            
+                                                    }}
+                                                className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                
+                                                {data.descriptionIntro && 
+                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                }
+                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
+                                                <span style={{fontWeight:'900'}}> &nbsp;{data.price}</span>
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            </div>
+
+
+                                        </div>
+                                    )
+                                })}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                <h2 style={{
+                                                    // padding:`0 ${itemMarginsLeftRight}px`,
+                                                    fontSize:'22.2px',
+                                                    fontFamily:'FuturaMedium'
+                                                    }}>sides</h2>
+
+                                {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - sides' && item.event == event).map(data=>{
+                                    return(
+                                        <div    key={data._id} 
+                                                style={{
+                                                        // paddingRight:`${itemMarginsLeftRight}px`,
+                                                        margin:`${RightMenuItemMarginsTopBottom}px 0`,                                            
+                                                    }}
+                                                className='special'>
+                                            
+                                            {/* {data.sequence}<br/> */}
+                                            <div>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                {data.allergiesAbbreviated && 
+                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                
+                                                {data.descriptionIntro && 
+                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                }
+                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
+                                                <span style={{fontWeight:'900'}}> &nbsp;{data.price}</span>
+                                                {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                            </div>
+
+
+                                        </div>
+                                    )
+                                })}
+
+
+
+
+
+
                                             </div>{/* id='dinner-menu-right' */}
 
 
@@ -510,6 +684,9 @@ Please switch to a different browser to proceed.
                     
 
                                 <div className='no-print' style={{paddingLeft:'10px'}}>
+
+                                    <h2 style={{fontSize:'23px',fontFamily:'FuturaRoundBold',width:'100%',textAlign:'center'}}>
+                                    à la carte</h2><br/>
                                                                   
                                     <div  className='no-print'
                                           style={{   textAlign:'center',
@@ -520,12 +697,13 @@ Please switch to a different browser to proceed.
                                                     // border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseItemMarginsTopBottom} /></span>
+                                                                    onClick={RightMenuDecreaseItemMarginsTopBottom} 
+                                                                    /></span>
                                         <span>menu item margins<br/>top & bottom &#8597;</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseItemMarginsTopBottom} /></span>
+                                                                    onClick={RightMenuIncreaseItemMarginsTopBottom} /></span>
                                     </div>
 
                                     <div  className='no-print'
@@ -538,7 +716,7 @@ Please switch to a different browser to proceed.
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
                                                                     onClick={decreaseItemMarginsLeftRight} /></span>
-                                        <span>menu item margins<br/>left & right &#8596;</span>
+                                        <span>menu items<br/>margin right &larr;</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
