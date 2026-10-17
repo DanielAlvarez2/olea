@@ -3650,7 +3650,8 @@ app.get('/api/formats/restaurant-weeks-fall', async(req,res)=>{
         if (allFormats.length == 0){
             await RestaurantWeeksFallFormat.create({
                 RightMenuItemMarginsTopBottom: 0,
-                RightMenuItemMarginRight: 0
+                RightMenuItemMarginRight: 0,
+                LeftMenuItemMarginsTopBottom: 0,
             })
             allFormats = await RestaurantWeeksFallFormat.find()
         }
@@ -3673,12 +3674,36 @@ app.put('/api/formats/restaurant-weeks-fall/RightMenuIncreaseItemMarginsTopBotto
     }
 })
 
+app.put('/api/formats/restaurant-weeks-fall/LeftMenuIncreaseItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        console.log(allFormats[0])
+        await RestaurantWeeksFallFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {LeftMenuItemMarginsTopBottom: allFormats[0].LeftMenuItemMarginsTopBottom + 1})
+        res.json('item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.put('/api/formats/restaurant-weeks-fall/RightMenuDecreaseItemMarginsTopBottom', async(req,res)=>{
     try{
         const allFormats = await RestaurantWeeksFallFormat.find()
         console.log(allFormats[0])
         await RestaurantWeeksFallFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {RightMenuItemMarginsTopBottom: allFormats[0].RightMenuItemMarginsTopBottom - 1})
+        res.json('item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/restaurant-weeks-fall/LeftMenuDecreaseItemMarginsTopBottom', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        console.log(allFormats[0])
+        await RestaurantWeeksFallFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {LeftMenuItemMarginsTopBottom: allFormats[0].LeftMenuItemMarginsTopBottom - 1})
         res.json('item margins top/bottom increased')
     }catch(err){
         console.log(err)

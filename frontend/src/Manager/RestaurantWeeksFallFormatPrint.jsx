@@ -20,6 +20,7 @@ export default function RestaurantWeeksFallFormatPrint(){
     const [formatting, setFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
     const [RightMenuItemMarginsTopBottom, setRightMenuItemMarginsTopBottom] = useState(0)
+    const [LeftMenuItemMarginsTopBottom, setLeftMenuItemMarginsTopBottom] = useState(0)
     const [itemMarginsLeftRight, setItemMarginsLeftRight] = useState(0)
 
     useEffect(()=>getFormatting())
@@ -65,7 +66,8 @@ export default function RestaurantWeeksFallFormatPrint(){
                     // setFormatting(json[0])
                     // setPageMargin(json[0].pageMargin)
                     setRightMenuItemMarginsTopBottom(json[0].RightMenuItemMarginsTopBottom)
-                    setRightMenuItemMarginRight(json[0].RightMenuItemMarginRight)
+                    // setRightMenuItemMarginRight(json[0].RightMenuItemMarginRight)
+                    setLeftMenuItemMarginsTopBottom(json[0].LeftMenuItemMarginsTopBottom)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -95,6 +97,19 @@ export default function RestaurantWeeksFallFormatPrint(){
 
     function RightMenuIncreaseItemMarginsTopBottom(){
         fetch(`${BASE_URL}/api/formats/${event_url}/RightMenuIncreaseItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function LeftMenuIncreaseItemMarginsTopBottom(){
+        fetch(`${BASE_URL}/api/formats/${event_url}/LeftMenuIncreaseItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function LeftMenuDecreaseItemMarginsTopBottom(){
+        if (LeftMenuItemMarginsTopBottom <= 0) return        
+        fetch(`${BASE_URL}/api/formats/${event_url}/LeftMenuDecreaseItemMarginsTopBottom`, {method:'PUT'})
             .then(()=>getFormatting())
             .catch(err=>console.log(err))
     }
@@ -153,13 +168,13 @@ Please switch to a different browser to proceed.
                                                     // border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    // onClick={decreaseItemMarginsTopBottom} 
+                                                                    onClick={LeftMenuDecreaseItemMarginsTopBottom} 
                                                                     /></span>
                                         <span>menu item margins<br/>top & bottom &#8597;</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    // onClick={increaseItemMarginsTopBottom} 
+                                                                    onClick={LeftMenuIncreaseItemMarginsTopBottom} 
                                                                     /></span>
                                     </div>
 
@@ -242,21 +257,30 @@ Please switch to a different browser to proceed.
 
 
                                             <div    id='dinner-menu-left'
-                                                    style={{width:'50%',border:'1px solid black',padding:'5px'}}        
+                                                    style={{width:'50%',border:'1px solid black',padding:'10px'}}        
                                             >
 
                                         <div >
                                             <h2 style={{fontSize:'22px'}}>New Haven Restaurant Week</h2>
                                             November 1-14, 2026
-                                            <br/>
+                                            <br/><br/>
                                             <div style={{fontFamily:'serif'}}>
-                                                <span style={{fontSize:'18.7px',fontWeight:'900'}}>${annualEventPrice} per person; three courses</span>
+                                                <span style={{fontSize:'18.7px',fontWeight:'900'}}>${annualEventPrice} three courses</span>
                                                 <br />
-                                                <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(tax, gratuity and beverages are not included)</span>
+                                                <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(one prix fixe menu per person, no substitutions, beverage, tax, and gratuity not included)</span>
+                                                <br/>
+
+                                                <br/>
+                                                <span style={{fontSize:'18.7px',fontWeight:'900'}}>add ${annualEventPrice} for wine pairing</span>
+                                                <br />
+                                                <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(wine 3 oz. / dessert 1.5 oz.)</span>
                                             </div>
                                         </div>
+                                        <br/>
+<div>{/* left-menu-flexbox */}
 
 
+                            <div>{/* appetizers */}
                                                 <div style={{
                                                     // padding:`0 ${itemMarginsLeftRight}px`,
                                                     fontSize:'22.2px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>appetizers <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
@@ -265,8 +289,9 @@ Please switch to a different browser to proceed.
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - appetizers' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
-                                                style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        // margin:`${itemMarginsTopBottom}px 0`,                                            
+                                                style={{
+                                                    // paddingRight:`${itemMarginsLeftRight}px`,
+                                                        margin:`${LeftMenuItemMarginsTopBottom}px 0`,                                            
                                                     }}
                                                 className='special'>
                                             
@@ -281,6 +306,8 @@ Please switch to a different browser to proceed.
                                                 }
                                                 <span style={{fontSize:'15.3px'}}> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                               
+                                                <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>
                                             </div>
 
 
@@ -288,11 +315,13 @@ Please switch to a different browser to proceed.
                                     )
                                 })}
 
+                            </div>{/* appetizers */}
 
 
 
 
 
+                            <div>{/* entrées */}
                                                 <div style={{
                                                     // padding:`0 ${itemMarginsLeftRight}px`,
                                                     fontSize:'22.2px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>entrées <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
@@ -301,8 +330,9 @@ Please switch to a different browser to proceed.
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - entrées' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
-                                                style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        // margin:`${itemMarginsTopBottom}px 0`,
+                                                style={{
+                                                    // paddingRight:`${itemMarginsLeftRight}px`,
+                                                        margin:`${LeftMenuItemMarginsTopBottom}px 0`,
                                                     }}
                                                 className='special'>
                                             
@@ -317,6 +347,7 @@ Please switch to a different browser to proceed.
                                                 }
                                                 <span style={{fontSize:'15.3px'}}> {data.description}</span>
                                                 {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
+                                                <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                
                                             </div>
 
 
@@ -324,12 +355,14 @@ Please switch to a different browser to proceed.
                                     )
                                 })}
 
+                            </div>{/* entrées */}
 
 
 
 
 
 
+                            <div>{/* desserts */}
                                     <div style={{   marginTop:'0px',
                                                     // padding:`0 ${itemMarginsLeftRight}px`
                                                 }}
@@ -346,8 +379,9 @@ Please switch to a different browser to proceed.
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - desserts' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
-                                                style={{paddingRight:`${itemMarginsLeftRight}px`,
-                                                        // margin:`${itemMarginsTopBottom/2}px 0`,
+                                                style={{
+                                                    // paddingRight:`${itemMarginsLeftRight}px`,
+                                                        margin:`${LeftMenuItemMarginsTopBottom}px 0`,
                                                       }}
                                                 className='special'>
                                             
@@ -362,6 +396,7 @@ Please switch to a different browser to proceed.
                                                 }
                                                 <span style={{fontSize:'15.3px'}}> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
+                                                <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                
                                             </div>
 
 
@@ -369,9 +404,11 @@ Please switch to a different browser to proceed.
                                     )
                                 })}
 
+                            </div>{/* desserts */}
 
+</div>{/* left-menu-flexbox */}
 
-                                            </div>
+                                            </div>{/* #diner-menu-left */}
 
 
 
