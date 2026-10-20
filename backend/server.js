@@ -314,14 +314,14 @@ app.get('/api/annual-events', async(req,res)=>{
             await AnnualEvents.create({
                 DailySpecials:true,
                ValentinesDay:false,
-               RestaurantWeekSpring:false,
+               RestaurantWeeksSpring:false,
                MothersDay:false,
                Commencement:false,
                GraduationLunch:false,
                OleaAnniversary:false,
                ParentsWeekend:false,
-               RestaurantWeekFall:false,
-               NewYearsEve:false 
+               RestaurantWeeksFall:false,
+               NewYearsEve:false,
             })
             Events = await AnnualEvents.find()
         }
@@ -2646,6 +2646,7 @@ app.get('/api/annual-event-prices', async(req,res)=>{
                 OleaAnniversary:0,
                 ParentsWeekend:0,
                 RestaurantWeekFall:0,
+                RestaurantWeekFallWinePairing:0,
                 NewYearsEve:0
             })
             currentPrices = await AnnualEventsPrice.find()
@@ -3599,7 +3600,7 @@ app.get('/api/formats/parents-weekend', async(req,res)=>{
 app.put('/api/formats/increaseItemMarginsTopBottom/parents-weekend', async(req,res)=>{
     try{
         const allFormats = await ParentsWeekendFormat.find()
-        console.log(allFormats[0])
+        // console.log(allFormats[0])
         await ParentsWeekendFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {itemMarginsTopBottom: allFormats[0].itemMarginsTopBottom + 1})
         res.json('item margins top/bottom increased')
@@ -3611,7 +3612,7 @@ app.put('/api/formats/increaseItemMarginsTopBottom/parents-weekend', async(req,r
 app.put('/api/formats/decreaseItemMarginsTopBottom/parents-weekend', async(req,res)=>{
     try{
         const allFormats = await ParentsWeekendFormat.find()
-        console.log(allFormats[0])
+        // console.log(allFormats[0])
         await ParentsWeekendFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {itemMarginsTopBottom: allFormats[0].itemMarginsTopBottom - 1})
         res.json('item margins top/bottom increased')
@@ -3623,7 +3624,7 @@ app.put('/api/formats/decreaseItemMarginsTopBottom/parents-weekend', async(req,r
 app.put('/api/formats/increaseItemMarginsLeftRight/parents-weekend', async(req,res)=>{
     try{
         const allFormats = await ParentsWeekendFormat.find()
-        console.log(allFormats[0])
+        // console.log(allFormats[0])
         await ParentsWeekendFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {itemMarginsLeftRight: allFormats[0].itemMarginsLeftRight + 1})
         res.json("item margins left/right increased")
@@ -3635,7 +3636,7 @@ app.put('/api/formats/increaseItemMarginsLeftRight/parents-weekend', async(req,r
 app.put('/api/formats/decreaseItemMarginsLeftRight/parents-weekend', async(req,res)=>{
     try{
         const allFormats = await ParentsWeekendFormat.find()
-        console.log(allFormats[0])
+        // console.log(allFormats[0])
         await ParentsWeekendFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {itemMarginsLeftRight: allFormats[0].itemMarginsLeftRight - 1})
         res.json("item margins left/right decreased")
@@ -3650,7 +3651,7 @@ app.get('/api/formats/restaurant-weeks-fall', async(req,res)=>{
         if (allFormats.length == 0){
             await RestaurantWeeksFallFormat.create({
                 RightMenuItemMarginsTopBottom: 0,
-                RightMenuItemMarginRight: 0,
+                rightMenuItemMarginRight: 0,
                 LeftMenuItemMarginsTopBottom: 0,
             })
             allFormats = await RestaurantWeeksFallFormat.find()
@@ -3665,7 +3666,7 @@ app.get('/api/formats/restaurant-weeks-fall', async(req,res)=>{
 app.put('/api/formats/restaurant-weeks-fall/RightMenuIncreaseItemMarginsTopBottom', async(req,res)=>{
     try{
         const allFormats = await RestaurantWeeksFallFormat.find()
-        console.log(allFormats[0])
+        // console.log(allFormats[0])
         await RestaurantWeeksFallFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {RightMenuItemMarginsTopBottom: allFormats[0].RightMenuItemMarginsTopBottom + 1})
         res.json('item margins top/bottom increased')
@@ -3677,9 +3678,33 @@ app.put('/api/formats/restaurant-weeks-fall/RightMenuIncreaseItemMarginsTopBotto
 app.put('/api/formats/restaurant-weeks-fall/LeftMenuIncreaseItemMarginsTopBottom', async(req,res)=>{
     try{
         const allFormats = await RestaurantWeeksFallFormat.find()
-        console.log(allFormats[0])
+        // console.log(allFormats[0])
         await RestaurantWeeksFallFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {LeftMenuItemMarginsTopBottom: allFormats[0].LeftMenuItemMarginsTopBottom + 1})
+        res.json('item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/restaurant-weeks-fall/rightMenuIncreaseItemMarginRight', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        // console.log(allFormats[0])
+        await RestaurantWeeksFallFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {rightMenuItemMarginRight: allFormats[0].rightMenuItemMarginRight + 1})
+        res.json('item margins top/bottom increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.put('/api/formats/restaurant-weeks-fall/rightMenuDecreaseItemMarginRight', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        // console.log(allFormats[0])
+        await RestaurantWeeksFallFormat.findByIdAndUpdate( allFormats[0]._id,
+                                                {rightMenuItemMarginRight: allFormats[0].rightMenuItemMarginRight - 1})
         res.json('item margins top/bottom increased')
     }catch(err){
         console.log(err)
@@ -3689,7 +3714,7 @@ app.put('/api/formats/restaurant-weeks-fall/LeftMenuIncreaseItemMarginsTopBottom
 app.put('/api/formats/restaurant-weeks-fall/RightMenuDecreaseItemMarginsTopBottom', async(req,res)=>{
     try{
         const allFormats = await RestaurantWeeksFallFormat.find()
-        console.log(allFormats[0])
+        // console.log(allFormats[0])
         await RestaurantWeeksFallFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {RightMenuItemMarginsTopBottom: allFormats[0].RightMenuItemMarginsTopBottom - 1})
         res.json('item margins top/bottom increased')
@@ -3701,7 +3726,7 @@ app.put('/api/formats/restaurant-weeks-fall/RightMenuDecreaseItemMarginsTopBotto
 app.put('/api/formats/restaurant-weeks-fall/LeftMenuDecreaseItemMarginsTopBottom', async(req,res)=>{
     try{
         const allFormats = await RestaurantWeeksFallFormat.find()
-        console.log(allFormats[0])
+        // console.log(allFormats[0])
         await RestaurantWeeksFallFormat.findByIdAndUpdate( allFormats[0]._id,
                                                 {LeftMenuItemMarginsTopBottom: allFormats[0].LeftMenuItemMarginsTopBottom - 1})
         res.json('item margins top/bottom increased')

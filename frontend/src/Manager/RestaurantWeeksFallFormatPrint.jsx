@@ -16,15 +16,17 @@ import { PiMinusCircleDuotone } from "react-icons/pi";
 export default function RestaurantWeeksFallFormatPrint(){
 
     const [annualEventPrice, setAnnualEventPrice] = useState(0)      
+    const [winePairingPrice, setWinePairingPrice] = useState(0)    
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
     const [formatting, setFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
     const [RightMenuItemMarginsTopBottom, setRightMenuItemMarginsTopBottom] = useState(0)
     const [LeftMenuItemMarginsTopBottom, setLeftMenuItemMarginsTopBottom] = useState(0)
-    const [itemMarginsLeftRight, setItemMarginsLeftRight] = useState(0)
+    const [rightMenuItemMarginRight, setRightMenuItemMarginRight] = useState(0)
 
     useEffect(()=>getFormatting())
     useEffect(()=>getAnnualEventPrice(),[])
+    useEffect(()=>getWinePairingPrice(),[])    
     useEffect(()=>getAnnualEventsMenuItems(),[])
     
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -34,7 +36,7 @@ export default function RestaurantWeeksFallFormatPrint(){
     // const event = "Mother's Day"
     const event = "Restaurant Weeks: Fall"
     const event_url = 'restaurant-weeks-fall'
-    const event_obj = 'RestaurantWeeksFall'
+    const event_obj = 'RestaurantWeekFall'
 
     function getAnnualEventPrice(){
         try{
@@ -46,6 +48,18 @@ export default function RestaurantWeeksFallFormatPrint(){
             console.log(err)
         }
     }
+
+    function getWinePairingPrice(){
+        try{
+            fetch(`${BASE_URL}/api/annual-event-prices`)
+                .then(res=>res.json())
+                .then(json=>setWinePairingPrice(json[0].RestaurantWeekFallWinePairing))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
 
     function getAnnualEventsMenuItems(){
         try{
@@ -66,7 +80,7 @@ export default function RestaurantWeeksFallFormatPrint(){
                     // setFormatting(json[0])
                     // setPageMargin(json[0].pageMargin)
                     setRightMenuItemMarginsTopBottom(json[0].RightMenuItemMarginsTopBottom)
-                    // setRightMenuItemMarginRight(json[0].RightMenuItemMarginRight)
+                    setRightMenuItemMarginRight(json[0].rightMenuItemMarginRight)
                     setLeftMenuItemMarginsTopBottom(json[0].LeftMenuItemMarginsTopBottom)
                 })
                 .catch(err=>console.log(err))
@@ -103,6 +117,19 @@ export default function RestaurantWeeksFallFormatPrint(){
 
     function LeftMenuIncreaseItemMarginsTopBottom(){
         fetch(`${BASE_URL}/api/formats/${event_url}/LeftMenuIncreaseItemMarginsTopBottom`, {method:'PUT'})
+            .then(()=>getFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function rightMenuIncreaseItemMarginRight(){
+        fetch(`${BASE_URL}/api/formats/${event_url}/rightMenuIncreaseItemMarginRight`, {method:'PUT'})
+            .then(()=>getFormatting())
+            .catch(err=>console.log(err))
+    }
+
+    function rightMenuDecreaseItemMarginRight(){
+        if(rightMenuItemMarginRight <= 0) return
+        fetch(`${BASE_URL}/api/formats/${event_url}/rightMenuDecreaseItemMarginRight`, {method:'PUT'})
             .then(()=>getFormatting())
             .catch(err=>console.log(err))
     }
@@ -271,7 +298,7 @@ Please switch to a different browser to proceed.
                                                 <br/>
 
                                                 <br/>
-                                                <span style={{fontSize:'18.7px',fontWeight:'900'}}>add ${annualEventPrice} for wine pairing</span>
+                                                <span style={{fontSize:'18.7px',fontWeight:'900'}}>add ${winePairingPrice} for wine pairing</span>
                                                 <br />
                                                 <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(wine 3 oz. / dessert 1.5 oz.)</span>
                                             </div>
@@ -451,7 +478,7 @@ Please switch to a different browser to proceed.
                                     return(
                                         <div    key={data._id} 
                                                 style={{
-                                                        // paddingRight:`${itemMarginsLeftRight}px`,
+                                                        paddingRight:`${rightMenuItemMarginRight}px`,
                                                         margin:`${RightMenuItemMarginsTopBottom}px 0`,                                            
                                                     }}
                                                 className='special'>
@@ -499,7 +526,7 @@ Please switch to a different browser to proceed.
                                     return(
                                         <div    key={data._id} 
                                                 style={{
-                                                        // paddingRight:`${itemMarginsLeftRight}px`,
+                                                        paddingRight:`${rightMenuItemMarginRight}px`,
                                                         margin:`${RightMenuItemMarginsTopBottom}px 0`,                                            
                                                     }}
                                                 className='special'>
@@ -549,7 +576,7 @@ Please switch to a different browser to proceed.
                                     return(
                                         <div    key={data._id} 
                                                 style={{
-                                                        // paddingRight:`${itemMarginsLeftRight}px`,
+                                                        paddingRight:`${rightMenuItemMarginRight}px`,
                                                         margin:`${RightMenuItemMarginsTopBottom}px 0`,                                            
                                                     }}
                                                 className='special'>
@@ -752,12 +779,12 @@ Please switch to a different browser to proceed.
                                                     // border:'1px solid green',
                                                     alignItems:'center'}}>
                                         <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={decreaseItemMarginsLeftRight} /></span>
+                                                                    onClick={rightMenuDecreaseItemMarginRight} /></span>
                                         <span>menu items<br/>margin right &larr;</span>
                                         
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={increaseItemMarginsLeftRight} /></span>
+                                                                    onClick={rightMenuIncreaseItemMarginRight} /></span>
                                     </div>
 
                                     <div    className='no-print print-btn' 

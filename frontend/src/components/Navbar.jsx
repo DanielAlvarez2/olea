@@ -22,6 +22,7 @@ export default function Navbar(){
     const [commencement, setCommencement] = useState(false)
     const [oleaAnniversary, setOleaAnniversary] = useState(false)
     const [dailySpecials, setDailySpecials] = useState(true)
+    const [restaurantWeeksFall,setRestaurantWeeksFall] = useState(false)
 
     function getAnnualEvents(){
         try{
@@ -33,6 +34,7 @@ export default function Navbar(){
                     setParentsWeekend(json[0].ParentsWeekend)
                     setCommencement(json[0].Commencement)
                     setOleaAnniversary(json[0].OleaAnniversary)
+                    setRestaurantWeeksFall(json[0].RestaurantWeeksFall)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -145,6 +147,7 @@ export default function Navbar(){
                                     {mothersDay && <li><Link to='/mothers-day-menu'>mother's day {new Date().getFullYear()}</Link></li>}
                                     {commencement && <li><Link to='/commencement-menu'>comencement {new Date().getFullYear()}</Link></li>}
                                     {parentsWeekend && <li><Link to='/yale-family-weekend'>yale family weekend {new Date().getFullYear()}</Link></li>}
+                                    {restaurantWeeksFall && <li><Link to='/restaurant-weeks-fall'>new haven restaurant week</Link></li>}
                                     
                                     <li><Link to='/dinner'>dinner</Link></li>
                                     {oleaAnniversary && <li><Link to='/anniversary'>{new Date().getFullYear() - 2014}yr anniversary</Link></li>}
@@ -199,6 +202,7 @@ export default function Navbar(){
                             {mothersDay && <Link to='/mothers-day-menu'><li className='mobile-menu-dropdown'><span>mother's day {new Date().getFullYear()}</span></li></Link>}
                             {commencement && <Link to='/commencement-menu'><li className='mobile-menu-dropdown'><span>commencement {new Date().getFullYear()}</span></li></Link>}
                             {parentsWeekend && <Link to='/yale-family-weekend'><li className="mobile-menu-dropdown"><span>yale family weekend {new Date().getFullYear()}</span></li></Link>}
+                            {restaurantWeeksFall && <Link to='/restaurant-weeks-fall'><li className="mobile-menu-dropdown"><span>new haven restaurant week</span></li></Link>}
                             
                             <Link to='/dinner'><li className='mobile-menu-dropdown'><span>dinner</span></li></Link>
                             {oleaAnniversary && <Link to='/anniversary'><li className='mobile-menu-dropdown'><span>{new Date().getFullYear() - 2014}yr anniversary</span></li></Link>}

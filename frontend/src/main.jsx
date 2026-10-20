@@ -103,6 +103,7 @@ import RestaurantWeeksSpringScreenshot from './Manager/RestaurantWeeksSpringScre
 import RestaurantWeeksSpringScan from './Manager/RestaurantWeeksSpringScan.jsx'
 import PrinterConfig from './Manager/PrinterConfig.jsx'
 
+import RestaurantWeeksFall from './RestaurantWeeksFall.jsx'
 import RestaurantWeeksFallUpdate from './Manager/RestaurantWeeksFallUpdate.jsx'
 import RestaurantWeeksFallFormatPrint from './Manager/RestaurantWeeksFallFormatPrint.jsx'
 
@@ -212,6 +213,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='restaurant-weeks-spring-screenshot' element={<RestaurantWeeksSpringScreenshot />} />
         <Route path='restaurant-weeks-spring-scan' element={<RestaurantWeeksSpringScan />} />
 
+        <Route path='restaurant-weeks-fall' element={<RestaurantWeeksFall />} />
         <Route path='restaurant-weeks-fall-format-print' element={<RestaurantWeeksFallFormatPrint />} />
         <Route path='restaurant-weeks-fall-update' element={<RestaurantWeeksFallUpdate />} />
         <Route path='restaurant-weeks' element={<RestaurantWeeks />} />

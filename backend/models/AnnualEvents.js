@@ -3,13 +3,13 @@ const mongoose = require('mongoose')
 const AnnualEventsSchema = new mongoose.Schema({
     DailySpecials:{type:Boolean},
     ValentinesDay:{type:Boolean},
-    RestaurantWeekSpring:{type:Boolean},
+    RestaurantWeeksSpring:{type:Boolean},
     MothersDay:{type:Boolean},
     Commencement:{type:Boolean},
     GraduationLunch:{type:Boolean},
     OleaAnniversary:{type:Boolean},
     ParentsWeekend:{type:Boolean},
-    RestaurantWeekFall:{type:Boolean},
+    RestaurantWeeksFall:{type:Boolean},
     NewYearsEve:{type:Boolean}
 },{timestamps:true})
 

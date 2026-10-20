@@ -19,6 +19,7 @@ export default function Events(){
     const [oleaAnniversary, setOleaAnniversary] = useState(false)
     const [parentsWeekend, setParentsWeekend] = useState(false)
     const [graduationLunch, setGraduationLunch] = useState(false)
+    const [restaurantWeeksFall, setRestaurantWeeksFall] = useState(false)
 
     function getAnnualEvents(){
         try{
@@ -31,6 +32,7 @@ export default function Events(){
                     setOleaAnniversary(json[0].OleaAnniversary)
                     setGraduationLunch(json[0].GraduationLunch)
                     setParentsWeekend(json[0].ParentsWeekend)
+                    setRestaurantWeeksFall(json[0].RestaurantWeeksFall)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -212,7 +214,28 @@ export default function Events(){
                         
                         
 
-                        <Link to='/restaurant-weeks'><li style={{flexGrow:'1'}}>restaurant weeks<br/>1st 2 weeks nov</li></Link>
+                        <div style={{display:'flex',gap:'10px'}}>
+                            <Link to='/restaurant-weeks'>
+                                <li style={{flexGrow:'1'}}>restaurant weeks<br/>1st 2 weeks nov</li>
+                            </Link>
+
+                            <div style={{display:'flex',alignItems:'center',gap:'20px',border:'1px solid black',borderRadius:'10px',width:'150px',justifyContent:'center'}}>
+                                <div style={{textAlign:'center'}}>website<br/>menu</div>
+                                {restaurantWeeksFall ? 
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOn size='30' style={{color:'green',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('RestaurantWeeksFall')} /> &nbsp;ON
+                                                </div>
+
+                                            :
+                                                <div style={{display:'flex',alignItems:'center'}}>
+                                                    <FaToggleOff size='30' style={{color:'red',cursor:'pointer'}} onClick={()=>toggleAnnualEvent('RestaurantWeeksFall')} /> &nbsp;OFF
+                                                </div>
+                                }
+                            </div>
+                        </div>
+                        
+                        
+
                         <Link to='/nye'><li style={{flexGrow:'1'}}>new year's eve<br/>dec 31</li></Link>
                     </ul>
 

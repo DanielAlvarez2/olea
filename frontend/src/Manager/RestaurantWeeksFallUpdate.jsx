@@ -14,6 +14,7 @@ export default function RestaurantWeeksFallUpdate(){
     const [updatingImage, setUpdatingImage] = useState(false)
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)
+    const [winePairingPrice, setWinePairingPrice] = useState(0)
     const [editMode, setEditMode] = useState(false)
     const [displaySection, setDisplaySection] = useState('prix fixe - appetizers')
     const [currentImage, setCurrentImage] = useState('')
@@ -27,6 +28,7 @@ export default function RestaurantWeeksFallUpdate(){
 
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
+    useEffect(()=>getWinePairingPrice(),[])
     useEffect(()=>getWebsiteImage(),[])
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
@@ -35,7 +37,7 @@ export default function RestaurantWeeksFallUpdate(){
 
     const event = "Restaurant Weeks: Fall"
     const event_url = 'restaurant-weeks-fall'
-    const event_obj = 'RestaurantWeeksFall'
+    const event_obj = 'RestaurantWeekFall'
 
     function getWebsiteImage(){
         fetch(`${BASE_URL}/api/events/website-image/${event_url}`)
@@ -138,6 +140,17 @@ export default function RestaurantWeeksFallUpdate(){
             fetch(`${BASE_URL}/api/annual-event-prices`)
                 .then(res=>res.json())
                 .then(json=>setAnnualEventPrice(json[0][event_obj]))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getWinePairingPrice(){
+        try{
+            fetch(`${BASE_URL}/api/annual-event-prices`)
+                .then(res=>res.json())
+                .then(json=>setWinePairingPrice(json[0].RestaurantWeekFallWinePairing))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -296,6 +309,19 @@ export default function RestaurantWeeksFallUpdate(){
         .catch(err=>console.log(err))
     }
 
+    function updateWinePairingPrice(formData){
+        fetch(`${BASE_URL}/api/annual-events-prices`,{method:'PUT',
+                                                            headers:{'Content-Type':'application/json'},
+                                                            body: JSON.stringify({
+                                                                annualEventName:formData.get('annual-event-name'),
+                                                                annualEventPrice:formData.get('annual-event-price'),
+                                                            })
+        })
+        .then(res=>res.json())
+        .then(json=>setWinePairingPrice(json[0].RestaurantWeekFallWinePairing))
+        .catch(err=>console.log(err))
+    }
+
     const [previewSource, setPreviewSource] = useState()
     function handleFileInputChange(e){
         const file = e.target.files[0]
@@ -333,7 +359,7 @@ Maximum Recommended Dimensions:
 
     const [previewSource2, setPreviewSource2] = useState()
     function handleWebsiteImageFileInputChange(e){
-        alert(`File Size: ${(e.target.files[0].size * 0.000001).toFixed(1)} Mb`)
+        // alert(`File Size: ${(e.target.files[0].size * 0.000001).toFixed(1)} Mb`)
         const file = e.target.files[0]
         previewFile2(file)
     }
@@ -1435,7 +1461,7 @@ Maximum Recommended Dimensions:
                             {event.toLowerCase()}
                         </h2>
                         <h2 style={{textAlign:'center'}}>
-                            prix-fixe price
+                            prix-fixe dinner price
                         </h2>
                         <br/><br/>
                         <input  type='hidden'
@@ -1445,6 +1471,60 @@ Maximum Recommended Dimensions:
                         
                         <div style={{textAlign:'center'}}>
                             ${annualEventPrice}/person &rarr; 
+                            $<input type='number'
+                                    required
+                                    min='1'
+                                    max='999' 
+                                    maxLength='100'
+                                    name='annual-event-price'
+                                    style={{width:'6ch'}} />/person
+                        </div>
+                        <br/><br/>
+
+
+
+                        <div style={{display:'flex', justifyContent:'center'}}>
+                            <input  type='submit' 
+                                    style={{padding:'10px 10px',
+                                            cursor:'pointer',
+                                            borderRadius:'10px',
+                                            border:'2px solid black',
+                                            color:'black',
+                                            background:'lightgrey',
+                                            fontSize:'20px'}}
+                                    value = 'update price' />                        
+                        </div>
+                        
+                    </form>
+
+
+
+
+
+
+
+
+
+
+
+                    <form   action={updateWinePairingPrice} 
+                            id='tasting-menu-form'
+                            className='specials-form'
+                            style={{background:`pink`}}>
+                        <h2 style={{textAlign:'center'}}>
+                            {event.toLowerCase()}
+                        </h2>
+                        <h2 style={{textAlign:'center'}}>
+                            wine pairing price
+                        </h2>
+                        <br/><br/>
+                        <input  type='hidden'
+                                name='annual-event-name'
+                                value='RestaurantWeekFallWinePairing'
+                        />
+                        
+                        <div style={{textAlign:'center'}}>
+                            ${winePairingPrice}/person &rarr; 
                             $<input type='number'
                                     required
                                     min='1'
