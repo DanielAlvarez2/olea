@@ -4,6 +4,9 @@ const RestaurantWeeksFallFormatSchema = new mongoose.Schema({
     RightMenuItemMarginsTopBottom:{type:Number},
     rightMenuItemMarginRight:{type:Number},
     LeftMenuItemMarginsTopBottom:{type:Number},
+    logoHeight:{type:Number},
+    logoRight:{type:Number},
+    logoTop:{type:Number},
 })
 
 module.exports = mongoose.model('RestaurantWeeksFallFormat',RestaurantWeeksFallFormatSchema)

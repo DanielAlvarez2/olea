@@ -190,7 +190,7 @@ export default function RestaurantWeeksFall(){
                                     <div>
                                       Reserve a table at 203.780.8925 or <a href='https://www.opentable.com/single.aspx?rid=151186&restref=151186' target='_blank'><span style={{color:'white',cursor:'pointer'}}>Open Table</span></a>
                                     </div>
-
+                                    <br/>
                                     Please note: a shorter version of our regular dinner menu is also available
 
 

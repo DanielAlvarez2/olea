@@ -10,6 +10,10 @@ import './CommencementFormat.css'
 import ManagerNavbar from './components/ManagerNavbar.jsx'
 import { PiPlusCircleDuotone } from "react-icons/pi";
 import { PiMinusCircleDuotone } from "react-icons/pi";
+import { PiArrowCircleDownDuotone } from "react-icons/pi";
+import { PiArrowCircleUpDuotone } from "react-icons/pi";
+import { PiArrowCircleLeftDuotone } from "react-icons/pi";
+import { PiArrowCircleRightDuotone } from "react-icons/pi";
 
 
 
@@ -23,11 +27,17 @@ export default function RestaurantWeeksFallFormatPrint(){
     const [RightMenuItemMarginsTopBottom, setRightMenuItemMarginsTopBottom] = useState(0)
     const [LeftMenuItemMarginsTopBottom, setLeftMenuItemMarginsTopBottom] = useState(0)
     const [rightMenuItemMarginRight, setRightMenuItemMarginRight] = useState(0)
+    const [logoImageURL, setLogoImageURL] = useState('')
+    const [logoHeight, setLogoHeight] = useState('')
+    const [logoRight, setLogoRight] = useState('')
+    const [logoTop, setLogoTop] = useState('')
 
     useEffect(()=>getFormatting())
     useEffect(()=>getAnnualEventPrice(),[])
     useEffect(()=>getWinePairingPrice(),[])    
     useEffect(()=>getAnnualEventsMenuItems(),[])
+    useEffect(()=>getLogoImage(),[])
+
     
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -60,6 +70,15 @@ export default function RestaurantWeeksFallFormatPrint(){
         }
     }
 
+    function getLogoImage(){
+        fetch(`${BASE_URL}/api/events/website-image/restaurant-week-fall-logo-image`)
+            .then(res=>res.json())
+            .then(data=>{
+                setLogoImageURL(data.cloudinary_secure_URL)
+                // setLogoImageID(data.cloudinaryPublicID)
+            })
+            .catch(err=>console.log(err))
+    }
 
     function getAnnualEventsMenuItems(){
         try{
@@ -82,6 +101,9 @@ export default function RestaurantWeeksFallFormatPrint(){
                     setRightMenuItemMarginsTopBottom(json[0].RightMenuItemMarginsTopBottom)
                     setRightMenuItemMarginRight(json[0].rightMenuItemMarginRight)
                     setLeftMenuItemMarginsTopBottom(json[0].LeftMenuItemMarginsTopBottom)
+                    setLogoHeight(json[0].logoHeight)
+                    setLogoRight(json[0].logoRight)
+                    setLogoTop(json[0].logoTop)
                 })
                 .catch(err=>console.log(err))
         }catch(err){
@@ -89,18 +111,67 @@ export default function RestaurantWeeksFallFormatPrint(){
         }
     }
 
-    function decreaseItemMarginsLeftRight(){
-        if (itemMarginsLeftRight <= 0) return
-        fetch(`${BASE_URL}/api/formats/decreaseItemMarginsLeftRight/${event_url}`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
+    function increaseLogoHeight(){
+      try{
+        fetch(`${BASE_URL}/api/formats/${event_url}/increase-logo-height`)
+          .then(()=>getFormatting())
+          .catch(err=>console.log(err))
+      }catch(err){
+        console.log(err)
+      }
+    }    
+
+    function decreaseLogoHeight(){
+      try{
+        fetch(`${BASE_URL}/api/formats/${event_url}/decrease-logo-height`)
+          .then(()=>getFormatting())
+          .catch(err=>console.log(err))
+      }catch(err){
+        console.log(err)
+      }
+    }    
+
+    function increaseLogoRight(){
+      try{
+        fetch(`${BASE_URL}/api/formats/${event_url}/increase-logo-right`)
+          .then(()=>getFormatting())
+          .catch(err=>console.log(err))
+      }catch(err){
+        console.log(err)
+      }
     }
 
-    function increaseItemMarginsLeftRight(){
-        fetch(`${BASE_URL}/api/formats/increaseItemMarginsLeftRight/${event_url}`, {method:'PUT'})
-            .then(()=>getFormatting())
-            .catch(err=>console.log(err))
+    function increaseLogoTop(){
+      try{
+        fetch(`${BASE_URL}/api/formats/${event_url}/increase-logo-top`)
+          .then(()=>getFormatting())
+          .catch(err=>console.log(err))
+      }catch(err){
+        console.log(err)
+      }
     }
+
+    function decreaseLogoTop(){
+      try{
+        fetch(`${BASE_URL}/api/formats/${event_url}/decrease-logo-top`)
+          .then(()=>getFormatting())
+          .catch(err=>console.log(err))
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+    function decreaseLogoRight(){
+      try{
+        fetch(`${BASE_URL}/api/formats/${event_url}/decrease-logo-right`)
+          .then(()=>getFormatting())
+          .catch(err=>console.log(err))
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+
 
     function RightMenuDecreaseItemMarginsTopBottom(){
         if (RightMenuItemMarginsTopBottom <= 0) return
@@ -173,6 +244,62 @@ Please switch to a different browser to proceed.
                     
                     <br className='no-print'/>
 
+                              {logoImageURL && 
+                              
+                              
+                                <div className='no-print'>
+
+                                    <h2 style={{fontSize:'23px',fontFamily:'FuturaRoundBold',width:'100%',textAlign:'center'}}>
+                                    restaurant week logo</h2><br/>
+
+                                    <div style={{display:'flex',alignItems:'center',gap:'75px'}}>
+
+
+                                    <div style={{display:'flex',alignItems:'center'}}>
+                                      <span><PiArrowCircleLeftDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                      onClick={increaseLogoRight} 
+                                                                      /></span>
+                                        <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+                                          <span><PiArrowCircleUpDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                        onClick={decreaseLogoTop} 
+                                                                        /></span>
+                                          <span>position</span>
+                                          <span><PiArrowCircleDownDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                        onClick={increaseLogoTop} 
+                                                                        /></span>
+                                        </div>
+
+                                      <span><PiArrowCircleRightDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                      onClick={decreaseLogoRight} 
+                                                                      /></span>                                                                                                            
+                                    </div>
+
+                                      <div  className='no-print'
+                                            style={{   textAlign:'center',
+                                                      display:'flex',
+                                                      gap:'10px',
+                                                      background:'#eee',
+                                                      justifyContent:'center',
+                                                      // border:'1px solid green',
+                                                      alignItems:'center'}}>
+                                          <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                      onClick={decreaseLogoHeight} 
+                                                                      /></span>
+                                          <span>size</span>
+                                          
+                                          
+                                          <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                      onClick={increaseLogoHeight} 
+                                                                      /></span>
+                                      </div>
+                                    </div>                         
+
+
+                                </div>
+
+                              }
+
+                    <br className='no-print'/>
                     <div className='main-menu' style={{paddingBottom:0,display:'flex',alignItems:'center'}}>
 
 
@@ -245,14 +372,21 @@ Please switch to a different browser to proceed.
                                             }} 
                                 >
                                     <div id='footer-top'>
-                                        <span   className='logo dessert-menu-front-content' 
-                                                style={{
-                                                        // color:'red',
-                                                        // padding:`0 ${itemMarginsLeftRight}px`,
-                                                        paddingLeft:'0px',
-                                                        display:'block',
-                                                        cursor:'default',
-                                                        fontSize:'57px'}}>olea</span>
+                                        
+
+                                            <span   className='logo dessert-menu-front-content' 
+                                                    style={{
+                                                            // color:'red',
+                                                            // padding:`0 ${itemMarginsLeftRight}px`,
+                                                            paddingLeft:'0px',
+                                                            display:'inline-block',
+                                                            cursor:'default',
+                                                            fontSize:'57px'}}>olea</span>
+                                            <span style={{position:'relative'}}>
+                                              <img  id='restaurant-week-fall-logo' 
+                                                    style={{height:`${logoHeight}px`,position:'absolute',left:`${logoRight}px`,bottom:`${logoTop}px`}}
+                                                    src={logoImageURL ? logoImageURL : null}  />                                              
+                                            </span>
 
                                         <div style={{borderTop:'1px solid #888',margin:'5px 0'}}></div>
 

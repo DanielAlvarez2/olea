@@ -795,6 +795,56 @@ app.put('/api/events/website-image/:event',async(req,res)=>{
     res.json(`New Website Image For: ${req.params.event}`)
 })
 
+app.put('/api/events/logo-image/:event',async(req,res)=>{
+    
+    let cloudinary_public_ID = ''
+    let cloudinary_secure_URL = ''
+    
+    const currentImage = await AnnualEventsWebsiteImage.findOne({event:req.params.event})
+    
+    // NO PIC -> NEW PIC
+    if(!currentImage.cloudinary_secure_URL && req.body.previewSource3){
+        try{
+            const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource3)
+            cloudinary_public_ID = cloudinaryResponse.public_id
+            cloudinary_secure_URL = cloudinaryResponse.secure_url
+        }catch(err){
+            console.log(err)
+        }
+    }
+    // OLD PIC -> NEW PIC
+        if(currentImage.cloudinary_secure_URL && req.body.previewSource3){
+            try{
+                await cloudinary.uploader.destroy(currentImage.cloudinary_public_ID, {invalidate:true}, function(error,result){console.log(result,error)})
+                const cloudinaryResponse = await cloudinary.uploader.upload(req.body.previewSource3)
+                cloudinary_public_ID = cloudinaryResponse.public_id
+                cloudinary_secure_URL = cloudinaryResponse.secure_url
+            }catch(err){
+                console.log(err)
+            }
+        }
+
+
+    // OLD PIC -> NO PIC
+        if(currentImage.cloudinary_secure_URL && req.body.isNoWebsiteImageChecked){
+            try{
+                await cloudinary.uploader.destroy(currentImage.cloudinary_public_ID, {invalidate:true}, function(error,result){console.log(result,error)})                
+                cloudinary_public_ID = ''
+                cloudinary_secure_URL = ''
+            }catch(err){
+                console.log(err)
+            }
+        }
+
+
+
+    await AnnualEventsWebsiteImage.findByIdAndUpdate({_id:currentImage._id},{
+                                                        cloudinary_public_ID,
+                                                        cloudinary_secure_URL
+                                                        })
+    res.json(`New Website Image For: ${req.params.event}`)
+})
+
 app.get('/api/events/website-image/:event', async(req,res)=>{
     try{
         let currentImage = await AnnualEventsWebsiteImage.findOne({event:req.params.event})
@@ -3645,6 +3695,78 @@ app.put('/api/formats/decreaseItemMarginsLeftRight/parents-weekend', async(req,r
     }
 })
 
+app.get('/api/formats/restaurant-weeks-fall/increase-logo-height', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        await RestaurantWeeksFallFormat.findByIdAndUpdate(allFormats[0]._id,
+            {logoHeight: allFormats[0].logoHeight + 1}
+        )
+        res.json('logo height increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/formats/restaurant-weeks-fall/decrease-logo-height', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        await RestaurantWeeksFallFormat.findByIdAndUpdate(allFormats[0]._id,
+            {logoHeight: allFormats[0].logoHeight - 1}
+        )
+        res.json('logo height decreased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/formats/restaurant-weeks-fall/increase-logo-right', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        await RestaurantWeeksFallFormat.findByIdAndUpdate(allFormats[0]._id,
+            {logoRight: allFormats[0].logoRight - 1}
+        )
+        res.json('logo right increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/formats/restaurant-weeks-fall/increase-logo-top', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        await RestaurantWeeksFallFormat.findByIdAndUpdate(allFormats[0]._id,
+            {logoTop: allFormats[0].logoTop - 1}
+        )
+        res.json('logo right increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/formats/restaurant-weeks-fall/decrease-logo-top', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        await RestaurantWeeksFallFormat.findByIdAndUpdate(allFormats[0]._id,
+            {logoTop: allFormats[0].logoTop + 1}
+        )
+        res.json('logo right increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+app.get('/api/formats/restaurant-weeks-fall/decrease-logo-right', async(req,res)=>{
+    try{
+        const allFormats = await RestaurantWeeksFallFormat.find()
+        await RestaurantWeeksFallFormat.findByIdAndUpdate(allFormats[0]._id,
+            {logoRight: allFormats[0].logoRight + 1}
+        )
+        res.json('logo right increased')
+    }catch(err){
+        console.log(err)
+    }
+})
+
 app.get('/api/formats/restaurant-weeks-fall', async(req,res)=>{ 
     try{
         let allFormats = await RestaurantWeeksFallFormat.find()
@@ -3653,6 +3775,9 @@ app.get('/api/formats/restaurant-weeks-fall', async(req,res)=>{
                 RightMenuItemMarginsTopBottom: 0,
                 rightMenuItemMarginRight: 0,
                 LeftMenuItemMarginsTopBottom: 0,
+                logoHeight:100,
+                logoRight:0,
+                logoTop:0,
             })
             allFormats = await RestaurantWeeksFallFormat.find()
         }

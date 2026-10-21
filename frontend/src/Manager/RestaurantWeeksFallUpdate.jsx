@@ -12,6 +12,8 @@ export default function RestaurantWeeksFallUpdate(){
     const [prixFixe, setPrixFixe] = useState(false)
     const [updatingMenu, setUpdatingMenu] = useState(false)
     const [updatingImage, setUpdatingImage] = useState(false)
+    const [updatingImage2, setUpdatingImage2] = useState(false)
+    const [updatingLogoImage, setUpdatingLogoImage] = useState(false)
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)
     const [winePairingPrice, setWinePairingPrice] = useState(0)
@@ -22,14 +24,18 @@ export default function RestaurantWeeksFallUpdate(){
     const [cloudinarySecureURL, setCloudinarySecureURL] = useState('')
     const [isChecked, setIsChecked] = useState(false)
     const [isNoWebsiteImageChecked, setIsNoWebsiteImageChecked] = useState(false)
+    const [isNoLogoImageChecked, setIsNoLogoImageChecked] = useState(false)
     const [websiteImageURL, setWebsiteImageURL] = useState('')
+    const [logoImageURL, setLogoImageURL] = useState('')
     const [websiteImageID, setWebsiteImageID] = useState('')
+    const [logoImageID, setLogoImageID] = useState('')
     const [section, setSection] = useState('')
 
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
     useEffect(()=>getWinePairingPrice(),[])
     useEffect(()=>getWebsiteImage(),[])
+    useEffect(()=>getLogoImage(),[])
 
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -45,6 +51,16 @@ export default function RestaurantWeeksFallUpdate(){
             .then(data=>{
                 setWebsiteImageURL(data.cloudinary_secure_URL)
                 setWebsiteImageID(data.cloudinaryPublicID)
+            })
+            .catch(err=>console.log(err))
+    }
+
+    function getLogoImage(){
+        fetch(`${BASE_URL}/api/events/website-image/restaurant-week-fall-logo-image`)
+            .then(res=>res.json())
+            .then(data=>{
+                setLogoImageURL(data.cloudinary_secure_URL)
+                setLogoImageID(data.cloudinaryPublicID)
             })
             .catch(err=>console.log(err))
     }
@@ -371,6 +387,23 @@ Maximum Recommended Dimensions:
         }
     }
 
+    function handleLogoImageFileInputChange(e){
+        // alert(`File Size: ${(e.target.files[0].size * 0.000001).toFixed(1)} Mb`)
+        const file = e.target.files[0]
+        previewFile3(file)
+    }
+    function previewFile3(file){
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = ()=>{
+            setPreviewSource3(reader.result)
+        }
+    }
+
+
+
+
+
     function updateWebsiteImage(formData){
         if (!previewSource2 && !isNoWebsiteImageChecked) return
         setUpdatingImage(true)
@@ -395,6 +428,32 @@ Maximum Recommended Dimensions:
         .catch(err=>console.log(err))        
     }
 
+    const [previewSource3, setPreviewSource3] = useState()    
+    function updateLogoImage(formData){
+        console.log('updateLogoImage()')
+        if (!previewSource3 && !isNoLogoImageChecked) return
+        setUpdatingLogoImage(true)
+        fetch(`${BASE_URL}/api/events/logo-image/restaurant-week-fall-logo-image`,{  method:'PUT',
+                                                        headers:{'Content-Type':'application/json'},
+                                                        body: JSON.stringify({
+                                                            event:formData.get('annual-event-name'),
+                                                            cloudinary_public_ID:formData.get('cloudinary_public_ID'),
+                                                            cloudinary_secure_URL:formData.get('cloudinary_secure_URL'),
+                                                            previewSource3
+                                                        })
+        }) 
+        .then(res=>res.json())
+        .then(()=>{
+            document.querySelector('#do-not-circle3').style.color = 'transparent'
+            setIsNoLogoImageChecked(false)
+            document.querySelector('#file-input-logo-image').style.visibility = 'visible'
+        })
+        .then(()=>getLogoImage())
+        .then(()=>setPreviewSource3(''))
+        .then(()=>setUpdatingLogoImage(false))
+        .catch(err=>console.log(err))        
+    }
+
     function toggleNoWebsiteImage(){
         !isNoWebsiteImageChecked && setPreviewSource2('')
         if(!isNoWebsiteImageChecked){
@@ -407,12 +466,32 @@ Maximum Recommended Dimensions:
         document.querySelector('#do-not-circle2').style.color = isNoWebsiteImageChecked ? 'transparent' : 'red'
     }    
 
+    function toggleNoLogoImage(){
+        !isNoLogoImageChecked && setPreviewSource3('')
+        if(!isNoLogoImageChecked){
+            document.querySelector('#logo-image-file').value = ''
+            document.querySelector('#file-input-logo-image').style.visibility = 'hidden'
+        }else{
+            document.querySelector('#file-input-logo-image').style.visibility = 'visible'
+        }
+        setIsNoLogoImageChecked(!isNoLogoImageChecked)
+        document.querySelector('#do-not-circle3').style.color = isNoLogoImageChecked ? 'transparent' : 'red'
+    }    
+
     function clearWebsiteImageForm(){
         setPreviewSource2('')
         document.querySelector('#website-image-file').value = ''
         setIsNoWebsiteImageChecked(false)
         document.querySelector('#do-not-circle2').style.color = 'transparent'
         document.querySelector('#file-input-website-image').style.visibility = 'visible'
+    }
+
+    function clearLogoImageForm(){
+        setPreviewSource3('')
+        document.querySelector('#logo-image-file').value = ''
+        setIsNoLogoImageChecked(false)
+        document.querySelector('#do-not-circle3').style.color = 'transparent'
+        document.querySelector('#file-input-logo-image').style.visibility = 'visible'
     }
 
     function handleSectionChange(e){
@@ -1684,10 +1763,149 @@ Maximum Recommended Dimensions:
                                             cancel
                                         </div>
                             }
+                        </div>                                                
+                    </form>
+
+                    <form   
+                            action={updateLogoImage} 
+                            id='logo-image'
+                            className='specials-form'
+                            style={{background:`#bf40bf`}}>
+
+                        <h2 style={{textAlign:'center'}}>
+                            {event.toLowerCase()}
+                        </h2>
+                        <h2 style={{textAlign:'center'}}>
+                            logo image (paper menu)
+                        </h2>
+                        
+                        <br/><br/>
+                        
+                        <input  type='hidden'
+                                name='annual-event-name'
+                                value='restaurant-week-fall-paper-logo'
+                        />
+
+                        <input  type='hidden' 
+                                name='cloudinary_secure_URL' 
+                                value={logoImageURL}
+                                id='cloudinary_secure_URL' />
+
+                        <input  type='hidden' 
+                                value={logoImageID}
+                                name='cloudinary_public_ID' 
+                                id='cloudinary_public_ID' />
+                        
+                        <div style={{position:'relative',display:'inline-block'}}>
+                            <div style={{
+                                            position:'absolute',
+                                            width:'100%',
+                                            height:'100%',
+                                            display:'grid',
+                                            placeContent:'center',
+                                            top:'0',
+                                            left:'0'
+                            }}>
+                                <MdDoNotDisturbAlt size='150' id='do-not-circle3' style={{color:'transparent'}} />
+                            </div>
+                            <img src={logoImageURL ? logoImageURL : '/no-image.jpg' } style={{maxWidth:'100%'}} />
+                        </div>
+                        
+                        <br/>
+                        <div style={{textAlign:'center'}}>current image</div>
+                        <br/><br/>
+                        
+                        <div id='file-input-logo-image'>
+                            <label>
+                                {logoImageURL ? <div>replace image (optional)</div> : <div>add image (optional)</div>}
+                                <input  name='logo-image-file' 
+                                        id='logo-image-file'
+                                        onChange={handleLogoImageFileInputChange}
+                                        type='file' />
+                            </label>
+                        </div>
+                        <br/><br/>
+                                                
+                        {previewSource3 &&  <>
+                                                <img src={previewSource3} style={{maxWidth:'300px',maxHeight:'300px'}} /><br/><br/>
+                                            </>}
+
+                        {logoImageURL &&                         
+                                            <>                        
+                                                <br/>
+                                                <label style={{display:'flex',alignItems:'center'}}>
+                                                    <input  type='checkbox' 
+                                                            name='no-image'
+                                                            checked={isNoLogoImageChecked}
+                                                            onChange={toggleNoLogoImage}
+                                                    /> 
+                                                    <span>&nbsp;&nbsp;remove image / display NO image</span>
+                                                </label>
+                                                <br/>
+                                            </>
+                        }
+                        
+                        <br/><br/>
+                        <div style={{display:'flex',justifyContent:'space-around'}}>
+                            {!updatingImage2 &&                             
+                                <input  type='submit' 
+                                        style={{padding:'10px 10px',
+                                                cursor:'pointer',
+                                                borderRadius:'10px',
+                                                border:'2px solid black',
+                                                color:'black',
+                                                background:'lightgrey',
+                                                fontSize:'20px'}}
+                                        value = 'update logo'/>
+                            }
+                            {updatingImage2 &&                             
+                                <div style={{   padding:'10px',
+                                                borderRadius:'10px',
+                                                border:'2px solid black',
+                                                color:'#000000',
+                                                fontWeight:'900',
+                                                background:'darkgrey',
+                                                fontSize:'20px',
+                                                cursor:'wait'}}>
+                                                    <span className='flashing-text'>updating image</span>
+                                </div>
+                            }
+                            {!updatingMenu &&                            
+                                        <div onClick={clearLogoImageForm}
+                                             style={{   display:'grid',
+                                                        placeContent:'center',
+                                                        cursor:'pointer',
+                                                        borderRadius:'10px',
+                                                        border:'2px solid black',
+                                                        background:'rgb(255, 89, 118)',
+                                                        fontWeight:'900',
+                                                        color:'black',
+                                                        padding:'10px 10px',
+                                                        fontSize:'20px'
+                                                    }}>
+                                            cancel
+                                        </div>
+                            }
                         </div>
 
                                                 
                     </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <br/><br/><br/>
 
