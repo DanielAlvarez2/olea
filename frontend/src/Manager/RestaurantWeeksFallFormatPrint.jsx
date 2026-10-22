@@ -96,8 +96,6 @@ export default function RestaurantWeeksFallFormatPrint(){
             fetch(`${BASE_URL}/api/formats/${event_url}`)
                 .then(res=>res.json())
                 .then(json=>{
-                    // setFormatting(json[0])
-                    // setPageMargin(json[0].pageMargin)
                     setRightMenuItemMarginsTopBottom(json[0].RightMenuItemMarginsTopBottom)
                     setRightMenuItemMarginRight(json[0].rightMenuItemMarginRight)
                     setLeftMenuItemMarginsTopBottom(json[0].LeftMenuItemMarginsTopBottom)
@@ -418,7 +416,7 @@ Please switch to a different browser to proceed.
 
 
                                             <div    id='dinner-menu-left'
-                                                    style={{width:'50%',border:'1px solid black',padding:'10px'}}        
+                                                    style={{width:'50%',border:'1px solid black',padding:'10px',paddingBottom:'0'}}        
                                             >
 
                                         <div >
@@ -866,7 +864,7 @@ Please switch to a different browser to proceed.
 
                                             </div>
 
-                                                <img    src='/qr-family-weekend.jpg' 
+                                                <img    src='/qr-restaurant-week-fall.jpg' 
                                                     className='qr'
                                                     style={{marginLeft:'10px'}}
                                                     height='60px' />
@@ -886,23 +884,6 @@ Please switch to a different browser to proceed.
                                     <h2 style={{fontSize:'23px',fontFamily:'FuturaRoundBold',width:'100%',textAlign:'center'}}>
                                     à la carte</h2><br/>
                                                                   
-                                    <div  className='no-print'
-                                          style={{   textAlign:'center',
-                                                    display:'flex',
-                                                    gap:'10px',
-                                                    background:'#eee',
-                                                    justifyContent:'center',
-                                                    // border:'1px solid green',
-                                                    alignItems:'center'}}>
-                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
-                                                                    onClick={RightMenuDecreaseItemMarginsTopBottom} 
-                                                                    /></span>
-                                        <span>menu item margins<br/>top & bottom &#8597;</span>
-                                        
-                                        
-                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
-                                                                    onClick={RightMenuIncreaseItemMarginsTopBottom} /></span>
-                                    </div>
 
                                     <div  className='no-print'
                                           style={{   textAlign:'center',
@@ -919,6 +900,24 @@ Please switch to a different browser to proceed.
                                         
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                                     onClick={rightMenuIncreaseItemMarginRight} /></span>
+                                    </div>
+
+                                    <div  className='no-print'
+                                          style={{   textAlign:'center',
+                                                    display:'flex',
+                                                    gap:'10px',
+                                                    background:'#eee',
+                                                    justifyContent:'center',
+                                                    // border:'1px solid green',
+                                                    alignItems:'center'}}>
+                                        <span><PiMinusCircleDuotone style={{fontSize:'40px',cursor:'pointer'}}
+                                                                    onClick={RightMenuDecreaseItemMarginsTopBottom} 
+                                                                    /></span>
+                                        <span>menu item margins<br/>top & bottom &#8597;</span>
+                                        
+                                        
+                                        <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
+                                                                    onClick={RightMenuIncreaseItemMarginsTopBottom} /></span>
                                     </div>
 
                                     <div    className='no-print print-btn' 
