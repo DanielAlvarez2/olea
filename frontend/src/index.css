@@ -307,3 +307,12 @@ input[type="file"]::file-selector-button{
     padding:10px 5px !important;
   }
 }
+.rw-printarea{
+    /* border:1px solid black; */
+    zoom:0.6;
+}
+@media print{
+    .rw-printarea{
+        zoom:1;
+    }
+}

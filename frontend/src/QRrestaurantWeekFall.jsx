@@ -16,7 +16,8 @@ import QRfooter from './components/QR-footer.jsx'
 export default function QRrestaurantWeekFall(){
 
     const [annualEventPrice, setAnnualEventPrice] = useState(0)      
-    const [winePairingPrice, setWinePairingPrice] = useState(0)    
+    const [winePairingPrice, setWinePairingPrice] = useState(0) 
+    const [eventDates, setEventDates] = useState('')   
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
     const [formatting, setFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
@@ -33,6 +34,7 @@ export default function QRrestaurantWeekFall(){
     useEffect(()=>getWinePairingPrice(),[])    
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getLogoImage(),[])
+    useEffect(()=>getEventDates(),[])
     
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
@@ -59,6 +61,17 @@ export default function QRrestaurantWeekFall(){
             fetch(`${BASE_URL}/api/annual-event-prices`)
                 .then(res=>res.json())
                 .then(json=>setWinePairingPrice(json[0].RestaurantWeekFallWinePairing))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getEventDates(){
+        try{
+            fetch(`${BASE_URL}/api/annual-event-prices`)
+                .then(res=>res.json())
+                .then(json=>setEventDates(json[0].RestaurantWeekFallDates))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -274,7 +287,7 @@ export default function QRrestaurantWeekFall(){
                                             <h2 style={{fontSize:'21px',fontFamily:'FuturaRoundBold'}}>New Haven Restaurant Week</h2>
                                             {/* <br/> */}
                                             <div style={{fontFamily:'serif'}}>
-                                                <span style={{fontFamily:'FuturaLight'}}>November 1-14, 2026</span>
+                                                <span style={{fontFamily:'FuturaLight'}}>{eventDates}</span>
                                                 <br/>
                                                 <br />
 
@@ -513,9 +526,9 @@ export default function QRrestaurantWeekFall(){
                                             
                                             {/* {data.sequence}<br/> */}
                                             <div>
-                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'17px'}}>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                    <span className='allergies-abbreviated' style={{fontSize:'13px'}}> ({data.allergiesAbbreviated})</span>}
                                                 
                                                 {data.descriptionIntro && 
                                                     <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
@@ -563,9 +576,9 @@ export default function QRrestaurantWeekFall(){
                                             
                                             {/* {data.sequence}<br/> */}
                                             <div>
-                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'17px'}}>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                    <span className='allergies-abbreviated' style={{fontSize:'13px'}}> ({data.allergiesAbbreviated})</span>}
                                                 
                                                 {data.descriptionIntro && 
                                                     <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
@@ -624,9 +637,9 @@ export default function QRrestaurantWeekFall(){
                                             
                                             {/* {data.sequence}<br/> */}
                                             <div>
-                                                <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
+                                                <span style={{fontFamily:'FuturaMedium',fontSize:'17px'}}>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
-                                                    <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
+                                                    <span className='allergies-abbreviated' style={{fontSize:'13px'}}> ({data.allergiesAbbreviated})</span>}
                                                 
                                                 {data.descriptionIntro && 
                                                     <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>

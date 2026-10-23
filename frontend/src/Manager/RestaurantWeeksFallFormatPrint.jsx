@@ -20,7 +20,8 @@ import { PiArrowCircleRightDuotone } from "react-icons/pi";
 export default function RestaurantWeeksFallFormatPrint(){
 
     const [annualEventPrice, setAnnualEventPrice] = useState(0)      
-    const [winePairingPrice, setWinePairingPrice] = useState(0)    
+    const [winePairingPrice, setWinePairingPrice] = useState(0) 
+    const [eventDates, setEventDates] = useState('')   
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])    
     const [formatting, setFormatting] = useState([])
     const [pageMargin, setPageMargin] = useState(0)
@@ -34,7 +35,8 @@ export default function RestaurantWeeksFallFormatPrint(){
 
     useEffect(()=>getFormatting())
     useEffect(()=>getAnnualEventPrice(),[])
-    useEffect(()=>getWinePairingPrice(),[])    
+    useEffect(()=>getWinePairingPrice(),[]) 
+    useEffect(()=>getEventDates(),[])   
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getLogoImage(),[])
 
@@ -69,6 +71,18 @@ export default function RestaurantWeeksFallFormatPrint(){
             console.log(err)
         }
     }
+
+    function getEventDates(){
+        try{
+            fetch(`${BASE_URL}/api/annual-event-prices`)
+                .then(res=>res.json())
+                .then(json=>setEventDates(json[0].RestaurantWeekFallDates))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
 
     function getLogoImage(){
         fetch(`${BASE_URL}/api/events/website-image/restaurant-week-fall-logo-image`)
@@ -356,16 +370,18 @@ Please switch to a different browser to proceed.
 
 
 
-
+                              <div className='rw-printarea' style={{display:'flex',flexDirection:'column'}}>                              
                                 <div    className='dinner-menu-format paper-menu' 
                                         style={{
                                                 width:'8.5in',
                                                 height:'14in',
                                                 padding:'27px 65px',
+                                                zIndex:'1',
                                                 // color:'red',
                                                 // padding:`${pageMargin/2}px ${pageMargin}px 0px`,
                                                 // backgroundImage:"url('/parents-weekend-scan.jpg')",
                                                 backgroundSize:'8.5in',
+                                                borderBottom:'none'
                                                 // color:'red'
                                             }} 
                                 >
@@ -421,7 +437,7 @@ Please switch to a different browser to proceed.
 
                                         <div >
                                             <h2 style={{fontSize:'22px'}}>New Haven Restaurant Week</h2>
-                                            November 1-14, 2026
+                                            {eventDates}
                                             <br/><br/>
                                             <div style={{fontFamily:'serif'}}>
                                                 <span style={{fontSize:'18.7px',fontWeight:'900'}}>${annualEventPrice} three courses</span>
@@ -875,6 +891,9 @@ Please switch to a different browser to proceed.
                                                                
                                 </div>
 
+                                <div className='no-print' style={{width:'8.5in',height:'40px',background:"white",border:'1px solid black',borderTop:'none'}}>
+                                </div>
+                              </div>
 
 
                     

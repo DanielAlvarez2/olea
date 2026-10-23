@@ -10,6 +10,7 @@ const AnnualEventsPriceSchema = new mongoose.Schema({
     ParentsWeekend:{type:Number},
     RestaurantWeekFall:{type:Number},
     RestaurantWeekFallWinePairing:{type:Number},
+    RestaurantWeekFallDates:{type:String},
     NewYearsEve:{type:Number}
 },{timestamps:true})
 

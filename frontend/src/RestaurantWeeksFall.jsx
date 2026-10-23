@@ -23,11 +23,13 @@ export default function RestaurantWeeksFall(){
     useEffect(()=>redirectIfEventDisabled(),[])   
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
+    useEffect(()=>getEventDates(),[])
     useEffect(()=>getWebsiteImage(),[])
 
     const [websiteImageURL, setWebsiteImageURL] = useState('')
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
-    const [annualEventPrice, setAnnualEventPrice] = useState(0)    
+    const [annualEventPrice, setAnnualEventPrice] = useState(0) 
+    const [eventDates, setEventDates] = useState('')   
 
     function getWebsiteImage(){
         fetch(`${BASE_URL}/api/events/website-image/${event_url}`)
@@ -38,6 +40,19 @@ export default function RestaurantWeeksFall(){
             })
             .catch(err=>console.log(err))
     }
+
+    function getEventDates(){
+        try{
+            fetch(`${BASE_URL}/api/annual-event-prices`)
+                .then(res=>res.json())
+                .then(json=>setEventDates(json[0].RestaurantWeekFallDates))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+
 
     const navigate = useNavigate()
 
@@ -179,7 +194,7 @@ export default function RestaurantWeeksFall(){
                                     }
                                     <br/><br/>
                                     <div style={{marginTop:'-10px',color:'white',marginBottom:'10px'}}>New Haven restaurant week</div>
-                                    <div style={{marginTop:'-10px'}}>November 3-7, 10-14, 2026 (closed Sundays and Mondays)</div>
+                                    <div style={{marginTop:'-10px'}}>{eventDates} (closed Sundays and Mondays)</div>
                                     <br/>
                                     
                                     <p>

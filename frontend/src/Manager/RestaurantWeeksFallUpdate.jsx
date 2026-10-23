@@ -17,6 +17,7 @@ export default function RestaurantWeeksFallUpdate(){
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)
     const [winePairingPrice, setWinePairingPrice] = useState(0)
+    const [eventDates, setEventDates] = useState('')
     const [editMode, setEditMode] = useState(false)
     const [displaySection, setDisplaySection] = useState('prix fixe - appetizers')
     const [currentImage, setCurrentImage] = useState('')
@@ -34,6 +35,7 @@ export default function RestaurantWeeksFallUpdate(){
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
     useEffect(()=>getWinePairingPrice(),[])
+    useEffect(()=>getEventDates(),[])
     useEffect(()=>getWebsiteImage(),[])
     useEffect(()=>getLogoImage(),[])
 
@@ -167,6 +169,17 @@ export default function RestaurantWeeksFallUpdate(){
             fetch(`${BASE_URL}/api/annual-event-prices`)
                 .then(res=>res.json())
                 .then(json=>setWinePairingPrice(json[0].RestaurantWeekFallWinePairing))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    function getEventDates(){
+        try{
+            fetch(`${BASE_URL}/api/annual-event-prices`)
+                .then(res=>res.json())
+                .then(json=>setEventDates(json[0].RestaurantWeekFallDates))
                 .catch(err=>console.log(err))
         }catch(err){
             console.log(err)
@@ -310,6 +323,19 @@ export default function RestaurantWeeksFallUpdate(){
 
     function handleChangeDisplaySection(e){
         setDisplaySection(e.target.value)
+    }
+
+    function updateEventDates(formData){
+        fetch(`${BASE_URL}/api/annual-events-prices`,{method:'PUT',
+                                                            headers:{'Content-Type':'application/json'},
+                                                            body: JSON.stringify({
+                                                                annualEventName:formData.get('annual-event-name'),
+                                                                annualEventPrice:formData.get('annual-event-dates'),
+                                                            })
+        })
+        .then(res=>res.json())
+        .then(json=>setEventDates(json[0].RestaurantWeekFallDates))
+        .catch(err=>console.log(err))
     }
 
     function updateAnnualEventPrice(formData){
@@ -1531,6 +1557,52 @@ Maximum Recommended Dimensions:
             
 
 
+
+                    <form   action={updateEventDates} 
+                            id='tasting-menu-form'
+                            className='specials-form'
+                            style={{background:`yellow`}}>
+                        <h2 style={{textAlign:'center'}}>
+                            {event.toLowerCase()}
+                        </h2>
+                        <h2 style={{textAlign:'center'}}>
+                            dates
+                        </h2>
+                        <br/><br/>
+                        <input  type='hidden'
+                                name='annual-event-name'
+                                value='RestaurantWeekFallDates'
+                        />
+                        
+                        <div style={{textAlign:'center'}}>
+                            {eventDates} 
+                            <div>&darr;</div> 
+                            <input type='text'
+                                    required
+                                    min='1'
+                                    max='999' 
+                                    maxLength='100'
+                                    autoComplete='off'
+                                    name='annual-event-dates'
+                                    style={{width:'26ch',textAlign:'center'}} />
+                        </div>
+                        <br/><br/>
+
+
+
+                        <div style={{display:'flex', justifyContent:'center'}}>
+                            <input  type='submit' 
+                                    style={{padding:'10px 10px',
+                                            cursor:'pointer',
+                                            borderRadius:'10px',
+                                            border:'2px solid black',
+                                            color:'black',
+                                            background:'lightgrey',
+                                            fontSize:'20px'}}
+                                    value = 'update dates' />                        
+                        </div>
+                        
+                    </form>
 
                     <form   action={updateAnnualEventPrice} 
                             id='tasting-menu-form'

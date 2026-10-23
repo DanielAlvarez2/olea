@@ -26,6 +26,8 @@ export default function ParentsWeekendFormatPrint(){
     useEffect(()=>getAnnualEventPrice(),[])
     useEffect(()=>getAnnualEventsMenuItems(),[])
     
+
+    
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
@@ -158,6 +160,7 @@ Please switch to a different browser to proceed.
 
 
 
+                            <div className='rw-printarea' style={{display:'flex',flexDirection:'column'}}>
 
                                 <div    className='dinner-menu-format paper-menu' 
                                         style={{
@@ -168,6 +171,8 @@ Please switch to a different browser to proceed.
                                                 // padding:`${pageMargin/2}px ${pageMargin}px 0px`,
                                                 // backgroundImage:"url('/parents-weekend-scan.jpg')",
                                                 backgroundSize:'8.5in',
+                                                borderBottom:'none',
+                                                zIndex:'1'
                                                 // color:'red'
                                             }} 
                                 >
@@ -479,6 +484,9 @@ Please switch to a different browser to proceed.
                                                                
                                 </div>
 
+                                <div className='no-print' style={{width:'8.5in',height:'40px',background:"white",border:'1px solid black',borderTop:'none'}}>
+                                </div>
+                            </div>
 
 
                     

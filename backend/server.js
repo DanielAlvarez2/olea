@@ -2697,6 +2697,7 @@ app.get('/api/annual-event-prices', async(req,res)=>{
                 ParentsWeekend:0,
                 RestaurantWeekFall:0,
                 RestaurantWeekFallWinePairing:0,
+                RestaurantWeekFallDates:'January 1-7, 2000',
                 NewYearsEve:0
             })
             currentPrices = await AnnualEventsPrice.find()
