@@ -310,9 +310,18 @@ input[type="file"]::file-selector-button{
 .rw-printarea{
     /* border:1px solid black; */
     zoom:0.6;
+  }
+  .rw-printarea-legal{
+    /* border:1px solid black; */
+    /* zoom:0.6; */
+    font-size:11.5px;
 }
 @media print{
     .rw-printarea{
         zoom:1;
     }
+}
+.rw-heading{
+  /* color:blue; */
+  letter-spacing: 0.7px;
 }

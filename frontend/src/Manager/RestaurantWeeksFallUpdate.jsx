@@ -16,7 +16,7 @@ export default function RestaurantWeeksFallUpdate(){
     const [updatingLogoImage, setUpdatingLogoImage] = useState(false)
     const [allAnnualEventsMenuItems, setAllAnnualEventsMenuItems] = useState([])
     const [annualEventPrice, setAnnualEventPrice] = useState(0)
-    const [winePairingPrice, setWinePairingPrice] = useState(0)
+    // const [winePairingPrice, setWinePairingPrice] = useState(0)
     const [eventDates, setEventDates] = useState('')
     const [editMode, setEditMode] = useState(false)
     const [displaySection, setDisplaySection] = useState('prix fixe - appetizers')
@@ -34,7 +34,7 @@ export default function RestaurantWeeksFallUpdate(){
 
     useEffect(()=>getAnnualEventsMenuItems(),[])
     useEffect(()=>getAnnualEventPrice(),[])
-    useEffect(()=>getWinePairingPrice(),[])
+    // useEffect(()=>getWinePairingPrice(),[])
     useEffect(()=>getEventDates(),[])
     useEffect(()=>getWebsiteImage(),[])
     useEffect(()=>getLogoImage(),[])
@@ -83,10 +83,10 @@ export default function RestaurantWeeksFallUpdate(){
                                                             description: formData.get('description'),
                                                             postDescription: formData.get('post-description'),
                                                             descriptionIntro: formData.get('description-intro'),
-                                                            wineGrapes: formData.get('wine-grapes'),
-                                                            wineName: formData.get('wine-name'),
-                                                            wineVintage: formData.get('wine-vintage'),
-                                                            wineDescription: formData.get('wine-description'),
+                                                            // wineGrapes: formData.get('wine-grapes'),
+                                                            // wineName: formData.get('wine-name'),
+                                                            // wineVintage: formData.get('wine-vintage'),
+                                                            // wineDescription: formData.get('wine-description'),
                                                             previewSource
                                                         })
             })
@@ -117,10 +117,10 @@ export default function RestaurantWeeksFallUpdate(){
                                                                                         description: formData.get('description'),
                                                                                         postDescription: formData.get('post-description'),
                                                                                         price: formData.get('price'),
-                                                                                        wineGrapes: formData.get('wine-grapes'),
-                                                                                        wineName: formData.get('wine-name'),
-                                                                                        wineVintage: formData.get('wine-vintage'),
-                                                                                        wineDescription: formData.get('wine-description'),
+                                                                                        // wineGrapes: formData.get('wine-grapes'),
+                                                                                        // wineName: formData.get('wine-name'),
+                                                                                        // wineVintage: formData.get('wine-vintage'),
+                                                                                        // wineDescription: formData.get('wine-description'),
                                                                                         cloudinary_public_ID: formData.get('cloudinary_public_ID'),
                                                                                         cloudinary_secure_URL: formData.get('cloudinary_secure_URL'),
                                                                                         previewSource,
@@ -164,16 +164,16 @@ export default function RestaurantWeeksFallUpdate(){
         }
     }
 
-    function getWinePairingPrice(){
-        try{
-            fetch(`${BASE_URL}/api/annual-event-prices`)
-                .then(res=>res.json())
-                .then(json=>setWinePairingPrice(json[0].RestaurantWeekFallWinePairing))
-                .catch(err=>console.log(err))
-        }catch(err){
-            console.log(err)
-        }
-    }
+    // function getWinePairingPrice(){
+    //     try{
+    //         fetch(`${BASE_URL}/api/annual-event-prices`)
+    //             .then(res=>res.json())
+    //             .then(json=>setWinePairingPrice(json[0].RestaurantWeekFallWinePairing))
+    //             .catch(err=>console.log(err))
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // }
 
     function getEventDates(){
         try{
@@ -231,10 +231,10 @@ export default function RestaurantWeeksFallUpdate(){
                           description,
                           postDescription,
                           price,
-                          wineGrapes,
-                          wineName,
-                          wineVintage,
-                          wineDescription,
+                        //   wineGrapes,
+                        //   wineName,
+                        //   wineVintage,
+                        //   wineDescription,
                           cloudinary_public_ID,
                           cloudinary_secure_URL){
         try{
@@ -256,10 +256,10 @@ export default function RestaurantWeeksFallUpdate(){
             document.querySelector('#description').value = description
             document.querySelector('#post-description').value = postDescription
             if(section.startsWith('à la carte')) setTimeout(()=>document.querySelector('#price').value = price,100) 
-            if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-grapes').value = wineGrapes,100) 
-            if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-name').value = wineName,100) 
-            if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-vintage').value = wineVintage,100) 
-            if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-description').value = wineDescription,100) 
+            // if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-grapes').value = wineGrapes,100) 
+            // if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-name').value = wineName,100) 
+            // if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-vintage').value = wineVintage,100) 
+            // if(section.startsWith('prix fixe')) setTimeout(()=>document.querySelector('#wine-description').value = wineDescription,100) 
         }catch(err){
             console.log(err)
         }
@@ -298,10 +298,10 @@ export default function RestaurantWeeksFallUpdate(){
             document.querySelector('#description').value = ''
             document.querySelector('#post-description').value = ''
             if(document.querySelector('#price')) document.querySelector('#price').value = ''
-            if(document.querySelector('#wine-grapes')) document.querySelector('#wine-grapes').value = ''
-            if(document.querySelector('#wine-name')) document.querySelector('#wine-name').value = ''
-            if(document.querySelector('#wine-vintage')) document.querySelector('#wine-vintage').value = ''
-            if(document.querySelector('#wine-description')) document.querySelector('#wine-description').value = ''
+            // if(document.querySelector('#wine-grapes')) document.querySelector('#wine-grapes').value = ''
+            // if(document.querySelector('#wine-name')) document.querySelector('#wine-name').value = ''
+            // if(document.querySelector('#wine-vintage')) document.querySelector('#wine-vintage').value = ''
+            // if(document.querySelector('#wine-description')) document.querySelector('#wine-description').value = ''
             document.querySelector('#image-file').value = ''
             
             // document.querySelector('#current-image').src = ''
@@ -351,18 +351,18 @@ export default function RestaurantWeeksFallUpdate(){
         .catch(err=>console.log(err))
     }
 
-    function updateWinePairingPrice(formData){
-        fetch(`${BASE_URL}/api/annual-events-prices`,{method:'PUT',
-                                                            headers:{'Content-Type':'application/json'},
-                                                            body: JSON.stringify({
-                                                                annualEventName:formData.get('annual-event-name'),
-                                                                annualEventPrice:formData.get('annual-event-price'),
-                                                            })
-        })
-        .then(res=>res.json())
-        .then(json=>setWinePairingPrice(json[0].RestaurantWeekFallWinePairing))
-        .catch(err=>console.log(err))
-    }
+    // function updateWinePairingPrice(formData){
+    //     fetch(`${BASE_URL}/api/annual-events-prices`,{method:'PUT',
+    //                                                         headers:{'Content-Type':'application/json'},
+    //                                                         body: JSON.stringify({
+    //                                                             annualEventName:formData.get('annual-event-name'),
+    //                                                             annualEventPrice:formData.get('annual-event-price'),
+    //                                                         })
+    //     })
+    //     .then(res=>res.json())
+    //     .then(json=>setWinePairingPrice(json[0].RestaurantWeekFallWinePairing))
+    //     .catch(err=>console.log(err))
+    // }
 
     const [previewSource, setPreviewSource] = useState()
     function handleFileInputChange(e){
@@ -656,11 +656,11 @@ Maximum Recommended Dimensions:
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
-                                            <div>
+                                            {/* <div>
                                               <span style={{fontWeight:'900'}}>wine: </span>
                                               {data.wineGrapes},
                                               <span style={{fontWeight:'900'}}> {data.wineName}</span>, {data.wineVintage}, {data.wineDescription}
-                                            </div>
+                                            </div> */}
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
                                                                             />}                                            
@@ -677,10 +677,10 @@ Maximum Recommended Dimensions:
                                                                                   data.description,
                                                                                   data.postDescription,
                                                                                   data.price,
-                                                                                  data.wineGrapes,
-                                                                                  data.wineName,
-                                                                                  data.wineVintage,
-                                                                                  data.wineDescription,
+                                                                                //   data.wineGrapes,
+                                                                                //   data.wineName,
+                                                                                //   data.wineVintage,
+                                                                                //   data.wineDescription,
                                                                                   data.cloudinary_public_ID,
                                                                                   data.cloudinary_secure_URL                                                                                
                                                                                 )}>EDIT</span>                                                    
@@ -789,11 +789,11 @@ Maximum Recommended Dimensions:
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
-                                            <div>
+                                            {/* <div>
                                               <span style={{fontWeight:'900'}}>wine: </span>
                                               {data.wineGrapes},
                                               <span style={{fontWeight:'900'}}> {data.wineName}</span>, {data.wineVintage}, {data.wineDescription}
-                                            </div>
+                                            </div> */}
 
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
@@ -811,10 +811,10 @@ Maximum Recommended Dimensions:
                                                                                   data.description,
                                                                                   data.postDescription,
                                                                                   data.price,
-                                                                                  data.wineGrapes,
-                                                                                  data.wineName,
-                                                                                  data.wineVintage,
-                                                                                  data.wineDescription,
+                                                                                //   data.wineGrapes,
+                                                                                //   data.wineName,
+                                                                                //   data.wineVintage,
+                                                                                //   data.wineDescription,
                                                                                   data.cloudinary_public_ID,
                                                                                   data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
@@ -922,11 +922,11 @@ Maximum Recommended Dimensions:
                                             <span> {data.description}</span>
                                             {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             <div className='allergies-complete'>{data.allergiesComplete}</div>
-                                            <div>
+                                            {/* <div>
                                               <span style={{fontWeight:'900'}}>wine: </span>
                                               {data.wineGrapes},
                                               <span style={{fontWeight:'900'}}> {data.wineName}</span>, {data.wineVintage}, {data.wineDescription}
-                                            </div>
+                                            </div> */}
 
                                             {data.cloudinary_secure_URL && <img src={data.cloudinary_secure_URL}
                                                                                 style={{maxWidth:'100px',maxHeight:'100px'}}    
@@ -944,10 +944,10 @@ Maximum Recommended Dimensions:
                                                                                   data.description,
                                                                                   data.postDescription,
                                                                                   data.price,
-                                                                                  data.wineGrapes,
-                                                                                  data.wineName,
-                                                                                  data.wineVintage,
-                                                                                  data.wineDescription,
+                                                                                //   data.wineGrapes,
+                                                                                //   data.wineName,
+                                                                                //   data.wineVintage,
+                                                                                //   data.wineDescription,
                                                                                   data.cloudinary_public_ID,
                                                                                   data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
@@ -1038,10 +1038,10 @@ Maximum Recommended Dimensions:
                                                                                   data.description,
                                                                                   data.postDescription,
                                                                                   data.price,
-                                                                                  data.wineGrapes,
-                                                                                  data.wineName,
-                                                                                  data.wineVintage,
-                                                                                  data.wineDescription,
+                                                                                //   data.wineGrapes,
+                                                                                //   data.wineName,
+                                                                                //   data.wineVintage,
+                                                                                //   data.wineDescription,
                                                                                   data.cloudinary_public_ID,
                                                                                   data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
@@ -1134,10 +1134,10 @@ Maximum Recommended Dimensions:
                                                                                   data.description,
                                                                                   data.postDescription,
                                                                                   data.price,
-                                                                                  data.wineGrapes,
-                                                                                  data.wineName,
-                                                                                  data.wineVintage,
-                                                                                  data.wineDescription,
+                                                                                //   data.wineGrapes,
+                                                                                //   data.wineName,
+                                                                                //   data.wineVintage,
+                                                                                //   data.wineDescription,
                                                                                   data.cloudinary_public_ID,
                                                                                   data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
@@ -1230,10 +1230,10 @@ Maximum Recommended Dimensions:
                                                                                   data.description,
                                                                                   data.postDescription,
                                                                                   data.price,
-                                                                                  data.wineGrapes,
-                                                                                  data.wineName,
-                                                                                  data.wineVintage,
-                                                                                  data.wineDescription,
+                                                                                //   data.wineGrapes,
+                                                                                //   data.wineName,
+                                                                                //   data.wineVintage,
+                                                                                //   data.wineDescription,
                                                                                   data.cloudinary_public_ID,
                                                                                   data.cloudinary_secure_URL                                                                                                                                                                )}>EDIT</span>                                                    
                                                 <span   className='btn delete-btn'
@@ -1414,38 +1414,46 @@ Maximum Recommended Dimensions:
                                                               </label>
                         }
 
-                        {section.startsWith('prix fixe') &&
+                        {/* {section.startsWith('prix fixe') &&
                          <>
                           <br/><br/>
                           <div style={{textAlign:'center',fontWeight:'900'}}>WINE PAIRING</div><br/>
 
                           <label>
-                            wine varietal(s)<span className='required-field'> *required</span><br/>
-                            <input type='text' style={{width:'100%'}} required id='wine-grapes' name='wine-grapes' />
+                            wine varietal(s)
+                            
+                            <br/>
+                            <input type='text' style={{width:'100%'}}  id='wine-grapes' name='wine-grapes' />
                             <br/><br/>
                           </label>
 
                           <label>
-                            wine name<span className='required-field'> *required</span><br/>
-                            <input type='text' style={{width:'100%'}} required id='wine-name' name='wine-name' />
+                            wine name
+                           
+                            <br/>
+                            <input type='text' style={{width:'100%'}} requred id='wine-name' name='wine-name' />
                             <br/><br/>
                           </label>
 
                           <label>
-                            wine vintage<span className='required-field'> *required</span><br/>
-                            <input type='text' style={{width:'30%'}} required id='wine-vintage' name='wine-vintage' />
+                            wine vintage
+                           
+                            <br/>
+                            <input type='text' style={{width:'30%'}}  id='wine-vintage' name='wine-vintage' />
                             <br/><br/>
                           </label>
 
                           <label>
-                            wine description<span className='required-field'> *required</span><br/>
-                            <input type='text' style={{width:'100%'}} required id='wine-description' name='wine-description' />
+                            wine description
+                          
+                            <br/>
+                            <input type='text' style={{width:'100%'}}  id='wine-description' name='wine-description' />
                             <br/><br/>
                           </label>
 
                          </>
                         
-                        }
+                        } */}
                         
                         {editMode && currentImage && <>current image:<br/></>}
 
@@ -1658,7 +1666,7 @@ Maximum Recommended Dimensions:
 
 
 
-                    <form   action={updateWinePairingPrice} 
+                    {/* <form   action={updateWinePairingPrice} 
                             id='tasting-menu-form'
                             className='specials-form'
                             style={{background:`pink`}}>
@@ -1700,7 +1708,7 @@ Maximum Recommended Dimensions:
                                     value = 'update price' />                        
                         </div>
                         
-                    </form>
+                    </form> */}
 
 
 

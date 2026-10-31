@@ -248,11 +248,11 @@ export default function QRrestaurantWeekFall(){
                                                             display:'inline-block',
                                                             cursor:'default',
                                                             fontSize:'57px'}}>olea</span>
-                                            <span style={{position:'relative'}}>
+                                            {/* <span style={{position:'relative'}}>
                                               <img  id='restaurant-week-fall-logo' 
                                                     style={{height:`${logoHeight}px`,position:'absolute',left:`${logoRight}px`,bottom:`${logoTop}px`}}
                                                     src={logoImageURL ? logoImageURL : null}  />                                              
-                                            </span>
+                                            </span> */}
 
 
                                         <hr 
@@ -284,7 +284,11 @@ export default function QRrestaurantWeekFall(){
                                           // marginTop:'28px',
                                           // padding:`0 ${itemMarginsLeftRight}px`
                                           }}>
-                                            <h2 style={{fontSize:'21px',fontFamily:'FuturaRoundBold'}}>New Haven Restaurant Week</h2>
+                                                                                        <img  id='restaurant-week-fall-logo' 
+                                                    style={{height:`auto`,width:'100%'}}
+                                                    src={logoImageURL ? logoImageURL : null}  />   
+                                                    <br/><br/>                                           
+                                            {/* <h2 style={{fontSize:'21px',fontFamily:'FuturaRoundBold'}}>New Haven Restaurant Week</h2> */}
                                             {/* <br/> */}
                                             <div style={{fontFamily:'serif'}}>
                                                 <span style={{fontFamily:'FuturaLight'}}>{eventDates}</span>
@@ -296,10 +300,10 @@ export default function QRrestaurantWeekFall(){
 
                                                 <br/><br/>
 
-                                                <span style={{fontSize:'18.7px',fontWeight:'900'}}>add ${winePairingPrice} for wine pairing</span><br/>
+                                                {/* <span style={{fontSize:'18.7px',fontWeight:'900'}}>add ${winePairingPrice} for wine pairing</span><br/>
                                                 <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(wine 3 oz. / dessert 1.5 oz.)</span>
 
-                                                <br/><br/>
+                                                <br/><br/> */}
 
                                             </div>
                                         </div>
@@ -312,11 +316,18 @@ export default function QRrestaurantWeekFall(){
 
 
 
+<div style={{display:'flex',flexDirection:'column',alignItems:'space-around'}}>
 
+
+      <div>
+
+      
                                                 <div style={{
+                                                    paddingTop:'75px',
                                                   // padding:`0 ${itemMarginsLeftRight}px`,
-                                                  fontSize:'22.2px',fontFamily:'FuturaMedium'}}>appetizers 
-                                                  <span style={{marginLeft:'5px',fontFamily:'serif',fontWeight:'900',fontSize:'15.6px'}}>choose one</span>
+                                                  fontSize:'20px',fontFamily:'FuturaMedium'}}
+                                                  ><span className='rw-heading'>appetizers</span> 
+                                                  <span style={{marginLeft:'5px',fontFamily:'serif',fontWeight:'900',fontSize:'15.0px'}}>choose one</span>
                                                 </div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - appetizers' && item.event == event).map(data=>{
@@ -346,7 +357,7 @@ export default function QRrestaurantWeekFall(){
                                                 <span style={{fontSize:'15.3px'}}> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                                 <div style={{color:'red'}}>{data.allergiesComplete}</div>
-                                                <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                
+                                                {/* <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                 */}
                                                 <br/>
                                             </div>
 
@@ -354,6 +365,7 @@ export default function QRrestaurantWeekFall(){
                                         </div>
                                     )
                                 })}
+        </div>
 
 
 
@@ -362,13 +374,16 @@ export default function QRrestaurantWeekFall(){
 
 
 
+            <div>
 
-
+            
                                                 <br/>
                                                 <div style={{
+                                                    paddingTop:'75px',
                                                   // padding:`0 ${itemMarginsLeftRight}px`,
-                                                  fontSize:'22.2px',fontFamily:'FuturaMedium'}}>entrées 
-                                                  <span style={{marginLeft:'5px',fontFamily:'serif',fontWeight:'900',fontSize:'15.6px'}}>choose one</span>
+                                                  fontSize:'20px',fontFamily:'FuturaMedium'}}>
+                                                    <span className='rw-heading'>entrées</span>  
+                                                  <span style={{marginLeft:'5px',fontFamily:'serif',fontWeight:'900',fontSize:'15.0px'}}>choose one</span>
                                                 </div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - entrées' && item.event == event).map(data=>{
@@ -398,7 +413,7 @@ export default function QRrestaurantWeekFall(){
                                                 <span style={{fontSize:'15.3px'}}> {data.description}</span>
                                                 {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
                                                 <div style={{color:'red'}}>{data.allergiesComplete}</div>
-                                                <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                
+                                                {/* <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                 */}
                                                 <br/>
                                             </div>
 
@@ -407,6 +422,7 @@ export default function QRrestaurantWeekFall(){
                                     )
                                 })}
 
+            </div>
 
 
 
@@ -423,14 +439,17 @@ export default function QRrestaurantWeekFall(){
 
 
 
+            <div>
 
-
+            
 
                                                 <br/>
                                                 <div style={{
+                                                    paddingTop:'75px',
                                                   // padding:`0 ${itemMarginsLeftRight}px`,
-                                                  fontSize:'22.2px',fontFamily:'FuturaMedium'}}>desserts 
-                                                  <span style={{marginLeft:'5px',fontFamily:'serif',fontWeight:'900',fontSize:'15.6px'}}>choose one</span>
+                                                  fontSize:'20px',fontFamily:'FuturaMedium'}}>
+                                                    <span className='rw-heading'>desserts</span>  
+                                                  <span style={{marginLeft:'5px',fontFamily:'serif',fontWeight:'900',fontSize:'15.0px'}}>choose one</span>
                                                 </div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - desserts' && item.event == event).map(data=>{
@@ -460,7 +479,7 @@ export default function QRrestaurantWeekFall(){
                                                 <span style={{fontSize:'15.3px'}}> {data.description}</span>
                                                 {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
                                                 <div style={{color:'red'}}>{data.allergiesComplete}</div>
-                                                <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                
+                                                {/* <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                 */}
                                                 <br/>
                                             </div>
 
@@ -468,10 +487,10 @@ export default function QRrestaurantWeekFall(){
                                         </div>
                                     )
                                 })}
+            </div>
 
 
-
-
+</div>
 
                                             </div>{/* #dinner-menu-left */}
 
@@ -506,7 +525,9 @@ export default function QRrestaurantWeekFall(){
 
                                                 <div style={{
                                                   // padding:`0 ${itemMarginsLeftRight}px`,
-                                                  fontSize:'22.2px',fontFamily:'FuturaMedium'}}>appetizers</div>
+                                                  fontSize:'22.2px',fontFamily:'FuturaMedium'}}>
+                                                    <span className='rw-heading'>appetizers</span> 
+                                                    </div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - appetizers' && item.event == event).map(data=>{
                                     return(
@@ -556,7 +577,9 @@ export default function QRrestaurantWeekFall(){
 
                                                 <div style={{
                                                   // padding:`0 ${itemMarginsLeftRight}px`,
-                                                  fontSize:'22.2px',fontFamily:'FuturaMedium'}}>entrées</div>
+                                                  fontSize:'22.2px',fontFamily:'FuturaMedium'}}>
+                                                    <span className='rw-heading'>entrées</span> 
+                                                    </div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - entrées' && item.event == event).map(data=>{
                                     return(
@@ -617,7 +640,9 @@ export default function QRrestaurantWeekFall(){
 
                                                 <div style={{
                                                   // padding:`0 ${itemMarginsLeftRight}px`,
-                                                  fontSize:'22.2px',fontFamily:'FuturaMedium'}}>sides</div>
+                                                  fontSize:'22.2px',fontFamily:'FuturaMedium'}}>
+                                                    <span className='rw-heading'>sides</span> 
+                                                    </div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - sides' && item.event == event).map(data=>{
                                     return(
@@ -746,10 +771,10 @@ export default function QRrestaurantWeekFall(){
                                                         //  padding:`0 ${itemMarginsLeftRight}px`
                                                         }}>
                                             <div style={{fontFamily:'FuturaMedium',fontSize:'17.5px'}}>manuel romero, chef</div>
-                                            <div style={{fontFamily:'MinionBoldItalic'}}>
+                                            {/* <div style={{fontFamily:'MinionBoldItalic'}}>
                                                 dairy (d), nuts (n), gluten (gl)
 
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                         <hr style={{marginTop:'5px',marginBottom:'5px'}}/>

@@ -14,11 +14,13 @@ import { PiArrowCircleDownDuotone } from "react-icons/pi";
 import { PiArrowCircleUpDuotone } from "react-icons/pi";
 import { PiArrowCircleLeftDuotone } from "react-icons/pi";
 import { PiArrowCircleRightDuotone } from "react-icons/pi";
-
+import { BsToggle2Off } from "react-icons/bs";
+import { BsToggle2On } from "react-icons/bs";
 
 
 export default function RestaurantWeeksFallFormatPrint(){
 
+    const [winePairing, setWinePairing] = useState(false)
     const [annualEventPrice, setAnnualEventPrice] = useState(0)      
     const [winePairingPrice, setWinePairingPrice] = useState(0) 
     const [eventDates, setEventDates] = useState('')   
@@ -238,7 +240,10 @@ Please switch to a different browser to proceed.
         }
     }
 
-
+const toggleWinePairing = ()=>{
+    // alert('toggle')
+    setWinePairing(prev=>!prev)
+}
 
 
     return(
@@ -256,7 +261,7 @@ Please switch to a different browser to proceed.
                     
                     <br className='no-print'/>
 
-                              {logoImageURL && 
+                              {/* {logoImageURL && 
                               
                               
                                 <div className='no-print'>
@@ -309,7 +314,7 @@ Please switch to a different browser to proceed.
 
                                 </div>
 
-                              }
+                              } */}
 
                     <br className='no-print'/>
                     <div className='main-menu' style={{paddingBottom:0,display:'flex',alignItems:'center'}}>
@@ -344,6 +349,17 @@ Please switch to a different browser to proceed.
                                                                     /></span>
                                     </div>
 
+                                        {/* <br/>
+                                        <div style={{width:'100%',textAlign:'center'}}>wine pairing</div>
+                                    <div style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'10px'}}>
+                                        <span>off</span>
+                                        {winePairing ? 
+                                            <BsToggle2On onClick={toggleWinePairing} style={{fontSize:'40px',cursor:'pointer'}} />
+                                        :
+                                            <BsToggle2Off onClick={toggleWinePairing} style={{fontSize:'40px',cursor:'pointer'}} />
+                                        }
+                                    <span>on</span>
+                                    </div> */}
 
                                     <div    className='no-print print-btn' 
                                         style={{margin:'30px auto',background:'limegreen',width:'220px'}}
@@ -393,14 +409,15 @@ Please switch to a different browser to proceed.
                                                             // color:'red',
                                                             // padding:`0 ${itemMarginsLeftRight}px`,
                                                             paddingLeft:'0px',
+                                                            // paddingTop:'10px',
                                                             display:'inline-block',
                                                             cursor:'default',
                                                             fontSize:'57px'}}>olea</span>
-                                            <span style={{position:'relative'}}>
+                                            {/* <span style={{position:'relative'}}>
                                               <img  id='restaurant-week-fall-logo' 
                                                     style={{height:`${logoHeight}px`,position:'absolute',left:`${logoRight}px`,bottom:`${logoTop}px`}}
                                                     src={logoImageURL ? logoImageURL : null}  />                                              
-                                            </span>
+                                            </span> */}
 
                                         <div style={{borderTop:'1px solid #888',margin:'5px 0'}}></div>
 
@@ -432,23 +449,31 @@ Please switch to a different browser to proceed.
 
 
                                             <div    id='dinner-menu-left'
-                                                    style={{width:'50%',border:'1px solid black',padding:'10px',paddingBottom:'0'}}        
+                                                    style={{
+                                                        // width:'50%',
+                                                        width:'46%',
+                                                        border:'1px solid black',padding:'12px',paddingBottom:'0'}}        
                                             >
-
+                                            <img  id='restaurant-week-fall-logo' 
+                                                    style={{height:`auto`,width:'100%'}}
+                                                    src={logoImageURL ? logoImageURL : null}  />                                              
                                         <div >
-                                            <h2 style={{fontSize:'22px'}}>New Haven Restaurant Week</h2>
+                                            {/* <h2 style={{fontSize:'20px'}}>New Haven Restaurant Week</h2> */}
+                                            <br/>
                                             {eventDates}
                                             <br/><br/>
-                                            <div style={{fontFamily:'serif'}}>
-                                                <span style={{fontSize:'18.7px',fontWeight:'900'}}>${annualEventPrice} three courses</span>
+                                            <div style={{fontFamily:'serif',
+                                                padding:`${LeftMenuItemMarginsTopBottom}px 0`,
+                                            }}>
+                                                <span style={{fontSize:'16px',fontWeight:'900'}}>${annualEventPrice} three courses</span>
                                                 <br />
                                                 <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(one prix fixe menu per person, no substitutions, beverage, tax, and gratuity not included)</span>
                                                 <br/>
 
-                                                <br/>
+                                                {/* <br/>
                                                 <span style={{fontSize:'18.7px',fontWeight:'900'}}>add ${winePairingPrice} for wine pairing</span>
                                                 <br />
-                                                <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(wine 3 oz. / dessert 1.5 oz.)</span>
+                                                <span style={{fontSize:'15.2px',fontStyle:'italic',lineHeight:'20px'}}>(wine 3 oz. / dessert 1.5 oz.)</span> */}
                                             </div>
                                         </div>
                                         <br/>
@@ -457,16 +482,19 @@ Please switch to a different browser to proceed.
 
                             <div>{/* appetizers */}
                                                 <div style={{
-                                                    // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>appetizers <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
+                                                    padding:`${LeftMenuItemMarginsTopBottom*4}px 0 ${LeftMenuItemMarginsTopBottom}px`,
+                                                    fontSize:'20px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>
+                                                        <span className='rw-heading'>appetizers</span>  
+                                                        <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
                                                         choose one</span></div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - appetizers' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
                                                 style={{
+                                                    padding:`${LeftMenuItemMarginsTopBottom}px 0`,
                                                     // paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${LeftMenuItemMarginsTopBottom}px 0`,                                            
+                                                        // marginTop:`${LeftMenuItemMarginsTopBottom}px`,                                            
                                                     }}
                                                 className='special'>
                                             
@@ -475,14 +503,16 @@ Please switch to a different browser to proceed.
                                                 <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <br/>
+                                                {!winePairing && <br/>}
+                                                {/* <br/> */}
                                                 {data.descriptionIntro && 
-                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                    <span style={{fontSize:'15.5px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
                                                 }
-                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
+                                                <span style={{fontSize:'15.5px'}}> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-                                               
-                                                <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>
+                                                {winePairing && 
+                                                    <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>
+                                                }
                                             </div>
 
 
@@ -498,16 +528,19 @@ Please switch to a different browser to proceed.
 
                             <div>{/* entrées */}
                                                 <div style={{
-                                                    // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>entrées <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
+                                                    padding:`${LeftMenuItemMarginsTopBottom*4}px 0 ${LeftMenuItemMarginsTopBottom}px`,
+                                                    fontSize:'20px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>
+                                                        <span className='rw-heading'>entrées</span>  
+                                                        <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
                                                         choose one</span></div>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'prix fixe - entrées' && item.event == event).map(data=>{
                                     return(
                                         <div    key={data._id} 
                                                 style={{
+                                                    padding:`${LeftMenuItemMarginsTopBottom}px 0`,
                                                     // paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${LeftMenuItemMarginsTopBottom}px 0`,
+                                                        // marginTop:`${LeftMenuItemMarginsTopBottom}px`,
                                                     }}
                                                 className='special'>
                                             
@@ -516,13 +549,16 @@ Please switch to a different browser to proceed.
                                                 <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <br/>
+                                                {!winePairing && <br/>}
+                                                {/* <br/> */}
                                                 {data.descriptionIntro && 
-                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                    <span style={{fontSize:'15.5px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
                                                 }
-                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
+                                                <span style={{fontSize:'15.5px'}}> {data.description}</span>
                                                 {data.postDescription && <div className='post-description'>{data.postDescription}</div>}
-                                                <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                
+                                                {winePairing && 
+                                                    <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                
+                                                }
                                             </div>
 
 
@@ -544,8 +580,10 @@ Please switch to a different browser to proceed.
                                     >
 
                                                 <div style={{
-                                                    // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>desserts <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
+                                                    padding:`${LeftMenuItemMarginsTopBottom*4}px 0 ${LeftMenuItemMarginsTopBottom}px`,
+                                                    fontSize:'20px',fontFamily:'FuturaMedium',fontWeight:'bold'}}>
+                                                        <span className='rw-heading'>desserts</span>  
+                                                        <span style={{marginLeft:'5px',fontFamily:'serif',fontSize:'15.6px',fontWeight:'900'}}>
                                                         choose one</span></div>
                                         
                                     </div>
@@ -555,8 +593,9 @@ Please switch to a different browser to proceed.
                                     return(
                                         <div    key={data._id} 
                                                 style={{
+                                                    padding:`${LeftMenuItemMarginsTopBottom}px 0`,
                                                     // paddingRight:`${itemMarginsLeftRight}px`,
-                                                        margin:`${LeftMenuItemMarginsTopBottom}px 0`,
+                                                        // marginTop:`${LeftMenuItemMarginsTopBottom}px`,
                                                       }}
                                                 className='special'>
                                             
@@ -565,13 +604,16 @@ Please switch to a different browser to proceed.
                                                 <span style={{fontFamily:'FuturaMedium',fontSize:'15.6px'}}>{data.name} </span>
                                                 {data.allergiesAbbreviated && 
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
-                                                <br/>
+                                                {!winePairing && <br/>}
+                                                {/* <br/> */}
                                                 {data.descriptionIntro && 
-                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                    <span style={{fontSize:'15.5px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
                                                 }
-                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
+                                                <span style={{fontSize:'15.5px'}}> {data.description}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
-                                                <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                
+                                                {winePairing && 
+                                                    <div><span style={{fontWeight:'900'}}>wine: </span>{data.wineGrapes}, <span style={{fontWeight:'900'}}>{data.wineName}</span>, {data.wineVintage}, {data.wineDescription}</div>                                                
+                                                }
                                             </div>
 
 
@@ -606,7 +648,10 @@ Please switch to a different browser to proceed.
 
 
                                             <div    id='dinner-menu-right'
-                                                    style={{width:'50%',paddingTop:'5px'}}
+                                                    style={{
+                                                        // width:'50%',
+                                                        width:'54%',
+                                                        paddingTop:'5px'}}
                                             >
 
 
@@ -615,12 +660,14 @@ Please switch to a different browser to proceed.
 
 
 
-                                            <h2 style={{fontSize:'23px'}}>dinner menu</h2>
+                                            {/* <h2 style={{fontSize:'23px'}}>dinner menu</h2> */}
                                                 <h2 style={{
                                                     // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px',
+                                                    fontSize:'20px',
                                                     fontFamily:'FuturaMedium'
-                                                    }}>appetizers</h2>
+                                                    }}>
+                                                        <div className='rw-heading'>appetizers</div> 
+                                                        </h2>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - appetizers' && item.event == event).map(data=>{
                                     return(
@@ -638,10 +685,10 @@ Please switch to a different browser to proceed.
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 
                                                 {data.descriptionIntro && 
-                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                    <span style={{fontSize:'15.0px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
                                                 }
-                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
-                                                <span style={{fontWeight:'900'}}> &nbsp;{data.price}</span>
+                                                <span style={{fontSize:'15.0px'}}> {data.description}</span>
+                                                <span style={{fontWeight:'900',fontSize:'13px'}}> &nbsp;{data.price}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             </div>
 
@@ -666,9 +713,11 @@ Please switch to a different browser to proceed.
 
                                                 <h2 style={{
                                                     // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px',
+                                                    fontSize:'20px',
                                                     fontFamily:'FuturaMedium'
-                                                    }}>entrées</h2>
+                                                    }}>
+                                                        <div className='rw-heading'>entrées</div> 
+                                                        </h2>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - entrées' && item.event == event).map(data=>{
                                     return(
@@ -686,10 +735,10 @@ Please switch to a different browser to proceed.
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 
                                                 {data.descriptionIntro && 
-                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                    <span style={{fontSize:'15.0px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
                                                 }
-                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
-                                                <span style={{fontWeight:'900'}}> &nbsp;{data.price}</span>
+                                                <span style={{fontSize:'15.0px'}}> {data.description}</span>
+                                                <span style={{fontWeight:'900',fontSize:'13px'}}> &nbsp;{data.price}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             </div>
 
@@ -716,9 +765,11 @@ Please switch to a different browser to proceed.
 
                                                 <h2 style={{
                                                     // padding:`0 ${itemMarginsLeftRight}px`,
-                                                    fontSize:'22.2px',
+                                                    fontSize:'20px',
                                                     fontFamily:'FuturaMedium'
-                                                    }}>sides</h2>
+                                                    }}>
+                                                        <div className='rw-heading'>sides</div> 
+                                                        </h2>
 
                                 {allAnnualEventsMenuItems.filter(item=>item.sequence && item.section == 'à la carte - sides' && item.event == event).map(data=>{
                                     return(
@@ -736,10 +787,10 @@ Please switch to a different browser to proceed.
                                                     <span className='allergies-abbreviated'> ({data.allergiesAbbreviated})</span>}
                                                 
                                                 {data.descriptionIntro && 
-                                                    <span style={{fontSize:'15.3px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
+                                                    <span style={{fontSize:'15.0px',fontStyle:'italic'}}> {data.descriptionIntro};</span>
                                                 }
-                                                <span style={{fontSize:'15.3px'}}> {data.description}</span>
-                                                <span style={{fontWeight:'900'}}> &nbsp;{data.price}</span>
+                                                <span style={{fontSize:'15.0px'}}> {data.description}</span>
+                                                <span style={{fontWeight:'900',fontSize:'13px'}}> &nbsp;{data.price}</span>
                                                 {data.postDescription && <div style={{fontStyle:'italic'}}>{data.postDescription}</div>}
                                             </div>
 
@@ -832,18 +883,19 @@ Please switch to a different browser to proceed.
 
 
 
-                                    <div className='dessert-footer' style={{marginTop:'20px'}}>
+                                    <div className='dessert-footer' style={{marginTop:'10px'}}>
 
                                         <div style={{   display:'flex',
                                                         alignItems:'flex-end',
                                                         justifyContent:'space-between',
+                                                        paddingTop:'20px'
                                                         //  padding:`0 ${itemMarginsLeftRight}px`
                                                         }}>
-                                            <div style={{fontFamily:'FuturaMedium',fontSize:'17.5px'}}>manuel romero, chef</div>
-                                            <div style={{fontFamily:'MinionBoldItalic'}}>
+                                            <div style={{fontFamily:'FuturaMedium',fontSize:'12px'}}>manuel romero, chef</div>
+                                            {/* <div style={{fontFamily:'MinionBoldItalic'}}>
                                                 dairy (d), nuts (n), gluten (gl)
 
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                         <div style={{borderTop:'1px solid #888',margin:'5px 0'}}></div>
@@ -856,7 +908,7 @@ Please switch to a different browser to proceed.
 
                                             
                                             
-                                            <div style={{lineHeight:'15px',fontSize:'11.5px'}}>
+                                            <div className='rw-printarea-legal' style={{lineHeight:'15px'}}>
                                                 <span style={{fontWeight:'100'}}>    
                                                     consumer advisory: consumption of undercooked meat, poultry, eggs, or seafood may increase the risk of food-borne illnesses.
                                                 </span>
@@ -891,7 +943,7 @@ Please switch to a different browser to proceed.
                                                                
                                 </div>
 
-                                <div className='no-print' style={{width:'8.5in',height:'40px',background:"white",border:'1px solid black',borderTop:'none'}}>
+                                <div className='no-print' style={{width:'8.5in',height:'10px',background:"white",border:'1px solid black',borderTop:'none'}}>
                                 </div>
                               </div>
 
@@ -920,7 +972,7 @@ Please switch to a different browser to proceed.
                                         <span><PiPlusCircleDuotone  style={{fontSize:'40px',cursor:'pointer'}} 
                                                                     onClick={rightMenuIncreaseItemMarginRight} /></span>
                                     </div>
-
+<br/>
                                     <div  className='no-print'
                                           style={{   textAlign:'center',
                                                     display:'flex',

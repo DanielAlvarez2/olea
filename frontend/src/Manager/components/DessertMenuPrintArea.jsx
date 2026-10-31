@@ -414,21 +414,25 @@ export default function DessertMenuPrintArea({  frontView,
                                             <div className='dessert-menu-front-content' style={{paddingLeft:'0.25in'}}>
                                                 jessica delgado, pastry chef
                                             </div>
-                                            <img    src='qr-dessert.png' 
+                                            {/* <img    src='qr-dessert.png' 
                                                         className='qr'
                                                         width='29px' 
                                                         height='29px' 
-                                                />
+                                                /> */}
                                         </div>
                                         <div style={{borderTop:'1px solid #888',marginTop:'3px',width:'11cm'}} />
-                                            <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end'}}>
+                                            <div style={{display:'flex',gap:'7px',alignItems:'flex-end'}}>
 
                                                 <div className='dessert-menu-front-content' style={{paddingLeft:'0.25in'}}>
                                                     please alert your server if you have any special dietary requirements<br/>
                                                     <span style={{fontStyle:'italic'}}>gl (gluten), d (dairy), n (nuts)</span>
                                                 </div>
 
-
+                                            <img    src='qr-dessert.png' 
+                                                        className='qr'
+                                                        width='29px' 
+                                                        height='29px' 
+                                                />
 
                                             </div>
                                     </div>
