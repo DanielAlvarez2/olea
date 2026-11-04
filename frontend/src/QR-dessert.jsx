@@ -287,7 +287,7 @@ export default function QRdessert(){
                                                             })}
                                                             
 
-                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                {/* {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
                                     <div className='dessert-menu-heading' style={{marginTop:'40px'}}>dessert special</div>}
                                 {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
                                     <div className='dessert-menu-heading' style={{marginTop:'40px'}}>dessert specials</div>}
@@ -314,7 +314,7 @@ export default function QRdessert(){
                                                                     </div>
                                     )
                                 })}
-
+ */}
 
 
 
