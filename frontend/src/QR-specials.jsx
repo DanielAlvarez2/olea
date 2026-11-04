@@ -9,12 +9,12 @@ import QRfooter from './components/QR-footer.jsx'
 
 export default function QRspecials(){
 
+    const BASE_URL = (process.env.NODE_ENV == 'production') ?
+    'https://olea-iwpz.onrender.com' : 
+    'http://localhost:1436'
+    
     const [allSpecials, setAllSpecials] = useState([])
     useEffect(()=>getSpecials(),[])
-    const BASE_URL = (process.env.NODE_ENV == 'production') ?
-                    'https://olea-iwpz.onrender.com' : 
-                    'http://localhost:1436'
-
     function getSpecials(){
         try{
             fetch(`${BASE_URL}/api/specials`)

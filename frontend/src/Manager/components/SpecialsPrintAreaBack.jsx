@@ -167,10 +167,8 @@ export default function SpecialsPrintAreaBack({pageMarginsLeftRight,menuItemMarg
                                                                                 <span style={{fontWeight:'900'}}>
                                                                                 gl (gluten), d (dairy), n (nuts)</span>
                                                                             </div>
-                                                                            <img    src='qr-specials.jpg' 
-                                                                                    className='qr'
-                                                                                    width='45px'
-                                                                                    height='45px' />
+                                                                            {/* <img    src='qr-specials.jpg' className='qr' width='45px' height='45px' /> */}
+                                                                            <img    src='qr-dessert.jpg' className='qr' width='45px' height='45px' />
                                                                         </div>
                                                                     </footer>
                                                 

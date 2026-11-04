@@ -5,6 +5,7 @@ import './Manager/DessertDrinksUpdate.css'
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 import QRnavbar from './components/QR-navbar.jsx'
 import QRfooter from './components/QR-footer.jsx'
+import {Link} from 'react-router'
 
 
 
@@ -28,6 +29,19 @@ export default function QRdessert(){
     const BASE_URL = (process.env.NODE_ENV == 'production') ?
                     'https://olea-iwpz.onrender.com' : 
                     'http://localhost:1436'
+
+    const [allSpecials, setAllSpecials] = useState([])
+    useEffect(()=>getSpecials(),[])
+    function getSpecials(){
+        try{
+            fetch(`${BASE_URL}/api/specials`)
+                .then(res=>res.json())
+                .then(json=>setAllSpecials(json))
+                .catch(err=>console.log(err))
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     function getDessertDrinks(){
         try{
@@ -213,6 +227,11 @@ export default function QRdessert(){
 
 
 
+                <div style={{fontFamily:'FuturaLight',width:'100%',background:'black',color:'white',display:'flex',justifyContent:'space-around',alignItems:'center',paddingTop:'5px',position:'fixed'}}>
+                    <Link to='/qr-restaurant-week-fall' style={{color:'white',cursor:'pointer'}}><span>dinner</span></Link>
+                    <Link to='/qr-dessert' style={{color:'white',cursor:'pointer'}}><span>dessert</span></Link>
+                    
+                </div>
 
             <div style={{   width:'100%',
                             minHeight:'100vh',
@@ -220,7 +239,8 @@ export default function QRdessert(){
                             padding:'30px 0',
                             background:'lightgrey',
                             placeContent:'center'}}>
-                <QRnavbar />
+                {/* <QRnavbar /> */}
+
                 <QRfooter />
                 <div id='qr-dessert-grid-content'>
 
@@ -267,7 +287,33 @@ export default function QRdessert(){
                                                             })}
                                                             
 
+                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length == 1 && 
+                                    <div className='dessert-menu-heading' style={{marginTop:'40px'}}>dessert special</div>}
+                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').length > 1 && 
+                                    <div className='dessert-menu-heading' style={{marginTop:'40px'}}>dessert specials</div>}
 
+                                {allSpecials.filter(item=>item.sequence && item.section == 'desserts').map(data=>{
+                                    return(
+                                                                    <div    key={data._id}
+                                                                            onClick={()=>showModal( data.cloudinary_secure_URL,
+                                                                                                    data.name,
+                                                                                                    data.price,
+                                                                                                    data.description,
+                                                                                                    data.allergiesComplete
+                                                                            )}                                                                                                                                    
+                                                                            // style={{margin:`${dessertItemMarginsTopBottom}px 0`}} 
+                                                                            className='dessert dessert-item'>
+                                                                        <span className='dessert-name'>{data.name}</span>
+                                                                        {data.allergiesAbbreviated &&   <span className='dessert-allergies'>
+                                                                                                            &nbsp;({data.allergiesAbbreviated})
+                                                                                                        </span>}
+                                                                        <span className='dessert-description'>&nbsp;{data.description}</span>
+                                                                        <span className='dessert-price'>&nbsp; &nbsp; {data.price}</span>
+                                                                        <div style={{color:'red'}}>{data.allergiesComplete}</div>
+                                                                        
+                                                                    </div>
+                                    )
+                                })}
 
 
 
@@ -277,7 +323,7 @@ export default function QRdessert(){
 
                                                 {
                                                     (allCoffees.length > 0) && <>
-                                                        <div className='dessert-item'>                                    
+                                                        <div className='dessert-item' style={{marginTop:'30px'}}>                                    
                                                             <span className='dessert-menu-heading'>
                                                                 coffee
                                                             </span>
@@ -349,7 +395,7 @@ export default function QRdessert(){
                                                 
                                                     
                                                     <span   className='dessert-price'
-                                                            style={{fontStyle:'normal'}}>
+                                                            style={{fontStyle:'normal',fontWeight:'900'}}>
                                                         black &nbsp;
                                                     </span>
                                                                                 {allTeas.filter(item=>item.type == 'black').map(data=>{
@@ -375,7 +421,7 @@ export default function QRdessert(){
                                                 
                                                 
                                                     <span   className='dessert-price'
-                                                            style={{fontStyle:'normal'}}>
+                                                            style={{fontStyle:'normal',fontWeight:'900'}}>
                                                         green &nbsp;
                                                     </span>
                                                                                 {allTeas.filter(item=>item.type == 'green').map(data=>{
@@ -395,7 +441,7 @@ export default function QRdessert(){
 
 
                                                 <span className='dessert-price'>
-                                                    <span style={{fontStyle:'normal'}}>herbal</span>
+                                                    <span style={{fontStyle:'normal',fontWeight:'900'}}>herbal</span>
                                                     <span>(caffeine free)</span>
                                                     &nbsp;
                                                 </span>

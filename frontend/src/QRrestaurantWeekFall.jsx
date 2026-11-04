@@ -153,6 +153,11 @@ export default function QRrestaurantWeekFall(){
                     //         color:'red'
                     //         }}
             >
+                <div style={{width:'100%',background:'black',color:'white',display:'flex',justifyContent:'space-around',alignItems:'center',paddingTop:'5px',position:'fixed'}}>
+                    <Link to='/qr-restaurant-week-fall' style={{color:'white',cursor:'pointer'}}><span>dinner</span></Link>
+                    <Link to='/qr-dessert' style={{color:'white',cursor:'pointer'}}><span>dessert</span></Link>
+                    
+                </div>
                               <div className='modal' style={{ position:'fixed',
                                                                   inset:'0',
                                                                   height:'100vh',
@@ -518,9 +523,6 @@ export default function QRrestaurantWeekFall(){
                                                     style={{width:'50%',padding:'10px 0'}}
                                             >
 
-                                                <h2 style={{
-                                                  // padding:`0 ${itemMarginsLeftRight}px`,
-                                                  fontSize:'22.2px',fontFamily:'FuturaRoundBold'}}>dinner menu</h2>
 
 
                                                 <div style={{
