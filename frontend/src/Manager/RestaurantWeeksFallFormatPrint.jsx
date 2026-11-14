@@ -660,7 +660,7 @@ const toggleWinePairing = ()=>{
 
 
 
-                                            <h2 style={{fontSize:'23px'}}>dinner menu</h2>
+                                            <h2 style={{fontSize:'23px',marginBottom:`${RightMenuItemMarginsTopBottom}px`,}}>dinner menu</h2>
                                                 <h2 style={{
                                                     // padding:`0 ${itemMarginsLeftRight}px`,
                                                     fontSize:'20px',
